@@ -1,0 +1,118 @@
+generator client {
+  provider        = "prisma-client"
+  output          = "../generated/prisma"
+  previewFeatures = ["postgresqlExtensions"]
+}
+
+datasource db {
+  provider   = "postgresql"
+  extensions = [pg_trgm]
+}
+
+// ─── ENUMS ───────────────────────────────────────────────────────────────────
+
+enum UserType {
+  PERSONAL
+  ORGANIZATION
+}
+
+enum DocumentType {
+  IMAGE
+  VIDEO
+  PDF
+}
+
+// ─── ROLES ───────────────────────────────────────────────────────────────────
+
+model Role {
+  id          Int     @id @default(autoincrement())
+  name        String  @unique
+  description String?
+  coreUser    Boolean @default(false)
+  isActive    Boolean @default(true)
+
+  // Flexible JSON permissions map: { "resource": ["action", ...] }
+  permissions Json?
+
+  users User[]
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+}
+
+// ─── USERS ───────────────────────────────────────────────────────────────────
+
+model User {
+  id       Int      @id @default(autoincrement())
+  email    String   @unique
+  password String
+  userType UserType
+
+  roleId Int
+  role   Role @relation(fields: [roleId], references: [id])
+
+  refreshTokens     RefreshToken[]
+  uploadedDocuments Document[]     @relation("DocumentUploader")
+  notifications     Notification[]
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  @@index([roleId])
+}
+
+// ─── AUTH — REFRESH TOKENS ────────────────────────────────────────────────────
+
+model RefreshToken {
+  id        Int    @id @default(autoincrement())
+  token     String @unique
+  userId    Int
+  user      User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+
+  ipAddress String?
+  userAgent String?
+  browser   String?
+  os        String?
+  device    String?
+
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+}
+
+// ─── DOCUMENTS ────────────────────────────────────────────────────────────────
+
+model Document {
+  id           Int          @id @default(autoincrement())
+  url          String
+  type         DocumentType
+  uploadedById Int
+  uploadedBy   User         @relation("DocumentUploader", fields: [uploadedById], references: [id])
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  @@index([uploadedById])
+}
+
+// ─── NOTIFICATIONS ────────────────────────────────────────────────────────────
+
+model Notification {
+  id     Int  @id @default(autoincrement())
+  userId Int
+  user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // Flexible JSON payload: { title, message, ... }
+  detail Json?
+  readAt DateTime?
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  @@index([userId])
+}

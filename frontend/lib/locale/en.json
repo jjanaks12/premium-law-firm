@@ -1,0 +1,160 @@
+{
+  "Brand": {
+    "premium": "Premium",
+    "law": "Law",
+    "firm": "Firm"
+  },
+  "HomePage": {
+    "title": "Welcome to Premium Law Firm",
+    "description": "Your trusted partner in legal matters."
+  },
+  "Nav": {
+    "aboutUs": "About Us",
+    "practiceAreas": "Practice Areas",
+    "attorneys": "Attorneys",
+    "insights": "Insights",
+    "contact": "Contact",
+    "bookConsultation": "Book for Consultation"
+  },
+  "Footer": {
+    "description": "A Kathmandu-based full-service firm — quiet advocacy, careful counsel, and the kind of results that come from actually reading the file. Since 1998.",
+    "quickLinks": "Quick Links",
+    "firmOverview": "Firm Overview",
+    "careers": "Careers",
+    "contactHeading": "Contact",
+    "address1": "Bhagawati Marg, Naxal",
+    "address2": "Kathmandu 44600, Nepal",
+    "officeHours": "Office Hours",
+    "monFri": "Mon – Fri · 8:30 – 18:30",
+    "saturday": "Saturday · By appointment",
+    "sunday": "Sunday · Closed",
+    "copyright": "© {year} Premium Law Firm. All rights reserved.",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "legalDisclaimer": "Legal Disclaimer"
+  },
+  "Hero": {
+    "eyebrow": "Kathmandu · Est. 1998",
+    "title": "Careful counsel. <highlight>Uncompromising</highlight> defence.",
+    "description": "A Nepali law firm built on quiet diligence rather than loud promises — standing beside families, founders and enterprises when the stakes are highest, and the law is anything but simple.",
+    "bookConsultation": "Book a Consultation",
+    "practiceAreas": "Our Practice Areas",
+    "nba": "Nepal Bar Association",
+    "saarclaw": "SAARCLAW Member"
+  },
+  "Info": {
+    "eyebrow": "About the Firm",
+    "title": "A quiet legacy of <highlight>trust</highlight> and defence.",
+    "p1": "We began in a two-room office in Putalisadak in 1998, taking on cases nobody else wanted to touch. Twenty-five years later, our doors are wider — but the instinct is the same. We work carefully, we say what we mean, and we do not take a matter we cannot honestly serve.",
+    "p2": "Our advocates appear regularly before the Supreme Court and the High Courts across Nepal, and advise clients from single-founder startups to listed companies. Every engagement is led by a partner. Not a \"team\". A person, whose name you will know.",
+    "p3": "We are proud of the work. We are prouder of the clients who keep coming back — often years apart, with a very different problem, but the same one question: <em>what would you do, if this were you?</em>",
+    "stats": {
+      "yearsNum": "25+",
+      "outcomesNum": "94%",
+      "mattersNum": "3,200+",
+      "advocatesNum": "18",
+      "years": "Years in Practice",
+      "outcomes": "Favourable Outcomes",
+      "matters": "Matters Handled",
+      "advocates": "Advocates on Roll"
+    }
+  },
+  "Recognition": {
+    "eyebrow": "Membership & Recognition",
+    "title": "Listed, ranked and, more importantly, referred."
+  },
+  "PracticeAreas": {
+    "eyebrow": "Practice Areas",
+    "title": "Six practices. One standard of care.",
+    "learnMore": "Learn More",
+    "viewAll": "View All Practice Areas"
+  },
+  "Attorneys": {
+    "eyebrow": "Our Partners",
+    "title": "Distinguished counsel. Personal accountability.",
+    "description": "Every engagement is led by a partner whose reputation depends on the outcome we secure for you."
+  },
+  "Contact": {
+    "eyebrow": "Consultation",
+    "title": "Come in for a conversation — no meter running.",
+    "description": "Your first meeting with us is complimentary and fully privileged. Write, call, or drop into our Naxal chambers, and a partner will get back to you within one working day. In Nepali, English, or Newari — whichever is easier for you.",
+    "email": "Email the Chambers",
+    "features": [
+      "First meeting is on us — no strings, no billing",
+      "A partner replies within one working day",
+      "Everything you share is fully privileged",
+      "Fixed-fee or hourly, whichever suits the matter"
+    ]
+  },
+  "Testimonials": {
+    "eyebrow": "Client Voices",
+    "title": "Judged by those we serve."
+  },
+  "Insights": {
+    "eyebrow": "Insights",
+    "title": "Perspective from the frontlines of the law.",
+    "allArticles": "All Articles",
+    "readMore": "Read More"
+  },
+  "ContactPage": {
+    "heroEyebrow": "Contact Us",
+    "heroTitle": "Let's talk through<br></br><highlight>your matter.</highlight>",
+    "heroDesc": "Your first meeting is complimentary and fully privileged. Tell us what happened, and a partner will get back to you within one working day — in Nepali, English, or Newari.",
+    "cards": [
+      {
+        "title": "Visit the Chambers",
+        "lines": ["Bhagawati Marg, Naxal", "Kathmandu 44600, Nepal"]
+      },
+      {
+        "title": "Call the Firm",
+        "lines": ["+977 1 444 1122", "+977 1 444 1123"]
+      },
+      {
+        "title": "Write to Us",
+        "lines": ["chambers@premiumlaw.com.np", "consult@premiumlaw.com.np"]
+      },
+      {
+        "title": "Office Hours",
+        "lines": ["Mon – Fri · 8:30 – 18:30", "Sat · By appointment"]
+      }
+    ],
+    "formEyebrow": "Send a Message",
+    "formTitle": "Start with the basics.",
+    "formDesc": "We do not need your whole story here — just enough to understand the area of law and how urgently you need us. A partner reviews every message personally.",
+    "nameLabel": "Full name",
+    "namePlaceholder": "Ram Bahadur Thapa",
+    "emailLabel": "Email address",
+    "emailPlaceholder": "ram@example.com",
+    "phoneLabel": "Phone number",
+    "phonePlaceholder": "+977 98XXXXXXXX",
+    "matterLabel": "Matter type",
+    "matterPlaceholder": "Select a practice area",
+    "messageLabel": "How can we help?",
+    "messagePlaceholder": "Briefly describe your situation, including any deadlines or court dates.",
+    "submitBtn": "Send Message",
+    "disclaimer": "By sending this message, you agree that it does not create an attorney-client relationship until we confirm engagement in writing.",
+    "successTitle": "Thank you for reaching out.",
+    "successDesc": "We have received your message and a partner will respond within one working day. If your matter is urgent, please call us directly at",
+    "sidebarEyebrow": "What to Expect",
+    "sidebarTitle": "Clarity from the first conversation.",
+    "sidebarList": [
+      "No billing for the initial consultation.",
+      "Clear upfront fee structures.",
+      "Direct line to the partner handling your case."
+    ],
+    "urgentTitle": "Urgent matter?",
+    "urgentDesc": "For time-sensitive issues, call the chambers directly. We keep lines open during court hours.",
+    "directionsEyebrow": "Directions",
+    "directionsTitle": "Find us in Naxal, Kathmandu.",
+    "directionsDesc": "Our chambers are on Bhagawati Marg, a short walk from the Naxal Chowk and the British Embassy. Street parking is available on the lane behind the building.",
+    "directionsAddress": "Bhagawati Marg, Naxal",
+    "directionsCity": "Kathmandu 44600, Nepal",
+    "directionsDays": "Monday – Friday",
+    "directionsHours": "8:30 – 18:30",
+    "directionsBtn": "Open in Google Maps",
+    "validation": {
+      "required": "This field is required",
+      "email": "Invalid email address"
+    }
+  }
+}
