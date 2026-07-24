@@ -33,7 +33,7 @@ export const login = async (data: LoginInput) => {
 
   const accessToken = jwt.sign({}, ACCESS_TOKEN_SECRET, {
     audience: user.id,
-    expiresIn: '1m',
+    expiresIn: '1h',
   });
 
   const refreshTokenStr = jwt.sign({}, REFRESH_TOKEN_SECRET, {
@@ -79,7 +79,7 @@ export const refreshToken = async (tokenStr: string) => {
     // Generate new access and refresh tokens (token rotation)
     const newAccessToken = jwt.sign({}, ACCESS_TOKEN_SECRET, {
       audience: userId,
-      expiresIn: '15m',
+      expiresIn: '1h',
     });
 
     const newRefreshTokenStr = jwt.sign({}, REFRESH_TOKEN_SECRET, {

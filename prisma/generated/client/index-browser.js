@@ -175,6 +175,7 @@ exports.Prisma.RoleScalarFieldEnum = {
   id: 'id',
   name: 'name',
   description: 'description',
+  is_staff: 'is_staff',
   permissions: 'permissions',
   created_at: 'created_at',
   updated_at: 'updated_at',

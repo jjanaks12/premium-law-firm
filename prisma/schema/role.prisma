@@ -2,6 +2,7 @@ model Role {
     id String @id @default(uuid())
     name String @unique
     description String?
+    is_staff Boolean @default(false)
 
     permissions Json?
     users       User[]

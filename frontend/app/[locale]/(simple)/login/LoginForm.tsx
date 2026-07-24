@@ -18,6 +18,7 @@ import {
   InputGroupAddon,
   InputGroupInput,
 } from "@/components/ui/input-group";
+import { useAuth } from "@/lib/context/AuthContext";
 
 export default function LoginForm({ className }: { className?: string }) {
   const { axios } = useAxios();
@@ -25,6 +26,7 @@ export default function LoginForm({ className }: { className?: string }) {
   const t = useTranslations("LoginForm");
   const [errorMsg, setErrorMsg] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const { login, refreshUser } = useAuth();
 
   const handleSubmit = async (values: LoginInput, { setSubmitting }: any) => {
     try {
@@ -33,10 +35,13 @@ export default function LoginForm({ className }: { className?: string }) {
         data: { data },
       } = await axios.post("/auth/login", values);
       if (status == 200) {
-        console.log(data);
-        localStorage.setItem("accessToken", data.accessToken);
-        localStorage.setItem("refreshToken", data.refreshToken);
-        localStorage.setItem("remember", String(values.remember));
+        login(
+          data.accessToken,
+          data.refreshToken,
+          data.user,
+          values.remember ?? false,
+        );
+        await refreshUser();
         router.push("/dashboard");
       }
     } catch (error: any) {

@@ -7090,6 +7090,7 @@ export namespace Prisma {
     id: string | null
     name: string | null
     description: string | null
+    is_staff: boolean | null
     created_at: Date | null
     updated_at: Date | null
     deleted_at: Date | null
@@ -7099,6 +7100,7 @@ export namespace Prisma {
     id: string | null
     name: string | null
     description: string | null
+    is_staff: boolean | null
     created_at: Date | null
     updated_at: Date | null
     deleted_at: Date | null
@@ -7108,6 +7110,7 @@ export namespace Prisma {
     id: number
     name: number
     description: number
+    is_staff: number
     permissions: number
     created_at: number
     updated_at: number
@@ -7120,6 +7123,7 @@ export namespace Prisma {
     id?: true
     name?: true
     description?: true
+    is_staff?: true
     created_at?: true
     updated_at?: true
     deleted_at?: true
@@ -7129,6 +7133,7 @@ export namespace Prisma {
     id?: true
     name?: true
     description?: true
+    is_staff?: true
     created_at?: true
     updated_at?: true
     deleted_at?: true
@@ -7138,6 +7143,7 @@ export namespace Prisma {
     id?: true
     name?: true
     description?: true
+    is_staff?: true
     permissions?: true
     created_at?: true
     updated_at?: true
@@ -7221,6 +7227,7 @@ export namespace Prisma {
     id: string
     name: string
     description: string | null
+    is_staff: boolean
     permissions: JsonValue | null
     created_at: Date
     updated_at: Date
@@ -7248,6 +7255,7 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     description?: boolean
+    is_staff?: boolean
     permissions?: boolean
     created_at?: boolean
     updated_at?: boolean
@@ -7260,6 +7268,7 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     description?: boolean
+    is_staff?: boolean
     permissions?: boolean
     created_at?: boolean
     updated_at?: boolean
@@ -7270,6 +7279,7 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     description?: boolean
+    is_staff?: boolean
     permissions?: boolean
     created_at?: boolean
     updated_at?: boolean
@@ -7280,13 +7290,14 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     description?: boolean
+    is_staff?: boolean
     permissions?: boolean
     created_at?: boolean
     updated_at?: boolean
     deleted_at?: boolean
   }
 
-  export type RoleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "permissions" | "created_at" | "updated_at" | "deleted_at", ExtArgs["result"]["role"]>
+  export type RoleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "is_staff" | "permissions" | "created_at" | "updated_at" | "deleted_at", ExtArgs["result"]["role"]>
   export type RoleInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     users?: boolean | Role$usersArgs<ExtArgs>
     _count?: boolean | RoleCountOutputTypeDefaultArgs<ExtArgs>
@@ -7303,6 +7314,7 @@ export namespace Prisma {
       id: string
       name: string
       description: string | null
+      is_staff: boolean
       permissions: Prisma.JsonValue | null
       created_at: Date
       updated_at: Date
@@ -7734,6 +7746,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Role", 'String'>
     readonly name: FieldRef<"Role", 'String'>
     readonly description: FieldRef<"Role", 'String'>
+    readonly is_staff: FieldRef<"Role", 'Boolean'>
     readonly permissions: FieldRef<"Role", 'Json'>
     readonly created_at: FieldRef<"Role", 'DateTime'>
     readonly updated_at: FieldRef<"Role", 'DateTime'>
@@ -8257,6 +8270,7 @@ export namespace Prisma {
     id: 'id',
     name: 'name',
     description: 'description',
+    is_staff: 'is_staff',
     permissions: 'permissions',
     created_at: 'created_at',
     updated_at: 'updated_at',
@@ -8351,6 +8365,13 @@ export namespace Prisma {
    * Reference to a field of type 'QueryMode'
    */
   export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
+    
+
+
+  /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
 
 
@@ -8720,6 +8741,7 @@ export namespace Prisma {
     id?: StringFilter<"Role"> | string
     name?: StringFilter<"Role"> | string
     description?: StringNullableFilter<"Role"> | string | null
+    is_staff?: BoolFilter<"Role"> | boolean
     permissions?: JsonNullableFilter<"Role">
     created_at?: DateTimeFilter<"Role"> | Date | string
     updated_at?: DateTimeFilter<"Role"> | Date | string
@@ -8731,6 +8753,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     description?: SortOrderInput | SortOrder
+    is_staff?: SortOrder
     permissions?: SortOrderInput | SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -8745,6 +8768,7 @@ export namespace Prisma {
     OR?: RoleWhereInput[]
     NOT?: RoleWhereInput | RoleWhereInput[]
     description?: StringNullableFilter<"Role"> | string | null
+    is_staff?: BoolFilter<"Role"> | boolean
     permissions?: JsonNullableFilter<"Role">
     created_at?: DateTimeFilter<"Role"> | Date | string
     updated_at?: DateTimeFilter<"Role"> | Date | string
@@ -8756,6 +8780,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     description?: SortOrderInput | SortOrder
+    is_staff?: SortOrder
     permissions?: SortOrderInput | SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -8772,6 +8797,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Role"> | string
     name?: StringWithAggregatesFilter<"Role"> | string
     description?: StringNullableWithAggregatesFilter<"Role"> | string | null
+    is_staff?: BoolWithAggregatesFilter<"Role"> | boolean
     permissions?: JsonNullableWithAggregatesFilter<"Role">
     created_at?: DateTimeWithAggregatesFilter<"Role"> | Date | string
     updated_at?: DateTimeWithAggregatesFilter<"Role"> | Date | string
@@ -9150,6 +9176,7 @@ export namespace Prisma {
     id?: string
     name: string
     description?: string | null
+    is_staff?: boolean
     permissions?: NullableJsonNullValueInput | InputJsonValue
     created_at?: Date | string
     updated_at?: Date | string
@@ -9161,6 +9188,7 @@ export namespace Prisma {
     id?: string
     name: string
     description?: string | null
+    is_staff?: boolean
     permissions?: NullableJsonNullValueInput | InputJsonValue
     created_at?: Date | string
     updated_at?: Date | string
@@ -9172,6 +9200,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    is_staff?: BoolFieldUpdateOperationsInput | boolean
     permissions?: NullableJsonNullValueInput | InputJsonValue
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9183,6 +9212,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    is_staff?: BoolFieldUpdateOperationsInput | boolean
     permissions?: NullableJsonNullValueInput | InputJsonValue
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9194,6 +9224,7 @@ export namespace Prisma {
     id?: string
     name: string
     description?: string | null
+    is_staff?: boolean
     permissions?: NullableJsonNullValueInput | InputJsonValue
     created_at?: Date | string
     updated_at?: Date | string
@@ -9204,6 +9235,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    is_staff?: BoolFieldUpdateOperationsInput | boolean
     permissions?: NullableJsonNullValueInput | InputJsonValue
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9214,6 +9246,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    is_staff?: BoolFieldUpdateOperationsInput | boolean
     permissions?: NullableJsonNullValueInput | InputJsonValue
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9601,10 +9634,16 @@ export namespace Prisma {
     created_at?: SortOrder
   }
 
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type RoleCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     description?: SortOrder
+    is_staff?: SortOrder
     permissions?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -9615,6 +9654,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     description?: SortOrder
+    is_staff?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     deleted_at?: SortOrder
@@ -9624,9 +9664,18 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     description?: SortOrder
+    is_staff?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     deleted_at?: SortOrder
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type ResourceCreateNestedOneWithoutUsersInput = {
@@ -9903,6 +9952,10 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
   }
 
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
   export type UserUpdateManyWithoutRoleNestedInput = {
     create?: XOR<UserCreateWithoutRoleInput, UserUncheckedCreateWithoutRoleInput> | UserCreateWithoutRoleInput[] | UserUncheckedCreateWithoutRoleInput[]
     connectOrCreate?: UserCreateOrConnectWithoutRoleInput | UserCreateOrConnectWithoutRoleInput[]
@@ -10088,6 +10141,19 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
   export type ResourceCreateWithoutUsersInput = {
     id?: string
     url: string
@@ -10115,6 +10181,7 @@ export namespace Prisma {
     id?: string
     name: string
     description?: string | null
+    is_staff?: boolean
     permissions?: NullableJsonNullValueInput | InputJsonValue
     created_at?: Date | string
     updated_at?: Date | string
@@ -10125,6 +10192,7 @@ export namespace Prisma {
     id?: string
     name: string
     description?: string | null
+    is_staff?: boolean
     permissions?: NullableJsonNullValueInput | InputJsonValue
     created_at?: Date | string
     updated_at?: Date | string
@@ -10260,6 +10328,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    is_staff?: BoolFieldUpdateOperationsInput | boolean
     permissions?: NullableJsonNullValueInput | InputJsonValue
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10270,6 +10339,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    is_staff?: BoolFieldUpdateOperationsInput | boolean
     permissions?: NullableJsonNullValueInput | InputJsonValue
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string

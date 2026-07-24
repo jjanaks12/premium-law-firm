@@ -49,7 +49,7 @@ export const useNavLink = (user?: UserWithRole | null): { menus: Menu[] } => {
     let menus: Menu[] = []
 
     if (user)
-        menus = adminMenu.filter(menu => can(menu.resource, user.role?.name ?? ''))
+        menus = adminMenu.filter(menu => can(menu.resource, user.role))
 
     return { menus }
 }

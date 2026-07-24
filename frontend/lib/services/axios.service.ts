@@ -57,7 +57,7 @@ export const useAxios = () => {
                 })
                 router.push('/login')
             }
-            return Promise.reject(error.response?.data?.error || { message: errorMessage })
+            return Promise.reject(new Error(errorMessage))
         }
     )
 
