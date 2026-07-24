@@ -162,8 +162,8 @@ export default function LoginForm({ className }: { className?: string }) {
 
           <div className="flex items-between justify-between gap-3">
             {errorMsg && (
-              <span className="flex items-center gap-2 text-sm font-medium text-yellow-600">
-                <AlertTriangleIcon className="size-4" />
+              <span className="flex items-center gap-2 text-xs font-medium text-yellow-600">
+                <AlertTriangleIcon className="size-8 shrink-0" />
                 {errorMsg}
               </span>
             )}

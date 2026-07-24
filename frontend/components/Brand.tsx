@@ -6,9 +6,14 @@ import { useTranslations } from "next-intl";
 interface BrandProps {
   theme?: "light" | "dark";
   className?: string;
+  compact?: boolean;
 }
 
-export default function Brand({ className, theme = "light" }: BrandProps) {
+export default function Brand({
+  className,
+  theme = "light",
+  compact = false,
+}: BrandProps) {
   const t = useTranslations("Brand");
   return (
     <Link
@@ -20,14 +25,17 @@ export default function Brand({ className, theme = "light" }: BrandProps) {
       )}
     >
       <ScaleIcon className="text-gold" strokeWidth={1.5} />
-      <span
-        className={cn(
-          "font-serif text-xl tracking-wide",
-          theme === "light" ? "text-cream" : "text-primary",
-        )}
-      >
-        {t("premium")} <span className="text-gold">{t("law")}</span> {t("firm")}
-      </span>
+      {!compact && (
+        <span
+          className={cn(
+            "font-serif text-xl tracking-wide",
+            theme === "light" ? "text-cream" : "text-primary",
+          )}
+        >
+          {t("premium")} <span className="text-gold">{t("law")}</span>{" "}
+          {t("firm")}
+        </span>
+      )}
     </Link>
   );
 }
