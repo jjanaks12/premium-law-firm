@@ -1,7 +1,7 @@
 import prisma from "@/lib/prisma";
 import { NextFunction, Request, Response } from "express";
 import createHttpError from "http-errors";
-import { roleSchema } from "packages/validations/src";
+import { roleSchema } from "@app/validations";
 
 
 export const index = async (request: Request, response: Response, next: NextFunction) => {

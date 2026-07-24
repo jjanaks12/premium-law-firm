@@ -3,6 +3,7 @@ import { moduleRegistry } from '@/lib/moduleRegistry';
 import authRoutes from '@/modules/auth/auth.route';
 import roleRoutes from '@/modules/authorization/routes/role.route';
 import notificationRoutes from '@/modules/notifications/notification.route';
+import userRoutes from '@/modules/users/user.route';
 
 // Register all modules with their associated metadata, resources, and exact action abilities
 moduleRegistry.register('/auth', authRoutes, {
@@ -24,6 +25,13 @@ moduleRegistry.register('/notifications', notificationRoutes, {
   description: 'Handles outbound notification logs, template rendering, and alert settings',
   resources: ['dashboard', 'settings'],
   actions: ["read", "update", "list"],
+});
+
+moduleRegistry.register('/users', userRoutes, {
+  name: 'Users',
+  description: 'Handles user invites, enabling/disabling, soft-deletes and restores',
+  resources: ["users"],
+  actions: ["create", "read", "update", "delete", "list"],
 });
 
 const route = Router();

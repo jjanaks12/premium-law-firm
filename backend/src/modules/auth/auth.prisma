@@ -6,7 +6,10 @@ model User {
   email      String   @unique
   first_name String
   last_name  String
-  password   String
+  password   String?
+  status     String   @default("active")
+  invitation_token String? @unique
+  invitation_expires_at DateTime?
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
   deleted_at DateTime?

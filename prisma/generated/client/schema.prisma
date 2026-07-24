@@ -2,15 +2,18 @@
 // Colocated with auth module — collected into prisma/schema/ at build time
 
 model User {
-  id         String    @id @default(uuid())
-  email      String    @unique
-  first_name String
-  last_name  String
-  password   String
-  created_at DateTime  @default(now())
-  updated_at DateTime  @updatedAt
-  deleted_at DateTime?
-  detail     Json?     @default("{}")
+  id                    String    @id @default(uuid())
+  email                 String    @unique
+  first_name            String
+  last_name             String
+  password              String?
+  status                String    @default("active")
+  invitation_token      String?   @unique
+  invitation_expires_at DateTime?
+  created_at            DateTime  @default(now())
+  updated_at            DateTime  @updatedAt
+  deleted_at            DateTime?
+  detail                Json?     @default("{}")
 
   avatar_id      String?
   avatar         Resource?            @relation("user_avatar", fields: [avatar_id], references: [id])

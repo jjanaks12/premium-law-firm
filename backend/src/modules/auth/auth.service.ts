@@ -26,7 +26,15 @@ export const register = async (data: RegisterInput) => {
 
 export const login = async (data: LoginInput) => {
   const user = await prisma.user.findUnique({ where: { email: data.email }, include: { role: true } });
-  if (!user) throw createError(401, 'Invalid credentials');
+  if (!user || user.deleted_at !== null) throw createError(401, 'Invalid credentials');
+
+  if (user.status === 'disabled') {
+    throw createError(403, 'Your account has been disabled. Please contact the administrator.');
+  }
+
+  if (user.status === 'invited' || !user.password) {
+    throw createError(403, 'Please accept your invitation first to set your password and activate your account.');
+  }
 
   const match = await bcrypt.compare(data.password, user.password);
   if (!match) throw createError(401, 'Invalid credentials');
