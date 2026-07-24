@@ -28,8 +28,12 @@ export default function LoginForm({ className }: { className?: string }) {
 
   const handleSubmit = async (values: LoginInput, { setSubmitting }: any) => {
     try {
-      const { status, data } = await axios.post("/auth/login", values);
+      const {
+        status,
+        data: { data },
+      } = await axios.post("/auth/login", values);
       if (status == 200) {
+        console.log(data);
         localStorage.setItem("accessToken", data.accessToken);
         localStorage.setItem("refreshToken", data.refreshToken);
         router.push("/dashboard");

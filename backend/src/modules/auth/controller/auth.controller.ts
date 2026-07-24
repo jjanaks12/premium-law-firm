@@ -35,7 +35,8 @@ export const logout = async (req: Request, res: Response) => {
 
 export const forgotPassword = async (req: Request, res: Response) => {
   const { email } = await forgotPasswordSchema.validate(req.body, { abortEarly: false });
-  const result = await authService.forgotPassword(email);
+  const locale = req.headers['accept-language'] as string | undefined;
+  const result = await authService.forgotPassword(email, locale);
   res.json(result);
 };
 

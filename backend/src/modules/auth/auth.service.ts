@@ -117,7 +117,7 @@ export const logout = async (tokenStr: string) => {
   return { success: true };
 };
 
-export const forgotPassword = async (email: string) => {
+export const forgotPassword = async (email: string, locale?: string) => {
   const user = await prisma.user.findUnique({ where: { email } });
   if (!user) {
     throw createHttpError.NotFound('User does not exists.')
@@ -136,7 +136,15 @@ export const forgotPassword = async (email: string) => {
     },
   });
 
-  const resetUrl = `${CLIENT_URL}/reset-password?token=${resetToken}`;
+  let localePath = '';
+  if (locale) {
+    const primaryLocale = locale.split(',')[0].split('-')[0].trim().toLowerCase();
+    if (['en', 'np'].includes(primaryLocale)) {
+      localePath = `/${primaryLocale}`;
+    }
+  }
+
+  const resetUrl = `${CLIENT_URL}${localePath}/reset-password?token=${resetToken}`;
   const htmlContent = renderEmailTemplate('forgotPassword', {
     name: `${user.first_name} ${user.last_name}`,
     resetUrl

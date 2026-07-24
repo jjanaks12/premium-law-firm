@@ -1,9 +1,11 @@
 import axios from 'axios'
 import { useRouter } from '@/src/i18n/routing'
+import { useLocale } from 'next-intl'
 import { toast } from '@/components/ui/toast'
 
 export const useAxios = () => {
     const router = useRouter()
+    const locale = useLocale()
     const axiosInstance = axios.create({
         baseURL: process.env.NEXT_PUBLIC_API_URL,
         headers: {
@@ -36,6 +38,7 @@ export const useAxios = () => {
         if (token) {
             config.headers.Authorization = `Bearer ${token}`
         }
+        config.headers['Accept-Language'] = locale
         return config
     })
 

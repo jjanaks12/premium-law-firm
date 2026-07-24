@@ -178,5 +178,25 @@
     "btn": "Reset password",
     "signInInstead": "Sign in instead",
     "home": "Go back to Home"
+  },
+  "ResetPasswordPage": {
+    "title": "Reset Your Password",
+    "description": "Please enter your new password below to secure your account.",
+    "formTitle": "Set a new password",
+    "formSubTitle": "Your new password must be different from previously used passwords.",
+    "newPassword": "New Password",
+    "confirmPassword": "Confirm Password",
+    "passwordMinError": "Password must be at least 6 characters",
+    "passwordRequired": "Password is required",
+    "passwordsMustMatch": "Passwords must match",
+    "confirmPasswordRequired": "Please confirm your password",
+    "missingTokenError": "Missing reset token",
+    "missingTokenWarning": "No reset token found in URL. This page requires a valid password reset link.",
+    "successTitle": "Success",
+    "successDescription": "Your password has been successfully reset. Please log in.",
+    "genericError": "Failed to reset password. Please try again.",
+    "submitBtn": "Reset password",
+    "signInInstead": "Sign in instead",
+    "home": "Go back to Home"
   }
 }
