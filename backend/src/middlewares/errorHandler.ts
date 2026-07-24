@@ -1,23 +1,26 @@
-import { Request, Response, NextFunction } from 'express';
-import createError from 'http-errors';
+import { NextFunction, Request, Response } from "express";
+import createHttpError from "http-errors";
 
-export const errorHandler = (
-  err: any,
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
-  if (createError.isHttpError(err)) {
-    return res.status(err.status).json({
-      success: false,
-      message: err.message,
-    });
-  }
+export const notFound = async (_: Request, __: Response, next: NextFunction) => {
+    next(createHttpError.NotFound())
+}
 
-  console.error('[Error]:', err);
+export const errorHandler = (error: any, request: Request, response: Response, next: NextFunction) => {
+    let status = error.status || 500
+    const newError: any = {
+        status: status,
+        message: error.message
+    }
 
-  res.status(500).json({
-    success: false,
-    message: 'Internal Server Error',
-  });
-};
+    console.log(error);
+
+    if (error.errors && error.errors.length > 0) {
+        status = 422
+        newError.errors = error.errors
+    }
+
+    response.status(status)
+        .send({
+            error: newError
+        })
+}

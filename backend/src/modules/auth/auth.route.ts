@@ -1,12 +1,9 @@
 import { Router } from 'express';
-import { catchAsync } from '@/utils/catchAsync';
-import { validate } from '@/middlewares/validate';
-import * as authController from './auth.controller';
-import { registerSchema, loginSchema } from '@app/validations';
+import * as authController from './controller/auth.controller';
 
 const route = Router();
 
-route.post('/register', validate(registerSchema), catchAsync(authController.register));
-route.post('/login', validate(loginSchema), catchAsync(authController.login));
+route.post('/register', [], authController.register);
+route.post('/login', [], authController.login);
 
 export default route;

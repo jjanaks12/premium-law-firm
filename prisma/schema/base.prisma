@@ -1,9 +1,12 @@
-generator client {
-  provider = "prisma-client-js"
-  output   = "../generated/client"
-}
+// Base Prisma configuration — datasource and generator
+// This file must exist in the schema directory for Prisma to function.
+// Individual module schemas (e.g. auth.prisma) are collected here at build time.
 
 datasource db {
   provider = "postgresql"
 }
 
+generator client {
+  provider = "prisma-client-js"
+  output   = "../../prisma/generated/client"
+}

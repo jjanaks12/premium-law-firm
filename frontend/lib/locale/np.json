@@ -170,5 +170,11 @@
       "required": "यो फिल्ड आवश्यक छ",
       "email": "अमान्य इमेल ठेगाना"
     }
+  },
+  "ForgotPasswordPage": {
+    "title": "",
+    "description": "",
+    "email": "email",
+    "btn": "Forgot password"
   }
 }

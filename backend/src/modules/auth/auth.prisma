@@ -2,9 +2,33 @@
 // Colocated with auth module — collected into prisma/schema/ at build time
 
 model User {
-  id        String   @id @default(uuid())
-  email     String   @unique
-  password  String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id         String   @id @default(uuid())
+  email      String   @unique
+  first_name String
+  last_name  String
+  password   String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  deleted_at DateTime?
+  detail     Json? @default("{}")
+
+  avatar_id String?
+  avatar Resource? @relation("user_avatar", fields: [avatar_id], references: [id])
+  role_id String?
+  role Role? @relation(fields: [role_id], references: [id])
+
+  @@map("users")
+}
+
+model Resource {
+  id         String   @id @default(uuid())
+  url        String
+  type       String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  deleted_at DateTime?
+
+  users User[] @relation("user_avatar")
+  
+  @@map("resources")
 }

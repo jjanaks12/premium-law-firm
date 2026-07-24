@@ -1,9 +1,9 @@
 "use client";
 
-import { useMemo } from "react";
 import { Formik, Form, Field, ErrorMessage, FieldProps } from "formik";
-import * as yup from "yup";
 import { useTranslations } from "next-intl";
+import { EyeClosedIcon, EyeIcon } from "lucide-react";
+import { useState } from "react";
 
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -11,47 +11,41 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { cn } from "@/lib/utils";
 import { useAxios } from "@/lib/services/axios.service";
-import { useRouter } from "@/src/i18n/routing";
-
-type Values = {
-  email: string;
-  password: string;
-  remember: boolean;
-};
+import { Link, useRouter } from "@/src/i18n/routing";
+import { LoginInput, loginSchema } from "@app/validations";
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "@/components/ui/input-group";
 
 export default function LoginForm({ className }: { className?: string }) {
   const { axios } = useAxios();
   const router = useRouter();
   const t = useTranslations("LoginForm");
+  const [errorMsg, setErrorMsg] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
-  const schema = useMemo(() => {
-    return yup.object({
-      email: yup.string()
-        .required(t("email_required"))
-        .email(t("email_invalid")),
-      password: yup.string().min(6, t("password_min")).required(),
-      remember: yup.boolean().default(false),
-    });
-  }, [t]);
-
-  const handleSubmit = async (values: Values, { setSubmitting }: any) => {
+  const handleSubmit = async (values: LoginInput, { setSubmitting }: any) => {
     try {
-      const res = await axios.post("/auth/login", values);
-      localStorage.setItem("token", res.data.accessToken);
-      localStorage.setItem("refreshToken", res.data.refreshToken);
-      router.push("/");
-    } catch (error) {
-      console.log(error);
+      const { status, data } = await axios.post("/auth/login", values);
+      if (status == 200) {
+        localStorage.setItem("token", data.accessToken);
+        localStorage.setItem("refreshToken", data.refreshToken);
+        router.push("/dashboard");
+      }
+    } catch (error: any) {
+      setErrorMsg(typeof error === "string" ? error : error.message);
     } finally {
       setSubmitting(false);
     }
   };
 
   return (
-    <Formik<Values>
+    <Formik<LoginInput>
       initialValues={{ email: "", password: "", remember: false }}
       onSubmit={handleSubmit}
-      validationSchema={schema}
+      validationSchema={loginSchema}
     >
       {({ isSubmitting, errors, touched, setFieldValue, values }) => (
         <Form className={cn("space-y-6", className)}>
@@ -100,19 +94,28 @@ export default function LoginForm({ className }: { className?: string }) {
               </Label>
               <Field name="password">
                 {({ field }: FieldProps) => (
-                  <Input
-                    {...field}
-                    id="password"
-                    type="password"
-                    placeholder="••••••••"
-                    autoComplete="current-password"
+                  <InputGroup
                     className={cn(
                       "rounded-xl",
                       touched.password &&
                         errors.password &&
                         "border-destructive focus-visible:ring-destructive",
                     )}
-                  />
+                  >
+                    <InputGroupInput
+                      {...field}
+                      id="password"
+                      type={showPassword ? "text" : "password"}
+                      placeholder="••••••••"
+                      autoComplete="current-password"
+                    />
+                    <InputGroupAddon
+                      align="inline-end"
+                      onClick={() => setShowPassword(!showPassword)}
+                    >
+                      {showPassword ? <EyeClosedIcon /> : <EyeIcon />}
+                    </InputGroupAddon>
+                  </InputGroup>
                 )}
               </Field>
               <ErrorMessage
@@ -122,24 +125,36 @@ export default function LoginForm({ className }: { className?: string }) {
               />
             </div>
 
-            <div className="flex items-center space-x-2">
-              <Checkbox
-                id="remember"
-                checked={values.remember}
-                onCheckedChange={(checked) =>
-                  setFieldValue("remember", checked)
-                }
-              />
-              <Label
-                htmlFor="remember"
-                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+            <div className="flex justify-between">
+              <div className="flex items-center space-x-2">
+                <Checkbox
+                  id="remember"
+                  checked={values.remember}
+                  onCheckedChange={(checked) =>
+                    setFieldValue("remember", checked)
+                  }
+                />
+                <Label
+                  htmlFor="remember"
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                  {t("remember_me")}
+                </Label>
+              </div>
+              <Link
+                href="/forgot-password"
+                className="text-sm underline font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 hover:text-navy-deep"
               >
-                {t("remember_me")}
-              </Label>
+                Forgot password
+              </Link>
             </div>
           </div>
 
-          <Button type="submit" disabled={isSubmitting} className="w-full rounded-xl">
+          <Button
+            type="submit"
+            disabled={isSubmitting}
+            className="w-full rounded-xl"
+          >
             {isSubmitting ? t("signing_in") : t("sign_in")}
           </Button>
         </Form>
