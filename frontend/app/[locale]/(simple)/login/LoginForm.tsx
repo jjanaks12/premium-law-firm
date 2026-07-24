@@ -36,6 +36,7 @@ export default function LoginForm({ className }: { className?: string }) {
         console.log(data);
         localStorage.setItem("accessToken", data.accessToken);
         localStorage.setItem("refreshToken", data.refreshToken);
+        localStorage.setItem("remember", String(values.remember));
         router.push("/dashboard");
       }
     } catch (error: any) {

@@ -25,7 +25,7 @@ export const register = async (data: RegisterInput) => {
 };
 
 export const login = async (data: LoginInput) => {
-  const user = await prisma.user.findUnique({ where: { email: data.email } });
+  const user = await prisma.user.findUnique({ where: { email: data.email }, include: { role: true } });
   if (!user) throw createError(401, 'Invalid credentials');
 
   const match = await bcrypt.compare(data.password, user.password);
@@ -33,7 +33,7 @@ export const login = async (data: LoginInput) => {
 
   const accessToken = jwt.sign({}, ACCESS_TOKEN_SECRET, {
     audience: user.id,
-    expiresIn: '15m',
+    expiresIn: '1m',
   });
 
   const refreshTokenStr = jwt.sign({}, REFRESH_TOKEN_SECRET, {
@@ -53,7 +53,7 @@ export const login = async (data: LoginInput) => {
   return {
     accessToken,
     refreshToken: refreshTokenStr,
-    user: { id: user.id, email: user.email, first_name: user.first_name, last_name: user.last_name },
+    user: { id: user.id, email: user.email, first_name: user.first_name, last_name: user.last_name, role: user.role },
   };
 };
 

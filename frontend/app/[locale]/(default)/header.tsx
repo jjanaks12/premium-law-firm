@@ -7,7 +7,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Brand from "@/components/Brand";
 import Language from "@/components/Language";
-import { useNavLink } from "@/lib/dictionary/nav";
+import { useNavLink } from "@/lib/dictionary/defaultNav";
 
 export default function Header() {
   const [open, setOpen] = useState(false);

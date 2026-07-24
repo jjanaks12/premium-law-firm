@@ -3,15 +3,29 @@ import { Link } from "@/src/i18n/routing";
 import { ScaleIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 
-export default function Brand({ className }: { className?: string }) {
+interface BrandProps {
+  theme?: "light" | "dark";
+  className?: string;
+}
+
+export default function Brand({ className, theme = "light" }: BrandProps) {
   const t = useTranslations("Brand");
   return (
     <Link
       href="/"
-      className={cn("flex items-center gap-2 text-cream", className)}
+      className={cn(
+        "flex items-center gap-2",
+        theme === "light" ? "text-cream" : "text-primary",
+        className,
+      )}
     >
-      <ScaleIcon className="h-6 w-6 text-gold" strokeWidth={1.5} />
-      <span className="font-serif text-xl tracking-wide text-cream">
+      <ScaleIcon className="text-gold" strokeWidth={1.5} />
+      <span
+        className={cn(
+          "font-serif text-xl tracking-wide",
+          theme === "light" ? "text-cream" : "text-primary",
+        )}
+      >
         {t("premium")} <span className="text-gold">{t("law")}</span> {t("firm")}
       </span>
     </Link>

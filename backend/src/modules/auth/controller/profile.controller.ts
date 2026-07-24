@@ -5,6 +5,7 @@ export const profile = async (request: Request, response: Response, next: NextFu
     try {
         const user = await prisma.user.findUnique({
             where: { id: request.auth_user?.id },
+            include: { role: true },
         });
         response.json({ success: true, data: user });
     } catch (error) {

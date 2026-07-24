@@ -15,16 +15,44 @@ export const useAxios = () => {
 
     axiosInstance.interceptors.response.use(
         (response) => response,
-        (error) => {
+        async (error) => {
+            const originalRequest = error.config
             const status = error.response?.status
             const errorMessage = error.response?.data?.error?.message || error.message || 'An unexpected error occurred'
 
-            if (status === 401) {
+            if (status === 401 && !originalRequest._retry) {
+                const remember = localStorage.getItem('remember') === 'true'
+                const refreshToken = localStorage.getItem('refreshToken')
+
+                if (remember && refreshToken) {
+                    originalRequest._retry = true
+                    try {
+                        const { data } = await axios.post(
+                            `${process.env.NEXT_PUBLIC_API_URL}/auth/refresh-token`,
+                            { refreshToken }
+                        )
+
+                        if (data.success && data.data) {
+                            const { accessToken, refreshToken: newRefreshToken } = data.data
+                            localStorage.setItem('accessToken', accessToken)
+                            localStorage.setItem('refreshToken', newRefreshToken)
+
+                            // Retry original request
+                            originalRequest.headers.Authorization = `Bearer ${accessToken}`
+                            return axiosInstance(originalRequest)
+                        }
+                    } catch (refreshError) {
+                        console.error('[Axios Service] Token refresh failed:', refreshError)
+                    }
+                }
+
+                // If not remember or refresh fails, clear auth & redirect
                 localStorage.removeItem('accessToken')
                 localStorage.removeItem('refreshToken')
+                localStorage.removeItem('remember')
                 toast.add({
-                    title: "Error",
-                    description: errorMessage,
+                    title: "Session Expired",
+                    description: "Please log in again.",
                     type: 'error'
                 })
                 router.push('/login')
