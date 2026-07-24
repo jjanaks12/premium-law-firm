@@ -1,3 +1,5 @@
+"use client";
+
 import { useLocale } from "next-intl";
 import {
   DropdownMenu,
@@ -8,6 +10,7 @@ import {
 import { GlobeIcon } from "lucide-react";
 import { usePathname, useRouter } from "@/src/i18n/routing";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 const availableLanguages = [
   {
@@ -20,7 +23,7 @@ const availableLanguages = [
   },
 ];
 
-export default function Language() {
+export default function Language({ className }: { className?: string }) {
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
@@ -29,19 +32,19 @@ export default function Language() {
     <DropdownMenu>
       <DropdownMenuTrigger
         render={
-          <Button variant="ghost" className="text-cream">
+          <Button variant="ghost" className={cn("text-cream", className)}>
             <GlobeIcon className="mr-2 h-4 w-4" />
             {locale.toUpperCase()}
           </Button>
         }
       />
-      <DropdownMenuContent className="bg-navy-deep/95 backdrop-blur border-white/5">
+      <DropdownMenuContent className="bg-cream">
         {availableLanguages
           .filter((lang) => lang.abbr !== locale)
           .map((lang) => (
             <DropdownMenuItem
               key={lang.abbr}
-              className="text-sm text-cream/80 hover:text-gold transition-colors tracking-wide cursor-pointer"
+              className="text-sm hover:text-gold transition-colors tracking-wide cursor-pointer"
               onClick={() => router.replace(pathname, { locale: lang.abbr })}
             >
               {lang.label}

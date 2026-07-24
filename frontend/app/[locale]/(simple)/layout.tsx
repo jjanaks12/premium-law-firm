@@ -1,7 +1,14 @@
-export default function SimpleLayout({ children }: { children: React.ReactNode }) {
+import Language from "@/components/Language";
+
+export default function SimpleLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
+    <main id="main">
       {children}
-    </div>
+      <Language className="absolute top-4 right-4" />
+    </main>
   );
 }

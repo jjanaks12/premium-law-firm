@@ -4,8 +4,7 @@ import { useState } from "react";
 import { MapPin, Phone, Mail, Clock, ArrowRight, Send, CheckCircle2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useFormik } from "formik";
-import { z } from "zod";
-import { toFormikValidationSchema } from "zod-formik-adapter";
+import * as yup from "yup";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
@@ -27,12 +26,12 @@ export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
 
   // Defining schema inside component to use translations for errors
-  const schema = z.object({
-    name: z.string().min(1, t("validation.required")),
-    email: z.string().email(t("validation.email")).min(1, t("validation.required")),
-    phone: z.string().optional(),
-    matter: z.string().min(1, t("validation.required")),
-    message: z.string().min(1, t("validation.required")),
+  const schema = yup.object({
+    name: yup.string().required(t("validation.required")),
+    email: yup.string().email(t("validation.email")).required(t("validation.required")),
+    phone: yup.string().optional(),
+    matter: yup.string().required(t("validation.required")),
+    message: yup.string().required(t("validation.required")),
   });
 
   const formik = useFormik({
@@ -43,7 +42,7 @@ export default function ContactPage() {
       matter: "",
       message: "",
     },
-    validationSchema: toFormikValidationSchema(schema),
+    validationSchema: schema,
     onSubmit: (values) => {
       setSubmitted(true);
     },

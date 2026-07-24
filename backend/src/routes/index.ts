@@ -1,22 +1,12 @@
-import { Router } from "express";
-import authRoute     from "../modules/auth/routes/auth.route.js";
-import dashboardRoute from "../modules/dashboard/routes/dashboard.route.js";
-import rolesRoute    from "../modules/roles/routes/roles.route.js";
-import documentsRoute from "../modules/documents/routes/documents.route.js";
-import mailRoute     from "../modules/mail/routes/mail.route.js";
+import { Router } from 'express';
+import authRoutes from '@/modules/auth/auth.route';
 
-const router = Router();
+const route = Router();
 
-interface Route { path: string; route: Router; }
+route.get('/health', (req, res) => {
+    res.json({ success: true, message: "Backend is healthy!" });
+});
 
-const routes: Route[] = [
-  { path: "/auth",      route: authRoute },
-  { path: "/dashboard", route: dashboardRoute },
-  { path: "/roles",     route: rolesRoute },
-  { path: "/documents", route: documentsRoute },
-  { path: "/mail",      route: mailRoute },
-];
+route.use('/auth', authRoutes);
 
-routes.forEach(({ path, route }) => router.use(path, route));
-
-export default router;
+export default route;

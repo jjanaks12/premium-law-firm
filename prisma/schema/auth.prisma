@@ -1,0 +1,10 @@
+// Auth module Prisma schema
+// Colocated with auth module — collected into prisma/schema/ at build time
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

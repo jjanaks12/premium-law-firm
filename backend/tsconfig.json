@@ -1,17 +1,21 @@
 {
   "compilerOptions": {
-    "target": "ES2022",
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-    "outDir": "./dist",
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "baseUrl": "..",
     "rootDir": ".",
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
     "paths": {
-      "@/*": ["./src/*"],
-      "@generated/*": ["./generated/*"]
-    }
+      "@/*": ["backend/src/*"],
+      "@prisma/generated": ["prisma/generated/client"]
+    },
+    "outDir": "./dist",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "ignoreDeprecations": "5.0"
   },
-  "include": ["src", "generated"]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
 }

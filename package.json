@@ -1,0 +1,23 @@
+{
+  "name": "premium-law-firm",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend",
+    "packages/*"
+  ],
+  "dependencies": {
+    "@prisma/adapter-pg": "^7.9.0",
+    "@prisma/client": "^7.9.0",
+    "pg": "^8.22.0"
+  },
+  "devDependencies": {
+    "prisma": "^7.9.0"
+  },
+  "scripts": {
+    "db:generate": "node scripts/collect-schemas.mjs && prisma generate",
+    "db:migrate": "node scripts/collect-schemas.mjs && prisma migrate dev",
+    "db:studio": "prisma studio"
+  }
+}

@@ -4,6 +4,20 @@
     "law": "Law",
     "firm": "Firm"
   },
+  "LoginForm": {
+    "email": "Email",
+    "password": "Password",
+    "remember_me": "Remember me",
+    "sign_in": "Sign in",
+    "signing_in": "Signing in...",
+    "email_required": "Email is required",
+    "email_invalid": "Please enter a valid email address",
+    "password_min": "Password must be at least 6 characters"
+  },
+  "LoginPage": {
+    "welcome_back": "Welcome Back!",
+    "sign_in_desc": "Sign in to your dashboard."
+  },
   "HomePage": {
     "title": "Welcome to Premium Law Firm",
     "description": "Your trusted partner in legal matters."

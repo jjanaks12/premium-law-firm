@@ -1,28 +1,17 @@
-import {Link} from '@/src/i18n/routing';
+import Brand from "@/components/Brand";
+import LoginForm from "./LoginForm";
+import { getTranslations } from "next-intl/server";
 
-export default function LoginPage() {
+export default async function LoginPage() {
+  const t = await getTranslations("LoginPage");
   return (
-    <div className="w-full max-w-md p-8 bg-card rounded-xl border border-border shadow-lg">
-      <div className="text-center mb-8">
-        <h1 className="text-2xl font-bold font-serif text-foreground">Welcome Back</h1>
-        <p className="text-sm text-muted-foreground mt-2">Sign in to your account</p>
+    <section className="flex items-center">
+      <LoginForm className="max-w-[60%] lg:max-w-120 grow ml-auto pr-10" />
+      <div className="w-1/2 min-h-screen bg-navy-deep hidden lg:flex flex-col justify-center items-start p-20 space-y-3">
+        <Brand />
+        <h1 className="text-4xl text-cream/80">{t("welcome_back")}</h1>
+        <p className="text-cream/60 mb-10">{t("sign_in_desc")}</p>
       </div>
-      <form className="space-y-4">
-        <div>
-          <label className="block text-sm font-medium text-foreground mb-1">Email</label>
-          <input type="email" className="w-full px-3 py-2 border border-border rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-ring" placeholder="you@example.com" />
-        </div>
-        <div>
-          <label className="block text-sm font-medium text-foreground mb-1">Password</label>
-          <input type="password" className="w-full px-3 py-2 border border-border rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-ring" placeholder="••••••••" />
-        </div>
-        <button type="button" className="w-full btn-gold mt-6">
-          Sign In
-        </button>
-      </form>
-      <div className="mt-6 text-center text-sm">
-        <Link href="/" className="text-primary hover:underline">← Back to home</Link>
-      </div>
-    </div>
+    </section>
   );
 }

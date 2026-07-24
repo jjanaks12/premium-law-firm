@@ -1,10 +1,25 @@
-import "dotenv/config";
-import { App } from "./app.js";
-import { env } from "./config/env.js";
+import 'dotenv/config';
+import express from 'express';
+import { json, urlencoded } from 'body-parser';
+import cors from 'cors';
+import router from '@/routes';
+import { errorHandler } from '@/middlewares/errorHandler';
 
-const app = new App().getApp();
+const app = express();
 
-app.listen(env.PORT, () => {
-  console.log(`🚀 Server running at http://localhost:${env.PORT}`);
-  console.log(`   Environment: ${env.NODE_ENV}`);
+app.use(cors({
+    origin: process.env.CLIENT_URL || '*',
+    credentials: true
+}));
+app.use(json());
+app.use(urlencoded({ extended: false }));
+
+app.use('/api/v1', router);
+
+// Global Error Handler
+app.use(errorHandler);
+
+const PORT = process.env.PORT || 4000;
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
 });
