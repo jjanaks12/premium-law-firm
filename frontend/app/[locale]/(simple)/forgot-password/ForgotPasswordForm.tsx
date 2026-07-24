@@ -1,7 +1,7 @@
 "use client";
 
 import { ErrorMessage, Field, FieldProps, Form, Formik } from "formik";
-import { LoaderIcon } from "lucide-react";
+import { AlertTriangleIcon, LoaderIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 
@@ -10,12 +10,14 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 import { ForgotPasswordInput, forgotPasswordSchema } from "@app/validations";
+import { useAxios } from "@/lib/services/axios.service";
 
 export default function ForgotPasswordForm({
   className,
 }: {
   className: string;
 }) {
+  const { axios } = useAxios();
   const [errorMsg, setErrorMsg] = useState("");
   const t = useTranslations("ForgotPasswordPage");
 
@@ -24,6 +26,7 @@ export default function ForgotPasswordForm({
     { setSubmitting }: any,
   ) => {
     try {
+      const { data } = await axios.post("/auth/forgot-password", values);
     } catch (error: any) {
       setErrorMsg(typeof error === "string" ? error : error.message);
     } finally {
@@ -71,16 +74,18 @@ export default function ForgotPasswordForm({
               className="text-sm font-medium text-destructive"
             />
           </div>
-          <div className="flex items-center justify-between gap-3">
+          <div className="flex items-between justify-between gap-3">
             {errorMsg && (
-              <span className="text-sm font-medium text-destructive">
+              <span className="flex items-center gap-2 text-sm font-medium text-yellow-600">
+                <AlertTriangleIcon className="size-4" />
                 {errorMsg}
               </span>
             )}
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="w-full rounded-xl"
+              size="lg"
+              className="rounded-xl ml-auto"
             >
               {isSubmitting && <LoaderIcon className="animate-spin" />}
               {t("btn")}

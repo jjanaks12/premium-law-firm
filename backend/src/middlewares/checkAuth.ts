@@ -7,7 +7,7 @@ export const verifyAccessToken = async (request: Request, response: Response, ne
     const authHeader = request.headers.authorization;
 
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
-        return next(createHttpError.Unauthorized('No token provided'));
+        return next(createHttpError.Unauthorized('You are not loggedin'));
     }
 
     const token = authHeader.split(' ')[1];
@@ -30,7 +30,7 @@ export const verifyAccessToken = async (request: Request, response: Response, ne
                         password: true
                     }
                 });
-                request.user = user;
+                request.auth_user = user;
             }
 
             next();

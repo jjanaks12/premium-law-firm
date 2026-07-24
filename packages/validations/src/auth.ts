@@ -17,6 +17,12 @@ export const forgotPasswordSchema = yup.object({
   email: yup.string().email().required(),
 });
 
+export const resetPasswordSchema = yup.object({
+  token: yup.string().required(),
+  password: yup.string().min(6).required(),
+});
+
 export type RegisterInput = yup.InferType<typeof registerSchema>;
 export type LoginInput = yup.InferType<typeof loginSchema>;
 export type ForgotPasswordInput = yup.InferType<typeof forgotPasswordSchema>;
+export type ResetPasswordInput = yup.InferType<typeof resetPasswordSchema>;

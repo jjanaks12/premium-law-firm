@@ -1,0 +1,17 @@
+// Notifications module Prisma schema
+// Colocated with notifications module — collected into prisma/schema/ at build time
+
+model Notification {
+  id         String   @id @default(uuid())
+  user_id    String?
+  user       User?    @relation(fields: [user_id], references: [id])
+  type       String   // e.g., "EMAIL"
+  recipient  String
+  subject    String?
+  content    String
+  status     String   // "SENT" or "FAILED"
+  error      String?
+  created_at DateTime @default(now())
+
+  @@map("notifications")
+}

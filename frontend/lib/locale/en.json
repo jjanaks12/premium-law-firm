@@ -172,9 +172,11 @@
     }
   },
   "ForgotPasswordPage": {
-    "title": "Forgot password",
-    "description": "",
+    "title": "Did you Forgot your password?",
+    "description": "First you will give us email. On that email we will send you a link to reset your password.",
     "email": "Email",
-    "btn": "Forgot password"
+    "btn": "Reset password",
+    "signInInstead": "Sign in instead",
+    "home": "Go back to Home"
   }
 }

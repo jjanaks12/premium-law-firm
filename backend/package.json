@@ -16,11 +16,15 @@
     "@app/validations": "*",
     "bcrypt": "^6.0.0",
     "body-parser": "^2.3.0",
+    "bullmq": "^5.81.1",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
+    "express-rate-limit": "^8.6.0",
     "http-errors": "^2.0.1",
+    "ioredis": "^5.11.1",
     "jsonwebtoken": "^9.0.3",
+    "nodemailer": "^9.0.3",
     "yup": "^1.7.1"
   },
   "devDependencies": {
@@ -29,6 +33,7 @@
     "@types/express": "^5.0.3",
     "@types/http-errors": "^2.0.5",
     "@types/jsonwebtoken": "^9.0.10",
+    "@types/nodemailer": "^8.0.1",
     "@types/pg": "^8.20.0",
     "nodemon": "^3.1.14",
     "tsc-alias": "^1.9.1",

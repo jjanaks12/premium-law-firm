@@ -134,6 +134,22 @@ exports.Prisma.UserScalarFieldEnum = {
   role_id: 'role_id'
 };
 
+exports.Prisma.RefreshTokenScalarFieldEnum = {
+  id: 'id',
+  token: 'token',
+  user_id: 'user_id',
+  expires_at: 'expires_at',
+  created_at: 'created_at'
+};
+
+exports.Prisma.PasswordResetTokenScalarFieldEnum = {
+  id: 'id',
+  token: 'token',
+  user_id: 'user_id',
+  expires_at: 'expires_at',
+  created_at: 'created_at'
+};
+
 exports.Prisma.ResourceScalarFieldEnum = {
   id: 'id',
   url: 'url',
@@ -141,6 +157,18 @@ exports.Prisma.ResourceScalarFieldEnum = {
   created_at: 'created_at',
   updated_at: 'updated_at',
   deleted_at: 'deleted_at'
+};
+
+exports.Prisma.NotificationScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  type: 'type',
+  recipient: 'recipient',
+  subject: 'subject',
+  content: 'content',
+  status: 'status',
+  error: 'error',
+  created_at: 'created_at'
 };
 
 exports.Prisma.RoleScalarFieldEnum = {
@@ -182,7 +210,10 @@ exports.Prisma.NullsOrder = {
 
 exports.Prisma.ModelName = {
   User: 'User',
+  RefreshToken: 'RefreshToken',
+  PasswordResetToken: 'PasswordResetToken',
   Resource: 'Resource',
+  Notification: 'Notification',
   Role: 'Role'
 };
 

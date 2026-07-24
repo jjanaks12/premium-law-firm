@@ -35,15 +35,16 @@ async function main() {
 
   console.log('✅ Created/verified roles:', { adminRole, staffRole });
 
-  // 2. Create Default Admin User
   // Pre-hashed password for 'Admin123!' (using bcrypt cost factor 10)
-  const hashedPassword = '$2b$10$EpR9P1QW8gG1rQ1Hk.kUpeM3sL7g9C/n/gI44v6a6t1a6u8a6u8a6';
+  const hashedPassword = '$2b$10$8jkh9zFyRSp75OpujctWKOPO7XqwdFjJMZ/Wj6t0cA9G.xOvX7BXS';
 
   // We set deleted_at to null if it's nullable in the future, 
   // but if it's currently required in the database, we pass a dummy value or handle it.
   const adminUser = await prisma.user.upsert({
     where: { email: 'admin@premiumlaw.com' },
-    update: {},
+    update: {
+      password: hashedPassword,
+    },
     create: {
       email: 'admin@premiumlaw.com',
       first_name: 'System',

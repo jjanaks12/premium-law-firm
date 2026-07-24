@@ -1,3 +1,5 @@
+import NotificationLog from './NotificationLog';
+
 export default function AdminPage() {
   return (
     <div className="space-y-6">
@@ -16,6 +18,8 @@ export default function AdminPage() {
           <p className="text-3xl font-bold text-primary mt-2">$84,000</p>
         </div>
       </div>
+
+      <NotificationLog />
     </div>
   );
 }

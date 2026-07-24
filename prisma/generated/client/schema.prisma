@@ -12,12 +12,37 @@ model User {
   deleted_at DateTime?
   detail     Json?     @default("{}")
 
-  avatar_id String?
-  avatar    Resource? @relation("user_avatar", fields: [avatar_id], references: [id])
-  role_id   String?
-  role      Role?     @relation(fields: [role_id], references: [id])
+  avatar_id      String?
+  avatar         Resource?            @relation("user_avatar", fields: [avatar_id], references: [id])
+  role_id        String?
+  role           Role?                @relation(fields: [role_id], references: [id])
+  notifications  Notification[]
+  refresh_tokens RefreshToken[]
+  reset_tokens   PasswordResetToken[]
 
   @@map("users")
+}
+
+model RefreshToken {
+  id         String   @id @default(uuid())
+  token      String   @unique
+  user_id    String
+  user       User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  expires_at DateTime
+  created_at DateTime @default(now())
+
+  @@map("refresh_tokens")
+}
+
+model PasswordResetToken {
+  id         String   @id @default(uuid())
+  token      String   @unique
+  user_id    String
+  user       User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  expires_at DateTime
+  created_at DateTime @default(now())
+
+  @@map("password_reset_tokens")
 }
 
 model Resource {
@@ -44,6 +69,24 @@ datasource db {
 generator client {
   provider = "prisma-client-js"
   output   = "../../prisma/generated/client"
+}
+
+// Notifications module Prisma schema
+// Colocated with notifications module — collected into prisma/schema/ at build time
+
+model Notification {
+  id         String   @id @default(uuid())
+  user_id    String?
+  user       User?    @relation(fields: [user_id], references: [id])
+  type       String // e.g., "EMAIL"
+  recipient  String
+  subject    String?
+  content    String
+  status     String // "SENT" or "FAILED"
+  error      String?
+  created_at DateTime @default(now())
+
+  @@map("notifications")
 }
 
 model Role {

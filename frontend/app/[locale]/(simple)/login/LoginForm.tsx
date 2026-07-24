@@ -2,7 +2,7 @@
 
 import { Formik, Form, Field, ErrorMessage, FieldProps } from "formik";
 import { useTranslations } from "next-intl";
-import { EyeClosedIcon, EyeIcon } from "lucide-react";
+import { AlertTriangleIcon, EyeClosedIcon, EyeIcon } from "lucide-react";
 import { useState } from "react";
 
 import { Input } from "@/components/ui/input";
@@ -30,7 +30,7 @@ export default function LoginForm({ className }: { className?: string }) {
     try {
       const { status, data } = await axios.post("/auth/login", values);
       if (status == 200) {
-        localStorage.setItem("token", data.accessToken);
+        localStorage.setItem("accessToken", data.accessToken);
         localStorage.setItem("refreshToken", data.refreshToken);
         router.push("/dashboard");
       }
@@ -125,7 +125,7 @@ export default function LoginForm({ className }: { className?: string }) {
               />
             </div>
 
-            <div className="flex justify-between">
+            <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
                 <Checkbox
                   id="remember"
@@ -150,13 +150,22 @@ export default function LoginForm({ className }: { className?: string }) {
             </div>
           </div>
 
-          <Button
-            type="submit"
-            disabled={isSubmitting}
-            className="w-full rounded-xl"
-          >
-            {isSubmitting ? t("signing_in") : t("sign_in")}
-          </Button>
+          <div className="flex items-between justify-between gap-3">
+            {errorMsg && (
+              <span className="flex items-center gap-2 text-sm font-medium text-yellow-600">
+                <AlertTriangleIcon className="size-4" />
+                {errorMsg}
+              </span>
+            )}
+            <Button
+              type="submit"
+              disabled={isSubmitting}
+              size="lg"
+              className="rounded-xl ml-auto"
+            >
+              {isSubmitting ? t("signing_in") : t("sign_in")}
+            </Button>
+          </div>
         </Form>
       )}
     </Formik>
