@@ -4,6 +4,7 @@ import authRoutes from '@/modules/auth/auth.route';
 import roleRoutes from '@/modules/authorization/routes/role.route';
 import notificationRoutes from '@/modules/notifications/notification.route';
 import userRoutes from '@/modules/users/user.route';
+import resourceRoutes from '@/modules/resources/resource.route';
 
 // Register all modules with their associated metadata, resources, and exact action abilities
 moduleRegistry.register('/auth', authRoutes, {
@@ -31,6 +32,13 @@ moduleRegistry.register('/users', userRoutes, {
   name: 'Users',
   description: 'Handles user invites, enabling/disabling, soft-deletes and restores',
   resources: ["users"],
+  actions: ["create", "read", "update", "delete", "list"],
+});
+
+moduleRegistry.register('/resources', resourceRoutes, {
+  name: 'Resources',
+  description: 'Handles document uploads, image and PDF storage, and asset categorization',
+  resources: ['resources'],
   actions: ["create", "read", "update", "delete", "list"],
 });
 

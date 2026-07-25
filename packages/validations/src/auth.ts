@@ -25,6 +25,11 @@ export const resetPasswordSchema = yup.object({
 export const updateProfileSchema = yup.object({
   first_name: yup.string().required(),
   last_name: yup.string().required(),
+  avatar_id: yup.string().nullable().optional(),
+  bio: yup.string().nullable().optional(),
+  twitter: yup.string().nullable().optional(),
+  linkedin: yup.string().nullable().optional(),
+  website: yup.string().nullable().optional(),
 });
 
 export const changePasswordSchema = yup.object({

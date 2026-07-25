@@ -1,5 +1,5 @@
 import { User, Role } from "@prisma/client";
-import { BellIcon, FingerprintIcon, LayoutDashboardIcon, ListTreeIcon, SettingsIcon, UserCogIcon, UserKeyIcon, UsersIcon } from "lucide-react";
+import { BellIcon, FolderOpenIcon, FingerprintIcon, LayoutDashboardIcon, ListTreeIcon, SettingsIcon, UserCogIcon, UserKeyIcon, UsersIcon } from "lucide-react";
 import { can } from "@/lib/services/authorization.service";
 
 export type UserWithRole = User & {
@@ -38,6 +38,12 @@ const adminMenu: Menu[] = [
             resource: 'roles',
             icon: UserKeyIcon,
         }]
+    },
+    {
+        label: 'Resources',
+        icon: FolderOpenIcon,
+        href: '/dashboard/resources',
+        resource: 'resources'
     },
     {
         label: 'Settings',

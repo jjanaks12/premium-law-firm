@@ -19,12 +19,16 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarMenuSub,
+  SidebarTrigger,
   useSidebar,
 } from "@/components/ui/sidebar";
 import { useAuth } from "@/lib/context/AuthContext";
 import { useNavLink } from "@/lib/dictionary/adminNav";
 import { Link, usePathname, useRouter } from "@/src/i18n/routing";
 import { ChevronRightIcon, LogOutIcon } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
 
 export default function AdminSidebar() {
   const pathname = usePathname();
@@ -37,11 +41,14 @@ export default function AdminSidebar() {
   return (
     <Sidebar
       collapsible="icon"
-      className="border-r border-border bg-background"
+      className="border-r border-border bg-background relative"
     >
       <SidebarHeader className="h-14 border-b border-border flex items-center justify-center px-4 shrink-0">
         <Brand theme="dark" compact={!isSidebarOpened} />
       </SidebarHeader>
+      <span className="absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/2">
+        <SidebarTrigger className="rounded-full" variant="outline" />
+      </span>
       <SidebarContent className="py-4">
         <SidebarGroup>
           <SidebarGroupContent>
@@ -57,11 +64,19 @@ export default function AdminSidebar() {
                   return (
                     <SidebarMenuItem key={menu.href}>
                       <SidebarMenuButton
+                        size={isSidebarOpened ? "lg" : "icon-2xl"}
                         render={<Link href={menu.href} />}
                         isActive={pathname === menu.href}
                       >
-                        {Icon && <Icon className="size-4 shrink-0" />}
-                        <span>{menu.label}</span>
+                        {Icon && (
+                          <Icon
+                            className={cn(
+                              "shrink-0",
+                              !isSidebarOpened ? "size-6!" : "size-4",
+                            )}
+                          />
+                        )}
+                        {isSidebarOpened && <span>{menu.label}</span>}
                       </SidebarMenuButton>
                     </SidebarMenuItem>
                   );
@@ -82,15 +97,25 @@ export default function AdminSidebar() {
                     <CollapsibleTrigger
                       render={
                         <SidebarMenuButton
+                          size={isSidebarOpened ? "lg" : "icon-2xl"}
                           isActive={menu.submenu.some(
                             (sub) => pathname === sub.href,
                           )}
                         />
                       }
                     >
-                      {Icon && <Icon />}
-                      <span>{menu.label}</span>
-                      <ChevronRightIcon className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+                      {Icon && (
+                        <Icon
+                          className={cn(
+                            "shrink-0",
+                            !isSidebarOpened ? "size-6!" : "size-4",
+                          )}
+                        />
+                      )}
+                      {isSidebarOpened && <span>{menu.label}</span>}
+                      {isSidebarOpened && (
+                        <ChevronRightIcon className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+                      )}
                     </CollapsibleTrigger>
                     <CollapsibleContent>
                       <SidebarMenuSub>
@@ -101,13 +126,21 @@ export default function AdminSidebar() {
                             return (
                               <SidebarMenuItem key={submenu.href}>
                                 <SidebarMenuButton
+                                  size={isSidebarOpened ? "lg" : "icon-2xl"}
                                   isActive={pathname === submenu.href}
                                   render={
                                     <Link href={submenu.href}>
                                       {SubIcon && (
-                                        <SubIcon className="size-4 shrink-0" />
+                                        <SubIcon
+                                          className={cn(
+                                            "shrink-0",
+                                            !isSidebarOpened
+                                              ? "size-6!"
+                                              : "size-4",
+                                          )}
+                                        />
                                       )}
-                                      {submenu.label}
+                                      {isSidebarOpened && submenu.label}
                                     </Link>
                                   }
                                 />
@@ -124,14 +157,30 @@ export default function AdminSidebar() {
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter className="p-4 border-t border-border">
+        <div className="flex gap-3">
+          <Avatar size={isSidebarOpened ? "lg" : "icon-2xl"}>
+            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+            <AvatarFallback>CN</AvatarFallback>
+          </Avatar>
+          {isSidebarOpened && (
+            <>
+              <div className="grow flex flex-col gap-1 justify-start">
+                <strong className="block text-lg font-semibold text-primary">
+                  {user?.first_name} {user?.last_name}
+                </strong>
+                <Badge>{user?.role?.name}</Badge>
+              </div>
+            </>
+          )}
+        </div>
         <Button
           onClick={async () => {
             await logout();
             router.replace("/login");
           }}
-          className="w-full flex items-center justify-center gap-2"
           variant="outline"
-          size={isSidebarOpened ? "default" : "icon"}
+          size={!isSidebarOpened ? "icon" : "default"}
+          className={!isSidebarOpened ? "rounded-full" : ""}
         >
           <LogOutIcon className="size-4 shrink-0" />
           {isSidebarOpened && <span>Logout</span>}

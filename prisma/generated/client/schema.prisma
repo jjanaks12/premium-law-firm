@@ -52,6 +52,8 @@ model Resource {
   id         String    @id @default(uuid())
   url        String
   type       String
+  name       String?
+  size       Int?
   created_at DateTime  @default(now())
   updated_at DateTime  @updatedAt
   deleted_at DateTime?

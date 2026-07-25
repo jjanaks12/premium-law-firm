@@ -1,7 +1,10 @@
+"use client";
+
 import { cn } from "@/lib/utils";
 import { Link } from "@/src/i18n/routing";
 import { ScaleIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { useSidebar } from "./ui/sidebar";
 
 interface BrandProps {
   theme?: "light" | "dark";
@@ -15,6 +18,8 @@ export default function Brand({
   compact = false,
 }: BrandProps) {
   const t = useTranslations("Brand");
+  const { open } = useSidebar();
+
   return (
     <Link
       href="/"
@@ -24,7 +29,10 @@ export default function Brand({
         className,
       )}
     >
-      <ScaleIcon className="text-gold" strokeWidth={1.5} />
+      <ScaleIcon
+        className={`text-gold ${!open ? "size-10!" : ""}`}
+        strokeWidth={1.5}
+      />
       {!compact && (
         <span
           className={cn(
