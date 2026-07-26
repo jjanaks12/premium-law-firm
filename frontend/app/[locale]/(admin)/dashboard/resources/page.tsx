@@ -67,8 +67,12 @@ export default function ResourcesPage() {
       if (data.success) {
         setResources(data.data);
       }
-    } catch (error) {
-      console.error("Failed to fetch resources:", error);
+    } catch (error: any) {
+      if (error.isNetworkError || error.code === "ERR_NETWORK" || error.message === "Network Error") {
+        console.warn("[Resources Page] Failed to fetch resources: Network Error (Backend offline)");
+      } else {
+        console.error("Failed to fetch resources:", error);
+      }
     } finally {
       setLoading(false);
     }

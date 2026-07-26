@@ -24,8 +24,8 @@ export const updateProfile = async (request: Request, response: Response, next: 
             throw createHttpError.Unauthorized('Unauthorized');
         }
 
-        const { first_name, last_name, avatar_id, bio, twitter, linkedin, website } = 
-            await updateProfileSchema.validate(request.body, { abortEarly: false });
+        const { first_name, last_name, avatar_id, bio, twitter, linkedin, website, links } = 
+            await updateProfileSchema.validate(request.body, { abortEarly: false }) as any;
 
         const currentUser = await prisma.user.findUnique({
             where: { id: userId }
@@ -39,7 +39,8 @@ export const updateProfile = async (request: Request, response: Response, next: 
             bio: bio || null,
             twitter: twitter || null,
             linkedin: linkedin || null,
-            website: website || null
+            website: website || null,
+            links: links || []
         };
 
         const updatedUser = await prisma.user.update({

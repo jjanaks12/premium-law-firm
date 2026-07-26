@@ -19,6 +19,7 @@ export const useAxios = () => {
             const originalRequest = error.config
             const status = error.response?.status
             const errorMessage = error.response?.data?.error?.message || error.message || 'An unexpected error occurred'
+            const isNetworkError = !error.response || error.code === 'ERR_NETWORK' || error.message === 'Network Error'
 
             if (status === 401 && !originalRequest._retry) {
                 const remember = localStorage.getItem('remember') === 'true'
@@ -41,8 +42,12 @@ export const useAxios = () => {
                             originalRequest.headers.Authorization = `Bearer ${accessToken}`
                             return axiosInstance(originalRequest)
                         }
-                    } catch (refreshError) {
-                        console.error('[Axios Service] Token refresh failed:', refreshError)
+                    } catch (refreshError: any) {
+                        if (refreshError.isNetworkError || refreshError.code === 'ERR_NETWORK' || refreshError.message === 'Network Error') {
+                            console.warn('[Axios Service] Token refresh failed: Network Error (Backend offline)')
+                        } else {
+                            console.error('[Axios Service] Token refresh failed:', refreshError)
+                        }
                     }
                 }
 
@@ -57,7 +62,12 @@ export const useAxios = () => {
                 })
                 router.push('/login')
             }
-            return Promise.reject(new Error(errorMessage))
+
+            const rejectedError = new Error(errorMessage) as any
+            if (isNetworkError) {
+                rejectedError.isNetworkError = true
+            }
+            return Promise.reject(rejectedError)
         }
     )
 

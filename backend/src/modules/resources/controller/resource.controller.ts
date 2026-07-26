@@ -7,7 +7,7 @@ import { formatResourceUrl } from "@/lib/file";
 
 export const index = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const { search, type } = req.query;
+    const { search, type, page, limit } = req.query;
     const filter: any = { deleted_at: null };
 
     if (search) {
@@ -18,13 +18,42 @@ export const index = async (req: Request, res: Response, next: NextFunction) => 
       filter.type = { contains: type as string, mode: "insensitive" };
     }
 
-    const resources = await prisma.resource.findMany({
-      where: filter,
-      orderBy: { created_at: "desc" },
-    });
+    const pageNum = page ? parseInt(page as string) : undefined;
+    const limitNum = limit ? parseInt(limit as string) : undefined;
+
+    let resources;
+    let total = 0;
+
+    if (pageNum && limitNum) {
+      const skip = (pageNum - 1) * limitNum;
+      [resources, total] = await prisma.$transaction([
+        prisma.resource.findMany({
+          where: filter,
+          orderBy: { created_at: "desc" },
+          skip,
+          take: limitNum,
+        }),
+        prisma.resource.count({ where: filter }),
+      ]);
+    } else {
+      resources = await prisma.resource.findMany({
+        where: filter,
+        orderBy: { created_at: "desc" },
+      });
+      total = resources.length;
+    }
 
     const formattedResources = resources.map((r) => formatResourceUrl(req, r));
-    res.status(200).json({ success: true, data: formattedResources });
+    res.status(200).json({
+      success: true,
+      data: formattedResources,
+      meta: pageNum && limitNum ? {
+        page: pageNum,
+        limit: limitNum,
+        total,
+        totalPages: Math.ceil(total / limitNum),
+      } : undefined
+    });
   } catch (error) {
     next(error);
   }

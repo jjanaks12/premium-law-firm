@@ -127,7 +127,11 @@ export default function RolesPage() {
         setAvailableResources(list);
       }
     } catch (err: any) {
-      console.error("[Roles Page] Failed to fetch permissions:", err);
+      if (err.isNetworkError || err.code === "ERR_NETWORK" || err.message === "Network Error") {
+        console.warn("[Roles Page] Failed to fetch permissions: Network Error (Backend offline)");
+      } else {
+        console.error("[Roles Page] Failed to fetch permissions:", err);
+      }
     }
   };
 

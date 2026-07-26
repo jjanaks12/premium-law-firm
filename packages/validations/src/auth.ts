@@ -30,6 +30,12 @@ export const updateProfileSchema = yup.object({
   twitter: yup.string().nullable().optional(),
   linkedin: yup.string().nullable().optional(),
   website: yup.string().nullable().optional(),
+  links: yup.array().of(
+    yup.object({
+      label: yup.string().required('Label is required'),
+      url: yup.string().required('URL is required')
+    })
+  ).nullable().optional()
 });
 
 export const changePasswordSchema = yup.object({

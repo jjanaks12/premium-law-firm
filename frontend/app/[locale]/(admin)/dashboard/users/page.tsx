@@ -91,8 +91,12 @@ export default function UsersPage() {
         setRoles(data.data);
       }
     } catch (err: any) {
-      console.error("[Users Page] Failed to fetch roles:", err);
-    }
+      if (err.isNetworkError || err.code === "ERR_NETWORK" || err.message === "Network Error") {
+        console.warn("[Users Page] Failed to fetch roles: Network Error (Backend offline)");
+      } else {
+        console.error("[Users Page] Failed to fetch roles:", err);
+      }
+    };
   };
 
   const fetchUsers = async () => {

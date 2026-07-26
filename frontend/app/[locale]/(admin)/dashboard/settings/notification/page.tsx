@@ -70,8 +70,12 @@ export default function NotificationPage() {
       if (data.success) {
         setNotifications(data.data);
       }
-    } catch (error) {
-      console.error("Failed to fetch notifications:", error);
+    } catch (error: any) {
+      if (error.isNetworkError || error.code === "ERR_NETWORK" || error.message === "Network Error") {
+        console.warn("[Notifications Page] Failed to fetch notifications: Network Error (Backend offline)");
+      } else {
+        console.error("Failed to fetch notifications:", error);
+      }
     } finally {
       setLoading(false);
     }

@@ -34,8 +34,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       } else {
         setUser(null);
       }
-    } catch (error) {
-      console.error("[Auth Context] Failed to fetch profile:", error);
+    } catch (error: any) {
+      if (error.isNetworkError || error.code === "ERR_NETWORK" || error.message === "Network Error") {
+        console.warn("[Auth Context] Failed to fetch profile: Network Error (Backend offline)");
+      } else {
+        console.error("[Auth Context] Failed to fetch profile:", error);
+      }
       setUser(null);
     } finally {
       setLoading(false);
@@ -64,8 +68,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       if (refreshToken) {
         await axios.post("/auth/logout", { refreshToken });
       }
-    } catch (error) {
-      console.error("[Auth Context] Logout API error:", error);
+    } catch (error: any) {
+      if (error.isNetworkError || error.code === "ERR_NETWORK" || error.message === "Network Error") {
+        console.warn("[Auth Context] Logout API warning: Network Error (Backend offline)");
+      } else {
+        console.error("[Auth Context] Logout API error:", error);
+      }
     } finally {
       localStorage.removeItem("accessToken");
       localStorage.removeItem("refreshToken");
