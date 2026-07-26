@@ -3,6 +3,7 @@ import { NextFunction, Request, Response } from "express";
 import createHttpError from "http-errors";
 import fs from "fs/promises";
 import path from "path";
+import { formatResourceUrl } from "@/lib/file";
 
 export const index = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -22,7 +23,8 @@ export const index = async (req: Request, res: Response, next: NextFunction) => 
       orderBy: { created_at: "desc" },
     });
 
-    res.status(200).json({ success: true, data: resources });
+    const formattedResources = resources.map((r) => formatResourceUrl(req, r));
+    res.status(200).json({ success: true, data: formattedResources });
   } catch (error) {
     next(error);
   }
@@ -44,7 +46,7 @@ export const uploadResource = async (req: Request, res: Response, next: NextFunc
       },
     });
 
-    res.status(201).json({ success: true, data: resource });
+    res.status(201).json({ success: true, data: formatResourceUrl(req, resource) });
   } catch (error) {
     next(error);
   }
@@ -61,7 +63,7 @@ export const show = async (req: Request, res: Response, next: NextFunction) => {
       return next(createHttpError(404, "Resource not found"));
     }
 
-    res.status(200).json({ success: true, data: resource });
+    res.status(200).json({ success: true, data: formatResourceUrl(req, resource) });
   } catch (error) {
     next(error);
   }

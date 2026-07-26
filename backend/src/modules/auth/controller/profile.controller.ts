@@ -3,14 +3,15 @@ import { NextFunction, Request, Response } from "express";
 import createHttpError from 'http-errors';
 import bcrypt from 'bcrypt';
 import { updateProfileSchema, changePasswordSchema } from '@app/validations';
+import { formatUserAvatarUrl } from "@/lib/file";
 
 export const profile = async (request: Request, response: Response, next: NextFunction) => {
     try {
         const user = await prisma.user.findUnique({
             where: { id: request.auth_user?.id },
-            include: { role: true },
+            include: { role: true, avatar: true },
         });
-        response.json({ success: true, data: user });
+        response.json({ success: true, data: formatUserAvatarUrl(request, user) });
     } catch (error) {
         next(error);
     }
@@ -23,18 +24,36 @@ export const updateProfile = async (request: Request, response: Response, next: 
             throw createHttpError.Unauthorized('Unauthorized');
         }
 
-        const { first_name, last_name } = await updateProfileSchema.validate(request.body, { abortEarly: false });
+        const { first_name, last_name, avatar_id, bio, twitter, linkedin, website } = 
+            await updateProfileSchema.validate(request.body, { abortEarly: false });
+
+        const currentUser = await prisma.user.findUnique({
+            where: { id: userId }
+        });
+        const currentDetail = (currentUser?.detail && typeof currentUser.detail === 'object') 
+            ? (currentUser.detail as Record<string, any>) 
+            : {};
+
+        const updatedDetail = {
+            ...currentDetail,
+            bio: bio || null,
+            twitter: twitter || null,
+            linkedin: linkedin || null,
+            website: website || null
+        };
 
         const updatedUser = await prisma.user.update({
             where: { id: userId },
             data: {
                 first_name,
                 last_name,
+                avatar_id: avatar_id || null,
+                detail: updatedDetail
             },
-            include: { role: true }
+            include: { role: true, avatar: true }
         });
 
-        response.json({ success: true, message: "Profile updated successfully", data: updatedUser });
+        response.json({ success: true, message: "Profile updated successfully", data: formatUserAvatarUrl(request, updatedUser) });
     } catch (error) {
         next(error);
     }

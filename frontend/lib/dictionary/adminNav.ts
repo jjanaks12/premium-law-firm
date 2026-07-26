@@ -4,6 +4,7 @@ import { can } from "@/lib/services/authorization.service";
 
 export type UserWithRole = User & {
     role?: Role | null;
+    avatar?: any;
 };
 
 interface Menu {

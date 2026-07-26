@@ -183,6 +183,7 @@ export default function ResourcesPage() {
   };
 
   const getFileUrl = (url: string) => {
+    if (url.startsWith("http://") || url.startsWith("https://")) return url;
     const apiUrl =
       process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000/api/v1";
     const host = apiUrl.replace("/api/v1", "");

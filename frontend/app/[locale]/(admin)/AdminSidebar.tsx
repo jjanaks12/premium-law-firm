@@ -29,6 +29,7 @@ import { ChevronRightIcon, LogOutIcon } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
+import { User } from "@/components/User";
 
 export default function AdminSidebar() {
   const pathname = usePathname();
@@ -157,22 +158,7 @@ export default function AdminSidebar() {
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter className="p-4 border-t border-border">
-        <div className="flex gap-3">
-          <Avatar size={isSidebarOpened ? "lg" : "icon-2xl"}>
-            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-            <AvatarFallback>CN</AvatarFallback>
-          </Avatar>
-          {isSidebarOpened && (
-            <>
-              <div className="grow flex flex-col gap-1 justify-start">
-                <strong className="block text-lg font-semibold text-primary">
-                  {user?.first_name} {user?.last_name}
-                </strong>
-                <Badge>{user?.role?.name}</Badge>
-              </div>
-            </>
-          )}
-        </div>
+        {user && <User user={user} />}
         <Button
           onClick={async () => {
             await logout();
