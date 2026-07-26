@@ -1,9 +1,11 @@
-import { User } from "@prisma/generated";
+import { User, Role } from "@prisma/generated";
 
 declare global {
   namespace Express {
     interface Request {
-      auth_user?: Omit<User, "password">;
+      auth_user?: Omit<User, "password"> & {
+        role?: Role | null;
+      };
     }
   }
 }

@@ -1,6 +1,7 @@
 import { Router } from "express";
 import * as resourceController from "./controller/resource.controller";
 import { verifyAccessToken } from "@/middlewares/checkAuth";
+import { can } from "@/middlewares/checkPermission";
 import multer from "multer";
 import path from "path";
 import fs from "fs";
@@ -32,9 +33,9 @@ const upload = multer({
 
 const route = Router();
 
-route.get("/", [verifyAccessToken], resourceController.index);
+route.get("/", [verifyAccessToken, can("resources", "list")], resourceController.index);
 route.post("/upload", [verifyAccessToken, upload.single("file")], resourceController.uploadResource);
 route.get("/:id", [verifyAccessToken], resourceController.show);
-route.delete("/:id", [verifyAccessToken], resourceController.destroy);
+route.delete("/:id", [verifyAccessToken, can("resources", "delete")], resourceController.destroy);
 
 export default route;
