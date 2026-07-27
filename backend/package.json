@@ -6,14 +6,15 @@
   "main": "index.js",
   "scripts": {
     "start": "node dist/src/index.js",
-    "build": "npm run --workspace=@app/validations build && tsc && tsc-alias",
-    "dev": "nodemon --exec tsx src/index.ts"
+    "build": "npm run --workspace=@app/validations build && tsc && tsc-alias -f",
+    "dev": "nodemon --exec tsx --tsconfig tsconfig.json src/index.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@app/validations": "*",
+    "@prisma/generated": "file:../prisma/generated/client",
     "bcrypt": "^6.0.0",
     "body-parser": "^2.3.0",
     "bullmq": "^5.81.1",

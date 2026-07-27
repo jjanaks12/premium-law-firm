@@ -26,4 +26,4 @@ RUN npm run db:generate
 EXPOSE 4000
 
 # Run the backend using tsx to support TypeScript workspace resolution in production
-CMD ["npx", "tsx", "backend/src/index.ts"]
+CMD ["npx", "tsx", "--tsconfig", "backend/tsconfig.json", "backend/src/index.ts"]

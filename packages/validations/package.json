@@ -12,9 +12,12 @@
     }
   },
   "scripts": {
-    "build": "tsc"
+    "build": "tsc && npx tsc-alias -f"
   },
   "dependencies": {
     "yup": "^1.7.1"
+  },
+  "devDependencies": {
+    "tsc-alias": "^1.9.1"
   }
 }
