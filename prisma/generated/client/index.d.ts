@@ -39,6 +39,26 @@ export type Resource = $Result.DefaultSelection<Prisma.$ResourcePayload>
  */
 export type Notification = $Result.DefaultSelection<Prisma.$NotificationPayload>
 /**
+ * Model PageType
+ * 
+ */
+export type PageType = $Result.DefaultSelection<Prisma.$PageTypePayload>
+/**
+ * Model Page
+ * 
+ */
+export type Page = $Result.DefaultSelection<Prisma.$PagePayload>
+/**
+ * Model PageSeo
+ * 
+ */
+export type PageSeo = $Result.DefaultSelection<Prisma.$PageSeoPayload>
+/**
+ * Model PageSchema
+ * 
+ */
+export type PageSchema = $Result.DefaultSelection<Prisma.$PageSchemaPayload>
+/**
  * Model Role
  * 
  */
@@ -214,6 +234,46 @@ export class PrismaClient<
     * ```
     */
   get notification(): Prisma.NotificationDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.pageType`: Exposes CRUD operations for the **PageType** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more PageTypes
+    * const pageTypes = await prisma.pageType.findMany()
+    * ```
+    */
+  get pageType(): Prisma.PageTypeDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.page`: Exposes CRUD operations for the **Page** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Pages
+    * const pages = await prisma.page.findMany()
+    * ```
+    */
+  get page(): Prisma.PageDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.pageSeo`: Exposes CRUD operations for the **PageSeo** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more PageSeos
+    * const pageSeos = await prisma.pageSeo.findMany()
+    * ```
+    */
+  get pageSeo(): Prisma.PageSeoDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.pageSchema`: Exposes CRUD operations for the **PageSchema** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more PageSchemas
+    * const pageSchemas = await prisma.pageSchema.findMany()
+    * ```
+    */
+  get pageSchema(): Prisma.PageSchemaDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.role`: Exposes CRUD operations for the **Role** model.
@@ -676,6 +736,10 @@ export namespace Prisma {
     PasswordResetToken: 'PasswordResetToken',
     Resource: 'Resource',
     Notification: 'Notification',
+    PageType: 'PageType',
+    Page: 'Page',
+    PageSeo: 'PageSeo',
+    PageSchema: 'PageSchema',
     Role: 'Role'
   };
 
@@ -692,7 +756,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "refreshToken" | "passwordResetToken" | "resource" | "notification" | "role"
+      modelProps: "user" | "refreshToken" | "passwordResetToken" | "resource" | "notification" | "pageType" | "page" | "pageSeo" | "pageSchema" | "role"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1066,6 +1130,302 @@ export namespace Prisma {
           }
         }
       }
+      PageType: {
+        payload: Prisma.$PageTypePayload<ExtArgs>
+        fields: Prisma.PageTypeFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PageTypeFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageTypePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PageTypeFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageTypePayload>
+          }
+          findFirst: {
+            args: Prisma.PageTypeFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageTypePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PageTypeFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageTypePayload>
+          }
+          findMany: {
+            args: Prisma.PageTypeFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageTypePayload>[]
+          }
+          create: {
+            args: Prisma.PageTypeCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageTypePayload>
+          }
+          createMany: {
+            args: Prisma.PageTypeCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.PageTypeCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageTypePayload>[]
+          }
+          delete: {
+            args: Prisma.PageTypeDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageTypePayload>
+          }
+          update: {
+            args: Prisma.PageTypeUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageTypePayload>
+          }
+          deleteMany: {
+            args: Prisma.PageTypeDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PageTypeUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.PageTypeUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageTypePayload>[]
+          }
+          upsert: {
+            args: Prisma.PageTypeUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageTypePayload>
+          }
+          aggregate: {
+            args: Prisma.PageTypeAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePageType>
+          }
+          groupBy: {
+            args: Prisma.PageTypeGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PageTypeGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PageTypeCountArgs<ExtArgs>
+            result: $Utils.Optional<PageTypeCountAggregateOutputType> | number
+          }
+        }
+      }
+      Page: {
+        payload: Prisma.$PagePayload<ExtArgs>
+        fields: Prisma.PageFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PageFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PagePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PageFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PagePayload>
+          }
+          findFirst: {
+            args: Prisma.PageFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PagePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PageFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PagePayload>
+          }
+          findMany: {
+            args: Prisma.PageFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PagePayload>[]
+          }
+          create: {
+            args: Prisma.PageCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PagePayload>
+          }
+          createMany: {
+            args: Prisma.PageCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.PageCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PagePayload>[]
+          }
+          delete: {
+            args: Prisma.PageDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PagePayload>
+          }
+          update: {
+            args: Prisma.PageUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PagePayload>
+          }
+          deleteMany: {
+            args: Prisma.PageDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PageUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.PageUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PagePayload>[]
+          }
+          upsert: {
+            args: Prisma.PageUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PagePayload>
+          }
+          aggregate: {
+            args: Prisma.PageAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePage>
+          }
+          groupBy: {
+            args: Prisma.PageGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PageGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PageCountArgs<ExtArgs>
+            result: $Utils.Optional<PageCountAggregateOutputType> | number
+          }
+        }
+      }
+      PageSeo: {
+        payload: Prisma.$PageSeoPayload<ExtArgs>
+        fields: Prisma.PageSeoFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PageSeoFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageSeoPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PageSeoFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageSeoPayload>
+          }
+          findFirst: {
+            args: Prisma.PageSeoFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageSeoPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PageSeoFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageSeoPayload>
+          }
+          findMany: {
+            args: Prisma.PageSeoFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageSeoPayload>[]
+          }
+          create: {
+            args: Prisma.PageSeoCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageSeoPayload>
+          }
+          createMany: {
+            args: Prisma.PageSeoCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.PageSeoCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageSeoPayload>[]
+          }
+          delete: {
+            args: Prisma.PageSeoDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageSeoPayload>
+          }
+          update: {
+            args: Prisma.PageSeoUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageSeoPayload>
+          }
+          deleteMany: {
+            args: Prisma.PageSeoDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PageSeoUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.PageSeoUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageSeoPayload>[]
+          }
+          upsert: {
+            args: Prisma.PageSeoUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageSeoPayload>
+          }
+          aggregate: {
+            args: Prisma.PageSeoAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePageSeo>
+          }
+          groupBy: {
+            args: Prisma.PageSeoGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PageSeoGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PageSeoCountArgs<ExtArgs>
+            result: $Utils.Optional<PageSeoCountAggregateOutputType> | number
+          }
+        }
+      }
+      PageSchema: {
+        payload: Prisma.$PageSchemaPayload<ExtArgs>
+        fields: Prisma.PageSchemaFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PageSchemaFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageSchemaPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PageSchemaFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageSchemaPayload>
+          }
+          findFirst: {
+            args: Prisma.PageSchemaFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageSchemaPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PageSchemaFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageSchemaPayload>
+          }
+          findMany: {
+            args: Prisma.PageSchemaFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageSchemaPayload>[]
+          }
+          create: {
+            args: Prisma.PageSchemaCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageSchemaPayload>
+          }
+          createMany: {
+            args: Prisma.PageSchemaCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.PageSchemaCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageSchemaPayload>[]
+          }
+          delete: {
+            args: Prisma.PageSchemaDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageSchemaPayload>
+          }
+          update: {
+            args: Prisma.PageSchemaUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageSchemaPayload>
+          }
+          deleteMany: {
+            args: Prisma.PageSchemaDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PageSchemaUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.PageSchemaUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageSchemaPayload>[]
+          }
+          upsert: {
+            args: Prisma.PageSchemaUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PageSchemaPayload>
+          }
+          aggregate: {
+            args: Prisma.PageSchemaAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePageSchema>
+          }
+          groupBy: {
+            args: Prisma.PageSchemaGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PageSchemaGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PageSchemaCountArgs<ExtArgs>
+            result: $Utils.Optional<PageSchemaCountAggregateOutputType> | number
+          }
+        }
+      }
       Role: {
         payload: Prisma.$RolePayload<ExtArgs>
         fields: Prisma.RoleFieldRefs
@@ -1268,6 +1628,10 @@ export namespace Prisma {
     passwordResetToken?: PasswordResetTokenOmit
     resource?: ResourceOmit
     notification?: NotificationOmit
+    pageType?: PageTypeOmit
+    page?: PageOmit
+    pageSeo?: PageSeoOmit
+    pageSchema?: PageSchemaOmit
     role?: RoleOmit
   }
 
@@ -1352,12 +1716,14 @@ export namespace Prisma {
     notifications: number
     refresh_tokens: number
     reset_tokens: number
+    pages: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     notifications?: boolean | UserCountOutputTypeCountNotificationsArgs
     refresh_tokens?: boolean | UserCountOutputTypeCountRefresh_tokensArgs
     reset_tokens?: boolean | UserCountOutputTypeCountReset_tokensArgs
+    pages?: boolean | UserCountOutputTypeCountPagesArgs
   }
 
   // Custom InputTypes
@@ -1392,6 +1758,13 @@ export namespace Prisma {
     where?: PasswordResetTokenWhereInput
   }
 
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountPagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PageWhereInput
+  }
+
 
   /**
    * Count Type ResourceCountOutputType
@@ -1399,10 +1772,14 @@ export namespace Prisma {
 
   export type ResourceCountOutputType = {
     users: number
+    page_thumbnails: number
+    page_seo_og_images: number
   }
 
   export type ResourceCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     users?: boolean | ResourceCountOutputTypeCountUsersArgs
+    page_thumbnails?: boolean | ResourceCountOutputTypeCountPage_thumbnailsArgs
+    page_seo_og_images?: boolean | ResourceCountOutputTypeCountPage_seo_og_imagesArgs
   }
 
   // Custom InputTypes
@@ -1421,6 +1798,82 @@ export namespace Prisma {
    */
   export type ResourceCountOutputTypeCountUsersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: UserWhereInput
+  }
+
+  /**
+   * ResourceCountOutputType without action
+   */
+  export type ResourceCountOutputTypeCountPage_thumbnailsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PageWhereInput
+  }
+
+  /**
+   * ResourceCountOutputType without action
+   */
+  export type ResourceCountOutputTypeCountPage_seo_og_imagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PageSeoWhereInput
+  }
+
+
+  /**
+   * Count Type PageTypeCountOutputType
+   */
+
+  export type PageTypeCountOutputType = {
+    pages: number
+  }
+
+  export type PageTypeCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    pages?: boolean | PageTypeCountOutputTypeCountPagesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * PageTypeCountOutputType without action
+   */
+  export type PageTypeCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageTypeCountOutputType
+     */
+    select?: PageTypeCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * PageTypeCountOutputType without action
+   */
+  export type PageTypeCountOutputTypeCountPagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PageWhereInput
+  }
+
+
+  /**
+   * Count Type PageCountOutputType
+   */
+
+  export type PageCountOutputType = {
+    children: number
+  }
+
+  export type PageCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    children?: boolean | PageCountOutputTypeCountChildrenArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * PageCountOutputType without action
+   */
+  export type PageCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageCountOutputType
+     */
+    select?: PageCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * PageCountOutputType without action
+   */
+  export type PageCountOutputTypeCountChildrenArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PageWhereInput
   }
 
 
@@ -1696,6 +2149,7 @@ export namespace Prisma {
     notifications?: boolean | User$notificationsArgs<ExtArgs>
     refresh_tokens?: boolean | User$refresh_tokensArgs<ExtArgs>
     reset_tokens?: boolean | User$reset_tokensArgs<ExtArgs>
+    pages?: boolean | User$pagesArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1761,6 +2215,7 @@ export namespace Prisma {
     notifications?: boolean | User$notificationsArgs<ExtArgs>
     refresh_tokens?: boolean | User$refresh_tokensArgs<ExtArgs>
     reset_tokens?: boolean | User$reset_tokensArgs<ExtArgs>
+    pages?: boolean | User$pagesArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1780,6 +2235,7 @@ export namespace Prisma {
       notifications: Prisma.$NotificationPayload<ExtArgs>[]
       refresh_tokens: Prisma.$RefreshTokenPayload<ExtArgs>[]
       reset_tokens: Prisma.$PasswordResetTokenPayload<ExtArgs>[]
+      pages: Prisma.$PagePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -2195,6 +2651,7 @@ export namespace Prisma {
     notifications<T extends User$notificationsArgs<ExtArgs> = {}>(args?: Subset<T, User$notificationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     refresh_tokens<T extends User$refresh_tokensArgs<ExtArgs> = {}>(args?: Subset<T, User$refresh_tokensArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RefreshTokenPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     reset_tokens<T extends User$reset_tokensArgs<ExtArgs> = {}>(args?: Subset<T, User$reset_tokensArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PasswordResetTokenPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    pages<T extends User$pagesArgs<ExtArgs> = {}>(args?: Subset<T, User$pagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2746,6 +3203,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: PasswordResetTokenScalarFieldEnum | PasswordResetTokenScalarFieldEnum[]
+  }
+
+  /**
+   * User.pages
+   */
+  export type User$pagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Page
+     */
+    select?: PageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Page
+     */
+    omit?: PageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageInclude<ExtArgs> | null
+    where?: PageWhereInput
+    orderBy?: PageOrderByWithRelationInput | PageOrderByWithRelationInput[]
+    cursor?: PageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PageScalarFieldEnum | PageScalarFieldEnum[]
   }
 
   /**
@@ -5116,6 +5597,8 @@ export namespace Prisma {
     updated_at?: boolean
     deleted_at?: boolean
     users?: boolean | Resource$usersArgs<ExtArgs>
+    page_thumbnails?: boolean | Resource$page_thumbnailsArgs<ExtArgs>
+    page_seo_og_images?: boolean | Resource$page_seo_og_imagesArgs<ExtArgs>
     _count?: boolean | ResourceCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["resource"]>
 
@@ -5155,6 +5638,8 @@ export namespace Prisma {
   export type ResourceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "url" | "type" | "name" | "size" | "created_at" | "updated_at" | "deleted_at", ExtArgs["result"]["resource"]>
   export type ResourceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     users?: boolean | Resource$usersArgs<ExtArgs>
+    page_thumbnails?: boolean | Resource$page_thumbnailsArgs<ExtArgs>
+    page_seo_og_images?: boolean | Resource$page_seo_og_imagesArgs<ExtArgs>
     _count?: boolean | ResourceCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ResourceIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -5164,6 +5649,8 @@ export namespace Prisma {
     name: "Resource"
     objects: {
       users: Prisma.$UserPayload<ExtArgs>[]
+      page_thumbnails: Prisma.$PagePayload<ExtArgs>[]
+      page_seo_og_images: Prisma.$PageSeoPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -5569,6 +6056,8 @@ export namespace Prisma {
   export interface Prisma__ResourceClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     users<T extends Resource$usersArgs<ExtArgs> = {}>(args?: Subset<T, Resource$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    page_thumbnails<T extends Resource$page_thumbnailsArgs<ExtArgs> = {}>(args?: Subset<T, Resource$page_thumbnailsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    page_seo_og_images<T extends Resource$page_seo_og_imagesArgs<ExtArgs> = {}>(args?: Subset<T, Resource$page_seo_og_imagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PageSeoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6020,6 +6509,54 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
+  }
+
+  /**
+   * Resource.page_thumbnails
+   */
+  export type Resource$page_thumbnailsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Page
+     */
+    select?: PageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Page
+     */
+    omit?: PageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageInclude<ExtArgs> | null
+    where?: PageWhereInput
+    orderBy?: PageOrderByWithRelationInput | PageOrderByWithRelationInput[]
+    cursor?: PageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PageScalarFieldEnum | PageScalarFieldEnum[]
+  }
+
+  /**
+   * Resource.page_seo_og_images
+   */
+  export type Resource$page_seo_og_imagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageSeo
+     */
+    select?: PageSeoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageSeo
+     */
+    omit?: PageSeoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageSeoInclude<ExtArgs> | null
+    where?: PageSeoWhereInput
+    orderBy?: PageSeoOrderByWithRelationInput | PageSeoOrderByWithRelationInput[]
+    cursor?: PageSeoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PageSeoScalarFieldEnum | PageSeoScalarFieldEnum[]
   }
 
   /**
@@ -7172,6 +7709,4712 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: NotificationInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model PageType
+   */
+
+  export type AggregatePageType = {
+    _count: PageTypeCountAggregateOutputType | null
+    _min: PageTypeMinAggregateOutputType | null
+    _max: PageTypeMaxAggregateOutputType | null
+  }
+
+  export type PageTypeMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    slug: string | null
+    description: string | null
+    created_at: Date | null
+    updated_at: Date | null
+    deleted_at: Date | null
+  }
+
+  export type PageTypeMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    slug: string | null
+    description: string | null
+    created_at: Date | null
+    updated_at: Date | null
+    deleted_at: Date | null
+  }
+
+  export type PageTypeCountAggregateOutputType = {
+    id: number
+    name: number
+    slug: number
+    description: number
+    created_at: number
+    updated_at: number
+    deleted_at: number
+    _all: number
+  }
+
+
+  export type PageTypeMinAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+    description?: true
+    created_at?: true
+    updated_at?: true
+    deleted_at?: true
+  }
+
+  export type PageTypeMaxAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+    description?: true
+    created_at?: true
+    updated_at?: true
+    deleted_at?: true
+  }
+
+  export type PageTypeCountAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+    description?: true
+    created_at?: true
+    updated_at?: true
+    deleted_at?: true
+    _all?: true
+  }
+
+  export type PageTypeAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PageType to aggregate.
+     */
+    where?: PageTypeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PageTypes to fetch.
+     */
+    orderBy?: PageTypeOrderByWithRelationInput | PageTypeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PageTypeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PageTypes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PageTypes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned PageTypes
+    **/
+    _count?: true | PageTypeCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PageTypeMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PageTypeMaxAggregateInputType
+  }
+
+  export type GetPageTypeAggregateType<T extends PageTypeAggregateArgs> = {
+        [P in keyof T & keyof AggregatePageType]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePageType[P]>
+      : GetScalarType<T[P], AggregatePageType[P]>
+  }
+
+
+
+
+  export type PageTypeGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PageTypeWhereInput
+    orderBy?: PageTypeOrderByWithAggregationInput | PageTypeOrderByWithAggregationInput[]
+    by: PageTypeScalarFieldEnum[] | PageTypeScalarFieldEnum
+    having?: PageTypeScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PageTypeCountAggregateInputType | true
+    _min?: PageTypeMinAggregateInputType
+    _max?: PageTypeMaxAggregateInputType
+  }
+
+  export type PageTypeGroupByOutputType = {
+    id: string
+    name: string
+    slug: string
+    description: string | null
+    created_at: Date
+    updated_at: Date
+    deleted_at: Date | null
+    _count: PageTypeCountAggregateOutputType | null
+    _min: PageTypeMinAggregateOutputType | null
+    _max: PageTypeMaxAggregateOutputType | null
+  }
+
+  type GetPageTypeGroupByPayload<T extends PageTypeGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PageTypeGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PageTypeGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PageTypeGroupByOutputType[P]>
+            : GetScalarType<T[P], PageTypeGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PageTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+    description?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
+    pages?: boolean | PageType$pagesArgs<ExtArgs>
+    _count?: boolean | PageTypeCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["pageType"]>
+
+  export type PageTypeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+    description?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
+  }, ExtArgs["result"]["pageType"]>
+
+  export type PageTypeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+    description?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
+  }, ExtArgs["result"]["pageType"]>
+
+  export type PageTypeSelectScalar = {
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+    description?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
+  }
+
+  export type PageTypeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "slug" | "description" | "created_at" | "updated_at" | "deleted_at", ExtArgs["result"]["pageType"]>
+  export type PageTypeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    pages?: boolean | PageType$pagesArgs<ExtArgs>
+    _count?: boolean | PageTypeCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type PageTypeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type PageTypeIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $PageTypePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "PageType"
+    objects: {
+      pages: Prisma.$PagePayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      slug: string
+      description: string | null
+      created_at: Date
+      updated_at: Date
+      deleted_at: Date | null
+    }, ExtArgs["result"]["pageType"]>
+    composites: {}
+  }
+
+  type PageTypeGetPayload<S extends boolean | null | undefined | PageTypeDefaultArgs> = $Result.GetResult<Prisma.$PageTypePayload, S>
+
+  type PageTypeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PageTypeFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PageTypeCountAggregateInputType | true
+    }
+
+  export interface PageTypeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['PageType'], meta: { name: 'PageType' } }
+    /**
+     * Find zero or one PageType that matches the filter.
+     * @param {PageTypeFindUniqueArgs} args - Arguments to find a PageType
+     * @example
+     * // Get one PageType
+     * const pageType = await prisma.pageType.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PageTypeFindUniqueArgs>(args: SelectSubset<T, PageTypeFindUniqueArgs<ExtArgs>>): Prisma__PageTypeClient<$Result.GetResult<Prisma.$PageTypePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one PageType that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {PageTypeFindUniqueOrThrowArgs} args - Arguments to find a PageType
+     * @example
+     * // Get one PageType
+     * const pageType = await prisma.pageType.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PageTypeFindUniqueOrThrowArgs>(args: SelectSubset<T, PageTypeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PageTypeClient<$Result.GetResult<Prisma.$PageTypePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PageType that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PageTypeFindFirstArgs} args - Arguments to find a PageType
+     * @example
+     * // Get one PageType
+     * const pageType = await prisma.pageType.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PageTypeFindFirstArgs>(args?: SelectSubset<T, PageTypeFindFirstArgs<ExtArgs>>): Prisma__PageTypeClient<$Result.GetResult<Prisma.$PageTypePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PageType that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PageTypeFindFirstOrThrowArgs} args - Arguments to find a PageType
+     * @example
+     * // Get one PageType
+     * const pageType = await prisma.pageType.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PageTypeFindFirstOrThrowArgs>(args?: SelectSubset<T, PageTypeFindFirstOrThrowArgs<ExtArgs>>): Prisma__PageTypeClient<$Result.GetResult<Prisma.$PageTypePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more PageTypes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PageTypeFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all PageTypes
+     * const pageTypes = await prisma.pageType.findMany()
+     * 
+     * // Get first 10 PageTypes
+     * const pageTypes = await prisma.pageType.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const pageTypeWithIdOnly = await prisma.pageType.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends PageTypeFindManyArgs>(args?: SelectSubset<T, PageTypeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PageTypePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a PageType.
+     * @param {PageTypeCreateArgs} args - Arguments to create a PageType.
+     * @example
+     * // Create one PageType
+     * const PageType = await prisma.pageType.create({
+     *   data: {
+     *     // ... data to create a PageType
+     *   }
+     * })
+     * 
+     */
+    create<T extends PageTypeCreateArgs>(args: SelectSubset<T, PageTypeCreateArgs<ExtArgs>>): Prisma__PageTypeClient<$Result.GetResult<Prisma.$PageTypePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many PageTypes.
+     * @param {PageTypeCreateManyArgs} args - Arguments to create many PageTypes.
+     * @example
+     * // Create many PageTypes
+     * const pageType = await prisma.pageType.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends PageTypeCreateManyArgs>(args?: SelectSubset<T, PageTypeCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many PageTypes and returns the data saved in the database.
+     * @param {PageTypeCreateManyAndReturnArgs} args - Arguments to create many PageTypes.
+     * @example
+     * // Create many PageTypes
+     * const pageType = await prisma.pageType.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many PageTypes and only return the `id`
+     * const pageTypeWithIdOnly = await prisma.pageType.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends PageTypeCreateManyAndReturnArgs>(args?: SelectSubset<T, PageTypeCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PageTypePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a PageType.
+     * @param {PageTypeDeleteArgs} args - Arguments to delete one PageType.
+     * @example
+     * // Delete one PageType
+     * const PageType = await prisma.pageType.delete({
+     *   where: {
+     *     // ... filter to delete one PageType
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PageTypeDeleteArgs>(args: SelectSubset<T, PageTypeDeleteArgs<ExtArgs>>): Prisma__PageTypeClient<$Result.GetResult<Prisma.$PageTypePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one PageType.
+     * @param {PageTypeUpdateArgs} args - Arguments to update one PageType.
+     * @example
+     * // Update one PageType
+     * const pageType = await prisma.pageType.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends PageTypeUpdateArgs>(args: SelectSubset<T, PageTypeUpdateArgs<ExtArgs>>): Prisma__PageTypeClient<$Result.GetResult<Prisma.$PageTypePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more PageTypes.
+     * @param {PageTypeDeleteManyArgs} args - Arguments to filter PageTypes to delete.
+     * @example
+     * // Delete a few PageTypes
+     * const { count } = await prisma.pageType.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PageTypeDeleteManyArgs>(args?: SelectSubset<T, PageTypeDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PageTypes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PageTypeUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many PageTypes
+     * const pageType = await prisma.pageType.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PageTypeUpdateManyArgs>(args: SelectSubset<T, PageTypeUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PageTypes and returns the data updated in the database.
+     * @param {PageTypeUpdateManyAndReturnArgs} args - Arguments to update many PageTypes.
+     * @example
+     * // Update many PageTypes
+     * const pageType = await prisma.pageType.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more PageTypes and only return the `id`
+     * const pageTypeWithIdOnly = await prisma.pageType.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends PageTypeUpdateManyAndReturnArgs>(args: SelectSubset<T, PageTypeUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PageTypePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one PageType.
+     * @param {PageTypeUpsertArgs} args - Arguments to update or create a PageType.
+     * @example
+     * // Update or create a PageType
+     * const pageType = await prisma.pageType.upsert({
+     *   create: {
+     *     // ... data to create a PageType
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the PageType we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PageTypeUpsertArgs>(args: SelectSubset<T, PageTypeUpsertArgs<ExtArgs>>): Prisma__PageTypeClient<$Result.GetResult<Prisma.$PageTypePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of PageTypes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PageTypeCountArgs} args - Arguments to filter PageTypes to count.
+     * @example
+     * // Count the number of PageTypes
+     * const count = await prisma.pageType.count({
+     *   where: {
+     *     // ... the filter for the PageTypes we want to count
+     *   }
+     * })
+    **/
+    count<T extends PageTypeCountArgs>(
+      args?: Subset<T, PageTypeCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PageTypeCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a PageType.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PageTypeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PageTypeAggregateArgs>(args: Subset<T, PageTypeAggregateArgs>): Prisma.PrismaPromise<GetPageTypeAggregateType<T>>
+
+    /**
+     * Group by PageType.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PageTypeGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PageTypeGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PageTypeGroupByArgs['orderBy'] }
+        : { orderBy?: PageTypeGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PageTypeGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPageTypeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the PageType model
+   */
+  readonly fields: PageTypeFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for PageType.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PageTypeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    pages<T extends PageType$pagesArgs<ExtArgs> = {}>(args?: Subset<T, PageType$pagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the PageType model
+   */
+  interface PageTypeFieldRefs {
+    readonly id: FieldRef<"PageType", 'String'>
+    readonly name: FieldRef<"PageType", 'String'>
+    readonly slug: FieldRef<"PageType", 'String'>
+    readonly description: FieldRef<"PageType", 'String'>
+    readonly created_at: FieldRef<"PageType", 'DateTime'>
+    readonly updated_at: FieldRef<"PageType", 'DateTime'>
+    readonly deleted_at: FieldRef<"PageType", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * PageType findUnique
+   */
+  export type PageTypeFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageType
+     */
+    select?: PageTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageType
+     */
+    omit?: PageTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageTypeInclude<ExtArgs> | null
+    /**
+     * Filter, which PageType to fetch.
+     */
+    where: PageTypeWhereUniqueInput
+  }
+
+  /**
+   * PageType findUniqueOrThrow
+   */
+  export type PageTypeFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageType
+     */
+    select?: PageTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageType
+     */
+    omit?: PageTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageTypeInclude<ExtArgs> | null
+    /**
+     * Filter, which PageType to fetch.
+     */
+    where: PageTypeWhereUniqueInput
+  }
+
+  /**
+   * PageType findFirst
+   */
+  export type PageTypeFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageType
+     */
+    select?: PageTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageType
+     */
+    omit?: PageTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageTypeInclude<ExtArgs> | null
+    /**
+     * Filter, which PageType to fetch.
+     */
+    where?: PageTypeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PageTypes to fetch.
+     */
+    orderBy?: PageTypeOrderByWithRelationInput | PageTypeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PageTypes.
+     */
+    cursor?: PageTypeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PageTypes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PageTypes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PageTypes.
+     */
+    distinct?: PageTypeScalarFieldEnum | PageTypeScalarFieldEnum[]
+  }
+
+  /**
+   * PageType findFirstOrThrow
+   */
+  export type PageTypeFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageType
+     */
+    select?: PageTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageType
+     */
+    omit?: PageTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageTypeInclude<ExtArgs> | null
+    /**
+     * Filter, which PageType to fetch.
+     */
+    where?: PageTypeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PageTypes to fetch.
+     */
+    orderBy?: PageTypeOrderByWithRelationInput | PageTypeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PageTypes.
+     */
+    cursor?: PageTypeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PageTypes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PageTypes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PageTypes.
+     */
+    distinct?: PageTypeScalarFieldEnum | PageTypeScalarFieldEnum[]
+  }
+
+  /**
+   * PageType findMany
+   */
+  export type PageTypeFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageType
+     */
+    select?: PageTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageType
+     */
+    omit?: PageTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageTypeInclude<ExtArgs> | null
+    /**
+     * Filter, which PageTypes to fetch.
+     */
+    where?: PageTypeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PageTypes to fetch.
+     */
+    orderBy?: PageTypeOrderByWithRelationInput | PageTypeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing PageTypes.
+     */
+    cursor?: PageTypeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PageTypes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PageTypes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PageTypes.
+     */
+    distinct?: PageTypeScalarFieldEnum | PageTypeScalarFieldEnum[]
+  }
+
+  /**
+   * PageType create
+   */
+  export type PageTypeCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageType
+     */
+    select?: PageTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageType
+     */
+    omit?: PageTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageTypeInclude<ExtArgs> | null
+    /**
+     * The data needed to create a PageType.
+     */
+    data: XOR<PageTypeCreateInput, PageTypeUncheckedCreateInput>
+  }
+
+  /**
+   * PageType createMany
+   */
+  export type PageTypeCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many PageTypes.
+     */
+    data: PageTypeCreateManyInput | PageTypeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * PageType createManyAndReturn
+   */
+  export type PageTypeCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageType
+     */
+    select?: PageTypeSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageType
+     */
+    omit?: PageTypeOmit<ExtArgs> | null
+    /**
+     * The data used to create many PageTypes.
+     */
+    data: PageTypeCreateManyInput | PageTypeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * PageType update
+   */
+  export type PageTypeUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageType
+     */
+    select?: PageTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageType
+     */
+    omit?: PageTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageTypeInclude<ExtArgs> | null
+    /**
+     * The data needed to update a PageType.
+     */
+    data: XOR<PageTypeUpdateInput, PageTypeUncheckedUpdateInput>
+    /**
+     * Choose, which PageType to update.
+     */
+    where: PageTypeWhereUniqueInput
+  }
+
+  /**
+   * PageType updateMany
+   */
+  export type PageTypeUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update PageTypes.
+     */
+    data: XOR<PageTypeUpdateManyMutationInput, PageTypeUncheckedUpdateManyInput>
+    /**
+     * Filter which PageTypes to update
+     */
+    where?: PageTypeWhereInput
+    /**
+     * Limit how many PageTypes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * PageType updateManyAndReturn
+   */
+  export type PageTypeUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageType
+     */
+    select?: PageTypeSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageType
+     */
+    omit?: PageTypeOmit<ExtArgs> | null
+    /**
+     * The data used to update PageTypes.
+     */
+    data: XOR<PageTypeUpdateManyMutationInput, PageTypeUncheckedUpdateManyInput>
+    /**
+     * Filter which PageTypes to update
+     */
+    where?: PageTypeWhereInput
+    /**
+     * Limit how many PageTypes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * PageType upsert
+   */
+  export type PageTypeUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageType
+     */
+    select?: PageTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageType
+     */
+    omit?: PageTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageTypeInclude<ExtArgs> | null
+    /**
+     * The filter to search for the PageType to update in case it exists.
+     */
+    where: PageTypeWhereUniqueInput
+    /**
+     * In case the PageType found by the `where` argument doesn't exist, create a new PageType with this data.
+     */
+    create: XOR<PageTypeCreateInput, PageTypeUncheckedCreateInput>
+    /**
+     * In case the PageType was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PageTypeUpdateInput, PageTypeUncheckedUpdateInput>
+  }
+
+  /**
+   * PageType delete
+   */
+  export type PageTypeDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageType
+     */
+    select?: PageTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageType
+     */
+    omit?: PageTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageTypeInclude<ExtArgs> | null
+    /**
+     * Filter which PageType to delete.
+     */
+    where: PageTypeWhereUniqueInput
+  }
+
+  /**
+   * PageType deleteMany
+   */
+  export type PageTypeDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PageTypes to delete
+     */
+    where?: PageTypeWhereInput
+    /**
+     * Limit how many PageTypes to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * PageType.pages
+   */
+  export type PageType$pagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Page
+     */
+    select?: PageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Page
+     */
+    omit?: PageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageInclude<ExtArgs> | null
+    where?: PageWhereInput
+    orderBy?: PageOrderByWithRelationInput | PageOrderByWithRelationInput[]
+    cursor?: PageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PageScalarFieldEnum | PageScalarFieldEnum[]
+  }
+
+  /**
+   * PageType without action
+   */
+  export type PageTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageType
+     */
+    select?: PageTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageType
+     */
+    omit?: PageTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageTypeInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Page
+   */
+
+  export type AggregatePage = {
+    _count: PageCountAggregateOutputType | null
+    _min: PageMinAggregateOutputType | null
+    _max: PageMaxAggregateOutputType | null
+  }
+
+  export type PageMinAggregateOutputType = {
+    id: string | null
+    slug: string | null
+    title: string | null
+    excerpt: string | null
+    status: string | null
+    locale: string | null
+    parent_id: string | null
+    page_type_id: string | null
+    thumbnail_id: string | null
+    author_id: string | null
+    created_at: Date | null
+    updated_at: Date | null
+    deleted_at: Date | null
+  }
+
+  export type PageMaxAggregateOutputType = {
+    id: string | null
+    slug: string | null
+    title: string | null
+    excerpt: string | null
+    status: string | null
+    locale: string | null
+    parent_id: string | null
+    page_type_id: string | null
+    thumbnail_id: string | null
+    author_id: string | null
+    created_at: Date | null
+    updated_at: Date | null
+    deleted_at: Date | null
+  }
+
+  export type PageCountAggregateOutputType = {
+    id: number
+    slug: number
+    title: number
+    content: number
+    excerpt: number
+    status: number
+    locale: number
+    parent_id: number
+    page_type_id: number
+    thumbnail_id: number
+    author_id: number
+    created_at: number
+    updated_at: number
+    deleted_at: number
+    _all: number
+  }
+
+
+  export type PageMinAggregateInputType = {
+    id?: true
+    slug?: true
+    title?: true
+    excerpt?: true
+    status?: true
+    locale?: true
+    parent_id?: true
+    page_type_id?: true
+    thumbnail_id?: true
+    author_id?: true
+    created_at?: true
+    updated_at?: true
+    deleted_at?: true
+  }
+
+  export type PageMaxAggregateInputType = {
+    id?: true
+    slug?: true
+    title?: true
+    excerpt?: true
+    status?: true
+    locale?: true
+    parent_id?: true
+    page_type_id?: true
+    thumbnail_id?: true
+    author_id?: true
+    created_at?: true
+    updated_at?: true
+    deleted_at?: true
+  }
+
+  export type PageCountAggregateInputType = {
+    id?: true
+    slug?: true
+    title?: true
+    content?: true
+    excerpt?: true
+    status?: true
+    locale?: true
+    parent_id?: true
+    page_type_id?: true
+    thumbnail_id?: true
+    author_id?: true
+    created_at?: true
+    updated_at?: true
+    deleted_at?: true
+    _all?: true
+  }
+
+  export type PageAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Page to aggregate.
+     */
+    where?: PageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Pages to fetch.
+     */
+    orderBy?: PageOrderByWithRelationInput | PageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Pages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Pages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Pages
+    **/
+    _count?: true | PageCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PageMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PageMaxAggregateInputType
+  }
+
+  export type GetPageAggregateType<T extends PageAggregateArgs> = {
+        [P in keyof T & keyof AggregatePage]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePage[P]>
+      : GetScalarType<T[P], AggregatePage[P]>
+  }
+
+
+
+
+  export type PageGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PageWhereInput
+    orderBy?: PageOrderByWithAggregationInput | PageOrderByWithAggregationInput[]
+    by: PageScalarFieldEnum[] | PageScalarFieldEnum
+    having?: PageScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PageCountAggregateInputType | true
+    _min?: PageMinAggregateInputType
+    _max?: PageMaxAggregateInputType
+  }
+
+  export type PageGroupByOutputType = {
+    id: string
+    slug: string
+    title: string
+    content: JsonValue
+    excerpt: string | null
+    status: string
+    locale: string
+    parent_id: string | null
+    page_type_id: string | null
+    thumbnail_id: string | null
+    author_id: string | null
+    created_at: Date
+    updated_at: Date
+    deleted_at: Date | null
+    _count: PageCountAggregateOutputType | null
+    _min: PageMinAggregateOutputType | null
+    _max: PageMaxAggregateOutputType | null
+  }
+
+  type GetPageGroupByPayload<T extends PageGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PageGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PageGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PageGroupByOutputType[P]>
+            : GetScalarType<T[P], PageGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    slug?: boolean
+    title?: boolean
+    content?: boolean
+    excerpt?: boolean
+    status?: boolean
+    locale?: boolean
+    parent_id?: boolean
+    page_type_id?: boolean
+    thumbnail_id?: boolean
+    author_id?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
+    parent?: boolean | Page$parentArgs<ExtArgs>
+    children?: boolean | Page$childrenArgs<ExtArgs>
+    page_type?: boolean | Page$page_typeArgs<ExtArgs>
+    thumbnail?: boolean | Page$thumbnailArgs<ExtArgs>
+    author?: boolean | Page$authorArgs<ExtArgs>
+    seo?: boolean | Page$seoArgs<ExtArgs>
+    schema?: boolean | Page$schemaArgs<ExtArgs>
+    _count?: boolean | PageCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["page"]>
+
+  export type PageSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    slug?: boolean
+    title?: boolean
+    content?: boolean
+    excerpt?: boolean
+    status?: boolean
+    locale?: boolean
+    parent_id?: boolean
+    page_type_id?: boolean
+    thumbnail_id?: boolean
+    author_id?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
+    parent?: boolean | Page$parentArgs<ExtArgs>
+    page_type?: boolean | Page$page_typeArgs<ExtArgs>
+    thumbnail?: boolean | Page$thumbnailArgs<ExtArgs>
+    author?: boolean | Page$authorArgs<ExtArgs>
+  }, ExtArgs["result"]["page"]>
+
+  export type PageSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    slug?: boolean
+    title?: boolean
+    content?: boolean
+    excerpt?: boolean
+    status?: boolean
+    locale?: boolean
+    parent_id?: boolean
+    page_type_id?: boolean
+    thumbnail_id?: boolean
+    author_id?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
+    parent?: boolean | Page$parentArgs<ExtArgs>
+    page_type?: boolean | Page$page_typeArgs<ExtArgs>
+    thumbnail?: boolean | Page$thumbnailArgs<ExtArgs>
+    author?: boolean | Page$authorArgs<ExtArgs>
+  }, ExtArgs["result"]["page"]>
+
+  export type PageSelectScalar = {
+    id?: boolean
+    slug?: boolean
+    title?: boolean
+    content?: boolean
+    excerpt?: boolean
+    status?: boolean
+    locale?: boolean
+    parent_id?: boolean
+    page_type_id?: boolean
+    thumbnail_id?: boolean
+    author_id?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
+  }
+
+  export type PageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "slug" | "title" | "content" | "excerpt" | "status" | "locale" | "parent_id" | "page_type_id" | "thumbnail_id" | "author_id" | "created_at" | "updated_at" | "deleted_at", ExtArgs["result"]["page"]>
+  export type PageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    parent?: boolean | Page$parentArgs<ExtArgs>
+    children?: boolean | Page$childrenArgs<ExtArgs>
+    page_type?: boolean | Page$page_typeArgs<ExtArgs>
+    thumbnail?: boolean | Page$thumbnailArgs<ExtArgs>
+    author?: boolean | Page$authorArgs<ExtArgs>
+    seo?: boolean | Page$seoArgs<ExtArgs>
+    schema?: boolean | Page$schemaArgs<ExtArgs>
+    _count?: boolean | PageCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type PageIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    parent?: boolean | Page$parentArgs<ExtArgs>
+    page_type?: boolean | Page$page_typeArgs<ExtArgs>
+    thumbnail?: boolean | Page$thumbnailArgs<ExtArgs>
+    author?: boolean | Page$authorArgs<ExtArgs>
+  }
+  export type PageIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    parent?: boolean | Page$parentArgs<ExtArgs>
+    page_type?: boolean | Page$page_typeArgs<ExtArgs>
+    thumbnail?: boolean | Page$thumbnailArgs<ExtArgs>
+    author?: boolean | Page$authorArgs<ExtArgs>
+  }
+
+  export type $PagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Page"
+    objects: {
+      parent: Prisma.$PagePayload<ExtArgs> | null
+      children: Prisma.$PagePayload<ExtArgs>[]
+      page_type: Prisma.$PageTypePayload<ExtArgs> | null
+      thumbnail: Prisma.$ResourcePayload<ExtArgs> | null
+      author: Prisma.$UserPayload<ExtArgs> | null
+      seo: Prisma.$PageSeoPayload<ExtArgs> | null
+      schema: Prisma.$PageSchemaPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      slug: string
+      title: string
+      content: Prisma.JsonValue
+      excerpt: string | null
+      status: string
+      locale: string
+      parent_id: string | null
+      page_type_id: string | null
+      thumbnail_id: string | null
+      author_id: string | null
+      created_at: Date
+      updated_at: Date
+      deleted_at: Date | null
+    }, ExtArgs["result"]["page"]>
+    composites: {}
+  }
+
+  type PageGetPayload<S extends boolean | null | undefined | PageDefaultArgs> = $Result.GetResult<Prisma.$PagePayload, S>
+
+  type PageCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PageFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PageCountAggregateInputType | true
+    }
+
+  export interface PageDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Page'], meta: { name: 'Page' } }
+    /**
+     * Find zero or one Page that matches the filter.
+     * @param {PageFindUniqueArgs} args - Arguments to find a Page
+     * @example
+     * // Get one Page
+     * const page = await prisma.page.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PageFindUniqueArgs>(args: SelectSubset<T, PageFindUniqueArgs<ExtArgs>>): Prisma__PageClient<$Result.GetResult<Prisma.$PagePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Page that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {PageFindUniqueOrThrowArgs} args - Arguments to find a Page
+     * @example
+     * // Get one Page
+     * const page = await prisma.page.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PageFindUniqueOrThrowArgs>(args: SelectSubset<T, PageFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PageClient<$Result.GetResult<Prisma.$PagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Page that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PageFindFirstArgs} args - Arguments to find a Page
+     * @example
+     * // Get one Page
+     * const page = await prisma.page.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PageFindFirstArgs>(args?: SelectSubset<T, PageFindFirstArgs<ExtArgs>>): Prisma__PageClient<$Result.GetResult<Prisma.$PagePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Page that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PageFindFirstOrThrowArgs} args - Arguments to find a Page
+     * @example
+     * // Get one Page
+     * const page = await prisma.page.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PageFindFirstOrThrowArgs>(args?: SelectSubset<T, PageFindFirstOrThrowArgs<ExtArgs>>): Prisma__PageClient<$Result.GetResult<Prisma.$PagePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Pages that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PageFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Pages
+     * const pages = await prisma.page.findMany()
+     * 
+     * // Get first 10 Pages
+     * const pages = await prisma.page.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const pageWithIdOnly = await prisma.page.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends PageFindManyArgs>(args?: SelectSubset<T, PageFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Page.
+     * @param {PageCreateArgs} args - Arguments to create a Page.
+     * @example
+     * // Create one Page
+     * const Page = await prisma.page.create({
+     *   data: {
+     *     // ... data to create a Page
+     *   }
+     * })
+     * 
+     */
+    create<T extends PageCreateArgs>(args: SelectSubset<T, PageCreateArgs<ExtArgs>>): Prisma__PageClient<$Result.GetResult<Prisma.$PagePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Pages.
+     * @param {PageCreateManyArgs} args - Arguments to create many Pages.
+     * @example
+     * // Create many Pages
+     * const page = await prisma.page.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends PageCreateManyArgs>(args?: SelectSubset<T, PageCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Pages and returns the data saved in the database.
+     * @param {PageCreateManyAndReturnArgs} args - Arguments to create many Pages.
+     * @example
+     * // Create many Pages
+     * const page = await prisma.page.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Pages and only return the `id`
+     * const pageWithIdOnly = await prisma.page.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends PageCreateManyAndReturnArgs>(args?: SelectSubset<T, PageCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PagePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Page.
+     * @param {PageDeleteArgs} args - Arguments to delete one Page.
+     * @example
+     * // Delete one Page
+     * const Page = await prisma.page.delete({
+     *   where: {
+     *     // ... filter to delete one Page
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PageDeleteArgs>(args: SelectSubset<T, PageDeleteArgs<ExtArgs>>): Prisma__PageClient<$Result.GetResult<Prisma.$PagePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Page.
+     * @param {PageUpdateArgs} args - Arguments to update one Page.
+     * @example
+     * // Update one Page
+     * const page = await prisma.page.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends PageUpdateArgs>(args: SelectSubset<T, PageUpdateArgs<ExtArgs>>): Prisma__PageClient<$Result.GetResult<Prisma.$PagePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Pages.
+     * @param {PageDeleteManyArgs} args - Arguments to filter Pages to delete.
+     * @example
+     * // Delete a few Pages
+     * const { count } = await prisma.page.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PageDeleteManyArgs>(args?: SelectSubset<T, PageDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Pages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PageUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Pages
+     * const page = await prisma.page.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PageUpdateManyArgs>(args: SelectSubset<T, PageUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Pages and returns the data updated in the database.
+     * @param {PageUpdateManyAndReturnArgs} args - Arguments to update many Pages.
+     * @example
+     * // Update many Pages
+     * const page = await prisma.page.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Pages and only return the `id`
+     * const pageWithIdOnly = await prisma.page.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends PageUpdateManyAndReturnArgs>(args: SelectSubset<T, PageUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PagePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Page.
+     * @param {PageUpsertArgs} args - Arguments to update or create a Page.
+     * @example
+     * // Update or create a Page
+     * const page = await prisma.page.upsert({
+     *   create: {
+     *     // ... data to create a Page
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Page we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PageUpsertArgs>(args: SelectSubset<T, PageUpsertArgs<ExtArgs>>): Prisma__PageClient<$Result.GetResult<Prisma.$PagePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Pages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PageCountArgs} args - Arguments to filter Pages to count.
+     * @example
+     * // Count the number of Pages
+     * const count = await prisma.page.count({
+     *   where: {
+     *     // ... the filter for the Pages we want to count
+     *   }
+     * })
+    **/
+    count<T extends PageCountArgs>(
+      args?: Subset<T, PageCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PageCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Page.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PageAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PageAggregateArgs>(args: Subset<T, PageAggregateArgs>): Prisma.PrismaPromise<GetPageAggregateType<T>>
+
+    /**
+     * Group by Page.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PageGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PageGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PageGroupByArgs['orderBy'] }
+        : { orderBy?: PageGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PageGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPageGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Page model
+   */
+  readonly fields: PageFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Page.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    parent<T extends Page$parentArgs<ExtArgs> = {}>(args?: Subset<T, Page$parentArgs<ExtArgs>>): Prisma__PageClient<$Result.GetResult<Prisma.$PagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    children<T extends Page$childrenArgs<ExtArgs> = {}>(args?: Subset<T, Page$childrenArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    page_type<T extends Page$page_typeArgs<ExtArgs> = {}>(args?: Subset<T, Page$page_typeArgs<ExtArgs>>): Prisma__PageTypeClient<$Result.GetResult<Prisma.$PageTypePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    thumbnail<T extends Page$thumbnailArgs<ExtArgs> = {}>(args?: Subset<T, Page$thumbnailArgs<ExtArgs>>): Prisma__ResourceClient<$Result.GetResult<Prisma.$ResourcePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    author<T extends Page$authorArgs<ExtArgs> = {}>(args?: Subset<T, Page$authorArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    seo<T extends Page$seoArgs<ExtArgs> = {}>(args?: Subset<T, Page$seoArgs<ExtArgs>>): Prisma__PageSeoClient<$Result.GetResult<Prisma.$PageSeoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    schema<T extends Page$schemaArgs<ExtArgs> = {}>(args?: Subset<T, Page$schemaArgs<ExtArgs>>): Prisma__PageSchemaClient<$Result.GetResult<Prisma.$PageSchemaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Page model
+   */
+  interface PageFieldRefs {
+    readonly id: FieldRef<"Page", 'String'>
+    readonly slug: FieldRef<"Page", 'String'>
+    readonly title: FieldRef<"Page", 'String'>
+    readonly content: FieldRef<"Page", 'Json'>
+    readonly excerpt: FieldRef<"Page", 'String'>
+    readonly status: FieldRef<"Page", 'String'>
+    readonly locale: FieldRef<"Page", 'String'>
+    readonly parent_id: FieldRef<"Page", 'String'>
+    readonly page_type_id: FieldRef<"Page", 'String'>
+    readonly thumbnail_id: FieldRef<"Page", 'String'>
+    readonly author_id: FieldRef<"Page", 'String'>
+    readonly created_at: FieldRef<"Page", 'DateTime'>
+    readonly updated_at: FieldRef<"Page", 'DateTime'>
+    readonly deleted_at: FieldRef<"Page", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Page findUnique
+   */
+  export type PageFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Page
+     */
+    select?: PageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Page
+     */
+    omit?: PageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageInclude<ExtArgs> | null
+    /**
+     * Filter, which Page to fetch.
+     */
+    where: PageWhereUniqueInput
+  }
+
+  /**
+   * Page findUniqueOrThrow
+   */
+  export type PageFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Page
+     */
+    select?: PageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Page
+     */
+    omit?: PageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageInclude<ExtArgs> | null
+    /**
+     * Filter, which Page to fetch.
+     */
+    where: PageWhereUniqueInput
+  }
+
+  /**
+   * Page findFirst
+   */
+  export type PageFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Page
+     */
+    select?: PageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Page
+     */
+    omit?: PageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageInclude<ExtArgs> | null
+    /**
+     * Filter, which Page to fetch.
+     */
+    where?: PageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Pages to fetch.
+     */
+    orderBy?: PageOrderByWithRelationInput | PageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Pages.
+     */
+    cursor?: PageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Pages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Pages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Pages.
+     */
+    distinct?: PageScalarFieldEnum | PageScalarFieldEnum[]
+  }
+
+  /**
+   * Page findFirstOrThrow
+   */
+  export type PageFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Page
+     */
+    select?: PageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Page
+     */
+    omit?: PageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageInclude<ExtArgs> | null
+    /**
+     * Filter, which Page to fetch.
+     */
+    where?: PageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Pages to fetch.
+     */
+    orderBy?: PageOrderByWithRelationInput | PageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Pages.
+     */
+    cursor?: PageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Pages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Pages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Pages.
+     */
+    distinct?: PageScalarFieldEnum | PageScalarFieldEnum[]
+  }
+
+  /**
+   * Page findMany
+   */
+  export type PageFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Page
+     */
+    select?: PageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Page
+     */
+    omit?: PageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageInclude<ExtArgs> | null
+    /**
+     * Filter, which Pages to fetch.
+     */
+    where?: PageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Pages to fetch.
+     */
+    orderBy?: PageOrderByWithRelationInput | PageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Pages.
+     */
+    cursor?: PageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Pages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Pages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Pages.
+     */
+    distinct?: PageScalarFieldEnum | PageScalarFieldEnum[]
+  }
+
+  /**
+   * Page create
+   */
+  export type PageCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Page
+     */
+    select?: PageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Page
+     */
+    omit?: PageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Page.
+     */
+    data: XOR<PageCreateInput, PageUncheckedCreateInput>
+  }
+
+  /**
+   * Page createMany
+   */
+  export type PageCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Pages.
+     */
+    data: PageCreateManyInput | PageCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Page createManyAndReturn
+   */
+  export type PageCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Page
+     */
+    select?: PageSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Page
+     */
+    omit?: PageOmit<ExtArgs> | null
+    /**
+     * The data used to create many Pages.
+     */
+    data: PageCreateManyInput | PageCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Page update
+   */
+  export type PageUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Page
+     */
+    select?: PageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Page
+     */
+    omit?: PageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Page.
+     */
+    data: XOR<PageUpdateInput, PageUncheckedUpdateInput>
+    /**
+     * Choose, which Page to update.
+     */
+    where: PageWhereUniqueInput
+  }
+
+  /**
+   * Page updateMany
+   */
+  export type PageUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Pages.
+     */
+    data: XOR<PageUpdateManyMutationInput, PageUncheckedUpdateManyInput>
+    /**
+     * Filter which Pages to update
+     */
+    where?: PageWhereInput
+    /**
+     * Limit how many Pages to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Page updateManyAndReturn
+   */
+  export type PageUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Page
+     */
+    select?: PageSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Page
+     */
+    omit?: PageOmit<ExtArgs> | null
+    /**
+     * The data used to update Pages.
+     */
+    data: XOR<PageUpdateManyMutationInput, PageUncheckedUpdateManyInput>
+    /**
+     * Filter which Pages to update
+     */
+    where?: PageWhereInput
+    /**
+     * Limit how many Pages to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Page upsert
+   */
+  export type PageUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Page
+     */
+    select?: PageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Page
+     */
+    omit?: PageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Page to update in case it exists.
+     */
+    where: PageWhereUniqueInput
+    /**
+     * In case the Page found by the `where` argument doesn't exist, create a new Page with this data.
+     */
+    create: XOR<PageCreateInput, PageUncheckedCreateInput>
+    /**
+     * In case the Page was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PageUpdateInput, PageUncheckedUpdateInput>
+  }
+
+  /**
+   * Page delete
+   */
+  export type PageDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Page
+     */
+    select?: PageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Page
+     */
+    omit?: PageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageInclude<ExtArgs> | null
+    /**
+     * Filter which Page to delete.
+     */
+    where: PageWhereUniqueInput
+  }
+
+  /**
+   * Page deleteMany
+   */
+  export type PageDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Pages to delete
+     */
+    where?: PageWhereInput
+    /**
+     * Limit how many Pages to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Page.parent
+   */
+  export type Page$parentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Page
+     */
+    select?: PageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Page
+     */
+    omit?: PageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageInclude<ExtArgs> | null
+    where?: PageWhereInput
+  }
+
+  /**
+   * Page.children
+   */
+  export type Page$childrenArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Page
+     */
+    select?: PageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Page
+     */
+    omit?: PageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageInclude<ExtArgs> | null
+    where?: PageWhereInput
+    orderBy?: PageOrderByWithRelationInput | PageOrderByWithRelationInput[]
+    cursor?: PageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PageScalarFieldEnum | PageScalarFieldEnum[]
+  }
+
+  /**
+   * Page.page_type
+   */
+  export type Page$page_typeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageType
+     */
+    select?: PageTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageType
+     */
+    omit?: PageTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageTypeInclude<ExtArgs> | null
+    where?: PageTypeWhereInput
+  }
+
+  /**
+   * Page.thumbnail
+   */
+  export type Page$thumbnailArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Resource
+     */
+    select?: ResourceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Resource
+     */
+    omit?: ResourceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ResourceInclude<ExtArgs> | null
+    where?: ResourceWhereInput
+  }
+
+  /**
+   * Page.author
+   */
+  export type Page$authorArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
+  }
+
+  /**
+   * Page.seo
+   */
+  export type Page$seoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageSeo
+     */
+    select?: PageSeoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageSeo
+     */
+    omit?: PageSeoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageSeoInclude<ExtArgs> | null
+    where?: PageSeoWhereInput
+  }
+
+  /**
+   * Page.schema
+   */
+  export type Page$schemaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageSchema
+     */
+    select?: PageSchemaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageSchema
+     */
+    omit?: PageSchemaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageSchemaInclude<ExtArgs> | null
+    where?: PageSchemaWhereInput
+  }
+
+  /**
+   * Page without action
+   */
+  export type PageDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Page
+     */
+    select?: PageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Page
+     */
+    omit?: PageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model PageSeo
+   */
+
+  export type AggregatePageSeo = {
+    _count: PageSeoCountAggregateOutputType | null
+    _min: PageSeoMinAggregateOutputType | null
+    _max: PageSeoMaxAggregateOutputType | null
+  }
+
+  export type PageSeoMinAggregateOutputType = {
+    id: string | null
+    page_id: string | null
+    meta_title: string | null
+    meta_description: string | null
+    meta_keywords: string | null
+    og_title: string | null
+    og_description: string | null
+    og_image_id: string | null
+    canonical_url: string | null
+    robots: string | null
+    created_at: Date | null
+    updated_at: Date | null
+  }
+
+  export type PageSeoMaxAggregateOutputType = {
+    id: string | null
+    page_id: string | null
+    meta_title: string | null
+    meta_description: string | null
+    meta_keywords: string | null
+    og_title: string | null
+    og_description: string | null
+    og_image_id: string | null
+    canonical_url: string | null
+    robots: string | null
+    created_at: Date | null
+    updated_at: Date | null
+  }
+
+  export type PageSeoCountAggregateOutputType = {
+    id: number
+    page_id: number
+    meta_title: number
+    meta_description: number
+    meta_keywords: number
+    og_title: number
+    og_description: number
+    og_image_id: number
+    canonical_url: number
+    robots: number
+    created_at: number
+    updated_at: number
+    _all: number
+  }
+
+
+  export type PageSeoMinAggregateInputType = {
+    id?: true
+    page_id?: true
+    meta_title?: true
+    meta_description?: true
+    meta_keywords?: true
+    og_title?: true
+    og_description?: true
+    og_image_id?: true
+    canonical_url?: true
+    robots?: true
+    created_at?: true
+    updated_at?: true
+  }
+
+  export type PageSeoMaxAggregateInputType = {
+    id?: true
+    page_id?: true
+    meta_title?: true
+    meta_description?: true
+    meta_keywords?: true
+    og_title?: true
+    og_description?: true
+    og_image_id?: true
+    canonical_url?: true
+    robots?: true
+    created_at?: true
+    updated_at?: true
+  }
+
+  export type PageSeoCountAggregateInputType = {
+    id?: true
+    page_id?: true
+    meta_title?: true
+    meta_description?: true
+    meta_keywords?: true
+    og_title?: true
+    og_description?: true
+    og_image_id?: true
+    canonical_url?: true
+    robots?: true
+    created_at?: true
+    updated_at?: true
+    _all?: true
+  }
+
+  export type PageSeoAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PageSeo to aggregate.
+     */
+    where?: PageSeoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PageSeos to fetch.
+     */
+    orderBy?: PageSeoOrderByWithRelationInput | PageSeoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PageSeoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PageSeos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PageSeos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned PageSeos
+    **/
+    _count?: true | PageSeoCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PageSeoMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PageSeoMaxAggregateInputType
+  }
+
+  export type GetPageSeoAggregateType<T extends PageSeoAggregateArgs> = {
+        [P in keyof T & keyof AggregatePageSeo]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePageSeo[P]>
+      : GetScalarType<T[P], AggregatePageSeo[P]>
+  }
+
+
+
+
+  export type PageSeoGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PageSeoWhereInput
+    orderBy?: PageSeoOrderByWithAggregationInput | PageSeoOrderByWithAggregationInput[]
+    by: PageSeoScalarFieldEnum[] | PageSeoScalarFieldEnum
+    having?: PageSeoScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PageSeoCountAggregateInputType | true
+    _min?: PageSeoMinAggregateInputType
+    _max?: PageSeoMaxAggregateInputType
+  }
+
+  export type PageSeoGroupByOutputType = {
+    id: string
+    page_id: string
+    meta_title: string | null
+    meta_description: string | null
+    meta_keywords: string | null
+    og_title: string | null
+    og_description: string | null
+    og_image_id: string | null
+    canonical_url: string | null
+    robots: string | null
+    created_at: Date
+    updated_at: Date
+    _count: PageSeoCountAggregateOutputType | null
+    _min: PageSeoMinAggregateOutputType | null
+    _max: PageSeoMaxAggregateOutputType | null
+  }
+
+  type GetPageSeoGroupByPayload<T extends PageSeoGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PageSeoGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PageSeoGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PageSeoGroupByOutputType[P]>
+            : GetScalarType<T[P], PageSeoGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PageSeoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    page_id?: boolean
+    meta_title?: boolean
+    meta_description?: boolean
+    meta_keywords?: boolean
+    og_title?: boolean
+    og_description?: boolean
+    og_image_id?: boolean
+    canonical_url?: boolean
+    robots?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    page?: boolean | PageDefaultArgs<ExtArgs>
+    og_image?: boolean | PageSeo$og_imageArgs<ExtArgs>
+  }, ExtArgs["result"]["pageSeo"]>
+
+  export type PageSeoSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    page_id?: boolean
+    meta_title?: boolean
+    meta_description?: boolean
+    meta_keywords?: boolean
+    og_title?: boolean
+    og_description?: boolean
+    og_image_id?: boolean
+    canonical_url?: boolean
+    robots?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    page?: boolean | PageDefaultArgs<ExtArgs>
+    og_image?: boolean | PageSeo$og_imageArgs<ExtArgs>
+  }, ExtArgs["result"]["pageSeo"]>
+
+  export type PageSeoSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    page_id?: boolean
+    meta_title?: boolean
+    meta_description?: boolean
+    meta_keywords?: boolean
+    og_title?: boolean
+    og_description?: boolean
+    og_image_id?: boolean
+    canonical_url?: boolean
+    robots?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    page?: boolean | PageDefaultArgs<ExtArgs>
+    og_image?: boolean | PageSeo$og_imageArgs<ExtArgs>
+  }, ExtArgs["result"]["pageSeo"]>
+
+  export type PageSeoSelectScalar = {
+    id?: boolean
+    page_id?: boolean
+    meta_title?: boolean
+    meta_description?: boolean
+    meta_keywords?: boolean
+    og_title?: boolean
+    og_description?: boolean
+    og_image_id?: boolean
+    canonical_url?: boolean
+    robots?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+  }
+
+  export type PageSeoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "page_id" | "meta_title" | "meta_description" | "meta_keywords" | "og_title" | "og_description" | "og_image_id" | "canonical_url" | "robots" | "created_at" | "updated_at", ExtArgs["result"]["pageSeo"]>
+  export type PageSeoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    page?: boolean | PageDefaultArgs<ExtArgs>
+    og_image?: boolean | PageSeo$og_imageArgs<ExtArgs>
+  }
+  export type PageSeoIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    page?: boolean | PageDefaultArgs<ExtArgs>
+    og_image?: boolean | PageSeo$og_imageArgs<ExtArgs>
+  }
+  export type PageSeoIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    page?: boolean | PageDefaultArgs<ExtArgs>
+    og_image?: boolean | PageSeo$og_imageArgs<ExtArgs>
+  }
+
+  export type $PageSeoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "PageSeo"
+    objects: {
+      page: Prisma.$PagePayload<ExtArgs>
+      og_image: Prisma.$ResourcePayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      page_id: string
+      meta_title: string | null
+      meta_description: string | null
+      meta_keywords: string | null
+      og_title: string | null
+      og_description: string | null
+      og_image_id: string | null
+      canonical_url: string | null
+      robots: string | null
+      created_at: Date
+      updated_at: Date
+    }, ExtArgs["result"]["pageSeo"]>
+    composites: {}
+  }
+
+  type PageSeoGetPayload<S extends boolean | null | undefined | PageSeoDefaultArgs> = $Result.GetResult<Prisma.$PageSeoPayload, S>
+
+  type PageSeoCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PageSeoFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PageSeoCountAggregateInputType | true
+    }
+
+  export interface PageSeoDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['PageSeo'], meta: { name: 'PageSeo' } }
+    /**
+     * Find zero or one PageSeo that matches the filter.
+     * @param {PageSeoFindUniqueArgs} args - Arguments to find a PageSeo
+     * @example
+     * // Get one PageSeo
+     * const pageSeo = await prisma.pageSeo.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PageSeoFindUniqueArgs>(args: SelectSubset<T, PageSeoFindUniqueArgs<ExtArgs>>): Prisma__PageSeoClient<$Result.GetResult<Prisma.$PageSeoPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one PageSeo that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {PageSeoFindUniqueOrThrowArgs} args - Arguments to find a PageSeo
+     * @example
+     * // Get one PageSeo
+     * const pageSeo = await prisma.pageSeo.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PageSeoFindUniqueOrThrowArgs>(args: SelectSubset<T, PageSeoFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PageSeoClient<$Result.GetResult<Prisma.$PageSeoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PageSeo that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PageSeoFindFirstArgs} args - Arguments to find a PageSeo
+     * @example
+     * // Get one PageSeo
+     * const pageSeo = await prisma.pageSeo.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PageSeoFindFirstArgs>(args?: SelectSubset<T, PageSeoFindFirstArgs<ExtArgs>>): Prisma__PageSeoClient<$Result.GetResult<Prisma.$PageSeoPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PageSeo that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PageSeoFindFirstOrThrowArgs} args - Arguments to find a PageSeo
+     * @example
+     * // Get one PageSeo
+     * const pageSeo = await prisma.pageSeo.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PageSeoFindFirstOrThrowArgs>(args?: SelectSubset<T, PageSeoFindFirstOrThrowArgs<ExtArgs>>): Prisma__PageSeoClient<$Result.GetResult<Prisma.$PageSeoPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more PageSeos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PageSeoFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all PageSeos
+     * const pageSeos = await prisma.pageSeo.findMany()
+     * 
+     * // Get first 10 PageSeos
+     * const pageSeos = await prisma.pageSeo.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const pageSeoWithIdOnly = await prisma.pageSeo.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends PageSeoFindManyArgs>(args?: SelectSubset<T, PageSeoFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PageSeoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a PageSeo.
+     * @param {PageSeoCreateArgs} args - Arguments to create a PageSeo.
+     * @example
+     * // Create one PageSeo
+     * const PageSeo = await prisma.pageSeo.create({
+     *   data: {
+     *     // ... data to create a PageSeo
+     *   }
+     * })
+     * 
+     */
+    create<T extends PageSeoCreateArgs>(args: SelectSubset<T, PageSeoCreateArgs<ExtArgs>>): Prisma__PageSeoClient<$Result.GetResult<Prisma.$PageSeoPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many PageSeos.
+     * @param {PageSeoCreateManyArgs} args - Arguments to create many PageSeos.
+     * @example
+     * // Create many PageSeos
+     * const pageSeo = await prisma.pageSeo.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends PageSeoCreateManyArgs>(args?: SelectSubset<T, PageSeoCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many PageSeos and returns the data saved in the database.
+     * @param {PageSeoCreateManyAndReturnArgs} args - Arguments to create many PageSeos.
+     * @example
+     * // Create many PageSeos
+     * const pageSeo = await prisma.pageSeo.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many PageSeos and only return the `id`
+     * const pageSeoWithIdOnly = await prisma.pageSeo.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends PageSeoCreateManyAndReturnArgs>(args?: SelectSubset<T, PageSeoCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PageSeoPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a PageSeo.
+     * @param {PageSeoDeleteArgs} args - Arguments to delete one PageSeo.
+     * @example
+     * // Delete one PageSeo
+     * const PageSeo = await prisma.pageSeo.delete({
+     *   where: {
+     *     // ... filter to delete one PageSeo
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PageSeoDeleteArgs>(args: SelectSubset<T, PageSeoDeleteArgs<ExtArgs>>): Prisma__PageSeoClient<$Result.GetResult<Prisma.$PageSeoPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one PageSeo.
+     * @param {PageSeoUpdateArgs} args - Arguments to update one PageSeo.
+     * @example
+     * // Update one PageSeo
+     * const pageSeo = await prisma.pageSeo.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends PageSeoUpdateArgs>(args: SelectSubset<T, PageSeoUpdateArgs<ExtArgs>>): Prisma__PageSeoClient<$Result.GetResult<Prisma.$PageSeoPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more PageSeos.
+     * @param {PageSeoDeleteManyArgs} args - Arguments to filter PageSeos to delete.
+     * @example
+     * // Delete a few PageSeos
+     * const { count } = await prisma.pageSeo.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PageSeoDeleteManyArgs>(args?: SelectSubset<T, PageSeoDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PageSeos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PageSeoUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many PageSeos
+     * const pageSeo = await prisma.pageSeo.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PageSeoUpdateManyArgs>(args: SelectSubset<T, PageSeoUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PageSeos and returns the data updated in the database.
+     * @param {PageSeoUpdateManyAndReturnArgs} args - Arguments to update many PageSeos.
+     * @example
+     * // Update many PageSeos
+     * const pageSeo = await prisma.pageSeo.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more PageSeos and only return the `id`
+     * const pageSeoWithIdOnly = await prisma.pageSeo.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends PageSeoUpdateManyAndReturnArgs>(args: SelectSubset<T, PageSeoUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PageSeoPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one PageSeo.
+     * @param {PageSeoUpsertArgs} args - Arguments to update or create a PageSeo.
+     * @example
+     * // Update or create a PageSeo
+     * const pageSeo = await prisma.pageSeo.upsert({
+     *   create: {
+     *     // ... data to create a PageSeo
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the PageSeo we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PageSeoUpsertArgs>(args: SelectSubset<T, PageSeoUpsertArgs<ExtArgs>>): Prisma__PageSeoClient<$Result.GetResult<Prisma.$PageSeoPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of PageSeos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PageSeoCountArgs} args - Arguments to filter PageSeos to count.
+     * @example
+     * // Count the number of PageSeos
+     * const count = await prisma.pageSeo.count({
+     *   where: {
+     *     // ... the filter for the PageSeos we want to count
+     *   }
+     * })
+    **/
+    count<T extends PageSeoCountArgs>(
+      args?: Subset<T, PageSeoCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PageSeoCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a PageSeo.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PageSeoAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PageSeoAggregateArgs>(args: Subset<T, PageSeoAggregateArgs>): Prisma.PrismaPromise<GetPageSeoAggregateType<T>>
+
+    /**
+     * Group by PageSeo.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PageSeoGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PageSeoGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PageSeoGroupByArgs['orderBy'] }
+        : { orderBy?: PageSeoGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PageSeoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPageSeoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the PageSeo model
+   */
+  readonly fields: PageSeoFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for PageSeo.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PageSeoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    page<T extends PageDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PageDefaultArgs<ExtArgs>>): Prisma__PageClient<$Result.GetResult<Prisma.$PagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    og_image<T extends PageSeo$og_imageArgs<ExtArgs> = {}>(args?: Subset<T, PageSeo$og_imageArgs<ExtArgs>>): Prisma__ResourceClient<$Result.GetResult<Prisma.$ResourcePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the PageSeo model
+   */
+  interface PageSeoFieldRefs {
+    readonly id: FieldRef<"PageSeo", 'String'>
+    readonly page_id: FieldRef<"PageSeo", 'String'>
+    readonly meta_title: FieldRef<"PageSeo", 'String'>
+    readonly meta_description: FieldRef<"PageSeo", 'String'>
+    readonly meta_keywords: FieldRef<"PageSeo", 'String'>
+    readonly og_title: FieldRef<"PageSeo", 'String'>
+    readonly og_description: FieldRef<"PageSeo", 'String'>
+    readonly og_image_id: FieldRef<"PageSeo", 'String'>
+    readonly canonical_url: FieldRef<"PageSeo", 'String'>
+    readonly robots: FieldRef<"PageSeo", 'String'>
+    readonly created_at: FieldRef<"PageSeo", 'DateTime'>
+    readonly updated_at: FieldRef<"PageSeo", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * PageSeo findUnique
+   */
+  export type PageSeoFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageSeo
+     */
+    select?: PageSeoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageSeo
+     */
+    omit?: PageSeoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageSeoInclude<ExtArgs> | null
+    /**
+     * Filter, which PageSeo to fetch.
+     */
+    where: PageSeoWhereUniqueInput
+  }
+
+  /**
+   * PageSeo findUniqueOrThrow
+   */
+  export type PageSeoFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageSeo
+     */
+    select?: PageSeoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageSeo
+     */
+    omit?: PageSeoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageSeoInclude<ExtArgs> | null
+    /**
+     * Filter, which PageSeo to fetch.
+     */
+    where: PageSeoWhereUniqueInput
+  }
+
+  /**
+   * PageSeo findFirst
+   */
+  export type PageSeoFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageSeo
+     */
+    select?: PageSeoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageSeo
+     */
+    omit?: PageSeoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageSeoInclude<ExtArgs> | null
+    /**
+     * Filter, which PageSeo to fetch.
+     */
+    where?: PageSeoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PageSeos to fetch.
+     */
+    orderBy?: PageSeoOrderByWithRelationInput | PageSeoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PageSeos.
+     */
+    cursor?: PageSeoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PageSeos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PageSeos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PageSeos.
+     */
+    distinct?: PageSeoScalarFieldEnum | PageSeoScalarFieldEnum[]
+  }
+
+  /**
+   * PageSeo findFirstOrThrow
+   */
+  export type PageSeoFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageSeo
+     */
+    select?: PageSeoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageSeo
+     */
+    omit?: PageSeoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageSeoInclude<ExtArgs> | null
+    /**
+     * Filter, which PageSeo to fetch.
+     */
+    where?: PageSeoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PageSeos to fetch.
+     */
+    orderBy?: PageSeoOrderByWithRelationInput | PageSeoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PageSeos.
+     */
+    cursor?: PageSeoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PageSeos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PageSeos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PageSeos.
+     */
+    distinct?: PageSeoScalarFieldEnum | PageSeoScalarFieldEnum[]
+  }
+
+  /**
+   * PageSeo findMany
+   */
+  export type PageSeoFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageSeo
+     */
+    select?: PageSeoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageSeo
+     */
+    omit?: PageSeoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageSeoInclude<ExtArgs> | null
+    /**
+     * Filter, which PageSeos to fetch.
+     */
+    where?: PageSeoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PageSeos to fetch.
+     */
+    orderBy?: PageSeoOrderByWithRelationInput | PageSeoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing PageSeos.
+     */
+    cursor?: PageSeoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PageSeos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PageSeos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PageSeos.
+     */
+    distinct?: PageSeoScalarFieldEnum | PageSeoScalarFieldEnum[]
+  }
+
+  /**
+   * PageSeo create
+   */
+  export type PageSeoCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageSeo
+     */
+    select?: PageSeoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageSeo
+     */
+    omit?: PageSeoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageSeoInclude<ExtArgs> | null
+    /**
+     * The data needed to create a PageSeo.
+     */
+    data: XOR<PageSeoCreateInput, PageSeoUncheckedCreateInput>
+  }
+
+  /**
+   * PageSeo createMany
+   */
+  export type PageSeoCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many PageSeos.
+     */
+    data: PageSeoCreateManyInput | PageSeoCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * PageSeo createManyAndReturn
+   */
+  export type PageSeoCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageSeo
+     */
+    select?: PageSeoSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageSeo
+     */
+    omit?: PageSeoOmit<ExtArgs> | null
+    /**
+     * The data used to create many PageSeos.
+     */
+    data: PageSeoCreateManyInput | PageSeoCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageSeoIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * PageSeo update
+   */
+  export type PageSeoUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageSeo
+     */
+    select?: PageSeoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageSeo
+     */
+    omit?: PageSeoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageSeoInclude<ExtArgs> | null
+    /**
+     * The data needed to update a PageSeo.
+     */
+    data: XOR<PageSeoUpdateInput, PageSeoUncheckedUpdateInput>
+    /**
+     * Choose, which PageSeo to update.
+     */
+    where: PageSeoWhereUniqueInput
+  }
+
+  /**
+   * PageSeo updateMany
+   */
+  export type PageSeoUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update PageSeos.
+     */
+    data: XOR<PageSeoUpdateManyMutationInput, PageSeoUncheckedUpdateManyInput>
+    /**
+     * Filter which PageSeos to update
+     */
+    where?: PageSeoWhereInput
+    /**
+     * Limit how many PageSeos to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * PageSeo updateManyAndReturn
+   */
+  export type PageSeoUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageSeo
+     */
+    select?: PageSeoSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageSeo
+     */
+    omit?: PageSeoOmit<ExtArgs> | null
+    /**
+     * The data used to update PageSeos.
+     */
+    data: XOR<PageSeoUpdateManyMutationInput, PageSeoUncheckedUpdateManyInput>
+    /**
+     * Filter which PageSeos to update
+     */
+    where?: PageSeoWhereInput
+    /**
+     * Limit how many PageSeos to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageSeoIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * PageSeo upsert
+   */
+  export type PageSeoUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageSeo
+     */
+    select?: PageSeoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageSeo
+     */
+    omit?: PageSeoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageSeoInclude<ExtArgs> | null
+    /**
+     * The filter to search for the PageSeo to update in case it exists.
+     */
+    where: PageSeoWhereUniqueInput
+    /**
+     * In case the PageSeo found by the `where` argument doesn't exist, create a new PageSeo with this data.
+     */
+    create: XOR<PageSeoCreateInput, PageSeoUncheckedCreateInput>
+    /**
+     * In case the PageSeo was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PageSeoUpdateInput, PageSeoUncheckedUpdateInput>
+  }
+
+  /**
+   * PageSeo delete
+   */
+  export type PageSeoDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageSeo
+     */
+    select?: PageSeoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageSeo
+     */
+    omit?: PageSeoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageSeoInclude<ExtArgs> | null
+    /**
+     * Filter which PageSeo to delete.
+     */
+    where: PageSeoWhereUniqueInput
+  }
+
+  /**
+   * PageSeo deleteMany
+   */
+  export type PageSeoDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PageSeos to delete
+     */
+    where?: PageSeoWhereInput
+    /**
+     * Limit how many PageSeos to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * PageSeo.og_image
+   */
+  export type PageSeo$og_imageArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Resource
+     */
+    select?: ResourceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Resource
+     */
+    omit?: ResourceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ResourceInclude<ExtArgs> | null
+    where?: ResourceWhereInput
+  }
+
+  /**
+   * PageSeo without action
+   */
+  export type PageSeoDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageSeo
+     */
+    select?: PageSeoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageSeo
+     */
+    omit?: PageSeoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageSeoInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model PageSchema
+   */
+
+  export type AggregatePageSchema = {
+    _count: PageSchemaCountAggregateOutputType | null
+    _min: PageSchemaMinAggregateOutputType | null
+    _max: PageSchemaMaxAggregateOutputType | null
+  }
+
+  export type PageSchemaMinAggregateOutputType = {
+    id: string | null
+    page_id: string | null
+    schema_type: string | null
+    created_at: Date | null
+    updated_at: Date | null
+  }
+
+  export type PageSchemaMaxAggregateOutputType = {
+    id: string | null
+    page_id: string | null
+    schema_type: string | null
+    created_at: Date | null
+    updated_at: Date | null
+  }
+
+  export type PageSchemaCountAggregateOutputType = {
+    id: number
+    page_id: number
+    schema_type: number
+    schema_data: number
+    created_at: number
+    updated_at: number
+    _all: number
+  }
+
+
+  export type PageSchemaMinAggregateInputType = {
+    id?: true
+    page_id?: true
+    schema_type?: true
+    created_at?: true
+    updated_at?: true
+  }
+
+  export type PageSchemaMaxAggregateInputType = {
+    id?: true
+    page_id?: true
+    schema_type?: true
+    created_at?: true
+    updated_at?: true
+  }
+
+  export type PageSchemaCountAggregateInputType = {
+    id?: true
+    page_id?: true
+    schema_type?: true
+    schema_data?: true
+    created_at?: true
+    updated_at?: true
+    _all?: true
+  }
+
+  export type PageSchemaAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PageSchema to aggregate.
+     */
+    where?: PageSchemaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PageSchemas to fetch.
+     */
+    orderBy?: PageSchemaOrderByWithRelationInput | PageSchemaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PageSchemaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PageSchemas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PageSchemas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned PageSchemas
+    **/
+    _count?: true | PageSchemaCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PageSchemaMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PageSchemaMaxAggregateInputType
+  }
+
+  export type GetPageSchemaAggregateType<T extends PageSchemaAggregateArgs> = {
+        [P in keyof T & keyof AggregatePageSchema]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePageSchema[P]>
+      : GetScalarType<T[P], AggregatePageSchema[P]>
+  }
+
+
+
+
+  export type PageSchemaGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PageSchemaWhereInput
+    orderBy?: PageSchemaOrderByWithAggregationInput | PageSchemaOrderByWithAggregationInput[]
+    by: PageSchemaScalarFieldEnum[] | PageSchemaScalarFieldEnum
+    having?: PageSchemaScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PageSchemaCountAggregateInputType | true
+    _min?: PageSchemaMinAggregateInputType
+    _max?: PageSchemaMaxAggregateInputType
+  }
+
+  export type PageSchemaGroupByOutputType = {
+    id: string
+    page_id: string
+    schema_type: string | null
+    schema_data: JsonValue | null
+    created_at: Date
+    updated_at: Date
+    _count: PageSchemaCountAggregateOutputType | null
+    _min: PageSchemaMinAggregateOutputType | null
+    _max: PageSchemaMaxAggregateOutputType | null
+  }
+
+  type GetPageSchemaGroupByPayload<T extends PageSchemaGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PageSchemaGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PageSchemaGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PageSchemaGroupByOutputType[P]>
+            : GetScalarType<T[P], PageSchemaGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PageSchemaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    page_id?: boolean
+    schema_type?: boolean
+    schema_data?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    page?: boolean | PageDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["pageSchema"]>
+
+  export type PageSchemaSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    page_id?: boolean
+    schema_type?: boolean
+    schema_data?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    page?: boolean | PageDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["pageSchema"]>
+
+  export type PageSchemaSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    page_id?: boolean
+    schema_type?: boolean
+    schema_data?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    page?: boolean | PageDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["pageSchema"]>
+
+  export type PageSchemaSelectScalar = {
+    id?: boolean
+    page_id?: boolean
+    schema_type?: boolean
+    schema_data?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+  }
+
+  export type PageSchemaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "page_id" | "schema_type" | "schema_data" | "created_at" | "updated_at", ExtArgs["result"]["pageSchema"]>
+  export type PageSchemaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    page?: boolean | PageDefaultArgs<ExtArgs>
+  }
+  export type PageSchemaIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    page?: boolean | PageDefaultArgs<ExtArgs>
+  }
+  export type PageSchemaIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    page?: boolean | PageDefaultArgs<ExtArgs>
+  }
+
+  export type $PageSchemaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "PageSchema"
+    objects: {
+      page: Prisma.$PagePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      page_id: string
+      schema_type: string | null
+      schema_data: Prisma.JsonValue | null
+      created_at: Date
+      updated_at: Date
+    }, ExtArgs["result"]["pageSchema"]>
+    composites: {}
+  }
+
+  type PageSchemaGetPayload<S extends boolean | null | undefined | PageSchemaDefaultArgs> = $Result.GetResult<Prisma.$PageSchemaPayload, S>
+
+  type PageSchemaCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PageSchemaFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PageSchemaCountAggregateInputType | true
+    }
+
+  export interface PageSchemaDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['PageSchema'], meta: { name: 'PageSchema' } }
+    /**
+     * Find zero or one PageSchema that matches the filter.
+     * @param {PageSchemaFindUniqueArgs} args - Arguments to find a PageSchema
+     * @example
+     * // Get one PageSchema
+     * const pageSchema = await prisma.pageSchema.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PageSchemaFindUniqueArgs>(args: SelectSubset<T, PageSchemaFindUniqueArgs<ExtArgs>>): Prisma__PageSchemaClient<$Result.GetResult<Prisma.$PageSchemaPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one PageSchema that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {PageSchemaFindUniqueOrThrowArgs} args - Arguments to find a PageSchema
+     * @example
+     * // Get one PageSchema
+     * const pageSchema = await prisma.pageSchema.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PageSchemaFindUniqueOrThrowArgs>(args: SelectSubset<T, PageSchemaFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PageSchemaClient<$Result.GetResult<Prisma.$PageSchemaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PageSchema that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PageSchemaFindFirstArgs} args - Arguments to find a PageSchema
+     * @example
+     * // Get one PageSchema
+     * const pageSchema = await prisma.pageSchema.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PageSchemaFindFirstArgs>(args?: SelectSubset<T, PageSchemaFindFirstArgs<ExtArgs>>): Prisma__PageSchemaClient<$Result.GetResult<Prisma.$PageSchemaPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PageSchema that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PageSchemaFindFirstOrThrowArgs} args - Arguments to find a PageSchema
+     * @example
+     * // Get one PageSchema
+     * const pageSchema = await prisma.pageSchema.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PageSchemaFindFirstOrThrowArgs>(args?: SelectSubset<T, PageSchemaFindFirstOrThrowArgs<ExtArgs>>): Prisma__PageSchemaClient<$Result.GetResult<Prisma.$PageSchemaPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more PageSchemas that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PageSchemaFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all PageSchemas
+     * const pageSchemas = await prisma.pageSchema.findMany()
+     * 
+     * // Get first 10 PageSchemas
+     * const pageSchemas = await prisma.pageSchema.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const pageSchemaWithIdOnly = await prisma.pageSchema.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends PageSchemaFindManyArgs>(args?: SelectSubset<T, PageSchemaFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PageSchemaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a PageSchema.
+     * @param {PageSchemaCreateArgs} args - Arguments to create a PageSchema.
+     * @example
+     * // Create one PageSchema
+     * const PageSchema = await prisma.pageSchema.create({
+     *   data: {
+     *     // ... data to create a PageSchema
+     *   }
+     * })
+     * 
+     */
+    create<T extends PageSchemaCreateArgs>(args: SelectSubset<T, PageSchemaCreateArgs<ExtArgs>>): Prisma__PageSchemaClient<$Result.GetResult<Prisma.$PageSchemaPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many PageSchemas.
+     * @param {PageSchemaCreateManyArgs} args - Arguments to create many PageSchemas.
+     * @example
+     * // Create many PageSchemas
+     * const pageSchema = await prisma.pageSchema.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends PageSchemaCreateManyArgs>(args?: SelectSubset<T, PageSchemaCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many PageSchemas and returns the data saved in the database.
+     * @param {PageSchemaCreateManyAndReturnArgs} args - Arguments to create many PageSchemas.
+     * @example
+     * // Create many PageSchemas
+     * const pageSchema = await prisma.pageSchema.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many PageSchemas and only return the `id`
+     * const pageSchemaWithIdOnly = await prisma.pageSchema.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends PageSchemaCreateManyAndReturnArgs>(args?: SelectSubset<T, PageSchemaCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PageSchemaPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a PageSchema.
+     * @param {PageSchemaDeleteArgs} args - Arguments to delete one PageSchema.
+     * @example
+     * // Delete one PageSchema
+     * const PageSchema = await prisma.pageSchema.delete({
+     *   where: {
+     *     // ... filter to delete one PageSchema
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PageSchemaDeleteArgs>(args: SelectSubset<T, PageSchemaDeleteArgs<ExtArgs>>): Prisma__PageSchemaClient<$Result.GetResult<Prisma.$PageSchemaPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one PageSchema.
+     * @param {PageSchemaUpdateArgs} args - Arguments to update one PageSchema.
+     * @example
+     * // Update one PageSchema
+     * const pageSchema = await prisma.pageSchema.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends PageSchemaUpdateArgs>(args: SelectSubset<T, PageSchemaUpdateArgs<ExtArgs>>): Prisma__PageSchemaClient<$Result.GetResult<Prisma.$PageSchemaPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more PageSchemas.
+     * @param {PageSchemaDeleteManyArgs} args - Arguments to filter PageSchemas to delete.
+     * @example
+     * // Delete a few PageSchemas
+     * const { count } = await prisma.pageSchema.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PageSchemaDeleteManyArgs>(args?: SelectSubset<T, PageSchemaDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PageSchemas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PageSchemaUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many PageSchemas
+     * const pageSchema = await prisma.pageSchema.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PageSchemaUpdateManyArgs>(args: SelectSubset<T, PageSchemaUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PageSchemas and returns the data updated in the database.
+     * @param {PageSchemaUpdateManyAndReturnArgs} args - Arguments to update many PageSchemas.
+     * @example
+     * // Update many PageSchemas
+     * const pageSchema = await prisma.pageSchema.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more PageSchemas and only return the `id`
+     * const pageSchemaWithIdOnly = await prisma.pageSchema.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends PageSchemaUpdateManyAndReturnArgs>(args: SelectSubset<T, PageSchemaUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PageSchemaPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one PageSchema.
+     * @param {PageSchemaUpsertArgs} args - Arguments to update or create a PageSchema.
+     * @example
+     * // Update or create a PageSchema
+     * const pageSchema = await prisma.pageSchema.upsert({
+     *   create: {
+     *     // ... data to create a PageSchema
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the PageSchema we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PageSchemaUpsertArgs>(args: SelectSubset<T, PageSchemaUpsertArgs<ExtArgs>>): Prisma__PageSchemaClient<$Result.GetResult<Prisma.$PageSchemaPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of PageSchemas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PageSchemaCountArgs} args - Arguments to filter PageSchemas to count.
+     * @example
+     * // Count the number of PageSchemas
+     * const count = await prisma.pageSchema.count({
+     *   where: {
+     *     // ... the filter for the PageSchemas we want to count
+     *   }
+     * })
+    **/
+    count<T extends PageSchemaCountArgs>(
+      args?: Subset<T, PageSchemaCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PageSchemaCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a PageSchema.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PageSchemaAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PageSchemaAggregateArgs>(args: Subset<T, PageSchemaAggregateArgs>): Prisma.PrismaPromise<GetPageSchemaAggregateType<T>>
+
+    /**
+     * Group by PageSchema.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PageSchemaGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PageSchemaGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PageSchemaGroupByArgs['orderBy'] }
+        : { orderBy?: PageSchemaGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PageSchemaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPageSchemaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the PageSchema model
+   */
+  readonly fields: PageSchemaFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for PageSchema.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PageSchemaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    page<T extends PageDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PageDefaultArgs<ExtArgs>>): Prisma__PageClient<$Result.GetResult<Prisma.$PagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the PageSchema model
+   */
+  interface PageSchemaFieldRefs {
+    readonly id: FieldRef<"PageSchema", 'String'>
+    readonly page_id: FieldRef<"PageSchema", 'String'>
+    readonly schema_type: FieldRef<"PageSchema", 'String'>
+    readonly schema_data: FieldRef<"PageSchema", 'Json'>
+    readonly created_at: FieldRef<"PageSchema", 'DateTime'>
+    readonly updated_at: FieldRef<"PageSchema", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * PageSchema findUnique
+   */
+  export type PageSchemaFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageSchema
+     */
+    select?: PageSchemaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageSchema
+     */
+    omit?: PageSchemaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageSchemaInclude<ExtArgs> | null
+    /**
+     * Filter, which PageSchema to fetch.
+     */
+    where: PageSchemaWhereUniqueInput
+  }
+
+  /**
+   * PageSchema findUniqueOrThrow
+   */
+  export type PageSchemaFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageSchema
+     */
+    select?: PageSchemaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageSchema
+     */
+    omit?: PageSchemaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageSchemaInclude<ExtArgs> | null
+    /**
+     * Filter, which PageSchema to fetch.
+     */
+    where: PageSchemaWhereUniqueInput
+  }
+
+  /**
+   * PageSchema findFirst
+   */
+  export type PageSchemaFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageSchema
+     */
+    select?: PageSchemaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageSchema
+     */
+    omit?: PageSchemaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageSchemaInclude<ExtArgs> | null
+    /**
+     * Filter, which PageSchema to fetch.
+     */
+    where?: PageSchemaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PageSchemas to fetch.
+     */
+    orderBy?: PageSchemaOrderByWithRelationInput | PageSchemaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PageSchemas.
+     */
+    cursor?: PageSchemaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PageSchemas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PageSchemas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PageSchemas.
+     */
+    distinct?: PageSchemaScalarFieldEnum | PageSchemaScalarFieldEnum[]
+  }
+
+  /**
+   * PageSchema findFirstOrThrow
+   */
+  export type PageSchemaFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageSchema
+     */
+    select?: PageSchemaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageSchema
+     */
+    omit?: PageSchemaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageSchemaInclude<ExtArgs> | null
+    /**
+     * Filter, which PageSchema to fetch.
+     */
+    where?: PageSchemaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PageSchemas to fetch.
+     */
+    orderBy?: PageSchemaOrderByWithRelationInput | PageSchemaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PageSchemas.
+     */
+    cursor?: PageSchemaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PageSchemas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PageSchemas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PageSchemas.
+     */
+    distinct?: PageSchemaScalarFieldEnum | PageSchemaScalarFieldEnum[]
+  }
+
+  /**
+   * PageSchema findMany
+   */
+  export type PageSchemaFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageSchema
+     */
+    select?: PageSchemaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageSchema
+     */
+    omit?: PageSchemaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageSchemaInclude<ExtArgs> | null
+    /**
+     * Filter, which PageSchemas to fetch.
+     */
+    where?: PageSchemaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PageSchemas to fetch.
+     */
+    orderBy?: PageSchemaOrderByWithRelationInput | PageSchemaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing PageSchemas.
+     */
+    cursor?: PageSchemaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PageSchemas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PageSchemas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PageSchemas.
+     */
+    distinct?: PageSchemaScalarFieldEnum | PageSchemaScalarFieldEnum[]
+  }
+
+  /**
+   * PageSchema create
+   */
+  export type PageSchemaCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageSchema
+     */
+    select?: PageSchemaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageSchema
+     */
+    omit?: PageSchemaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageSchemaInclude<ExtArgs> | null
+    /**
+     * The data needed to create a PageSchema.
+     */
+    data: XOR<PageSchemaCreateInput, PageSchemaUncheckedCreateInput>
+  }
+
+  /**
+   * PageSchema createMany
+   */
+  export type PageSchemaCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many PageSchemas.
+     */
+    data: PageSchemaCreateManyInput | PageSchemaCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * PageSchema createManyAndReturn
+   */
+  export type PageSchemaCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageSchema
+     */
+    select?: PageSchemaSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageSchema
+     */
+    omit?: PageSchemaOmit<ExtArgs> | null
+    /**
+     * The data used to create many PageSchemas.
+     */
+    data: PageSchemaCreateManyInput | PageSchemaCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageSchemaIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * PageSchema update
+   */
+  export type PageSchemaUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageSchema
+     */
+    select?: PageSchemaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageSchema
+     */
+    omit?: PageSchemaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageSchemaInclude<ExtArgs> | null
+    /**
+     * The data needed to update a PageSchema.
+     */
+    data: XOR<PageSchemaUpdateInput, PageSchemaUncheckedUpdateInput>
+    /**
+     * Choose, which PageSchema to update.
+     */
+    where: PageSchemaWhereUniqueInput
+  }
+
+  /**
+   * PageSchema updateMany
+   */
+  export type PageSchemaUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update PageSchemas.
+     */
+    data: XOR<PageSchemaUpdateManyMutationInput, PageSchemaUncheckedUpdateManyInput>
+    /**
+     * Filter which PageSchemas to update
+     */
+    where?: PageSchemaWhereInput
+    /**
+     * Limit how many PageSchemas to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * PageSchema updateManyAndReturn
+   */
+  export type PageSchemaUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageSchema
+     */
+    select?: PageSchemaSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageSchema
+     */
+    omit?: PageSchemaOmit<ExtArgs> | null
+    /**
+     * The data used to update PageSchemas.
+     */
+    data: XOR<PageSchemaUpdateManyMutationInput, PageSchemaUncheckedUpdateManyInput>
+    /**
+     * Filter which PageSchemas to update
+     */
+    where?: PageSchemaWhereInput
+    /**
+     * Limit how many PageSchemas to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageSchemaIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * PageSchema upsert
+   */
+  export type PageSchemaUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageSchema
+     */
+    select?: PageSchemaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageSchema
+     */
+    omit?: PageSchemaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageSchemaInclude<ExtArgs> | null
+    /**
+     * The filter to search for the PageSchema to update in case it exists.
+     */
+    where: PageSchemaWhereUniqueInput
+    /**
+     * In case the PageSchema found by the `where` argument doesn't exist, create a new PageSchema with this data.
+     */
+    create: XOR<PageSchemaCreateInput, PageSchemaUncheckedCreateInput>
+    /**
+     * In case the PageSchema was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PageSchemaUpdateInput, PageSchemaUncheckedUpdateInput>
+  }
+
+  /**
+   * PageSchema delete
+   */
+  export type PageSchemaDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageSchema
+     */
+    select?: PageSchemaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageSchema
+     */
+    omit?: PageSchemaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageSchemaInclude<ExtArgs> | null
+    /**
+     * Filter which PageSchema to delete.
+     */
+    where: PageSchemaWhereUniqueInput
+  }
+
+  /**
+   * PageSchema deleteMany
+   */
+  export type PageSchemaDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PageSchemas to delete
+     */
+    where?: PageSchemaWhereInput
+    /**
+     * Limit how many PageSchemas to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * PageSchema without action
+   */
+  export type PageSchemaDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageSchema
+     */
+    select?: PageSchemaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageSchema
+     */
+    omit?: PageSchemaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageSchemaInclude<ExtArgs> | null
   }
 
 
@@ -8370,6 +13613,69 @@ export namespace Prisma {
   export type NotificationScalarFieldEnum = (typeof NotificationScalarFieldEnum)[keyof typeof NotificationScalarFieldEnum]
 
 
+  export const PageTypeScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    slug: 'slug',
+    description: 'description',
+    created_at: 'created_at',
+    updated_at: 'updated_at',
+    deleted_at: 'deleted_at'
+  };
+
+  export type PageTypeScalarFieldEnum = (typeof PageTypeScalarFieldEnum)[keyof typeof PageTypeScalarFieldEnum]
+
+
+  export const PageScalarFieldEnum: {
+    id: 'id',
+    slug: 'slug',
+    title: 'title',
+    content: 'content',
+    excerpt: 'excerpt',
+    status: 'status',
+    locale: 'locale',
+    parent_id: 'parent_id',
+    page_type_id: 'page_type_id',
+    thumbnail_id: 'thumbnail_id',
+    author_id: 'author_id',
+    created_at: 'created_at',
+    updated_at: 'updated_at',
+    deleted_at: 'deleted_at'
+  };
+
+  export type PageScalarFieldEnum = (typeof PageScalarFieldEnum)[keyof typeof PageScalarFieldEnum]
+
+
+  export const PageSeoScalarFieldEnum: {
+    id: 'id',
+    page_id: 'page_id',
+    meta_title: 'meta_title',
+    meta_description: 'meta_description',
+    meta_keywords: 'meta_keywords',
+    og_title: 'og_title',
+    og_description: 'og_description',
+    og_image_id: 'og_image_id',
+    canonical_url: 'canonical_url',
+    robots: 'robots',
+    created_at: 'created_at',
+    updated_at: 'updated_at'
+  };
+
+  export type PageSeoScalarFieldEnum = (typeof PageSeoScalarFieldEnum)[keyof typeof PageSeoScalarFieldEnum]
+
+
+  export const PageSchemaScalarFieldEnum: {
+    id: 'id',
+    page_id: 'page_id',
+    schema_type: 'schema_type',
+    schema_data: 'schema_data',
+    created_at: 'created_at',
+    updated_at: 'updated_at'
+  };
+
+  export type PageSchemaScalarFieldEnum = (typeof PageSchemaScalarFieldEnum)[keyof typeof PageSchemaScalarFieldEnum]
+
+
   export const RoleScalarFieldEnum: {
     id: 'id',
     name: 'name',
@@ -8398,6 +13704,13 @@ export namespace Prisma {
   };
 
   export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
+
+
+  export const JsonNullValueInput: {
+    JsonNull: typeof JsonNull
+  };
+
+  export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
 
 
   export const QueryMode: {
@@ -8533,6 +13846,7 @@ export namespace Prisma {
     notifications?: NotificationListRelationFilter
     refresh_tokens?: RefreshTokenListRelationFilter
     reset_tokens?: PasswordResetTokenListRelationFilter
+    pages?: PageListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -8555,6 +13869,7 @@ export namespace Prisma {
     notifications?: NotificationOrderByRelationAggregateInput
     refresh_tokens?: RefreshTokenOrderByRelationAggregateInput
     reset_tokens?: PasswordResetTokenOrderByRelationAggregateInput
+    pages?: PageOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -8580,6 +13895,7 @@ export namespace Prisma {
     notifications?: NotificationListRelationFilter
     refresh_tokens?: RefreshTokenListRelationFilter
     reset_tokens?: PasswordResetTokenListRelationFilter
+    pages?: PageListRelationFilter
   }, "id" | "email" | "invitation_token">
 
   export type UserOrderByWithAggregationInput = {
@@ -8745,6 +14061,8 @@ export namespace Prisma {
     updated_at?: DateTimeFilter<"Resource"> | Date | string
     deleted_at?: DateTimeNullableFilter<"Resource"> | Date | string | null
     users?: UserListRelationFilter
+    page_thumbnails?: PageListRelationFilter
+    page_seo_og_images?: PageSeoListRelationFilter
   }
 
   export type ResourceOrderByWithRelationInput = {
@@ -8757,6 +14075,8 @@ export namespace Prisma {
     updated_at?: SortOrder
     deleted_at?: SortOrderInput | SortOrder
     users?: UserOrderByRelationAggregateInput
+    page_thumbnails?: PageOrderByRelationAggregateInput
+    page_seo_og_images?: PageSeoOrderByRelationAggregateInput
   }
 
   export type ResourceWhereUniqueInput = Prisma.AtLeast<{
@@ -8772,6 +14092,8 @@ export namespace Prisma {
     updated_at?: DateTimeFilter<"Resource"> | Date | string
     deleted_at?: DateTimeNullableFilter<"Resource"> | Date | string | null
     users?: UserListRelationFilter
+    page_thumbnails?: PageListRelationFilter
+    page_seo_og_images?: PageSeoListRelationFilter
   }, "id">
 
   export type ResourceOrderByWithAggregationInput = {
@@ -8879,6 +14201,342 @@ export namespace Prisma {
     created_at?: DateTimeWithAggregatesFilter<"Notification"> | Date | string
   }
 
+  export type PageTypeWhereInput = {
+    AND?: PageTypeWhereInput | PageTypeWhereInput[]
+    OR?: PageTypeWhereInput[]
+    NOT?: PageTypeWhereInput | PageTypeWhereInput[]
+    id?: StringFilter<"PageType"> | string
+    name?: StringFilter<"PageType"> | string
+    slug?: StringFilter<"PageType"> | string
+    description?: StringNullableFilter<"PageType"> | string | null
+    created_at?: DateTimeFilter<"PageType"> | Date | string
+    updated_at?: DateTimeFilter<"PageType"> | Date | string
+    deleted_at?: DateTimeNullableFilter<"PageType"> | Date | string | null
+    pages?: PageListRelationFilter
+  }
+
+  export type PageTypeOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    description?: SortOrderInput | SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrderInput | SortOrder
+    pages?: PageOrderByRelationAggregateInput
+  }
+
+  export type PageTypeWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    name?: string
+    slug?: string
+    AND?: PageTypeWhereInput | PageTypeWhereInput[]
+    OR?: PageTypeWhereInput[]
+    NOT?: PageTypeWhereInput | PageTypeWhereInput[]
+    description?: StringNullableFilter<"PageType"> | string | null
+    created_at?: DateTimeFilter<"PageType"> | Date | string
+    updated_at?: DateTimeFilter<"PageType"> | Date | string
+    deleted_at?: DateTimeNullableFilter<"PageType"> | Date | string | null
+    pages?: PageListRelationFilter
+  }, "id" | "name" | "slug">
+
+  export type PageTypeOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    description?: SortOrderInput | SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrderInput | SortOrder
+    _count?: PageTypeCountOrderByAggregateInput
+    _max?: PageTypeMaxOrderByAggregateInput
+    _min?: PageTypeMinOrderByAggregateInput
+  }
+
+  export type PageTypeScalarWhereWithAggregatesInput = {
+    AND?: PageTypeScalarWhereWithAggregatesInput | PageTypeScalarWhereWithAggregatesInput[]
+    OR?: PageTypeScalarWhereWithAggregatesInput[]
+    NOT?: PageTypeScalarWhereWithAggregatesInput | PageTypeScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"PageType"> | string
+    name?: StringWithAggregatesFilter<"PageType"> | string
+    slug?: StringWithAggregatesFilter<"PageType"> | string
+    description?: StringNullableWithAggregatesFilter<"PageType"> | string | null
+    created_at?: DateTimeWithAggregatesFilter<"PageType"> | Date | string
+    updated_at?: DateTimeWithAggregatesFilter<"PageType"> | Date | string
+    deleted_at?: DateTimeNullableWithAggregatesFilter<"PageType"> | Date | string | null
+  }
+
+  export type PageWhereInput = {
+    AND?: PageWhereInput | PageWhereInput[]
+    OR?: PageWhereInput[]
+    NOT?: PageWhereInput | PageWhereInput[]
+    id?: StringFilter<"Page"> | string
+    slug?: StringFilter<"Page"> | string
+    title?: StringFilter<"Page"> | string
+    content?: JsonFilter<"Page">
+    excerpt?: StringNullableFilter<"Page"> | string | null
+    status?: StringFilter<"Page"> | string
+    locale?: StringFilter<"Page"> | string
+    parent_id?: StringNullableFilter<"Page"> | string | null
+    page_type_id?: StringNullableFilter<"Page"> | string | null
+    thumbnail_id?: StringNullableFilter<"Page"> | string | null
+    author_id?: StringNullableFilter<"Page"> | string | null
+    created_at?: DateTimeFilter<"Page"> | Date | string
+    updated_at?: DateTimeFilter<"Page"> | Date | string
+    deleted_at?: DateTimeNullableFilter<"Page"> | Date | string | null
+    parent?: XOR<PageNullableScalarRelationFilter, PageWhereInput> | null
+    children?: PageListRelationFilter
+    page_type?: XOR<PageTypeNullableScalarRelationFilter, PageTypeWhereInput> | null
+    thumbnail?: XOR<ResourceNullableScalarRelationFilter, ResourceWhereInput> | null
+    author?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    seo?: XOR<PageSeoNullableScalarRelationFilter, PageSeoWhereInput> | null
+    schema?: XOR<PageSchemaNullableScalarRelationFilter, PageSchemaWhereInput> | null
+  }
+
+  export type PageOrderByWithRelationInput = {
+    id?: SortOrder
+    slug?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    excerpt?: SortOrderInput | SortOrder
+    status?: SortOrder
+    locale?: SortOrder
+    parent_id?: SortOrderInput | SortOrder
+    page_type_id?: SortOrderInput | SortOrder
+    thumbnail_id?: SortOrderInput | SortOrder
+    author_id?: SortOrderInput | SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrderInput | SortOrder
+    parent?: PageOrderByWithRelationInput
+    children?: PageOrderByRelationAggregateInput
+    page_type?: PageTypeOrderByWithRelationInput
+    thumbnail?: ResourceOrderByWithRelationInput
+    author?: UserOrderByWithRelationInput
+    seo?: PageSeoOrderByWithRelationInput
+    schema?: PageSchemaOrderByWithRelationInput
+  }
+
+  export type PageWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    slug?: string
+    AND?: PageWhereInput | PageWhereInput[]
+    OR?: PageWhereInput[]
+    NOT?: PageWhereInput | PageWhereInput[]
+    title?: StringFilter<"Page"> | string
+    content?: JsonFilter<"Page">
+    excerpt?: StringNullableFilter<"Page"> | string | null
+    status?: StringFilter<"Page"> | string
+    locale?: StringFilter<"Page"> | string
+    parent_id?: StringNullableFilter<"Page"> | string | null
+    page_type_id?: StringNullableFilter<"Page"> | string | null
+    thumbnail_id?: StringNullableFilter<"Page"> | string | null
+    author_id?: StringNullableFilter<"Page"> | string | null
+    created_at?: DateTimeFilter<"Page"> | Date | string
+    updated_at?: DateTimeFilter<"Page"> | Date | string
+    deleted_at?: DateTimeNullableFilter<"Page"> | Date | string | null
+    parent?: XOR<PageNullableScalarRelationFilter, PageWhereInput> | null
+    children?: PageListRelationFilter
+    page_type?: XOR<PageTypeNullableScalarRelationFilter, PageTypeWhereInput> | null
+    thumbnail?: XOR<ResourceNullableScalarRelationFilter, ResourceWhereInput> | null
+    author?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    seo?: XOR<PageSeoNullableScalarRelationFilter, PageSeoWhereInput> | null
+    schema?: XOR<PageSchemaNullableScalarRelationFilter, PageSchemaWhereInput> | null
+  }, "id" | "slug">
+
+  export type PageOrderByWithAggregationInput = {
+    id?: SortOrder
+    slug?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    excerpt?: SortOrderInput | SortOrder
+    status?: SortOrder
+    locale?: SortOrder
+    parent_id?: SortOrderInput | SortOrder
+    page_type_id?: SortOrderInput | SortOrder
+    thumbnail_id?: SortOrderInput | SortOrder
+    author_id?: SortOrderInput | SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrderInput | SortOrder
+    _count?: PageCountOrderByAggregateInput
+    _max?: PageMaxOrderByAggregateInput
+    _min?: PageMinOrderByAggregateInput
+  }
+
+  export type PageScalarWhereWithAggregatesInput = {
+    AND?: PageScalarWhereWithAggregatesInput | PageScalarWhereWithAggregatesInput[]
+    OR?: PageScalarWhereWithAggregatesInput[]
+    NOT?: PageScalarWhereWithAggregatesInput | PageScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Page"> | string
+    slug?: StringWithAggregatesFilter<"Page"> | string
+    title?: StringWithAggregatesFilter<"Page"> | string
+    content?: JsonWithAggregatesFilter<"Page">
+    excerpt?: StringNullableWithAggregatesFilter<"Page"> | string | null
+    status?: StringWithAggregatesFilter<"Page"> | string
+    locale?: StringWithAggregatesFilter<"Page"> | string
+    parent_id?: StringNullableWithAggregatesFilter<"Page"> | string | null
+    page_type_id?: StringNullableWithAggregatesFilter<"Page"> | string | null
+    thumbnail_id?: StringNullableWithAggregatesFilter<"Page"> | string | null
+    author_id?: StringNullableWithAggregatesFilter<"Page"> | string | null
+    created_at?: DateTimeWithAggregatesFilter<"Page"> | Date | string
+    updated_at?: DateTimeWithAggregatesFilter<"Page"> | Date | string
+    deleted_at?: DateTimeNullableWithAggregatesFilter<"Page"> | Date | string | null
+  }
+
+  export type PageSeoWhereInput = {
+    AND?: PageSeoWhereInput | PageSeoWhereInput[]
+    OR?: PageSeoWhereInput[]
+    NOT?: PageSeoWhereInput | PageSeoWhereInput[]
+    id?: StringFilter<"PageSeo"> | string
+    page_id?: StringFilter<"PageSeo"> | string
+    meta_title?: StringNullableFilter<"PageSeo"> | string | null
+    meta_description?: StringNullableFilter<"PageSeo"> | string | null
+    meta_keywords?: StringNullableFilter<"PageSeo"> | string | null
+    og_title?: StringNullableFilter<"PageSeo"> | string | null
+    og_description?: StringNullableFilter<"PageSeo"> | string | null
+    og_image_id?: StringNullableFilter<"PageSeo"> | string | null
+    canonical_url?: StringNullableFilter<"PageSeo"> | string | null
+    robots?: StringNullableFilter<"PageSeo"> | string | null
+    created_at?: DateTimeFilter<"PageSeo"> | Date | string
+    updated_at?: DateTimeFilter<"PageSeo"> | Date | string
+    page?: XOR<PageScalarRelationFilter, PageWhereInput>
+    og_image?: XOR<ResourceNullableScalarRelationFilter, ResourceWhereInput> | null
+  }
+
+  export type PageSeoOrderByWithRelationInput = {
+    id?: SortOrder
+    page_id?: SortOrder
+    meta_title?: SortOrderInput | SortOrder
+    meta_description?: SortOrderInput | SortOrder
+    meta_keywords?: SortOrderInput | SortOrder
+    og_title?: SortOrderInput | SortOrder
+    og_description?: SortOrderInput | SortOrder
+    og_image_id?: SortOrderInput | SortOrder
+    canonical_url?: SortOrderInput | SortOrder
+    robots?: SortOrderInput | SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    page?: PageOrderByWithRelationInput
+    og_image?: ResourceOrderByWithRelationInput
+  }
+
+  export type PageSeoWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    page_id?: string
+    AND?: PageSeoWhereInput | PageSeoWhereInput[]
+    OR?: PageSeoWhereInput[]
+    NOT?: PageSeoWhereInput | PageSeoWhereInput[]
+    meta_title?: StringNullableFilter<"PageSeo"> | string | null
+    meta_description?: StringNullableFilter<"PageSeo"> | string | null
+    meta_keywords?: StringNullableFilter<"PageSeo"> | string | null
+    og_title?: StringNullableFilter<"PageSeo"> | string | null
+    og_description?: StringNullableFilter<"PageSeo"> | string | null
+    og_image_id?: StringNullableFilter<"PageSeo"> | string | null
+    canonical_url?: StringNullableFilter<"PageSeo"> | string | null
+    robots?: StringNullableFilter<"PageSeo"> | string | null
+    created_at?: DateTimeFilter<"PageSeo"> | Date | string
+    updated_at?: DateTimeFilter<"PageSeo"> | Date | string
+    page?: XOR<PageScalarRelationFilter, PageWhereInput>
+    og_image?: XOR<ResourceNullableScalarRelationFilter, ResourceWhereInput> | null
+  }, "id" | "page_id">
+
+  export type PageSeoOrderByWithAggregationInput = {
+    id?: SortOrder
+    page_id?: SortOrder
+    meta_title?: SortOrderInput | SortOrder
+    meta_description?: SortOrderInput | SortOrder
+    meta_keywords?: SortOrderInput | SortOrder
+    og_title?: SortOrderInput | SortOrder
+    og_description?: SortOrderInput | SortOrder
+    og_image_id?: SortOrderInput | SortOrder
+    canonical_url?: SortOrderInput | SortOrder
+    robots?: SortOrderInput | SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    _count?: PageSeoCountOrderByAggregateInput
+    _max?: PageSeoMaxOrderByAggregateInput
+    _min?: PageSeoMinOrderByAggregateInput
+  }
+
+  export type PageSeoScalarWhereWithAggregatesInput = {
+    AND?: PageSeoScalarWhereWithAggregatesInput | PageSeoScalarWhereWithAggregatesInput[]
+    OR?: PageSeoScalarWhereWithAggregatesInput[]
+    NOT?: PageSeoScalarWhereWithAggregatesInput | PageSeoScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"PageSeo"> | string
+    page_id?: StringWithAggregatesFilter<"PageSeo"> | string
+    meta_title?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
+    meta_description?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
+    meta_keywords?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
+    og_title?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
+    og_description?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
+    og_image_id?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
+    canonical_url?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
+    robots?: StringNullableWithAggregatesFilter<"PageSeo"> | string | null
+    created_at?: DateTimeWithAggregatesFilter<"PageSeo"> | Date | string
+    updated_at?: DateTimeWithAggregatesFilter<"PageSeo"> | Date | string
+  }
+
+  export type PageSchemaWhereInput = {
+    AND?: PageSchemaWhereInput | PageSchemaWhereInput[]
+    OR?: PageSchemaWhereInput[]
+    NOT?: PageSchemaWhereInput | PageSchemaWhereInput[]
+    id?: StringFilter<"PageSchema"> | string
+    page_id?: StringFilter<"PageSchema"> | string
+    schema_type?: StringNullableFilter<"PageSchema"> | string | null
+    schema_data?: JsonNullableFilter<"PageSchema">
+    created_at?: DateTimeFilter<"PageSchema"> | Date | string
+    updated_at?: DateTimeFilter<"PageSchema"> | Date | string
+    page?: XOR<PageScalarRelationFilter, PageWhereInput>
+  }
+
+  export type PageSchemaOrderByWithRelationInput = {
+    id?: SortOrder
+    page_id?: SortOrder
+    schema_type?: SortOrderInput | SortOrder
+    schema_data?: SortOrderInput | SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    page?: PageOrderByWithRelationInput
+  }
+
+  export type PageSchemaWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    page_id?: string
+    AND?: PageSchemaWhereInput | PageSchemaWhereInput[]
+    OR?: PageSchemaWhereInput[]
+    NOT?: PageSchemaWhereInput | PageSchemaWhereInput[]
+    schema_type?: StringNullableFilter<"PageSchema"> | string | null
+    schema_data?: JsonNullableFilter<"PageSchema">
+    created_at?: DateTimeFilter<"PageSchema"> | Date | string
+    updated_at?: DateTimeFilter<"PageSchema"> | Date | string
+    page?: XOR<PageScalarRelationFilter, PageWhereInput>
+  }, "id" | "page_id">
+
+  export type PageSchemaOrderByWithAggregationInput = {
+    id?: SortOrder
+    page_id?: SortOrder
+    schema_type?: SortOrderInput | SortOrder
+    schema_data?: SortOrderInput | SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    _count?: PageSchemaCountOrderByAggregateInput
+    _max?: PageSchemaMaxOrderByAggregateInput
+    _min?: PageSchemaMinOrderByAggregateInput
+  }
+
+  export type PageSchemaScalarWhereWithAggregatesInput = {
+    AND?: PageSchemaScalarWhereWithAggregatesInput | PageSchemaScalarWhereWithAggregatesInput[]
+    OR?: PageSchemaScalarWhereWithAggregatesInput[]
+    NOT?: PageSchemaScalarWhereWithAggregatesInput | PageSchemaScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"PageSchema"> | string
+    page_id?: StringWithAggregatesFilter<"PageSchema"> | string
+    schema_type?: StringNullableWithAggregatesFilter<"PageSchema"> | string | null
+    schema_data?: JsonNullableWithAggregatesFilter<"PageSchema">
+    created_at?: DateTimeWithAggregatesFilter<"PageSchema"> | Date | string
+    updated_at?: DateTimeWithAggregatesFilter<"PageSchema"> | Date | string
+  }
+
   export type RoleWhereInput = {
     AND?: RoleWhereInput | RoleWhereInput[]
     OR?: RoleWhereInput[]
@@ -8967,6 +14625,7 @@ export namespace Prisma {
     notifications?: NotificationCreateNestedManyWithoutUserInput
     refresh_tokens?: RefreshTokenCreateNestedManyWithoutUserInput
     reset_tokens?: PasswordResetTokenCreateNestedManyWithoutUserInput
+    pages?: PageCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -8987,6 +14646,7 @@ export namespace Prisma {
     notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
     refresh_tokens?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
     reset_tokens?: PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
+    pages?: PageUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUpdateInput = {
@@ -9007,6 +14667,7 @@ export namespace Prisma {
     notifications?: NotificationUpdateManyWithoutUserNestedInput
     refresh_tokens?: RefreshTokenUpdateManyWithoutUserNestedInput
     reset_tokens?: PasswordResetTokenUpdateManyWithoutUserNestedInput
+    pages?: PageUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -9027,6 +14688,7 @@ export namespace Prisma {
     notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
     refresh_tokens?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
     reset_tokens?: PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
+    pages?: PageUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -9198,6 +14860,8 @@ export namespace Prisma {
     updated_at?: Date | string
     deleted_at?: Date | string | null
     users?: UserCreateNestedManyWithoutAvatarInput
+    page_thumbnails?: PageCreateNestedManyWithoutThumbnailInput
+    page_seo_og_images?: PageSeoCreateNestedManyWithoutOg_imageInput
   }
 
   export type ResourceUncheckedCreateInput = {
@@ -9210,6 +14874,8 @@ export namespace Prisma {
     updated_at?: Date | string
     deleted_at?: Date | string | null
     users?: UserUncheckedCreateNestedManyWithoutAvatarInput
+    page_thumbnails?: PageUncheckedCreateNestedManyWithoutThumbnailInput
+    page_seo_og_images?: PageSeoUncheckedCreateNestedManyWithoutOg_imageInput
   }
 
   export type ResourceUpdateInput = {
@@ -9222,6 +14888,8 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     users?: UserUpdateManyWithoutAvatarNestedInput
+    page_thumbnails?: PageUpdateManyWithoutThumbnailNestedInput
+    page_seo_og_images?: PageSeoUpdateManyWithoutOg_imageNestedInput
   }
 
   export type ResourceUncheckedUpdateInput = {
@@ -9234,6 +14902,8 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     users?: UserUncheckedUpdateManyWithoutAvatarNestedInput
+    page_thumbnails?: PageUncheckedUpdateManyWithoutThumbnailNestedInput
+    page_seo_og_images?: PageSeoUncheckedUpdateManyWithoutOg_imageNestedInput
   }
 
   export type ResourceCreateManyInput = {
@@ -9350,6 +15020,372 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     error?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PageTypeCreateInput = {
+    id?: string
+    name: string
+    slug: string
+    description?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    pages?: PageCreateNestedManyWithoutPage_typeInput
+  }
+
+  export type PageTypeUncheckedCreateInput = {
+    id?: string
+    name: string
+    slug: string
+    description?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    pages?: PageUncheckedCreateNestedManyWithoutPage_typeInput
+  }
+
+  export type PageTypeUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    pages?: PageUpdateManyWithoutPage_typeNestedInput
+  }
+
+  export type PageTypeUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    pages?: PageUncheckedUpdateManyWithoutPage_typeNestedInput
+  }
+
+  export type PageTypeCreateManyInput = {
+    id?: string
+    name: string
+    slug: string
+    description?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+  }
+
+  export type PageTypeUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type PageTypeUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type PageCreateInput = {
+    id?: string
+    slug: string
+    title: string
+    content?: JsonNullValueInput | InputJsonValue
+    excerpt?: string | null
+    status?: string
+    locale?: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    parent?: PageCreateNestedOneWithoutChildrenInput
+    children?: PageCreateNestedManyWithoutParentInput
+    page_type?: PageTypeCreateNestedOneWithoutPagesInput
+    thumbnail?: ResourceCreateNestedOneWithoutPage_thumbnailsInput
+    author?: UserCreateNestedOneWithoutPagesInput
+    seo?: PageSeoCreateNestedOneWithoutPageInput
+    schema?: PageSchemaCreateNestedOneWithoutPageInput
+  }
+
+  export type PageUncheckedCreateInput = {
+    id?: string
+    slug: string
+    title: string
+    content?: JsonNullValueInput | InputJsonValue
+    excerpt?: string | null
+    status?: string
+    locale?: string
+    parent_id?: string | null
+    page_type_id?: string | null
+    thumbnail_id?: string | null
+    author_id?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    children?: PageUncheckedCreateNestedManyWithoutParentInput
+    seo?: PageSeoUncheckedCreateNestedOneWithoutPageInput
+    schema?: PageSchemaUncheckedCreateNestedOneWithoutPageInput
+  }
+
+  export type PageUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: JsonNullValueInput | InputJsonValue
+    excerpt?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    locale?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    parent?: PageUpdateOneWithoutChildrenNestedInput
+    children?: PageUpdateManyWithoutParentNestedInput
+    page_type?: PageTypeUpdateOneWithoutPagesNestedInput
+    thumbnail?: ResourceUpdateOneWithoutPage_thumbnailsNestedInput
+    author?: UserUpdateOneWithoutPagesNestedInput
+    seo?: PageSeoUpdateOneWithoutPageNestedInput
+    schema?: PageSchemaUpdateOneWithoutPageNestedInput
+  }
+
+  export type PageUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: JsonNullValueInput | InputJsonValue
+    excerpt?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    locale?: StringFieldUpdateOperationsInput | string
+    parent_id?: NullableStringFieldUpdateOperationsInput | string | null
+    page_type_id?: NullableStringFieldUpdateOperationsInput | string | null
+    thumbnail_id?: NullableStringFieldUpdateOperationsInput | string | null
+    author_id?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    children?: PageUncheckedUpdateManyWithoutParentNestedInput
+    seo?: PageSeoUncheckedUpdateOneWithoutPageNestedInput
+    schema?: PageSchemaUncheckedUpdateOneWithoutPageNestedInput
+  }
+
+  export type PageCreateManyInput = {
+    id?: string
+    slug: string
+    title: string
+    content?: JsonNullValueInput | InputJsonValue
+    excerpt?: string | null
+    status?: string
+    locale?: string
+    parent_id?: string | null
+    page_type_id?: string | null
+    thumbnail_id?: string | null
+    author_id?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+  }
+
+  export type PageUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: JsonNullValueInput | InputJsonValue
+    excerpt?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    locale?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type PageUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: JsonNullValueInput | InputJsonValue
+    excerpt?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    locale?: StringFieldUpdateOperationsInput | string
+    parent_id?: NullableStringFieldUpdateOperationsInput | string | null
+    page_type_id?: NullableStringFieldUpdateOperationsInput | string | null
+    thumbnail_id?: NullableStringFieldUpdateOperationsInput | string | null
+    author_id?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type PageSeoCreateInput = {
+    id?: string
+    meta_title?: string | null
+    meta_description?: string | null
+    meta_keywords?: string | null
+    og_title?: string | null
+    og_description?: string | null
+    canonical_url?: string | null
+    robots?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    page: PageCreateNestedOneWithoutSeoInput
+    og_image?: ResourceCreateNestedOneWithoutPage_seo_og_imagesInput
+  }
+
+  export type PageSeoUncheckedCreateInput = {
+    id?: string
+    page_id: string
+    meta_title?: string | null
+    meta_description?: string | null
+    meta_keywords?: string | null
+    og_title?: string | null
+    og_description?: string | null
+    og_image_id?: string | null
+    canonical_url?: string | null
+    robots?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type PageSeoUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    meta_title?: NullableStringFieldUpdateOperationsInput | string | null
+    meta_description?: NullableStringFieldUpdateOperationsInput | string | null
+    meta_keywords?: NullableStringFieldUpdateOperationsInput | string | null
+    og_title?: NullableStringFieldUpdateOperationsInput | string | null
+    og_description?: NullableStringFieldUpdateOperationsInput | string | null
+    canonical_url?: NullableStringFieldUpdateOperationsInput | string | null
+    robots?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    page?: PageUpdateOneRequiredWithoutSeoNestedInput
+    og_image?: ResourceUpdateOneWithoutPage_seo_og_imagesNestedInput
+  }
+
+  export type PageSeoUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    page_id?: StringFieldUpdateOperationsInput | string
+    meta_title?: NullableStringFieldUpdateOperationsInput | string | null
+    meta_description?: NullableStringFieldUpdateOperationsInput | string | null
+    meta_keywords?: NullableStringFieldUpdateOperationsInput | string | null
+    og_title?: NullableStringFieldUpdateOperationsInput | string | null
+    og_description?: NullableStringFieldUpdateOperationsInput | string | null
+    og_image_id?: NullableStringFieldUpdateOperationsInput | string | null
+    canonical_url?: NullableStringFieldUpdateOperationsInput | string | null
+    robots?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PageSeoCreateManyInput = {
+    id?: string
+    page_id: string
+    meta_title?: string | null
+    meta_description?: string | null
+    meta_keywords?: string | null
+    og_title?: string | null
+    og_description?: string | null
+    og_image_id?: string | null
+    canonical_url?: string | null
+    robots?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type PageSeoUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    meta_title?: NullableStringFieldUpdateOperationsInput | string | null
+    meta_description?: NullableStringFieldUpdateOperationsInput | string | null
+    meta_keywords?: NullableStringFieldUpdateOperationsInput | string | null
+    og_title?: NullableStringFieldUpdateOperationsInput | string | null
+    og_description?: NullableStringFieldUpdateOperationsInput | string | null
+    canonical_url?: NullableStringFieldUpdateOperationsInput | string | null
+    robots?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PageSeoUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    page_id?: StringFieldUpdateOperationsInput | string
+    meta_title?: NullableStringFieldUpdateOperationsInput | string | null
+    meta_description?: NullableStringFieldUpdateOperationsInput | string | null
+    meta_keywords?: NullableStringFieldUpdateOperationsInput | string | null
+    og_title?: NullableStringFieldUpdateOperationsInput | string | null
+    og_description?: NullableStringFieldUpdateOperationsInput | string | null
+    og_image_id?: NullableStringFieldUpdateOperationsInput | string | null
+    canonical_url?: NullableStringFieldUpdateOperationsInput | string | null
+    robots?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PageSchemaCreateInput = {
+    id?: string
+    schema_type?: string | null
+    schema_data?: NullableJsonNullValueInput | InputJsonValue
+    created_at?: Date | string
+    updated_at?: Date | string
+    page: PageCreateNestedOneWithoutSchemaInput
+  }
+
+  export type PageSchemaUncheckedCreateInput = {
+    id?: string
+    page_id: string
+    schema_type?: string | null
+    schema_data?: NullableJsonNullValueInput | InputJsonValue
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type PageSchemaUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    schema_type?: NullableStringFieldUpdateOperationsInput | string | null
+    schema_data?: NullableJsonNullValueInput | InputJsonValue
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    page?: PageUpdateOneRequiredWithoutSchemaNestedInput
+  }
+
+  export type PageSchemaUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    page_id?: StringFieldUpdateOperationsInput | string
+    schema_type?: NullableStringFieldUpdateOperationsInput | string | null
+    schema_data?: NullableJsonNullValueInput | InputJsonValue
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PageSchemaCreateManyInput = {
+    id?: string
+    page_id: string
+    schema_type?: string | null
+    schema_data?: NullableJsonNullValueInput | InputJsonValue
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type PageSchemaUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    schema_type?: NullableStringFieldUpdateOperationsInput | string | null
+    schema_data?: NullableJsonNullValueInput | InputJsonValue
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PageSchemaUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    page_id?: StringFieldUpdateOperationsInput | string
+    schema_type?: NullableStringFieldUpdateOperationsInput | string | null
+    schema_data?: NullableJsonNullValueInput | InputJsonValue
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type RoleCreateInput = {
@@ -9536,6 +15572,12 @@ export namespace Prisma {
     none?: PasswordResetTokenWhereInput
   }
 
+  export type PageListRelationFilter = {
+    every?: PageWhereInput
+    some?: PageWhereInput
+    none?: PageWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -9550,6 +15592,10 @@ export namespace Prisma {
   }
 
   export type PasswordResetTokenOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type PageOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -9762,7 +15808,17 @@ export namespace Prisma {
     none?: UserWhereInput
   }
 
+  export type PageSeoListRelationFilter = {
+    every?: PageSeoWhereInput
+    some?: PageSeoWhereInput
+    none?: PageSeoWhereInput
+  }
+
   export type UserOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type PageSeoOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -9864,6 +15920,229 @@ export namespace Prisma {
     created_at?: SortOrder
   }
 
+  export type PageTypeCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    description?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrder
+  }
+
+  export type PageTypeMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    description?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrder
+  }
+
+  export type PageTypeMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    description?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrder
+  }
+  export type JsonFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type PageNullableScalarRelationFilter = {
+    is?: PageWhereInput | null
+    isNot?: PageWhereInput | null
+  }
+
+  export type PageTypeNullableScalarRelationFilter = {
+    is?: PageTypeWhereInput | null
+    isNot?: PageTypeWhereInput | null
+  }
+
+  export type PageSeoNullableScalarRelationFilter = {
+    is?: PageSeoWhereInput | null
+    isNot?: PageSeoWhereInput | null
+  }
+
+  export type PageSchemaNullableScalarRelationFilter = {
+    is?: PageSchemaWhereInput | null
+    isNot?: PageSchemaWhereInput | null
+  }
+
+  export type PageCountOrderByAggregateInput = {
+    id?: SortOrder
+    slug?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    excerpt?: SortOrder
+    status?: SortOrder
+    locale?: SortOrder
+    parent_id?: SortOrder
+    page_type_id?: SortOrder
+    thumbnail_id?: SortOrder
+    author_id?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrder
+  }
+
+  export type PageMaxOrderByAggregateInput = {
+    id?: SortOrder
+    slug?: SortOrder
+    title?: SortOrder
+    excerpt?: SortOrder
+    status?: SortOrder
+    locale?: SortOrder
+    parent_id?: SortOrder
+    page_type_id?: SortOrder
+    thumbnail_id?: SortOrder
+    author_id?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrder
+  }
+
+  export type PageMinOrderByAggregateInput = {
+    id?: SortOrder
+    slug?: SortOrder
+    title?: SortOrder
+    excerpt?: SortOrder
+    status?: SortOrder
+    locale?: SortOrder
+    parent_id?: SortOrder
+    page_type_id?: SortOrder
+    thumbnail_id?: SortOrder
+    author_id?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrder
+  }
+  export type JsonWithAggregatesFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonWithAggregatesFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonWithAggregatesFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedJsonFilter<$PrismaModel>
+    _max?: NestedJsonFilter<$PrismaModel>
+  }
+
+  export type PageScalarRelationFilter = {
+    is?: PageWhereInput
+    isNot?: PageWhereInput
+  }
+
+  export type PageSeoCountOrderByAggregateInput = {
+    id?: SortOrder
+    page_id?: SortOrder
+    meta_title?: SortOrder
+    meta_description?: SortOrder
+    meta_keywords?: SortOrder
+    og_title?: SortOrder
+    og_description?: SortOrder
+    og_image_id?: SortOrder
+    canonical_url?: SortOrder
+    robots?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type PageSeoMaxOrderByAggregateInput = {
+    id?: SortOrder
+    page_id?: SortOrder
+    meta_title?: SortOrder
+    meta_description?: SortOrder
+    meta_keywords?: SortOrder
+    og_title?: SortOrder
+    og_description?: SortOrder
+    og_image_id?: SortOrder
+    canonical_url?: SortOrder
+    robots?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type PageSeoMinOrderByAggregateInput = {
+    id?: SortOrder
+    page_id?: SortOrder
+    meta_title?: SortOrder
+    meta_description?: SortOrder
+    meta_keywords?: SortOrder
+    og_title?: SortOrder
+    og_description?: SortOrder
+    og_image_id?: SortOrder
+    canonical_url?: SortOrder
+    robots?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type PageSchemaCountOrderByAggregateInput = {
+    id?: SortOrder
+    page_id?: SortOrder
+    schema_type?: SortOrder
+    schema_data?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type PageSchemaMaxOrderByAggregateInput = {
+    id?: SortOrder
+    page_id?: SortOrder
+    schema_type?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type PageSchemaMinOrderByAggregateInput = {
+    id?: SortOrder
+    page_id?: SortOrder
+    schema_type?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
   export type BoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
@@ -9941,6 +16220,13 @@ export namespace Prisma {
     connect?: PasswordResetTokenWhereUniqueInput | PasswordResetTokenWhereUniqueInput[]
   }
 
+  export type PageCreateNestedManyWithoutAuthorInput = {
+    create?: XOR<PageCreateWithoutAuthorInput, PageUncheckedCreateWithoutAuthorInput> | PageCreateWithoutAuthorInput[] | PageUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: PageCreateOrConnectWithoutAuthorInput | PageCreateOrConnectWithoutAuthorInput[]
+    createMany?: PageCreateManyAuthorInputEnvelope
+    connect?: PageWhereUniqueInput | PageWhereUniqueInput[]
+  }
+
   export type NotificationUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<NotificationCreateWithoutUserInput, NotificationUncheckedCreateWithoutUserInput> | NotificationCreateWithoutUserInput[] | NotificationUncheckedCreateWithoutUserInput[]
     connectOrCreate?: NotificationCreateOrConnectWithoutUserInput | NotificationCreateOrConnectWithoutUserInput[]
@@ -9960,6 +16246,13 @@ export namespace Prisma {
     connectOrCreate?: PasswordResetTokenCreateOrConnectWithoutUserInput | PasswordResetTokenCreateOrConnectWithoutUserInput[]
     createMany?: PasswordResetTokenCreateManyUserInputEnvelope
     connect?: PasswordResetTokenWhereUniqueInput | PasswordResetTokenWhereUniqueInput[]
+  }
+
+  export type PageUncheckedCreateNestedManyWithoutAuthorInput = {
+    create?: XOR<PageCreateWithoutAuthorInput, PageUncheckedCreateWithoutAuthorInput> | PageCreateWithoutAuthorInput[] | PageUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: PageCreateOrConnectWithoutAuthorInput | PageCreateOrConnectWithoutAuthorInput[]
+    createMany?: PageCreateManyAuthorInputEnvelope
+    connect?: PageWhereUniqueInput | PageWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -10040,6 +16333,20 @@ export namespace Prisma {
     deleteMany?: PasswordResetTokenScalarWhereInput | PasswordResetTokenScalarWhereInput[]
   }
 
+  export type PageUpdateManyWithoutAuthorNestedInput = {
+    create?: XOR<PageCreateWithoutAuthorInput, PageUncheckedCreateWithoutAuthorInput> | PageCreateWithoutAuthorInput[] | PageUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: PageCreateOrConnectWithoutAuthorInput | PageCreateOrConnectWithoutAuthorInput[]
+    upsert?: PageUpsertWithWhereUniqueWithoutAuthorInput | PageUpsertWithWhereUniqueWithoutAuthorInput[]
+    createMany?: PageCreateManyAuthorInputEnvelope
+    set?: PageWhereUniqueInput | PageWhereUniqueInput[]
+    disconnect?: PageWhereUniqueInput | PageWhereUniqueInput[]
+    delete?: PageWhereUniqueInput | PageWhereUniqueInput[]
+    connect?: PageWhereUniqueInput | PageWhereUniqueInput[]
+    update?: PageUpdateWithWhereUniqueWithoutAuthorInput | PageUpdateWithWhereUniqueWithoutAuthorInput[]
+    updateMany?: PageUpdateManyWithWhereWithoutAuthorInput | PageUpdateManyWithWhereWithoutAuthorInput[]
+    deleteMany?: PageScalarWhereInput | PageScalarWhereInput[]
+  }
+
   export type NotificationUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<NotificationCreateWithoutUserInput, NotificationUncheckedCreateWithoutUserInput> | NotificationCreateWithoutUserInput[] | NotificationUncheckedCreateWithoutUserInput[]
     connectOrCreate?: NotificationCreateOrConnectWithoutUserInput | NotificationCreateOrConnectWithoutUserInput[]
@@ -10082,6 +16389,20 @@ export namespace Prisma {
     deleteMany?: PasswordResetTokenScalarWhereInput | PasswordResetTokenScalarWhereInput[]
   }
 
+  export type PageUncheckedUpdateManyWithoutAuthorNestedInput = {
+    create?: XOR<PageCreateWithoutAuthorInput, PageUncheckedCreateWithoutAuthorInput> | PageCreateWithoutAuthorInput[] | PageUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: PageCreateOrConnectWithoutAuthorInput | PageCreateOrConnectWithoutAuthorInput[]
+    upsert?: PageUpsertWithWhereUniqueWithoutAuthorInput | PageUpsertWithWhereUniqueWithoutAuthorInput[]
+    createMany?: PageCreateManyAuthorInputEnvelope
+    set?: PageWhereUniqueInput | PageWhereUniqueInput[]
+    disconnect?: PageWhereUniqueInput | PageWhereUniqueInput[]
+    delete?: PageWhereUniqueInput | PageWhereUniqueInput[]
+    connect?: PageWhereUniqueInput | PageWhereUniqueInput[]
+    update?: PageUpdateWithWhereUniqueWithoutAuthorInput | PageUpdateWithWhereUniqueWithoutAuthorInput[]
+    updateMany?: PageUpdateManyWithWhereWithoutAuthorInput | PageUpdateManyWithWhereWithoutAuthorInput[]
+    deleteMany?: PageScalarWhereInput | PageScalarWhereInput[]
+  }
+
   export type UserCreateNestedOneWithoutRefresh_tokensInput = {
     create?: XOR<UserCreateWithoutRefresh_tokensInput, UserUncheckedCreateWithoutRefresh_tokensInput>
     connectOrCreate?: UserCreateOrConnectWithoutRefresh_tokensInput
@@ -10117,11 +16438,39 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
   }
 
+  export type PageCreateNestedManyWithoutThumbnailInput = {
+    create?: XOR<PageCreateWithoutThumbnailInput, PageUncheckedCreateWithoutThumbnailInput> | PageCreateWithoutThumbnailInput[] | PageUncheckedCreateWithoutThumbnailInput[]
+    connectOrCreate?: PageCreateOrConnectWithoutThumbnailInput | PageCreateOrConnectWithoutThumbnailInput[]
+    createMany?: PageCreateManyThumbnailInputEnvelope
+    connect?: PageWhereUniqueInput | PageWhereUniqueInput[]
+  }
+
+  export type PageSeoCreateNestedManyWithoutOg_imageInput = {
+    create?: XOR<PageSeoCreateWithoutOg_imageInput, PageSeoUncheckedCreateWithoutOg_imageInput> | PageSeoCreateWithoutOg_imageInput[] | PageSeoUncheckedCreateWithoutOg_imageInput[]
+    connectOrCreate?: PageSeoCreateOrConnectWithoutOg_imageInput | PageSeoCreateOrConnectWithoutOg_imageInput[]
+    createMany?: PageSeoCreateManyOg_imageInputEnvelope
+    connect?: PageSeoWhereUniqueInput | PageSeoWhereUniqueInput[]
+  }
+
   export type UserUncheckedCreateNestedManyWithoutAvatarInput = {
     create?: XOR<UserCreateWithoutAvatarInput, UserUncheckedCreateWithoutAvatarInput> | UserCreateWithoutAvatarInput[] | UserUncheckedCreateWithoutAvatarInput[]
     connectOrCreate?: UserCreateOrConnectWithoutAvatarInput | UserCreateOrConnectWithoutAvatarInput[]
     createMany?: UserCreateManyAvatarInputEnvelope
     connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+  }
+
+  export type PageUncheckedCreateNestedManyWithoutThumbnailInput = {
+    create?: XOR<PageCreateWithoutThumbnailInput, PageUncheckedCreateWithoutThumbnailInput> | PageCreateWithoutThumbnailInput[] | PageUncheckedCreateWithoutThumbnailInput[]
+    connectOrCreate?: PageCreateOrConnectWithoutThumbnailInput | PageCreateOrConnectWithoutThumbnailInput[]
+    createMany?: PageCreateManyThumbnailInputEnvelope
+    connect?: PageWhereUniqueInput | PageWhereUniqueInput[]
+  }
+
+  export type PageSeoUncheckedCreateNestedManyWithoutOg_imageInput = {
+    create?: XOR<PageSeoCreateWithoutOg_imageInput, PageSeoUncheckedCreateWithoutOg_imageInput> | PageSeoCreateWithoutOg_imageInput[] | PageSeoUncheckedCreateWithoutOg_imageInput[]
+    connectOrCreate?: PageSeoCreateOrConnectWithoutOg_imageInput | PageSeoCreateOrConnectWithoutOg_imageInput[]
+    createMany?: PageSeoCreateManyOg_imageInputEnvelope
+    connect?: PageSeoWhereUniqueInput | PageSeoWhereUniqueInput[]
   }
 
   export type NullableIntFieldUpdateOperationsInput = {
@@ -10146,6 +16495,34 @@ export namespace Prisma {
     deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
   }
 
+  export type PageUpdateManyWithoutThumbnailNestedInput = {
+    create?: XOR<PageCreateWithoutThumbnailInput, PageUncheckedCreateWithoutThumbnailInput> | PageCreateWithoutThumbnailInput[] | PageUncheckedCreateWithoutThumbnailInput[]
+    connectOrCreate?: PageCreateOrConnectWithoutThumbnailInput | PageCreateOrConnectWithoutThumbnailInput[]
+    upsert?: PageUpsertWithWhereUniqueWithoutThumbnailInput | PageUpsertWithWhereUniqueWithoutThumbnailInput[]
+    createMany?: PageCreateManyThumbnailInputEnvelope
+    set?: PageWhereUniqueInput | PageWhereUniqueInput[]
+    disconnect?: PageWhereUniqueInput | PageWhereUniqueInput[]
+    delete?: PageWhereUniqueInput | PageWhereUniqueInput[]
+    connect?: PageWhereUniqueInput | PageWhereUniqueInput[]
+    update?: PageUpdateWithWhereUniqueWithoutThumbnailInput | PageUpdateWithWhereUniqueWithoutThumbnailInput[]
+    updateMany?: PageUpdateManyWithWhereWithoutThumbnailInput | PageUpdateManyWithWhereWithoutThumbnailInput[]
+    deleteMany?: PageScalarWhereInput | PageScalarWhereInput[]
+  }
+
+  export type PageSeoUpdateManyWithoutOg_imageNestedInput = {
+    create?: XOR<PageSeoCreateWithoutOg_imageInput, PageSeoUncheckedCreateWithoutOg_imageInput> | PageSeoCreateWithoutOg_imageInput[] | PageSeoUncheckedCreateWithoutOg_imageInput[]
+    connectOrCreate?: PageSeoCreateOrConnectWithoutOg_imageInput | PageSeoCreateOrConnectWithoutOg_imageInput[]
+    upsert?: PageSeoUpsertWithWhereUniqueWithoutOg_imageInput | PageSeoUpsertWithWhereUniqueWithoutOg_imageInput[]
+    createMany?: PageSeoCreateManyOg_imageInputEnvelope
+    set?: PageSeoWhereUniqueInput | PageSeoWhereUniqueInput[]
+    disconnect?: PageSeoWhereUniqueInput | PageSeoWhereUniqueInput[]
+    delete?: PageSeoWhereUniqueInput | PageSeoWhereUniqueInput[]
+    connect?: PageSeoWhereUniqueInput | PageSeoWhereUniqueInput[]
+    update?: PageSeoUpdateWithWhereUniqueWithoutOg_imageInput | PageSeoUpdateWithWhereUniqueWithoutOg_imageInput[]
+    updateMany?: PageSeoUpdateManyWithWhereWithoutOg_imageInput | PageSeoUpdateManyWithWhereWithoutOg_imageInput[]
+    deleteMany?: PageSeoScalarWhereInput | PageSeoScalarWhereInput[]
+  }
+
   export type UserUncheckedUpdateManyWithoutAvatarNestedInput = {
     create?: XOR<UserCreateWithoutAvatarInput, UserUncheckedCreateWithoutAvatarInput> | UserCreateWithoutAvatarInput[] | UserUncheckedCreateWithoutAvatarInput[]
     connectOrCreate?: UserCreateOrConnectWithoutAvatarInput | UserCreateOrConnectWithoutAvatarInput[]
@@ -10158,6 +16535,34 @@ export namespace Prisma {
     update?: UserUpdateWithWhereUniqueWithoutAvatarInput | UserUpdateWithWhereUniqueWithoutAvatarInput[]
     updateMany?: UserUpdateManyWithWhereWithoutAvatarInput | UserUpdateManyWithWhereWithoutAvatarInput[]
     deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
+  }
+
+  export type PageUncheckedUpdateManyWithoutThumbnailNestedInput = {
+    create?: XOR<PageCreateWithoutThumbnailInput, PageUncheckedCreateWithoutThumbnailInput> | PageCreateWithoutThumbnailInput[] | PageUncheckedCreateWithoutThumbnailInput[]
+    connectOrCreate?: PageCreateOrConnectWithoutThumbnailInput | PageCreateOrConnectWithoutThumbnailInput[]
+    upsert?: PageUpsertWithWhereUniqueWithoutThumbnailInput | PageUpsertWithWhereUniqueWithoutThumbnailInput[]
+    createMany?: PageCreateManyThumbnailInputEnvelope
+    set?: PageWhereUniqueInput | PageWhereUniqueInput[]
+    disconnect?: PageWhereUniqueInput | PageWhereUniqueInput[]
+    delete?: PageWhereUniqueInput | PageWhereUniqueInput[]
+    connect?: PageWhereUniqueInput | PageWhereUniqueInput[]
+    update?: PageUpdateWithWhereUniqueWithoutThumbnailInput | PageUpdateWithWhereUniqueWithoutThumbnailInput[]
+    updateMany?: PageUpdateManyWithWhereWithoutThumbnailInput | PageUpdateManyWithWhereWithoutThumbnailInput[]
+    deleteMany?: PageScalarWhereInput | PageScalarWhereInput[]
+  }
+
+  export type PageSeoUncheckedUpdateManyWithoutOg_imageNestedInput = {
+    create?: XOR<PageSeoCreateWithoutOg_imageInput, PageSeoUncheckedCreateWithoutOg_imageInput> | PageSeoCreateWithoutOg_imageInput[] | PageSeoUncheckedCreateWithoutOg_imageInput[]
+    connectOrCreate?: PageSeoCreateOrConnectWithoutOg_imageInput | PageSeoCreateOrConnectWithoutOg_imageInput[]
+    upsert?: PageSeoUpsertWithWhereUniqueWithoutOg_imageInput | PageSeoUpsertWithWhereUniqueWithoutOg_imageInput[]
+    createMany?: PageSeoCreateManyOg_imageInputEnvelope
+    set?: PageSeoWhereUniqueInput | PageSeoWhereUniqueInput[]
+    disconnect?: PageSeoWhereUniqueInput | PageSeoWhereUniqueInput[]
+    delete?: PageSeoWhereUniqueInput | PageSeoWhereUniqueInput[]
+    connect?: PageSeoWhereUniqueInput | PageSeoWhereUniqueInput[]
+    update?: PageSeoUpdateWithWhereUniqueWithoutOg_imageInput | PageSeoUpdateWithWhereUniqueWithoutOg_imageInput[]
+    updateMany?: PageSeoUpdateManyWithWhereWithoutOg_imageInput | PageSeoUpdateManyWithWhereWithoutOg_imageInput[]
+    deleteMany?: PageSeoScalarWhereInput | PageSeoScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutNotificationsInput = {
@@ -10174,6 +16579,262 @@ export namespace Prisma {
     delete?: UserWhereInput | boolean
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutNotificationsInput, UserUpdateWithoutNotificationsInput>, UserUncheckedUpdateWithoutNotificationsInput>
+  }
+
+  export type PageCreateNestedManyWithoutPage_typeInput = {
+    create?: XOR<PageCreateWithoutPage_typeInput, PageUncheckedCreateWithoutPage_typeInput> | PageCreateWithoutPage_typeInput[] | PageUncheckedCreateWithoutPage_typeInput[]
+    connectOrCreate?: PageCreateOrConnectWithoutPage_typeInput | PageCreateOrConnectWithoutPage_typeInput[]
+    createMany?: PageCreateManyPage_typeInputEnvelope
+    connect?: PageWhereUniqueInput | PageWhereUniqueInput[]
+  }
+
+  export type PageUncheckedCreateNestedManyWithoutPage_typeInput = {
+    create?: XOR<PageCreateWithoutPage_typeInput, PageUncheckedCreateWithoutPage_typeInput> | PageCreateWithoutPage_typeInput[] | PageUncheckedCreateWithoutPage_typeInput[]
+    connectOrCreate?: PageCreateOrConnectWithoutPage_typeInput | PageCreateOrConnectWithoutPage_typeInput[]
+    createMany?: PageCreateManyPage_typeInputEnvelope
+    connect?: PageWhereUniqueInput | PageWhereUniqueInput[]
+  }
+
+  export type PageUpdateManyWithoutPage_typeNestedInput = {
+    create?: XOR<PageCreateWithoutPage_typeInput, PageUncheckedCreateWithoutPage_typeInput> | PageCreateWithoutPage_typeInput[] | PageUncheckedCreateWithoutPage_typeInput[]
+    connectOrCreate?: PageCreateOrConnectWithoutPage_typeInput | PageCreateOrConnectWithoutPage_typeInput[]
+    upsert?: PageUpsertWithWhereUniqueWithoutPage_typeInput | PageUpsertWithWhereUniqueWithoutPage_typeInput[]
+    createMany?: PageCreateManyPage_typeInputEnvelope
+    set?: PageWhereUniqueInput | PageWhereUniqueInput[]
+    disconnect?: PageWhereUniqueInput | PageWhereUniqueInput[]
+    delete?: PageWhereUniqueInput | PageWhereUniqueInput[]
+    connect?: PageWhereUniqueInput | PageWhereUniqueInput[]
+    update?: PageUpdateWithWhereUniqueWithoutPage_typeInput | PageUpdateWithWhereUniqueWithoutPage_typeInput[]
+    updateMany?: PageUpdateManyWithWhereWithoutPage_typeInput | PageUpdateManyWithWhereWithoutPage_typeInput[]
+    deleteMany?: PageScalarWhereInput | PageScalarWhereInput[]
+  }
+
+  export type PageUncheckedUpdateManyWithoutPage_typeNestedInput = {
+    create?: XOR<PageCreateWithoutPage_typeInput, PageUncheckedCreateWithoutPage_typeInput> | PageCreateWithoutPage_typeInput[] | PageUncheckedCreateWithoutPage_typeInput[]
+    connectOrCreate?: PageCreateOrConnectWithoutPage_typeInput | PageCreateOrConnectWithoutPage_typeInput[]
+    upsert?: PageUpsertWithWhereUniqueWithoutPage_typeInput | PageUpsertWithWhereUniqueWithoutPage_typeInput[]
+    createMany?: PageCreateManyPage_typeInputEnvelope
+    set?: PageWhereUniqueInput | PageWhereUniqueInput[]
+    disconnect?: PageWhereUniqueInput | PageWhereUniqueInput[]
+    delete?: PageWhereUniqueInput | PageWhereUniqueInput[]
+    connect?: PageWhereUniqueInput | PageWhereUniqueInput[]
+    update?: PageUpdateWithWhereUniqueWithoutPage_typeInput | PageUpdateWithWhereUniqueWithoutPage_typeInput[]
+    updateMany?: PageUpdateManyWithWhereWithoutPage_typeInput | PageUpdateManyWithWhereWithoutPage_typeInput[]
+    deleteMany?: PageScalarWhereInput | PageScalarWhereInput[]
+  }
+
+  export type PageCreateNestedOneWithoutChildrenInput = {
+    create?: XOR<PageCreateWithoutChildrenInput, PageUncheckedCreateWithoutChildrenInput>
+    connectOrCreate?: PageCreateOrConnectWithoutChildrenInput
+    connect?: PageWhereUniqueInput
+  }
+
+  export type PageCreateNestedManyWithoutParentInput = {
+    create?: XOR<PageCreateWithoutParentInput, PageUncheckedCreateWithoutParentInput> | PageCreateWithoutParentInput[] | PageUncheckedCreateWithoutParentInput[]
+    connectOrCreate?: PageCreateOrConnectWithoutParentInput | PageCreateOrConnectWithoutParentInput[]
+    createMany?: PageCreateManyParentInputEnvelope
+    connect?: PageWhereUniqueInput | PageWhereUniqueInput[]
+  }
+
+  export type PageTypeCreateNestedOneWithoutPagesInput = {
+    create?: XOR<PageTypeCreateWithoutPagesInput, PageTypeUncheckedCreateWithoutPagesInput>
+    connectOrCreate?: PageTypeCreateOrConnectWithoutPagesInput
+    connect?: PageTypeWhereUniqueInput
+  }
+
+  export type ResourceCreateNestedOneWithoutPage_thumbnailsInput = {
+    create?: XOR<ResourceCreateWithoutPage_thumbnailsInput, ResourceUncheckedCreateWithoutPage_thumbnailsInput>
+    connectOrCreate?: ResourceCreateOrConnectWithoutPage_thumbnailsInput
+    connect?: ResourceWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutPagesInput = {
+    create?: XOR<UserCreateWithoutPagesInput, UserUncheckedCreateWithoutPagesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutPagesInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type PageSeoCreateNestedOneWithoutPageInput = {
+    create?: XOR<PageSeoCreateWithoutPageInput, PageSeoUncheckedCreateWithoutPageInput>
+    connectOrCreate?: PageSeoCreateOrConnectWithoutPageInput
+    connect?: PageSeoWhereUniqueInput
+  }
+
+  export type PageSchemaCreateNestedOneWithoutPageInput = {
+    create?: XOR<PageSchemaCreateWithoutPageInput, PageSchemaUncheckedCreateWithoutPageInput>
+    connectOrCreate?: PageSchemaCreateOrConnectWithoutPageInput
+    connect?: PageSchemaWhereUniqueInput
+  }
+
+  export type PageUncheckedCreateNestedManyWithoutParentInput = {
+    create?: XOR<PageCreateWithoutParentInput, PageUncheckedCreateWithoutParentInput> | PageCreateWithoutParentInput[] | PageUncheckedCreateWithoutParentInput[]
+    connectOrCreate?: PageCreateOrConnectWithoutParentInput | PageCreateOrConnectWithoutParentInput[]
+    createMany?: PageCreateManyParentInputEnvelope
+    connect?: PageWhereUniqueInput | PageWhereUniqueInput[]
+  }
+
+  export type PageSeoUncheckedCreateNestedOneWithoutPageInput = {
+    create?: XOR<PageSeoCreateWithoutPageInput, PageSeoUncheckedCreateWithoutPageInput>
+    connectOrCreate?: PageSeoCreateOrConnectWithoutPageInput
+    connect?: PageSeoWhereUniqueInput
+  }
+
+  export type PageSchemaUncheckedCreateNestedOneWithoutPageInput = {
+    create?: XOR<PageSchemaCreateWithoutPageInput, PageSchemaUncheckedCreateWithoutPageInput>
+    connectOrCreate?: PageSchemaCreateOrConnectWithoutPageInput
+    connect?: PageSchemaWhereUniqueInput
+  }
+
+  export type PageUpdateOneWithoutChildrenNestedInput = {
+    create?: XOR<PageCreateWithoutChildrenInput, PageUncheckedCreateWithoutChildrenInput>
+    connectOrCreate?: PageCreateOrConnectWithoutChildrenInput
+    upsert?: PageUpsertWithoutChildrenInput
+    disconnect?: PageWhereInput | boolean
+    delete?: PageWhereInput | boolean
+    connect?: PageWhereUniqueInput
+    update?: XOR<XOR<PageUpdateToOneWithWhereWithoutChildrenInput, PageUpdateWithoutChildrenInput>, PageUncheckedUpdateWithoutChildrenInput>
+  }
+
+  export type PageUpdateManyWithoutParentNestedInput = {
+    create?: XOR<PageCreateWithoutParentInput, PageUncheckedCreateWithoutParentInput> | PageCreateWithoutParentInput[] | PageUncheckedCreateWithoutParentInput[]
+    connectOrCreate?: PageCreateOrConnectWithoutParentInput | PageCreateOrConnectWithoutParentInput[]
+    upsert?: PageUpsertWithWhereUniqueWithoutParentInput | PageUpsertWithWhereUniqueWithoutParentInput[]
+    createMany?: PageCreateManyParentInputEnvelope
+    set?: PageWhereUniqueInput | PageWhereUniqueInput[]
+    disconnect?: PageWhereUniqueInput | PageWhereUniqueInput[]
+    delete?: PageWhereUniqueInput | PageWhereUniqueInput[]
+    connect?: PageWhereUniqueInput | PageWhereUniqueInput[]
+    update?: PageUpdateWithWhereUniqueWithoutParentInput | PageUpdateWithWhereUniqueWithoutParentInput[]
+    updateMany?: PageUpdateManyWithWhereWithoutParentInput | PageUpdateManyWithWhereWithoutParentInput[]
+    deleteMany?: PageScalarWhereInput | PageScalarWhereInput[]
+  }
+
+  export type PageTypeUpdateOneWithoutPagesNestedInput = {
+    create?: XOR<PageTypeCreateWithoutPagesInput, PageTypeUncheckedCreateWithoutPagesInput>
+    connectOrCreate?: PageTypeCreateOrConnectWithoutPagesInput
+    upsert?: PageTypeUpsertWithoutPagesInput
+    disconnect?: PageTypeWhereInput | boolean
+    delete?: PageTypeWhereInput | boolean
+    connect?: PageTypeWhereUniqueInput
+    update?: XOR<XOR<PageTypeUpdateToOneWithWhereWithoutPagesInput, PageTypeUpdateWithoutPagesInput>, PageTypeUncheckedUpdateWithoutPagesInput>
+  }
+
+  export type ResourceUpdateOneWithoutPage_thumbnailsNestedInput = {
+    create?: XOR<ResourceCreateWithoutPage_thumbnailsInput, ResourceUncheckedCreateWithoutPage_thumbnailsInput>
+    connectOrCreate?: ResourceCreateOrConnectWithoutPage_thumbnailsInput
+    upsert?: ResourceUpsertWithoutPage_thumbnailsInput
+    disconnect?: ResourceWhereInput | boolean
+    delete?: ResourceWhereInput | boolean
+    connect?: ResourceWhereUniqueInput
+    update?: XOR<XOR<ResourceUpdateToOneWithWhereWithoutPage_thumbnailsInput, ResourceUpdateWithoutPage_thumbnailsInput>, ResourceUncheckedUpdateWithoutPage_thumbnailsInput>
+  }
+
+  export type UserUpdateOneWithoutPagesNestedInput = {
+    create?: XOR<UserCreateWithoutPagesInput, UserUncheckedCreateWithoutPagesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutPagesInput
+    upsert?: UserUpsertWithoutPagesInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutPagesInput, UserUpdateWithoutPagesInput>, UserUncheckedUpdateWithoutPagesInput>
+  }
+
+  export type PageSeoUpdateOneWithoutPageNestedInput = {
+    create?: XOR<PageSeoCreateWithoutPageInput, PageSeoUncheckedCreateWithoutPageInput>
+    connectOrCreate?: PageSeoCreateOrConnectWithoutPageInput
+    upsert?: PageSeoUpsertWithoutPageInput
+    disconnect?: PageSeoWhereInput | boolean
+    delete?: PageSeoWhereInput | boolean
+    connect?: PageSeoWhereUniqueInput
+    update?: XOR<XOR<PageSeoUpdateToOneWithWhereWithoutPageInput, PageSeoUpdateWithoutPageInput>, PageSeoUncheckedUpdateWithoutPageInput>
+  }
+
+  export type PageSchemaUpdateOneWithoutPageNestedInput = {
+    create?: XOR<PageSchemaCreateWithoutPageInput, PageSchemaUncheckedCreateWithoutPageInput>
+    connectOrCreate?: PageSchemaCreateOrConnectWithoutPageInput
+    upsert?: PageSchemaUpsertWithoutPageInput
+    disconnect?: PageSchemaWhereInput | boolean
+    delete?: PageSchemaWhereInput | boolean
+    connect?: PageSchemaWhereUniqueInput
+    update?: XOR<XOR<PageSchemaUpdateToOneWithWhereWithoutPageInput, PageSchemaUpdateWithoutPageInput>, PageSchemaUncheckedUpdateWithoutPageInput>
+  }
+
+  export type PageUncheckedUpdateManyWithoutParentNestedInput = {
+    create?: XOR<PageCreateWithoutParentInput, PageUncheckedCreateWithoutParentInput> | PageCreateWithoutParentInput[] | PageUncheckedCreateWithoutParentInput[]
+    connectOrCreate?: PageCreateOrConnectWithoutParentInput | PageCreateOrConnectWithoutParentInput[]
+    upsert?: PageUpsertWithWhereUniqueWithoutParentInput | PageUpsertWithWhereUniqueWithoutParentInput[]
+    createMany?: PageCreateManyParentInputEnvelope
+    set?: PageWhereUniqueInput | PageWhereUniqueInput[]
+    disconnect?: PageWhereUniqueInput | PageWhereUniqueInput[]
+    delete?: PageWhereUniqueInput | PageWhereUniqueInput[]
+    connect?: PageWhereUniqueInput | PageWhereUniqueInput[]
+    update?: PageUpdateWithWhereUniqueWithoutParentInput | PageUpdateWithWhereUniqueWithoutParentInput[]
+    updateMany?: PageUpdateManyWithWhereWithoutParentInput | PageUpdateManyWithWhereWithoutParentInput[]
+    deleteMany?: PageScalarWhereInput | PageScalarWhereInput[]
+  }
+
+  export type PageSeoUncheckedUpdateOneWithoutPageNestedInput = {
+    create?: XOR<PageSeoCreateWithoutPageInput, PageSeoUncheckedCreateWithoutPageInput>
+    connectOrCreate?: PageSeoCreateOrConnectWithoutPageInput
+    upsert?: PageSeoUpsertWithoutPageInput
+    disconnect?: PageSeoWhereInput | boolean
+    delete?: PageSeoWhereInput | boolean
+    connect?: PageSeoWhereUniqueInput
+    update?: XOR<XOR<PageSeoUpdateToOneWithWhereWithoutPageInput, PageSeoUpdateWithoutPageInput>, PageSeoUncheckedUpdateWithoutPageInput>
+  }
+
+  export type PageSchemaUncheckedUpdateOneWithoutPageNestedInput = {
+    create?: XOR<PageSchemaCreateWithoutPageInput, PageSchemaUncheckedCreateWithoutPageInput>
+    connectOrCreate?: PageSchemaCreateOrConnectWithoutPageInput
+    upsert?: PageSchemaUpsertWithoutPageInput
+    disconnect?: PageSchemaWhereInput | boolean
+    delete?: PageSchemaWhereInput | boolean
+    connect?: PageSchemaWhereUniqueInput
+    update?: XOR<XOR<PageSchemaUpdateToOneWithWhereWithoutPageInput, PageSchemaUpdateWithoutPageInput>, PageSchemaUncheckedUpdateWithoutPageInput>
+  }
+
+  export type PageCreateNestedOneWithoutSeoInput = {
+    create?: XOR<PageCreateWithoutSeoInput, PageUncheckedCreateWithoutSeoInput>
+    connectOrCreate?: PageCreateOrConnectWithoutSeoInput
+    connect?: PageWhereUniqueInput
+  }
+
+  export type ResourceCreateNestedOneWithoutPage_seo_og_imagesInput = {
+    create?: XOR<ResourceCreateWithoutPage_seo_og_imagesInput, ResourceUncheckedCreateWithoutPage_seo_og_imagesInput>
+    connectOrCreate?: ResourceCreateOrConnectWithoutPage_seo_og_imagesInput
+    connect?: ResourceWhereUniqueInput
+  }
+
+  export type PageUpdateOneRequiredWithoutSeoNestedInput = {
+    create?: XOR<PageCreateWithoutSeoInput, PageUncheckedCreateWithoutSeoInput>
+    connectOrCreate?: PageCreateOrConnectWithoutSeoInput
+    upsert?: PageUpsertWithoutSeoInput
+    connect?: PageWhereUniqueInput
+    update?: XOR<XOR<PageUpdateToOneWithWhereWithoutSeoInput, PageUpdateWithoutSeoInput>, PageUncheckedUpdateWithoutSeoInput>
+  }
+
+  export type ResourceUpdateOneWithoutPage_seo_og_imagesNestedInput = {
+    create?: XOR<ResourceCreateWithoutPage_seo_og_imagesInput, ResourceUncheckedCreateWithoutPage_seo_og_imagesInput>
+    connectOrCreate?: ResourceCreateOrConnectWithoutPage_seo_og_imagesInput
+    upsert?: ResourceUpsertWithoutPage_seo_og_imagesInput
+    disconnect?: ResourceWhereInput | boolean
+    delete?: ResourceWhereInput | boolean
+    connect?: ResourceWhereUniqueInput
+    update?: XOR<XOR<ResourceUpdateToOneWithWhereWithoutPage_seo_og_imagesInput, ResourceUpdateWithoutPage_seo_og_imagesInput>, ResourceUncheckedUpdateWithoutPage_seo_og_imagesInput>
+  }
+
+  export type PageCreateNestedOneWithoutSchemaInput = {
+    create?: XOR<PageCreateWithoutSchemaInput, PageUncheckedCreateWithoutSchemaInput>
+    connectOrCreate?: PageCreateOrConnectWithoutSchemaInput
+    connect?: PageWhereUniqueInput
+  }
+
+  export type PageUpdateOneRequiredWithoutSchemaNestedInput = {
+    create?: XOR<PageCreateWithoutSchemaInput, PageUncheckedCreateWithoutSchemaInput>
+    connectOrCreate?: PageCreateOrConnectWithoutSchemaInput
+    upsert?: PageUpsertWithoutSchemaInput
+    connect?: PageWhereUniqueInput
+    update?: XOR<XOR<PageUpdateToOneWithWhereWithoutSchemaInput, PageUpdateWithoutSchemaInput>, PageUncheckedUpdateWithoutSchemaInput>
   }
 
   export type UserCreateNestedManyWithoutRoleInput = {
@@ -10405,6 +17066,29 @@ export namespace Prisma {
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
+  export type NestedJsonFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<NestedJsonFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>
+
+  export type NestedJsonFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
 
   export type NestedBoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
@@ -10428,6 +17112,8 @@ export namespace Prisma {
     created_at?: Date | string
     updated_at?: Date | string
     deleted_at?: Date | string | null
+    page_thumbnails?: PageCreateNestedManyWithoutThumbnailInput
+    page_seo_og_images?: PageSeoCreateNestedManyWithoutOg_imageInput
   }
 
   export type ResourceUncheckedCreateWithoutUsersInput = {
@@ -10439,6 +17125,8 @@ export namespace Prisma {
     created_at?: Date | string
     updated_at?: Date | string
     deleted_at?: Date | string | null
+    page_thumbnails?: PageUncheckedCreateNestedManyWithoutThumbnailInput
+    page_seo_og_images?: PageSeoUncheckedCreateNestedManyWithoutOg_imageInput
   }
 
   export type ResourceCreateOrConnectWithoutUsersInput = {
@@ -10553,6 +17241,54 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type PageCreateWithoutAuthorInput = {
+    id?: string
+    slug: string
+    title: string
+    content?: JsonNullValueInput | InputJsonValue
+    excerpt?: string | null
+    status?: string
+    locale?: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    parent?: PageCreateNestedOneWithoutChildrenInput
+    children?: PageCreateNestedManyWithoutParentInput
+    page_type?: PageTypeCreateNestedOneWithoutPagesInput
+    thumbnail?: ResourceCreateNestedOneWithoutPage_thumbnailsInput
+    seo?: PageSeoCreateNestedOneWithoutPageInput
+    schema?: PageSchemaCreateNestedOneWithoutPageInput
+  }
+
+  export type PageUncheckedCreateWithoutAuthorInput = {
+    id?: string
+    slug: string
+    title: string
+    content?: JsonNullValueInput | InputJsonValue
+    excerpt?: string | null
+    status?: string
+    locale?: string
+    parent_id?: string | null
+    page_type_id?: string | null
+    thumbnail_id?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    children?: PageUncheckedCreateNestedManyWithoutParentInput
+    seo?: PageSeoUncheckedCreateNestedOneWithoutPageInput
+    schema?: PageSchemaUncheckedCreateNestedOneWithoutPageInput
+  }
+
+  export type PageCreateOrConnectWithoutAuthorInput = {
+    where: PageWhereUniqueInput
+    create: XOR<PageCreateWithoutAuthorInput, PageUncheckedCreateWithoutAuthorInput>
+  }
+
+  export type PageCreateManyAuthorInputEnvelope = {
+    data: PageCreateManyAuthorInput | PageCreateManyAuthorInput[]
+    skipDuplicates?: boolean
+  }
+
   export type ResourceUpsertWithoutUsersInput = {
     update: XOR<ResourceUpdateWithoutUsersInput, ResourceUncheckedUpdateWithoutUsersInput>
     create: XOR<ResourceCreateWithoutUsersInput, ResourceUncheckedCreateWithoutUsersInput>
@@ -10573,6 +17309,8 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    page_thumbnails?: PageUpdateManyWithoutThumbnailNestedInput
+    page_seo_og_images?: PageSeoUpdateManyWithoutOg_imageNestedInput
   }
 
   export type ResourceUncheckedUpdateWithoutUsersInput = {
@@ -10584,6 +17322,8 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    page_thumbnails?: PageUncheckedUpdateManyWithoutThumbnailNestedInput
+    page_seo_og_images?: PageSeoUncheckedUpdateManyWithoutOg_imageNestedInput
   }
 
   export type RoleUpsertWithoutUsersInput = {
@@ -10704,6 +17444,42 @@ export namespace Prisma {
     created_at?: DateTimeFilter<"PasswordResetToken"> | Date | string
   }
 
+  export type PageUpsertWithWhereUniqueWithoutAuthorInput = {
+    where: PageWhereUniqueInput
+    update: XOR<PageUpdateWithoutAuthorInput, PageUncheckedUpdateWithoutAuthorInput>
+    create: XOR<PageCreateWithoutAuthorInput, PageUncheckedCreateWithoutAuthorInput>
+  }
+
+  export type PageUpdateWithWhereUniqueWithoutAuthorInput = {
+    where: PageWhereUniqueInput
+    data: XOR<PageUpdateWithoutAuthorInput, PageUncheckedUpdateWithoutAuthorInput>
+  }
+
+  export type PageUpdateManyWithWhereWithoutAuthorInput = {
+    where: PageScalarWhereInput
+    data: XOR<PageUpdateManyMutationInput, PageUncheckedUpdateManyWithoutAuthorInput>
+  }
+
+  export type PageScalarWhereInput = {
+    AND?: PageScalarWhereInput | PageScalarWhereInput[]
+    OR?: PageScalarWhereInput[]
+    NOT?: PageScalarWhereInput | PageScalarWhereInput[]
+    id?: StringFilter<"Page"> | string
+    slug?: StringFilter<"Page"> | string
+    title?: StringFilter<"Page"> | string
+    content?: JsonFilter<"Page">
+    excerpt?: StringNullableFilter<"Page"> | string | null
+    status?: StringFilter<"Page"> | string
+    locale?: StringFilter<"Page"> | string
+    parent_id?: StringNullableFilter<"Page"> | string | null
+    page_type_id?: StringNullableFilter<"Page"> | string | null
+    thumbnail_id?: StringNullableFilter<"Page"> | string | null
+    author_id?: StringNullableFilter<"Page"> | string | null
+    created_at?: DateTimeFilter<"Page"> | Date | string
+    updated_at?: DateTimeFilter<"Page"> | Date | string
+    deleted_at?: DateTimeNullableFilter<"Page"> | Date | string | null
+  }
+
   export type UserCreateWithoutRefresh_tokensInput = {
     id?: string
     email: string
@@ -10721,6 +17497,7 @@ export namespace Prisma {
     role?: RoleCreateNestedOneWithoutUsersInput
     notifications?: NotificationCreateNestedManyWithoutUserInput
     reset_tokens?: PasswordResetTokenCreateNestedManyWithoutUserInput
+    pages?: PageCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUncheckedCreateWithoutRefresh_tokensInput = {
@@ -10740,6 +17517,7 @@ export namespace Prisma {
     role_id?: string | null
     notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
     reset_tokens?: PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
+    pages?: PageUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type UserCreateOrConnectWithoutRefresh_tokensInput = {
@@ -10775,6 +17553,7 @@ export namespace Prisma {
     role?: RoleUpdateOneWithoutUsersNestedInput
     notifications?: NotificationUpdateManyWithoutUserNestedInput
     reset_tokens?: PasswordResetTokenUpdateManyWithoutUserNestedInput
+    pages?: PageUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutRefresh_tokensInput = {
@@ -10794,6 +17573,7 @@ export namespace Prisma {
     role_id?: NullableStringFieldUpdateOperationsInput | string | null
     notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
     reset_tokens?: PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
+    pages?: PageUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserCreateWithoutReset_tokensInput = {
@@ -10813,6 +17593,7 @@ export namespace Prisma {
     role?: RoleCreateNestedOneWithoutUsersInput
     notifications?: NotificationCreateNestedManyWithoutUserInput
     refresh_tokens?: RefreshTokenCreateNestedManyWithoutUserInput
+    pages?: PageCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUncheckedCreateWithoutReset_tokensInput = {
@@ -10832,6 +17613,7 @@ export namespace Prisma {
     role_id?: string | null
     notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
     refresh_tokens?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
+    pages?: PageUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type UserCreateOrConnectWithoutReset_tokensInput = {
@@ -10867,6 +17649,7 @@ export namespace Prisma {
     role?: RoleUpdateOneWithoutUsersNestedInput
     notifications?: NotificationUpdateManyWithoutUserNestedInput
     refresh_tokens?: RefreshTokenUpdateManyWithoutUserNestedInput
+    pages?: PageUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutReset_tokensInput = {
@@ -10886,6 +17669,7 @@ export namespace Prisma {
     role_id?: NullableStringFieldUpdateOperationsInput | string | null
     notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
     refresh_tokens?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
+    pages?: PageUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserCreateWithoutAvatarInput = {
@@ -10905,6 +17689,7 @@ export namespace Prisma {
     notifications?: NotificationCreateNestedManyWithoutUserInput
     refresh_tokens?: RefreshTokenCreateNestedManyWithoutUserInput
     reset_tokens?: PasswordResetTokenCreateNestedManyWithoutUserInput
+    pages?: PageCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUncheckedCreateWithoutAvatarInput = {
@@ -10924,6 +17709,7 @@ export namespace Prisma {
     notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
     refresh_tokens?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
     reset_tokens?: PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
+    pages?: PageUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type UserCreateOrConnectWithoutAvatarInput = {
@@ -10933,6 +17719,92 @@ export namespace Prisma {
 
   export type UserCreateManyAvatarInputEnvelope = {
     data: UserCreateManyAvatarInput | UserCreateManyAvatarInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PageCreateWithoutThumbnailInput = {
+    id?: string
+    slug: string
+    title: string
+    content?: JsonNullValueInput | InputJsonValue
+    excerpt?: string | null
+    status?: string
+    locale?: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    parent?: PageCreateNestedOneWithoutChildrenInput
+    children?: PageCreateNestedManyWithoutParentInput
+    page_type?: PageTypeCreateNestedOneWithoutPagesInput
+    author?: UserCreateNestedOneWithoutPagesInput
+    seo?: PageSeoCreateNestedOneWithoutPageInput
+    schema?: PageSchemaCreateNestedOneWithoutPageInput
+  }
+
+  export type PageUncheckedCreateWithoutThumbnailInput = {
+    id?: string
+    slug: string
+    title: string
+    content?: JsonNullValueInput | InputJsonValue
+    excerpt?: string | null
+    status?: string
+    locale?: string
+    parent_id?: string | null
+    page_type_id?: string | null
+    author_id?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    children?: PageUncheckedCreateNestedManyWithoutParentInput
+    seo?: PageSeoUncheckedCreateNestedOneWithoutPageInput
+    schema?: PageSchemaUncheckedCreateNestedOneWithoutPageInput
+  }
+
+  export type PageCreateOrConnectWithoutThumbnailInput = {
+    where: PageWhereUniqueInput
+    create: XOR<PageCreateWithoutThumbnailInput, PageUncheckedCreateWithoutThumbnailInput>
+  }
+
+  export type PageCreateManyThumbnailInputEnvelope = {
+    data: PageCreateManyThumbnailInput | PageCreateManyThumbnailInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PageSeoCreateWithoutOg_imageInput = {
+    id?: string
+    meta_title?: string | null
+    meta_description?: string | null
+    meta_keywords?: string | null
+    og_title?: string | null
+    og_description?: string | null
+    canonical_url?: string | null
+    robots?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    page: PageCreateNestedOneWithoutSeoInput
+  }
+
+  export type PageSeoUncheckedCreateWithoutOg_imageInput = {
+    id?: string
+    page_id: string
+    meta_title?: string | null
+    meta_description?: string | null
+    meta_keywords?: string | null
+    og_title?: string | null
+    og_description?: string | null
+    canonical_url?: string | null
+    robots?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type PageSeoCreateOrConnectWithoutOg_imageInput = {
+    where: PageSeoWhereUniqueInput
+    create: XOR<PageSeoCreateWithoutOg_imageInput, PageSeoUncheckedCreateWithoutOg_imageInput>
+  }
+
+  export type PageSeoCreateManyOg_imageInputEnvelope = {
+    data: PageSeoCreateManyOg_imageInput | PageSeoCreateManyOg_imageInput[]
     skipDuplicates?: boolean
   }
 
@@ -10972,6 +17844,56 @@ export namespace Prisma {
     role_id?: StringNullableFilter<"User"> | string | null
   }
 
+  export type PageUpsertWithWhereUniqueWithoutThumbnailInput = {
+    where: PageWhereUniqueInput
+    update: XOR<PageUpdateWithoutThumbnailInput, PageUncheckedUpdateWithoutThumbnailInput>
+    create: XOR<PageCreateWithoutThumbnailInput, PageUncheckedCreateWithoutThumbnailInput>
+  }
+
+  export type PageUpdateWithWhereUniqueWithoutThumbnailInput = {
+    where: PageWhereUniqueInput
+    data: XOR<PageUpdateWithoutThumbnailInput, PageUncheckedUpdateWithoutThumbnailInput>
+  }
+
+  export type PageUpdateManyWithWhereWithoutThumbnailInput = {
+    where: PageScalarWhereInput
+    data: XOR<PageUpdateManyMutationInput, PageUncheckedUpdateManyWithoutThumbnailInput>
+  }
+
+  export type PageSeoUpsertWithWhereUniqueWithoutOg_imageInput = {
+    where: PageSeoWhereUniqueInput
+    update: XOR<PageSeoUpdateWithoutOg_imageInput, PageSeoUncheckedUpdateWithoutOg_imageInput>
+    create: XOR<PageSeoCreateWithoutOg_imageInput, PageSeoUncheckedCreateWithoutOg_imageInput>
+  }
+
+  export type PageSeoUpdateWithWhereUniqueWithoutOg_imageInput = {
+    where: PageSeoWhereUniqueInput
+    data: XOR<PageSeoUpdateWithoutOg_imageInput, PageSeoUncheckedUpdateWithoutOg_imageInput>
+  }
+
+  export type PageSeoUpdateManyWithWhereWithoutOg_imageInput = {
+    where: PageSeoScalarWhereInput
+    data: XOR<PageSeoUpdateManyMutationInput, PageSeoUncheckedUpdateManyWithoutOg_imageInput>
+  }
+
+  export type PageSeoScalarWhereInput = {
+    AND?: PageSeoScalarWhereInput | PageSeoScalarWhereInput[]
+    OR?: PageSeoScalarWhereInput[]
+    NOT?: PageSeoScalarWhereInput | PageSeoScalarWhereInput[]
+    id?: StringFilter<"PageSeo"> | string
+    page_id?: StringFilter<"PageSeo"> | string
+    meta_title?: StringNullableFilter<"PageSeo"> | string | null
+    meta_description?: StringNullableFilter<"PageSeo"> | string | null
+    meta_keywords?: StringNullableFilter<"PageSeo"> | string | null
+    og_title?: StringNullableFilter<"PageSeo"> | string | null
+    og_description?: StringNullableFilter<"PageSeo"> | string | null
+    og_image_id?: StringNullableFilter<"PageSeo"> | string | null
+    canonical_url?: StringNullableFilter<"PageSeo"> | string | null
+    robots?: StringNullableFilter<"PageSeo"> | string | null
+    created_at?: DateTimeFilter<"PageSeo"> | Date | string
+    updated_at?: DateTimeFilter<"PageSeo"> | Date | string
+  }
+
   export type UserCreateWithoutNotificationsInput = {
     id?: string
     email: string
@@ -10989,6 +17911,7 @@ export namespace Prisma {
     role?: RoleCreateNestedOneWithoutUsersInput
     refresh_tokens?: RefreshTokenCreateNestedManyWithoutUserInput
     reset_tokens?: PasswordResetTokenCreateNestedManyWithoutUserInput
+    pages?: PageCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUncheckedCreateWithoutNotificationsInput = {
@@ -11008,6 +17931,7 @@ export namespace Prisma {
     role_id?: string | null
     refresh_tokens?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
     reset_tokens?: PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
+    pages?: PageUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type UserCreateOrConnectWithoutNotificationsInput = {
@@ -11043,6 +17967,7 @@ export namespace Prisma {
     role?: RoleUpdateOneWithoutUsersNestedInput
     refresh_tokens?: RefreshTokenUpdateManyWithoutUserNestedInput
     reset_tokens?: PasswordResetTokenUpdateManyWithoutUserNestedInput
+    pages?: PageUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutNotificationsInput = {
@@ -11062,6 +17987,819 @@ export namespace Prisma {
     role_id?: NullableStringFieldUpdateOperationsInput | string | null
     refresh_tokens?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
     reset_tokens?: PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
+    pages?: PageUncheckedUpdateManyWithoutAuthorNestedInput
+  }
+
+  export type PageCreateWithoutPage_typeInput = {
+    id?: string
+    slug: string
+    title: string
+    content?: JsonNullValueInput | InputJsonValue
+    excerpt?: string | null
+    status?: string
+    locale?: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    parent?: PageCreateNestedOneWithoutChildrenInput
+    children?: PageCreateNestedManyWithoutParentInput
+    thumbnail?: ResourceCreateNestedOneWithoutPage_thumbnailsInput
+    author?: UserCreateNestedOneWithoutPagesInput
+    seo?: PageSeoCreateNestedOneWithoutPageInput
+    schema?: PageSchemaCreateNestedOneWithoutPageInput
+  }
+
+  export type PageUncheckedCreateWithoutPage_typeInput = {
+    id?: string
+    slug: string
+    title: string
+    content?: JsonNullValueInput | InputJsonValue
+    excerpt?: string | null
+    status?: string
+    locale?: string
+    parent_id?: string | null
+    thumbnail_id?: string | null
+    author_id?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    children?: PageUncheckedCreateNestedManyWithoutParentInput
+    seo?: PageSeoUncheckedCreateNestedOneWithoutPageInput
+    schema?: PageSchemaUncheckedCreateNestedOneWithoutPageInput
+  }
+
+  export type PageCreateOrConnectWithoutPage_typeInput = {
+    where: PageWhereUniqueInput
+    create: XOR<PageCreateWithoutPage_typeInput, PageUncheckedCreateWithoutPage_typeInput>
+  }
+
+  export type PageCreateManyPage_typeInputEnvelope = {
+    data: PageCreateManyPage_typeInput | PageCreateManyPage_typeInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PageUpsertWithWhereUniqueWithoutPage_typeInput = {
+    where: PageWhereUniqueInput
+    update: XOR<PageUpdateWithoutPage_typeInput, PageUncheckedUpdateWithoutPage_typeInput>
+    create: XOR<PageCreateWithoutPage_typeInput, PageUncheckedCreateWithoutPage_typeInput>
+  }
+
+  export type PageUpdateWithWhereUniqueWithoutPage_typeInput = {
+    where: PageWhereUniqueInput
+    data: XOR<PageUpdateWithoutPage_typeInput, PageUncheckedUpdateWithoutPage_typeInput>
+  }
+
+  export type PageUpdateManyWithWhereWithoutPage_typeInput = {
+    where: PageScalarWhereInput
+    data: XOR<PageUpdateManyMutationInput, PageUncheckedUpdateManyWithoutPage_typeInput>
+  }
+
+  export type PageCreateWithoutChildrenInput = {
+    id?: string
+    slug: string
+    title: string
+    content?: JsonNullValueInput | InputJsonValue
+    excerpt?: string | null
+    status?: string
+    locale?: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    parent?: PageCreateNestedOneWithoutChildrenInput
+    page_type?: PageTypeCreateNestedOneWithoutPagesInput
+    thumbnail?: ResourceCreateNestedOneWithoutPage_thumbnailsInput
+    author?: UserCreateNestedOneWithoutPagesInput
+    seo?: PageSeoCreateNestedOneWithoutPageInput
+    schema?: PageSchemaCreateNestedOneWithoutPageInput
+  }
+
+  export type PageUncheckedCreateWithoutChildrenInput = {
+    id?: string
+    slug: string
+    title: string
+    content?: JsonNullValueInput | InputJsonValue
+    excerpt?: string | null
+    status?: string
+    locale?: string
+    parent_id?: string | null
+    page_type_id?: string | null
+    thumbnail_id?: string | null
+    author_id?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    seo?: PageSeoUncheckedCreateNestedOneWithoutPageInput
+    schema?: PageSchemaUncheckedCreateNestedOneWithoutPageInput
+  }
+
+  export type PageCreateOrConnectWithoutChildrenInput = {
+    where: PageWhereUniqueInput
+    create: XOR<PageCreateWithoutChildrenInput, PageUncheckedCreateWithoutChildrenInput>
+  }
+
+  export type PageCreateWithoutParentInput = {
+    id?: string
+    slug: string
+    title: string
+    content?: JsonNullValueInput | InputJsonValue
+    excerpt?: string | null
+    status?: string
+    locale?: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    children?: PageCreateNestedManyWithoutParentInput
+    page_type?: PageTypeCreateNestedOneWithoutPagesInput
+    thumbnail?: ResourceCreateNestedOneWithoutPage_thumbnailsInput
+    author?: UserCreateNestedOneWithoutPagesInput
+    seo?: PageSeoCreateNestedOneWithoutPageInput
+    schema?: PageSchemaCreateNestedOneWithoutPageInput
+  }
+
+  export type PageUncheckedCreateWithoutParentInput = {
+    id?: string
+    slug: string
+    title: string
+    content?: JsonNullValueInput | InputJsonValue
+    excerpt?: string | null
+    status?: string
+    locale?: string
+    page_type_id?: string | null
+    thumbnail_id?: string | null
+    author_id?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    children?: PageUncheckedCreateNestedManyWithoutParentInput
+    seo?: PageSeoUncheckedCreateNestedOneWithoutPageInput
+    schema?: PageSchemaUncheckedCreateNestedOneWithoutPageInput
+  }
+
+  export type PageCreateOrConnectWithoutParentInput = {
+    where: PageWhereUniqueInput
+    create: XOR<PageCreateWithoutParentInput, PageUncheckedCreateWithoutParentInput>
+  }
+
+  export type PageCreateManyParentInputEnvelope = {
+    data: PageCreateManyParentInput | PageCreateManyParentInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PageTypeCreateWithoutPagesInput = {
+    id?: string
+    name: string
+    slug: string
+    description?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+  }
+
+  export type PageTypeUncheckedCreateWithoutPagesInput = {
+    id?: string
+    name: string
+    slug: string
+    description?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+  }
+
+  export type PageTypeCreateOrConnectWithoutPagesInput = {
+    where: PageTypeWhereUniqueInput
+    create: XOR<PageTypeCreateWithoutPagesInput, PageTypeUncheckedCreateWithoutPagesInput>
+  }
+
+  export type ResourceCreateWithoutPage_thumbnailsInput = {
+    id?: string
+    url: string
+    type: string
+    name?: string | null
+    size?: number | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    users?: UserCreateNestedManyWithoutAvatarInput
+    page_seo_og_images?: PageSeoCreateNestedManyWithoutOg_imageInput
+  }
+
+  export type ResourceUncheckedCreateWithoutPage_thumbnailsInput = {
+    id?: string
+    url: string
+    type: string
+    name?: string | null
+    size?: number | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    users?: UserUncheckedCreateNestedManyWithoutAvatarInput
+    page_seo_og_images?: PageSeoUncheckedCreateNestedManyWithoutOg_imageInput
+  }
+
+  export type ResourceCreateOrConnectWithoutPage_thumbnailsInput = {
+    where: ResourceWhereUniqueInput
+    create: XOR<ResourceCreateWithoutPage_thumbnailsInput, ResourceUncheckedCreateWithoutPage_thumbnailsInput>
+  }
+
+  export type UserCreateWithoutPagesInput = {
+    id?: string
+    email: string
+    first_name: string
+    last_name: string
+    password?: string | null
+    status?: string
+    invitation_token?: string | null
+    invitation_expires_at?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    detail?: NullableJsonNullValueInput | InputJsonValue
+    avatar?: ResourceCreateNestedOneWithoutUsersInput
+    role?: RoleCreateNestedOneWithoutUsersInput
+    notifications?: NotificationCreateNestedManyWithoutUserInput
+    refresh_tokens?: RefreshTokenCreateNestedManyWithoutUserInput
+    reset_tokens?: PasswordResetTokenCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutPagesInput = {
+    id?: string
+    email: string
+    first_name: string
+    last_name: string
+    password?: string | null
+    status?: string
+    invitation_token?: string | null
+    invitation_expires_at?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    detail?: NullableJsonNullValueInput | InputJsonValue
+    avatar_id?: string | null
+    role_id?: string | null
+    notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
+    refresh_tokens?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
+    reset_tokens?: PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutPagesInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutPagesInput, UserUncheckedCreateWithoutPagesInput>
+  }
+
+  export type PageSeoCreateWithoutPageInput = {
+    id?: string
+    meta_title?: string | null
+    meta_description?: string | null
+    meta_keywords?: string | null
+    og_title?: string | null
+    og_description?: string | null
+    canonical_url?: string | null
+    robots?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    og_image?: ResourceCreateNestedOneWithoutPage_seo_og_imagesInput
+  }
+
+  export type PageSeoUncheckedCreateWithoutPageInput = {
+    id?: string
+    meta_title?: string | null
+    meta_description?: string | null
+    meta_keywords?: string | null
+    og_title?: string | null
+    og_description?: string | null
+    og_image_id?: string | null
+    canonical_url?: string | null
+    robots?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type PageSeoCreateOrConnectWithoutPageInput = {
+    where: PageSeoWhereUniqueInput
+    create: XOR<PageSeoCreateWithoutPageInput, PageSeoUncheckedCreateWithoutPageInput>
+  }
+
+  export type PageSchemaCreateWithoutPageInput = {
+    id?: string
+    schema_type?: string | null
+    schema_data?: NullableJsonNullValueInput | InputJsonValue
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type PageSchemaUncheckedCreateWithoutPageInput = {
+    id?: string
+    schema_type?: string | null
+    schema_data?: NullableJsonNullValueInput | InputJsonValue
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type PageSchemaCreateOrConnectWithoutPageInput = {
+    where: PageSchemaWhereUniqueInput
+    create: XOR<PageSchemaCreateWithoutPageInput, PageSchemaUncheckedCreateWithoutPageInput>
+  }
+
+  export type PageUpsertWithoutChildrenInput = {
+    update: XOR<PageUpdateWithoutChildrenInput, PageUncheckedUpdateWithoutChildrenInput>
+    create: XOR<PageCreateWithoutChildrenInput, PageUncheckedCreateWithoutChildrenInput>
+    where?: PageWhereInput
+  }
+
+  export type PageUpdateToOneWithWhereWithoutChildrenInput = {
+    where?: PageWhereInput
+    data: XOR<PageUpdateWithoutChildrenInput, PageUncheckedUpdateWithoutChildrenInput>
+  }
+
+  export type PageUpdateWithoutChildrenInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: JsonNullValueInput | InputJsonValue
+    excerpt?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    locale?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    parent?: PageUpdateOneWithoutChildrenNestedInput
+    page_type?: PageTypeUpdateOneWithoutPagesNestedInput
+    thumbnail?: ResourceUpdateOneWithoutPage_thumbnailsNestedInput
+    author?: UserUpdateOneWithoutPagesNestedInput
+    seo?: PageSeoUpdateOneWithoutPageNestedInput
+    schema?: PageSchemaUpdateOneWithoutPageNestedInput
+  }
+
+  export type PageUncheckedUpdateWithoutChildrenInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: JsonNullValueInput | InputJsonValue
+    excerpt?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    locale?: StringFieldUpdateOperationsInput | string
+    parent_id?: NullableStringFieldUpdateOperationsInput | string | null
+    page_type_id?: NullableStringFieldUpdateOperationsInput | string | null
+    thumbnail_id?: NullableStringFieldUpdateOperationsInput | string | null
+    author_id?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    seo?: PageSeoUncheckedUpdateOneWithoutPageNestedInput
+    schema?: PageSchemaUncheckedUpdateOneWithoutPageNestedInput
+  }
+
+  export type PageUpsertWithWhereUniqueWithoutParentInput = {
+    where: PageWhereUniqueInput
+    update: XOR<PageUpdateWithoutParentInput, PageUncheckedUpdateWithoutParentInput>
+    create: XOR<PageCreateWithoutParentInput, PageUncheckedCreateWithoutParentInput>
+  }
+
+  export type PageUpdateWithWhereUniqueWithoutParentInput = {
+    where: PageWhereUniqueInput
+    data: XOR<PageUpdateWithoutParentInput, PageUncheckedUpdateWithoutParentInput>
+  }
+
+  export type PageUpdateManyWithWhereWithoutParentInput = {
+    where: PageScalarWhereInput
+    data: XOR<PageUpdateManyMutationInput, PageUncheckedUpdateManyWithoutParentInput>
+  }
+
+  export type PageTypeUpsertWithoutPagesInput = {
+    update: XOR<PageTypeUpdateWithoutPagesInput, PageTypeUncheckedUpdateWithoutPagesInput>
+    create: XOR<PageTypeCreateWithoutPagesInput, PageTypeUncheckedCreateWithoutPagesInput>
+    where?: PageTypeWhereInput
+  }
+
+  export type PageTypeUpdateToOneWithWhereWithoutPagesInput = {
+    where?: PageTypeWhereInput
+    data: XOR<PageTypeUpdateWithoutPagesInput, PageTypeUncheckedUpdateWithoutPagesInput>
+  }
+
+  export type PageTypeUpdateWithoutPagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type PageTypeUncheckedUpdateWithoutPagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type ResourceUpsertWithoutPage_thumbnailsInput = {
+    update: XOR<ResourceUpdateWithoutPage_thumbnailsInput, ResourceUncheckedUpdateWithoutPage_thumbnailsInput>
+    create: XOR<ResourceCreateWithoutPage_thumbnailsInput, ResourceUncheckedCreateWithoutPage_thumbnailsInput>
+    where?: ResourceWhereInput
+  }
+
+  export type ResourceUpdateToOneWithWhereWithoutPage_thumbnailsInput = {
+    where?: ResourceWhereInput
+    data: XOR<ResourceUpdateWithoutPage_thumbnailsInput, ResourceUncheckedUpdateWithoutPage_thumbnailsInput>
+  }
+
+  export type ResourceUpdateWithoutPage_thumbnailsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    size?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    users?: UserUpdateManyWithoutAvatarNestedInput
+    page_seo_og_images?: PageSeoUpdateManyWithoutOg_imageNestedInput
+  }
+
+  export type ResourceUncheckedUpdateWithoutPage_thumbnailsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    size?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    users?: UserUncheckedUpdateManyWithoutAvatarNestedInput
+    page_seo_og_images?: PageSeoUncheckedUpdateManyWithoutOg_imageNestedInput
+  }
+
+  export type UserUpsertWithoutPagesInput = {
+    update: XOR<UserUpdateWithoutPagesInput, UserUncheckedUpdateWithoutPagesInput>
+    create: XOR<UserCreateWithoutPagesInput, UserUncheckedCreateWithoutPagesInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutPagesInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutPagesInput, UserUncheckedUpdateWithoutPagesInput>
+  }
+
+  export type UserUpdateWithoutPagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    first_name?: StringFieldUpdateOperationsInput | string
+    last_name?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    invitation_token?: NullableStringFieldUpdateOperationsInput | string | null
+    invitation_expires_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    detail?: NullableJsonNullValueInput | InputJsonValue
+    avatar?: ResourceUpdateOneWithoutUsersNestedInput
+    role?: RoleUpdateOneWithoutUsersNestedInput
+    notifications?: NotificationUpdateManyWithoutUserNestedInput
+    refresh_tokens?: RefreshTokenUpdateManyWithoutUserNestedInput
+    reset_tokens?: PasswordResetTokenUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutPagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    first_name?: StringFieldUpdateOperationsInput | string
+    last_name?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    invitation_token?: NullableStringFieldUpdateOperationsInput | string | null
+    invitation_expires_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    detail?: NullableJsonNullValueInput | InputJsonValue
+    avatar_id?: NullableStringFieldUpdateOperationsInput | string | null
+    role_id?: NullableStringFieldUpdateOperationsInput | string | null
+    notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+    refresh_tokens?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
+    reset_tokens?: PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type PageSeoUpsertWithoutPageInput = {
+    update: XOR<PageSeoUpdateWithoutPageInput, PageSeoUncheckedUpdateWithoutPageInput>
+    create: XOR<PageSeoCreateWithoutPageInput, PageSeoUncheckedCreateWithoutPageInput>
+    where?: PageSeoWhereInput
+  }
+
+  export type PageSeoUpdateToOneWithWhereWithoutPageInput = {
+    where?: PageSeoWhereInput
+    data: XOR<PageSeoUpdateWithoutPageInput, PageSeoUncheckedUpdateWithoutPageInput>
+  }
+
+  export type PageSeoUpdateWithoutPageInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    meta_title?: NullableStringFieldUpdateOperationsInput | string | null
+    meta_description?: NullableStringFieldUpdateOperationsInput | string | null
+    meta_keywords?: NullableStringFieldUpdateOperationsInput | string | null
+    og_title?: NullableStringFieldUpdateOperationsInput | string | null
+    og_description?: NullableStringFieldUpdateOperationsInput | string | null
+    canonical_url?: NullableStringFieldUpdateOperationsInput | string | null
+    robots?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    og_image?: ResourceUpdateOneWithoutPage_seo_og_imagesNestedInput
+  }
+
+  export type PageSeoUncheckedUpdateWithoutPageInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    meta_title?: NullableStringFieldUpdateOperationsInput | string | null
+    meta_description?: NullableStringFieldUpdateOperationsInput | string | null
+    meta_keywords?: NullableStringFieldUpdateOperationsInput | string | null
+    og_title?: NullableStringFieldUpdateOperationsInput | string | null
+    og_description?: NullableStringFieldUpdateOperationsInput | string | null
+    og_image_id?: NullableStringFieldUpdateOperationsInput | string | null
+    canonical_url?: NullableStringFieldUpdateOperationsInput | string | null
+    robots?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PageSchemaUpsertWithoutPageInput = {
+    update: XOR<PageSchemaUpdateWithoutPageInput, PageSchemaUncheckedUpdateWithoutPageInput>
+    create: XOR<PageSchemaCreateWithoutPageInput, PageSchemaUncheckedCreateWithoutPageInput>
+    where?: PageSchemaWhereInput
+  }
+
+  export type PageSchemaUpdateToOneWithWhereWithoutPageInput = {
+    where?: PageSchemaWhereInput
+    data: XOR<PageSchemaUpdateWithoutPageInput, PageSchemaUncheckedUpdateWithoutPageInput>
+  }
+
+  export type PageSchemaUpdateWithoutPageInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    schema_type?: NullableStringFieldUpdateOperationsInput | string | null
+    schema_data?: NullableJsonNullValueInput | InputJsonValue
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PageSchemaUncheckedUpdateWithoutPageInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    schema_type?: NullableStringFieldUpdateOperationsInput | string | null
+    schema_data?: NullableJsonNullValueInput | InputJsonValue
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PageCreateWithoutSeoInput = {
+    id?: string
+    slug: string
+    title: string
+    content?: JsonNullValueInput | InputJsonValue
+    excerpt?: string | null
+    status?: string
+    locale?: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    parent?: PageCreateNestedOneWithoutChildrenInput
+    children?: PageCreateNestedManyWithoutParentInput
+    page_type?: PageTypeCreateNestedOneWithoutPagesInput
+    thumbnail?: ResourceCreateNestedOneWithoutPage_thumbnailsInput
+    author?: UserCreateNestedOneWithoutPagesInput
+    schema?: PageSchemaCreateNestedOneWithoutPageInput
+  }
+
+  export type PageUncheckedCreateWithoutSeoInput = {
+    id?: string
+    slug: string
+    title: string
+    content?: JsonNullValueInput | InputJsonValue
+    excerpt?: string | null
+    status?: string
+    locale?: string
+    parent_id?: string | null
+    page_type_id?: string | null
+    thumbnail_id?: string | null
+    author_id?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    children?: PageUncheckedCreateNestedManyWithoutParentInput
+    schema?: PageSchemaUncheckedCreateNestedOneWithoutPageInput
+  }
+
+  export type PageCreateOrConnectWithoutSeoInput = {
+    where: PageWhereUniqueInput
+    create: XOR<PageCreateWithoutSeoInput, PageUncheckedCreateWithoutSeoInput>
+  }
+
+  export type ResourceCreateWithoutPage_seo_og_imagesInput = {
+    id?: string
+    url: string
+    type: string
+    name?: string | null
+    size?: number | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    users?: UserCreateNestedManyWithoutAvatarInput
+    page_thumbnails?: PageCreateNestedManyWithoutThumbnailInput
+  }
+
+  export type ResourceUncheckedCreateWithoutPage_seo_og_imagesInput = {
+    id?: string
+    url: string
+    type: string
+    name?: string | null
+    size?: number | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    users?: UserUncheckedCreateNestedManyWithoutAvatarInput
+    page_thumbnails?: PageUncheckedCreateNestedManyWithoutThumbnailInput
+  }
+
+  export type ResourceCreateOrConnectWithoutPage_seo_og_imagesInput = {
+    where: ResourceWhereUniqueInput
+    create: XOR<ResourceCreateWithoutPage_seo_og_imagesInput, ResourceUncheckedCreateWithoutPage_seo_og_imagesInput>
+  }
+
+  export type PageUpsertWithoutSeoInput = {
+    update: XOR<PageUpdateWithoutSeoInput, PageUncheckedUpdateWithoutSeoInput>
+    create: XOR<PageCreateWithoutSeoInput, PageUncheckedCreateWithoutSeoInput>
+    where?: PageWhereInput
+  }
+
+  export type PageUpdateToOneWithWhereWithoutSeoInput = {
+    where?: PageWhereInput
+    data: XOR<PageUpdateWithoutSeoInput, PageUncheckedUpdateWithoutSeoInput>
+  }
+
+  export type PageUpdateWithoutSeoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: JsonNullValueInput | InputJsonValue
+    excerpt?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    locale?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    parent?: PageUpdateOneWithoutChildrenNestedInput
+    children?: PageUpdateManyWithoutParentNestedInput
+    page_type?: PageTypeUpdateOneWithoutPagesNestedInput
+    thumbnail?: ResourceUpdateOneWithoutPage_thumbnailsNestedInput
+    author?: UserUpdateOneWithoutPagesNestedInput
+    schema?: PageSchemaUpdateOneWithoutPageNestedInput
+  }
+
+  export type PageUncheckedUpdateWithoutSeoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: JsonNullValueInput | InputJsonValue
+    excerpt?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    locale?: StringFieldUpdateOperationsInput | string
+    parent_id?: NullableStringFieldUpdateOperationsInput | string | null
+    page_type_id?: NullableStringFieldUpdateOperationsInput | string | null
+    thumbnail_id?: NullableStringFieldUpdateOperationsInput | string | null
+    author_id?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    children?: PageUncheckedUpdateManyWithoutParentNestedInput
+    schema?: PageSchemaUncheckedUpdateOneWithoutPageNestedInput
+  }
+
+  export type ResourceUpsertWithoutPage_seo_og_imagesInput = {
+    update: XOR<ResourceUpdateWithoutPage_seo_og_imagesInput, ResourceUncheckedUpdateWithoutPage_seo_og_imagesInput>
+    create: XOR<ResourceCreateWithoutPage_seo_og_imagesInput, ResourceUncheckedCreateWithoutPage_seo_og_imagesInput>
+    where?: ResourceWhereInput
+  }
+
+  export type ResourceUpdateToOneWithWhereWithoutPage_seo_og_imagesInput = {
+    where?: ResourceWhereInput
+    data: XOR<ResourceUpdateWithoutPage_seo_og_imagesInput, ResourceUncheckedUpdateWithoutPage_seo_og_imagesInput>
+  }
+
+  export type ResourceUpdateWithoutPage_seo_og_imagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    size?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    users?: UserUpdateManyWithoutAvatarNestedInput
+    page_thumbnails?: PageUpdateManyWithoutThumbnailNestedInput
+  }
+
+  export type ResourceUncheckedUpdateWithoutPage_seo_og_imagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    size?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    users?: UserUncheckedUpdateManyWithoutAvatarNestedInput
+    page_thumbnails?: PageUncheckedUpdateManyWithoutThumbnailNestedInput
+  }
+
+  export type PageCreateWithoutSchemaInput = {
+    id?: string
+    slug: string
+    title: string
+    content?: JsonNullValueInput | InputJsonValue
+    excerpt?: string | null
+    status?: string
+    locale?: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    parent?: PageCreateNestedOneWithoutChildrenInput
+    children?: PageCreateNestedManyWithoutParentInput
+    page_type?: PageTypeCreateNestedOneWithoutPagesInput
+    thumbnail?: ResourceCreateNestedOneWithoutPage_thumbnailsInput
+    author?: UserCreateNestedOneWithoutPagesInput
+    seo?: PageSeoCreateNestedOneWithoutPageInput
+  }
+
+  export type PageUncheckedCreateWithoutSchemaInput = {
+    id?: string
+    slug: string
+    title: string
+    content?: JsonNullValueInput | InputJsonValue
+    excerpt?: string | null
+    status?: string
+    locale?: string
+    parent_id?: string | null
+    page_type_id?: string | null
+    thumbnail_id?: string | null
+    author_id?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    children?: PageUncheckedCreateNestedManyWithoutParentInput
+    seo?: PageSeoUncheckedCreateNestedOneWithoutPageInput
+  }
+
+  export type PageCreateOrConnectWithoutSchemaInput = {
+    where: PageWhereUniqueInput
+    create: XOR<PageCreateWithoutSchemaInput, PageUncheckedCreateWithoutSchemaInput>
+  }
+
+  export type PageUpsertWithoutSchemaInput = {
+    update: XOR<PageUpdateWithoutSchemaInput, PageUncheckedUpdateWithoutSchemaInput>
+    create: XOR<PageCreateWithoutSchemaInput, PageUncheckedCreateWithoutSchemaInput>
+    where?: PageWhereInput
+  }
+
+  export type PageUpdateToOneWithWhereWithoutSchemaInput = {
+    where?: PageWhereInput
+    data: XOR<PageUpdateWithoutSchemaInput, PageUncheckedUpdateWithoutSchemaInput>
+  }
+
+  export type PageUpdateWithoutSchemaInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: JsonNullValueInput | InputJsonValue
+    excerpt?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    locale?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    parent?: PageUpdateOneWithoutChildrenNestedInput
+    children?: PageUpdateManyWithoutParentNestedInput
+    page_type?: PageTypeUpdateOneWithoutPagesNestedInput
+    thumbnail?: ResourceUpdateOneWithoutPage_thumbnailsNestedInput
+    author?: UserUpdateOneWithoutPagesNestedInput
+    seo?: PageSeoUpdateOneWithoutPageNestedInput
+  }
+
+  export type PageUncheckedUpdateWithoutSchemaInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: JsonNullValueInput | InputJsonValue
+    excerpt?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    locale?: StringFieldUpdateOperationsInput | string
+    parent_id?: NullableStringFieldUpdateOperationsInput | string | null
+    page_type_id?: NullableStringFieldUpdateOperationsInput | string | null
+    thumbnail_id?: NullableStringFieldUpdateOperationsInput | string | null
+    author_id?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    children?: PageUncheckedUpdateManyWithoutParentNestedInput
+    seo?: PageSeoUncheckedUpdateOneWithoutPageNestedInput
   }
 
   export type UserCreateWithoutRoleInput = {
@@ -11081,6 +18819,7 @@ export namespace Prisma {
     notifications?: NotificationCreateNestedManyWithoutUserInput
     refresh_tokens?: RefreshTokenCreateNestedManyWithoutUserInput
     reset_tokens?: PasswordResetTokenCreateNestedManyWithoutUserInput
+    pages?: PageCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUncheckedCreateWithoutRoleInput = {
@@ -11100,6 +18839,7 @@ export namespace Prisma {
     notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
     refresh_tokens?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
     reset_tokens?: PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
+    pages?: PageUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type UserCreateOrConnectWithoutRoleInput = {
@@ -11151,6 +18891,22 @@ export namespace Prisma {
     token: string
     expires_at: Date | string
     created_at?: Date | string
+  }
+
+  export type PageCreateManyAuthorInput = {
+    id?: string
+    slug: string
+    title: string
+    content?: JsonNullValueInput | InputJsonValue
+    excerpt?: string | null
+    status?: string
+    locale?: string
+    parent_id?: string | null
+    page_type_id?: string | null
+    thumbnail_id?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
   }
 
   export type NotificationUpdateWithoutUserInput = {
@@ -11228,6 +18984,60 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type PageUpdateWithoutAuthorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: JsonNullValueInput | InputJsonValue
+    excerpt?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    locale?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    parent?: PageUpdateOneWithoutChildrenNestedInput
+    children?: PageUpdateManyWithoutParentNestedInput
+    page_type?: PageTypeUpdateOneWithoutPagesNestedInput
+    thumbnail?: ResourceUpdateOneWithoutPage_thumbnailsNestedInput
+    seo?: PageSeoUpdateOneWithoutPageNestedInput
+    schema?: PageSchemaUpdateOneWithoutPageNestedInput
+  }
+
+  export type PageUncheckedUpdateWithoutAuthorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: JsonNullValueInput | InputJsonValue
+    excerpt?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    locale?: StringFieldUpdateOperationsInput | string
+    parent_id?: NullableStringFieldUpdateOperationsInput | string | null
+    page_type_id?: NullableStringFieldUpdateOperationsInput | string | null
+    thumbnail_id?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    children?: PageUncheckedUpdateManyWithoutParentNestedInput
+    seo?: PageSeoUncheckedUpdateOneWithoutPageNestedInput
+    schema?: PageSchemaUncheckedUpdateOneWithoutPageNestedInput
+  }
+
+  export type PageUncheckedUpdateManyWithoutAuthorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: JsonNullValueInput | InputJsonValue
+    excerpt?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    locale?: StringFieldUpdateOperationsInput | string
+    parent_id?: NullableStringFieldUpdateOperationsInput | string | null
+    page_type_id?: NullableStringFieldUpdateOperationsInput | string | null
+    thumbnail_id?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
   export type UserCreateManyAvatarInput = {
     id?: string
     email: string
@@ -11242,6 +19052,36 @@ export namespace Prisma {
     deleted_at?: Date | string | null
     detail?: NullableJsonNullValueInput | InputJsonValue
     role_id?: string | null
+  }
+
+  export type PageCreateManyThumbnailInput = {
+    id?: string
+    slug: string
+    title: string
+    content?: JsonNullValueInput | InputJsonValue
+    excerpt?: string | null
+    status?: string
+    locale?: string
+    parent_id?: string | null
+    page_type_id?: string | null
+    author_id?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+  }
+
+  export type PageSeoCreateManyOg_imageInput = {
+    id?: string
+    page_id: string
+    meta_title?: string | null
+    meta_description?: string | null
+    meta_keywords?: string | null
+    og_title?: string | null
+    og_description?: string | null
+    canonical_url?: string | null
+    robots?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type UserUpdateWithoutAvatarInput = {
@@ -11261,6 +19101,7 @@ export namespace Prisma {
     notifications?: NotificationUpdateManyWithoutUserNestedInput
     refresh_tokens?: RefreshTokenUpdateManyWithoutUserNestedInput
     reset_tokens?: PasswordResetTokenUpdateManyWithoutUserNestedInput
+    pages?: PageUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAvatarInput = {
@@ -11280,6 +19121,7 @@ export namespace Prisma {
     notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
     refresh_tokens?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
     reset_tokens?: PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
+    pages?: PageUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateManyWithoutAvatarInput = {
@@ -11296,6 +19138,242 @@ export namespace Prisma {
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     detail?: NullableJsonNullValueInput | InputJsonValue
     role_id?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type PageUpdateWithoutThumbnailInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: JsonNullValueInput | InputJsonValue
+    excerpt?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    locale?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    parent?: PageUpdateOneWithoutChildrenNestedInput
+    children?: PageUpdateManyWithoutParentNestedInput
+    page_type?: PageTypeUpdateOneWithoutPagesNestedInput
+    author?: UserUpdateOneWithoutPagesNestedInput
+    seo?: PageSeoUpdateOneWithoutPageNestedInput
+    schema?: PageSchemaUpdateOneWithoutPageNestedInput
+  }
+
+  export type PageUncheckedUpdateWithoutThumbnailInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: JsonNullValueInput | InputJsonValue
+    excerpt?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    locale?: StringFieldUpdateOperationsInput | string
+    parent_id?: NullableStringFieldUpdateOperationsInput | string | null
+    page_type_id?: NullableStringFieldUpdateOperationsInput | string | null
+    author_id?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    children?: PageUncheckedUpdateManyWithoutParentNestedInput
+    seo?: PageSeoUncheckedUpdateOneWithoutPageNestedInput
+    schema?: PageSchemaUncheckedUpdateOneWithoutPageNestedInput
+  }
+
+  export type PageUncheckedUpdateManyWithoutThumbnailInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: JsonNullValueInput | InputJsonValue
+    excerpt?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    locale?: StringFieldUpdateOperationsInput | string
+    parent_id?: NullableStringFieldUpdateOperationsInput | string | null
+    page_type_id?: NullableStringFieldUpdateOperationsInput | string | null
+    author_id?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type PageSeoUpdateWithoutOg_imageInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    meta_title?: NullableStringFieldUpdateOperationsInput | string | null
+    meta_description?: NullableStringFieldUpdateOperationsInput | string | null
+    meta_keywords?: NullableStringFieldUpdateOperationsInput | string | null
+    og_title?: NullableStringFieldUpdateOperationsInput | string | null
+    og_description?: NullableStringFieldUpdateOperationsInput | string | null
+    canonical_url?: NullableStringFieldUpdateOperationsInput | string | null
+    robots?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    page?: PageUpdateOneRequiredWithoutSeoNestedInput
+  }
+
+  export type PageSeoUncheckedUpdateWithoutOg_imageInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    page_id?: StringFieldUpdateOperationsInput | string
+    meta_title?: NullableStringFieldUpdateOperationsInput | string | null
+    meta_description?: NullableStringFieldUpdateOperationsInput | string | null
+    meta_keywords?: NullableStringFieldUpdateOperationsInput | string | null
+    og_title?: NullableStringFieldUpdateOperationsInput | string | null
+    og_description?: NullableStringFieldUpdateOperationsInput | string | null
+    canonical_url?: NullableStringFieldUpdateOperationsInput | string | null
+    robots?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PageSeoUncheckedUpdateManyWithoutOg_imageInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    page_id?: StringFieldUpdateOperationsInput | string
+    meta_title?: NullableStringFieldUpdateOperationsInput | string | null
+    meta_description?: NullableStringFieldUpdateOperationsInput | string | null
+    meta_keywords?: NullableStringFieldUpdateOperationsInput | string | null
+    og_title?: NullableStringFieldUpdateOperationsInput | string | null
+    og_description?: NullableStringFieldUpdateOperationsInput | string | null
+    canonical_url?: NullableStringFieldUpdateOperationsInput | string | null
+    robots?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PageCreateManyPage_typeInput = {
+    id?: string
+    slug: string
+    title: string
+    content?: JsonNullValueInput | InputJsonValue
+    excerpt?: string | null
+    status?: string
+    locale?: string
+    parent_id?: string | null
+    thumbnail_id?: string | null
+    author_id?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+  }
+
+  export type PageUpdateWithoutPage_typeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: JsonNullValueInput | InputJsonValue
+    excerpt?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    locale?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    parent?: PageUpdateOneWithoutChildrenNestedInput
+    children?: PageUpdateManyWithoutParentNestedInput
+    thumbnail?: ResourceUpdateOneWithoutPage_thumbnailsNestedInput
+    author?: UserUpdateOneWithoutPagesNestedInput
+    seo?: PageSeoUpdateOneWithoutPageNestedInput
+    schema?: PageSchemaUpdateOneWithoutPageNestedInput
+  }
+
+  export type PageUncheckedUpdateWithoutPage_typeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: JsonNullValueInput | InputJsonValue
+    excerpt?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    locale?: StringFieldUpdateOperationsInput | string
+    parent_id?: NullableStringFieldUpdateOperationsInput | string | null
+    thumbnail_id?: NullableStringFieldUpdateOperationsInput | string | null
+    author_id?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    children?: PageUncheckedUpdateManyWithoutParentNestedInput
+    seo?: PageSeoUncheckedUpdateOneWithoutPageNestedInput
+    schema?: PageSchemaUncheckedUpdateOneWithoutPageNestedInput
+  }
+
+  export type PageUncheckedUpdateManyWithoutPage_typeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: JsonNullValueInput | InputJsonValue
+    excerpt?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    locale?: StringFieldUpdateOperationsInput | string
+    parent_id?: NullableStringFieldUpdateOperationsInput | string | null
+    thumbnail_id?: NullableStringFieldUpdateOperationsInput | string | null
+    author_id?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type PageCreateManyParentInput = {
+    id?: string
+    slug: string
+    title: string
+    content?: JsonNullValueInput | InputJsonValue
+    excerpt?: string | null
+    status?: string
+    locale?: string
+    page_type_id?: string | null
+    thumbnail_id?: string | null
+    author_id?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+  }
+
+  export type PageUpdateWithoutParentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: JsonNullValueInput | InputJsonValue
+    excerpt?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    locale?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    children?: PageUpdateManyWithoutParentNestedInput
+    page_type?: PageTypeUpdateOneWithoutPagesNestedInput
+    thumbnail?: ResourceUpdateOneWithoutPage_thumbnailsNestedInput
+    author?: UserUpdateOneWithoutPagesNestedInput
+    seo?: PageSeoUpdateOneWithoutPageNestedInput
+    schema?: PageSchemaUpdateOneWithoutPageNestedInput
+  }
+
+  export type PageUncheckedUpdateWithoutParentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: JsonNullValueInput | InputJsonValue
+    excerpt?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    locale?: StringFieldUpdateOperationsInput | string
+    page_type_id?: NullableStringFieldUpdateOperationsInput | string | null
+    thumbnail_id?: NullableStringFieldUpdateOperationsInput | string | null
+    author_id?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    children?: PageUncheckedUpdateManyWithoutParentNestedInput
+    seo?: PageSeoUncheckedUpdateOneWithoutPageNestedInput
+    schema?: PageSchemaUncheckedUpdateOneWithoutPageNestedInput
+  }
+
+  export type PageUncheckedUpdateManyWithoutParentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: JsonNullValueInput | InputJsonValue
+    excerpt?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    locale?: StringFieldUpdateOperationsInput | string
+    page_type_id?: NullableStringFieldUpdateOperationsInput | string | null
+    thumbnail_id?: NullableStringFieldUpdateOperationsInput | string | null
+    author_id?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type UserCreateManyRoleInput = {
@@ -11331,6 +19409,7 @@ export namespace Prisma {
     notifications?: NotificationUpdateManyWithoutUserNestedInput
     refresh_tokens?: RefreshTokenUpdateManyWithoutUserNestedInput
     reset_tokens?: PasswordResetTokenUpdateManyWithoutUserNestedInput
+    pages?: PageUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutRoleInput = {
@@ -11350,6 +19429,7 @@ export namespace Prisma {
     notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
     refresh_tokens?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
     reset_tokens?: PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
+    pages?: PageUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateManyWithoutRoleInput = {

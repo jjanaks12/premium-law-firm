@@ -176,6 +176,57 @@ exports.Prisma.NotificationScalarFieldEnum = {
   created_at: 'created_at'
 };
 
+exports.Prisma.PageTypeScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  slug: 'slug',
+  description: 'description',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  deleted_at: 'deleted_at'
+};
+
+exports.Prisma.PageScalarFieldEnum = {
+  id: 'id',
+  slug: 'slug',
+  title: 'title',
+  content: 'content',
+  excerpt: 'excerpt',
+  status: 'status',
+  locale: 'locale',
+  parent_id: 'parent_id',
+  page_type_id: 'page_type_id',
+  thumbnail_id: 'thumbnail_id',
+  author_id: 'author_id',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  deleted_at: 'deleted_at'
+};
+
+exports.Prisma.PageSeoScalarFieldEnum = {
+  id: 'id',
+  page_id: 'page_id',
+  meta_title: 'meta_title',
+  meta_description: 'meta_description',
+  meta_keywords: 'meta_keywords',
+  og_title: 'og_title',
+  og_description: 'og_description',
+  og_image_id: 'og_image_id',
+  canonical_url: 'canonical_url',
+  robots: 'robots',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+};
+
+exports.Prisma.PageSchemaScalarFieldEnum = {
+  id: 'id',
+  page_id: 'page_id',
+  schema_type: 'schema_type',
+  schema_data: 'schema_data',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+};
+
 exports.Prisma.RoleScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -194,6 +245,10 @@ exports.Prisma.SortOrder = {
 
 exports.Prisma.NullableJsonNullValueInput = {
   DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull
+};
+
+exports.Prisma.JsonNullValueInput = {
   JsonNull: Prisma.JsonNull
 };
 
@@ -220,6 +275,10 @@ exports.Prisma.ModelName = {
   PasswordResetToken: 'PasswordResetToken',
   Resource: 'Resource',
   Notification: 'Notification',
+  PageType: 'PageType',
+  Page: 'Page',
+  PageSeo: 'PageSeo',
+  PageSchema: 'PageSchema',
   Role: 'Role'
 };
 

@@ -5,6 +5,7 @@ import roleRoutes from '@/modules/authorization/routes/role.route';
 import notificationRoutes from '@/modules/notifications/notification.route';
 import userRoutes from '@/modules/users/user.route';
 import resourceRoutes from '@/modules/resources/resource.route';
+import pageRoutes from '@/modules/pages/page.route';
 
 // Register all modules with their associated metadata, resources, and exact action abilities
 moduleRegistry.register('/auth', authRoutes, {
@@ -39,6 +40,13 @@ moduleRegistry.register('/resources', resourceRoutes, {
   name: 'Resources',
   description: 'Handles document uploads, image and PDF storage, and asset categorization',
   resources: ['resources'],
+  actions: ["create", "read", "update", "delete", "list"],
+});
+
+moduleRegistry.register('/pages', pageRoutes, {
+  name: 'Pages',
+  description: 'Handles CMS pages, multilingual content, SEO metadata, and Schema.org structured data',
+  resources: ['pages'],
   actions: ["create", "read", "update", "delete", "list"],
 });
 

@@ -1,0 +1,6 @@
+import {
+  BookOpenIcon,
+  FolderCogIcon,
+  LayoutTemplateIcon,
+  ListTreeIcon,
+} from "lucide-react";

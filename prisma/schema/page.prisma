@@ -1,0 +1,84 @@
+// Pages module Prisma schema
+// Colocated with pages module — collected into prisma/schema/ at build time
+
+model PageType {
+  id          String   @id @default(uuid())
+  name        String   @unique
+  slug        String   @unique
+  description String?
+
+  pages      Page[]
+
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
+  deleted_at DateTime?
+
+  @@map("page_types")
+}
+
+model Page {
+  id           String   @id @default(uuid())
+  slug         String   @unique
+  title        String
+  content      Json     @default("{}")
+  excerpt      String?
+  status       String   @default("draft")
+  locale       String   @default("en")
+
+  parent_id    String?
+  parent       Page?    @relation("PageChildren", fields: [parent_id], references: [id])
+  children     Page[]   @relation("PageChildren")
+
+  page_type_id String?
+  page_type    PageType? @relation(fields: [page_type_id], references: [id])
+
+  thumbnail_id String?
+  thumbnail    Resource? @relation("page_thumbnail", fields: [thumbnail_id], references: [id])
+
+  author_id    String?
+  author       User?     @relation("page_author", fields: [author_id], references: [id])
+
+  seo          PageSeo?
+  schema       PageSchema?
+
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
+  deleted_at DateTime?
+
+  @@map("pages")
+}
+
+model PageSeo {
+  id               String  @id @default(uuid())
+  page_id          String  @unique
+  page             Page    @relation(fields: [page_id], references: [id], onDelete: Cascade)
+
+  meta_title       String?
+  meta_description String?
+  meta_keywords    String?
+  og_title         String?
+  og_description   String?
+  og_image_id      String?
+  og_image         Resource? @relation("page_seo_og_image", fields: [og_image_id], references: [id])
+  canonical_url    String?
+  robots           String?
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("page_seo")
+}
+
+model PageSchema {
+  id              String  @id @default(uuid())
+  page_id         String  @unique
+  page            Page    @relation(fields: [page_id], references: [id], onDelete: Cascade)
+
+  schema_type     String?
+  schema_data     Json?
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("page_schemas")
+}
