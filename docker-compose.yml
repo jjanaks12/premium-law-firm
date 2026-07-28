@@ -60,6 +60,28 @@ services:
         - action: rebuild
           path: package.json
 
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - backend
+    develop:
+      watch:
+        - action: sync
+          path: .
+          target: /app
+          ignore:
+            - node_modules/
+            - frontend/.next/
+        - action: rebuild
+          path: package.json
+
 volumes:
   pgdata:
   redisdata:
