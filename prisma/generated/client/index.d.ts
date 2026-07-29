@@ -11250,7 +11250,6 @@ export namespace Prisma {
     fullJudgmentDate: Date | null
     judgmentVerifyDate: Date | null
     status: string | null
-    paymentStatus: string | null
     createdAt: Date | null
   }
 
@@ -11269,7 +11268,6 @@ export namespace Prisma {
     fullJudgmentDate: Date | null
     judgmentVerifyDate: Date | null
     status: string | null
-    paymentStatus: string | null
     createdAt: Date | null
   }
 
@@ -11288,7 +11286,6 @@ export namespace Prisma {
     fullJudgmentDate: number
     judgmentVerifyDate: number
     status: number
-    paymentStatus: number
     createdAt: number
     _all: number
   }
@@ -11317,7 +11314,6 @@ export namespace Prisma {
     fullJudgmentDate?: true
     judgmentVerifyDate?: true
     status?: true
-    paymentStatus?: true
     createdAt?: true
   }
 
@@ -11336,7 +11332,6 @@ export namespace Prisma {
     fullJudgmentDate?: true
     judgmentVerifyDate?: true
     status?: true
-    paymentStatus?: true
     createdAt?: true
   }
 
@@ -11355,7 +11350,6 @@ export namespace Prisma {
     fullJudgmentDate?: true
     judgmentVerifyDate?: true
     status?: true
-    paymentStatus?: true
     createdAt?: true
     _all?: true
   }
@@ -11461,7 +11455,6 @@ export namespace Prisma {
     fullJudgmentDate: Date | null
     judgmentVerifyDate: Date | null
     status: string
-    paymentStatus: string
     createdAt: Date
     _count: CaseCountAggregateOutputType | null
     _avg: CaseAvgAggregateOutputType | null
@@ -11499,7 +11492,6 @@ export namespace Prisma {
     fullJudgmentDate?: boolean
     judgmentVerifyDate?: boolean
     status?: boolean
-    paymentStatus?: boolean
     createdAt?: boolean
     nature?: boolean | CaseNatureDefaultArgs<ExtArgs>
     lawyers?: boolean | Case$lawyersArgs<ExtArgs>
@@ -11529,7 +11521,6 @@ export namespace Prisma {
     fullJudgmentDate?: boolean
     judgmentVerifyDate?: boolean
     status?: boolean
-    paymentStatus?: boolean
     createdAt?: boolean
     nature?: boolean | CaseNatureDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["case"]>
@@ -11549,7 +11540,6 @@ export namespace Prisma {
     fullJudgmentDate?: boolean
     judgmentVerifyDate?: boolean
     status?: boolean
-    paymentStatus?: boolean
     createdAt?: boolean
     nature?: boolean | CaseNatureDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["case"]>
@@ -11569,11 +11559,10 @@ export namespace Prisma {
     fullJudgmentDate?: boolean
     judgmentVerifyDate?: boolean
     status?: boolean
-    paymentStatus?: boolean
     createdAt?: boolean
   }
 
-  export type CaseOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "caseNumber" | "caseName" | "natureId" | "registrationDate" | "registrationFee" | "sectionCourtRoom" | "facts" | "relatedLaws" | "referredThrough" | "noticeStatus" | "fullJudgmentDate" | "judgmentVerifyDate" | "status" | "paymentStatus" | "createdAt", ExtArgs["result"]["case"]>
+  export type CaseOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "caseNumber" | "caseName" | "natureId" | "registrationDate" | "registrationFee" | "sectionCourtRoom" | "facts" | "relatedLaws" | "referredThrough" | "noticeStatus" | "fullJudgmentDate" | "judgmentVerifyDate" | "status" | "createdAt", ExtArgs["result"]["case"]>
   export type CaseInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     nature?: boolean | CaseNatureDefaultArgs<ExtArgs>
     lawyers?: boolean | Case$lawyersArgs<ExtArgs>
@@ -11623,7 +11612,6 @@ export namespace Prisma {
       fullJudgmentDate: Date | null
       judgmentVerifyDate: Date | null
       status: string
-      paymentStatus: string
       createdAt: Date
     }, ExtArgs["result"]["case"]>
     composites: {}
@@ -12072,7 +12060,6 @@ export namespace Prisma {
     readonly fullJudgmentDate: FieldRef<"Case", 'DateTime'>
     readonly judgmentVerifyDate: FieldRef<"Case", 'DateTime'>
     readonly status: FieldRef<"Case", 'String'>
-    readonly paymentStatus: FieldRef<"Case", 'String'>
     readonly createdAt: FieldRef<"Case", 'DateTime'>
   }
     
@@ -13781,6 +13768,7 @@ export namespace Prisma {
     roleId: string | null
     fee: Decimal | null
     contactInfo: string | null
+    representative: string | null
   }
 
   export type CasePartyMaxAggregateOutputType = {
@@ -13790,6 +13778,7 @@ export namespace Prisma {
     roleId: string | null
     fee: Decimal | null
     contactInfo: string | null
+    representative: string | null
   }
 
   export type CasePartyCountAggregateOutputType = {
@@ -13799,6 +13788,7 @@ export namespace Prisma {
     roleId: number
     fee: number
     contactInfo: number
+    representative: number
     _all: number
   }
 
@@ -13818,6 +13808,7 @@ export namespace Prisma {
     roleId?: true
     fee?: true
     contactInfo?: true
+    representative?: true
   }
 
   export type CasePartyMaxAggregateInputType = {
@@ -13827,6 +13818,7 @@ export namespace Prisma {
     roleId?: true
     fee?: true
     contactInfo?: true
+    representative?: true
   }
 
   export type CasePartyCountAggregateInputType = {
@@ -13836,6 +13828,7 @@ export namespace Prisma {
     roleId?: true
     fee?: true
     contactInfo?: true
+    representative?: true
     _all?: true
   }
 
@@ -13932,6 +13925,7 @@ export namespace Prisma {
     roleId: string
     fee: Decimal | null
     contactInfo: string | null
+    representative: string | null
     _count: CasePartyCountAggregateOutputType | null
     _avg: CasePartyAvgAggregateOutputType | null
     _sum: CasePartySumAggregateOutputType | null
@@ -13960,6 +13954,7 @@ export namespace Prisma {
     roleId?: boolean
     fee?: boolean
     contactInfo?: boolean
+    representative?: boolean
     case?: boolean | CaseDefaultArgs<ExtArgs>
     role?: boolean | PartyRoleDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["caseParty"]>
@@ -13971,6 +13966,7 @@ export namespace Prisma {
     roleId?: boolean
     fee?: boolean
     contactInfo?: boolean
+    representative?: boolean
     case?: boolean | CaseDefaultArgs<ExtArgs>
     role?: boolean | PartyRoleDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["caseParty"]>
@@ -13982,6 +13978,7 @@ export namespace Prisma {
     roleId?: boolean
     fee?: boolean
     contactInfo?: boolean
+    representative?: boolean
     case?: boolean | CaseDefaultArgs<ExtArgs>
     role?: boolean | PartyRoleDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["caseParty"]>
@@ -13993,9 +13990,10 @@ export namespace Prisma {
     roleId?: boolean
     fee?: boolean
     contactInfo?: boolean
+    representative?: boolean
   }
 
-  export type CasePartyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "caseId" | "partyName" | "roleId" | "fee" | "contactInfo", ExtArgs["result"]["caseParty"]>
+  export type CasePartyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "caseId" | "partyName" | "roleId" | "fee" | "contactInfo" | "representative", ExtArgs["result"]["caseParty"]>
   export type CasePartyInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     case?: boolean | CaseDefaultArgs<ExtArgs>
     role?: boolean | PartyRoleDefaultArgs<ExtArgs>
@@ -14022,6 +14020,7 @@ export namespace Prisma {
       roleId: string
       fee: Prisma.Decimal | null
       contactInfo: string | null
+      representative: string | null
     }, ExtArgs["result"]["caseParty"]>
     composites: {}
   }
@@ -14453,6 +14452,7 @@ export namespace Prisma {
     readonly roleId: FieldRef<"CaseParty", 'String'>
     readonly fee: FieldRef<"CaseParty", 'Decimal'>
     readonly contactInfo: FieldRef<"CaseParty", 'String'>
+    readonly representative: FieldRef<"CaseParty", 'String'>
   }
     
 
@@ -21463,27 +21463,27 @@ export namespace Prisma {
   export type CaseDocumentMinAggregateOutputType = {
     id: string | null
     caseId: string | null
-    documentUrl: string | null
     fileName: string | null
     description: string | null
+    documentUrl: string | null
     createdAt: Date | null
   }
 
   export type CaseDocumentMaxAggregateOutputType = {
     id: string | null
     caseId: string | null
-    documentUrl: string | null
     fileName: string | null
     description: string | null
+    documentUrl: string | null
     createdAt: Date | null
   }
 
   export type CaseDocumentCountAggregateOutputType = {
     id: number
     caseId: number
-    documentUrl: number
     fileName: number
     description: number
+    documentUrl: number
     createdAt: number
     _all: number
   }
@@ -21492,27 +21492,27 @@ export namespace Prisma {
   export type CaseDocumentMinAggregateInputType = {
     id?: true
     caseId?: true
-    documentUrl?: true
     fileName?: true
     description?: true
+    documentUrl?: true
     createdAt?: true
   }
 
   export type CaseDocumentMaxAggregateInputType = {
     id?: true
     caseId?: true
-    documentUrl?: true
     fileName?: true
     description?: true
+    documentUrl?: true
     createdAt?: true
   }
 
   export type CaseDocumentCountAggregateInputType = {
     id?: true
     caseId?: true
-    documentUrl?: true
     fileName?: true
     description?: true
+    documentUrl?: true
     createdAt?: true
     _all?: true
   }
@@ -21592,9 +21592,9 @@ export namespace Prisma {
   export type CaseDocumentGroupByOutputType = {
     id: string
     caseId: string
-    documentUrl: string
     fileName: string
     description: string | null
+    documentUrl: string
     createdAt: Date
     _count: CaseDocumentCountAggregateOutputType | null
     _min: CaseDocumentMinAggregateOutputType | null
@@ -21618,9 +21618,9 @@ export namespace Prisma {
   export type CaseDocumentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     caseId?: boolean
-    documentUrl?: boolean
     fileName?: boolean
     description?: boolean
+    documentUrl?: boolean
     createdAt?: boolean
     case?: boolean | CaseDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["caseDocument"]>
@@ -21628,9 +21628,9 @@ export namespace Prisma {
   export type CaseDocumentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     caseId?: boolean
-    documentUrl?: boolean
     fileName?: boolean
     description?: boolean
+    documentUrl?: boolean
     createdAt?: boolean
     case?: boolean | CaseDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["caseDocument"]>
@@ -21638,9 +21638,9 @@ export namespace Prisma {
   export type CaseDocumentSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     caseId?: boolean
-    documentUrl?: boolean
     fileName?: boolean
     description?: boolean
+    documentUrl?: boolean
     createdAt?: boolean
     case?: boolean | CaseDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["caseDocument"]>
@@ -21648,13 +21648,13 @@ export namespace Prisma {
   export type CaseDocumentSelectScalar = {
     id?: boolean
     caseId?: boolean
-    documentUrl?: boolean
     fileName?: boolean
     description?: boolean
+    documentUrl?: boolean
     createdAt?: boolean
   }
 
-  export type CaseDocumentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "caseId" | "documentUrl" | "fileName" | "description" | "createdAt", ExtArgs["result"]["caseDocument"]>
+  export type CaseDocumentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "caseId" | "fileName" | "description" | "documentUrl" | "createdAt", ExtArgs["result"]["caseDocument"]>
   export type CaseDocumentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     case?: boolean | CaseDefaultArgs<ExtArgs>
   }
@@ -21673,9 +21673,9 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       caseId: string
-      documentUrl: string
       fileName: string
       description: string | null
+      documentUrl: string
       createdAt: Date
     }, ExtArgs["result"]["caseDocument"]>
     composites: {}
@@ -22103,9 +22103,9 @@ export namespace Prisma {
   interface CaseDocumentFieldRefs {
     readonly id: FieldRef<"CaseDocument", 'String'>
     readonly caseId: FieldRef<"CaseDocument", 'String'>
-    readonly documentUrl: FieldRef<"CaseDocument", 'String'>
     readonly fileName: FieldRef<"CaseDocument", 'String'>
     readonly description: FieldRef<"CaseDocument", 'String'>
+    readonly documentUrl: FieldRef<"CaseDocument", 'String'>
     readonly createdAt: FieldRef<"CaseDocument", 'DateTime'>
   }
     
@@ -29588,7 +29588,6 @@ export namespace Prisma {
     fullJudgmentDate: 'fullJudgmentDate',
     judgmentVerifyDate: 'judgmentVerifyDate',
     status: 'status',
-    paymentStatus: 'paymentStatus',
     createdAt: 'createdAt'
   };
 
@@ -29610,7 +29609,8 @@ export namespace Prisma {
     partyName: 'partyName',
     roleId: 'roleId',
     fee: 'fee',
-    contactInfo: 'contactInfo'
+    contactInfo: 'contactInfo',
+    representative: 'representative'
   };
 
   export type CasePartyScalarFieldEnum = (typeof CasePartyScalarFieldEnum)[keyof typeof CasePartyScalarFieldEnum]
@@ -29693,9 +29693,9 @@ export namespace Prisma {
   export const CaseDocumentScalarFieldEnum: {
     id: 'id',
     caseId: 'caseId',
-    documentUrl: 'documentUrl',
     fileName: 'fileName',
     description: 'description',
+    documentUrl: 'documentUrl',
     createdAt: 'createdAt'
   };
 
@@ -30406,7 +30406,6 @@ export namespace Prisma {
     fullJudgmentDate?: DateTimeNullableFilter<"Case"> | Date | string | null
     judgmentVerifyDate?: DateTimeNullableFilter<"Case"> | Date | string | null
     status?: StringFilter<"Case"> | string
-    paymentStatus?: StringFilter<"Case"> | string
     createdAt?: DateTimeFilter<"Case"> | Date | string
     nature?: XOR<CaseNatureScalarRelationFilter, CaseNatureWhereInput>
     lawyers?: CaseLawyerListRelationFilter
@@ -30435,7 +30434,6 @@ export namespace Prisma {
     fullJudgmentDate?: SortOrderInput | SortOrder
     judgmentVerifyDate?: SortOrderInput | SortOrder
     status?: SortOrder
-    paymentStatus?: SortOrder
     createdAt?: SortOrder
     nature?: CaseNatureOrderByWithRelationInput
     lawyers?: CaseLawyerOrderByRelationAggregateInput
@@ -30467,7 +30465,6 @@ export namespace Prisma {
     fullJudgmentDate?: DateTimeNullableFilter<"Case"> | Date | string | null
     judgmentVerifyDate?: DateTimeNullableFilter<"Case"> | Date | string | null
     status?: StringFilter<"Case"> | string
-    paymentStatus?: StringFilter<"Case"> | string
     createdAt?: DateTimeFilter<"Case"> | Date | string
     nature?: XOR<CaseNatureScalarRelationFilter, CaseNatureWhereInput>
     lawyers?: CaseLawyerListRelationFilter
@@ -30496,7 +30493,6 @@ export namespace Prisma {
     fullJudgmentDate?: SortOrderInput | SortOrder
     judgmentVerifyDate?: SortOrderInput | SortOrder
     status?: SortOrder
-    paymentStatus?: SortOrder
     createdAt?: SortOrder
     _count?: CaseCountOrderByAggregateInput
     _avg?: CaseAvgOrderByAggregateInput
@@ -30523,7 +30519,6 @@ export namespace Prisma {
     fullJudgmentDate?: DateTimeNullableWithAggregatesFilter<"Case"> | Date | string | null
     judgmentVerifyDate?: DateTimeNullableWithAggregatesFilter<"Case"> | Date | string | null
     status?: StringWithAggregatesFilter<"Case"> | string
-    paymentStatus?: StringWithAggregatesFilter<"Case"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Case"> | Date | string
   }
 
@@ -30586,6 +30581,7 @@ export namespace Prisma {
     roleId?: StringFilter<"CaseParty"> | string
     fee?: DecimalNullableFilter<"CaseParty"> | Decimal | DecimalJsLike | number | string | null
     contactInfo?: StringNullableFilter<"CaseParty"> | string | null
+    representative?: StringNullableFilter<"CaseParty"> | string | null
     case?: XOR<CaseScalarRelationFilter, CaseWhereInput>
     role?: XOR<PartyRoleScalarRelationFilter, PartyRoleWhereInput>
   }
@@ -30597,6 +30593,7 @@ export namespace Prisma {
     roleId?: SortOrder
     fee?: SortOrderInput | SortOrder
     contactInfo?: SortOrderInput | SortOrder
+    representative?: SortOrderInput | SortOrder
     case?: CaseOrderByWithRelationInput
     role?: PartyRoleOrderByWithRelationInput
   }
@@ -30611,6 +30608,7 @@ export namespace Prisma {
     roleId?: StringFilter<"CaseParty"> | string
     fee?: DecimalNullableFilter<"CaseParty"> | Decimal | DecimalJsLike | number | string | null
     contactInfo?: StringNullableFilter<"CaseParty"> | string | null
+    representative?: StringNullableFilter<"CaseParty"> | string | null
     case?: XOR<CaseScalarRelationFilter, CaseWhereInput>
     role?: XOR<PartyRoleScalarRelationFilter, PartyRoleWhereInput>
   }, "id">
@@ -30622,6 +30620,7 @@ export namespace Prisma {
     roleId?: SortOrder
     fee?: SortOrderInput | SortOrder
     contactInfo?: SortOrderInput | SortOrder
+    representative?: SortOrderInput | SortOrder
     _count?: CasePartyCountOrderByAggregateInput
     _avg?: CasePartyAvgOrderByAggregateInput
     _max?: CasePartyMaxOrderByAggregateInput
@@ -30639,6 +30638,7 @@ export namespace Prisma {
     roleId?: StringWithAggregatesFilter<"CaseParty"> | string
     fee?: DecimalNullableWithAggregatesFilter<"CaseParty"> | Decimal | DecimalJsLike | number | string | null
     contactInfo?: StringNullableWithAggregatesFilter<"CaseParty"> | string | null
+    representative?: StringNullableWithAggregatesFilter<"CaseParty"> | string | null
   }
 
   export type CaseHearingWhereInput = {
@@ -31028,9 +31028,9 @@ export namespace Prisma {
     NOT?: CaseDocumentWhereInput | CaseDocumentWhereInput[]
     id?: StringFilter<"CaseDocument"> | string
     caseId?: StringFilter<"CaseDocument"> | string
-    documentUrl?: StringFilter<"CaseDocument"> | string
     fileName?: StringFilter<"CaseDocument"> | string
     description?: StringNullableFilter<"CaseDocument"> | string | null
+    documentUrl?: StringFilter<"CaseDocument"> | string
     createdAt?: DateTimeFilter<"CaseDocument"> | Date | string
     case?: XOR<CaseScalarRelationFilter, CaseWhereInput>
   }
@@ -31038,9 +31038,9 @@ export namespace Prisma {
   export type CaseDocumentOrderByWithRelationInput = {
     id?: SortOrder
     caseId?: SortOrder
-    documentUrl?: SortOrder
     fileName?: SortOrder
     description?: SortOrderInput | SortOrder
+    documentUrl?: SortOrder
     createdAt?: SortOrder
     case?: CaseOrderByWithRelationInput
   }
@@ -31051,9 +31051,9 @@ export namespace Prisma {
     OR?: CaseDocumentWhereInput[]
     NOT?: CaseDocumentWhereInput | CaseDocumentWhereInput[]
     caseId?: StringFilter<"CaseDocument"> | string
-    documentUrl?: StringFilter<"CaseDocument"> | string
     fileName?: StringFilter<"CaseDocument"> | string
     description?: StringNullableFilter<"CaseDocument"> | string | null
+    documentUrl?: StringFilter<"CaseDocument"> | string
     createdAt?: DateTimeFilter<"CaseDocument"> | Date | string
     case?: XOR<CaseScalarRelationFilter, CaseWhereInput>
   }, "id">
@@ -31061,9 +31061,9 @@ export namespace Prisma {
   export type CaseDocumentOrderByWithAggregationInput = {
     id?: SortOrder
     caseId?: SortOrder
-    documentUrl?: SortOrder
     fileName?: SortOrder
     description?: SortOrderInput | SortOrder
+    documentUrl?: SortOrder
     createdAt?: SortOrder
     _count?: CaseDocumentCountOrderByAggregateInput
     _max?: CaseDocumentMaxOrderByAggregateInput
@@ -31076,9 +31076,9 @@ export namespace Prisma {
     NOT?: CaseDocumentScalarWhereWithAggregatesInput | CaseDocumentScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"CaseDocument"> | string
     caseId?: StringWithAggregatesFilter<"CaseDocument"> | string
-    documentUrl?: StringWithAggregatesFilter<"CaseDocument"> | string
     fileName?: StringWithAggregatesFilter<"CaseDocument"> | string
     description?: StringNullableWithAggregatesFilter<"CaseDocument"> | string | null
+    documentUrl?: StringWithAggregatesFilter<"CaseDocument"> | string
     createdAt?: DateTimeWithAggregatesFilter<"CaseDocument"> | Date | string
   }
 
@@ -32059,7 +32059,6 @@ export namespace Prisma {
     fullJudgmentDate?: Date | string | null
     judgmentVerifyDate?: Date | string | null
     status?: string
-    paymentStatus?: string
     createdAt?: Date | string
     nature: CaseNatureCreateNestedOneWithoutCasesInput
     lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
@@ -32088,7 +32087,6 @@ export namespace Prisma {
     fullJudgmentDate?: Date | string | null
     judgmentVerifyDate?: Date | string | null
     status?: string
-    paymentStatus?: string
     createdAt?: Date | string
     lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
     parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
@@ -32115,7 +32113,6 @@ export namespace Prisma {
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: StringFieldUpdateOperationsInput | string
-    paymentStatus?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     nature?: CaseNatureUpdateOneRequiredWithoutCasesNestedInput
     lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
@@ -32144,7 +32141,6 @@ export namespace Prisma {
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: StringFieldUpdateOperationsInput | string
-    paymentStatus?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
@@ -32172,7 +32168,6 @@ export namespace Prisma {
     fullJudgmentDate?: Date | string | null
     judgmentVerifyDate?: Date | string | null
     status?: string
-    paymentStatus?: string
     createdAt?: Date | string
   }
 
@@ -32190,7 +32185,6 @@ export namespace Prisma {
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: StringFieldUpdateOperationsInput | string
-    paymentStatus?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -32209,7 +32203,6 @@ export namespace Prisma {
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: StringFieldUpdateOperationsInput | string
-    paymentStatus?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -32258,6 +32251,7 @@ export namespace Prisma {
     partyName: string
     fee?: Decimal | DecimalJsLike | number | string | null
     contactInfo?: string | null
+    representative?: string | null
     case: CaseCreateNestedOneWithoutPartiesInput
     role: PartyRoleCreateNestedOneWithoutPartiesInput
   }
@@ -32269,6 +32263,7 @@ export namespace Prisma {
     roleId: string
     fee?: Decimal | DecimalJsLike | number | string | null
     contactInfo?: string | null
+    representative?: string | null
   }
 
   export type CasePartyUpdateInput = {
@@ -32276,6 +32271,7 @@ export namespace Prisma {
     partyName?: StringFieldUpdateOperationsInput | string
     fee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     contactInfo?: NullableStringFieldUpdateOperationsInput | string | null
+    representative?: NullableStringFieldUpdateOperationsInput | string | null
     case?: CaseUpdateOneRequiredWithoutPartiesNestedInput
     role?: PartyRoleUpdateOneRequiredWithoutPartiesNestedInput
   }
@@ -32287,6 +32283,7 @@ export namespace Prisma {
     roleId?: StringFieldUpdateOperationsInput | string
     fee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     contactInfo?: NullableStringFieldUpdateOperationsInput | string | null
+    representative?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CasePartyCreateManyInput = {
@@ -32296,6 +32293,7 @@ export namespace Prisma {
     roleId: string
     fee?: Decimal | DecimalJsLike | number | string | null
     contactInfo?: string | null
+    representative?: string | null
   }
 
   export type CasePartyUpdateManyMutationInput = {
@@ -32303,6 +32301,7 @@ export namespace Prisma {
     partyName?: StringFieldUpdateOperationsInput | string
     fee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     contactInfo?: NullableStringFieldUpdateOperationsInput | string | null
+    representative?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CasePartyUncheckedUpdateManyInput = {
@@ -32312,6 +32311,7 @@ export namespace Prisma {
     roleId?: StringFieldUpdateOperationsInput | string
     fee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     contactInfo?: NullableStringFieldUpdateOperationsInput | string | null
+    representative?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CaseHearingCreateInput = {
@@ -32699,9 +32699,9 @@ export namespace Prisma {
 
   export type CaseDocumentCreateInput = {
     id?: string
-    documentUrl: string
     fileName: string
     description?: string | null
+    documentUrl: string
     createdAt?: Date | string
     case: CaseCreateNestedOneWithoutDocumentsInput
   }
@@ -32709,17 +32709,17 @@ export namespace Prisma {
   export type CaseDocumentUncheckedCreateInput = {
     id?: string
     caseId: string
-    documentUrl: string
     fileName: string
     description?: string | null
+    documentUrl: string
     createdAt?: Date | string
   }
 
   export type CaseDocumentUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    documentUrl?: StringFieldUpdateOperationsInput | string
     fileName?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    documentUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     case?: CaseUpdateOneRequiredWithoutDocumentsNestedInput
   }
@@ -32727,35 +32727,35 @@ export namespace Prisma {
   export type CaseDocumentUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     caseId?: StringFieldUpdateOperationsInput | string
-    documentUrl?: StringFieldUpdateOperationsInput | string
     fileName?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    documentUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CaseDocumentCreateManyInput = {
     id?: string
     caseId: string
-    documentUrl: string
     fileName: string
     description?: string | null
+    documentUrl: string
     createdAt?: Date | string
   }
 
   export type CaseDocumentUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    documentUrl?: StringFieldUpdateOperationsInput | string
     fileName?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    documentUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CaseDocumentUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     caseId?: StringFieldUpdateOperationsInput | string
-    documentUrl?: StringFieldUpdateOperationsInput | string
     fileName?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    documentUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -33884,7 +33884,6 @@ export namespace Prisma {
     fullJudgmentDate?: SortOrder
     judgmentVerifyDate?: SortOrder
     status?: SortOrder
-    paymentStatus?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -33907,7 +33906,6 @@ export namespace Prisma {
     fullJudgmentDate?: SortOrder
     judgmentVerifyDate?: SortOrder
     status?: SortOrder
-    paymentStatus?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -33926,7 +33924,6 @@ export namespace Prisma {
     fullJudgmentDate?: SortOrder
     judgmentVerifyDate?: SortOrder
     status?: SortOrder
-    paymentStatus?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -34003,6 +34000,7 @@ export namespace Prisma {
     roleId?: SortOrder
     fee?: SortOrder
     contactInfo?: SortOrder
+    representative?: SortOrder
   }
 
   export type CasePartyAvgOrderByAggregateInput = {
@@ -34016,6 +34014,7 @@ export namespace Prisma {
     roleId?: SortOrder
     fee?: SortOrder
     contactInfo?: SortOrder
+    representative?: SortOrder
   }
 
   export type CasePartyMinOrderByAggregateInput = {
@@ -34025,6 +34024,7 @@ export namespace Prisma {
     roleId?: SortOrder
     fee?: SortOrder
     contactInfo?: SortOrder
+    representative?: SortOrder
   }
 
   export type CasePartySumOrderByAggregateInput = {
@@ -34247,27 +34247,27 @@ export namespace Prisma {
   export type CaseDocumentCountOrderByAggregateInput = {
     id?: SortOrder
     caseId?: SortOrder
-    documentUrl?: SortOrder
     fileName?: SortOrder
     description?: SortOrder
+    documentUrl?: SortOrder
     createdAt?: SortOrder
   }
 
   export type CaseDocumentMaxOrderByAggregateInput = {
     id?: SortOrder
     caseId?: SortOrder
-    documentUrl?: SortOrder
     fileName?: SortOrder
     description?: SortOrder
+    documentUrl?: SortOrder
     createdAt?: SortOrder
   }
 
   export type CaseDocumentMinOrderByAggregateInput = {
     id?: SortOrder
     caseId?: SortOrder
-    documentUrl?: SortOrder
     fileName?: SortOrder
     description?: SortOrder
+    documentUrl?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -37433,7 +37433,6 @@ export namespace Prisma {
     fullJudgmentDate?: Date | string | null
     judgmentVerifyDate?: Date | string | null
     status?: string
-    paymentStatus?: string
     createdAt?: Date | string
     lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
     parties?: CasePartyCreateNestedManyWithoutCaseInput
@@ -37460,7 +37459,6 @@ export namespace Prisma {
     fullJudgmentDate?: Date | string | null
     judgmentVerifyDate?: Date | string | null
     status?: string
-    paymentStatus?: string
     createdAt?: Date | string
     lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
     parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
@@ -37517,7 +37515,6 @@ export namespace Prisma {
     fullJudgmentDate?: DateTimeNullableFilter<"Case"> | Date | string | null
     judgmentVerifyDate?: DateTimeNullableFilter<"Case"> | Date | string | null
     status?: StringFilter<"Case"> | string
-    paymentStatus?: StringFilter<"Case"> | string
     createdAt?: DateTimeFilter<"Case"> | Date | string
   }
 
@@ -37526,6 +37523,7 @@ export namespace Prisma {
     partyName: string
     fee?: Decimal | DecimalJsLike | number | string | null
     contactInfo?: string | null
+    representative?: string | null
     case: CaseCreateNestedOneWithoutPartiesInput
   }
 
@@ -37535,6 +37533,7 @@ export namespace Prisma {
     partyName: string
     fee?: Decimal | DecimalJsLike | number | string | null
     contactInfo?: string | null
+    representative?: string | null
   }
 
   export type CasePartyCreateOrConnectWithoutRoleInput = {
@@ -37573,6 +37572,7 @@ export namespace Prisma {
     roleId?: StringFilter<"CaseParty"> | string
     fee?: DecimalNullableFilter<"CaseParty"> | Decimal | DecimalJsLike | number | string | null
     contactInfo?: StringNullableFilter<"CaseParty"> | string | null
+    representative?: StringNullableFilter<"CaseParty"> | string | null
   }
 
   export type CaseNatureCreateWithoutCasesInput = {
@@ -37617,6 +37617,7 @@ export namespace Prisma {
     partyName: string
     fee?: Decimal | DecimalJsLike | number | string | null
     contactInfo?: string | null
+    representative?: string | null
     role: PartyRoleCreateNestedOneWithoutPartiesInput
   }
 
@@ -37626,6 +37627,7 @@ export namespace Prisma {
     roleId: string
     fee?: Decimal | DecimalJsLike | number | string | null
     contactInfo?: string | null
+    representative?: string | null
   }
 
   export type CasePartyCreateOrConnectWithoutCaseInput = {
@@ -37800,17 +37802,17 @@ export namespace Prisma {
 
   export type CaseDocumentCreateWithoutCaseInput = {
     id?: string
-    documentUrl: string
     fileName: string
     description?: string | null
+    documentUrl: string
     createdAt?: Date | string
   }
 
   export type CaseDocumentUncheckedCreateWithoutCaseInput = {
     id?: string
-    documentUrl: string
     fileName: string
     description?: string | null
+    documentUrl: string
     createdAt?: Date | string
   }
 
@@ -38035,9 +38037,9 @@ export namespace Prisma {
     NOT?: CaseDocumentScalarWhereInput | CaseDocumentScalarWhereInput[]
     id?: StringFilter<"CaseDocument"> | string
     caseId?: StringFilter<"CaseDocument"> | string
-    documentUrl?: StringFilter<"CaseDocument"> | string
     fileName?: StringFilter<"CaseDocument"> | string
     description?: StringNullableFilter<"CaseDocument"> | string | null
+    documentUrl?: StringFilter<"CaseDocument"> | string
     createdAt?: DateTimeFilter<"CaseDocument"> | Date | string
   }
 
@@ -38055,7 +38057,6 @@ export namespace Prisma {
     fullJudgmentDate?: Date | string | null
     judgmentVerifyDate?: Date | string | null
     status?: string
-    paymentStatus?: string
     createdAt?: Date | string
     nature: CaseNatureCreateNestedOneWithoutCasesInput
     parties?: CasePartyCreateNestedManyWithoutCaseInput
@@ -38083,7 +38084,6 @@ export namespace Prisma {
     fullJudgmentDate?: Date | string | null
     judgmentVerifyDate?: Date | string | null
     status?: string
-    paymentStatus?: string
     createdAt?: Date | string
     parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingUncheckedCreateNestedManyWithoutCaseInput
@@ -38176,7 +38176,6 @@ export namespace Prisma {
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: StringFieldUpdateOperationsInput | string
-    paymentStatus?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     nature?: CaseNatureUpdateOneRequiredWithoutCasesNestedInput
     parties?: CasePartyUpdateManyWithoutCaseNestedInput
@@ -38204,7 +38203,6 @@ export namespace Prisma {
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: StringFieldUpdateOperationsInput | string
-    paymentStatus?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUncheckedUpdateManyWithoutCaseNestedInput
@@ -38287,7 +38285,6 @@ export namespace Prisma {
     fullJudgmentDate?: Date | string | null
     judgmentVerifyDate?: Date | string | null
     status?: string
-    paymentStatus?: string
     createdAt?: Date | string
     nature: CaseNatureCreateNestedOneWithoutCasesInput
     lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
@@ -38315,7 +38312,6 @@ export namespace Prisma {
     fullJudgmentDate?: Date | string | null
     judgmentVerifyDate?: Date | string | null
     status?: string
-    paymentStatus?: string
     createdAt?: Date | string
     lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingUncheckedCreateNestedManyWithoutCaseInput
@@ -38374,7 +38370,6 @@ export namespace Prisma {
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: StringFieldUpdateOperationsInput | string
-    paymentStatus?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     nature?: CaseNatureUpdateOneRequiredWithoutCasesNestedInput
     lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
@@ -38402,7 +38397,6 @@ export namespace Prisma {
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: StringFieldUpdateOperationsInput | string
-    paymentStatus?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUncheckedUpdateManyWithoutCaseNestedInput
@@ -38451,7 +38445,6 @@ export namespace Prisma {
     fullJudgmentDate?: Date | string | null
     judgmentVerifyDate?: Date | string | null
     status?: string
-    paymentStatus?: string
     createdAt?: Date | string
     nature: CaseNatureCreateNestedOneWithoutCasesInput
     lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
@@ -38479,7 +38472,6 @@ export namespace Prisma {
     fullJudgmentDate?: Date | string | null
     judgmentVerifyDate?: Date | string | null
     status?: string
-    paymentStatus?: string
     createdAt?: Date | string
     lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
     parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
@@ -38521,7 +38513,6 @@ export namespace Prisma {
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: StringFieldUpdateOperationsInput | string
-    paymentStatus?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     nature?: CaseNatureUpdateOneRequiredWithoutCasesNestedInput
     lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
@@ -38549,7 +38540,6 @@ export namespace Prisma {
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: StringFieldUpdateOperationsInput | string
-    paymentStatus?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
@@ -38575,7 +38565,6 @@ export namespace Prisma {
     fullJudgmentDate?: Date | string | null
     judgmentVerifyDate?: Date | string | null
     status?: string
-    paymentStatus?: string
     createdAt?: Date | string
     nature: CaseNatureCreateNestedOneWithoutCasesInput
     lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
@@ -38603,7 +38592,6 @@ export namespace Prisma {
     fullJudgmentDate?: Date | string | null
     judgmentVerifyDate?: Date | string | null
     status?: string
-    paymentStatus?: string
     createdAt?: Date | string
     lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
     parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
@@ -38696,7 +38684,6 @@ export namespace Prisma {
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: StringFieldUpdateOperationsInput | string
-    paymentStatus?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     nature?: CaseNatureUpdateOneRequiredWithoutCasesNestedInput
     lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
@@ -38724,7 +38711,6 @@ export namespace Prisma {
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: StringFieldUpdateOperationsInput | string
-    paymentStatus?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
@@ -38807,7 +38793,6 @@ export namespace Prisma {
     fullJudgmentDate?: Date | string | null
     judgmentVerifyDate?: Date | string | null
     status?: string
-    paymentStatus?: string
     createdAt?: Date | string
     nature: CaseNatureCreateNestedOneWithoutCasesInput
     lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
@@ -38835,7 +38820,6 @@ export namespace Prisma {
     fullJudgmentDate?: Date | string | null
     judgmentVerifyDate?: Date | string | null
     status?: string
-    paymentStatus?: string
     createdAt?: Date | string
     lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
     parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
@@ -38894,7 +38878,6 @@ export namespace Prisma {
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: StringFieldUpdateOperationsInput | string
-    paymentStatus?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     nature?: CaseNatureUpdateOneRequiredWithoutCasesNestedInput
     lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
@@ -38922,7 +38905,6 @@ export namespace Prisma {
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: StringFieldUpdateOperationsInput | string
-    paymentStatus?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
@@ -38971,7 +38953,6 @@ export namespace Prisma {
     fullJudgmentDate?: Date | string | null
     judgmentVerifyDate?: Date | string | null
     status?: string
-    paymentStatus?: string
     createdAt?: Date | string
     nature: CaseNatureCreateNestedOneWithoutCasesInput
     lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
@@ -38999,7 +38980,6 @@ export namespace Prisma {
     fullJudgmentDate?: Date | string | null
     judgmentVerifyDate?: Date | string | null
     status?: string
-    paymentStatus?: string
     createdAt?: Date | string
     lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
     parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
@@ -39041,7 +39021,6 @@ export namespace Prisma {
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: StringFieldUpdateOperationsInput | string
-    paymentStatus?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     nature?: CaseNatureUpdateOneRequiredWithoutCasesNestedInput
     lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
@@ -39069,7 +39048,6 @@ export namespace Prisma {
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: StringFieldUpdateOperationsInput | string
-    paymentStatus?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
@@ -39095,7 +39073,6 @@ export namespace Prisma {
     fullJudgmentDate?: Date | string | null
     judgmentVerifyDate?: Date | string | null
     status?: string
-    paymentStatus?: string
     createdAt?: Date | string
     nature: CaseNatureCreateNestedOneWithoutCasesInput
     lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
@@ -39123,7 +39100,6 @@ export namespace Prisma {
     fullJudgmentDate?: Date | string | null
     judgmentVerifyDate?: Date | string | null
     status?: string
-    paymentStatus?: string
     createdAt?: Date | string
     lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
     parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
@@ -39165,7 +39141,6 @@ export namespace Prisma {
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: StringFieldUpdateOperationsInput | string
-    paymentStatus?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     nature?: CaseNatureUpdateOneRequiredWithoutCasesNestedInput
     lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
@@ -39193,7 +39168,6 @@ export namespace Prisma {
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: StringFieldUpdateOperationsInput | string
-    paymentStatus?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
@@ -39219,7 +39193,6 @@ export namespace Prisma {
     fullJudgmentDate?: Date | string | null
     judgmentVerifyDate?: Date | string | null
     status?: string
-    paymentStatus?: string
     createdAt?: Date | string
     nature: CaseNatureCreateNestedOneWithoutCasesInput
     lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
@@ -39247,7 +39220,6 @@ export namespace Prisma {
     fullJudgmentDate?: Date | string | null
     judgmentVerifyDate?: Date | string | null
     status?: string
-    paymentStatus?: string
     createdAt?: Date | string
     lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
     parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
@@ -39340,7 +39312,6 @@ export namespace Prisma {
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: StringFieldUpdateOperationsInput | string
-    paymentStatus?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     nature?: CaseNatureUpdateOneRequiredWithoutCasesNestedInput
     lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
@@ -39368,7 +39339,6 @@ export namespace Prisma {
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: StringFieldUpdateOperationsInput | string
-    paymentStatus?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
@@ -39451,7 +39421,6 @@ export namespace Prisma {
     fullJudgmentDate?: Date | string | null
     judgmentVerifyDate?: Date | string | null
     status?: string
-    paymentStatus?: string
     createdAt?: Date | string
     nature: CaseNatureCreateNestedOneWithoutCasesInput
     lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
@@ -39479,7 +39448,6 @@ export namespace Prisma {
     fullJudgmentDate?: Date | string | null
     judgmentVerifyDate?: Date | string | null
     status?: string
-    paymentStatus?: string
     createdAt?: Date | string
     lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
     parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
@@ -39521,7 +39489,6 @@ export namespace Prisma {
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: StringFieldUpdateOperationsInput | string
-    paymentStatus?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     nature?: CaseNatureUpdateOneRequiredWithoutCasesNestedInput
     lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
@@ -39549,7 +39516,6 @@ export namespace Prisma {
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: StringFieldUpdateOperationsInput | string
-    paymentStatus?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
@@ -41069,7 +41035,6 @@ export namespace Prisma {
     fullJudgmentDate?: Date | string | null
     judgmentVerifyDate?: Date | string | null
     status?: string
-    paymentStatus?: string
     createdAt?: Date | string
   }
 
@@ -41087,7 +41052,6 @@ export namespace Prisma {
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: StringFieldUpdateOperationsInput | string
-    paymentStatus?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUpdateManyWithoutCaseNestedInput
@@ -41114,7 +41078,6 @@ export namespace Prisma {
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: StringFieldUpdateOperationsInput | string
-    paymentStatus?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
@@ -41141,7 +41104,6 @@ export namespace Prisma {
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: StringFieldUpdateOperationsInput | string
-    paymentStatus?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -41151,6 +41113,7 @@ export namespace Prisma {
     partyName: string
     fee?: Decimal | DecimalJsLike | number | string | null
     contactInfo?: string | null
+    representative?: string | null
   }
 
   export type CasePartyUpdateWithoutRoleInput = {
@@ -41158,6 +41121,7 @@ export namespace Prisma {
     partyName?: StringFieldUpdateOperationsInput | string
     fee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     contactInfo?: NullableStringFieldUpdateOperationsInput | string | null
+    representative?: NullableStringFieldUpdateOperationsInput | string | null
     case?: CaseUpdateOneRequiredWithoutPartiesNestedInput
   }
 
@@ -41167,6 +41131,7 @@ export namespace Prisma {
     partyName?: StringFieldUpdateOperationsInput | string
     fee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     contactInfo?: NullableStringFieldUpdateOperationsInput | string | null
+    representative?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CasePartyUncheckedUpdateManyWithoutRoleInput = {
@@ -41175,6 +41140,7 @@ export namespace Prisma {
     partyName?: StringFieldUpdateOperationsInput | string
     fee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     contactInfo?: NullableStringFieldUpdateOperationsInput | string | null
+    representative?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CaseLawyerCreateManyCaseInput = {
@@ -41188,6 +41154,7 @@ export namespace Prisma {
     roleId: string
     fee?: Decimal | DecimalJsLike | number | string | null
     contactInfo?: string | null
+    representative?: string | null
   }
 
   export type CaseHearingCreateManyCaseInput = {
@@ -41242,9 +41209,9 @@ export namespace Prisma {
 
   export type CaseDocumentCreateManyCaseInput = {
     id?: string
-    documentUrl: string
     fileName: string
     description?: string | null
+    documentUrl: string
     createdAt?: Date | string
   }
 
@@ -41268,6 +41235,7 @@ export namespace Prisma {
     partyName?: StringFieldUpdateOperationsInput | string
     fee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     contactInfo?: NullableStringFieldUpdateOperationsInput | string | null
+    representative?: NullableStringFieldUpdateOperationsInput | string | null
     role?: PartyRoleUpdateOneRequiredWithoutPartiesNestedInput
   }
 
@@ -41277,6 +41245,7 @@ export namespace Prisma {
     roleId?: StringFieldUpdateOperationsInput | string
     fee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     contactInfo?: NullableStringFieldUpdateOperationsInput | string | null
+    representative?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CasePartyUncheckedUpdateManyWithoutCaseInput = {
@@ -41285,6 +41254,7 @@ export namespace Prisma {
     roleId?: StringFieldUpdateOperationsInput | string
     fee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     contactInfo?: NullableStringFieldUpdateOperationsInput | string | null
+    representative?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CaseHearingUpdateWithoutCaseInput = {
@@ -41439,25 +41409,25 @@ export namespace Prisma {
 
   export type CaseDocumentUpdateWithoutCaseInput = {
     id?: StringFieldUpdateOperationsInput | string
-    documentUrl?: StringFieldUpdateOperationsInput | string
     fileName?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    documentUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CaseDocumentUncheckedUpdateWithoutCaseInput = {
     id?: StringFieldUpdateOperationsInput | string
-    documentUrl?: StringFieldUpdateOperationsInput | string
     fileName?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    documentUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CaseDocumentUncheckedUpdateManyWithoutCaseInput = {
     id?: StringFieldUpdateOperationsInput | string
-    documentUrl?: StringFieldUpdateOperationsInput | string
     fileName?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    documentUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 

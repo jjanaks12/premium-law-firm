@@ -58,7 +58,6 @@ export interface CaseData {
   registrationDate: string | null;
   facts: string | null;
   status: string;
-  paymentStatus: string;
   // Omitting relations for brevity in the list view
 }
 
@@ -74,7 +73,6 @@ export default function CasesPage() {
   const [search, setSearch] = useState("");
   const [partySearch, setPartySearch] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
-  const [paymentFilter, setPaymentFilter] = useState("all");
 
   // Form Modal States
   const [showForm, setShowForm] = useState(false);
@@ -95,7 +93,6 @@ export default function CasesPage() {
           search,
           partyName: partySearch,
           status: statusFilter !== "all" ? statusFilter : undefined,
-          paymentStatus: paymentFilter !== "all" ? paymentFilter : undefined,
         },
       });
       if (data.data) {
@@ -118,7 +115,7 @@ export default function CasesPage() {
       fetchCases();
     }, 500);
     return () => clearTimeout(delayDebounceFn);
-  }, [search, partySearch, statusFilter, paymentFilter]);
+  }, [search, partySearch, statusFilter]);
 
   // Handlers for Add/Edit Form
   const handleAddClick = () => {
@@ -218,20 +215,6 @@ export default function CasesPage() {
             <SelectItem value="Closed">Closed</SelectItem>
           </SelectContent>
         </Select>
-        <Select
-          value={paymentFilter}
-          onValueChange={(val) => setPaymentFilter(val ?? "all")}
-        >
-          <SelectTrigger className="w-full">
-            <SelectValue placeholder="Payment" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">All Payments</SelectItem>
-            <SelectItem value="Pending">Pending</SelectItem>
-            <SelectItem value="Partial">Partial</SelectItem>
-            <SelectItem value="Paid">Paid</SelectItem>
-          </SelectContent>
-        </Select>
       </div>
 
       {/* Data Table */}
@@ -244,7 +227,6 @@ export default function CasesPage() {
                 <TableHead>{t("colCaseName")}</TableHead>
                 <TableHead>{t("colNature")}</TableHead>
                 <TableHead>Status</TableHead>
-                <TableHead>Payment</TableHead>
                 <TableHead>{t("colRegDate")}</TableHead>
                 <TableHead className="text-right">{t("colActions")}</TableHead>
               </TableRow>
@@ -261,7 +243,7 @@ export default function CasesPage() {
                 </TableRow>
               ) : cases.length === 0 ? (
                 <TableRow>
-                  <TableCell colSpan={7} className="h-48 text-center">
+                  <TableCell colSpan={6} className="h-48 text-center">
                     <div className="flex flex-col items-center justify-center text-muted-foreground">
                       <BriefcaseIcon className="h-12 w-12 mb-2 text-muted-foreground/50" />
                       <p className="font-medium text-foreground">
@@ -292,19 +274,6 @@ export default function CasesPage() {
                         }`}
                       >
                         {c.status || "Draft"}
-                      </span>
-                    </TableCell>
-                    <TableCell>
-                      <span
-                        className={`px-2 py-1 rounded-full text-xs font-medium ${
-                          c.paymentStatus === "Paid"
-                            ? "bg-green-100 text-green-800"
-                            : c.paymentStatus === "Partial"
-                              ? "bg-blue-100 text-blue-800"
-                              : "bg-yellow-100 text-yellow-800"
-                        }`}
-                      >
-                        {c.paymentStatus || "Pending"}
                       </span>
                     </TableCell>
                     <TableCell>

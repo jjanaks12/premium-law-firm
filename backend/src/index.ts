@@ -22,7 +22,7 @@ app.use(cors({
 }));
 app.use(json());
 app.use(urlencoded({ extended: false }));
-app.use('/uploads', express.static('uploads'));
+app.use('/api/v1/uploads', express.static('uploads'));
 
 app.use('/api/v1', router);
 

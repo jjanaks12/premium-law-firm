@@ -5,7 +5,7 @@ import createHttpError from "http-errors";
 // Get all cases
 export const index = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const { search, natureId, status, paymentStatus, partyName } = req.query;
+    const { search, natureId, status, partyName } = req.query;
 
     const filter: any = {};
 
@@ -15,10 +15,6 @@ export const index = async (req: Request, res: Response, next: NextFunction) => 
 
     if (status) {
       filter.status = status as string;
-    }
-
-    if (paymentStatus) {
-      filter.paymentStatus = paymentStatus as string;
     }
 
     if (partyName) {
@@ -94,6 +90,7 @@ export const show = async (req: Request, res: Response, next: NextFunction) => {
         counselings: {
           include: { counselor: true },
         },
+        documents: true,
       },
     });
 
@@ -123,8 +120,7 @@ export const store = async (req: Request, res: Response, next: NextFunction) => 
       noticeStatus,
       parties,
       lawyers,
-      status,
-      paymentStatus,
+      status
     } = req.body;
 
     // Check if case with same number exists
@@ -149,7 +145,6 @@ export const store = async (req: Request, res: Response, next: NextFunction) => 
         referredThrough,
         noticeStatus,
         status: status || "Draft",
-        paymentStatus: paymentStatus || "Pending",
         parties: parties && parties.length > 0 ? {
           create: parties.map((party: any) => ({
             partyName: party.partyName,
@@ -195,8 +190,7 @@ export const update = async (req: Request, res: Response, next: NextFunction) =>
       noticeStatus,
       fullJudgmentDate,
       judgmentVerifyDate,
-      status,
-      paymentStatus,
+      status
     } = req.body;
 
     const caseData = await prisma.case.findUnique({
@@ -232,8 +226,7 @@ export const update = async (req: Request, res: Response, next: NextFunction) =>
         noticeStatus,
         fullJudgmentDate: fullJudgmentDate ? new Date(fullJudgmentDate) : undefined,
         judgmentVerifyDate: judgmentVerifyDate ? new Date(judgmentVerifyDate) : undefined,
-        status,
-        paymentStatus,
+        status
       },
     });
 

@@ -8,6 +8,16 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -24,6 +34,7 @@ export default function HearingsTab({
   const { axios } = useAxios();
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [deleteId, setDeleteId] = useState<string | null>(null);
 
   const [hearingDate, setHearingDate] = useState("");
   const [nextHearingDate, setNextHearingDate] = useState("");
@@ -59,10 +70,14 @@ export default function HearingsTab({
     }
   };
 
-  const handleDelete = async (hearingId: string) => {
-    if (!confirm("Are you sure you want to delete this hearing?")) return;
+  const handleDeleteClick = (hearingId: string) => {
+    setDeleteId(hearingId);
+  };
+
+  const confirmDelete = async () => {
+    if (!deleteId) return;
     try {
-      await axios.delete(`/cases/${caseData.id}/hearings/${hearingId}`);
+      await axios.delete(`/cases/${caseData.id}/hearings/${deleteId}`);
       toast.add({ title: "Hearing deleted" });
       refresh();
     } catch (error: any) {
@@ -71,6 +86,8 @@ export default function HearingsTab({
         description: "Unknown error",
         type: "destructive",
       });
+    } finally {
+      setDeleteId(null);
     }
   };
 
@@ -130,7 +147,7 @@ export default function HearingsTab({
                   variant="ghost"
                   size="icon"
                   className="text-destructive hover:bg-destructive/10 ml-4"
-                  onClick={() => handleDelete(h.id)}
+                  onClick={() => handleDeleteClick(h.id)}
                 >
                   <Trash2Icon className="w-4 h-4" />
                 </Button>
@@ -199,6 +216,29 @@ export default function HearingsTab({
           </form>
         </DialogContent>
       </Dialog>
+
+      <AlertDialog open={!!deleteId} onOpenChange={(open) => !open && setDeleteId(null)}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This action cannot be undone. This will permanently delete the hearing.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+              onClick={(e) => {
+                e.preventDefault();
+                confirmDelete();
+              }}
+            >
+              Delete
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </Card>
   );
 }

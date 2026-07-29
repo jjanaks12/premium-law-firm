@@ -10,6 +10,7 @@ import OverviewTab from "./components/OverviewTab";
 import PartiesTab from "./components/PartiesTab";
 import HearingsTab from "./components/HearingsTab";
 import ProceedingsTab from "./components/ProceedingsTab";
+import CounselingsTab from "./components/CounselingsTab";
 import PleadingsTab from "./components/PleadingsTab";
 import PrecedentsTab from "./components/PrecedentsTab";
 import PaymentsTab from "./components/PaymentsTab";
@@ -70,9 +71,8 @@ export default function CaseDetailPage() {
           <TabsTrigger value="overview">Overview</TabsTrigger>
           <TabsTrigger value="parties">Parties</TabsTrigger>
           <TabsTrigger value="hearings">Hearings</TabsTrigger>
-          <TabsTrigger value="proceedings">
-            Proceedings & Counselling
-          </TabsTrigger>
+          <TabsTrigger value="proceedings">Proceedings</TabsTrigger>
+          <TabsTrigger value="counselings">Counselling</TabsTrigger>
           <TabsTrigger value="pleadings">Bahas / Pleadings</TabsTrigger>
           <TabsTrigger value="precedents">Precedents</TabsTrigger>
           <TabsTrigger value="payments">Payments</TabsTrigger>
@@ -90,6 +90,9 @@ export default function CaseDetailPage() {
         </TabsContent>
         <TabsContent value="proceedings">
           <ProceedingsTab caseData={caseData} refresh={fetchCase} />
+        </TabsContent>
+        <TabsContent value="counselings">
+          <CounselingsTab caseData={caseData} refresh={fetchCase} />
         </TabsContent>
         <TabsContent value="pleadings">
           <PleadingsTab caseData={caseData} refresh={fetchCase} />

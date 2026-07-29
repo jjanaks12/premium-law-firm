@@ -43,7 +43,6 @@ model Case {
   fullJudgmentDate       DateTime?
   judgmentVerifyDate     DateTime?
   status                 String                 @default("Draft")
-  paymentStatus          String                 @default("Pending")
 
   // Relations
   lawyers                CaseLawyer[]           // Joined to User via CaseLawyer
@@ -54,6 +53,7 @@ model Case {
   precedents             CasePrecedent[]
   payments               CasePayment[]
   counselings            CaseCounseling[]
+  documents              CaseDocument[]
 
   createdAt              DateTime               @default(now())
 
@@ -80,6 +80,7 @@ model CaseParty {
   role        PartyRole @relation(fields: [roleId], references: [id])
   fee         Decimal?
   contactInfo String?
+  representative String?
 
   @@map("case_parties")
 }
@@ -161,4 +162,17 @@ model CaseCounseling {
   createdAt       DateTime  @default(now())
 
   @@map("case_counselings")
+}
+
+model CaseDocument {
+  id          String   @id @default(uuid())
+  caseId      String
+  case        Case     @relation(fields: [caseId], references: [id], onDelete: Cascade)
+  fileName    String
+  description String?  @db.Text
+  documentUrl String
+
+  createdAt   DateTime @default(now())
+
+  @@map("case_documents")
 }

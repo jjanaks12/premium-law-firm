@@ -8,7 +8,24 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useAxios } from "@/lib/services/axios.service";
@@ -24,6 +41,7 @@ export default function PrecedentsTab({
   const { axios } = useAxios();
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [deleteId, setDeleteId] = useState<string | null>(null);
 
   const [decisionNumber, setDecisionNumber] = useState("");
   const [plaintiff, setPlaintiff] = useState("");
@@ -58,14 +76,20 @@ export default function PrecedentsTab({
     }
   };
 
-  const handleDelete = async (id: string) => {
-    if (!confirm("Delete precedent?")) return;
+  const handleDeleteClick = (id: string) => {
+    setDeleteId(id);
+  };
+
+  const confirmDelete = async () => {
+    if (!deleteId) return;
     try {
-      await axios.delete(`/cases/${caseData.id}/precedents/${id}`);
+      await axios.delete(`/cases/${caseData.id}/precedents/${deleteId}`);
       toast.add({ title: "Precedent deleted" });
       refresh();
     } catch (e) {
       toast.add({ title: "Error", type: "destructive" });
+    } finally {
+      setDeleteId(null);
     }
   };
 
@@ -119,7 +143,7 @@ export default function PrecedentsTab({
                   variant="ghost"
                   size="icon"
                   className="text-destructive hover:bg-destructive/10 ml-4"
-                  onClick={() => handleDelete(p.id)}
+                  onClick={() => handleDeleteClick(p.id)}
                 >
                   <Trash2Icon className="w-4 h-4" />
                 </Button>
@@ -147,17 +171,43 @@ export default function PrecedentsTab({
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label>Plaintiff</Label>
-                <Input
+                <Select
                   value={plaintiff}
-                  onChange={(e) => setPlaintiff(e.target.value)}
-                />
+                  onValueChange={(a) => setPlaintiff(a as string)}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select plaintiff" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {caseData.parties
+                      .filter((p: any) => p.role.name !== "Plaintiff")
+                      ?.map((p: any) => (
+                        <SelectItem key={p.id} value={p.partyName}>
+                          {p.partyName} {p.role ? `(${p.role.name})` : ""}
+                        </SelectItem>
+                      ))}
+                  </SelectContent>
+                </Select>
               </div>
               <div className="space-y-2">
                 <Label>Defendant</Label>
-                <Input
+                <Select
                   value={defendant}
-                  onChange={(e) => setDefendant(e.target.value)}
-                />
+                  onValueChange={(a) => setDefendant(a as string)}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select defendant" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {caseData.parties
+                      .filter((p: any) => p.role.name !== "Defendent")
+                      ?.map((p: any) => (
+                        <SelectItem key={p.id} value={p.partyName}>
+                          {p.partyName} {p.role ? `(${p.role.name})` : ""}
+                        </SelectItem>
+                      ))}
+                  </SelectContent>
+                </Select>
               </div>
             </div>
             <div className="space-y-2">
@@ -184,6 +234,33 @@ export default function PrecedentsTab({
           </form>
         </DialogContent>
       </Dialog>
+
+      <AlertDialog
+        open={!!deleteId}
+        onOpenChange={(open) => !open && setDeleteId(null)}
+      >
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This action cannot be undone. This will permanently delete the
+              precedent.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+              onClick={(e) => {
+                e.preventDefault();
+                confirmDelete();
+              }}
+            >
+              Delete
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </Card>
   );
 }

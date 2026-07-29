@@ -8,6 +8,16 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -31,6 +41,7 @@ export default function PaymentsTab({
   const { axios } = useAxios();
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [deleteId, setDeleteId] = useState<string | null>(null);
 
   const [amount, setAmount] = useState("");
   const [paymentDate, setPaymentDate] = useState("");
@@ -68,14 +79,20 @@ export default function PaymentsTab({
     }
   };
 
-  const handleDelete = async (id: string) => {
-    if (!confirm("Delete payment?")) return;
+  const handleDeleteClick = (id: string) => {
+    setDeleteId(id);
+  };
+
+  const confirmDelete = async () => {
+    if (!deleteId) return;
     try {
-      await axios.delete(`/cases/${caseData.id}/payments/${id}`);
+      await axios.delete(`/cases/${caseData.id}/payments/${deleteId}`);
       toast.add({ title: "Payment deleted" });
       refresh();
     } catch (e) {
       toast.add({ title: "Error", type: "destructive" });
+    } finally {
+      setDeleteId(null);
     }
   };
 
@@ -88,14 +105,6 @@ export default function PaymentsTab({
         </Button>
       </CardHeader>
       <CardContent>
-        <div className="mb-6 p-4 bg-muted/50 rounded-lg">
-          <h3 className="font-medium mb-2">Overall Payment Status</h3>
-          <p className="text-sm">
-            <span className="text-muted-foreground">Status:</span>{" "}
-            {caseData.paymentStatus}
-          </p>
-        </div>
-
         <h3 className="font-medium mb-4">Payment Transfers</h3>
         {caseData.payments && caseData.payments.length > 0 ? (
           <div className="space-y-4">
@@ -145,7 +154,7 @@ export default function PaymentsTab({
                   variant="ghost"
                   size="icon"
                   className="text-destructive hover:bg-destructive/10 ml-4"
-                  onClick={() => handleDelete(p.id)}
+                  onClick={() => handleDeleteClick(p.id)}
                 >
                   <Trash2Icon className="w-4 h-4" />
                 </Button>
@@ -237,6 +246,29 @@ export default function PaymentsTab({
           </form>
         </DialogContent>
       </Dialog>
+
+      <AlertDialog open={!!deleteId} onOpenChange={(open) => !open && setDeleteId(null)}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This action cannot be undone. This will permanently delete the payment.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+              onClick={(e) => {
+                e.preventDefault();
+                confirmDelete();
+              }}
+            >
+              Delete
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </Card>
   );
 }

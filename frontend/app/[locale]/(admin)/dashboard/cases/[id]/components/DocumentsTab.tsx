@@ -8,6 +8,16 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -30,6 +40,7 @@ export default function DocumentsTab({
   const [fileName, setFileName] = useState("");
   const [description, setDescription] = useState("");
   const [file, setFile] = useState<File | null>(null);
+  const [deleteId, setDeleteId] = useState<string | null>(null);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -80,14 +91,20 @@ export default function DocumentsTab({
     }
   };
 
-  const handleDelete = async (id: string) => {
-    if (!confirm("Delete document?")) return;
+  const handleDeleteClick = (id: string) => {
+    setDeleteId(id);
+  };
+
+  const confirmDelete = async () => {
+    if (!deleteId) return;
     try {
-      await axios.delete(`/cases/${caseData.id}/documents/${id}`);
+      await axios.delete(`/cases/${caseData.id}/documents/${deleteId}`);
       toast.add({ title: "Document deleted" });
       refresh();
     } catch (e) {
       toast.add({ title: "Error", type: "destructive" });
+    } finally {
+      setDeleteId(null);
     }
   };
 
@@ -131,7 +148,7 @@ export default function DocumentsTab({
                     variant="ghost"
                     size="icon"
                     className="text-destructive hover:bg-destructive/10"
-                    onClick={() => handleDelete(d.id)}
+                    onClick={() => handleDeleteClick(d.id)}
                   >
                     <Trash2Icon className="w-4 h-4" />
                   </Button>
@@ -193,6 +210,29 @@ export default function DocumentsTab({
           </form>
         </DialogContent>
       </Dialog>
+
+      <AlertDialog open={!!deleteId} onOpenChange={(open) => !open && setDeleteId(null)}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This action cannot be undone. This will permanently delete the document.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+              onClick={(e) => {
+                e.preventDefault();
+                confirmDelete();
+              }}
+            >
+              Delete
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </Card>
   );
 }

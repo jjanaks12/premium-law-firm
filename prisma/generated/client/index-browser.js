@@ -197,7 +197,6 @@ exports.Prisma.CaseScalarFieldEnum = {
   fullJudgmentDate: 'fullJudgmentDate',
   judgmentVerifyDate: 'judgmentVerifyDate',
   status: 'status',
-  paymentStatus: 'paymentStatus',
   createdAt: 'createdAt'
 };
 
@@ -213,7 +212,8 @@ exports.Prisma.CasePartyScalarFieldEnum = {
   partyName: 'partyName',
   roleId: 'roleId',
   fee: 'fee',
-  contactInfo: 'contactInfo'
+  contactInfo: 'contactInfo',
+  representative: 'representative'
 };
 
 exports.Prisma.CaseHearingScalarFieldEnum = {
@@ -275,9 +275,9 @@ exports.Prisma.CaseCounselingScalarFieldEnum = {
 exports.Prisma.CaseDocumentScalarFieldEnum = {
   id: 'id',
   caseId: 'caseId',
-  documentUrl: 'documentUrl',
   fileName: 'fileName',
   description: 'description',
+  documentUrl: 'documentUrl',
   createdAt: 'createdAt'
 };
 

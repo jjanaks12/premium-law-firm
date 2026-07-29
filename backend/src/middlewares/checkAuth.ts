@@ -17,7 +17,6 @@ export const verifyAccessToken = async (request: Request, response: Response, ne
     }
 
     jwt.verify(token, secret, async (error, payload) => {
-
         try {
             if (error || !payload) {
                 return next(createHttpError.Unauthorized('Invalid or expired token'));

@@ -127,7 +127,6 @@ model Case {
   fullJudgmentDate   DateTime?
   judgmentVerifyDate DateTime?
   status             String     @default("Draft")
-  paymentStatus      String     @default("Pending")
 
   // Relations
   lawyers     CaseLawyer[] // Joined to User via CaseLawyer
@@ -157,14 +156,15 @@ model CaseLawyer {
 }
 
 model CaseParty {
-  id          String    @id @default(uuid())
-  caseId      String
-  case        Case      @relation(fields: [caseId], references: [id], onDelete: Cascade)
-  partyName   String
-  roleId      String
-  role        PartyRole @relation(fields: [roleId], references: [id])
-  fee         Decimal?
-  contactInfo String?
+  id             String    @id @default(uuid())
+  caseId         String
+  case           Case      @relation(fields: [caseId], references: [id], onDelete: Cascade)
+  partyName      String
+  roleId         String
+  role           PartyRole @relation(fields: [roleId], references: [id])
+  fee            Decimal?
+  contactInfo    String?
+  representative String?
 
   @@map("case_parties")
 }
@@ -252,9 +252,9 @@ model CaseDocument {
   id          String  @id @default(uuid())
   caseId      String
   case        Case    @relation(fields: [caseId], references: [id], onDelete: Cascade)
-  documentUrl String
   fileName    String
-  description String?
+  description String? @db.Text
+  documentUrl String
 
   createdAt DateTime @default(now())
 

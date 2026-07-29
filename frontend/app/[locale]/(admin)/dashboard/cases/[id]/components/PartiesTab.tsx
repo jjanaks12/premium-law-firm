@@ -8,6 +8,16 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -35,6 +45,8 @@ export default function PartiesTab({
   const [partyName, setPartyName] = useState("");
   const [roleId, setRoleId] = useState("");
   const [contactInfo, setContactInfo] = useState("");
+  const [representative, setRepresentative] = useState("");
+  const [deleteId, setDeleteId] = useState<string | null>(null);
 
   useEffect(() => {
     if (open && roles.length === 0) {
@@ -57,6 +69,7 @@ export default function PartiesTab({
         partyName,
         roleId,
         contactInfo,
+        representative,
       });
       toast.add({ title: "Party added successfully" });
       setOpen(false);
@@ -65,6 +78,7 @@ export default function PartiesTab({
       setPartyName("");
       setRoleId("");
       setContactInfo("");
+      setRepresentative("");
     } catch (error: any) {
       toast.add({
         title: "Error adding party",
@@ -76,10 +90,14 @@ export default function PartiesTab({
     }
   };
 
-  const handleDelete = async (partyId: string) => {
-    if (!confirm("Are you sure you want to delete this party?")) return;
+  const handleDeleteClick = (partyId: string) => {
+    setDeleteId(partyId);
+  };
+
+  const confirmDelete = async () => {
+    if (!deleteId) return;
     try {
-      await axios.delete(`/cases/${caseData.id}/parties/${partyId}`);
+      await axios.delete(`/cases/${caseData.id}/parties/${deleteId}`);
       toast.add({ title: "Party deleted" });
       refresh();
     } catch (error: any) {
@@ -88,6 +106,8 @@ export default function PartiesTab({
         description: error.response?.data?.message || "Unknown error",
         type: "destructive",
       });
+    } finally {
+      setDeleteId(null);
     }
   };
 
@@ -115,12 +135,15 @@ export default function PartiesTab({
                   {p.contactInfo && (
                     <div className="text-sm mt-2">Contact: {p.contactInfo}</div>
                   )}
+                  {p.representative && (
+                    <div className="text-sm mt-2">Representative (Waris): {p.representative}</div>
+                  )}
                 </div>
                 <Button
                   variant="ghost"
                   size="icon"
                   className="text-destructive hover:bg-destructive/10"
-                  onClick={() => handleDelete(p.id)}
+                  onClick={() => handleDeleteClick(p.id)}
                 >
                   <Trash2Icon className="w-4 h-4" />
                 </Button>
@@ -177,6 +200,14 @@ export default function PartiesTab({
                 placeholder="Phone, email, etc."
               />
             </div>
+            <div className="space-y-2">
+              <Label>Representative (Optional)</Label>
+              <Input
+                value={representative}
+                onChange={(e) => setRepresentative(e.target.value)}
+                placeholder="Waris or Authorized Representative"
+              />
+            </div>
             <div className="flex justify-end pt-4">
               <Button
                 type="button"
@@ -196,6 +227,29 @@ export default function PartiesTab({
           </form>
         </DialogContent>
       </Dialog>
+
+      <AlertDialog open={!!deleteId} onOpenChange={(open) => !open && setDeleteId(null)}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This action cannot be undone. This will permanently delete the party from the case.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+              onClick={(e) => {
+                e.preventDefault();
+                confirmDelete();
+              }}
+            >
+              Delete
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </Card>
   );
 }

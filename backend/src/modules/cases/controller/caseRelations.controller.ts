@@ -70,9 +70,9 @@ export const deleteCourtLevel = async (req: Request, res: Response, next: NextFu
 export const addParty = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { id } = req.params;
-    const { partyName, roleId, fee, contactInfo } = req.body;
+    const { partyName, roleId, fee, contactInfo, representative } = req.body;
     const party = await prisma.caseParty.create({
-      data: { caseId: id as string as string, partyName, roleId, fee, contactInfo }
+      data: { caseId: id as string, partyName, roleId, fee, contactInfo, representative }
     });
     res.status(201).json({ data: party });
   } catch (error) { next(error); }

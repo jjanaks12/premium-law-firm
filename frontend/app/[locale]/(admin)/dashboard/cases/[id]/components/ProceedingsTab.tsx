@@ -8,6 +8,16 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -29,6 +39,7 @@ export default function ProceedingsTab({
   refresh: () => void;
 }) {
   const { axios } = useAxios();
+  const [deleteId, setDeleteId] = useState<string | null>(null);
 
   // Proceeding State
   const [openProceeding, setOpenProceeding] = useState(false);
@@ -40,12 +51,6 @@ export default function ProceedingsTab({
   const [chargeCounseling, setChargeCounseling] = useState("");
   const [verdict, setVerdict] = useState("");
 
-  // Counseling State
-  const [openCounseling, setOpenCounseling] = useState(false);
-  const [loadingCounseling, setLoadingCounseling] = useState(false);
-  const [counselingDate, setCounselingDate] = useState("");
-  const [counselingNotes, setCounselingNotes] = useState("");
-
   useEffect(() => {
     if (openProceeding && courtLevels.length === 0) {
       axios
@@ -53,7 +58,7 @@ export default function ProceedingsTab({
         .then((res) => setCourtLevels(res.data.data))
         .catch(console.error);
     }
-  }, [openProceeding, courtLevels.length]);
+  }, [openProceeding, courtLevels.length, axios]);
 
   const handleProceedingSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -85,49 +90,16 @@ export default function ProceedingsTab({
     }
   };
 
-  const handleCounselingSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoadingCounseling(true);
+  const confirmDelete = async () => {
+    if (!deleteId) return;
     try {
-      await axios.post(`/cases/${caseData.id}/counselings`, {
-        date: counselingDate || undefined,
-        notes: counselingNotes,
-      });
-      toast.add({ title: "Counseling added" });
-      setOpenCounseling(false);
-      refresh();
-      setCounselingDate("");
-      setCounselingNotes("");
-    } catch (error: any) {
-      toast.add({
-        title: "Error",
-        description: error.response?.data?.message || "Unknown error",
-        type: "destructive",
-      });
-    } finally {
-      setLoadingCounseling(false);
-    }
-  };
-
-  const deleteProceeding = async (id: string) => {
-    if (!confirm("Delete proceeding?")) return;
-    try {
-      await axios.delete(`/cases/${caseData.id}/proceedings/${id}`);
+      await axios.delete(`/cases/${caseData.id}/proceedings/${deleteId}`);
       toast.add({ title: "Proceeding deleted" });
       refresh();
     } catch (e) {
       toast.add({ title: "Error", type: "destructive" });
-    }
-  };
-
-  const deleteCounseling = async (id: string) => {
-    if (!confirm("Delete counseling?")) return;
-    try {
-      await axios.delete(`/cases/${caseData.id}/counselings/${id}`);
-      toast.add({ title: "Counseling deleted" });
-      refresh();
-    } catch (e) {
-      toast.add({ title: "Error", type: "destructive" });
+    } finally {
+      setDeleteId(null);
     }
   };
 
@@ -170,7 +142,7 @@ export default function ProceedingsTab({
                     variant="ghost"
                     size="icon"
                     className="text-destructive hover:bg-destructive/10"
-                    onClick={() => deleteProceeding(p.id)}
+                    onClick={() => setDeleteId(p.id)}
                   >
                     <Trash2Icon className="w-4 h-4" />
                   </Button>
@@ -183,54 +155,6 @@ export default function ProceedingsTab({
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader className="flex flex-row items-center justify-between">
-          <CardTitle>Counselling Updates</CardTitle>
-          <Button onClick={() => setOpenCounseling(true)} size="sm">
-            <PlusIcon className="w-4 h-4 mr-2" /> Add Counselling
-          </Button>
-        </CardHeader>
-        <CardContent>
-          {caseData.counselings && caseData.counselings.length > 0 ? (
-            <div className="space-y-4">
-              {caseData.counselings.map((c: any) => (
-                <div
-                  key={c.id}
-                  className="p-4 border rounded-lg flex justify-between"
-                >
-                  <div>
-                    <div className="text-sm text-muted-foreground">
-                      Date:{" "}
-                      {c.date ? new Date(c.date).toLocaleDateString() : "N/A"}
-                    </div>
-                    <div className="mt-2 text-sm">{c.notes}</div>
-                    {c.counselor && (
-                      <div className="mt-2 text-xs text-muted-foreground">
-                        Counselor: {c.counselor.first_name}{" "}
-                        {c.counselor.last_name}
-                      </div>
-                    )}
-                  </div>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="text-destructive hover:bg-destructive/10"
-                    onClick={() => deleteCounseling(c.id)}
-                  >
-                    <Trash2Icon className="w-4 h-4" />
-                  </Button>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <p className="text-muted-foreground">
-              No counselling updates recorded.
-            </p>
-          )}
-        </CardContent>
-      </Card>
-
-      {/* Add Proceeding Dialog */}
       <Dialog open={openProceeding} onOpenChange={setOpenProceeding}>
         <DialogContent>
           <DialogHeader>
@@ -306,48 +230,28 @@ export default function ProceedingsTab({
         </DialogContent>
       </Dialog>
 
-      {/* Add Counselling Dialog */}
-      <Dialog open={openCounseling} onOpenChange={setOpenCounseling}>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Add Counselling Update</DialogTitle>
-          </DialogHeader>
-          <form onSubmit={handleCounselingSubmit} className="space-y-4">
-            <div className="space-y-2">
-              <Label>Date</Label>
-              <Input
-                type="date"
-                value={counselingDate}
-                onChange={(e) => setCounselingDate(e.target.value)}
-              />
-            </div>
-            <div className="space-y-2">
-              <Label>
-                Notes <span className="text-destructive">*</span>
-              </Label>
-              <Textarea
-                value={counselingNotes}
-                onChange={(e) => setCounselingNotes(e.target.value)}
-                required
-                rows={4}
-              />
-            </div>
-            <div className="flex justify-end pt-4">
-              <Button
-                type="button"
-                variant="outline"
-                className="mr-2"
-                onClick={() => setOpenCounseling(false)}
-              >
-                Cancel
-              </Button>
-              <Button type="submit" disabled={loadingCounseling}>
-                {loadingCounseling ? "Saving..." : "Save"}
-              </Button>
-            </div>
-          </form>
-        </DialogContent>
-      </Dialog>
+      <AlertDialog open={!!deleteId} onOpenChange={(open) => !open && setDeleteId(null)}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This action cannot be undone. This will permanently delete the proceeding.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+              onClick={(e) => {
+                e.preventDefault();
+                confirmDelete();
+              }}
+            >
+              Delete
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }

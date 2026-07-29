@@ -23,7 +23,13 @@ const availableLanguages = [
   },
 ];
 
-export default function Language({ className }: { className?: string }) {
+export default function Language({
+  className,
+  theme = "light",
+}: {
+  className?: string;
+  theme?: "dark" | "light";
+}) {
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
@@ -32,7 +38,13 @@ export default function Language({ className }: { className?: string }) {
     <DropdownMenu>
       <DropdownMenuTrigger
         render={
-          <Button variant="ghost" className={cn("text-cream", className)}>
+          <Button
+            variant="ghost"
+            className={cn(
+              theme === "light" ? "text-cream" : "text-navy",
+              className,
+            )}
+          >
             <GlobeIcon className="mr-2 h-4 w-4" />
             {locale.toUpperCase()}
           </Button>

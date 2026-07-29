@@ -3,6 +3,16 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { PlusIcon, Trash2Icon } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -13,6 +23,7 @@ export default function PleadingsTab({ caseData, refresh }: { caseData: any; ref
   const { axios } = useAxios();
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [deleteId, setDeleteId] = useState<string | null>(null);
 
   const [pleadingDate, setPleadingDate] = useState("");
   const [pleadingNotes, setPleadingNotes] = useState("");
@@ -37,12 +48,19 @@ export default function PleadingsTab({ caseData, refresh }: { caseData: any; ref
     }
   };
 
-  const handleDelete = async (id: string) => {
-    if (!confirm("Delete pleading?")) return;
+  const handleDeleteClick = (id: string) => {
+    setDeleteId(id);
+  };
+
+  const confirmDelete = async () => {
+    if (!deleteId) return;
     try {
-      await axios.delete(`/cases/${caseData.id}/pleadings/${id}`);
+      await axios.delete(`/cases/${caseData.id}/pleadings/${deleteId}`);
       toast.add({ title: "Pleading deleted" }); refresh();
     } catch (e) { toast.add({ title: "Error", type: "destructive" }); }
+    finally {
+      setDeleteId(null);
+    }
   };
 
   return (
@@ -69,7 +87,7 @@ export default function PleadingsTab({ caseData, refresh }: { caseData: any; ref
                   )}
                   <div className="mt-2 text-sm">{p.pleadingNotes}</div>
                 </div>
-                <Button variant="ghost" size="icon" className="text-destructive hover:bg-destructive/10 ml-4" onClick={() => handleDelete(p.id)}>
+                <Button variant="ghost" size="icon" className="text-destructive hover:bg-destructive/10 ml-4" onClick={() => handleDeleteClick(p.id)}>
                   <Trash2Icon className="w-4 h-4" />
                 </Button>
               </div>
@@ -99,6 +117,29 @@ export default function PleadingsTab({ caseData, refresh }: { caseData: any; ref
           </form>
         </DialogContent>
       </Dialog>
+
+      <AlertDialog open={!!deleteId} onOpenChange={(open) => !open && setDeleteId(null)}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This action cannot be undone. This will permanently delete the pleading.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+              onClick={(e) => {
+                e.preventDefault();
+                confirmDelete();
+              }}
+            >
+              Delete
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </Card>
   );
 }

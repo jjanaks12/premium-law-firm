@@ -65,7 +65,6 @@ export default function CaseForm({
     registrationDate: yup.date().nullable(),
     facts: yup.string().nullable(),
     status: yup.string().required("Status is required"),
-    paymentStatus: yup.string().required("Payment Status is required"),
   });
 
   const handleSubmit = async (
@@ -115,7 +114,6 @@ export default function CaseForm({
       : "",
     facts: caseData?.facts || "",
     status: caseData?.status || "Draft",
-    paymentStatus: caseData?.paymentStatus || "Pending",
   };
 
   return (
@@ -168,7 +166,6 @@ export default function CaseForm({
               />
             </div>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="natureId">
@@ -190,7 +187,8 @@ export default function CaseForm({
                       <SelectValue placeholder="Select a case nature">
                         {field.value
                           ? natures.find(
-                              (n) => n.id.toString() === field.value?.toString()
+                              (n) =>
+                                n.id.toString() === field.value?.toString(),
                             )?.name || "Select a case nature"
                           : "Select a case nature"}
                       </SelectValue>
@@ -230,7 +228,6 @@ export default function CaseForm({
               />
             </div>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="status">Status</Label>
@@ -255,34 +252,6 @@ export default function CaseForm({
               </Field>
               <ErrorMessage
                 name="status"
-                component="div"
-                className="text-sm text-destructive"
-              />
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="paymentStatus">Payment Status</Label>
-              <Field name="paymentStatus">
-                {({ field, form }: FieldProps) => (
-                  <Select
-                    onValueChange={(value) =>
-                      form.setFieldValue(field.name, value)
-                    }
-                    value={field.value}
-                  >
-                    <SelectTrigger id="paymentStatus" className="w-full">
-                      <SelectValue placeholder="Select a payment status" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="Pending">Pending</SelectItem>
-                      <SelectItem value="Partial">Partial</SelectItem>
-                      <SelectItem value="Paid">Paid</SelectItem>
-                    </SelectContent>
-                  </Select>
-                )}
-              </Field>
-              <ErrorMessage
-                name="paymentStatus"
                 component="div"
                 className="text-sm text-destructive"
               />
