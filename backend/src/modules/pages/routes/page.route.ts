@@ -1,8 +1,8 @@
 import { Router } from "express";
 import { verifyAccessToken } from "@/middlewares/checkAuth";
 import { can } from "@/middlewares/checkPermission";
-import * as PageController from "./controller/page.controller";
-import * as PageTypeController from "./controller/page-type.controller";
+import * as PageController from "../controller/page.controller";
+import * as PageTypeController from "../controller/page-type.controller";
 
 const route = Router();
 

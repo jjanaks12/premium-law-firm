@@ -29,7 +29,7 @@ async function main() {
         "pages:create": true,
         "pages:delete": true,
         "pages:update": true,
-        "roles:create": false,
+        "roles:create": true,
         "roles:delete": false,
         "roles:update": true,
         "users:create": true,

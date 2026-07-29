@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import * as notificationController from './controller/notification.controller';
+import * as notificationController from '../controller/notification.controller';
 import { verifyAccessToken } from '@/middlewares/checkAuth';
 import { can } from '@/middlewares/checkPermission';
 import { notificationRateLimiter, dailyEmailRateLimiter } from '@/middlewares/rateLimiter';

@@ -22,12 +22,16 @@ export default function CreatePage() {
       }
     };
     fetchPageTypes();
-  }, [axios]);
+  }, []);
 
   return (
     <div className="space-y-6">
       <div className="flex items-center gap-4">
-        <Button variant="ghost" size="icon" onClick={() => router.push("/dashboard/pages")}>
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={() => router.push("/dashboard/pages")}
+        >
           <ChevronLeftIcon className="w-5 h-5" />
         </Button>
         <div>

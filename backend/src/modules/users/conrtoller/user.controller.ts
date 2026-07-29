@@ -4,8 +4,8 @@ import createHttpError from "http-errors";
 import bcrypt from "bcrypt";
 import crypto from "crypto";
 import { userInviteSchema, acceptInvitationSchema } from "@app/validations";
-import { queueEmail } from "../notifications/notification.queue";
-import { renderEmailTemplate } from "../notifications/services/emailTemplates";
+import { queueEmail } from "@/modules/notifications/notification.queue";
+import { renderEmailTemplate } from "@/modules/notifications/services/emailTemplates";
 
 const CLIENT_URL = (process.env.CLIENT_URL || "http://localhost:3000").split(",")[0];
 

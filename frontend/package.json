@@ -11,10 +11,10 @@
   "dependencies": {
     "@app/validations": "*",
     "@base-ui/react": "^1.6.0",
-
     "axios": "^1.18.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "dayjs": "^1.11.21",
     "formik": "^2.4.9",
     "lucide-react": "^1.26.0",
     "next": "16.2.11",

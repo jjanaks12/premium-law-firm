@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import * as authController from './controller/auth.controller';
+import * as authController from '../controller/auth.controller';
 import { verifyAccessToken } from '@/middlewares/checkAuth';
-import * as profileController from './controller/profile.controller';
+import * as profileController from '../controller/profile.controller';
 import { dailyEmailRateLimiter, notificationRateLimiter } from '@/middlewares/rateLimiter';
 
 const route = Router();

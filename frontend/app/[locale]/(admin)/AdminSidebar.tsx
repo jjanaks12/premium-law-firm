@@ -26,8 +26,6 @@ import { useAuth } from "@/lib/context/AuthContext";
 import { useNavLink } from "@/lib/dictionary/adminNav";
 import { Link, usePathname, useRouter } from "@/src/i18n/routing";
 import { ChevronRightIcon, LogOutIcon } from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { User } from "@/components/User";
 
@@ -42,7 +40,7 @@ export default function AdminSidebar() {
   return (
     <Sidebar
       collapsible="icon"
-      className="border-r border-border bg-background relative"
+      className="w-[320px] border-r border-border bg-background relative"
     >
       <SidebarHeader className="h-14 border-b border-border flex items-center justify-center px-4 shrink-0">
         <Brand theme="dark" compact={!isSidebarOpened} />

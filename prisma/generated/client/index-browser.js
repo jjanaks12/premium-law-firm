@@ -164,6 +164,123 @@ exports.Prisma.ResourceScalarFieldEnum = {
   deleted_at: 'deleted_at'
 };
 
+exports.Prisma.CourtLevelScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  nepaliName: 'nepaliName'
+};
+
+exports.Prisma.CaseNatureScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  nepaliName: 'nepaliName'
+};
+
+exports.Prisma.PartyRoleScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  nepaliName: 'nepaliName'
+};
+
+exports.Prisma.CaseScalarFieldEnum = {
+  id: 'id',
+  caseNumber: 'caseNumber',
+  caseName: 'caseName',
+  natureId: 'natureId',
+  registrationDate: 'registrationDate',
+  registrationFee: 'registrationFee',
+  sectionCourtRoom: 'sectionCourtRoom',
+  facts: 'facts',
+  relatedLaws: 'relatedLaws',
+  referredThrough: 'referredThrough',
+  noticeStatus: 'noticeStatus',
+  fullJudgmentDate: 'fullJudgmentDate',
+  judgmentVerifyDate: 'judgmentVerifyDate',
+  status: 'status',
+  paymentStatus: 'paymentStatus',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.CaseLawyerScalarFieldEnum = {
+  caseId: 'caseId',
+  userId: 'userId',
+  isLead: 'isLead'
+};
+
+exports.Prisma.CasePartyScalarFieldEnum = {
+  id: 'id',
+  caseId: 'caseId',
+  partyName: 'partyName',
+  roleId: 'roleId',
+  fee: 'fee',
+  contactInfo: 'contactInfo'
+};
+
+exports.Prisma.CaseHearingScalarFieldEnum = {
+  id: 'id',
+  caseId: 'caseId',
+  nextHearingDate: 'nextHearingDate',
+  hearingDate: 'hearingDate',
+  hearingOrder: 'hearingOrder',
+  judgeName: 'judgeName'
+};
+
+exports.Prisma.CasePleadingScalarFieldEnum = {
+  id: 'id',
+  caseId: 'caseId',
+  pleaderUserId: 'pleaderUserId',
+  pleadingDate: 'pleadingDate',
+  pleadingNotes: 'pleadingNotes'
+};
+
+exports.Prisma.CourtProceedingScalarFieldEnum = {
+  id: 'id',
+  caseId: 'caseId',
+  courtLevelId: 'courtLevelId',
+  courtName: 'courtName',
+  judgeName: 'judgeName',
+  chargeCounseling: 'chargeCounseling',
+  verdict: 'verdict'
+};
+
+exports.Prisma.CasePrecedentScalarFieldEnum = {
+  id: 'id',
+  caseId: 'caseId',
+  decisionNumber: 'decisionNumber',
+  plaintiff: 'plaintiff',
+  defendant: 'defendant',
+  citationNotes: 'citationNotes'
+};
+
+exports.Prisma.CasePaymentScalarFieldEnum = {
+  id: 'id',
+  caseId: 'caseId',
+  amount: 'amount',
+  paymentDate: 'paymentDate',
+  method: 'method',
+  referenceNo: 'referenceNo',
+  notes: 'notes',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.CaseCounselingScalarFieldEnum = {
+  id: 'id',
+  caseId: 'caseId',
+  counselorUserId: 'counselorUserId',
+  date: 'date',
+  notes: 'notes',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.CaseDocumentScalarFieldEnum = {
+  id: 'id',
+  caseId: 'caseId',
+  documentUrl: 'documentUrl',
+  fileName: 'fileName',
+  description: 'description',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.NotificationScalarFieldEnum = {
   id: 'id',
   user_id: 'user_id',
@@ -274,6 +391,19 @@ exports.Prisma.ModelName = {
   RefreshToken: 'RefreshToken',
   PasswordResetToken: 'PasswordResetToken',
   Resource: 'Resource',
+  CourtLevel: 'CourtLevel',
+  CaseNature: 'CaseNature',
+  PartyRole: 'PartyRole',
+  Case: 'Case',
+  CaseLawyer: 'CaseLawyer',
+  CaseParty: 'CaseParty',
+  CaseHearing: 'CaseHearing',
+  CasePleading: 'CasePleading',
+  CourtProceeding: 'CourtProceeding',
+  CasePrecedent: 'CasePrecedent',
+  CasePayment: 'CasePayment',
+  CaseCounseling: 'CaseCounseling',
+  CaseDocument: 'CaseDocument',
   Notification: 'Notification',
   PageType: 'PageType',
   Page: 'Page',

@@ -1,5 +1,5 @@
 import { Router } from "express";
-import * as userController from "./user.controller";
+import * as userController from "../conrtoller/user.controller";
 import { verifyAccessToken } from "@/middlewares/checkAuth";
 import { can } from "@/middlewares/checkPermission";
 

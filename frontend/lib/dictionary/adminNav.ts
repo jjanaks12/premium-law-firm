@@ -1,5 +1,5 @@
 import { User, Role } from "@prisma/client";
-import { BellIcon, BookOpenIcon, FolderCogIcon, FolderOpenIcon, FingerprintIcon, LayoutDashboardIcon, ListTreeIcon, SettingsIcon, UserCogIcon, UserKeyIcon, UsersIcon } from "lucide-react";
+import { BellIcon, BookOpenIcon, FolderCogIcon, FolderOpenIcon, FingerprintIcon, LayoutDashboardIcon, ListTreeIcon, SettingsIcon, UserCogIcon, UserKeyIcon, UsersIcon, BriefcaseIcon } from "lucide-react";
 import { can } from "@/lib/services/authorization.service";
 
 export type UserWithRole = User & {
@@ -61,6 +61,33 @@ const adminMenu: Menu[] = [
             href: '/dashboard/pages/types',
             resource: 'pages',
             icon: FolderCogIcon,
+        }]
+    },
+    {
+        label: 'Cases',
+        icon: BriefcaseIcon,
+        href: '/dashboard/cases',
+        resource: 'cases',
+        submenu: [{
+            label: 'All Cases',
+            href: '/dashboard/cases',
+            resource: 'cases',
+            icon: ListTreeIcon,
+        }, {
+            label: 'Case Natures',
+            href: '/dashboard/case-natures',
+            resource: 'cases',
+            icon: FolderCogIcon,
+        }, {
+            label: 'Party Roles',
+            href: '/dashboard/party-roles',
+            resource: 'cases',
+            icon: UsersIcon,
+        }, {
+            label: 'Court Levels',
+            href: '/dashboard/court-levels',
+            resource: 'cases',
+            icon: BookOpenIcon,
         }]
     },
     {

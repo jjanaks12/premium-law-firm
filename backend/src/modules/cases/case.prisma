@@ -1,0 +1,164 @@
+model CourtLevel {
+  id          String            @id @default(uuid())
+  name        String            @unique
+  nepaliName  String?
+  proceedings CourtProceeding[]
+
+  @@map("court_levels")
+}
+
+model CaseNature {
+  id         String  @id @default(uuid())
+  name       String  @unique
+  nepaliName String?
+  cases      Case[]
+
+  @@map("case_natures")
+}
+
+model PartyRole {
+  id         String      @id @default(uuid())
+  name       String      @unique
+  nepaliName String?
+  parties    CaseParty[]
+
+  @@map("party_roles")
+}
+
+// CORE MODELS
+
+model Case {
+  id                     String                 @id @default(uuid())
+  caseNumber             String                 @unique
+  caseName               String
+  natureId               String
+  nature                 CaseNature             @relation(fields: [natureId], references: [id])
+  registrationDate       DateTime?
+  registrationFee        Decimal?
+  sectionCourtRoom       String?
+  facts                  String?                @db.Text
+  relatedLaws            String?                @db.Text
+  referredThrough        String?
+  noticeStatus           String?
+  fullJudgmentDate       DateTime?
+  judgmentVerifyDate     DateTime?
+  status                 String                 @default("Draft")
+  paymentStatus          String                 @default("Pending")
+
+  // Relations
+  lawyers                CaseLawyer[]           // Joined to User via CaseLawyer
+  parties                CaseParty[]
+  hearings               CaseHearing[]
+  pleadings              CasePleading[]
+  proceedings            CourtProceeding[]
+  precedents             CasePrecedent[]
+  payments               CasePayment[]
+  counselings            CaseCounseling[]
+
+  createdAt              DateTime               @default(now())
+
+  @@map("cases")
+}
+
+model CaseLawyer {
+  caseId   String
+  userId   String
+  isLead   Boolean @default(false)
+  case     Case    @relation(fields: [caseId], references: [id], onDelete: Cascade)
+  user     User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([caseId, userId])
+  @@map("case_lawyers")
+}
+
+model CaseParty {
+  id          String    @id @default(uuid())
+  caseId      String
+  case        Case      @relation(fields: [caseId], references: [id], onDelete: Cascade)
+  partyName   String
+  roleId      String
+  role        PartyRole @relation(fields: [roleId], references: [id])
+  fee         Decimal?
+  contactInfo String?
+
+  @@map("case_parties")
+}
+
+model CaseHearing {
+  id              String    @id @default(uuid())
+  caseId          String
+  case            Case      @relation(fields: [caseId], references: [id], onDelete: Cascade)
+  nextHearingDate DateTime?
+  hearingDate     DateTime?
+  hearingOrder    String?   @db.Text
+  judgeName       String?
+
+  @@map("case_hearings")
+}
+
+model CasePleading {
+  id            String    @id @default(uuid())
+  caseId        String
+  case          Case      @relation(fields: [caseId], references: [id], onDelete: Cascade)
+  pleaderUserId String?
+  pleader       User?     @relation(fields: [pleaderUserId], references: [id], onDelete: SetNull)
+  pleadingDate  DateTime?
+  pleadingNotes String    @db.Text
+
+  @@map("case_pleadings")
+}
+
+model CourtProceeding {
+  id               String     @id @default(uuid())
+  caseId           String
+  case             Case       @relation(fields: [caseId], references: [id], onDelete: Cascade)
+  courtLevelId     String
+  courtLevel       CourtLevel @relation(fields: [courtLevelId], references: [id])
+  courtName        String
+  judgeName        String?
+  chargeCounseling String?    @db.Text
+  verdict          String?    @db.Text
+
+  @@map("court_proceedings")
+}
+
+model CasePrecedent {
+  id             String  @id @default(uuid())
+  caseId         String
+  case           Case    @relation(fields: [caseId], references: [id], onDelete: Cascade)
+  decisionNumber String?
+  plaintiff      String?
+  defendant      String?
+  citationNotes  String? @db.Text
+
+  @@map("case_precedents")
+}
+
+model CasePayment {
+  id            String    @id @default(uuid())
+  caseId        String
+  case          Case      @relation(fields: [caseId], references: [id], onDelete: Cascade)
+  amount        Decimal
+  paymentDate   DateTime?
+  method        String?
+  referenceNo   String?
+  notes         String?   @db.Text
+
+  createdAt     DateTime  @default(now())
+
+  @@map("case_payments")
+}
+
+model CaseCounseling {
+  id              String    @id @default(uuid())
+  caseId          String
+  case            Case      @relation(fields: [caseId], references: [id], onDelete: Cascade)
+  counselorUserId String?
+  counselor       User?     @relation(fields: [counselorUserId], references: [id], onDelete: SetNull)
+  date            DateTime?
+  notes           String    @db.Text
+
+  createdAt       DateTime  @default(now())
+
+  @@map("case_counselings")
+}

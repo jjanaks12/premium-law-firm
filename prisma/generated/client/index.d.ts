@@ -34,6 +34,71 @@ export type PasswordResetToken = $Result.DefaultSelection<Prisma.$PasswordResetT
  */
 export type Resource = $Result.DefaultSelection<Prisma.$ResourcePayload>
 /**
+ * Model CourtLevel
+ * 
+ */
+export type CourtLevel = $Result.DefaultSelection<Prisma.$CourtLevelPayload>
+/**
+ * Model CaseNature
+ * 
+ */
+export type CaseNature = $Result.DefaultSelection<Prisma.$CaseNaturePayload>
+/**
+ * Model PartyRole
+ * 
+ */
+export type PartyRole = $Result.DefaultSelection<Prisma.$PartyRolePayload>
+/**
+ * Model Case
+ * 
+ */
+export type Case = $Result.DefaultSelection<Prisma.$CasePayload>
+/**
+ * Model CaseLawyer
+ * 
+ */
+export type CaseLawyer = $Result.DefaultSelection<Prisma.$CaseLawyerPayload>
+/**
+ * Model CaseParty
+ * 
+ */
+export type CaseParty = $Result.DefaultSelection<Prisma.$CasePartyPayload>
+/**
+ * Model CaseHearing
+ * 
+ */
+export type CaseHearing = $Result.DefaultSelection<Prisma.$CaseHearingPayload>
+/**
+ * Model CasePleading
+ * 
+ */
+export type CasePleading = $Result.DefaultSelection<Prisma.$CasePleadingPayload>
+/**
+ * Model CourtProceeding
+ * 
+ */
+export type CourtProceeding = $Result.DefaultSelection<Prisma.$CourtProceedingPayload>
+/**
+ * Model CasePrecedent
+ * 
+ */
+export type CasePrecedent = $Result.DefaultSelection<Prisma.$CasePrecedentPayload>
+/**
+ * Model CasePayment
+ * 
+ */
+export type CasePayment = $Result.DefaultSelection<Prisma.$CasePaymentPayload>
+/**
+ * Model CaseCounseling
+ * 
+ */
+export type CaseCounseling = $Result.DefaultSelection<Prisma.$CaseCounselingPayload>
+/**
+ * Model CaseDocument
+ * 
+ */
+export type CaseDocument = $Result.DefaultSelection<Prisma.$CaseDocumentPayload>
+/**
  * Model Notification
  * 
  */
@@ -224,6 +289,136 @@ export class PrismaClient<
     * ```
     */
   get resource(): Prisma.ResourceDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.courtLevel`: Exposes CRUD operations for the **CourtLevel** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CourtLevels
+    * const courtLevels = await prisma.courtLevel.findMany()
+    * ```
+    */
+  get courtLevel(): Prisma.CourtLevelDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.caseNature`: Exposes CRUD operations for the **CaseNature** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CaseNatures
+    * const caseNatures = await prisma.caseNature.findMany()
+    * ```
+    */
+  get caseNature(): Prisma.CaseNatureDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.partyRole`: Exposes CRUD operations for the **PartyRole** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more PartyRoles
+    * const partyRoles = await prisma.partyRole.findMany()
+    * ```
+    */
+  get partyRole(): Prisma.PartyRoleDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.case`: Exposes CRUD operations for the **Case** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Cases
+    * const cases = await prisma.case.findMany()
+    * ```
+    */
+  get case(): Prisma.CaseDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.caseLawyer`: Exposes CRUD operations for the **CaseLawyer** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CaseLawyers
+    * const caseLawyers = await prisma.caseLawyer.findMany()
+    * ```
+    */
+  get caseLawyer(): Prisma.CaseLawyerDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.caseParty`: Exposes CRUD operations for the **CaseParty** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CaseParties
+    * const caseParties = await prisma.caseParty.findMany()
+    * ```
+    */
+  get caseParty(): Prisma.CasePartyDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.caseHearing`: Exposes CRUD operations for the **CaseHearing** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CaseHearings
+    * const caseHearings = await prisma.caseHearing.findMany()
+    * ```
+    */
+  get caseHearing(): Prisma.CaseHearingDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.casePleading`: Exposes CRUD operations for the **CasePleading** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CasePleadings
+    * const casePleadings = await prisma.casePleading.findMany()
+    * ```
+    */
+  get casePleading(): Prisma.CasePleadingDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.courtProceeding`: Exposes CRUD operations for the **CourtProceeding** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CourtProceedings
+    * const courtProceedings = await prisma.courtProceeding.findMany()
+    * ```
+    */
+  get courtProceeding(): Prisma.CourtProceedingDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.casePrecedent`: Exposes CRUD operations for the **CasePrecedent** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CasePrecedents
+    * const casePrecedents = await prisma.casePrecedent.findMany()
+    * ```
+    */
+  get casePrecedent(): Prisma.CasePrecedentDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.casePayment`: Exposes CRUD operations for the **CasePayment** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CasePayments
+    * const casePayments = await prisma.casePayment.findMany()
+    * ```
+    */
+  get casePayment(): Prisma.CasePaymentDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.caseCounseling`: Exposes CRUD operations for the **CaseCounseling** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CaseCounselings
+    * const caseCounselings = await prisma.caseCounseling.findMany()
+    * ```
+    */
+  get caseCounseling(): Prisma.CaseCounselingDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.caseDocument`: Exposes CRUD operations for the **CaseDocument** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CaseDocuments
+    * const caseDocuments = await prisma.caseDocument.findMany()
+    * ```
+    */
+  get caseDocument(): Prisma.CaseDocumentDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.notification`: Exposes CRUD operations for the **Notification** model.
@@ -735,6 +930,19 @@ export namespace Prisma {
     RefreshToken: 'RefreshToken',
     PasswordResetToken: 'PasswordResetToken',
     Resource: 'Resource',
+    CourtLevel: 'CourtLevel',
+    CaseNature: 'CaseNature',
+    PartyRole: 'PartyRole',
+    Case: 'Case',
+    CaseLawyer: 'CaseLawyer',
+    CaseParty: 'CaseParty',
+    CaseHearing: 'CaseHearing',
+    CasePleading: 'CasePleading',
+    CourtProceeding: 'CourtProceeding',
+    CasePrecedent: 'CasePrecedent',
+    CasePayment: 'CasePayment',
+    CaseCounseling: 'CaseCounseling',
+    CaseDocument: 'CaseDocument',
     Notification: 'Notification',
     PageType: 'PageType',
     Page: 'Page',
@@ -756,7 +964,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "refreshToken" | "passwordResetToken" | "resource" | "notification" | "pageType" | "page" | "pageSeo" | "pageSchema" | "role"
+      modelProps: "user" | "refreshToken" | "passwordResetToken" | "resource" | "courtLevel" | "caseNature" | "partyRole" | "case" | "caseLawyer" | "caseParty" | "caseHearing" | "casePleading" | "courtProceeding" | "casePrecedent" | "casePayment" | "caseCounseling" | "caseDocument" | "notification" | "pageType" | "page" | "pageSeo" | "pageSchema" | "role"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1053,6 +1261,968 @@ export namespace Prisma {
           count: {
             args: Prisma.ResourceCountArgs<ExtArgs>
             result: $Utils.Optional<ResourceCountAggregateOutputType> | number
+          }
+        }
+      }
+      CourtLevel: {
+        payload: Prisma.$CourtLevelPayload<ExtArgs>
+        fields: Prisma.CourtLevelFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CourtLevelFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CourtLevelPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CourtLevelFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CourtLevelPayload>
+          }
+          findFirst: {
+            args: Prisma.CourtLevelFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CourtLevelPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CourtLevelFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CourtLevelPayload>
+          }
+          findMany: {
+            args: Prisma.CourtLevelFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CourtLevelPayload>[]
+          }
+          create: {
+            args: Prisma.CourtLevelCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CourtLevelPayload>
+          }
+          createMany: {
+            args: Prisma.CourtLevelCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CourtLevelCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CourtLevelPayload>[]
+          }
+          delete: {
+            args: Prisma.CourtLevelDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CourtLevelPayload>
+          }
+          update: {
+            args: Prisma.CourtLevelUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CourtLevelPayload>
+          }
+          deleteMany: {
+            args: Prisma.CourtLevelDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CourtLevelUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CourtLevelUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CourtLevelPayload>[]
+          }
+          upsert: {
+            args: Prisma.CourtLevelUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CourtLevelPayload>
+          }
+          aggregate: {
+            args: Prisma.CourtLevelAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCourtLevel>
+          }
+          groupBy: {
+            args: Prisma.CourtLevelGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CourtLevelGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CourtLevelCountArgs<ExtArgs>
+            result: $Utils.Optional<CourtLevelCountAggregateOutputType> | number
+          }
+        }
+      }
+      CaseNature: {
+        payload: Prisma.$CaseNaturePayload<ExtArgs>
+        fields: Prisma.CaseNatureFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CaseNatureFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseNaturePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CaseNatureFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseNaturePayload>
+          }
+          findFirst: {
+            args: Prisma.CaseNatureFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseNaturePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CaseNatureFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseNaturePayload>
+          }
+          findMany: {
+            args: Prisma.CaseNatureFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseNaturePayload>[]
+          }
+          create: {
+            args: Prisma.CaseNatureCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseNaturePayload>
+          }
+          createMany: {
+            args: Prisma.CaseNatureCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CaseNatureCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseNaturePayload>[]
+          }
+          delete: {
+            args: Prisma.CaseNatureDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseNaturePayload>
+          }
+          update: {
+            args: Prisma.CaseNatureUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseNaturePayload>
+          }
+          deleteMany: {
+            args: Prisma.CaseNatureDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CaseNatureUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CaseNatureUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseNaturePayload>[]
+          }
+          upsert: {
+            args: Prisma.CaseNatureUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseNaturePayload>
+          }
+          aggregate: {
+            args: Prisma.CaseNatureAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCaseNature>
+          }
+          groupBy: {
+            args: Prisma.CaseNatureGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CaseNatureGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CaseNatureCountArgs<ExtArgs>
+            result: $Utils.Optional<CaseNatureCountAggregateOutputType> | number
+          }
+        }
+      }
+      PartyRole: {
+        payload: Prisma.$PartyRolePayload<ExtArgs>
+        fields: Prisma.PartyRoleFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PartyRoleFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PartyRolePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PartyRoleFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PartyRolePayload>
+          }
+          findFirst: {
+            args: Prisma.PartyRoleFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PartyRolePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PartyRoleFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PartyRolePayload>
+          }
+          findMany: {
+            args: Prisma.PartyRoleFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PartyRolePayload>[]
+          }
+          create: {
+            args: Prisma.PartyRoleCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PartyRolePayload>
+          }
+          createMany: {
+            args: Prisma.PartyRoleCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.PartyRoleCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PartyRolePayload>[]
+          }
+          delete: {
+            args: Prisma.PartyRoleDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PartyRolePayload>
+          }
+          update: {
+            args: Prisma.PartyRoleUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PartyRolePayload>
+          }
+          deleteMany: {
+            args: Prisma.PartyRoleDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PartyRoleUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.PartyRoleUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PartyRolePayload>[]
+          }
+          upsert: {
+            args: Prisma.PartyRoleUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PartyRolePayload>
+          }
+          aggregate: {
+            args: Prisma.PartyRoleAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePartyRole>
+          }
+          groupBy: {
+            args: Prisma.PartyRoleGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PartyRoleGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PartyRoleCountArgs<ExtArgs>
+            result: $Utils.Optional<PartyRoleCountAggregateOutputType> | number
+          }
+        }
+      }
+      Case: {
+        payload: Prisma.$CasePayload<ExtArgs>
+        fields: Prisma.CaseFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CaseFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CaseFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePayload>
+          }
+          findFirst: {
+            args: Prisma.CaseFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CaseFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePayload>
+          }
+          findMany: {
+            args: Prisma.CaseFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePayload>[]
+          }
+          create: {
+            args: Prisma.CaseCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePayload>
+          }
+          createMany: {
+            args: Prisma.CaseCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CaseCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePayload>[]
+          }
+          delete: {
+            args: Prisma.CaseDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePayload>
+          }
+          update: {
+            args: Prisma.CaseUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePayload>
+          }
+          deleteMany: {
+            args: Prisma.CaseDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CaseUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CaseUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePayload>[]
+          }
+          upsert: {
+            args: Prisma.CaseUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePayload>
+          }
+          aggregate: {
+            args: Prisma.CaseAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCase>
+          }
+          groupBy: {
+            args: Prisma.CaseGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CaseGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CaseCountArgs<ExtArgs>
+            result: $Utils.Optional<CaseCountAggregateOutputType> | number
+          }
+        }
+      }
+      CaseLawyer: {
+        payload: Prisma.$CaseLawyerPayload<ExtArgs>
+        fields: Prisma.CaseLawyerFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CaseLawyerFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseLawyerPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CaseLawyerFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseLawyerPayload>
+          }
+          findFirst: {
+            args: Prisma.CaseLawyerFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseLawyerPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CaseLawyerFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseLawyerPayload>
+          }
+          findMany: {
+            args: Prisma.CaseLawyerFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseLawyerPayload>[]
+          }
+          create: {
+            args: Prisma.CaseLawyerCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseLawyerPayload>
+          }
+          createMany: {
+            args: Prisma.CaseLawyerCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CaseLawyerCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseLawyerPayload>[]
+          }
+          delete: {
+            args: Prisma.CaseLawyerDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseLawyerPayload>
+          }
+          update: {
+            args: Prisma.CaseLawyerUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseLawyerPayload>
+          }
+          deleteMany: {
+            args: Prisma.CaseLawyerDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CaseLawyerUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CaseLawyerUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseLawyerPayload>[]
+          }
+          upsert: {
+            args: Prisma.CaseLawyerUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseLawyerPayload>
+          }
+          aggregate: {
+            args: Prisma.CaseLawyerAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCaseLawyer>
+          }
+          groupBy: {
+            args: Prisma.CaseLawyerGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CaseLawyerGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CaseLawyerCountArgs<ExtArgs>
+            result: $Utils.Optional<CaseLawyerCountAggregateOutputType> | number
+          }
+        }
+      }
+      CaseParty: {
+        payload: Prisma.$CasePartyPayload<ExtArgs>
+        fields: Prisma.CasePartyFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CasePartyFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePartyPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CasePartyFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePartyPayload>
+          }
+          findFirst: {
+            args: Prisma.CasePartyFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePartyPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CasePartyFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePartyPayload>
+          }
+          findMany: {
+            args: Prisma.CasePartyFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePartyPayload>[]
+          }
+          create: {
+            args: Prisma.CasePartyCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePartyPayload>
+          }
+          createMany: {
+            args: Prisma.CasePartyCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CasePartyCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePartyPayload>[]
+          }
+          delete: {
+            args: Prisma.CasePartyDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePartyPayload>
+          }
+          update: {
+            args: Prisma.CasePartyUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePartyPayload>
+          }
+          deleteMany: {
+            args: Prisma.CasePartyDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CasePartyUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CasePartyUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePartyPayload>[]
+          }
+          upsert: {
+            args: Prisma.CasePartyUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePartyPayload>
+          }
+          aggregate: {
+            args: Prisma.CasePartyAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCaseParty>
+          }
+          groupBy: {
+            args: Prisma.CasePartyGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CasePartyGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CasePartyCountArgs<ExtArgs>
+            result: $Utils.Optional<CasePartyCountAggregateOutputType> | number
+          }
+        }
+      }
+      CaseHearing: {
+        payload: Prisma.$CaseHearingPayload<ExtArgs>
+        fields: Prisma.CaseHearingFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CaseHearingFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseHearingPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CaseHearingFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseHearingPayload>
+          }
+          findFirst: {
+            args: Prisma.CaseHearingFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseHearingPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CaseHearingFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseHearingPayload>
+          }
+          findMany: {
+            args: Prisma.CaseHearingFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseHearingPayload>[]
+          }
+          create: {
+            args: Prisma.CaseHearingCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseHearingPayload>
+          }
+          createMany: {
+            args: Prisma.CaseHearingCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CaseHearingCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseHearingPayload>[]
+          }
+          delete: {
+            args: Prisma.CaseHearingDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseHearingPayload>
+          }
+          update: {
+            args: Prisma.CaseHearingUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseHearingPayload>
+          }
+          deleteMany: {
+            args: Prisma.CaseHearingDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CaseHearingUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CaseHearingUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseHearingPayload>[]
+          }
+          upsert: {
+            args: Prisma.CaseHearingUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseHearingPayload>
+          }
+          aggregate: {
+            args: Prisma.CaseHearingAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCaseHearing>
+          }
+          groupBy: {
+            args: Prisma.CaseHearingGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CaseHearingGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CaseHearingCountArgs<ExtArgs>
+            result: $Utils.Optional<CaseHearingCountAggregateOutputType> | number
+          }
+        }
+      }
+      CasePleading: {
+        payload: Prisma.$CasePleadingPayload<ExtArgs>
+        fields: Prisma.CasePleadingFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CasePleadingFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePleadingPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CasePleadingFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePleadingPayload>
+          }
+          findFirst: {
+            args: Prisma.CasePleadingFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePleadingPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CasePleadingFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePleadingPayload>
+          }
+          findMany: {
+            args: Prisma.CasePleadingFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePleadingPayload>[]
+          }
+          create: {
+            args: Prisma.CasePleadingCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePleadingPayload>
+          }
+          createMany: {
+            args: Prisma.CasePleadingCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CasePleadingCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePleadingPayload>[]
+          }
+          delete: {
+            args: Prisma.CasePleadingDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePleadingPayload>
+          }
+          update: {
+            args: Prisma.CasePleadingUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePleadingPayload>
+          }
+          deleteMany: {
+            args: Prisma.CasePleadingDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CasePleadingUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CasePleadingUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePleadingPayload>[]
+          }
+          upsert: {
+            args: Prisma.CasePleadingUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePleadingPayload>
+          }
+          aggregate: {
+            args: Prisma.CasePleadingAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCasePleading>
+          }
+          groupBy: {
+            args: Prisma.CasePleadingGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CasePleadingGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CasePleadingCountArgs<ExtArgs>
+            result: $Utils.Optional<CasePleadingCountAggregateOutputType> | number
+          }
+        }
+      }
+      CourtProceeding: {
+        payload: Prisma.$CourtProceedingPayload<ExtArgs>
+        fields: Prisma.CourtProceedingFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CourtProceedingFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CourtProceedingPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CourtProceedingFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CourtProceedingPayload>
+          }
+          findFirst: {
+            args: Prisma.CourtProceedingFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CourtProceedingPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CourtProceedingFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CourtProceedingPayload>
+          }
+          findMany: {
+            args: Prisma.CourtProceedingFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CourtProceedingPayload>[]
+          }
+          create: {
+            args: Prisma.CourtProceedingCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CourtProceedingPayload>
+          }
+          createMany: {
+            args: Prisma.CourtProceedingCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CourtProceedingCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CourtProceedingPayload>[]
+          }
+          delete: {
+            args: Prisma.CourtProceedingDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CourtProceedingPayload>
+          }
+          update: {
+            args: Prisma.CourtProceedingUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CourtProceedingPayload>
+          }
+          deleteMany: {
+            args: Prisma.CourtProceedingDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CourtProceedingUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CourtProceedingUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CourtProceedingPayload>[]
+          }
+          upsert: {
+            args: Prisma.CourtProceedingUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CourtProceedingPayload>
+          }
+          aggregate: {
+            args: Prisma.CourtProceedingAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCourtProceeding>
+          }
+          groupBy: {
+            args: Prisma.CourtProceedingGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CourtProceedingGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CourtProceedingCountArgs<ExtArgs>
+            result: $Utils.Optional<CourtProceedingCountAggregateOutputType> | number
+          }
+        }
+      }
+      CasePrecedent: {
+        payload: Prisma.$CasePrecedentPayload<ExtArgs>
+        fields: Prisma.CasePrecedentFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CasePrecedentFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePrecedentPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CasePrecedentFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePrecedentPayload>
+          }
+          findFirst: {
+            args: Prisma.CasePrecedentFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePrecedentPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CasePrecedentFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePrecedentPayload>
+          }
+          findMany: {
+            args: Prisma.CasePrecedentFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePrecedentPayload>[]
+          }
+          create: {
+            args: Prisma.CasePrecedentCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePrecedentPayload>
+          }
+          createMany: {
+            args: Prisma.CasePrecedentCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CasePrecedentCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePrecedentPayload>[]
+          }
+          delete: {
+            args: Prisma.CasePrecedentDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePrecedentPayload>
+          }
+          update: {
+            args: Prisma.CasePrecedentUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePrecedentPayload>
+          }
+          deleteMany: {
+            args: Prisma.CasePrecedentDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CasePrecedentUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CasePrecedentUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePrecedentPayload>[]
+          }
+          upsert: {
+            args: Prisma.CasePrecedentUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePrecedentPayload>
+          }
+          aggregate: {
+            args: Prisma.CasePrecedentAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCasePrecedent>
+          }
+          groupBy: {
+            args: Prisma.CasePrecedentGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CasePrecedentGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CasePrecedentCountArgs<ExtArgs>
+            result: $Utils.Optional<CasePrecedentCountAggregateOutputType> | number
+          }
+        }
+      }
+      CasePayment: {
+        payload: Prisma.$CasePaymentPayload<ExtArgs>
+        fields: Prisma.CasePaymentFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CasePaymentFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePaymentPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CasePaymentFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePaymentPayload>
+          }
+          findFirst: {
+            args: Prisma.CasePaymentFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePaymentPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CasePaymentFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePaymentPayload>
+          }
+          findMany: {
+            args: Prisma.CasePaymentFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePaymentPayload>[]
+          }
+          create: {
+            args: Prisma.CasePaymentCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePaymentPayload>
+          }
+          createMany: {
+            args: Prisma.CasePaymentCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CasePaymentCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePaymentPayload>[]
+          }
+          delete: {
+            args: Prisma.CasePaymentDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePaymentPayload>
+          }
+          update: {
+            args: Prisma.CasePaymentUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePaymentPayload>
+          }
+          deleteMany: {
+            args: Prisma.CasePaymentDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CasePaymentUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CasePaymentUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePaymentPayload>[]
+          }
+          upsert: {
+            args: Prisma.CasePaymentUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CasePaymentPayload>
+          }
+          aggregate: {
+            args: Prisma.CasePaymentAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCasePayment>
+          }
+          groupBy: {
+            args: Prisma.CasePaymentGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CasePaymentGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CasePaymentCountArgs<ExtArgs>
+            result: $Utils.Optional<CasePaymentCountAggregateOutputType> | number
+          }
+        }
+      }
+      CaseCounseling: {
+        payload: Prisma.$CaseCounselingPayload<ExtArgs>
+        fields: Prisma.CaseCounselingFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CaseCounselingFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseCounselingPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CaseCounselingFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseCounselingPayload>
+          }
+          findFirst: {
+            args: Prisma.CaseCounselingFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseCounselingPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CaseCounselingFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseCounselingPayload>
+          }
+          findMany: {
+            args: Prisma.CaseCounselingFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseCounselingPayload>[]
+          }
+          create: {
+            args: Prisma.CaseCounselingCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseCounselingPayload>
+          }
+          createMany: {
+            args: Prisma.CaseCounselingCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CaseCounselingCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseCounselingPayload>[]
+          }
+          delete: {
+            args: Prisma.CaseCounselingDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseCounselingPayload>
+          }
+          update: {
+            args: Prisma.CaseCounselingUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseCounselingPayload>
+          }
+          deleteMany: {
+            args: Prisma.CaseCounselingDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CaseCounselingUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CaseCounselingUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseCounselingPayload>[]
+          }
+          upsert: {
+            args: Prisma.CaseCounselingUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseCounselingPayload>
+          }
+          aggregate: {
+            args: Prisma.CaseCounselingAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCaseCounseling>
+          }
+          groupBy: {
+            args: Prisma.CaseCounselingGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CaseCounselingGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CaseCounselingCountArgs<ExtArgs>
+            result: $Utils.Optional<CaseCounselingCountAggregateOutputType> | number
+          }
+        }
+      }
+      CaseDocument: {
+        payload: Prisma.$CaseDocumentPayload<ExtArgs>
+        fields: Prisma.CaseDocumentFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CaseDocumentFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseDocumentPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CaseDocumentFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseDocumentPayload>
+          }
+          findFirst: {
+            args: Prisma.CaseDocumentFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseDocumentPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CaseDocumentFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseDocumentPayload>
+          }
+          findMany: {
+            args: Prisma.CaseDocumentFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseDocumentPayload>[]
+          }
+          create: {
+            args: Prisma.CaseDocumentCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseDocumentPayload>
+          }
+          createMany: {
+            args: Prisma.CaseDocumentCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CaseDocumentCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseDocumentPayload>[]
+          }
+          delete: {
+            args: Prisma.CaseDocumentDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseDocumentPayload>
+          }
+          update: {
+            args: Prisma.CaseDocumentUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseDocumentPayload>
+          }
+          deleteMany: {
+            args: Prisma.CaseDocumentDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CaseDocumentUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CaseDocumentUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseDocumentPayload>[]
+          }
+          upsert: {
+            args: Prisma.CaseDocumentUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseDocumentPayload>
+          }
+          aggregate: {
+            args: Prisma.CaseDocumentAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCaseDocument>
+          }
+          groupBy: {
+            args: Prisma.CaseDocumentGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CaseDocumentGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CaseDocumentCountArgs<ExtArgs>
+            result: $Utils.Optional<CaseDocumentCountAggregateOutputType> | number
           }
         }
       }
@@ -1627,6 +2797,19 @@ export namespace Prisma {
     refreshToken?: RefreshTokenOmit
     passwordResetToken?: PasswordResetTokenOmit
     resource?: ResourceOmit
+    courtLevel?: CourtLevelOmit
+    caseNature?: CaseNatureOmit
+    partyRole?: PartyRoleOmit
+    case?: CaseOmit
+    caseLawyer?: CaseLawyerOmit
+    caseParty?: CasePartyOmit
+    caseHearing?: CaseHearingOmit
+    casePleading?: CasePleadingOmit
+    courtProceeding?: CourtProceedingOmit
+    casePrecedent?: CasePrecedentOmit
+    casePayment?: CasePaymentOmit
+    caseCounseling?: CaseCounselingOmit
+    caseDocument?: CaseDocumentOmit
     notification?: NotificationOmit
     pageType?: PageTypeOmit
     page?: PageOmit
@@ -1717,6 +2900,9 @@ export namespace Prisma {
     refresh_tokens: number
     reset_tokens: number
     pages: number
+    cases_as_lawyer: number
+    cases_as_pleader: number
+    cases_as_counselor: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1724,6 +2910,9 @@ export namespace Prisma {
     refresh_tokens?: boolean | UserCountOutputTypeCountRefresh_tokensArgs
     reset_tokens?: boolean | UserCountOutputTypeCountReset_tokensArgs
     pages?: boolean | UserCountOutputTypeCountPagesArgs
+    cases_as_lawyer?: boolean | UserCountOutputTypeCountCases_as_lawyerArgs
+    cases_as_pleader?: boolean | UserCountOutputTypeCountCases_as_pleaderArgs
+    cases_as_counselor?: boolean | UserCountOutputTypeCountCases_as_counselorArgs
   }
 
   // Custom InputTypes
@@ -1763,6 +2952,27 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountPagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: PageWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountCases_as_lawyerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CaseLawyerWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountCases_as_pleaderArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CasePleadingWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountCases_as_counselorArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CaseCounselingWhereInput
   }
 
 
@@ -1812,6 +3022,202 @@ export namespace Prisma {
    */
   export type ResourceCountOutputTypeCountPage_seo_og_imagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: PageSeoWhereInput
+  }
+
+
+  /**
+   * Count Type CourtLevelCountOutputType
+   */
+
+  export type CourtLevelCountOutputType = {
+    proceedings: number
+  }
+
+  export type CourtLevelCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    proceedings?: boolean | CourtLevelCountOutputTypeCountProceedingsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * CourtLevelCountOutputType without action
+   */
+  export type CourtLevelCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CourtLevelCountOutputType
+     */
+    select?: CourtLevelCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * CourtLevelCountOutputType without action
+   */
+  export type CourtLevelCountOutputTypeCountProceedingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CourtProceedingWhereInput
+  }
+
+
+  /**
+   * Count Type CaseNatureCountOutputType
+   */
+
+  export type CaseNatureCountOutputType = {
+    cases: number
+  }
+
+  export type CaseNatureCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    cases?: boolean | CaseNatureCountOutputTypeCountCasesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * CaseNatureCountOutputType without action
+   */
+  export type CaseNatureCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseNatureCountOutputType
+     */
+    select?: CaseNatureCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * CaseNatureCountOutputType without action
+   */
+  export type CaseNatureCountOutputTypeCountCasesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CaseWhereInput
+  }
+
+
+  /**
+   * Count Type PartyRoleCountOutputType
+   */
+
+  export type PartyRoleCountOutputType = {
+    parties: number
+  }
+
+  export type PartyRoleCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    parties?: boolean | PartyRoleCountOutputTypeCountPartiesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * PartyRoleCountOutputType without action
+   */
+  export type PartyRoleCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PartyRoleCountOutputType
+     */
+    select?: PartyRoleCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * PartyRoleCountOutputType without action
+   */
+  export type PartyRoleCountOutputTypeCountPartiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CasePartyWhereInput
+  }
+
+
+  /**
+   * Count Type CaseCountOutputType
+   */
+
+  export type CaseCountOutputType = {
+    lawyers: number
+    parties: number
+    hearings: number
+    pleadings: number
+    proceedings: number
+    precedents: number
+    payments: number
+    counselings: number
+    documents: number
+  }
+
+  export type CaseCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    lawyers?: boolean | CaseCountOutputTypeCountLawyersArgs
+    parties?: boolean | CaseCountOutputTypeCountPartiesArgs
+    hearings?: boolean | CaseCountOutputTypeCountHearingsArgs
+    pleadings?: boolean | CaseCountOutputTypeCountPleadingsArgs
+    proceedings?: boolean | CaseCountOutputTypeCountProceedingsArgs
+    precedents?: boolean | CaseCountOutputTypeCountPrecedentsArgs
+    payments?: boolean | CaseCountOutputTypeCountPaymentsArgs
+    counselings?: boolean | CaseCountOutputTypeCountCounselingsArgs
+    documents?: boolean | CaseCountOutputTypeCountDocumentsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * CaseCountOutputType without action
+   */
+  export type CaseCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseCountOutputType
+     */
+    select?: CaseCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * CaseCountOutputType without action
+   */
+  export type CaseCountOutputTypeCountLawyersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CaseLawyerWhereInput
+  }
+
+  /**
+   * CaseCountOutputType without action
+   */
+  export type CaseCountOutputTypeCountPartiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CasePartyWhereInput
+  }
+
+  /**
+   * CaseCountOutputType without action
+   */
+  export type CaseCountOutputTypeCountHearingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CaseHearingWhereInput
+  }
+
+  /**
+   * CaseCountOutputType without action
+   */
+  export type CaseCountOutputTypeCountPleadingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CasePleadingWhereInput
+  }
+
+  /**
+   * CaseCountOutputType without action
+   */
+  export type CaseCountOutputTypeCountProceedingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CourtProceedingWhereInput
+  }
+
+  /**
+   * CaseCountOutputType without action
+   */
+  export type CaseCountOutputTypeCountPrecedentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CasePrecedentWhereInput
+  }
+
+  /**
+   * CaseCountOutputType without action
+   */
+  export type CaseCountOutputTypeCountPaymentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CasePaymentWhereInput
+  }
+
+  /**
+   * CaseCountOutputType without action
+   */
+  export type CaseCountOutputTypeCountCounselingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CaseCounselingWhereInput
+  }
+
+  /**
+   * CaseCountOutputType without action
+   */
+  export type CaseCountOutputTypeCountDocumentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CaseDocumentWhereInput
   }
 
 
@@ -2150,6 +3556,9 @@ export namespace Prisma {
     refresh_tokens?: boolean | User$refresh_tokensArgs<ExtArgs>
     reset_tokens?: boolean | User$reset_tokensArgs<ExtArgs>
     pages?: boolean | User$pagesArgs<ExtArgs>
+    cases_as_lawyer?: boolean | User$cases_as_lawyerArgs<ExtArgs>
+    cases_as_pleader?: boolean | User$cases_as_pleaderArgs<ExtArgs>
+    cases_as_counselor?: boolean | User$cases_as_counselorArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -2216,6 +3625,9 @@ export namespace Prisma {
     refresh_tokens?: boolean | User$refresh_tokensArgs<ExtArgs>
     reset_tokens?: boolean | User$reset_tokensArgs<ExtArgs>
     pages?: boolean | User$pagesArgs<ExtArgs>
+    cases_as_lawyer?: boolean | User$cases_as_lawyerArgs<ExtArgs>
+    cases_as_pleader?: boolean | User$cases_as_pleaderArgs<ExtArgs>
+    cases_as_counselor?: boolean | User$cases_as_counselorArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2236,6 +3648,9 @@ export namespace Prisma {
       refresh_tokens: Prisma.$RefreshTokenPayload<ExtArgs>[]
       reset_tokens: Prisma.$PasswordResetTokenPayload<ExtArgs>[]
       pages: Prisma.$PagePayload<ExtArgs>[]
+      cases_as_lawyer: Prisma.$CaseLawyerPayload<ExtArgs>[]
+      cases_as_pleader: Prisma.$CasePleadingPayload<ExtArgs>[]
+      cases_as_counselor: Prisma.$CaseCounselingPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -2652,6 +4067,9 @@ export namespace Prisma {
     refresh_tokens<T extends User$refresh_tokensArgs<ExtArgs> = {}>(args?: Subset<T, User$refresh_tokensArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RefreshTokenPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     reset_tokens<T extends User$reset_tokensArgs<ExtArgs> = {}>(args?: Subset<T, User$reset_tokensArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PasswordResetTokenPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     pages<T extends User$pagesArgs<ExtArgs> = {}>(args?: Subset<T, User$pagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    cases_as_lawyer<T extends User$cases_as_lawyerArgs<ExtArgs> = {}>(args?: Subset<T, User$cases_as_lawyerArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseLawyerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    cases_as_pleader<T extends User$cases_as_pleaderArgs<ExtArgs> = {}>(args?: Subset<T, User$cases_as_pleaderArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CasePleadingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    cases_as_counselor<T extends User$cases_as_counselorArgs<ExtArgs> = {}>(args?: Subset<T, User$cases_as_counselorArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseCounselingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3227,6 +4645,78 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: PageScalarFieldEnum | PageScalarFieldEnum[]
+  }
+
+  /**
+   * User.cases_as_lawyer
+   */
+  export type User$cases_as_lawyerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseLawyer
+     */
+    select?: CaseLawyerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseLawyer
+     */
+    omit?: CaseLawyerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseLawyerInclude<ExtArgs> | null
+    where?: CaseLawyerWhereInput
+    orderBy?: CaseLawyerOrderByWithRelationInput | CaseLawyerOrderByWithRelationInput[]
+    cursor?: CaseLawyerWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CaseLawyerScalarFieldEnum | CaseLawyerScalarFieldEnum[]
+  }
+
+  /**
+   * User.cases_as_pleader
+   */
+  export type User$cases_as_pleaderArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CasePleading
+     */
+    select?: CasePleadingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CasePleading
+     */
+    omit?: CasePleadingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePleadingInclude<ExtArgs> | null
+    where?: CasePleadingWhereInput
+    orderBy?: CasePleadingOrderByWithRelationInput | CasePleadingOrderByWithRelationInput[]
+    cursor?: CasePleadingWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CasePleadingScalarFieldEnum | CasePleadingScalarFieldEnum[]
+  }
+
+  /**
+   * User.cases_as_counselor
+   */
+  export type User$cases_as_counselorArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseCounseling
+     */
+    select?: CaseCounselingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseCounseling
+     */
+    omit?: CaseCounselingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseCounselingInclude<ExtArgs> | null
+    where?: CaseCounselingWhereInput
+    orderBy?: CaseCounselingOrderByWithRelationInput | CaseCounselingOrderByWithRelationInput[]
+    cursor?: CaseCounselingWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CaseCounselingScalarFieldEnum | CaseCounselingScalarFieldEnum[]
   }
 
   /**
@@ -6575,6 +8065,14464 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: ResourceInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model CourtLevel
+   */
+
+  export type AggregateCourtLevel = {
+    _count: CourtLevelCountAggregateOutputType | null
+    _min: CourtLevelMinAggregateOutputType | null
+    _max: CourtLevelMaxAggregateOutputType | null
+  }
+
+  export type CourtLevelMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    nepaliName: string | null
+  }
+
+  export type CourtLevelMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    nepaliName: string | null
+  }
+
+  export type CourtLevelCountAggregateOutputType = {
+    id: number
+    name: number
+    nepaliName: number
+    _all: number
+  }
+
+
+  export type CourtLevelMinAggregateInputType = {
+    id?: true
+    name?: true
+    nepaliName?: true
+  }
+
+  export type CourtLevelMaxAggregateInputType = {
+    id?: true
+    name?: true
+    nepaliName?: true
+  }
+
+  export type CourtLevelCountAggregateInputType = {
+    id?: true
+    name?: true
+    nepaliName?: true
+    _all?: true
+  }
+
+  export type CourtLevelAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CourtLevel to aggregate.
+     */
+    where?: CourtLevelWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CourtLevels to fetch.
+     */
+    orderBy?: CourtLevelOrderByWithRelationInput | CourtLevelOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CourtLevelWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CourtLevels from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CourtLevels.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CourtLevels
+    **/
+    _count?: true | CourtLevelCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CourtLevelMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CourtLevelMaxAggregateInputType
+  }
+
+  export type GetCourtLevelAggregateType<T extends CourtLevelAggregateArgs> = {
+        [P in keyof T & keyof AggregateCourtLevel]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCourtLevel[P]>
+      : GetScalarType<T[P], AggregateCourtLevel[P]>
+  }
+
+
+
+
+  export type CourtLevelGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CourtLevelWhereInput
+    orderBy?: CourtLevelOrderByWithAggregationInput | CourtLevelOrderByWithAggregationInput[]
+    by: CourtLevelScalarFieldEnum[] | CourtLevelScalarFieldEnum
+    having?: CourtLevelScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CourtLevelCountAggregateInputType | true
+    _min?: CourtLevelMinAggregateInputType
+    _max?: CourtLevelMaxAggregateInputType
+  }
+
+  export type CourtLevelGroupByOutputType = {
+    id: string
+    name: string
+    nepaliName: string | null
+    _count: CourtLevelCountAggregateOutputType | null
+    _min: CourtLevelMinAggregateOutputType | null
+    _max: CourtLevelMaxAggregateOutputType | null
+  }
+
+  type GetCourtLevelGroupByPayload<T extends CourtLevelGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CourtLevelGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CourtLevelGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CourtLevelGroupByOutputType[P]>
+            : GetScalarType<T[P], CourtLevelGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CourtLevelSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    nepaliName?: boolean
+    proceedings?: boolean | CourtLevel$proceedingsArgs<ExtArgs>
+    _count?: boolean | CourtLevelCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["courtLevel"]>
+
+  export type CourtLevelSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    nepaliName?: boolean
+  }, ExtArgs["result"]["courtLevel"]>
+
+  export type CourtLevelSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    nepaliName?: boolean
+  }, ExtArgs["result"]["courtLevel"]>
+
+  export type CourtLevelSelectScalar = {
+    id?: boolean
+    name?: boolean
+    nepaliName?: boolean
+  }
+
+  export type CourtLevelOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "nepaliName", ExtArgs["result"]["courtLevel"]>
+  export type CourtLevelInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    proceedings?: boolean | CourtLevel$proceedingsArgs<ExtArgs>
+    _count?: boolean | CourtLevelCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type CourtLevelIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type CourtLevelIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $CourtLevelPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CourtLevel"
+    objects: {
+      proceedings: Prisma.$CourtProceedingPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      nepaliName: string | null
+    }, ExtArgs["result"]["courtLevel"]>
+    composites: {}
+  }
+
+  type CourtLevelGetPayload<S extends boolean | null | undefined | CourtLevelDefaultArgs> = $Result.GetResult<Prisma.$CourtLevelPayload, S>
+
+  type CourtLevelCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CourtLevelFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CourtLevelCountAggregateInputType | true
+    }
+
+  export interface CourtLevelDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CourtLevel'], meta: { name: 'CourtLevel' } }
+    /**
+     * Find zero or one CourtLevel that matches the filter.
+     * @param {CourtLevelFindUniqueArgs} args - Arguments to find a CourtLevel
+     * @example
+     * // Get one CourtLevel
+     * const courtLevel = await prisma.courtLevel.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CourtLevelFindUniqueArgs>(args: SelectSubset<T, CourtLevelFindUniqueArgs<ExtArgs>>): Prisma__CourtLevelClient<$Result.GetResult<Prisma.$CourtLevelPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one CourtLevel that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CourtLevelFindUniqueOrThrowArgs} args - Arguments to find a CourtLevel
+     * @example
+     * // Get one CourtLevel
+     * const courtLevel = await prisma.courtLevel.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CourtLevelFindUniqueOrThrowArgs>(args: SelectSubset<T, CourtLevelFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CourtLevelClient<$Result.GetResult<Prisma.$CourtLevelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CourtLevel that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CourtLevelFindFirstArgs} args - Arguments to find a CourtLevel
+     * @example
+     * // Get one CourtLevel
+     * const courtLevel = await prisma.courtLevel.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CourtLevelFindFirstArgs>(args?: SelectSubset<T, CourtLevelFindFirstArgs<ExtArgs>>): Prisma__CourtLevelClient<$Result.GetResult<Prisma.$CourtLevelPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CourtLevel that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CourtLevelFindFirstOrThrowArgs} args - Arguments to find a CourtLevel
+     * @example
+     * // Get one CourtLevel
+     * const courtLevel = await prisma.courtLevel.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CourtLevelFindFirstOrThrowArgs>(args?: SelectSubset<T, CourtLevelFindFirstOrThrowArgs<ExtArgs>>): Prisma__CourtLevelClient<$Result.GetResult<Prisma.$CourtLevelPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CourtLevels that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CourtLevelFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CourtLevels
+     * const courtLevels = await prisma.courtLevel.findMany()
+     * 
+     * // Get first 10 CourtLevels
+     * const courtLevels = await prisma.courtLevel.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const courtLevelWithIdOnly = await prisma.courtLevel.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CourtLevelFindManyArgs>(args?: SelectSubset<T, CourtLevelFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CourtLevelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a CourtLevel.
+     * @param {CourtLevelCreateArgs} args - Arguments to create a CourtLevel.
+     * @example
+     * // Create one CourtLevel
+     * const CourtLevel = await prisma.courtLevel.create({
+     *   data: {
+     *     // ... data to create a CourtLevel
+     *   }
+     * })
+     * 
+     */
+    create<T extends CourtLevelCreateArgs>(args: SelectSubset<T, CourtLevelCreateArgs<ExtArgs>>): Prisma__CourtLevelClient<$Result.GetResult<Prisma.$CourtLevelPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many CourtLevels.
+     * @param {CourtLevelCreateManyArgs} args - Arguments to create many CourtLevels.
+     * @example
+     * // Create many CourtLevels
+     * const courtLevel = await prisma.courtLevel.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CourtLevelCreateManyArgs>(args?: SelectSubset<T, CourtLevelCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many CourtLevels and returns the data saved in the database.
+     * @param {CourtLevelCreateManyAndReturnArgs} args - Arguments to create many CourtLevels.
+     * @example
+     * // Create many CourtLevels
+     * const courtLevel = await prisma.courtLevel.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many CourtLevels and only return the `id`
+     * const courtLevelWithIdOnly = await prisma.courtLevel.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CourtLevelCreateManyAndReturnArgs>(args?: SelectSubset<T, CourtLevelCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CourtLevelPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a CourtLevel.
+     * @param {CourtLevelDeleteArgs} args - Arguments to delete one CourtLevel.
+     * @example
+     * // Delete one CourtLevel
+     * const CourtLevel = await prisma.courtLevel.delete({
+     *   where: {
+     *     // ... filter to delete one CourtLevel
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CourtLevelDeleteArgs>(args: SelectSubset<T, CourtLevelDeleteArgs<ExtArgs>>): Prisma__CourtLevelClient<$Result.GetResult<Prisma.$CourtLevelPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one CourtLevel.
+     * @param {CourtLevelUpdateArgs} args - Arguments to update one CourtLevel.
+     * @example
+     * // Update one CourtLevel
+     * const courtLevel = await prisma.courtLevel.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CourtLevelUpdateArgs>(args: SelectSubset<T, CourtLevelUpdateArgs<ExtArgs>>): Prisma__CourtLevelClient<$Result.GetResult<Prisma.$CourtLevelPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more CourtLevels.
+     * @param {CourtLevelDeleteManyArgs} args - Arguments to filter CourtLevels to delete.
+     * @example
+     * // Delete a few CourtLevels
+     * const { count } = await prisma.courtLevel.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CourtLevelDeleteManyArgs>(args?: SelectSubset<T, CourtLevelDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CourtLevels.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CourtLevelUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CourtLevels
+     * const courtLevel = await prisma.courtLevel.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CourtLevelUpdateManyArgs>(args: SelectSubset<T, CourtLevelUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CourtLevels and returns the data updated in the database.
+     * @param {CourtLevelUpdateManyAndReturnArgs} args - Arguments to update many CourtLevels.
+     * @example
+     * // Update many CourtLevels
+     * const courtLevel = await prisma.courtLevel.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more CourtLevels and only return the `id`
+     * const courtLevelWithIdOnly = await prisma.courtLevel.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CourtLevelUpdateManyAndReturnArgs>(args: SelectSubset<T, CourtLevelUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CourtLevelPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one CourtLevel.
+     * @param {CourtLevelUpsertArgs} args - Arguments to update or create a CourtLevel.
+     * @example
+     * // Update or create a CourtLevel
+     * const courtLevel = await prisma.courtLevel.upsert({
+     *   create: {
+     *     // ... data to create a CourtLevel
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CourtLevel we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CourtLevelUpsertArgs>(args: SelectSubset<T, CourtLevelUpsertArgs<ExtArgs>>): Prisma__CourtLevelClient<$Result.GetResult<Prisma.$CourtLevelPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of CourtLevels.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CourtLevelCountArgs} args - Arguments to filter CourtLevels to count.
+     * @example
+     * // Count the number of CourtLevels
+     * const count = await prisma.courtLevel.count({
+     *   where: {
+     *     // ... the filter for the CourtLevels we want to count
+     *   }
+     * })
+    **/
+    count<T extends CourtLevelCountArgs>(
+      args?: Subset<T, CourtLevelCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CourtLevelCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CourtLevel.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CourtLevelAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CourtLevelAggregateArgs>(args: Subset<T, CourtLevelAggregateArgs>): Prisma.PrismaPromise<GetCourtLevelAggregateType<T>>
+
+    /**
+     * Group by CourtLevel.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CourtLevelGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CourtLevelGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CourtLevelGroupByArgs['orderBy'] }
+        : { orderBy?: CourtLevelGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CourtLevelGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCourtLevelGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CourtLevel model
+   */
+  readonly fields: CourtLevelFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CourtLevel.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CourtLevelClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    proceedings<T extends CourtLevel$proceedingsArgs<ExtArgs> = {}>(args?: Subset<T, CourtLevel$proceedingsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CourtProceedingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CourtLevel model
+   */
+  interface CourtLevelFieldRefs {
+    readonly id: FieldRef<"CourtLevel", 'String'>
+    readonly name: FieldRef<"CourtLevel", 'String'>
+    readonly nepaliName: FieldRef<"CourtLevel", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CourtLevel findUnique
+   */
+  export type CourtLevelFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CourtLevel
+     */
+    select?: CourtLevelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CourtLevel
+     */
+    omit?: CourtLevelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CourtLevelInclude<ExtArgs> | null
+    /**
+     * Filter, which CourtLevel to fetch.
+     */
+    where: CourtLevelWhereUniqueInput
+  }
+
+  /**
+   * CourtLevel findUniqueOrThrow
+   */
+  export type CourtLevelFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CourtLevel
+     */
+    select?: CourtLevelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CourtLevel
+     */
+    omit?: CourtLevelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CourtLevelInclude<ExtArgs> | null
+    /**
+     * Filter, which CourtLevel to fetch.
+     */
+    where: CourtLevelWhereUniqueInput
+  }
+
+  /**
+   * CourtLevel findFirst
+   */
+  export type CourtLevelFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CourtLevel
+     */
+    select?: CourtLevelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CourtLevel
+     */
+    omit?: CourtLevelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CourtLevelInclude<ExtArgs> | null
+    /**
+     * Filter, which CourtLevel to fetch.
+     */
+    where?: CourtLevelWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CourtLevels to fetch.
+     */
+    orderBy?: CourtLevelOrderByWithRelationInput | CourtLevelOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CourtLevels.
+     */
+    cursor?: CourtLevelWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CourtLevels from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CourtLevels.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CourtLevels.
+     */
+    distinct?: CourtLevelScalarFieldEnum | CourtLevelScalarFieldEnum[]
+  }
+
+  /**
+   * CourtLevel findFirstOrThrow
+   */
+  export type CourtLevelFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CourtLevel
+     */
+    select?: CourtLevelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CourtLevel
+     */
+    omit?: CourtLevelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CourtLevelInclude<ExtArgs> | null
+    /**
+     * Filter, which CourtLevel to fetch.
+     */
+    where?: CourtLevelWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CourtLevels to fetch.
+     */
+    orderBy?: CourtLevelOrderByWithRelationInput | CourtLevelOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CourtLevels.
+     */
+    cursor?: CourtLevelWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CourtLevels from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CourtLevels.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CourtLevels.
+     */
+    distinct?: CourtLevelScalarFieldEnum | CourtLevelScalarFieldEnum[]
+  }
+
+  /**
+   * CourtLevel findMany
+   */
+  export type CourtLevelFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CourtLevel
+     */
+    select?: CourtLevelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CourtLevel
+     */
+    omit?: CourtLevelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CourtLevelInclude<ExtArgs> | null
+    /**
+     * Filter, which CourtLevels to fetch.
+     */
+    where?: CourtLevelWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CourtLevels to fetch.
+     */
+    orderBy?: CourtLevelOrderByWithRelationInput | CourtLevelOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CourtLevels.
+     */
+    cursor?: CourtLevelWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CourtLevels from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CourtLevels.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CourtLevels.
+     */
+    distinct?: CourtLevelScalarFieldEnum | CourtLevelScalarFieldEnum[]
+  }
+
+  /**
+   * CourtLevel create
+   */
+  export type CourtLevelCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CourtLevel
+     */
+    select?: CourtLevelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CourtLevel
+     */
+    omit?: CourtLevelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CourtLevelInclude<ExtArgs> | null
+    /**
+     * The data needed to create a CourtLevel.
+     */
+    data: XOR<CourtLevelCreateInput, CourtLevelUncheckedCreateInput>
+  }
+
+  /**
+   * CourtLevel createMany
+   */
+  export type CourtLevelCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CourtLevels.
+     */
+    data: CourtLevelCreateManyInput | CourtLevelCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CourtLevel createManyAndReturn
+   */
+  export type CourtLevelCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CourtLevel
+     */
+    select?: CourtLevelSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CourtLevel
+     */
+    omit?: CourtLevelOmit<ExtArgs> | null
+    /**
+     * The data used to create many CourtLevels.
+     */
+    data: CourtLevelCreateManyInput | CourtLevelCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CourtLevel update
+   */
+  export type CourtLevelUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CourtLevel
+     */
+    select?: CourtLevelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CourtLevel
+     */
+    omit?: CourtLevelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CourtLevelInclude<ExtArgs> | null
+    /**
+     * The data needed to update a CourtLevel.
+     */
+    data: XOR<CourtLevelUpdateInput, CourtLevelUncheckedUpdateInput>
+    /**
+     * Choose, which CourtLevel to update.
+     */
+    where: CourtLevelWhereUniqueInput
+  }
+
+  /**
+   * CourtLevel updateMany
+   */
+  export type CourtLevelUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CourtLevels.
+     */
+    data: XOR<CourtLevelUpdateManyMutationInput, CourtLevelUncheckedUpdateManyInput>
+    /**
+     * Filter which CourtLevels to update
+     */
+    where?: CourtLevelWhereInput
+    /**
+     * Limit how many CourtLevels to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CourtLevel updateManyAndReturn
+   */
+  export type CourtLevelUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CourtLevel
+     */
+    select?: CourtLevelSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CourtLevel
+     */
+    omit?: CourtLevelOmit<ExtArgs> | null
+    /**
+     * The data used to update CourtLevels.
+     */
+    data: XOR<CourtLevelUpdateManyMutationInput, CourtLevelUncheckedUpdateManyInput>
+    /**
+     * Filter which CourtLevels to update
+     */
+    where?: CourtLevelWhereInput
+    /**
+     * Limit how many CourtLevels to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CourtLevel upsert
+   */
+  export type CourtLevelUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CourtLevel
+     */
+    select?: CourtLevelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CourtLevel
+     */
+    omit?: CourtLevelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CourtLevelInclude<ExtArgs> | null
+    /**
+     * The filter to search for the CourtLevel to update in case it exists.
+     */
+    where: CourtLevelWhereUniqueInput
+    /**
+     * In case the CourtLevel found by the `where` argument doesn't exist, create a new CourtLevel with this data.
+     */
+    create: XOR<CourtLevelCreateInput, CourtLevelUncheckedCreateInput>
+    /**
+     * In case the CourtLevel was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CourtLevelUpdateInput, CourtLevelUncheckedUpdateInput>
+  }
+
+  /**
+   * CourtLevel delete
+   */
+  export type CourtLevelDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CourtLevel
+     */
+    select?: CourtLevelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CourtLevel
+     */
+    omit?: CourtLevelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CourtLevelInclude<ExtArgs> | null
+    /**
+     * Filter which CourtLevel to delete.
+     */
+    where: CourtLevelWhereUniqueInput
+  }
+
+  /**
+   * CourtLevel deleteMany
+   */
+  export type CourtLevelDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CourtLevels to delete
+     */
+    where?: CourtLevelWhereInput
+    /**
+     * Limit how many CourtLevels to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CourtLevel.proceedings
+   */
+  export type CourtLevel$proceedingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CourtProceeding
+     */
+    select?: CourtProceedingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CourtProceeding
+     */
+    omit?: CourtProceedingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CourtProceedingInclude<ExtArgs> | null
+    where?: CourtProceedingWhereInput
+    orderBy?: CourtProceedingOrderByWithRelationInput | CourtProceedingOrderByWithRelationInput[]
+    cursor?: CourtProceedingWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CourtProceedingScalarFieldEnum | CourtProceedingScalarFieldEnum[]
+  }
+
+  /**
+   * CourtLevel without action
+   */
+  export type CourtLevelDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CourtLevel
+     */
+    select?: CourtLevelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CourtLevel
+     */
+    omit?: CourtLevelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CourtLevelInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model CaseNature
+   */
+
+  export type AggregateCaseNature = {
+    _count: CaseNatureCountAggregateOutputType | null
+    _min: CaseNatureMinAggregateOutputType | null
+    _max: CaseNatureMaxAggregateOutputType | null
+  }
+
+  export type CaseNatureMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    nepaliName: string | null
+  }
+
+  export type CaseNatureMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    nepaliName: string | null
+  }
+
+  export type CaseNatureCountAggregateOutputType = {
+    id: number
+    name: number
+    nepaliName: number
+    _all: number
+  }
+
+
+  export type CaseNatureMinAggregateInputType = {
+    id?: true
+    name?: true
+    nepaliName?: true
+  }
+
+  export type CaseNatureMaxAggregateInputType = {
+    id?: true
+    name?: true
+    nepaliName?: true
+  }
+
+  export type CaseNatureCountAggregateInputType = {
+    id?: true
+    name?: true
+    nepaliName?: true
+    _all?: true
+  }
+
+  export type CaseNatureAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CaseNature to aggregate.
+     */
+    where?: CaseNatureWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CaseNatures to fetch.
+     */
+    orderBy?: CaseNatureOrderByWithRelationInput | CaseNatureOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CaseNatureWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CaseNatures from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CaseNatures.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CaseNatures
+    **/
+    _count?: true | CaseNatureCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CaseNatureMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CaseNatureMaxAggregateInputType
+  }
+
+  export type GetCaseNatureAggregateType<T extends CaseNatureAggregateArgs> = {
+        [P in keyof T & keyof AggregateCaseNature]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCaseNature[P]>
+      : GetScalarType<T[P], AggregateCaseNature[P]>
+  }
+
+
+
+
+  export type CaseNatureGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CaseNatureWhereInput
+    orderBy?: CaseNatureOrderByWithAggregationInput | CaseNatureOrderByWithAggregationInput[]
+    by: CaseNatureScalarFieldEnum[] | CaseNatureScalarFieldEnum
+    having?: CaseNatureScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CaseNatureCountAggregateInputType | true
+    _min?: CaseNatureMinAggregateInputType
+    _max?: CaseNatureMaxAggregateInputType
+  }
+
+  export type CaseNatureGroupByOutputType = {
+    id: string
+    name: string
+    nepaliName: string | null
+    _count: CaseNatureCountAggregateOutputType | null
+    _min: CaseNatureMinAggregateOutputType | null
+    _max: CaseNatureMaxAggregateOutputType | null
+  }
+
+  type GetCaseNatureGroupByPayload<T extends CaseNatureGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CaseNatureGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CaseNatureGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CaseNatureGroupByOutputType[P]>
+            : GetScalarType<T[P], CaseNatureGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CaseNatureSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    nepaliName?: boolean
+    cases?: boolean | CaseNature$casesArgs<ExtArgs>
+    _count?: boolean | CaseNatureCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["caseNature"]>
+
+  export type CaseNatureSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    nepaliName?: boolean
+  }, ExtArgs["result"]["caseNature"]>
+
+  export type CaseNatureSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    nepaliName?: boolean
+  }, ExtArgs["result"]["caseNature"]>
+
+  export type CaseNatureSelectScalar = {
+    id?: boolean
+    name?: boolean
+    nepaliName?: boolean
+  }
+
+  export type CaseNatureOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "nepaliName", ExtArgs["result"]["caseNature"]>
+  export type CaseNatureInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    cases?: boolean | CaseNature$casesArgs<ExtArgs>
+    _count?: boolean | CaseNatureCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type CaseNatureIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type CaseNatureIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $CaseNaturePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CaseNature"
+    objects: {
+      cases: Prisma.$CasePayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      nepaliName: string | null
+    }, ExtArgs["result"]["caseNature"]>
+    composites: {}
+  }
+
+  type CaseNatureGetPayload<S extends boolean | null | undefined | CaseNatureDefaultArgs> = $Result.GetResult<Prisma.$CaseNaturePayload, S>
+
+  type CaseNatureCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CaseNatureFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CaseNatureCountAggregateInputType | true
+    }
+
+  export interface CaseNatureDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CaseNature'], meta: { name: 'CaseNature' } }
+    /**
+     * Find zero or one CaseNature that matches the filter.
+     * @param {CaseNatureFindUniqueArgs} args - Arguments to find a CaseNature
+     * @example
+     * // Get one CaseNature
+     * const caseNature = await prisma.caseNature.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CaseNatureFindUniqueArgs>(args: SelectSubset<T, CaseNatureFindUniqueArgs<ExtArgs>>): Prisma__CaseNatureClient<$Result.GetResult<Prisma.$CaseNaturePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one CaseNature that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CaseNatureFindUniqueOrThrowArgs} args - Arguments to find a CaseNature
+     * @example
+     * // Get one CaseNature
+     * const caseNature = await prisma.caseNature.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CaseNatureFindUniqueOrThrowArgs>(args: SelectSubset<T, CaseNatureFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CaseNatureClient<$Result.GetResult<Prisma.$CaseNaturePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CaseNature that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseNatureFindFirstArgs} args - Arguments to find a CaseNature
+     * @example
+     * // Get one CaseNature
+     * const caseNature = await prisma.caseNature.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CaseNatureFindFirstArgs>(args?: SelectSubset<T, CaseNatureFindFirstArgs<ExtArgs>>): Prisma__CaseNatureClient<$Result.GetResult<Prisma.$CaseNaturePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CaseNature that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseNatureFindFirstOrThrowArgs} args - Arguments to find a CaseNature
+     * @example
+     * // Get one CaseNature
+     * const caseNature = await prisma.caseNature.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CaseNatureFindFirstOrThrowArgs>(args?: SelectSubset<T, CaseNatureFindFirstOrThrowArgs<ExtArgs>>): Prisma__CaseNatureClient<$Result.GetResult<Prisma.$CaseNaturePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CaseNatures that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseNatureFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CaseNatures
+     * const caseNatures = await prisma.caseNature.findMany()
+     * 
+     * // Get first 10 CaseNatures
+     * const caseNatures = await prisma.caseNature.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const caseNatureWithIdOnly = await prisma.caseNature.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CaseNatureFindManyArgs>(args?: SelectSubset<T, CaseNatureFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseNaturePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a CaseNature.
+     * @param {CaseNatureCreateArgs} args - Arguments to create a CaseNature.
+     * @example
+     * // Create one CaseNature
+     * const CaseNature = await prisma.caseNature.create({
+     *   data: {
+     *     // ... data to create a CaseNature
+     *   }
+     * })
+     * 
+     */
+    create<T extends CaseNatureCreateArgs>(args: SelectSubset<T, CaseNatureCreateArgs<ExtArgs>>): Prisma__CaseNatureClient<$Result.GetResult<Prisma.$CaseNaturePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many CaseNatures.
+     * @param {CaseNatureCreateManyArgs} args - Arguments to create many CaseNatures.
+     * @example
+     * // Create many CaseNatures
+     * const caseNature = await prisma.caseNature.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CaseNatureCreateManyArgs>(args?: SelectSubset<T, CaseNatureCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many CaseNatures and returns the data saved in the database.
+     * @param {CaseNatureCreateManyAndReturnArgs} args - Arguments to create many CaseNatures.
+     * @example
+     * // Create many CaseNatures
+     * const caseNature = await prisma.caseNature.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many CaseNatures and only return the `id`
+     * const caseNatureWithIdOnly = await prisma.caseNature.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CaseNatureCreateManyAndReturnArgs>(args?: SelectSubset<T, CaseNatureCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseNaturePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a CaseNature.
+     * @param {CaseNatureDeleteArgs} args - Arguments to delete one CaseNature.
+     * @example
+     * // Delete one CaseNature
+     * const CaseNature = await prisma.caseNature.delete({
+     *   where: {
+     *     // ... filter to delete one CaseNature
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CaseNatureDeleteArgs>(args: SelectSubset<T, CaseNatureDeleteArgs<ExtArgs>>): Prisma__CaseNatureClient<$Result.GetResult<Prisma.$CaseNaturePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one CaseNature.
+     * @param {CaseNatureUpdateArgs} args - Arguments to update one CaseNature.
+     * @example
+     * // Update one CaseNature
+     * const caseNature = await prisma.caseNature.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CaseNatureUpdateArgs>(args: SelectSubset<T, CaseNatureUpdateArgs<ExtArgs>>): Prisma__CaseNatureClient<$Result.GetResult<Prisma.$CaseNaturePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more CaseNatures.
+     * @param {CaseNatureDeleteManyArgs} args - Arguments to filter CaseNatures to delete.
+     * @example
+     * // Delete a few CaseNatures
+     * const { count } = await prisma.caseNature.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CaseNatureDeleteManyArgs>(args?: SelectSubset<T, CaseNatureDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CaseNatures.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseNatureUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CaseNatures
+     * const caseNature = await prisma.caseNature.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CaseNatureUpdateManyArgs>(args: SelectSubset<T, CaseNatureUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CaseNatures and returns the data updated in the database.
+     * @param {CaseNatureUpdateManyAndReturnArgs} args - Arguments to update many CaseNatures.
+     * @example
+     * // Update many CaseNatures
+     * const caseNature = await prisma.caseNature.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more CaseNatures and only return the `id`
+     * const caseNatureWithIdOnly = await prisma.caseNature.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CaseNatureUpdateManyAndReturnArgs>(args: SelectSubset<T, CaseNatureUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseNaturePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one CaseNature.
+     * @param {CaseNatureUpsertArgs} args - Arguments to update or create a CaseNature.
+     * @example
+     * // Update or create a CaseNature
+     * const caseNature = await prisma.caseNature.upsert({
+     *   create: {
+     *     // ... data to create a CaseNature
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CaseNature we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CaseNatureUpsertArgs>(args: SelectSubset<T, CaseNatureUpsertArgs<ExtArgs>>): Prisma__CaseNatureClient<$Result.GetResult<Prisma.$CaseNaturePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of CaseNatures.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseNatureCountArgs} args - Arguments to filter CaseNatures to count.
+     * @example
+     * // Count the number of CaseNatures
+     * const count = await prisma.caseNature.count({
+     *   where: {
+     *     // ... the filter for the CaseNatures we want to count
+     *   }
+     * })
+    **/
+    count<T extends CaseNatureCountArgs>(
+      args?: Subset<T, CaseNatureCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CaseNatureCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CaseNature.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseNatureAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CaseNatureAggregateArgs>(args: Subset<T, CaseNatureAggregateArgs>): Prisma.PrismaPromise<GetCaseNatureAggregateType<T>>
+
+    /**
+     * Group by CaseNature.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseNatureGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CaseNatureGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CaseNatureGroupByArgs['orderBy'] }
+        : { orderBy?: CaseNatureGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CaseNatureGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCaseNatureGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CaseNature model
+   */
+  readonly fields: CaseNatureFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CaseNature.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CaseNatureClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    cases<T extends CaseNature$casesArgs<ExtArgs> = {}>(args?: Subset<T, CaseNature$casesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CasePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CaseNature model
+   */
+  interface CaseNatureFieldRefs {
+    readonly id: FieldRef<"CaseNature", 'String'>
+    readonly name: FieldRef<"CaseNature", 'String'>
+    readonly nepaliName: FieldRef<"CaseNature", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CaseNature findUnique
+   */
+  export type CaseNatureFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseNature
+     */
+    select?: CaseNatureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseNature
+     */
+    omit?: CaseNatureOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseNatureInclude<ExtArgs> | null
+    /**
+     * Filter, which CaseNature to fetch.
+     */
+    where: CaseNatureWhereUniqueInput
+  }
+
+  /**
+   * CaseNature findUniqueOrThrow
+   */
+  export type CaseNatureFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseNature
+     */
+    select?: CaseNatureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseNature
+     */
+    omit?: CaseNatureOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseNatureInclude<ExtArgs> | null
+    /**
+     * Filter, which CaseNature to fetch.
+     */
+    where: CaseNatureWhereUniqueInput
+  }
+
+  /**
+   * CaseNature findFirst
+   */
+  export type CaseNatureFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseNature
+     */
+    select?: CaseNatureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseNature
+     */
+    omit?: CaseNatureOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseNatureInclude<ExtArgs> | null
+    /**
+     * Filter, which CaseNature to fetch.
+     */
+    where?: CaseNatureWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CaseNatures to fetch.
+     */
+    orderBy?: CaseNatureOrderByWithRelationInput | CaseNatureOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CaseNatures.
+     */
+    cursor?: CaseNatureWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CaseNatures from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CaseNatures.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CaseNatures.
+     */
+    distinct?: CaseNatureScalarFieldEnum | CaseNatureScalarFieldEnum[]
+  }
+
+  /**
+   * CaseNature findFirstOrThrow
+   */
+  export type CaseNatureFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseNature
+     */
+    select?: CaseNatureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseNature
+     */
+    omit?: CaseNatureOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseNatureInclude<ExtArgs> | null
+    /**
+     * Filter, which CaseNature to fetch.
+     */
+    where?: CaseNatureWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CaseNatures to fetch.
+     */
+    orderBy?: CaseNatureOrderByWithRelationInput | CaseNatureOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CaseNatures.
+     */
+    cursor?: CaseNatureWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CaseNatures from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CaseNatures.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CaseNatures.
+     */
+    distinct?: CaseNatureScalarFieldEnum | CaseNatureScalarFieldEnum[]
+  }
+
+  /**
+   * CaseNature findMany
+   */
+  export type CaseNatureFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseNature
+     */
+    select?: CaseNatureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseNature
+     */
+    omit?: CaseNatureOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseNatureInclude<ExtArgs> | null
+    /**
+     * Filter, which CaseNatures to fetch.
+     */
+    where?: CaseNatureWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CaseNatures to fetch.
+     */
+    orderBy?: CaseNatureOrderByWithRelationInput | CaseNatureOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CaseNatures.
+     */
+    cursor?: CaseNatureWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CaseNatures from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CaseNatures.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CaseNatures.
+     */
+    distinct?: CaseNatureScalarFieldEnum | CaseNatureScalarFieldEnum[]
+  }
+
+  /**
+   * CaseNature create
+   */
+  export type CaseNatureCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseNature
+     */
+    select?: CaseNatureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseNature
+     */
+    omit?: CaseNatureOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseNatureInclude<ExtArgs> | null
+    /**
+     * The data needed to create a CaseNature.
+     */
+    data: XOR<CaseNatureCreateInput, CaseNatureUncheckedCreateInput>
+  }
+
+  /**
+   * CaseNature createMany
+   */
+  export type CaseNatureCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CaseNatures.
+     */
+    data: CaseNatureCreateManyInput | CaseNatureCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CaseNature createManyAndReturn
+   */
+  export type CaseNatureCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseNature
+     */
+    select?: CaseNatureSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseNature
+     */
+    omit?: CaseNatureOmit<ExtArgs> | null
+    /**
+     * The data used to create many CaseNatures.
+     */
+    data: CaseNatureCreateManyInput | CaseNatureCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CaseNature update
+   */
+  export type CaseNatureUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseNature
+     */
+    select?: CaseNatureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseNature
+     */
+    omit?: CaseNatureOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseNatureInclude<ExtArgs> | null
+    /**
+     * The data needed to update a CaseNature.
+     */
+    data: XOR<CaseNatureUpdateInput, CaseNatureUncheckedUpdateInput>
+    /**
+     * Choose, which CaseNature to update.
+     */
+    where: CaseNatureWhereUniqueInput
+  }
+
+  /**
+   * CaseNature updateMany
+   */
+  export type CaseNatureUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CaseNatures.
+     */
+    data: XOR<CaseNatureUpdateManyMutationInput, CaseNatureUncheckedUpdateManyInput>
+    /**
+     * Filter which CaseNatures to update
+     */
+    where?: CaseNatureWhereInput
+    /**
+     * Limit how many CaseNatures to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CaseNature updateManyAndReturn
+   */
+  export type CaseNatureUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseNature
+     */
+    select?: CaseNatureSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseNature
+     */
+    omit?: CaseNatureOmit<ExtArgs> | null
+    /**
+     * The data used to update CaseNatures.
+     */
+    data: XOR<CaseNatureUpdateManyMutationInput, CaseNatureUncheckedUpdateManyInput>
+    /**
+     * Filter which CaseNatures to update
+     */
+    where?: CaseNatureWhereInput
+    /**
+     * Limit how many CaseNatures to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CaseNature upsert
+   */
+  export type CaseNatureUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseNature
+     */
+    select?: CaseNatureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseNature
+     */
+    omit?: CaseNatureOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseNatureInclude<ExtArgs> | null
+    /**
+     * The filter to search for the CaseNature to update in case it exists.
+     */
+    where: CaseNatureWhereUniqueInput
+    /**
+     * In case the CaseNature found by the `where` argument doesn't exist, create a new CaseNature with this data.
+     */
+    create: XOR<CaseNatureCreateInput, CaseNatureUncheckedCreateInput>
+    /**
+     * In case the CaseNature was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CaseNatureUpdateInput, CaseNatureUncheckedUpdateInput>
+  }
+
+  /**
+   * CaseNature delete
+   */
+  export type CaseNatureDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseNature
+     */
+    select?: CaseNatureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseNature
+     */
+    omit?: CaseNatureOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseNatureInclude<ExtArgs> | null
+    /**
+     * Filter which CaseNature to delete.
+     */
+    where: CaseNatureWhereUniqueInput
+  }
+
+  /**
+   * CaseNature deleteMany
+   */
+  export type CaseNatureDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CaseNatures to delete
+     */
+    where?: CaseNatureWhereInput
+    /**
+     * Limit how many CaseNatures to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CaseNature.cases
+   */
+  export type CaseNature$casesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Case
+     */
+    select?: CaseSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Case
+     */
+    omit?: CaseOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseInclude<ExtArgs> | null
+    where?: CaseWhereInput
+    orderBy?: CaseOrderByWithRelationInput | CaseOrderByWithRelationInput[]
+    cursor?: CaseWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CaseScalarFieldEnum | CaseScalarFieldEnum[]
+  }
+
+  /**
+   * CaseNature without action
+   */
+  export type CaseNatureDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseNature
+     */
+    select?: CaseNatureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseNature
+     */
+    omit?: CaseNatureOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseNatureInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model PartyRole
+   */
+
+  export type AggregatePartyRole = {
+    _count: PartyRoleCountAggregateOutputType | null
+    _min: PartyRoleMinAggregateOutputType | null
+    _max: PartyRoleMaxAggregateOutputType | null
+  }
+
+  export type PartyRoleMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    nepaliName: string | null
+  }
+
+  export type PartyRoleMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    nepaliName: string | null
+  }
+
+  export type PartyRoleCountAggregateOutputType = {
+    id: number
+    name: number
+    nepaliName: number
+    _all: number
+  }
+
+
+  export type PartyRoleMinAggregateInputType = {
+    id?: true
+    name?: true
+    nepaliName?: true
+  }
+
+  export type PartyRoleMaxAggregateInputType = {
+    id?: true
+    name?: true
+    nepaliName?: true
+  }
+
+  export type PartyRoleCountAggregateInputType = {
+    id?: true
+    name?: true
+    nepaliName?: true
+    _all?: true
+  }
+
+  export type PartyRoleAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PartyRole to aggregate.
+     */
+    where?: PartyRoleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PartyRoles to fetch.
+     */
+    orderBy?: PartyRoleOrderByWithRelationInput | PartyRoleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PartyRoleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PartyRoles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PartyRoles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned PartyRoles
+    **/
+    _count?: true | PartyRoleCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PartyRoleMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PartyRoleMaxAggregateInputType
+  }
+
+  export type GetPartyRoleAggregateType<T extends PartyRoleAggregateArgs> = {
+        [P in keyof T & keyof AggregatePartyRole]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePartyRole[P]>
+      : GetScalarType<T[P], AggregatePartyRole[P]>
+  }
+
+
+
+
+  export type PartyRoleGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PartyRoleWhereInput
+    orderBy?: PartyRoleOrderByWithAggregationInput | PartyRoleOrderByWithAggregationInput[]
+    by: PartyRoleScalarFieldEnum[] | PartyRoleScalarFieldEnum
+    having?: PartyRoleScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PartyRoleCountAggregateInputType | true
+    _min?: PartyRoleMinAggregateInputType
+    _max?: PartyRoleMaxAggregateInputType
+  }
+
+  export type PartyRoleGroupByOutputType = {
+    id: string
+    name: string
+    nepaliName: string | null
+    _count: PartyRoleCountAggregateOutputType | null
+    _min: PartyRoleMinAggregateOutputType | null
+    _max: PartyRoleMaxAggregateOutputType | null
+  }
+
+  type GetPartyRoleGroupByPayload<T extends PartyRoleGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PartyRoleGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PartyRoleGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PartyRoleGroupByOutputType[P]>
+            : GetScalarType<T[P], PartyRoleGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PartyRoleSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    nepaliName?: boolean
+    parties?: boolean | PartyRole$partiesArgs<ExtArgs>
+    _count?: boolean | PartyRoleCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["partyRole"]>
+
+  export type PartyRoleSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    nepaliName?: boolean
+  }, ExtArgs["result"]["partyRole"]>
+
+  export type PartyRoleSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    nepaliName?: boolean
+  }, ExtArgs["result"]["partyRole"]>
+
+  export type PartyRoleSelectScalar = {
+    id?: boolean
+    name?: boolean
+    nepaliName?: boolean
+  }
+
+  export type PartyRoleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "nepaliName", ExtArgs["result"]["partyRole"]>
+  export type PartyRoleInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    parties?: boolean | PartyRole$partiesArgs<ExtArgs>
+    _count?: boolean | PartyRoleCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type PartyRoleIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type PartyRoleIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $PartyRolePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "PartyRole"
+    objects: {
+      parties: Prisma.$CasePartyPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      nepaliName: string | null
+    }, ExtArgs["result"]["partyRole"]>
+    composites: {}
+  }
+
+  type PartyRoleGetPayload<S extends boolean | null | undefined | PartyRoleDefaultArgs> = $Result.GetResult<Prisma.$PartyRolePayload, S>
+
+  type PartyRoleCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PartyRoleFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PartyRoleCountAggregateInputType | true
+    }
+
+  export interface PartyRoleDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['PartyRole'], meta: { name: 'PartyRole' } }
+    /**
+     * Find zero or one PartyRole that matches the filter.
+     * @param {PartyRoleFindUniqueArgs} args - Arguments to find a PartyRole
+     * @example
+     * // Get one PartyRole
+     * const partyRole = await prisma.partyRole.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PartyRoleFindUniqueArgs>(args: SelectSubset<T, PartyRoleFindUniqueArgs<ExtArgs>>): Prisma__PartyRoleClient<$Result.GetResult<Prisma.$PartyRolePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one PartyRole that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {PartyRoleFindUniqueOrThrowArgs} args - Arguments to find a PartyRole
+     * @example
+     * // Get one PartyRole
+     * const partyRole = await prisma.partyRole.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PartyRoleFindUniqueOrThrowArgs>(args: SelectSubset<T, PartyRoleFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PartyRoleClient<$Result.GetResult<Prisma.$PartyRolePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PartyRole that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PartyRoleFindFirstArgs} args - Arguments to find a PartyRole
+     * @example
+     * // Get one PartyRole
+     * const partyRole = await prisma.partyRole.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PartyRoleFindFirstArgs>(args?: SelectSubset<T, PartyRoleFindFirstArgs<ExtArgs>>): Prisma__PartyRoleClient<$Result.GetResult<Prisma.$PartyRolePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PartyRole that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PartyRoleFindFirstOrThrowArgs} args - Arguments to find a PartyRole
+     * @example
+     * // Get one PartyRole
+     * const partyRole = await prisma.partyRole.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PartyRoleFindFirstOrThrowArgs>(args?: SelectSubset<T, PartyRoleFindFirstOrThrowArgs<ExtArgs>>): Prisma__PartyRoleClient<$Result.GetResult<Prisma.$PartyRolePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more PartyRoles that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PartyRoleFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all PartyRoles
+     * const partyRoles = await prisma.partyRole.findMany()
+     * 
+     * // Get first 10 PartyRoles
+     * const partyRoles = await prisma.partyRole.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const partyRoleWithIdOnly = await prisma.partyRole.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends PartyRoleFindManyArgs>(args?: SelectSubset<T, PartyRoleFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PartyRolePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a PartyRole.
+     * @param {PartyRoleCreateArgs} args - Arguments to create a PartyRole.
+     * @example
+     * // Create one PartyRole
+     * const PartyRole = await prisma.partyRole.create({
+     *   data: {
+     *     // ... data to create a PartyRole
+     *   }
+     * })
+     * 
+     */
+    create<T extends PartyRoleCreateArgs>(args: SelectSubset<T, PartyRoleCreateArgs<ExtArgs>>): Prisma__PartyRoleClient<$Result.GetResult<Prisma.$PartyRolePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many PartyRoles.
+     * @param {PartyRoleCreateManyArgs} args - Arguments to create many PartyRoles.
+     * @example
+     * // Create many PartyRoles
+     * const partyRole = await prisma.partyRole.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends PartyRoleCreateManyArgs>(args?: SelectSubset<T, PartyRoleCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many PartyRoles and returns the data saved in the database.
+     * @param {PartyRoleCreateManyAndReturnArgs} args - Arguments to create many PartyRoles.
+     * @example
+     * // Create many PartyRoles
+     * const partyRole = await prisma.partyRole.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many PartyRoles and only return the `id`
+     * const partyRoleWithIdOnly = await prisma.partyRole.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends PartyRoleCreateManyAndReturnArgs>(args?: SelectSubset<T, PartyRoleCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PartyRolePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a PartyRole.
+     * @param {PartyRoleDeleteArgs} args - Arguments to delete one PartyRole.
+     * @example
+     * // Delete one PartyRole
+     * const PartyRole = await prisma.partyRole.delete({
+     *   where: {
+     *     // ... filter to delete one PartyRole
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PartyRoleDeleteArgs>(args: SelectSubset<T, PartyRoleDeleteArgs<ExtArgs>>): Prisma__PartyRoleClient<$Result.GetResult<Prisma.$PartyRolePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one PartyRole.
+     * @param {PartyRoleUpdateArgs} args - Arguments to update one PartyRole.
+     * @example
+     * // Update one PartyRole
+     * const partyRole = await prisma.partyRole.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends PartyRoleUpdateArgs>(args: SelectSubset<T, PartyRoleUpdateArgs<ExtArgs>>): Prisma__PartyRoleClient<$Result.GetResult<Prisma.$PartyRolePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more PartyRoles.
+     * @param {PartyRoleDeleteManyArgs} args - Arguments to filter PartyRoles to delete.
+     * @example
+     * // Delete a few PartyRoles
+     * const { count } = await prisma.partyRole.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PartyRoleDeleteManyArgs>(args?: SelectSubset<T, PartyRoleDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PartyRoles.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PartyRoleUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many PartyRoles
+     * const partyRole = await prisma.partyRole.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PartyRoleUpdateManyArgs>(args: SelectSubset<T, PartyRoleUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PartyRoles and returns the data updated in the database.
+     * @param {PartyRoleUpdateManyAndReturnArgs} args - Arguments to update many PartyRoles.
+     * @example
+     * // Update many PartyRoles
+     * const partyRole = await prisma.partyRole.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more PartyRoles and only return the `id`
+     * const partyRoleWithIdOnly = await prisma.partyRole.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends PartyRoleUpdateManyAndReturnArgs>(args: SelectSubset<T, PartyRoleUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PartyRolePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one PartyRole.
+     * @param {PartyRoleUpsertArgs} args - Arguments to update or create a PartyRole.
+     * @example
+     * // Update or create a PartyRole
+     * const partyRole = await prisma.partyRole.upsert({
+     *   create: {
+     *     // ... data to create a PartyRole
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the PartyRole we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PartyRoleUpsertArgs>(args: SelectSubset<T, PartyRoleUpsertArgs<ExtArgs>>): Prisma__PartyRoleClient<$Result.GetResult<Prisma.$PartyRolePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of PartyRoles.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PartyRoleCountArgs} args - Arguments to filter PartyRoles to count.
+     * @example
+     * // Count the number of PartyRoles
+     * const count = await prisma.partyRole.count({
+     *   where: {
+     *     // ... the filter for the PartyRoles we want to count
+     *   }
+     * })
+    **/
+    count<T extends PartyRoleCountArgs>(
+      args?: Subset<T, PartyRoleCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PartyRoleCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a PartyRole.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PartyRoleAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PartyRoleAggregateArgs>(args: Subset<T, PartyRoleAggregateArgs>): Prisma.PrismaPromise<GetPartyRoleAggregateType<T>>
+
+    /**
+     * Group by PartyRole.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PartyRoleGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PartyRoleGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PartyRoleGroupByArgs['orderBy'] }
+        : { orderBy?: PartyRoleGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PartyRoleGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPartyRoleGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the PartyRole model
+   */
+  readonly fields: PartyRoleFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for PartyRole.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PartyRoleClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    parties<T extends PartyRole$partiesArgs<ExtArgs> = {}>(args?: Subset<T, PartyRole$partiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CasePartyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the PartyRole model
+   */
+  interface PartyRoleFieldRefs {
+    readonly id: FieldRef<"PartyRole", 'String'>
+    readonly name: FieldRef<"PartyRole", 'String'>
+    readonly nepaliName: FieldRef<"PartyRole", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * PartyRole findUnique
+   */
+  export type PartyRoleFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PartyRole
+     */
+    select?: PartyRoleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PartyRole
+     */
+    omit?: PartyRoleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PartyRoleInclude<ExtArgs> | null
+    /**
+     * Filter, which PartyRole to fetch.
+     */
+    where: PartyRoleWhereUniqueInput
+  }
+
+  /**
+   * PartyRole findUniqueOrThrow
+   */
+  export type PartyRoleFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PartyRole
+     */
+    select?: PartyRoleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PartyRole
+     */
+    omit?: PartyRoleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PartyRoleInclude<ExtArgs> | null
+    /**
+     * Filter, which PartyRole to fetch.
+     */
+    where: PartyRoleWhereUniqueInput
+  }
+
+  /**
+   * PartyRole findFirst
+   */
+  export type PartyRoleFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PartyRole
+     */
+    select?: PartyRoleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PartyRole
+     */
+    omit?: PartyRoleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PartyRoleInclude<ExtArgs> | null
+    /**
+     * Filter, which PartyRole to fetch.
+     */
+    where?: PartyRoleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PartyRoles to fetch.
+     */
+    orderBy?: PartyRoleOrderByWithRelationInput | PartyRoleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PartyRoles.
+     */
+    cursor?: PartyRoleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PartyRoles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PartyRoles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PartyRoles.
+     */
+    distinct?: PartyRoleScalarFieldEnum | PartyRoleScalarFieldEnum[]
+  }
+
+  /**
+   * PartyRole findFirstOrThrow
+   */
+  export type PartyRoleFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PartyRole
+     */
+    select?: PartyRoleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PartyRole
+     */
+    omit?: PartyRoleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PartyRoleInclude<ExtArgs> | null
+    /**
+     * Filter, which PartyRole to fetch.
+     */
+    where?: PartyRoleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PartyRoles to fetch.
+     */
+    orderBy?: PartyRoleOrderByWithRelationInput | PartyRoleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PartyRoles.
+     */
+    cursor?: PartyRoleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PartyRoles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PartyRoles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PartyRoles.
+     */
+    distinct?: PartyRoleScalarFieldEnum | PartyRoleScalarFieldEnum[]
+  }
+
+  /**
+   * PartyRole findMany
+   */
+  export type PartyRoleFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PartyRole
+     */
+    select?: PartyRoleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PartyRole
+     */
+    omit?: PartyRoleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PartyRoleInclude<ExtArgs> | null
+    /**
+     * Filter, which PartyRoles to fetch.
+     */
+    where?: PartyRoleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PartyRoles to fetch.
+     */
+    orderBy?: PartyRoleOrderByWithRelationInput | PartyRoleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing PartyRoles.
+     */
+    cursor?: PartyRoleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PartyRoles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PartyRoles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PartyRoles.
+     */
+    distinct?: PartyRoleScalarFieldEnum | PartyRoleScalarFieldEnum[]
+  }
+
+  /**
+   * PartyRole create
+   */
+  export type PartyRoleCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PartyRole
+     */
+    select?: PartyRoleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PartyRole
+     */
+    omit?: PartyRoleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PartyRoleInclude<ExtArgs> | null
+    /**
+     * The data needed to create a PartyRole.
+     */
+    data: XOR<PartyRoleCreateInput, PartyRoleUncheckedCreateInput>
+  }
+
+  /**
+   * PartyRole createMany
+   */
+  export type PartyRoleCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many PartyRoles.
+     */
+    data: PartyRoleCreateManyInput | PartyRoleCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * PartyRole createManyAndReturn
+   */
+  export type PartyRoleCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PartyRole
+     */
+    select?: PartyRoleSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PartyRole
+     */
+    omit?: PartyRoleOmit<ExtArgs> | null
+    /**
+     * The data used to create many PartyRoles.
+     */
+    data: PartyRoleCreateManyInput | PartyRoleCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * PartyRole update
+   */
+  export type PartyRoleUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PartyRole
+     */
+    select?: PartyRoleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PartyRole
+     */
+    omit?: PartyRoleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PartyRoleInclude<ExtArgs> | null
+    /**
+     * The data needed to update a PartyRole.
+     */
+    data: XOR<PartyRoleUpdateInput, PartyRoleUncheckedUpdateInput>
+    /**
+     * Choose, which PartyRole to update.
+     */
+    where: PartyRoleWhereUniqueInput
+  }
+
+  /**
+   * PartyRole updateMany
+   */
+  export type PartyRoleUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update PartyRoles.
+     */
+    data: XOR<PartyRoleUpdateManyMutationInput, PartyRoleUncheckedUpdateManyInput>
+    /**
+     * Filter which PartyRoles to update
+     */
+    where?: PartyRoleWhereInput
+    /**
+     * Limit how many PartyRoles to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * PartyRole updateManyAndReturn
+   */
+  export type PartyRoleUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PartyRole
+     */
+    select?: PartyRoleSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PartyRole
+     */
+    omit?: PartyRoleOmit<ExtArgs> | null
+    /**
+     * The data used to update PartyRoles.
+     */
+    data: XOR<PartyRoleUpdateManyMutationInput, PartyRoleUncheckedUpdateManyInput>
+    /**
+     * Filter which PartyRoles to update
+     */
+    where?: PartyRoleWhereInput
+    /**
+     * Limit how many PartyRoles to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * PartyRole upsert
+   */
+  export type PartyRoleUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PartyRole
+     */
+    select?: PartyRoleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PartyRole
+     */
+    omit?: PartyRoleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PartyRoleInclude<ExtArgs> | null
+    /**
+     * The filter to search for the PartyRole to update in case it exists.
+     */
+    where: PartyRoleWhereUniqueInput
+    /**
+     * In case the PartyRole found by the `where` argument doesn't exist, create a new PartyRole with this data.
+     */
+    create: XOR<PartyRoleCreateInput, PartyRoleUncheckedCreateInput>
+    /**
+     * In case the PartyRole was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PartyRoleUpdateInput, PartyRoleUncheckedUpdateInput>
+  }
+
+  /**
+   * PartyRole delete
+   */
+  export type PartyRoleDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PartyRole
+     */
+    select?: PartyRoleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PartyRole
+     */
+    omit?: PartyRoleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PartyRoleInclude<ExtArgs> | null
+    /**
+     * Filter which PartyRole to delete.
+     */
+    where: PartyRoleWhereUniqueInput
+  }
+
+  /**
+   * PartyRole deleteMany
+   */
+  export type PartyRoleDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PartyRoles to delete
+     */
+    where?: PartyRoleWhereInput
+    /**
+     * Limit how many PartyRoles to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * PartyRole.parties
+   */
+  export type PartyRole$partiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseParty
+     */
+    select?: CasePartySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseParty
+     */
+    omit?: CasePartyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePartyInclude<ExtArgs> | null
+    where?: CasePartyWhereInput
+    orderBy?: CasePartyOrderByWithRelationInput | CasePartyOrderByWithRelationInput[]
+    cursor?: CasePartyWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CasePartyScalarFieldEnum | CasePartyScalarFieldEnum[]
+  }
+
+  /**
+   * PartyRole without action
+   */
+  export type PartyRoleDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PartyRole
+     */
+    select?: PartyRoleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PartyRole
+     */
+    omit?: PartyRoleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PartyRoleInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Case
+   */
+
+  export type AggregateCase = {
+    _count: CaseCountAggregateOutputType | null
+    _avg: CaseAvgAggregateOutputType | null
+    _sum: CaseSumAggregateOutputType | null
+    _min: CaseMinAggregateOutputType | null
+    _max: CaseMaxAggregateOutputType | null
+  }
+
+  export type CaseAvgAggregateOutputType = {
+    registrationFee: Decimal | null
+  }
+
+  export type CaseSumAggregateOutputType = {
+    registrationFee: Decimal | null
+  }
+
+  export type CaseMinAggregateOutputType = {
+    id: string | null
+    caseNumber: string | null
+    caseName: string | null
+    natureId: string | null
+    registrationDate: Date | null
+    registrationFee: Decimal | null
+    sectionCourtRoom: string | null
+    facts: string | null
+    relatedLaws: string | null
+    referredThrough: string | null
+    noticeStatus: string | null
+    fullJudgmentDate: Date | null
+    judgmentVerifyDate: Date | null
+    status: string | null
+    paymentStatus: string | null
+    createdAt: Date | null
+  }
+
+  export type CaseMaxAggregateOutputType = {
+    id: string | null
+    caseNumber: string | null
+    caseName: string | null
+    natureId: string | null
+    registrationDate: Date | null
+    registrationFee: Decimal | null
+    sectionCourtRoom: string | null
+    facts: string | null
+    relatedLaws: string | null
+    referredThrough: string | null
+    noticeStatus: string | null
+    fullJudgmentDate: Date | null
+    judgmentVerifyDate: Date | null
+    status: string | null
+    paymentStatus: string | null
+    createdAt: Date | null
+  }
+
+  export type CaseCountAggregateOutputType = {
+    id: number
+    caseNumber: number
+    caseName: number
+    natureId: number
+    registrationDate: number
+    registrationFee: number
+    sectionCourtRoom: number
+    facts: number
+    relatedLaws: number
+    referredThrough: number
+    noticeStatus: number
+    fullJudgmentDate: number
+    judgmentVerifyDate: number
+    status: number
+    paymentStatus: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type CaseAvgAggregateInputType = {
+    registrationFee?: true
+  }
+
+  export type CaseSumAggregateInputType = {
+    registrationFee?: true
+  }
+
+  export type CaseMinAggregateInputType = {
+    id?: true
+    caseNumber?: true
+    caseName?: true
+    natureId?: true
+    registrationDate?: true
+    registrationFee?: true
+    sectionCourtRoom?: true
+    facts?: true
+    relatedLaws?: true
+    referredThrough?: true
+    noticeStatus?: true
+    fullJudgmentDate?: true
+    judgmentVerifyDate?: true
+    status?: true
+    paymentStatus?: true
+    createdAt?: true
+  }
+
+  export type CaseMaxAggregateInputType = {
+    id?: true
+    caseNumber?: true
+    caseName?: true
+    natureId?: true
+    registrationDate?: true
+    registrationFee?: true
+    sectionCourtRoom?: true
+    facts?: true
+    relatedLaws?: true
+    referredThrough?: true
+    noticeStatus?: true
+    fullJudgmentDate?: true
+    judgmentVerifyDate?: true
+    status?: true
+    paymentStatus?: true
+    createdAt?: true
+  }
+
+  export type CaseCountAggregateInputType = {
+    id?: true
+    caseNumber?: true
+    caseName?: true
+    natureId?: true
+    registrationDate?: true
+    registrationFee?: true
+    sectionCourtRoom?: true
+    facts?: true
+    relatedLaws?: true
+    referredThrough?: true
+    noticeStatus?: true
+    fullJudgmentDate?: true
+    judgmentVerifyDate?: true
+    status?: true
+    paymentStatus?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type CaseAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Case to aggregate.
+     */
+    where?: CaseWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Cases to fetch.
+     */
+    orderBy?: CaseOrderByWithRelationInput | CaseOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CaseWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Cases from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Cases.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Cases
+    **/
+    _count?: true | CaseCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: CaseAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CaseSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CaseMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CaseMaxAggregateInputType
+  }
+
+  export type GetCaseAggregateType<T extends CaseAggregateArgs> = {
+        [P in keyof T & keyof AggregateCase]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCase[P]>
+      : GetScalarType<T[P], AggregateCase[P]>
+  }
+
+
+
+
+  export type CaseGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CaseWhereInput
+    orderBy?: CaseOrderByWithAggregationInput | CaseOrderByWithAggregationInput[]
+    by: CaseScalarFieldEnum[] | CaseScalarFieldEnum
+    having?: CaseScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CaseCountAggregateInputType | true
+    _avg?: CaseAvgAggregateInputType
+    _sum?: CaseSumAggregateInputType
+    _min?: CaseMinAggregateInputType
+    _max?: CaseMaxAggregateInputType
+  }
+
+  export type CaseGroupByOutputType = {
+    id: string
+    caseNumber: string
+    caseName: string
+    natureId: string
+    registrationDate: Date | null
+    registrationFee: Decimal | null
+    sectionCourtRoom: string | null
+    facts: string | null
+    relatedLaws: string | null
+    referredThrough: string | null
+    noticeStatus: string | null
+    fullJudgmentDate: Date | null
+    judgmentVerifyDate: Date | null
+    status: string
+    paymentStatus: string
+    createdAt: Date
+    _count: CaseCountAggregateOutputType | null
+    _avg: CaseAvgAggregateOutputType | null
+    _sum: CaseSumAggregateOutputType | null
+    _min: CaseMinAggregateOutputType | null
+    _max: CaseMaxAggregateOutputType | null
+  }
+
+  type GetCaseGroupByPayload<T extends CaseGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CaseGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CaseGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CaseGroupByOutputType[P]>
+            : GetScalarType<T[P], CaseGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CaseSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    caseNumber?: boolean
+    caseName?: boolean
+    natureId?: boolean
+    registrationDate?: boolean
+    registrationFee?: boolean
+    sectionCourtRoom?: boolean
+    facts?: boolean
+    relatedLaws?: boolean
+    referredThrough?: boolean
+    noticeStatus?: boolean
+    fullJudgmentDate?: boolean
+    judgmentVerifyDate?: boolean
+    status?: boolean
+    paymentStatus?: boolean
+    createdAt?: boolean
+    nature?: boolean | CaseNatureDefaultArgs<ExtArgs>
+    lawyers?: boolean | Case$lawyersArgs<ExtArgs>
+    parties?: boolean | Case$partiesArgs<ExtArgs>
+    hearings?: boolean | Case$hearingsArgs<ExtArgs>
+    pleadings?: boolean | Case$pleadingsArgs<ExtArgs>
+    proceedings?: boolean | Case$proceedingsArgs<ExtArgs>
+    precedents?: boolean | Case$precedentsArgs<ExtArgs>
+    payments?: boolean | Case$paymentsArgs<ExtArgs>
+    counselings?: boolean | Case$counselingsArgs<ExtArgs>
+    documents?: boolean | Case$documentsArgs<ExtArgs>
+    _count?: boolean | CaseCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["case"]>
+
+  export type CaseSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    caseNumber?: boolean
+    caseName?: boolean
+    natureId?: boolean
+    registrationDate?: boolean
+    registrationFee?: boolean
+    sectionCourtRoom?: boolean
+    facts?: boolean
+    relatedLaws?: boolean
+    referredThrough?: boolean
+    noticeStatus?: boolean
+    fullJudgmentDate?: boolean
+    judgmentVerifyDate?: boolean
+    status?: boolean
+    paymentStatus?: boolean
+    createdAt?: boolean
+    nature?: boolean | CaseNatureDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["case"]>
+
+  export type CaseSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    caseNumber?: boolean
+    caseName?: boolean
+    natureId?: boolean
+    registrationDate?: boolean
+    registrationFee?: boolean
+    sectionCourtRoom?: boolean
+    facts?: boolean
+    relatedLaws?: boolean
+    referredThrough?: boolean
+    noticeStatus?: boolean
+    fullJudgmentDate?: boolean
+    judgmentVerifyDate?: boolean
+    status?: boolean
+    paymentStatus?: boolean
+    createdAt?: boolean
+    nature?: boolean | CaseNatureDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["case"]>
+
+  export type CaseSelectScalar = {
+    id?: boolean
+    caseNumber?: boolean
+    caseName?: boolean
+    natureId?: boolean
+    registrationDate?: boolean
+    registrationFee?: boolean
+    sectionCourtRoom?: boolean
+    facts?: boolean
+    relatedLaws?: boolean
+    referredThrough?: boolean
+    noticeStatus?: boolean
+    fullJudgmentDate?: boolean
+    judgmentVerifyDate?: boolean
+    status?: boolean
+    paymentStatus?: boolean
+    createdAt?: boolean
+  }
+
+  export type CaseOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "caseNumber" | "caseName" | "natureId" | "registrationDate" | "registrationFee" | "sectionCourtRoom" | "facts" | "relatedLaws" | "referredThrough" | "noticeStatus" | "fullJudgmentDate" | "judgmentVerifyDate" | "status" | "paymentStatus" | "createdAt", ExtArgs["result"]["case"]>
+  export type CaseInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    nature?: boolean | CaseNatureDefaultArgs<ExtArgs>
+    lawyers?: boolean | Case$lawyersArgs<ExtArgs>
+    parties?: boolean | Case$partiesArgs<ExtArgs>
+    hearings?: boolean | Case$hearingsArgs<ExtArgs>
+    pleadings?: boolean | Case$pleadingsArgs<ExtArgs>
+    proceedings?: boolean | Case$proceedingsArgs<ExtArgs>
+    precedents?: boolean | Case$precedentsArgs<ExtArgs>
+    payments?: boolean | Case$paymentsArgs<ExtArgs>
+    counselings?: boolean | Case$counselingsArgs<ExtArgs>
+    documents?: boolean | Case$documentsArgs<ExtArgs>
+    _count?: boolean | CaseCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type CaseIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    nature?: boolean | CaseNatureDefaultArgs<ExtArgs>
+  }
+  export type CaseIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    nature?: boolean | CaseNatureDefaultArgs<ExtArgs>
+  }
+
+  export type $CasePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Case"
+    objects: {
+      nature: Prisma.$CaseNaturePayload<ExtArgs>
+      lawyers: Prisma.$CaseLawyerPayload<ExtArgs>[]
+      parties: Prisma.$CasePartyPayload<ExtArgs>[]
+      hearings: Prisma.$CaseHearingPayload<ExtArgs>[]
+      pleadings: Prisma.$CasePleadingPayload<ExtArgs>[]
+      proceedings: Prisma.$CourtProceedingPayload<ExtArgs>[]
+      precedents: Prisma.$CasePrecedentPayload<ExtArgs>[]
+      payments: Prisma.$CasePaymentPayload<ExtArgs>[]
+      counselings: Prisma.$CaseCounselingPayload<ExtArgs>[]
+      documents: Prisma.$CaseDocumentPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      caseNumber: string
+      caseName: string
+      natureId: string
+      registrationDate: Date | null
+      registrationFee: Prisma.Decimal | null
+      sectionCourtRoom: string | null
+      facts: string | null
+      relatedLaws: string | null
+      referredThrough: string | null
+      noticeStatus: string | null
+      fullJudgmentDate: Date | null
+      judgmentVerifyDate: Date | null
+      status: string
+      paymentStatus: string
+      createdAt: Date
+    }, ExtArgs["result"]["case"]>
+    composites: {}
+  }
+
+  type CaseGetPayload<S extends boolean | null | undefined | CaseDefaultArgs> = $Result.GetResult<Prisma.$CasePayload, S>
+
+  type CaseCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CaseFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CaseCountAggregateInputType | true
+    }
+
+  export interface CaseDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Case'], meta: { name: 'Case' } }
+    /**
+     * Find zero or one Case that matches the filter.
+     * @param {CaseFindUniqueArgs} args - Arguments to find a Case
+     * @example
+     * // Get one Case
+     * const case = await prisma.case.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CaseFindUniqueArgs>(args: SelectSubset<T, CaseFindUniqueArgs<ExtArgs>>): Prisma__CaseClient<$Result.GetResult<Prisma.$CasePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Case that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CaseFindUniqueOrThrowArgs} args - Arguments to find a Case
+     * @example
+     * // Get one Case
+     * const case = await prisma.case.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CaseFindUniqueOrThrowArgs>(args: SelectSubset<T, CaseFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CaseClient<$Result.GetResult<Prisma.$CasePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Case that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseFindFirstArgs} args - Arguments to find a Case
+     * @example
+     * // Get one Case
+     * const case = await prisma.case.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CaseFindFirstArgs>(args?: SelectSubset<T, CaseFindFirstArgs<ExtArgs>>): Prisma__CaseClient<$Result.GetResult<Prisma.$CasePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Case that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseFindFirstOrThrowArgs} args - Arguments to find a Case
+     * @example
+     * // Get one Case
+     * const case = await prisma.case.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CaseFindFirstOrThrowArgs>(args?: SelectSubset<T, CaseFindFirstOrThrowArgs<ExtArgs>>): Prisma__CaseClient<$Result.GetResult<Prisma.$CasePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Cases that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Cases
+     * const cases = await prisma.case.findMany()
+     * 
+     * // Get first 10 Cases
+     * const cases = await prisma.case.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const caseWithIdOnly = await prisma.case.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CaseFindManyArgs>(args?: SelectSubset<T, CaseFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CasePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Case.
+     * @param {CaseCreateArgs} args - Arguments to create a Case.
+     * @example
+     * // Create one Case
+     * const Case = await prisma.case.create({
+     *   data: {
+     *     // ... data to create a Case
+     *   }
+     * })
+     * 
+     */
+    create<T extends CaseCreateArgs>(args: SelectSubset<T, CaseCreateArgs<ExtArgs>>): Prisma__CaseClient<$Result.GetResult<Prisma.$CasePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Cases.
+     * @param {CaseCreateManyArgs} args - Arguments to create many Cases.
+     * @example
+     * // Create many Cases
+     * const case = await prisma.case.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CaseCreateManyArgs>(args?: SelectSubset<T, CaseCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Cases and returns the data saved in the database.
+     * @param {CaseCreateManyAndReturnArgs} args - Arguments to create many Cases.
+     * @example
+     * // Create many Cases
+     * const case = await prisma.case.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Cases and only return the `id`
+     * const caseWithIdOnly = await prisma.case.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CaseCreateManyAndReturnArgs>(args?: SelectSubset<T, CaseCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CasePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Case.
+     * @param {CaseDeleteArgs} args - Arguments to delete one Case.
+     * @example
+     * // Delete one Case
+     * const Case = await prisma.case.delete({
+     *   where: {
+     *     // ... filter to delete one Case
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CaseDeleteArgs>(args: SelectSubset<T, CaseDeleteArgs<ExtArgs>>): Prisma__CaseClient<$Result.GetResult<Prisma.$CasePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Case.
+     * @param {CaseUpdateArgs} args - Arguments to update one Case.
+     * @example
+     * // Update one Case
+     * const case = await prisma.case.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CaseUpdateArgs>(args: SelectSubset<T, CaseUpdateArgs<ExtArgs>>): Prisma__CaseClient<$Result.GetResult<Prisma.$CasePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Cases.
+     * @param {CaseDeleteManyArgs} args - Arguments to filter Cases to delete.
+     * @example
+     * // Delete a few Cases
+     * const { count } = await prisma.case.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CaseDeleteManyArgs>(args?: SelectSubset<T, CaseDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Cases.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Cases
+     * const case = await prisma.case.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CaseUpdateManyArgs>(args: SelectSubset<T, CaseUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Cases and returns the data updated in the database.
+     * @param {CaseUpdateManyAndReturnArgs} args - Arguments to update many Cases.
+     * @example
+     * // Update many Cases
+     * const case = await prisma.case.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Cases and only return the `id`
+     * const caseWithIdOnly = await prisma.case.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CaseUpdateManyAndReturnArgs>(args: SelectSubset<T, CaseUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CasePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Case.
+     * @param {CaseUpsertArgs} args - Arguments to update or create a Case.
+     * @example
+     * // Update or create a Case
+     * const case = await prisma.case.upsert({
+     *   create: {
+     *     // ... data to create a Case
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Case we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CaseUpsertArgs>(args: SelectSubset<T, CaseUpsertArgs<ExtArgs>>): Prisma__CaseClient<$Result.GetResult<Prisma.$CasePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Cases.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseCountArgs} args - Arguments to filter Cases to count.
+     * @example
+     * // Count the number of Cases
+     * const count = await prisma.case.count({
+     *   where: {
+     *     // ... the filter for the Cases we want to count
+     *   }
+     * })
+    **/
+    count<T extends CaseCountArgs>(
+      args?: Subset<T, CaseCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CaseCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Case.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CaseAggregateArgs>(args: Subset<T, CaseAggregateArgs>): Prisma.PrismaPromise<GetCaseAggregateType<T>>
+
+    /**
+     * Group by Case.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CaseGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CaseGroupByArgs['orderBy'] }
+        : { orderBy?: CaseGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CaseGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCaseGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Case model
+   */
+  readonly fields: CaseFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Case.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CaseClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    nature<T extends CaseNatureDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CaseNatureDefaultArgs<ExtArgs>>): Prisma__CaseNatureClient<$Result.GetResult<Prisma.$CaseNaturePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    lawyers<T extends Case$lawyersArgs<ExtArgs> = {}>(args?: Subset<T, Case$lawyersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseLawyerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    parties<T extends Case$partiesArgs<ExtArgs> = {}>(args?: Subset<T, Case$partiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CasePartyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    hearings<T extends Case$hearingsArgs<ExtArgs> = {}>(args?: Subset<T, Case$hearingsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseHearingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    pleadings<T extends Case$pleadingsArgs<ExtArgs> = {}>(args?: Subset<T, Case$pleadingsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CasePleadingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    proceedings<T extends Case$proceedingsArgs<ExtArgs> = {}>(args?: Subset<T, Case$proceedingsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CourtProceedingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    precedents<T extends Case$precedentsArgs<ExtArgs> = {}>(args?: Subset<T, Case$precedentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CasePrecedentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    payments<T extends Case$paymentsArgs<ExtArgs> = {}>(args?: Subset<T, Case$paymentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CasePaymentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    counselings<T extends Case$counselingsArgs<ExtArgs> = {}>(args?: Subset<T, Case$counselingsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseCounselingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    documents<T extends Case$documentsArgs<ExtArgs> = {}>(args?: Subset<T, Case$documentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseDocumentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Case model
+   */
+  interface CaseFieldRefs {
+    readonly id: FieldRef<"Case", 'String'>
+    readonly caseNumber: FieldRef<"Case", 'String'>
+    readonly caseName: FieldRef<"Case", 'String'>
+    readonly natureId: FieldRef<"Case", 'String'>
+    readonly registrationDate: FieldRef<"Case", 'DateTime'>
+    readonly registrationFee: FieldRef<"Case", 'Decimal'>
+    readonly sectionCourtRoom: FieldRef<"Case", 'String'>
+    readonly facts: FieldRef<"Case", 'String'>
+    readonly relatedLaws: FieldRef<"Case", 'String'>
+    readonly referredThrough: FieldRef<"Case", 'String'>
+    readonly noticeStatus: FieldRef<"Case", 'String'>
+    readonly fullJudgmentDate: FieldRef<"Case", 'DateTime'>
+    readonly judgmentVerifyDate: FieldRef<"Case", 'DateTime'>
+    readonly status: FieldRef<"Case", 'String'>
+    readonly paymentStatus: FieldRef<"Case", 'String'>
+    readonly createdAt: FieldRef<"Case", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Case findUnique
+   */
+  export type CaseFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Case
+     */
+    select?: CaseSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Case
+     */
+    omit?: CaseOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseInclude<ExtArgs> | null
+    /**
+     * Filter, which Case to fetch.
+     */
+    where: CaseWhereUniqueInput
+  }
+
+  /**
+   * Case findUniqueOrThrow
+   */
+  export type CaseFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Case
+     */
+    select?: CaseSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Case
+     */
+    omit?: CaseOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseInclude<ExtArgs> | null
+    /**
+     * Filter, which Case to fetch.
+     */
+    where: CaseWhereUniqueInput
+  }
+
+  /**
+   * Case findFirst
+   */
+  export type CaseFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Case
+     */
+    select?: CaseSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Case
+     */
+    omit?: CaseOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseInclude<ExtArgs> | null
+    /**
+     * Filter, which Case to fetch.
+     */
+    where?: CaseWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Cases to fetch.
+     */
+    orderBy?: CaseOrderByWithRelationInput | CaseOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Cases.
+     */
+    cursor?: CaseWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Cases from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Cases.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Cases.
+     */
+    distinct?: CaseScalarFieldEnum | CaseScalarFieldEnum[]
+  }
+
+  /**
+   * Case findFirstOrThrow
+   */
+  export type CaseFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Case
+     */
+    select?: CaseSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Case
+     */
+    omit?: CaseOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseInclude<ExtArgs> | null
+    /**
+     * Filter, which Case to fetch.
+     */
+    where?: CaseWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Cases to fetch.
+     */
+    orderBy?: CaseOrderByWithRelationInput | CaseOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Cases.
+     */
+    cursor?: CaseWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Cases from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Cases.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Cases.
+     */
+    distinct?: CaseScalarFieldEnum | CaseScalarFieldEnum[]
+  }
+
+  /**
+   * Case findMany
+   */
+  export type CaseFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Case
+     */
+    select?: CaseSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Case
+     */
+    omit?: CaseOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseInclude<ExtArgs> | null
+    /**
+     * Filter, which Cases to fetch.
+     */
+    where?: CaseWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Cases to fetch.
+     */
+    orderBy?: CaseOrderByWithRelationInput | CaseOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Cases.
+     */
+    cursor?: CaseWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Cases from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Cases.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Cases.
+     */
+    distinct?: CaseScalarFieldEnum | CaseScalarFieldEnum[]
+  }
+
+  /**
+   * Case create
+   */
+  export type CaseCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Case
+     */
+    select?: CaseSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Case
+     */
+    omit?: CaseOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Case.
+     */
+    data: XOR<CaseCreateInput, CaseUncheckedCreateInput>
+  }
+
+  /**
+   * Case createMany
+   */
+  export type CaseCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Cases.
+     */
+    data: CaseCreateManyInput | CaseCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Case createManyAndReturn
+   */
+  export type CaseCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Case
+     */
+    select?: CaseSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Case
+     */
+    omit?: CaseOmit<ExtArgs> | null
+    /**
+     * The data used to create many Cases.
+     */
+    data: CaseCreateManyInput | CaseCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Case update
+   */
+  export type CaseUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Case
+     */
+    select?: CaseSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Case
+     */
+    omit?: CaseOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Case.
+     */
+    data: XOR<CaseUpdateInput, CaseUncheckedUpdateInput>
+    /**
+     * Choose, which Case to update.
+     */
+    where: CaseWhereUniqueInput
+  }
+
+  /**
+   * Case updateMany
+   */
+  export type CaseUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Cases.
+     */
+    data: XOR<CaseUpdateManyMutationInput, CaseUncheckedUpdateManyInput>
+    /**
+     * Filter which Cases to update
+     */
+    where?: CaseWhereInput
+    /**
+     * Limit how many Cases to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Case updateManyAndReturn
+   */
+  export type CaseUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Case
+     */
+    select?: CaseSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Case
+     */
+    omit?: CaseOmit<ExtArgs> | null
+    /**
+     * The data used to update Cases.
+     */
+    data: XOR<CaseUpdateManyMutationInput, CaseUncheckedUpdateManyInput>
+    /**
+     * Filter which Cases to update
+     */
+    where?: CaseWhereInput
+    /**
+     * Limit how many Cases to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Case upsert
+   */
+  export type CaseUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Case
+     */
+    select?: CaseSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Case
+     */
+    omit?: CaseOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Case to update in case it exists.
+     */
+    where: CaseWhereUniqueInput
+    /**
+     * In case the Case found by the `where` argument doesn't exist, create a new Case with this data.
+     */
+    create: XOR<CaseCreateInput, CaseUncheckedCreateInput>
+    /**
+     * In case the Case was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CaseUpdateInput, CaseUncheckedUpdateInput>
+  }
+
+  /**
+   * Case delete
+   */
+  export type CaseDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Case
+     */
+    select?: CaseSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Case
+     */
+    omit?: CaseOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseInclude<ExtArgs> | null
+    /**
+     * Filter which Case to delete.
+     */
+    where: CaseWhereUniqueInput
+  }
+
+  /**
+   * Case deleteMany
+   */
+  export type CaseDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Cases to delete
+     */
+    where?: CaseWhereInput
+    /**
+     * Limit how many Cases to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Case.lawyers
+   */
+  export type Case$lawyersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseLawyer
+     */
+    select?: CaseLawyerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseLawyer
+     */
+    omit?: CaseLawyerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseLawyerInclude<ExtArgs> | null
+    where?: CaseLawyerWhereInput
+    orderBy?: CaseLawyerOrderByWithRelationInput | CaseLawyerOrderByWithRelationInput[]
+    cursor?: CaseLawyerWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CaseLawyerScalarFieldEnum | CaseLawyerScalarFieldEnum[]
+  }
+
+  /**
+   * Case.parties
+   */
+  export type Case$partiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseParty
+     */
+    select?: CasePartySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseParty
+     */
+    omit?: CasePartyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePartyInclude<ExtArgs> | null
+    where?: CasePartyWhereInput
+    orderBy?: CasePartyOrderByWithRelationInput | CasePartyOrderByWithRelationInput[]
+    cursor?: CasePartyWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CasePartyScalarFieldEnum | CasePartyScalarFieldEnum[]
+  }
+
+  /**
+   * Case.hearings
+   */
+  export type Case$hearingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseHearing
+     */
+    select?: CaseHearingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseHearing
+     */
+    omit?: CaseHearingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseHearingInclude<ExtArgs> | null
+    where?: CaseHearingWhereInput
+    orderBy?: CaseHearingOrderByWithRelationInput | CaseHearingOrderByWithRelationInput[]
+    cursor?: CaseHearingWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CaseHearingScalarFieldEnum | CaseHearingScalarFieldEnum[]
+  }
+
+  /**
+   * Case.pleadings
+   */
+  export type Case$pleadingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CasePleading
+     */
+    select?: CasePleadingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CasePleading
+     */
+    omit?: CasePleadingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePleadingInclude<ExtArgs> | null
+    where?: CasePleadingWhereInput
+    orderBy?: CasePleadingOrderByWithRelationInput | CasePleadingOrderByWithRelationInput[]
+    cursor?: CasePleadingWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CasePleadingScalarFieldEnum | CasePleadingScalarFieldEnum[]
+  }
+
+  /**
+   * Case.proceedings
+   */
+  export type Case$proceedingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CourtProceeding
+     */
+    select?: CourtProceedingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CourtProceeding
+     */
+    omit?: CourtProceedingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CourtProceedingInclude<ExtArgs> | null
+    where?: CourtProceedingWhereInput
+    orderBy?: CourtProceedingOrderByWithRelationInput | CourtProceedingOrderByWithRelationInput[]
+    cursor?: CourtProceedingWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CourtProceedingScalarFieldEnum | CourtProceedingScalarFieldEnum[]
+  }
+
+  /**
+   * Case.precedents
+   */
+  export type Case$precedentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CasePrecedent
+     */
+    select?: CasePrecedentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CasePrecedent
+     */
+    omit?: CasePrecedentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePrecedentInclude<ExtArgs> | null
+    where?: CasePrecedentWhereInput
+    orderBy?: CasePrecedentOrderByWithRelationInput | CasePrecedentOrderByWithRelationInput[]
+    cursor?: CasePrecedentWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CasePrecedentScalarFieldEnum | CasePrecedentScalarFieldEnum[]
+  }
+
+  /**
+   * Case.payments
+   */
+  export type Case$paymentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CasePayment
+     */
+    select?: CasePaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CasePayment
+     */
+    omit?: CasePaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePaymentInclude<ExtArgs> | null
+    where?: CasePaymentWhereInput
+    orderBy?: CasePaymentOrderByWithRelationInput | CasePaymentOrderByWithRelationInput[]
+    cursor?: CasePaymentWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CasePaymentScalarFieldEnum | CasePaymentScalarFieldEnum[]
+  }
+
+  /**
+   * Case.counselings
+   */
+  export type Case$counselingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseCounseling
+     */
+    select?: CaseCounselingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseCounseling
+     */
+    omit?: CaseCounselingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseCounselingInclude<ExtArgs> | null
+    where?: CaseCounselingWhereInput
+    orderBy?: CaseCounselingOrderByWithRelationInput | CaseCounselingOrderByWithRelationInput[]
+    cursor?: CaseCounselingWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CaseCounselingScalarFieldEnum | CaseCounselingScalarFieldEnum[]
+  }
+
+  /**
+   * Case.documents
+   */
+  export type Case$documentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseDocument
+     */
+    select?: CaseDocumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseDocument
+     */
+    omit?: CaseDocumentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseDocumentInclude<ExtArgs> | null
+    where?: CaseDocumentWhereInput
+    orderBy?: CaseDocumentOrderByWithRelationInput | CaseDocumentOrderByWithRelationInput[]
+    cursor?: CaseDocumentWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CaseDocumentScalarFieldEnum | CaseDocumentScalarFieldEnum[]
+  }
+
+  /**
+   * Case without action
+   */
+  export type CaseDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Case
+     */
+    select?: CaseSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Case
+     */
+    omit?: CaseOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model CaseLawyer
+   */
+
+  export type AggregateCaseLawyer = {
+    _count: CaseLawyerCountAggregateOutputType | null
+    _min: CaseLawyerMinAggregateOutputType | null
+    _max: CaseLawyerMaxAggregateOutputType | null
+  }
+
+  export type CaseLawyerMinAggregateOutputType = {
+    caseId: string | null
+    userId: string | null
+    isLead: boolean | null
+  }
+
+  export type CaseLawyerMaxAggregateOutputType = {
+    caseId: string | null
+    userId: string | null
+    isLead: boolean | null
+  }
+
+  export type CaseLawyerCountAggregateOutputType = {
+    caseId: number
+    userId: number
+    isLead: number
+    _all: number
+  }
+
+
+  export type CaseLawyerMinAggregateInputType = {
+    caseId?: true
+    userId?: true
+    isLead?: true
+  }
+
+  export type CaseLawyerMaxAggregateInputType = {
+    caseId?: true
+    userId?: true
+    isLead?: true
+  }
+
+  export type CaseLawyerCountAggregateInputType = {
+    caseId?: true
+    userId?: true
+    isLead?: true
+    _all?: true
+  }
+
+  export type CaseLawyerAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CaseLawyer to aggregate.
+     */
+    where?: CaseLawyerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CaseLawyers to fetch.
+     */
+    orderBy?: CaseLawyerOrderByWithRelationInput | CaseLawyerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CaseLawyerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CaseLawyers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CaseLawyers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CaseLawyers
+    **/
+    _count?: true | CaseLawyerCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CaseLawyerMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CaseLawyerMaxAggregateInputType
+  }
+
+  export type GetCaseLawyerAggregateType<T extends CaseLawyerAggregateArgs> = {
+        [P in keyof T & keyof AggregateCaseLawyer]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCaseLawyer[P]>
+      : GetScalarType<T[P], AggregateCaseLawyer[P]>
+  }
+
+
+
+
+  export type CaseLawyerGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CaseLawyerWhereInput
+    orderBy?: CaseLawyerOrderByWithAggregationInput | CaseLawyerOrderByWithAggregationInput[]
+    by: CaseLawyerScalarFieldEnum[] | CaseLawyerScalarFieldEnum
+    having?: CaseLawyerScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CaseLawyerCountAggregateInputType | true
+    _min?: CaseLawyerMinAggregateInputType
+    _max?: CaseLawyerMaxAggregateInputType
+  }
+
+  export type CaseLawyerGroupByOutputType = {
+    caseId: string
+    userId: string
+    isLead: boolean
+    _count: CaseLawyerCountAggregateOutputType | null
+    _min: CaseLawyerMinAggregateOutputType | null
+    _max: CaseLawyerMaxAggregateOutputType | null
+  }
+
+  type GetCaseLawyerGroupByPayload<T extends CaseLawyerGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CaseLawyerGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CaseLawyerGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CaseLawyerGroupByOutputType[P]>
+            : GetScalarType<T[P], CaseLawyerGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CaseLawyerSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    caseId?: boolean
+    userId?: boolean
+    isLead?: boolean
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["caseLawyer"]>
+
+  export type CaseLawyerSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    caseId?: boolean
+    userId?: boolean
+    isLead?: boolean
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["caseLawyer"]>
+
+  export type CaseLawyerSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    caseId?: boolean
+    userId?: boolean
+    isLead?: boolean
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["caseLawyer"]>
+
+  export type CaseLawyerSelectScalar = {
+    caseId?: boolean
+    userId?: boolean
+    isLead?: boolean
+  }
+
+  export type CaseLawyerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"caseId" | "userId" | "isLead", ExtArgs["result"]["caseLawyer"]>
+  export type CaseLawyerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type CaseLawyerIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type CaseLawyerIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $CaseLawyerPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CaseLawyer"
+    objects: {
+      case: Prisma.$CasePayload<ExtArgs>
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      caseId: string
+      userId: string
+      isLead: boolean
+    }, ExtArgs["result"]["caseLawyer"]>
+    composites: {}
+  }
+
+  type CaseLawyerGetPayload<S extends boolean | null | undefined | CaseLawyerDefaultArgs> = $Result.GetResult<Prisma.$CaseLawyerPayload, S>
+
+  type CaseLawyerCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CaseLawyerFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CaseLawyerCountAggregateInputType | true
+    }
+
+  export interface CaseLawyerDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CaseLawyer'], meta: { name: 'CaseLawyer' } }
+    /**
+     * Find zero or one CaseLawyer that matches the filter.
+     * @param {CaseLawyerFindUniqueArgs} args - Arguments to find a CaseLawyer
+     * @example
+     * // Get one CaseLawyer
+     * const caseLawyer = await prisma.caseLawyer.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CaseLawyerFindUniqueArgs>(args: SelectSubset<T, CaseLawyerFindUniqueArgs<ExtArgs>>): Prisma__CaseLawyerClient<$Result.GetResult<Prisma.$CaseLawyerPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one CaseLawyer that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CaseLawyerFindUniqueOrThrowArgs} args - Arguments to find a CaseLawyer
+     * @example
+     * // Get one CaseLawyer
+     * const caseLawyer = await prisma.caseLawyer.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CaseLawyerFindUniqueOrThrowArgs>(args: SelectSubset<T, CaseLawyerFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CaseLawyerClient<$Result.GetResult<Prisma.$CaseLawyerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CaseLawyer that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseLawyerFindFirstArgs} args - Arguments to find a CaseLawyer
+     * @example
+     * // Get one CaseLawyer
+     * const caseLawyer = await prisma.caseLawyer.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CaseLawyerFindFirstArgs>(args?: SelectSubset<T, CaseLawyerFindFirstArgs<ExtArgs>>): Prisma__CaseLawyerClient<$Result.GetResult<Prisma.$CaseLawyerPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CaseLawyer that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseLawyerFindFirstOrThrowArgs} args - Arguments to find a CaseLawyer
+     * @example
+     * // Get one CaseLawyer
+     * const caseLawyer = await prisma.caseLawyer.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CaseLawyerFindFirstOrThrowArgs>(args?: SelectSubset<T, CaseLawyerFindFirstOrThrowArgs<ExtArgs>>): Prisma__CaseLawyerClient<$Result.GetResult<Prisma.$CaseLawyerPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CaseLawyers that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseLawyerFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CaseLawyers
+     * const caseLawyers = await prisma.caseLawyer.findMany()
+     * 
+     * // Get first 10 CaseLawyers
+     * const caseLawyers = await prisma.caseLawyer.findMany({ take: 10 })
+     * 
+     * // Only select the `caseId`
+     * const caseLawyerWithCaseIdOnly = await prisma.caseLawyer.findMany({ select: { caseId: true } })
+     * 
+     */
+    findMany<T extends CaseLawyerFindManyArgs>(args?: SelectSubset<T, CaseLawyerFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseLawyerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a CaseLawyer.
+     * @param {CaseLawyerCreateArgs} args - Arguments to create a CaseLawyer.
+     * @example
+     * // Create one CaseLawyer
+     * const CaseLawyer = await prisma.caseLawyer.create({
+     *   data: {
+     *     // ... data to create a CaseLawyer
+     *   }
+     * })
+     * 
+     */
+    create<T extends CaseLawyerCreateArgs>(args: SelectSubset<T, CaseLawyerCreateArgs<ExtArgs>>): Prisma__CaseLawyerClient<$Result.GetResult<Prisma.$CaseLawyerPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many CaseLawyers.
+     * @param {CaseLawyerCreateManyArgs} args - Arguments to create many CaseLawyers.
+     * @example
+     * // Create many CaseLawyers
+     * const caseLawyer = await prisma.caseLawyer.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CaseLawyerCreateManyArgs>(args?: SelectSubset<T, CaseLawyerCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many CaseLawyers and returns the data saved in the database.
+     * @param {CaseLawyerCreateManyAndReturnArgs} args - Arguments to create many CaseLawyers.
+     * @example
+     * // Create many CaseLawyers
+     * const caseLawyer = await prisma.caseLawyer.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many CaseLawyers and only return the `caseId`
+     * const caseLawyerWithCaseIdOnly = await prisma.caseLawyer.createManyAndReturn({
+     *   select: { caseId: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CaseLawyerCreateManyAndReturnArgs>(args?: SelectSubset<T, CaseLawyerCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseLawyerPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a CaseLawyer.
+     * @param {CaseLawyerDeleteArgs} args - Arguments to delete one CaseLawyer.
+     * @example
+     * // Delete one CaseLawyer
+     * const CaseLawyer = await prisma.caseLawyer.delete({
+     *   where: {
+     *     // ... filter to delete one CaseLawyer
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CaseLawyerDeleteArgs>(args: SelectSubset<T, CaseLawyerDeleteArgs<ExtArgs>>): Prisma__CaseLawyerClient<$Result.GetResult<Prisma.$CaseLawyerPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one CaseLawyer.
+     * @param {CaseLawyerUpdateArgs} args - Arguments to update one CaseLawyer.
+     * @example
+     * // Update one CaseLawyer
+     * const caseLawyer = await prisma.caseLawyer.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CaseLawyerUpdateArgs>(args: SelectSubset<T, CaseLawyerUpdateArgs<ExtArgs>>): Prisma__CaseLawyerClient<$Result.GetResult<Prisma.$CaseLawyerPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more CaseLawyers.
+     * @param {CaseLawyerDeleteManyArgs} args - Arguments to filter CaseLawyers to delete.
+     * @example
+     * // Delete a few CaseLawyers
+     * const { count } = await prisma.caseLawyer.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CaseLawyerDeleteManyArgs>(args?: SelectSubset<T, CaseLawyerDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CaseLawyers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseLawyerUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CaseLawyers
+     * const caseLawyer = await prisma.caseLawyer.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CaseLawyerUpdateManyArgs>(args: SelectSubset<T, CaseLawyerUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CaseLawyers and returns the data updated in the database.
+     * @param {CaseLawyerUpdateManyAndReturnArgs} args - Arguments to update many CaseLawyers.
+     * @example
+     * // Update many CaseLawyers
+     * const caseLawyer = await prisma.caseLawyer.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more CaseLawyers and only return the `caseId`
+     * const caseLawyerWithCaseIdOnly = await prisma.caseLawyer.updateManyAndReturn({
+     *   select: { caseId: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CaseLawyerUpdateManyAndReturnArgs>(args: SelectSubset<T, CaseLawyerUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseLawyerPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one CaseLawyer.
+     * @param {CaseLawyerUpsertArgs} args - Arguments to update or create a CaseLawyer.
+     * @example
+     * // Update or create a CaseLawyer
+     * const caseLawyer = await prisma.caseLawyer.upsert({
+     *   create: {
+     *     // ... data to create a CaseLawyer
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CaseLawyer we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CaseLawyerUpsertArgs>(args: SelectSubset<T, CaseLawyerUpsertArgs<ExtArgs>>): Prisma__CaseLawyerClient<$Result.GetResult<Prisma.$CaseLawyerPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of CaseLawyers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseLawyerCountArgs} args - Arguments to filter CaseLawyers to count.
+     * @example
+     * // Count the number of CaseLawyers
+     * const count = await prisma.caseLawyer.count({
+     *   where: {
+     *     // ... the filter for the CaseLawyers we want to count
+     *   }
+     * })
+    **/
+    count<T extends CaseLawyerCountArgs>(
+      args?: Subset<T, CaseLawyerCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CaseLawyerCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CaseLawyer.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseLawyerAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CaseLawyerAggregateArgs>(args: Subset<T, CaseLawyerAggregateArgs>): Prisma.PrismaPromise<GetCaseLawyerAggregateType<T>>
+
+    /**
+     * Group by CaseLawyer.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseLawyerGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CaseLawyerGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CaseLawyerGroupByArgs['orderBy'] }
+        : { orderBy?: CaseLawyerGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CaseLawyerGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCaseLawyerGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CaseLawyer model
+   */
+  readonly fields: CaseLawyerFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CaseLawyer.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CaseLawyerClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    case<T extends CaseDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CaseDefaultArgs<ExtArgs>>): Prisma__CaseClient<$Result.GetResult<Prisma.$CasePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CaseLawyer model
+   */
+  interface CaseLawyerFieldRefs {
+    readonly caseId: FieldRef<"CaseLawyer", 'String'>
+    readonly userId: FieldRef<"CaseLawyer", 'String'>
+    readonly isLead: FieldRef<"CaseLawyer", 'Boolean'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CaseLawyer findUnique
+   */
+  export type CaseLawyerFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseLawyer
+     */
+    select?: CaseLawyerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseLawyer
+     */
+    omit?: CaseLawyerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseLawyerInclude<ExtArgs> | null
+    /**
+     * Filter, which CaseLawyer to fetch.
+     */
+    where: CaseLawyerWhereUniqueInput
+  }
+
+  /**
+   * CaseLawyer findUniqueOrThrow
+   */
+  export type CaseLawyerFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseLawyer
+     */
+    select?: CaseLawyerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseLawyer
+     */
+    omit?: CaseLawyerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseLawyerInclude<ExtArgs> | null
+    /**
+     * Filter, which CaseLawyer to fetch.
+     */
+    where: CaseLawyerWhereUniqueInput
+  }
+
+  /**
+   * CaseLawyer findFirst
+   */
+  export type CaseLawyerFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseLawyer
+     */
+    select?: CaseLawyerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseLawyer
+     */
+    omit?: CaseLawyerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseLawyerInclude<ExtArgs> | null
+    /**
+     * Filter, which CaseLawyer to fetch.
+     */
+    where?: CaseLawyerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CaseLawyers to fetch.
+     */
+    orderBy?: CaseLawyerOrderByWithRelationInput | CaseLawyerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CaseLawyers.
+     */
+    cursor?: CaseLawyerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CaseLawyers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CaseLawyers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CaseLawyers.
+     */
+    distinct?: CaseLawyerScalarFieldEnum | CaseLawyerScalarFieldEnum[]
+  }
+
+  /**
+   * CaseLawyer findFirstOrThrow
+   */
+  export type CaseLawyerFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseLawyer
+     */
+    select?: CaseLawyerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseLawyer
+     */
+    omit?: CaseLawyerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseLawyerInclude<ExtArgs> | null
+    /**
+     * Filter, which CaseLawyer to fetch.
+     */
+    where?: CaseLawyerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CaseLawyers to fetch.
+     */
+    orderBy?: CaseLawyerOrderByWithRelationInput | CaseLawyerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CaseLawyers.
+     */
+    cursor?: CaseLawyerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CaseLawyers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CaseLawyers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CaseLawyers.
+     */
+    distinct?: CaseLawyerScalarFieldEnum | CaseLawyerScalarFieldEnum[]
+  }
+
+  /**
+   * CaseLawyer findMany
+   */
+  export type CaseLawyerFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseLawyer
+     */
+    select?: CaseLawyerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseLawyer
+     */
+    omit?: CaseLawyerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseLawyerInclude<ExtArgs> | null
+    /**
+     * Filter, which CaseLawyers to fetch.
+     */
+    where?: CaseLawyerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CaseLawyers to fetch.
+     */
+    orderBy?: CaseLawyerOrderByWithRelationInput | CaseLawyerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CaseLawyers.
+     */
+    cursor?: CaseLawyerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CaseLawyers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CaseLawyers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CaseLawyers.
+     */
+    distinct?: CaseLawyerScalarFieldEnum | CaseLawyerScalarFieldEnum[]
+  }
+
+  /**
+   * CaseLawyer create
+   */
+  export type CaseLawyerCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseLawyer
+     */
+    select?: CaseLawyerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseLawyer
+     */
+    omit?: CaseLawyerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseLawyerInclude<ExtArgs> | null
+    /**
+     * The data needed to create a CaseLawyer.
+     */
+    data: XOR<CaseLawyerCreateInput, CaseLawyerUncheckedCreateInput>
+  }
+
+  /**
+   * CaseLawyer createMany
+   */
+  export type CaseLawyerCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CaseLawyers.
+     */
+    data: CaseLawyerCreateManyInput | CaseLawyerCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CaseLawyer createManyAndReturn
+   */
+  export type CaseLawyerCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseLawyer
+     */
+    select?: CaseLawyerSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseLawyer
+     */
+    omit?: CaseLawyerOmit<ExtArgs> | null
+    /**
+     * The data used to create many CaseLawyers.
+     */
+    data: CaseLawyerCreateManyInput | CaseLawyerCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseLawyerIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CaseLawyer update
+   */
+  export type CaseLawyerUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseLawyer
+     */
+    select?: CaseLawyerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseLawyer
+     */
+    omit?: CaseLawyerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseLawyerInclude<ExtArgs> | null
+    /**
+     * The data needed to update a CaseLawyer.
+     */
+    data: XOR<CaseLawyerUpdateInput, CaseLawyerUncheckedUpdateInput>
+    /**
+     * Choose, which CaseLawyer to update.
+     */
+    where: CaseLawyerWhereUniqueInput
+  }
+
+  /**
+   * CaseLawyer updateMany
+   */
+  export type CaseLawyerUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CaseLawyers.
+     */
+    data: XOR<CaseLawyerUpdateManyMutationInput, CaseLawyerUncheckedUpdateManyInput>
+    /**
+     * Filter which CaseLawyers to update
+     */
+    where?: CaseLawyerWhereInput
+    /**
+     * Limit how many CaseLawyers to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CaseLawyer updateManyAndReturn
+   */
+  export type CaseLawyerUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseLawyer
+     */
+    select?: CaseLawyerSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseLawyer
+     */
+    omit?: CaseLawyerOmit<ExtArgs> | null
+    /**
+     * The data used to update CaseLawyers.
+     */
+    data: XOR<CaseLawyerUpdateManyMutationInput, CaseLawyerUncheckedUpdateManyInput>
+    /**
+     * Filter which CaseLawyers to update
+     */
+    where?: CaseLawyerWhereInput
+    /**
+     * Limit how many CaseLawyers to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseLawyerIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CaseLawyer upsert
+   */
+  export type CaseLawyerUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseLawyer
+     */
+    select?: CaseLawyerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseLawyer
+     */
+    omit?: CaseLawyerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseLawyerInclude<ExtArgs> | null
+    /**
+     * The filter to search for the CaseLawyer to update in case it exists.
+     */
+    where: CaseLawyerWhereUniqueInput
+    /**
+     * In case the CaseLawyer found by the `where` argument doesn't exist, create a new CaseLawyer with this data.
+     */
+    create: XOR<CaseLawyerCreateInput, CaseLawyerUncheckedCreateInput>
+    /**
+     * In case the CaseLawyer was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CaseLawyerUpdateInput, CaseLawyerUncheckedUpdateInput>
+  }
+
+  /**
+   * CaseLawyer delete
+   */
+  export type CaseLawyerDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseLawyer
+     */
+    select?: CaseLawyerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseLawyer
+     */
+    omit?: CaseLawyerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseLawyerInclude<ExtArgs> | null
+    /**
+     * Filter which CaseLawyer to delete.
+     */
+    where: CaseLawyerWhereUniqueInput
+  }
+
+  /**
+   * CaseLawyer deleteMany
+   */
+  export type CaseLawyerDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CaseLawyers to delete
+     */
+    where?: CaseLawyerWhereInput
+    /**
+     * Limit how many CaseLawyers to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CaseLawyer without action
+   */
+  export type CaseLawyerDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseLawyer
+     */
+    select?: CaseLawyerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseLawyer
+     */
+    omit?: CaseLawyerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseLawyerInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model CaseParty
+   */
+
+  export type AggregateCaseParty = {
+    _count: CasePartyCountAggregateOutputType | null
+    _avg: CasePartyAvgAggregateOutputType | null
+    _sum: CasePartySumAggregateOutputType | null
+    _min: CasePartyMinAggregateOutputType | null
+    _max: CasePartyMaxAggregateOutputType | null
+  }
+
+  export type CasePartyAvgAggregateOutputType = {
+    fee: Decimal | null
+  }
+
+  export type CasePartySumAggregateOutputType = {
+    fee: Decimal | null
+  }
+
+  export type CasePartyMinAggregateOutputType = {
+    id: string | null
+    caseId: string | null
+    partyName: string | null
+    roleId: string | null
+    fee: Decimal | null
+    contactInfo: string | null
+  }
+
+  export type CasePartyMaxAggregateOutputType = {
+    id: string | null
+    caseId: string | null
+    partyName: string | null
+    roleId: string | null
+    fee: Decimal | null
+    contactInfo: string | null
+  }
+
+  export type CasePartyCountAggregateOutputType = {
+    id: number
+    caseId: number
+    partyName: number
+    roleId: number
+    fee: number
+    contactInfo: number
+    _all: number
+  }
+
+
+  export type CasePartyAvgAggregateInputType = {
+    fee?: true
+  }
+
+  export type CasePartySumAggregateInputType = {
+    fee?: true
+  }
+
+  export type CasePartyMinAggregateInputType = {
+    id?: true
+    caseId?: true
+    partyName?: true
+    roleId?: true
+    fee?: true
+    contactInfo?: true
+  }
+
+  export type CasePartyMaxAggregateInputType = {
+    id?: true
+    caseId?: true
+    partyName?: true
+    roleId?: true
+    fee?: true
+    contactInfo?: true
+  }
+
+  export type CasePartyCountAggregateInputType = {
+    id?: true
+    caseId?: true
+    partyName?: true
+    roleId?: true
+    fee?: true
+    contactInfo?: true
+    _all?: true
+  }
+
+  export type CasePartyAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CaseParty to aggregate.
+     */
+    where?: CasePartyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CaseParties to fetch.
+     */
+    orderBy?: CasePartyOrderByWithRelationInput | CasePartyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CasePartyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CaseParties from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CaseParties.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CaseParties
+    **/
+    _count?: true | CasePartyCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: CasePartyAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CasePartySumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CasePartyMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CasePartyMaxAggregateInputType
+  }
+
+  export type GetCasePartyAggregateType<T extends CasePartyAggregateArgs> = {
+        [P in keyof T & keyof AggregateCaseParty]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCaseParty[P]>
+      : GetScalarType<T[P], AggregateCaseParty[P]>
+  }
+
+
+
+
+  export type CasePartyGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CasePartyWhereInput
+    orderBy?: CasePartyOrderByWithAggregationInput | CasePartyOrderByWithAggregationInput[]
+    by: CasePartyScalarFieldEnum[] | CasePartyScalarFieldEnum
+    having?: CasePartyScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CasePartyCountAggregateInputType | true
+    _avg?: CasePartyAvgAggregateInputType
+    _sum?: CasePartySumAggregateInputType
+    _min?: CasePartyMinAggregateInputType
+    _max?: CasePartyMaxAggregateInputType
+  }
+
+  export type CasePartyGroupByOutputType = {
+    id: string
+    caseId: string
+    partyName: string
+    roleId: string
+    fee: Decimal | null
+    contactInfo: string | null
+    _count: CasePartyCountAggregateOutputType | null
+    _avg: CasePartyAvgAggregateOutputType | null
+    _sum: CasePartySumAggregateOutputType | null
+    _min: CasePartyMinAggregateOutputType | null
+    _max: CasePartyMaxAggregateOutputType | null
+  }
+
+  type GetCasePartyGroupByPayload<T extends CasePartyGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CasePartyGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CasePartyGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CasePartyGroupByOutputType[P]>
+            : GetScalarType<T[P], CasePartyGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CasePartySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    caseId?: boolean
+    partyName?: boolean
+    roleId?: boolean
+    fee?: boolean
+    contactInfo?: boolean
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+    role?: boolean | PartyRoleDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["caseParty"]>
+
+  export type CasePartySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    caseId?: boolean
+    partyName?: boolean
+    roleId?: boolean
+    fee?: boolean
+    contactInfo?: boolean
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+    role?: boolean | PartyRoleDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["caseParty"]>
+
+  export type CasePartySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    caseId?: boolean
+    partyName?: boolean
+    roleId?: boolean
+    fee?: boolean
+    contactInfo?: boolean
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+    role?: boolean | PartyRoleDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["caseParty"]>
+
+  export type CasePartySelectScalar = {
+    id?: boolean
+    caseId?: boolean
+    partyName?: boolean
+    roleId?: boolean
+    fee?: boolean
+    contactInfo?: boolean
+  }
+
+  export type CasePartyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "caseId" | "partyName" | "roleId" | "fee" | "contactInfo", ExtArgs["result"]["caseParty"]>
+  export type CasePartyInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+    role?: boolean | PartyRoleDefaultArgs<ExtArgs>
+  }
+  export type CasePartyIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+    role?: boolean | PartyRoleDefaultArgs<ExtArgs>
+  }
+  export type CasePartyIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+    role?: boolean | PartyRoleDefaultArgs<ExtArgs>
+  }
+
+  export type $CasePartyPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CaseParty"
+    objects: {
+      case: Prisma.$CasePayload<ExtArgs>
+      role: Prisma.$PartyRolePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      caseId: string
+      partyName: string
+      roleId: string
+      fee: Prisma.Decimal | null
+      contactInfo: string | null
+    }, ExtArgs["result"]["caseParty"]>
+    composites: {}
+  }
+
+  type CasePartyGetPayload<S extends boolean | null | undefined | CasePartyDefaultArgs> = $Result.GetResult<Prisma.$CasePartyPayload, S>
+
+  type CasePartyCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CasePartyFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CasePartyCountAggregateInputType | true
+    }
+
+  export interface CasePartyDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CaseParty'], meta: { name: 'CaseParty' } }
+    /**
+     * Find zero or one CaseParty that matches the filter.
+     * @param {CasePartyFindUniqueArgs} args - Arguments to find a CaseParty
+     * @example
+     * // Get one CaseParty
+     * const caseParty = await prisma.caseParty.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CasePartyFindUniqueArgs>(args: SelectSubset<T, CasePartyFindUniqueArgs<ExtArgs>>): Prisma__CasePartyClient<$Result.GetResult<Prisma.$CasePartyPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one CaseParty that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CasePartyFindUniqueOrThrowArgs} args - Arguments to find a CaseParty
+     * @example
+     * // Get one CaseParty
+     * const caseParty = await prisma.caseParty.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CasePartyFindUniqueOrThrowArgs>(args: SelectSubset<T, CasePartyFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CasePartyClient<$Result.GetResult<Prisma.$CasePartyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CaseParty that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CasePartyFindFirstArgs} args - Arguments to find a CaseParty
+     * @example
+     * // Get one CaseParty
+     * const caseParty = await prisma.caseParty.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CasePartyFindFirstArgs>(args?: SelectSubset<T, CasePartyFindFirstArgs<ExtArgs>>): Prisma__CasePartyClient<$Result.GetResult<Prisma.$CasePartyPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CaseParty that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CasePartyFindFirstOrThrowArgs} args - Arguments to find a CaseParty
+     * @example
+     * // Get one CaseParty
+     * const caseParty = await prisma.caseParty.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CasePartyFindFirstOrThrowArgs>(args?: SelectSubset<T, CasePartyFindFirstOrThrowArgs<ExtArgs>>): Prisma__CasePartyClient<$Result.GetResult<Prisma.$CasePartyPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CaseParties that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CasePartyFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CaseParties
+     * const caseParties = await prisma.caseParty.findMany()
+     * 
+     * // Get first 10 CaseParties
+     * const caseParties = await prisma.caseParty.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const casePartyWithIdOnly = await prisma.caseParty.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CasePartyFindManyArgs>(args?: SelectSubset<T, CasePartyFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CasePartyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a CaseParty.
+     * @param {CasePartyCreateArgs} args - Arguments to create a CaseParty.
+     * @example
+     * // Create one CaseParty
+     * const CaseParty = await prisma.caseParty.create({
+     *   data: {
+     *     // ... data to create a CaseParty
+     *   }
+     * })
+     * 
+     */
+    create<T extends CasePartyCreateArgs>(args: SelectSubset<T, CasePartyCreateArgs<ExtArgs>>): Prisma__CasePartyClient<$Result.GetResult<Prisma.$CasePartyPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many CaseParties.
+     * @param {CasePartyCreateManyArgs} args - Arguments to create many CaseParties.
+     * @example
+     * // Create many CaseParties
+     * const caseParty = await prisma.caseParty.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CasePartyCreateManyArgs>(args?: SelectSubset<T, CasePartyCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many CaseParties and returns the data saved in the database.
+     * @param {CasePartyCreateManyAndReturnArgs} args - Arguments to create many CaseParties.
+     * @example
+     * // Create many CaseParties
+     * const caseParty = await prisma.caseParty.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many CaseParties and only return the `id`
+     * const casePartyWithIdOnly = await prisma.caseParty.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CasePartyCreateManyAndReturnArgs>(args?: SelectSubset<T, CasePartyCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CasePartyPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a CaseParty.
+     * @param {CasePartyDeleteArgs} args - Arguments to delete one CaseParty.
+     * @example
+     * // Delete one CaseParty
+     * const CaseParty = await prisma.caseParty.delete({
+     *   where: {
+     *     // ... filter to delete one CaseParty
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CasePartyDeleteArgs>(args: SelectSubset<T, CasePartyDeleteArgs<ExtArgs>>): Prisma__CasePartyClient<$Result.GetResult<Prisma.$CasePartyPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one CaseParty.
+     * @param {CasePartyUpdateArgs} args - Arguments to update one CaseParty.
+     * @example
+     * // Update one CaseParty
+     * const caseParty = await prisma.caseParty.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CasePartyUpdateArgs>(args: SelectSubset<T, CasePartyUpdateArgs<ExtArgs>>): Prisma__CasePartyClient<$Result.GetResult<Prisma.$CasePartyPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more CaseParties.
+     * @param {CasePartyDeleteManyArgs} args - Arguments to filter CaseParties to delete.
+     * @example
+     * // Delete a few CaseParties
+     * const { count } = await prisma.caseParty.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CasePartyDeleteManyArgs>(args?: SelectSubset<T, CasePartyDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CaseParties.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CasePartyUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CaseParties
+     * const caseParty = await prisma.caseParty.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CasePartyUpdateManyArgs>(args: SelectSubset<T, CasePartyUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CaseParties and returns the data updated in the database.
+     * @param {CasePartyUpdateManyAndReturnArgs} args - Arguments to update many CaseParties.
+     * @example
+     * // Update many CaseParties
+     * const caseParty = await prisma.caseParty.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more CaseParties and only return the `id`
+     * const casePartyWithIdOnly = await prisma.caseParty.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CasePartyUpdateManyAndReturnArgs>(args: SelectSubset<T, CasePartyUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CasePartyPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one CaseParty.
+     * @param {CasePartyUpsertArgs} args - Arguments to update or create a CaseParty.
+     * @example
+     * // Update or create a CaseParty
+     * const caseParty = await prisma.caseParty.upsert({
+     *   create: {
+     *     // ... data to create a CaseParty
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CaseParty we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CasePartyUpsertArgs>(args: SelectSubset<T, CasePartyUpsertArgs<ExtArgs>>): Prisma__CasePartyClient<$Result.GetResult<Prisma.$CasePartyPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of CaseParties.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CasePartyCountArgs} args - Arguments to filter CaseParties to count.
+     * @example
+     * // Count the number of CaseParties
+     * const count = await prisma.caseParty.count({
+     *   where: {
+     *     // ... the filter for the CaseParties we want to count
+     *   }
+     * })
+    **/
+    count<T extends CasePartyCountArgs>(
+      args?: Subset<T, CasePartyCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CasePartyCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CaseParty.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CasePartyAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CasePartyAggregateArgs>(args: Subset<T, CasePartyAggregateArgs>): Prisma.PrismaPromise<GetCasePartyAggregateType<T>>
+
+    /**
+     * Group by CaseParty.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CasePartyGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CasePartyGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CasePartyGroupByArgs['orderBy'] }
+        : { orderBy?: CasePartyGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CasePartyGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCasePartyGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CaseParty model
+   */
+  readonly fields: CasePartyFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CaseParty.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CasePartyClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    case<T extends CaseDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CaseDefaultArgs<ExtArgs>>): Prisma__CaseClient<$Result.GetResult<Prisma.$CasePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    role<T extends PartyRoleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PartyRoleDefaultArgs<ExtArgs>>): Prisma__PartyRoleClient<$Result.GetResult<Prisma.$PartyRolePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CaseParty model
+   */
+  interface CasePartyFieldRefs {
+    readonly id: FieldRef<"CaseParty", 'String'>
+    readonly caseId: FieldRef<"CaseParty", 'String'>
+    readonly partyName: FieldRef<"CaseParty", 'String'>
+    readonly roleId: FieldRef<"CaseParty", 'String'>
+    readonly fee: FieldRef<"CaseParty", 'Decimal'>
+    readonly contactInfo: FieldRef<"CaseParty", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CaseParty findUnique
+   */
+  export type CasePartyFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseParty
+     */
+    select?: CasePartySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseParty
+     */
+    omit?: CasePartyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePartyInclude<ExtArgs> | null
+    /**
+     * Filter, which CaseParty to fetch.
+     */
+    where: CasePartyWhereUniqueInput
+  }
+
+  /**
+   * CaseParty findUniqueOrThrow
+   */
+  export type CasePartyFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseParty
+     */
+    select?: CasePartySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseParty
+     */
+    omit?: CasePartyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePartyInclude<ExtArgs> | null
+    /**
+     * Filter, which CaseParty to fetch.
+     */
+    where: CasePartyWhereUniqueInput
+  }
+
+  /**
+   * CaseParty findFirst
+   */
+  export type CasePartyFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseParty
+     */
+    select?: CasePartySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseParty
+     */
+    omit?: CasePartyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePartyInclude<ExtArgs> | null
+    /**
+     * Filter, which CaseParty to fetch.
+     */
+    where?: CasePartyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CaseParties to fetch.
+     */
+    orderBy?: CasePartyOrderByWithRelationInput | CasePartyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CaseParties.
+     */
+    cursor?: CasePartyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CaseParties from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CaseParties.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CaseParties.
+     */
+    distinct?: CasePartyScalarFieldEnum | CasePartyScalarFieldEnum[]
+  }
+
+  /**
+   * CaseParty findFirstOrThrow
+   */
+  export type CasePartyFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseParty
+     */
+    select?: CasePartySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseParty
+     */
+    omit?: CasePartyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePartyInclude<ExtArgs> | null
+    /**
+     * Filter, which CaseParty to fetch.
+     */
+    where?: CasePartyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CaseParties to fetch.
+     */
+    orderBy?: CasePartyOrderByWithRelationInput | CasePartyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CaseParties.
+     */
+    cursor?: CasePartyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CaseParties from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CaseParties.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CaseParties.
+     */
+    distinct?: CasePartyScalarFieldEnum | CasePartyScalarFieldEnum[]
+  }
+
+  /**
+   * CaseParty findMany
+   */
+  export type CasePartyFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseParty
+     */
+    select?: CasePartySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseParty
+     */
+    omit?: CasePartyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePartyInclude<ExtArgs> | null
+    /**
+     * Filter, which CaseParties to fetch.
+     */
+    where?: CasePartyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CaseParties to fetch.
+     */
+    orderBy?: CasePartyOrderByWithRelationInput | CasePartyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CaseParties.
+     */
+    cursor?: CasePartyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CaseParties from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CaseParties.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CaseParties.
+     */
+    distinct?: CasePartyScalarFieldEnum | CasePartyScalarFieldEnum[]
+  }
+
+  /**
+   * CaseParty create
+   */
+  export type CasePartyCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseParty
+     */
+    select?: CasePartySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseParty
+     */
+    omit?: CasePartyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePartyInclude<ExtArgs> | null
+    /**
+     * The data needed to create a CaseParty.
+     */
+    data: XOR<CasePartyCreateInput, CasePartyUncheckedCreateInput>
+  }
+
+  /**
+   * CaseParty createMany
+   */
+  export type CasePartyCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CaseParties.
+     */
+    data: CasePartyCreateManyInput | CasePartyCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CaseParty createManyAndReturn
+   */
+  export type CasePartyCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseParty
+     */
+    select?: CasePartySelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseParty
+     */
+    omit?: CasePartyOmit<ExtArgs> | null
+    /**
+     * The data used to create many CaseParties.
+     */
+    data: CasePartyCreateManyInput | CasePartyCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePartyIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CaseParty update
+   */
+  export type CasePartyUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseParty
+     */
+    select?: CasePartySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseParty
+     */
+    omit?: CasePartyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePartyInclude<ExtArgs> | null
+    /**
+     * The data needed to update a CaseParty.
+     */
+    data: XOR<CasePartyUpdateInput, CasePartyUncheckedUpdateInput>
+    /**
+     * Choose, which CaseParty to update.
+     */
+    where: CasePartyWhereUniqueInput
+  }
+
+  /**
+   * CaseParty updateMany
+   */
+  export type CasePartyUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CaseParties.
+     */
+    data: XOR<CasePartyUpdateManyMutationInput, CasePartyUncheckedUpdateManyInput>
+    /**
+     * Filter which CaseParties to update
+     */
+    where?: CasePartyWhereInput
+    /**
+     * Limit how many CaseParties to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CaseParty updateManyAndReturn
+   */
+  export type CasePartyUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseParty
+     */
+    select?: CasePartySelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseParty
+     */
+    omit?: CasePartyOmit<ExtArgs> | null
+    /**
+     * The data used to update CaseParties.
+     */
+    data: XOR<CasePartyUpdateManyMutationInput, CasePartyUncheckedUpdateManyInput>
+    /**
+     * Filter which CaseParties to update
+     */
+    where?: CasePartyWhereInput
+    /**
+     * Limit how many CaseParties to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePartyIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CaseParty upsert
+   */
+  export type CasePartyUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseParty
+     */
+    select?: CasePartySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseParty
+     */
+    omit?: CasePartyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePartyInclude<ExtArgs> | null
+    /**
+     * The filter to search for the CaseParty to update in case it exists.
+     */
+    where: CasePartyWhereUniqueInput
+    /**
+     * In case the CaseParty found by the `where` argument doesn't exist, create a new CaseParty with this data.
+     */
+    create: XOR<CasePartyCreateInput, CasePartyUncheckedCreateInput>
+    /**
+     * In case the CaseParty was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CasePartyUpdateInput, CasePartyUncheckedUpdateInput>
+  }
+
+  /**
+   * CaseParty delete
+   */
+  export type CasePartyDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseParty
+     */
+    select?: CasePartySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseParty
+     */
+    omit?: CasePartyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePartyInclude<ExtArgs> | null
+    /**
+     * Filter which CaseParty to delete.
+     */
+    where: CasePartyWhereUniqueInput
+  }
+
+  /**
+   * CaseParty deleteMany
+   */
+  export type CasePartyDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CaseParties to delete
+     */
+    where?: CasePartyWhereInput
+    /**
+     * Limit how many CaseParties to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CaseParty without action
+   */
+  export type CasePartyDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseParty
+     */
+    select?: CasePartySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseParty
+     */
+    omit?: CasePartyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePartyInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model CaseHearing
+   */
+
+  export type AggregateCaseHearing = {
+    _count: CaseHearingCountAggregateOutputType | null
+    _min: CaseHearingMinAggregateOutputType | null
+    _max: CaseHearingMaxAggregateOutputType | null
+  }
+
+  export type CaseHearingMinAggregateOutputType = {
+    id: string | null
+    caseId: string | null
+    nextHearingDate: Date | null
+    hearingDate: Date | null
+    hearingOrder: string | null
+    judgeName: string | null
+  }
+
+  export type CaseHearingMaxAggregateOutputType = {
+    id: string | null
+    caseId: string | null
+    nextHearingDate: Date | null
+    hearingDate: Date | null
+    hearingOrder: string | null
+    judgeName: string | null
+  }
+
+  export type CaseHearingCountAggregateOutputType = {
+    id: number
+    caseId: number
+    nextHearingDate: number
+    hearingDate: number
+    hearingOrder: number
+    judgeName: number
+    _all: number
+  }
+
+
+  export type CaseHearingMinAggregateInputType = {
+    id?: true
+    caseId?: true
+    nextHearingDate?: true
+    hearingDate?: true
+    hearingOrder?: true
+    judgeName?: true
+  }
+
+  export type CaseHearingMaxAggregateInputType = {
+    id?: true
+    caseId?: true
+    nextHearingDate?: true
+    hearingDate?: true
+    hearingOrder?: true
+    judgeName?: true
+  }
+
+  export type CaseHearingCountAggregateInputType = {
+    id?: true
+    caseId?: true
+    nextHearingDate?: true
+    hearingDate?: true
+    hearingOrder?: true
+    judgeName?: true
+    _all?: true
+  }
+
+  export type CaseHearingAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CaseHearing to aggregate.
+     */
+    where?: CaseHearingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CaseHearings to fetch.
+     */
+    orderBy?: CaseHearingOrderByWithRelationInput | CaseHearingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CaseHearingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CaseHearings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CaseHearings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CaseHearings
+    **/
+    _count?: true | CaseHearingCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CaseHearingMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CaseHearingMaxAggregateInputType
+  }
+
+  export type GetCaseHearingAggregateType<T extends CaseHearingAggregateArgs> = {
+        [P in keyof T & keyof AggregateCaseHearing]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCaseHearing[P]>
+      : GetScalarType<T[P], AggregateCaseHearing[P]>
+  }
+
+
+
+
+  export type CaseHearingGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CaseHearingWhereInput
+    orderBy?: CaseHearingOrderByWithAggregationInput | CaseHearingOrderByWithAggregationInput[]
+    by: CaseHearingScalarFieldEnum[] | CaseHearingScalarFieldEnum
+    having?: CaseHearingScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CaseHearingCountAggregateInputType | true
+    _min?: CaseHearingMinAggregateInputType
+    _max?: CaseHearingMaxAggregateInputType
+  }
+
+  export type CaseHearingGroupByOutputType = {
+    id: string
+    caseId: string
+    nextHearingDate: Date | null
+    hearingDate: Date | null
+    hearingOrder: string | null
+    judgeName: string | null
+    _count: CaseHearingCountAggregateOutputType | null
+    _min: CaseHearingMinAggregateOutputType | null
+    _max: CaseHearingMaxAggregateOutputType | null
+  }
+
+  type GetCaseHearingGroupByPayload<T extends CaseHearingGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CaseHearingGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CaseHearingGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CaseHearingGroupByOutputType[P]>
+            : GetScalarType<T[P], CaseHearingGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CaseHearingSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    caseId?: boolean
+    nextHearingDate?: boolean
+    hearingDate?: boolean
+    hearingOrder?: boolean
+    judgeName?: boolean
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["caseHearing"]>
+
+  export type CaseHearingSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    caseId?: boolean
+    nextHearingDate?: boolean
+    hearingDate?: boolean
+    hearingOrder?: boolean
+    judgeName?: boolean
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["caseHearing"]>
+
+  export type CaseHearingSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    caseId?: boolean
+    nextHearingDate?: boolean
+    hearingDate?: boolean
+    hearingOrder?: boolean
+    judgeName?: boolean
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["caseHearing"]>
+
+  export type CaseHearingSelectScalar = {
+    id?: boolean
+    caseId?: boolean
+    nextHearingDate?: boolean
+    hearingDate?: boolean
+    hearingOrder?: boolean
+    judgeName?: boolean
+  }
+
+  export type CaseHearingOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "caseId" | "nextHearingDate" | "hearingDate" | "hearingOrder" | "judgeName", ExtArgs["result"]["caseHearing"]>
+  export type CaseHearingInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+  }
+  export type CaseHearingIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+  }
+  export type CaseHearingIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+  }
+
+  export type $CaseHearingPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CaseHearing"
+    objects: {
+      case: Prisma.$CasePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      caseId: string
+      nextHearingDate: Date | null
+      hearingDate: Date | null
+      hearingOrder: string | null
+      judgeName: string | null
+    }, ExtArgs["result"]["caseHearing"]>
+    composites: {}
+  }
+
+  type CaseHearingGetPayload<S extends boolean | null | undefined | CaseHearingDefaultArgs> = $Result.GetResult<Prisma.$CaseHearingPayload, S>
+
+  type CaseHearingCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CaseHearingFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CaseHearingCountAggregateInputType | true
+    }
+
+  export interface CaseHearingDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CaseHearing'], meta: { name: 'CaseHearing' } }
+    /**
+     * Find zero or one CaseHearing that matches the filter.
+     * @param {CaseHearingFindUniqueArgs} args - Arguments to find a CaseHearing
+     * @example
+     * // Get one CaseHearing
+     * const caseHearing = await prisma.caseHearing.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CaseHearingFindUniqueArgs>(args: SelectSubset<T, CaseHearingFindUniqueArgs<ExtArgs>>): Prisma__CaseHearingClient<$Result.GetResult<Prisma.$CaseHearingPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one CaseHearing that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CaseHearingFindUniqueOrThrowArgs} args - Arguments to find a CaseHearing
+     * @example
+     * // Get one CaseHearing
+     * const caseHearing = await prisma.caseHearing.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CaseHearingFindUniqueOrThrowArgs>(args: SelectSubset<T, CaseHearingFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CaseHearingClient<$Result.GetResult<Prisma.$CaseHearingPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CaseHearing that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseHearingFindFirstArgs} args - Arguments to find a CaseHearing
+     * @example
+     * // Get one CaseHearing
+     * const caseHearing = await prisma.caseHearing.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CaseHearingFindFirstArgs>(args?: SelectSubset<T, CaseHearingFindFirstArgs<ExtArgs>>): Prisma__CaseHearingClient<$Result.GetResult<Prisma.$CaseHearingPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CaseHearing that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseHearingFindFirstOrThrowArgs} args - Arguments to find a CaseHearing
+     * @example
+     * // Get one CaseHearing
+     * const caseHearing = await prisma.caseHearing.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CaseHearingFindFirstOrThrowArgs>(args?: SelectSubset<T, CaseHearingFindFirstOrThrowArgs<ExtArgs>>): Prisma__CaseHearingClient<$Result.GetResult<Prisma.$CaseHearingPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CaseHearings that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseHearingFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CaseHearings
+     * const caseHearings = await prisma.caseHearing.findMany()
+     * 
+     * // Get first 10 CaseHearings
+     * const caseHearings = await prisma.caseHearing.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const caseHearingWithIdOnly = await prisma.caseHearing.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CaseHearingFindManyArgs>(args?: SelectSubset<T, CaseHearingFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseHearingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a CaseHearing.
+     * @param {CaseHearingCreateArgs} args - Arguments to create a CaseHearing.
+     * @example
+     * // Create one CaseHearing
+     * const CaseHearing = await prisma.caseHearing.create({
+     *   data: {
+     *     // ... data to create a CaseHearing
+     *   }
+     * })
+     * 
+     */
+    create<T extends CaseHearingCreateArgs>(args: SelectSubset<T, CaseHearingCreateArgs<ExtArgs>>): Prisma__CaseHearingClient<$Result.GetResult<Prisma.$CaseHearingPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many CaseHearings.
+     * @param {CaseHearingCreateManyArgs} args - Arguments to create many CaseHearings.
+     * @example
+     * // Create many CaseHearings
+     * const caseHearing = await prisma.caseHearing.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CaseHearingCreateManyArgs>(args?: SelectSubset<T, CaseHearingCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many CaseHearings and returns the data saved in the database.
+     * @param {CaseHearingCreateManyAndReturnArgs} args - Arguments to create many CaseHearings.
+     * @example
+     * // Create many CaseHearings
+     * const caseHearing = await prisma.caseHearing.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many CaseHearings and only return the `id`
+     * const caseHearingWithIdOnly = await prisma.caseHearing.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CaseHearingCreateManyAndReturnArgs>(args?: SelectSubset<T, CaseHearingCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseHearingPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a CaseHearing.
+     * @param {CaseHearingDeleteArgs} args - Arguments to delete one CaseHearing.
+     * @example
+     * // Delete one CaseHearing
+     * const CaseHearing = await prisma.caseHearing.delete({
+     *   where: {
+     *     // ... filter to delete one CaseHearing
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CaseHearingDeleteArgs>(args: SelectSubset<T, CaseHearingDeleteArgs<ExtArgs>>): Prisma__CaseHearingClient<$Result.GetResult<Prisma.$CaseHearingPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one CaseHearing.
+     * @param {CaseHearingUpdateArgs} args - Arguments to update one CaseHearing.
+     * @example
+     * // Update one CaseHearing
+     * const caseHearing = await prisma.caseHearing.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CaseHearingUpdateArgs>(args: SelectSubset<T, CaseHearingUpdateArgs<ExtArgs>>): Prisma__CaseHearingClient<$Result.GetResult<Prisma.$CaseHearingPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more CaseHearings.
+     * @param {CaseHearingDeleteManyArgs} args - Arguments to filter CaseHearings to delete.
+     * @example
+     * // Delete a few CaseHearings
+     * const { count } = await prisma.caseHearing.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CaseHearingDeleteManyArgs>(args?: SelectSubset<T, CaseHearingDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CaseHearings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseHearingUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CaseHearings
+     * const caseHearing = await prisma.caseHearing.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CaseHearingUpdateManyArgs>(args: SelectSubset<T, CaseHearingUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CaseHearings and returns the data updated in the database.
+     * @param {CaseHearingUpdateManyAndReturnArgs} args - Arguments to update many CaseHearings.
+     * @example
+     * // Update many CaseHearings
+     * const caseHearing = await prisma.caseHearing.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more CaseHearings and only return the `id`
+     * const caseHearingWithIdOnly = await prisma.caseHearing.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CaseHearingUpdateManyAndReturnArgs>(args: SelectSubset<T, CaseHearingUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseHearingPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one CaseHearing.
+     * @param {CaseHearingUpsertArgs} args - Arguments to update or create a CaseHearing.
+     * @example
+     * // Update or create a CaseHearing
+     * const caseHearing = await prisma.caseHearing.upsert({
+     *   create: {
+     *     // ... data to create a CaseHearing
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CaseHearing we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CaseHearingUpsertArgs>(args: SelectSubset<T, CaseHearingUpsertArgs<ExtArgs>>): Prisma__CaseHearingClient<$Result.GetResult<Prisma.$CaseHearingPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of CaseHearings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseHearingCountArgs} args - Arguments to filter CaseHearings to count.
+     * @example
+     * // Count the number of CaseHearings
+     * const count = await prisma.caseHearing.count({
+     *   where: {
+     *     // ... the filter for the CaseHearings we want to count
+     *   }
+     * })
+    **/
+    count<T extends CaseHearingCountArgs>(
+      args?: Subset<T, CaseHearingCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CaseHearingCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CaseHearing.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseHearingAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CaseHearingAggregateArgs>(args: Subset<T, CaseHearingAggregateArgs>): Prisma.PrismaPromise<GetCaseHearingAggregateType<T>>
+
+    /**
+     * Group by CaseHearing.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseHearingGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CaseHearingGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CaseHearingGroupByArgs['orderBy'] }
+        : { orderBy?: CaseHearingGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CaseHearingGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCaseHearingGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CaseHearing model
+   */
+  readonly fields: CaseHearingFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CaseHearing.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CaseHearingClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    case<T extends CaseDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CaseDefaultArgs<ExtArgs>>): Prisma__CaseClient<$Result.GetResult<Prisma.$CasePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CaseHearing model
+   */
+  interface CaseHearingFieldRefs {
+    readonly id: FieldRef<"CaseHearing", 'String'>
+    readonly caseId: FieldRef<"CaseHearing", 'String'>
+    readonly nextHearingDate: FieldRef<"CaseHearing", 'DateTime'>
+    readonly hearingDate: FieldRef<"CaseHearing", 'DateTime'>
+    readonly hearingOrder: FieldRef<"CaseHearing", 'String'>
+    readonly judgeName: FieldRef<"CaseHearing", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CaseHearing findUnique
+   */
+  export type CaseHearingFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseHearing
+     */
+    select?: CaseHearingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseHearing
+     */
+    omit?: CaseHearingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseHearingInclude<ExtArgs> | null
+    /**
+     * Filter, which CaseHearing to fetch.
+     */
+    where: CaseHearingWhereUniqueInput
+  }
+
+  /**
+   * CaseHearing findUniqueOrThrow
+   */
+  export type CaseHearingFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseHearing
+     */
+    select?: CaseHearingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseHearing
+     */
+    omit?: CaseHearingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseHearingInclude<ExtArgs> | null
+    /**
+     * Filter, which CaseHearing to fetch.
+     */
+    where: CaseHearingWhereUniqueInput
+  }
+
+  /**
+   * CaseHearing findFirst
+   */
+  export type CaseHearingFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseHearing
+     */
+    select?: CaseHearingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseHearing
+     */
+    omit?: CaseHearingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseHearingInclude<ExtArgs> | null
+    /**
+     * Filter, which CaseHearing to fetch.
+     */
+    where?: CaseHearingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CaseHearings to fetch.
+     */
+    orderBy?: CaseHearingOrderByWithRelationInput | CaseHearingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CaseHearings.
+     */
+    cursor?: CaseHearingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CaseHearings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CaseHearings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CaseHearings.
+     */
+    distinct?: CaseHearingScalarFieldEnum | CaseHearingScalarFieldEnum[]
+  }
+
+  /**
+   * CaseHearing findFirstOrThrow
+   */
+  export type CaseHearingFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseHearing
+     */
+    select?: CaseHearingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseHearing
+     */
+    omit?: CaseHearingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseHearingInclude<ExtArgs> | null
+    /**
+     * Filter, which CaseHearing to fetch.
+     */
+    where?: CaseHearingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CaseHearings to fetch.
+     */
+    orderBy?: CaseHearingOrderByWithRelationInput | CaseHearingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CaseHearings.
+     */
+    cursor?: CaseHearingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CaseHearings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CaseHearings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CaseHearings.
+     */
+    distinct?: CaseHearingScalarFieldEnum | CaseHearingScalarFieldEnum[]
+  }
+
+  /**
+   * CaseHearing findMany
+   */
+  export type CaseHearingFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseHearing
+     */
+    select?: CaseHearingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseHearing
+     */
+    omit?: CaseHearingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseHearingInclude<ExtArgs> | null
+    /**
+     * Filter, which CaseHearings to fetch.
+     */
+    where?: CaseHearingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CaseHearings to fetch.
+     */
+    orderBy?: CaseHearingOrderByWithRelationInput | CaseHearingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CaseHearings.
+     */
+    cursor?: CaseHearingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CaseHearings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CaseHearings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CaseHearings.
+     */
+    distinct?: CaseHearingScalarFieldEnum | CaseHearingScalarFieldEnum[]
+  }
+
+  /**
+   * CaseHearing create
+   */
+  export type CaseHearingCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseHearing
+     */
+    select?: CaseHearingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseHearing
+     */
+    omit?: CaseHearingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseHearingInclude<ExtArgs> | null
+    /**
+     * The data needed to create a CaseHearing.
+     */
+    data: XOR<CaseHearingCreateInput, CaseHearingUncheckedCreateInput>
+  }
+
+  /**
+   * CaseHearing createMany
+   */
+  export type CaseHearingCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CaseHearings.
+     */
+    data: CaseHearingCreateManyInput | CaseHearingCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CaseHearing createManyAndReturn
+   */
+  export type CaseHearingCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseHearing
+     */
+    select?: CaseHearingSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseHearing
+     */
+    omit?: CaseHearingOmit<ExtArgs> | null
+    /**
+     * The data used to create many CaseHearings.
+     */
+    data: CaseHearingCreateManyInput | CaseHearingCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseHearingIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CaseHearing update
+   */
+  export type CaseHearingUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseHearing
+     */
+    select?: CaseHearingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseHearing
+     */
+    omit?: CaseHearingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseHearingInclude<ExtArgs> | null
+    /**
+     * The data needed to update a CaseHearing.
+     */
+    data: XOR<CaseHearingUpdateInput, CaseHearingUncheckedUpdateInput>
+    /**
+     * Choose, which CaseHearing to update.
+     */
+    where: CaseHearingWhereUniqueInput
+  }
+
+  /**
+   * CaseHearing updateMany
+   */
+  export type CaseHearingUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CaseHearings.
+     */
+    data: XOR<CaseHearingUpdateManyMutationInput, CaseHearingUncheckedUpdateManyInput>
+    /**
+     * Filter which CaseHearings to update
+     */
+    where?: CaseHearingWhereInput
+    /**
+     * Limit how many CaseHearings to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CaseHearing updateManyAndReturn
+   */
+  export type CaseHearingUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseHearing
+     */
+    select?: CaseHearingSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseHearing
+     */
+    omit?: CaseHearingOmit<ExtArgs> | null
+    /**
+     * The data used to update CaseHearings.
+     */
+    data: XOR<CaseHearingUpdateManyMutationInput, CaseHearingUncheckedUpdateManyInput>
+    /**
+     * Filter which CaseHearings to update
+     */
+    where?: CaseHearingWhereInput
+    /**
+     * Limit how many CaseHearings to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseHearingIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CaseHearing upsert
+   */
+  export type CaseHearingUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseHearing
+     */
+    select?: CaseHearingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseHearing
+     */
+    omit?: CaseHearingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseHearingInclude<ExtArgs> | null
+    /**
+     * The filter to search for the CaseHearing to update in case it exists.
+     */
+    where: CaseHearingWhereUniqueInput
+    /**
+     * In case the CaseHearing found by the `where` argument doesn't exist, create a new CaseHearing with this data.
+     */
+    create: XOR<CaseHearingCreateInput, CaseHearingUncheckedCreateInput>
+    /**
+     * In case the CaseHearing was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CaseHearingUpdateInput, CaseHearingUncheckedUpdateInput>
+  }
+
+  /**
+   * CaseHearing delete
+   */
+  export type CaseHearingDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseHearing
+     */
+    select?: CaseHearingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseHearing
+     */
+    omit?: CaseHearingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseHearingInclude<ExtArgs> | null
+    /**
+     * Filter which CaseHearing to delete.
+     */
+    where: CaseHearingWhereUniqueInput
+  }
+
+  /**
+   * CaseHearing deleteMany
+   */
+  export type CaseHearingDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CaseHearings to delete
+     */
+    where?: CaseHearingWhereInput
+    /**
+     * Limit how many CaseHearings to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CaseHearing without action
+   */
+  export type CaseHearingDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseHearing
+     */
+    select?: CaseHearingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseHearing
+     */
+    omit?: CaseHearingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseHearingInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model CasePleading
+   */
+
+  export type AggregateCasePleading = {
+    _count: CasePleadingCountAggregateOutputType | null
+    _min: CasePleadingMinAggregateOutputType | null
+    _max: CasePleadingMaxAggregateOutputType | null
+  }
+
+  export type CasePleadingMinAggregateOutputType = {
+    id: string | null
+    caseId: string | null
+    pleaderUserId: string | null
+    pleadingDate: Date | null
+    pleadingNotes: string | null
+  }
+
+  export type CasePleadingMaxAggregateOutputType = {
+    id: string | null
+    caseId: string | null
+    pleaderUserId: string | null
+    pleadingDate: Date | null
+    pleadingNotes: string | null
+  }
+
+  export type CasePleadingCountAggregateOutputType = {
+    id: number
+    caseId: number
+    pleaderUserId: number
+    pleadingDate: number
+    pleadingNotes: number
+    _all: number
+  }
+
+
+  export type CasePleadingMinAggregateInputType = {
+    id?: true
+    caseId?: true
+    pleaderUserId?: true
+    pleadingDate?: true
+    pleadingNotes?: true
+  }
+
+  export type CasePleadingMaxAggregateInputType = {
+    id?: true
+    caseId?: true
+    pleaderUserId?: true
+    pleadingDate?: true
+    pleadingNotes?: true
+  }
+
+  export type CasePleadingCountAggregateInputType = {
+    id?: true
+    caseId?: true
+    pleaderUserId?: true
+    pleadingDate?: true
+    pleadingNotes?: true
+    _all?: true
+  }
+
+  export type CasePleadingAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CasePleading to aggregate.
+     */
+    where?: CasePleadingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CasePleadings to fetch.
+     */
+    orderBy?: CasePleadingOrderByWithRelationInput | CasePleadingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CasePleadingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CasePleadings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CasePleadings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CasePleadings
+    **/
+    _count?: true | CasePleadingCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CasePleadingMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CasePleadingMaxAggregateInputType
+  }
+
+  export type GetCasePleadingAggregateType<T extends CasePleadingAggregateArgs> = {
+        [P in keyof T & keyof AggregateCasePleading]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCasePleading[P]>
+      : GetScalarType<T[P], AggregateCasePleading[P]>
+  }
+
+
+
+
+  export type CasePleadingGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CasePleadingWhereInput
+    orderBy?: CasePleadingOrderByWithAggregationInput | CasePleadingOrderByWithAggregationInput[]
+    by: CasePleadingScalarFieldEnum[] | CasePleadingScalarFieldEnum
+    having?: CasePleadingScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CasePleadingCountAggregateInputType | true
+    _min?: CasePleadingMinAggregateInputType
+    _max?: CasePleadingMaxAggregateInputType
+  }
+
+  export type CasePleadingGroupByOutputType = {
+    id: string
+    caseId: string
+    pleaderUserId: string | null
+    pleadingDate: Date | null
+    pleadingNotes: string
+    _count: CasePleadingCountAggregateOutputType | null
+    _min: CasePleadingMinAggregateOutputType | null
+    _max: CasePleadingMaxAggregateOutputType | null
+  }
+
+  type GetCasePleadingGroupByPayload<T extends CasePleadingGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CasePleadingGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CasePleadingGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CasePleadingGroupByOutputType[P]>
+            : GetScalarType<T[P], CasePleadingGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CasePleadingSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    caseId?: boolean
+    pleaderUserId?: boolean
+    pleadingDate?: boolean
+    pleadingNotes?: boolean
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+    pleader?: boolean | CasePleading$pleaderArgs<ExtArgs>
+  }, ExtArgs["result"]["casePleading"]>
+
+  export type CasePleadingSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    caseId?: boolean
+    pleaderUserId?: boolean
+    pleadingDate?: boolean
+    pleadingNotes?: boolean
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+    pleader?: boolean | CasePleading$pleaderArgs<ExtArgs>
+  }, ExtArgs["result"]["casePleading"]>
+
+  export type CasePleadingSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    caseId?: boolean
+    pleaderUserId?: boolean
+    pleadingDate?: boolean
+    pleadingNotes?: boolean
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+    pleader?: boolean | CasePleading$pleaderArgs<ExtArgs>
+  }, ExtArgs["result"]["casePleading"]>
+
+  export type CasePleadingSelectScalar = {
+    id?: boolean
+    caseId?: boolean
+    pleaderUserId?: boolean
+    pleadingDate?: boolean
+    pleadingNotes?: boolean
+  }
+
+  export type CasePleadingOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "caseId" | "pleaderUserId" | "pleadingDate" | "pleadingNotes", ExtArgs["result"]["casePleading"]>
+  export type CasePleadingInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+    pleader?: boolean | CasePleading$pleaderArgs<ExtArgs>
+  }
+  export type CasePleadingIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+    pleader?: boolean | CasePleading$pleaderArgs<ExtArgs>
+  }
+  export type CasePleadingIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+    pleader?: boolean | CasePleading$pleaderArgs<ExtArgs>
+  }
+
+  export type $CasePleadingPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CasePleading"
+    objects: {
+      case: Prisma.$CasePayload<ExtArgs>
+      pleader: Prisma.$UserPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      caseId: string
+      pleaderUserId: string | null
+      pleadingDate: Date | null
+      pleadingNotes: string
+    }, ExtArgs["result"]["casePleading"]>
+    composites: {}
+  }
+
+  type CasePleadingGetPayload<S extends boolean | null | undefined | CasePleadingDefaultArgs> = $Result.GetResult<Prisma.$CasePleadingPayload, S>
+
+  type CasePleadingCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CasePleadingFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CasePleadingCountAggregateInputType | true
+    }
+
+  export interface CasePleadingDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CasePleading'], meta: { name: 'CasePleading' } }
+    /**
+     * Find zero or one CasePleading that matches the filter.
+     * @param {CasePleadingFindUniqueArgs} args - Arguments to find a CasePleading
+     * @example
+     * // Get one CasePleading
+     * const casePleading = await prisma.casePleading.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CasePleadingFindUniqueArgs>(args: SelectSubset<T, CasePleadingFindUniqueArgs<ExtArgs>>): Prisma__CasePleadingClient<$Result.GetResult<Prisma.$CasePleadingPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one CasePleading that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CasePleadingFindUniqueOrThrowArgs} args - Arguments to find a CasePleading
+     * @example
+     * // Get one CasePleading
+     * const casePleading = await prisma.casePleading.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CasePleadingFindUniqueOrThrowArgs>(args: SelectSubset<T, CasePleadingFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CasePleadingClient<$Result.GetResult<Prisma.$CasePleadingPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CasePleading that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CasePleadingFindFirstArgs} args - Arguments to find a CasePleading
+     * @example
+     * // Get one CasePleading
+     * const casePleading = await prisma.casePleading.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CasePleadingFindFirstArgs>(args?: SelectSubset<T, CasePleadingFindFirstArgs<ExtArgs>>): Prisma__CasePleadingClient<$Result.GetResult<Prisma.$CasePleadingPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CasePleading that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CasePleadingFindFirstOrThrowArgs} args - Arguments to find a CasePleading
+     * @example
+     * // Get one CasePleading
+     * const casePleading = await prisma.casePleading.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CasePleadingFindFirstOrThrowArgs>(args?: SelectSubset<T, CasePleadingFindFirstOrThrowArgs<ExtArgs>>): Prisma__CasePleadingClient<$Result.GetResult<Prisma.$CasePleadingPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CasePleadings that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CasePleadingFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CasePleadings
+     * const casePleadings = await prisma.casePleading.findMany()
+     * 
+     * // Get first 10 CasePleadings
+     * const casePleadings = await prisma.casePleading.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const casePleadingWithIdOnly = await prisma.casePleading.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CasePleadingFindManyArgs>(args?: SelectSubset<T, CasePleadingFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CasePleadingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a CasePleading.
+     * @param {CasePleadingCreateArgs} args - Arguments to create a CasePleading.
+     * @example
+     * // Create one CasePleading
+     * const CasePleading = await prisma.casePleading.create({
+     *   data: {
+     *     // ... data to create a CasePleading
+     *   }
+     * })
+     * 
+     */
+    create<T extends CasePleadingCreateArgs>(args: SelectSubset<T, CasePleadingCreateArgs<ExtArgs>>): Prisma__CasePleadingClient<$Result.GetResult<Prisma.$CasePleadingPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many CasePleadings.
+     * @param {CasePleadingCreateManyArgs} args - Arguments to create many CasePleadings.
+     * @example
+     * // Create many CasePleadings
+     * const casePleading = await prisma.casePleading.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CasePleadingCreateManyArgs>(args?: SelectSubset<T, CasePleadingCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many CasePleadings and returns the data saved in the database.
+     * @param {CasePleadingCreateManyAndReturnArgs} args - Arguments to create many CasePleadings.
+     * @example
+     * // Create many CasePleadings
+     * const casePleading = await prisma.casePleading.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many CasePleadings and only return the `id`
+     * const casePleadingWithIdOnly = await prisma.casePleading.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CasePleadingCreateManyAndReturnArgs>(args?: SelectSubset<T, CasePleadingCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CasePleadingPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a CasePleading.
+     * @param {CasePleadingDeleteArgs} args - Arguments to delete one CasePleading.
+     * @example
+     * // Delete one CasePleading
+     * const CasePleading = await prisma.casePleading.delete({
+     *   where: {
+     *     // ... filter to delete one CasePleading
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CasePleadingDeleteArgs>(args: SelectSubset<T, CasePleadingDeleteArgs<ExtArgs>>): Prisma__CasePleadingClient<$Result.GetResult<Prisma.$CasePleadingPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one CasePleading.
+     * @param {CasePleadingUpdateArgs} args - Arguments to update one CasePleading.
+     * @example
+     * // Update one CasePleading
+     * const casePleading = await prisma.casePleading.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CasePleadingUpdateArgs>(args: SelectSubset<T, CasePleadingUpdateArgs<ExtArgs>>): Prisma__CasePleadingClient<$Result.GetResult<Prisma.$CasePleadingPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more CasePleadings.
+     * @param {CasePleadingDeleteManyArgs} args - Arguments to filter CasePleadings to delete.
+     * @example
+     * // Delete a few CasePleadings
+     * const { count } = await prisma.casePleading.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CasePleadingDeleteManyArgs>(args?: SelectSubset<T, CasePleadingDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CasePleadings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CasePleadingUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CasePleadings
+     * const casePleading = await prisma.casePleading.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CasePleadingUpdateManyArgs>(args: SelectSubset<T, CasePleadingUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CasePleadings and returns the data updated in the database.
+     * @param {CasePleadingUpdateManyAndReturnArgs} args - Arguments to update many CasePleadings.
+     * @example
+     * // Update many CasePleadings
+     * const casePleading = await prisma.casePleading.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more CasePleadings and only return the `id`
+     * const casePleadingWithIdOnly = await prisma.casePleading.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CasePleadingUpdateManyAndReturnArgs>(args: SelectSubset<T, CasePleadingUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CasePleadingPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one CasePleading.
+     * @param {CasePleadingUpsertArgs} args - Arguments to update or create a CasePleading.
+     * @example
+     * // Update or create a CasePleading
+     * const casePleading = await prisma.casePleading.upsert({
+     *   create: {
+     *     // ... data to create a CasePleading
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CasePleading we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CasePleadingUpsertArgs>(args: SelectSubset<T, CasePleadingUpsertArgs<ExtArgs>>): Prisma__CasePleadingClient<$Result.GetResult<Prisma.$CasePleadingPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of CasePleadings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CasePleadingCountArgs} args - Arguments to filter CasePleadings to count.
+     * @example
+     * // Count the number of CasePleadings
+     * const count = await prisma.casePleading.count({
+     *   where: {
+     *     // ... the filter for the CasePleadings we want to count
+     *   }
+     * })
+    **/
+    count<T extends CasePleadingCountArgs>(
+      args?: Subset<T, CasePleadingCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CasePleadingCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CasePleading.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CasePleadingAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CasePleadingAggregateArgs>(args: Subset<T, CasePleadingAggregateArgs>): Prisma.PrismaPromise<GetCasePleadingAggregateType<T>>
+
+    /**
+     * Group by CasePleading.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CasePleadingGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CasePleadingGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CasePleadingGroupByArgs['orderBy'] }
+        : { orderBy?: CasePleadingGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CasePleadingGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCasePleadingGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CasePleading model
+   */
+  readonly fields: CasePleadingFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CasePleading.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CasePleadingClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    case<T extends CaseDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CaseDefaultArgs<ExtArgs>>): Prisma__CaseClient<$Result.GetResult<Prisma.$CasePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    pleader<T extends CasePleading$pleaderArgs<ExtArgs> = {}>(args?: Subset<T, CasePleading$pleaderArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CasePleading model
+   */
+  interface CasePleadingFieldRefs {
+    readonly id: FieldRef<"CasePleading", 'String'>
+    readonly caseId: FieldRef<"CasePleading", 'String'>
+    readonly pleaderUserId: FieldRef<"CasePleading", 'String'>
+    readonly pleadingDate: FieldRef<"CasePleading", 'DateTime'>
+    readonly pleadingNotes: FieldRef<"CasePleading", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CasePleading findUnique
+   */
+  export type CasePleadingFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CasePleading
+     */
+    select?: CasePleadingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CasePleading
+     */
+    omit?: CasePleadingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePleadingInclude<ExtArgs> | null
+    /**
+     * Filter, which CasePleading to fetch.
+     */
+    where: CasePleadingWhereUniqueInput
+  }
+
+  /**
+   * CasePleading findUniqueOrThrow
+   */
+  export type CasePleadingFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CasePleading
+     */
+    select?: CasePleadingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CasePleading
+     */
+    omit?: CasePleadingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePleadingInclude<ExtArgs> | null
+    /**
+     * Filter, which CasePleading to fetch.
+     */
+    where: CasePleadingWhereUniqueInput
+  }
+
+  /**
+   * CasePleading findFirst
+   */
+  export type CasePleadingFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CasePleading
+     */
+    select?: CasePleadingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CasePleading
+     */
+    omit?: CasePleadingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePleadingInclude<ExtArgs> | null
+    /**
+     * Filter, which CasePleading to fetch.
+     */
+    where?: CasePleadingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CasePleadings to fetch.
+     */
+    orderBy?: CasePleadingOrderByWithRelationInput | CasePleadingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CasePleadings.
+     */
+    cursor?: CasePleadingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CasePleadings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CasePleadings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CasePleadings.
+     */
+    distinct?: CasePleadingScalarFieldEnum | CasePleadingScalarFieldEnum[]
+  }
+
+  /**
+   * CasePleading findFirstOrThrow
+   */
+  export type CasePleadingFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CasePleading
+     */
+    select?: CasePleadingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CasePleading
+     */
+    omit?: CasePleadingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePleadingInclude<ExtArgs> | null
+    /**
+     * Filter, which CasePleading to fetch.
+     */
+    where?: CasePleadingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CasePleadings to fetch.
+     */
+    orderBy?: CasePleadingOrderByWithRelationInput | CasePleadingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CasePleadings.
+     */
+    cursor?: CasePleadingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CasePleadings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CasePleadings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CasePleadings.
+     */
+    distinct?: CasePleadingScalarFieldEnum | CasePleadingScalarFieldEnum[]
+  }
+
+  /**
+   * CasePleading findMany
+   */
+  export type CasePleadingFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CasePleading
+     */
+    select?: CasePleadingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CasePleading
+     */
+    omit?: CasePleadingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePleadingInclude<ExtArgs> | null
+    /**
+     * Filter, which CasePleadings to fetch.
+     */
+    where?: CasePleadingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CasePleadings to fetch.
+     */
+    orderBy?: CasePleadingOrderByWithRelationInput | CasePleadingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CasePleadings.
+     */
+    cursor?: CasePleadingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CasePleadings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CasePleadings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CasePleadings.
+     */
+    distinct?: CasePleadingScalarFieldEnum | CasePleadingScalarFieldEnum[]
+  }
+
+  /**
+   * CasePleading create
+   */
+  export type CasePleadingCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CasePleading
+     */
+    select?: CasePleadingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CasePleading
+     */
+    omit?: CasePleadingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePleadingInclude<ExtArgs> | null
+    /**
+     * The data needed to create a CasePleading.
+     */
+    data: XOR<CasePleadingCreateInput, CasePleadingUncheckedCreateInput>
+  }
+
+  /**
+   * CasePleading createMany
+   */
+  export type CasePleadingCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CasePleadings.
+     */
+    data: CasePleadingCreateManyInput | CasePleadingCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CasePleading createManyAndReturn
+   */
+  export type CasePleadingCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CasePleading
+     */
+    select?: CasePleadingSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CasePleading
+     */
+    omit?: CasePleadingOmit<ExtArgs> | null
+    /**
+     * The data used to create many CasePleadings.
+     */
+    data: CasePleadingCreateManyInput | CasePleadingCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePleadingIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CasePleading update
+   */
+  export type CasePleadingUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CasePleading
+     */
+    select?: CasePleadingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CasePleading
+     */
+    omit?: CasePleadingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePleadingInclude<ExtArgs> | null
+    /**
+     * The data needed to update a CasePleading.
+     */
+    data: XOR<CasePleadingUpdateInput, CasePleadingUncheckedUpdateInput>
+    /**
+     * Choose, which CasePleading to update.
+     */
+    where: CasePleadingWhereUniqueInput
+  }
+
+  /**
+   * CasePleading updateMany
+   */
+  export type CasePleadingUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CasePleadings.
+     */
+    data: XOR<CasePleadingUpdateManyMutationInput, CasePleadingUncheckedUpdateManyInput>
+    /**
+     * Filter which CasePleadings to update
+     */
+    where?: CasePleadingWhereInput
+    /**
+     * Limit how many CasePleadings to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CasePleading updateManyAndReturn
+   */
+  export type CasePleadingUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CasePleading
+     */
+    select?: CasePleadingSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CasePleading
+     */
+    omit?: CasePleadingOmit<ExtArgs> | null
+    /**
+     * The data used to update CasePleadings.
+     */
+    data: XOR<CasePleadingUpdateManyMutationInput, CasePleadingUncheckedUpdateManyInput>
+    /**
+     * Filter which CasePleadings to update
+     */
+    where?: CasePleadingWhereInput
+    /**
+     * Limit how many CasePleadings to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePleadingIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CasePleading upsert
+   */
+  export type CasePleadingUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CasePleading
+     */
+    select?: CasePleadingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CasePleading
+     */
+    omit?: CasePleadingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePleadingInclude<ExtArgs> | null
+    /**
+     * The filter to search for the CasePleading to update in case it exists.
+     */
+    where: CasePleadingWhereUniqueInput
+    /**
+     * In case the CasePleading found by the `where` argument doesn't exist, create a new CasePleading with this data.
+     */
+    create: XOR<CasePleadingCreateInput, CasePleadingUncheckedCreateInput>
+    /**
+     * In case the CasePleading was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CasePleadingUpdateInput, CasePleadingUncheckedUpdateInput>
+  }
+
+  /**
+   * CasePleading delete
+   */
+  export type CasePleadingDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CasePleading
+     */
+    select?: CasePleadingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CasePleading
+     */
+    omit?: CasePleadingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePleadingInclude<ExtArgs> | null
+    /**
+     * Filter which CasePleading to delete.
+     */
+    where: CasePleadingWhereUniqueInput
+  }
+
+  /**
+   * CasePleading deleteMany
+   */
+  export type CasePleadingDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CasePleadings to delete
+     */
+    where?: CasePleadingWhereInput
+    /**
+     * Limit how many CasePleadings to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CasePleading.pleader
+   */
+  export type CasePleading$pleaderArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
+  }
+
+  /**
+   * CasePleading without action
+   */
+  export type CasePleadingDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CasePleading
+     */
+    select?: CasePleadingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CasePleading
+     */
+    omit?: CasePleadingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePleadingInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model CourtProceeding
+   */
+
+  export type AggregateCourtProceeding = {
+    _count: CourtProceedingCountAggregateOutputType | null
+    _min: CourtProceedingMinAggregateOutputType | null
+    _max: CourtProceedingMaxAggregateOutputType | null
+  }
+
+  export type CourtProceedingMinAggregateOutputType = {
+    id: string | null
+    caseId: string | null
+    courtLevelId: string | null
+    courtName: string | null
+    judgeName: string | null
+    chargeCounseling: string | null
+    verdict: string | null
+  }
+
+  export type CourtProceedingMaxAggregateOutputType = {
+    id: string | null
+    caseId: string | null
+    courtLevelId: string | null
+    courtName: string | null
+    judgeName: string | null
+    chargeCounseling: string | null
+    verdict: string | null
+  }
+
+  export type CourtProceedingCountAggregateOutputType = {
+    id: number
+    caseId: number
+    courtLevelId: number
+    courtName: number
+    judgeName: number
+    chargeCounseling: number
+    verdict: number
+    _all: number
+  }
+
+
+  export type CourtProceedingMinAggregateInputType = {
+    id?: true
+    caseId?: true
+    courtLevelId?: true
+    courtName?: true
+    judgeName?: true
+    chargeCounseling?: true
+    verdict?: true
+  }
+
+  export type CourtProceedingMaxAggregateInputType = {
+    id?: true
+    caseId?: true
+    courtLevelId?: true
+    courtName?: true
+    judgeName?: true
+    chargeCounseling?: true
+    verdict?: true
+  }
+
+  export type CourtProceedingCountAggregateInputType = {
+    id?: true
+    caseId?: true
+    courtLevelId?: true
+    courtName?: true
+    judgeName?: true
+    chargeCounseling?: true
+    verdict?: true
+    _all?: true
+  }
+
+  export type CourtProceedingAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CourtProceeding to aggregate.
+     */
+    where?: CourtProceedingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CourtProceedings to fetch.
+     */
+    orderBy?: CourtProceedingOrderByWithRelationInput | CourtProceedingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CourtProceedingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CourtProceedings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CourtProceedings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CourtProceedings
+    **/
+    _count?: true | CourtProceedingCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CourtProceedingMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CourtProceedingMaxAggregateInputType
+  }
+
+  export type GetCourtProceedingAggregateType<T extends CourtProceedingAggregateArgs> = {
+        [P in keyof T & keyof AggregateCourtProceeding]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCourtProceeding[P]>
+      : GetScalarType<T[P], AggregateCourtProceeding[P]>
+  }
+
+
+
+
+  export type CourtProceedingGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CourtProceedingWhereInput
+    orderBy?: CourtProceedingOrderByWithAggregationInput | CourtProceedingOrderByWithAggregationInput[]
+    by: CourtProceedingScalarFieldEnum[] | CourtProceedingScalarFieldEnum
+    having?: CourtProceedingScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CourtProceedingCountAggregateInputType | true
+    _min?: CourtProceedingMinAggregateInputType
+    _max?: CourtProceedingMaxAggregateInputType
+  }
+
+  export type CourtProceedingGroupByOutputType = {
+    id: string
+    caseId: string
+    courtLevelId: string
+    courtName: string
+    judgeName: string | null
+    chargeCounseling: string | null
+    verdict: string | null
+    _count: CourtProceedingCountAggregateOutputType | null
+    _min: CourtProceedingMinAggregateOutputType | null
+    _max: CourtProceedingMaxAggregateOutputType | null
+  }
+
+  type GetCourtProceedingGroupByPayload<T extends CourtProceedingGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CourtProceedingGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CourtProceedingGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CourtProceedingGroupByOutputType[P]>
+            : GetScalarType<T[P], CourtProceedingGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CourtProceedingSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    caseId?: boolean
+    courtLevelId?: boolean
+    courtName?: boolean
+    judgeName?: boolean
+    chargeCounseling?: boolean
+    verdict?: boolean
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+    courtLevel?: boolean | CourtLevelDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["courtProceeding"]>
+
+  export type CourtProceedingSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    caseId?: boolean
+    courtLevelId?: boolean
+    courtName?: boolean
+    judgeName?: boolean
+    chargeCounseling?: boolean
+    verdict?: boolean
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+    courtLevel?: boolean | CourtLevelDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["courtProceeding"]>
+
+  export type CourtProceedingSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    caseId?: boolean
+    courtLevelId?: boolean
+    courtName?: boolean
+    judgeName?: boolean
+    chargeCounseling?: boolean
+    verdict?: boolean
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+    courtLevel?: boolean | CourtLevelDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["courtProceeding"]>
+
+  export type CourtProceedingSelectScalar = {
+    id?: boolean
+    caseId?: boolean
+    courtLevelId?: boolean
+    courtName?: boolean
+    judgeName?: boolean
+    chargeCounseling?: boolean
+    verdict?: boolean
+  }
+
+  export type CourtProceedingOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "caseId" | "courtLevelId" | "courtName" | "judgeName" | "chargeCounseling" | "verdict", ExtArgs["result"]["courtProceeding"]>
+  export type CourtProceedingInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+    courtLevel?: boolean | CourtLevelDefaultArgs<ExtArgs>
+  }
+  export type CourtProceedingIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+    courtLevel?: boolean | CourtLevelDefaultArgs<ExtArgs>
+  }
+  export type CourtProceedingIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+    courtLevel?: boolean | CourtLevelDefaultArgs<ExtArgs>
+  }
+
+  export type $CourtProceedingPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CourtProceeding"
+    objects: {
+      case: Prisma.$CasePayload<ExtArgs>
+      courtLevel: Prisma.$CourtLevelPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      caseId: string
+      courtLevelId: string
+      courtName: string
+      judgeName: string | null
+      chargeCounseling: string | null
+      verdict: string | null
+    }, ExtArgs["result"]["courtProceeding"]>
+    composites: {}
+  }
+
+  type CourtProceedingGetPayload<S extends boolean | null | undefined | CourtProceedingDefaultArgs> = $Result.GetResult<Prisma.$CourtProceedingPayload, S>
+
+  type CourtProceedingCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CourtProceedingFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CourtProceedingCountAggregateInputType | true
+    }
+
+  export interface CourtProceedingDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CourtProceeding'], meta: { name: 'CourtProceeding' } }
+    /**
+     * Find zero or one CourtProceeding that matches the filter.
+     * @param {CourtProceedingFindUniqueArgs} args - Arguments to find a CourtProceeding
+     * @example
+     * // Get one CourtProceeding
+     * const courtProceeding = await prisma.courtProceeding.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CourtProceedingFindUniqueArgs>(args: SelectSubset<T, CourtProceedingFindUniqueArgs<ExtArgs>>): Prisma__CourtProceedingClient<$Result.GetResult<Prisma.$CourtProceedingPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one CourtProceeding that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CourtProceedingFindUniqueOrThrowArgs} args - Arguments to find a CourtProceeding
+     * @example
+     * // Get one CourtProceeding
+     * const courtProceeding = await prisma.courtProceeding.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CourtProceedingFindUniqueOrThrowArgs>(args: SelectSubset<T, CourtProceedingFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CourtProceedingClient<$Result.GetResult<Prisma.$CourtProceedingPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CourtProceeding that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CourtProceedingFindFirstArgs} args - Arguments to find a CourtProceeding
+     * @example
+     * // Get one CourtProceeding
+     * const courtProceeding = await prisma.courtProceeding.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CourtProceedingFindFirstArgs>(args?: SelectSubset<T, CourtProceedingFindFirstArgs<ExtArgs>>): Prisma__CourtProceedingClient<$Result.GetResult<Prisma.$CourtProceedingPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CourtProceeding that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CourtProceedingFindFirstOrThrowArgs} args - Arguments to find a CourtProceeding
+     * @example
+     * // Get one CourtProceeding
+     * const courtProceeding = await prisma.courtProceeding.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CourtProceedingFindFirstOrThrowArgs>(args?: SelectSubset<T, CourtProceedingFindFirstOrThrowArgs<ExtArgs>>): Prisma__CourtProceedingClient<$Result.GetResult<Prisma.$CourtProceedingPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CourtProceedings that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CourtProceedingFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CourtProceedings
+     * const courtProceedings = await prisma.courtProceeding.findMany()
+     * 
+     * // Get first 10 CourtProceedings
+     * const courtProceedings = await prisma.courtProceeding.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const courtProceedingWithIdOnly = await prisma.courtProceeding.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CourtProceedingFindManyArgs>(args?: SelectSubset<T, CourtProceedingFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CourtProceedingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a CourtProceeding.
+     * @param {CourtProceedingCreateArgs} args - Arguments to create a CourtProceeding.
+     * @example
+     * // Create one CourtProceeding
+     * const CourtProceeding = await prisma.courtProceeding.create({
+     *   data: {
+     *     // ... data to create a CourtProceeding
+     *   }
+     * })
+     * 
+     */
+    create<T extends CourtProceedingCreateArgs>(args: SelectSubset<T, CourtProceedingCreateArgs<ExtArgs>>): Prisma__CourtProceedingClient<$Result.GetResult<Prisma.$CourtProceedingPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many CourtProceedings.
+     * @param {CourtProceedingCreateManyArgs} args - Arguments to create many CourtProceedings.
+     * @example
+     * // Create many CourtProceedings
+     * const courtProceeding = await prisma.courtProceeding.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CourtProceedingCreateManyArgs>(args?: SelectSubset<T, CourtProceedingCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many CourtProceedings and returns the data saved in the database.
+     * @param {CourtProceedingCreateManyAndReturnArgs} args - Arguments to create many CourtProceedings.
+     * @example
+     * // Create many CourtProceedings
+     * const courtProceeding = await prisma.courtProceeding.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many CourtProceedings and only return the `id`
+     * const courtProceedingWithIdOnly = await prisma.courtProceeding.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CourtProceedingCreateManyAndReturnArgs>(args?: SelectSubset<T, CourtProceedingCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CourtProceedingPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a CourtProceeding.
+     * @param {CourtProceedingDeleteArgs} args - Arguments to delete one CourtProceeding.
+     * @example
+     * // Delete one CourtProceeding
+     * const CourtProceeding = await prisma.courtProceeding.delete({
+     *   where: {
+     *     // ... filter to delete one CourtProceeding
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CourtProceedingDeleteArgs>(args: SelectSubset<T, CourtProceedingDeleteArgs<ExtArgs>>): Prisma__CourtProceedingClient<$Result.GetResult<Prisma.$CourtProceedingPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one CourtProceeding.
+     * @param {CourtProceedingUpdateArgs} args - Arguments to update one CourtProceeding.
+     * @example
+     * // Update one CourtProceeding
+     * const courtProceeding = await prisma.courtProceeding.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CourtProceedingUpdateArgs>(args: SelectSubset<T, CourtProceedingUpdateArgs<ExtArgs>>): Prisma__CourtProceedingClient<$Result.GetResult<Prisma.$CourtProceedingPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more CourtProceedings.
+     * @param {CourtProceedingDeleteManyArgs} args - Arguments to filter CourtProceedings to delete.
+     * @example
+     * // Delete a few CourtProceedings
+     * const { count } = await prisma.courtProceeding.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CourtProceedingDeleteManyArgs>(args?: SelectSubset<T, CourtProceedingDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CourtProceedings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CourtProceedingUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CourtProceedings
+     * const courtProceeding = await prisma.courtProceeding.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CourtProceedingUpdateManyArgs>(args: SelectSubset<T, CourtProceedingUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CourtProceedings and returns the data updated in the database.
+     * @param {CourtProceedingUpdateManyAndReturnArgs} args - Arguments to update many CourtProceedings.
+     * @example
+     * // Update many CourtProceedings
+     * const courtProceeding = await prisma.courtProceeding.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more CourtProceedings and only return the `id`
+     * const courtProceedingWithIdOnly = await prisma.courtProceeding.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CourtProceedingUpdateManyAndReturnArgs>(args: SelectSubset<T, CourtProceedingUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CourtProceedingPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one CourtProceeding.
+     * @param {CourtProceedingUpsertArgs} args - Arguments to update or create a CourtProceeding.
+     * @example
+     * // Update or create a CourtProceeding
+     * const courtProceeding = await prisma.courtProceeding.upsert({
+     *   create: {
+     *     // ... data to create a CourtProceeding
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CourtProceeding we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CourtProceedingUpsertArgs>(args: SelectSubset<T, CourtProceedingUpsertArgs<ExtArgs>>): Prisma__CourtProceedingClient<$Result.GetResult<Prisma.$CourtProceedingPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of CourtProceedings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CourtProceedingCountArgs} args - Arguments to filter CourtProceedings to count.
+     * @example
+     * // Count the number of CourtProceedings
+     * const count = await prisma.courtProceeding.count({
+     *   where: {
+     *     // ... the filter for the CourtProceedings we want to count
+     *   }
+     * })
+    **/
+    count<T extends CourtProceedingCountArgs>(
+      args?: Subset<T, CourtProceedingCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CourtProceedingCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CourtProceeding.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CourtProceedingAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CourtProceedingAggregateArgs>(args: Subset<T, CourtProceedingAggregateArgs>): Prisma.PrismaPromise<GetCourtProceedingAggregateType<T>>
+
+    /**
+     * Group by CourtProceeding.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CourtProceedingGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CourtProceedingGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CourtProceedingGroupByArgs['orderBy'] }
+        : { orderBy?: CourtProceedingGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CourtProceedingGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCourtProceedingGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CourtProceeding model
+   */
+  readonly fields: CourtProceedingFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CourtProceeding.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CourtProceedingClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    case<T extends CaseDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CaseDefaultArgs<ExtArgs>>): Prisma__CaseClient<$Result.GetResult<Prisma.$CasePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    courtLevel<T extends CourtLevelDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CourtLevelDefaultArgs<ExtArgs>>): Prisma__CourtLevelClient<$Result.GetResult<Prisma.$CourtLevelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CourtProceeding model
+   */
+  interface CourtProceedingFieldRefs {
+    readonly id: FieldRef<"CourtProceeding", 'String'>
+    readonly caseId: FieldRef<"CourtProceeding", 'String'>
+    readonly courtLevelId: FieldRef<"CourtProceeding", 'String'>
+    readonly courtName: FieldRef<"CourtProceeding", 'String'>
+    readonly judgeName: FieldRef<"CourtProceeding", 'String'>
+    readonly chargeCounseling: FieldRef<"CourtProceeding", 'String'>
+    readonly verdict: FieldRef<"CourtProceeding", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CourtProceeding findUnique
+   */
+  export type CourtProceedingFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CourtProceeding
+     */
+    select?: CourtProceedingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CourtProceeding
+     */
+    omit?: CourtProceedingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CourtProceedingInclude<ExtArgs> | null
+    /**
+     * Filter, which CourtProceeding to fetch.
+     */
+    where: CourtProceedingWhereUniqueInput
+  }
+
+  /**
+   * CourtProceeding findUniqueOrThrow
+   */
+  export type CourtProceedingFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CourtProceeding
+     */
+    select?: CourtProceedingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CourtProceeding
+     */
+    omit?: CourtProceedingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CourtProceedingInclude<ExtArgs> | null
+    /**
+     * Filter, which CourtProceeding to fetch.
+     */
+    where: CourtProceedingWhereUniqueInput
+  }
+
+  /**
+   * CourtProceeding findFirst
+   */
+  export type CourtProceedingFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CourtProceeding
+     */
+    select?: CourtProceedingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CourtProceeding
+     */
+    omit?: CourtProceedingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CourtProceedingInclude<ExtArgs> | null
+    /**
+     * Filter, which CourtProceeding to fetch.
+     */
+    where?: CourtProceedingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CourtProceedings to fetch.
+     */
+    orderBy?: CourtProceedingOrderByWithRelationInput | CourtProceedingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CourtProceedings.
+     */
+    cursor?: CourtProceedingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CourtProceedings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CourtProceedings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CourtProceedings.
+     */
+    distinct?: CourtProceedingScalarFieldEnum | CourtProceedingScalarFieldEnum[]
+  }
+
+  /**
+   * CourtProceeding findFirstOrThrow
+   */
+  export type CourtProceedingFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CourtProceeding
+     */
+    select?: CourtProceedingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CourtProceeding
+     */
+    omit?: CourtProceedingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CourtProceedingInclude<ExtArgs> | null
+    /**
+     * Filter, which CourtProceeding to fetch.
+     */
+    where?: CourtProceedingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CourtProceedings to fetch.
+     */
+    orderBy?: CourtProceedingOrderByWithRelationInput | CourtProceedingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CourtProceedings.
+     */
+    cursor?: CourtProceedingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CourtProceedings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CourtProceedings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CourtProceedings.
+     */
+    distinct?: CourtProceedingScalarFieldEnum | CourtProceedingScalarFieldEnum[]
+  }
+
+  /**
+   * CourtProceeding findMany
+   */
+  export type CourtProceedingFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CourtProceeding
+     */
+    select?: CourtProceedingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CourtProceeding
+     */
+    omit?: CourtProceedingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CourtProceedingInclude<ExtArgs> | null
+    /**
+     * Filter, which CourtProceedings to fetch.
+     */
+    where?: CourtProceedingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CourtProceedings to fetch.
+     */
+    orderBy?: CourtProceedingOrderByWithRelationInput | CourtProceedingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CourtProceedings.
+     */
+    cursor?: CourtProceedingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CourtProceedings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CourtProceedings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CourtProceedings.
+     */
+    distinct?: CourtProceedingScalarFieldEnum | CourtProceedingScalarFieldEnum[]
+  }
+
+  /**
+   * CourtProceeding create
+   */
+  export type CourtProceedingCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CourtProceeding
+     */
+    select?: CourtProceedingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CourtProceeding
+     */
+    omit?: CourtProceedingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CourtProceedingInclude<ExtArgs> | null
+    /**
+     * The data needed to create a CourtProceeding.
+     */
+    data: XOR<CourtProceedingCreateInput, CourtProceedingUncheckedCreateInput>
+  }
+
+  /**
+   * CourtProceeding createMany
+   */
+  export type CourtProceedingCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CourtProceedings.
+     */
+    data: CourtProceedingCreateManyInput | CourtProceedingCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CourtProceeding createManyAndReturn
+   */
+  export type CourtProceedingCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CourtProceeding
+     */
+    select?: CourtProceedingSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CourtProceeding
+     */
+    omit?: CourtProceedingOmit<ExtArgs> | null
+    /**
+     * The data used to create many CourtProceedings.
+     */
+    data: CourtProceedingCreateManyInput | CourtProceedingCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CourtProceedingIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CourtProceeding update
+   */
+  export type CourtProceedingUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CourtProceeding
+     */
+    select?: CourtProceedingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CourtProceeding
+     */
+    omit?: CourtProceedingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CourtProceedingInclude<ExtArgs> | null
+    /**
+     * The data needed to update a CourtProceeding.
+     */
+    data: XOR<CourtProceedingUpdateInput, CourtProceedingUncheckedUpdateInput>
+    /**
+     * Choose, which CourtProceeding to update.
+     */
+    where: CourtProceedingWhereUniqueInput
+  }
+
+  /**
+   * CourtProceeding updateMany
+   */
+  export type CourtProceedingUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CourtProceedings.
+     */
+    data: XOR<CourtProceedingUpdateManyMutationInput, CourtProceedingUncheckedUpdateManyInput>
+    /**
+     * Filter which CourtProceedings to update
+     */
+    where?: CourtProceedingWhereInput
+    /**
+     * Limit how many CourtProceedings to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CourtProceeding updateManyAndReturn
+   */
+  export type CourtProceedingUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CourtProceeding
+     */
+    select?: CourtProceedingSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CourtProceeding
+     */
+    omit?: CourtProceedingOmit<ExtArgs> | null
+    /**
+     * The data used to update CourtProceedings.
+     */
+    data: XOR<CourtProceedingUpdateManyMutationInput, CourtProceedingUncheckedUpdateManyInput>
+    /**
+     * Filter which CourtProceedings to update
+     */
+    where?: CourtProceedingWhereInput
+    /**
+     * Limit how many CourtProceedings to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CourtProceedingIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CourtProceeding upsert
+   */
+  export type CourtProceedingUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CourtProceeding
+     */
+    select?: CourtProceedingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CourtProceeding
+     */
+    omit?: CourtProceedingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CourtProceedingInclude<ExtArgs> | null
+    /**
+     * The filter to search for the CourtProceeding to update in case it exists.
+     */
+    where: CourtProceedingWhereUniqueInput
+    /**
+     * In case the CourtProceeding found by the `where` argument doesn't exist, create a new CourtProceeding with this data.
+     */
+    create: XOR<CourtProceedingCreateInput, CourtProceedingUncheckedCreateInput>
+    /**
+     * In case the CourtProceeding was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CourtProceedingUpdateInput, CourtProceedingUncheckedUpdateInput>
+  }
+
+  /**
+   * CourtProceeding delete
+   */
+  export type CourtProceedingDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CourtProceeding
+     */
+    select?: CourtProceedingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CourtProceeding
+     */
+    omit?: CourtProceedingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CourtProceedingInclude<ExtArgs> | null
+    /**
+     * Filter which CourtProceeding to delete.
+     */
+    where: CourtProceedingWhereUniqueInput
+  }
+
+  /**
+   * CourtProceeding deleteMany
+   */
+  export type CourtProceedingDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CourtProceedings to delete
+     */
+    where?: CourtProceedingWhereInput
+    /**
+     * Limit how many CourtProceedings to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CourtProceeding without action
+   */
+  export type CourtProceedingDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CourtProceeding
+     */
+    select?: CourtProceedingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CourtProceeding
+     */
+    omit?: CourtProceedingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CourtProceedingInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model CasePrecedent
+   */
+
+  export type AggregateCasePrecedent = {
+    _count: CasePrecedentCountAggregateOutputType | null
+    _min: CasePrecedentMinAggregateOutputType | null
+    _max: CasePrecedentMaxAggregateOutputType | null
+  }
+
+  export type CasePrecedentMinAggregateOutputType = {
+    id: string | null
+    caseId: string | null
+    decisionNumber: string | null
+    plaintiff: string | null
+    defendant: string | null
+    citationNotes: string | null
+  }
+
+  export type CasePrecedentMaxAggregateOutputType = {
+    id: string | null
+    caseId: string | null
+    decisionNumber: string | null
+    plaintiff: string | null
+    defendant: string | null
+    citationNotes: string | null
+  }
+
+  export type CasePrecedentCountAggregateOutputType = {
+    id: number
+    caseId: number
+    decisionNumber: number
+    plaintiff: number
+    defendant: number
+    citationNotes: number
+    _all: number
+  }
+
+
+  export type CasePrecedentMinAggregateInputType = {
+    id?: true
+    caseId?: true
+    decisionNumber?: true
+    plaintiff?: true
+    defendant?: true
+    citationNotes?: true
+  }
+
+  export type CasePrecedentMaxAggregateInputType = {
+    id?: true
+    caseId?: true
+    decisionNumber?: true
+    plaintiff?: true
+    defendant?: true
+    citationNotes?: true
+  }
+
+  export type CasePrecedentCountAggregateInputType = {
+    id?: true
+    caseId?: true
+    decisionNumber?: true
+    plaintiff?: true
+    defendant?: true
+    citationNotes?: true
+    _all?: true
+  }
+
+  export type CasePrecedentAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CasePrecedent to aggregate.
+     */
+    where?: CasePrecedentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CasePrecedents to fetch.
+     */
+    orderBy?: CasePrecedentOrderByWithRelationInput | CasePrecedentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CasePrecedentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CasePrecedents from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CasePrecedents.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CasePrecedents
+    **/
+    _count?: true | CasePrecedentCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CasePrecedentMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CasePrecedentMaxAggregateInputType
+  }
+
+  export type GetCasePrecedentAggregateType<T extends CasePrecedentAggregateArgs> = {
+        [P in keyof T & keyof AggregateCasePrecedent]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCasePrecedent[P]>
+      : GetScalarType<T[P], AggregateCasePrecedent[P]>
+  }
+
+
+
+
+  export type CasePrecedentGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CasePrecedentWhereInput
+    orderBy?: CasePrecedentOrderByWithAggregationInput | CasePrecedentOrderByWithAggregationInput[]
+    by: CasePrecedentScalarFieldEnum[] | CasePrecedentScalarFieldEnum
+    having?: CasePrecedentScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CasePrecedentCountAggregateInputType | true
+    _min?: CasePrecedentMinAggregateInputType
+    _max?: CasePrecedentMaxAggregateInputType
+  }
+
+  export type CasePrecedentGroupByOutputType = {
+    id: string
+    caseId: string
+    decisionNumber: string | null
+    plaintiff: string | null
+    defendant: string | null
+    citationNotes: string | null
+    _count: CasePrecedentCountAggregateOutputType | null
+    _min: CasePrecedentMinAggregateOutputType | null
+    _max: CasePrecedentMaxAggregateOutputType | null
+  }
+
+  type GetCasePrecedentGroupByPayload<T extends CasePrecedentGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CasePrecedentGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CasePrecedentGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CasePrecedentGroupByOutputType[P]>
+            : GetScalarType<T[P], CasePrecedentGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CasePrecedentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    caseId?: boolean
+    decisionNumber?: boolean
+    plaintiff?: boolean
+    defendant?: boolean
+    citationNotes?: boolean
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["casePrecedent"]>
+
+  export type CasePrecedentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    caseId?: boolean
+    decisionNumber?: boolean
+    plaintiff?: boolean
+    defendant?: boolean
+    citationNotes?: boolean
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["casePrecedent"]>
+
+  export type CasePrecedentSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    caseId?: boolean
+    decisionNumber?: boolean
+    plaintiff?: boolean
+    defendant?: boolean
+    citationNotes?: boolean
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["casePrecedent"]>
+
+  export type CasePrecedentSelectScalar = {
+    id?: boolean
+    caseId?: boolean
+    decisionNumber?: boolean
+    plaintiff?: boolean
+    defendant?: boolean
+    citationNotes?: boolean
+  }
+
+  export type CasePrecedentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "caseId" | "decisionNumber" | "plaintiff" | "defendant" | "citationNotes", ExtArgs["result"]["casePrecedent"]>
+  export type CasePrecedentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+  }
+  export type CasePrecedentIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+  }
+  export type CasePrecedentIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+  }
+
+  export type $CasePrecedentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CasePrecedent"
+    objects: {
+      case: Prisma.$CasePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      caseId: string
+      decisionNumber: string | null
+      plaintiff: string | null
+      defendant: string | null
+      citationNotes: string | null
+    }, ExtArgs["result"]["casePrecedent"]>
+    composites: {}
+  }
+
+  type CasePrecedentGetPayload<S extends boolean | null | undefined | CasePrecedentDefaultArgs> = $Result.GetResult<Prisma.$CasePrecedentPayload, S>
+
+  type CasePrecedentCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CasePrecedentFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CasePrecedentCountAggregateInputType | true
+    }
+
+  export interface CasePrecedentDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CasePrecedent'], meta: { name: 'CasePrecedent' } }
+    /**
+     * Find zero or one CasePrecedent that matches the filter.
+     * @param {CasePrecedentFindUniqueArgs} args - Arguments to find a CasePrecedent
+     * @example
+     * // Get one CasePrecedent
+     * const casePrecedent = await prisma.casePrecedent.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CasePrecedentFindUniqueArgs>(args: SelectSubset<T, CasePrecedentFindUniqueArgs<ExtArgs>>): Prisma__CasePrecedentClient<$Result.GetResult<Prisma.$CasePrecedentPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one CasePrecedent that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CasePrecedentFindUniqueOrThrowArgs} args - Arguments to find a CasePrecedent
+     * @example
+     * // Get one CasePrecedent
+     * const casePrecedent = await prisma.casePrecedent.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CasePrecedentFindUniqueOrThrowArgs>(args: SelectSubset<T, CasePrecedentFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CasePrecedentClient<$Result.GetResult<Prisma.$CasePrecedentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CasePrecedent that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CasePrecedentFindFirstArgs} args - Arguments to find a CasePrecedent
+     * @example
+     * // Get one CasePrecedent
+     * const casePrecedent = await prisma.casePrecedent.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CasePrecedentFindFirstArgs>(args?: SelectSubset<T, CasePrecedentFindFirstArgs<ExtArgs>>): Prisma__CasePrecedentClient<$Result.GetResult<Prisma.$CasePrecedentPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CasePrecedent that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CasePrecedentFindFirstOrThrowArgs} args - Arguments to find a CasePrecedent
+     * @example
+     * // Get one CasePrecedent
+     * const casePrecedent = await prisma.casePrecedent.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CasePrecedentFindFirstOrThrowArgs>(args?: SelectSubset<T, CasePrecedentFindFirstOrThrowArgs<ExtArgs>>): Prisma__CasePrecedentClient<$Result.GetResult<Prisma.$CasePrecedentPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CasePrecedents that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CasePrecedentFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CasePrecedents
+     * const casePrecedents = await prisma.casePrecedent.findMany()
+     * 
+     * // Get first 10 CasePrecedents
+     * const casePrecedents = await prisma.casePrecedent.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const casePrecedentWithIdOnly = await prisma.casePrecedent.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CasePrecedentFindManyArgs>(args?: SelectSubset<T, CasePrecedentFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CasePrecedentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a CasePrecedent.
+     * @param {CasePrecedentCreateArgs} args - Arguments to create a CasePrecedent.
+     * @example
+     * // Create one CasePrecedent
+     * const CasePrecedent = await prisma.casePrecedent.create({
+     *   data: {
+     *     // ... data to create a CasePrecedent
+     *   }
+     * })
+     * 
+     */
+    create<T extends CasePrecedentCreateArgs>(args: SelectSubset<T, CasePrecedentCreateArgs<ExtArgs>>): Prisma__CasePrecedentClient<$Result.GetResult<Prisma.$CasePrecedentPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many CasePrecedents.
+     * @param {CasePrecedentCreateManyArgs} args - Arguments to create many CasePrecedents.
+     * @example
+     * // Create many CasePrecedents
+     * const casePrecedent = await prisma.casePrecedent.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CasePrecedentCreateManyArgs>(args?: SelectSubset<T, CasePrecedentCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many CasePrecedents and returns the data saved in the database.
+     * @param {CasePrecedentCreateManyAndReturnArgs} args - Arguments to create many CasePrecedents.
+     * @example
+     * // Create many CasePrecedents
+     * const casePrecedent = await prisma.casePrecedent.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many CasePrecedents and only return the `id`
+     * const casePrecedentWithIdOnly = await prisma.casePrecedent.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CasePrecedentCreateManyAndReturnArgs>(args?: SelectSubset<T, CasePrecedentCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CasePrecedentPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a CasePrecedent.
+     * @param {CasePrecedentDeleteArgs} args - Arguments to delete one CasePrecedent.
+     * @example
+     * // Delete one CasePrecedent
+     * const CasePrecedent = await prisma.casePrecedent.delete({
+     *   where: {
+     *     // ... filter to delete one CasePrecedent
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CasePrecedentDeleteArgs>(args: SelectSubset<T, CasePrecedentDeleteArgs<ExtArgs>>): Prisma__CasePrecedentClient<$Result.GetResult<Prisma.$CasePrecedentPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one CasePrecedent.
+     * @param {CasePrecedentUpdateArgs} args - Arguments to update one CasePrecedent.
+     * @example
+     * // Update one CasePrecedent
+     * const casePrecedent = await prisma.casePrecedent.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CasePrecedentUpdateArgs>(args: SelectSubset<T, CasePrecedentUpdateArgs<ExtArgs>>): Prisma__CasePrecedentClient<$Result.GetResult<Prisma.$CasePrecedentPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more CasePrecedents.
+     * @param {CasePrecedentDeleteManyArgs} args - Arguments to filter CasePrecedents to delete.
+     * @example
+     * // Delete a few CasePrecedents
+     * const { count } = await prisma.casePrecedent.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CasePrecedentDeleteManyArgs>(args?: SelectSubset<T, CasePrecedentDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CasePrecedents.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CasePrecedentUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CasePrecedents
+     * const casePrecedent = await prisma.casePrecedent.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CasePrecedentUpdateManyArgs>(args: SelectSubset<T, CasePrecedentUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CasePrecedents and returns the data updated in the database.
+     * @param {CasePrecedentUpdateManyAndReturnArgs} args - Arguments to update many CasePrecedents.
+     * @example
+     * // Update many CasePrecedents
+     * const casePrecedent = await prisma.casePrecedent.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more CasePrecedents and only return the `id`
+     * const casePrecedentWithIdOnly = await prisma.casePrecedent.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CasePrecedentUpdateManyAndReturnArgs>(args: SelectSubset<T, CasePrecedentUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CasePrecedentPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one CasePrecedent.
+     * @param {CasePrecedentUpsertArgs} args - Arguments to update or create a CasePrecedent.
+     * @example
+     * // Update or create a CasePrecedent
+     * const casePrecedent = await prisma.casePrecedent.upsert({
+     *   create: {
+     *     // ... data to create a CasePrecedent
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CasePrecedent we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CasePrecedentUpsertArgs>(args: SelectSubset<T, CasePrecedentUpsertArgs<ExtArgs>>): Prisma__CasePrecedentClient<$Result.GetResult<Prisma.$CasePrecedentPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of CasePrecedents.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CasePrecedentCountArgs} args - Arguments to filter CasePrecedents to count.
+     * @example
+     * // Count the number of CasePrecedents
+     * const count = await prisma.casePrecedent.count({
+     *   where: {
+     *     // ... the filter for the CasePrecedents we want to count
+     *   }
+     * })
+    **/
+    count<T extends CasePrecedentCountArgs>(
+      args?: Subset<T, CasePrecedentCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CasePrecedentCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CasePrecedent.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CasePrecedentAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CasePrecedentAggregateArgs>(args: Subset<T, CasePrecedentAggregateArgs>): Prisma.PrismaPromise<GetCasePrecedentAggregateType<T>>
+
+    /**
+     * Group by CasePrecedent.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CasePrecedentGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CasePrecedentGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CasePrecedentGroupByArgs['orderBy'] }
+        : { orderBy?: CasePrecedentGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CasePrecedentGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCasePrecedentGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CasePrecedent model
+   */
+  readonly fields: CasePrecedentFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CasePrecedent.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CasePrecedentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    case<T extends CaseDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CaseDefaultArgs<ExtArgs>>): Prisma__CaseClient<$Result.GetResult<Prisma.$CasePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CasePrecedent model
+   */
+  interface CasePrecedentFieldRefs {
+    readonly id: FieldRef<"CasePrecedent", 'String'>
+    readonly caseId: FieldRef<"CasePrecedent", 'String'>
+    readonly decisionNumber: FieldRef<"CasePrecedent", 'String'>
+    readonly plaintiff: FieldRef<"CasePrecedent", 'String'>
+    readonly defendant: FieldRef<"CasePrecedent", 'String'>
+    readonly citationNotes: FieldRef<"CasePrecedent", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CasePrecedent findUnique
+   */
+  export type CasePrecedentFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CasePrecedent
+     */
+    select?: CasePrecedentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CasePrecedent
+     */
+    omit?: CasePrecedentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePrecedentInclude<ExtArgs> | null
+    /**
+     * Filter, which CasePrecedent to fetch.
+     */
+    where: CasePrecedentWhereUniqueInput
+  }
+
+  /**
+   * CasePrecedent findUniqueOrThrow
+   */
+  export type CasePrecedentFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CasePrecedent
+     */
+    select?: CasePrecedentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CasePrecedent
+     */
+    omit?: CasePrecedentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePrecedentInclude<ExtArgs> | null
+    /**
+     * Filter, which CasePrecedent to fetch.
+     */
+    where: CasePrecedentWhereUniqueInput
+  }
+
+  /**
+   * CasePrecedent findFirst
+   */
+  export type CasePrecedentFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CasePrecedent
+     */
+    select?: CasePrecedentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CasePrecedent
+     */
+    omit?: CasePrecedentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePrecedentInclude<ExtArgs> | null
+    /**
+     * Filter, which CasePrecedent to fetch.
+     */
+    where?: CasePrecedentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CasePrecedents to fetch.
+     */
+    orderBy?: CasePrecedentOrderByWithRelationInput | CasePrecedentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CasePrecedents.
+     */
+    cursor?: CasePrecedentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CasePrecedents from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CasePrecedents.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CasePrecedents.
+     */
+    distinct?: CasePrecedentScalarFieldEnum | CasePrecedentScalarFieldEnum[]
+  }
+
+  /**
+   * CasePrecedent findFirstOrThrow
+   */
+  export type CasePrecedentFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CasePrecedent
+     */
+    select?: CasePrecedentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CasePrecedent
+     */
+    omit?: CasePrecedentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePrecedentInclude<ExtArgs> | null
+    /**
+     * Filter, which CasePrecedent to fetch.
+     */
+    where?: CasePrecedentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CasePrecedents to fetch.
+     */
+    orderBy?: CasePrecedentOrderByWithRelationInput | CasePrecedentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CasePrecedents.
+     */
+    cursor?: CasePrecedentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CasePrecedents from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CasePrecedents.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CasePrecedents.
+     */
+    distinct?: CasePrecedentScalarFieldEnum | CasePrecedentScalarFieldEnum[]
+  }
+
+  /**
+   * CasePrecedent findMany
+   */
+  export type CasePrecedentFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CasePrecedent
+     */
+    select?: CasePrecedentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CasePrecedent
+     */
+    omit?: CasePrecedentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePrecedentInclude<ExtArgs> | null
+    /**
+     * Filter, which CasePrecedents to fetch.
+     */
+    where?: CasePrecedentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CasePrecedents to fetch.
+     */
+    orderBy?: CasePrecedentOrderByWithRelationInput | CasePrecedentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CasePrecedents.
+     */
+    cursor?: CasePrecedentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CasePrecedents from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CasePrecedents.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CasePrecedents.
+     */
+    distinct?: CasePrecedentScalarFieldEnum | CasePrecedentScalarFieldEnum[]
+  }
+
+  /**
+   * CasePrecedent create
+   */
+  export type CasePrecedentCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CasePrecedent
+     */
+    select?: CasePrecedentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CasePrecedent
+     */
+    omit?: CasePrecedentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePrecedentInclude<ExtArgs> | null
+    /**
+     * The data needed to create a CasePrecedent.
+     */
+    data: XOR<CasePrecedentCreateInput, CasePrecedentUncheckedCreateInput>
+  }
+
+  /**
+   * CasePrecedent createMany
+   */
+  export type CasePrecedentCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CasePrecedents.
+     */
+    data: CasePrecedentCreateManyInput | CasePrecedentCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CasePrecedent createManyAndReturn
+   */
+  export type CasePrecedentCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CasePrecedent
+     */
+    select?: CasePrecedentSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CasePrecedent
+     */
+    omit?: CasePrecedentOmit<ExtArgs> | null
+    /**
+     * The data used to create many CasePrecedents.
+     */
+    data: CasePrecedentCreateManyInput | CasePrecedentCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePrecedentIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CasePrecedent update
+   */
+  export type CasePrecedentUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CasePrecedent
+     */
+    select?: CasePrecedentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CasePrecedent
+     */
+    omit?: CasePrecedentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePrecedentInclude<ExtArgs> | null
+    /**
+     * The data needed to update a CasePrecedent.
+     */
+    data: XOR<CasePrecedentUpdateInput, CasePrecedentUncheckedUpdateInput>
+    /**
+     * Choose, which CasePrecedent to update.
+     */
+    where: CasePrecedentWhereUniqueInput
+  }
+
+  /**
+   * CasePrecedent updateMany
+   */
+  export type CasePrecedentUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CasePrecedents.
+     */
+    data: XOR<CasePrecedentUpdateManyMutationInput, CasePrecedentUncheckedUpdateManyInput>
+    /**
+     * Filter which CasePrecedents to update
+     */
+    where?: CasePrecedentWhereInput
+    /**
+     * Limit how many CasePrecedents to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CasePrecedent updateManyAndReturn
+   */
+  export type CasePrecedentUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CasePrecedent
+     */
+    select?: CasePrecedentSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CasePrecedent
+     */
+    omit?: CasePrecedentOmit<ExtArgs> | null
+    /**
+     * The data used to update CasePrecedents.
+     */
+    data: XOR<CasePrecedentUpdateManyMutationInput, CasePrecedentUncheckedUpdateManyInput>
+    /**
+     * Filter which CasePrecedents to update
+     */
+    where?: CasePrecedentWhereInput
+    /**
+     * Limit how many CasePrecedents to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePrecedentIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CasePrecedent upsert
+   */
+  export type CasePrecedentUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CasePrecedent
+     */
+    select?: CasePrecedentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CasePrecedent
+     */
+    omit?: CasePrecedentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePrecedentInclude<ExtArgs> | null
+    /**
+     * The filter to search for the CasePrecedent to update in case it exists.
+     */
+    where: CasePrecedentWhereUniqueInput
+    /**
+     * In case the CasePrecedent found by the `where` argument doesn't exist, create a new CasePrecedent with this data.
+     */
+    create: XOR<CasePrecedentCreateInput, CasePrecedentUncheckedCreateInput>
+    /**
+     * In case the CasePrecedent was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CasePrecedentUpdateInput, CasePrecedentUncheckedUpdateInput>
+  }
+
+  /**
+   * CasePrecedent delete
+   */
+  export type CasePrecedentDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CasePrecedent
+     */
+    select?: CasePrecedentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CasePrecedent
+     */
+    omit?: CasePrecedentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePrecedentInclude<ExtArgs> | null
+    /**
+     * Filter which CasePrecedent to delete.
+     */
+    where: CasePrecedentWhereUniqueInput
+  }
+
+  /**
+   * CasePrecedent deleteMany
+   */
+  export type CasePrecedentDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CasePrecedents to delete
+     */
+    where?: CasePrecedentWhereInput
+    /**
+     * Limit how many CasePrecedents to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CasePrecedent without action
+   */
+  export type CasePrecedentDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CasePrecedent
+     */
+    select?: CasePrecedentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CasePrecedent
+     */
+    omit?: CasePrecedentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePrecedentInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model CasePayment
+   */
+
+  export type AggregateCasePayment = {
+    _count: CasePaymentCountAggregateOutputType | null
+    _avg: CasePaymentAvgAggregateOutputType | null
+    _sum: CasePaymentSumAggregateOutputType | null
+    _min: CasePaymentMinAggregateOutputType | null
+    _max: CasePaymentMaxAggregateOutputType | null
+  }
+
+  export type CasePaymentAvgAggregateOutputType = {
+    amount: Decimal | null
+  }
+
+  export type CasePaymentSumAggregateOutputType = {
+    amount: Decimal | null
+  }
+
+  export type CasePaymentMinAggregateOutputType = {
+    id: string | null
+    caseId: string | null
+    amount: Decimal | null
+    paymentDate: Date | null
+    method: string | null
+    referenceNo: string | null
+    notes: string | null
+    createdAt: Date | null
+  }
+
+  export type CasePaymentMaxAggregateOutputType = {
+    id: string | null
+    caseId: string | null
+    amount: Decimal | null
+    paymentDate: Date | null
+    method: string | null
+    referenceNo: string | null
+    notes: string | null
+    createdAt: Date | null
+  }
+
+  export type CasePaymentCountAggregateOutputType = {
+    id: number
+    caseId: number
+    amount: number
+    paymentDate: number
+    method: number
+    referenceNo: number
+    notes: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type CasePaymentAvgAggregateInputType = {
+    amount?: true
+  }
+
+  export type CasePaymentSumAggregateInputType = {
+    amount?: true
+  }
+
+  export type CasePaymentMinAggregateInputType = {
+    id?: true
+    caseId?: true
+    amount?: true
+    paymentDate?: true
+    method?: true
+    referenceNo?: true
+    notes?: true
+    createdAt?: true
+  }
+
+  export type CasePaymentMaxAggregateInputType = {
+    id?: true
+    caseId?: true
+    amount?: true
+    paymentDate?: true
+    method?: true
+    referenceNo?: true
+    notes?: true
+    createdAt?: true
+  }
+
+  export type CasePaymentCountAggregateInputType = {
+    id?: true
+    caseId?: true
+    amount?: true
+    paymentDate?: true
+    method?: true
+    referenceNo?: true
+    notes?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type CasePaymentAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CasePayment to aggregate.
+     */
+    where?: CasePaymentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CasePayments to fetch.
+     */
+    orderBy?: CasePaymentOrderByWithRelationInput | CasePaymentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CasePaymentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CasePayments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CasePayments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CasePayments
+    **/
+    _count?: true | CasePaymentCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: CasePaymentAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CasePaymentSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CasePaymentMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CasePaymentMaxAggregateInputType
+  }
+
+  export type GetCasePaymentAggregateType<T extends CasePaymentAggregateArgs> = {
+        [P in keyof T & keyof AggregateCasePayment]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCasePayment[P]>
+      : GetScalarType<T[P], AggregateCasePayment[P]>
+  }
+
+
+
+
+  export type CasePaymentGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CasePaymentWhereInput
+    orderBy?: CasePaymentOrderByWithAggregationInput | CasePaymentOrderByWithAggregationInput[]
+    by: CasePaymentScalarFieldEnum[] | CasePaymentScalarFieldEnum
+    having?: CasePaymentScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CasePaymentCountAggregateInputType | true
+    _avg?: CasePaymentAvgAggregateInputType
+    _sum?: CasePaymentSumAggregateInputType
+    _min?: CasePaymentMinAggregateInputType
+    _max?: CasePaymentMaxAggregateInputType
+  }
+
+  export type CasePaymentGroupByOutputType = {
+    id: string
+    caseId: string
+    amount: Decimal
+    paymentDate: Date | null
+    method: string | null
+    referenceNo: string | null
+    notes: string | null
+    createdAt: Date
+    _count: CasePaymentCountAggregateOutputType | null
+    _avg: CasePaymentAvgAggregateOutputType | null
+    _sum: CasePaymentSumAggregateOutputType | null
+    _min: CasePaymentMinAggregateOutputType | null
+    _max: CasePaymentMaxAggregateOutputType | null
+  }
+
+  type GetCasePaymentGroupByPayload<T extends CasePaymentGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CasePaymentGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CasePaymentGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CasePaymentGroupByOutputType[P]>
+            : GetScalarType<T[P], CasePaymentGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CasePaymentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    caseId?: boolean
+    amount?: boolean
+    paymentDate?: boolean
+    method?: boolean
+    referenceNo?: boolean
+    notes?: boolean
+    createdAt?: boolean
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["casePayment"]>
+
+  export type CasePaymentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    caseId?: boolean
+    amount?: boolean
+    paymentDate?: boolean
+    method?: boolean
+    referenceNo?: boolean
+    notes?: boolean
+    createdAt?: boolean
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["casePayment"]>
+
+  export type CasePaymentSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    caseId?: boolean
+    amount?: boolean
+    paymentDate?: boolean
+    method?: boolean
+    referenceNo?: boolean
+    notes?: boolean
+    createdAt?: boolean
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["casePayment"]>
+
+  export type CasePaymentSelectScalar = {
+    id?: boolean
+    caseId?: boolean
+    amount?: boolean
+    paymentDate?: boolean
+    method?: boolean
+    referenceNo?: boolean
+    notes?: boolean
+    createdAt?: boolean
+  }
+
+  export type CasePaymentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "caseId" | "amount" | "paymentDate" | "method" | "referenceNo" | "notes" | "createdAt", ExtArgs["result"]["casePayment"]>
+  export type CasePaymentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+  }
+  export type CasePaymentIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+  }
+  export type CasePaymentIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+  }
+
+  export type $CasePaymentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CasePayment"
+    objects: {
+      case: Prisma.$CasePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      caseId: string
+      amount: Prisma.Decimal
+      paymentDate: Date | null
+      method: string | null
+      referenceNo: string | null
+      notes: string | null
+      createdAt: Date
+    }, ExtArgs["result"]["casePayment"]>
+    composites: {}
+  }
+
+  type CasePaymentGetPayload<S extends boolean | null | undefined | CasePaymentDefaultArgs> = $Result.GetResult<Prisma.$CasePaymentPayload, S>
+
+  type CasePaymentCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CasePaymentFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CasePaymentCountAggregateInputType | true
+    }
+
+  export interface CasePaymentDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CasePayment'], meta: { name: 'CasePayment' } }
+    /**
+     * Find zero or one CasePayment that matches the filter.
+     * @param {CasePaymentFindUniqueArgs} args - Arguments to find a CasePayment
+     * @example
+     * // Get one CasePayment
+     * const casePayment = await prisma.casePayment.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CasePaymentFindUniqueArgs>(args: SelectSubset<T, CasePaymentFindUniqueArgs<ExtArgs>>): Prisma__CasePaymentClient<$Result.GetResult<Prisma.$CasePaymentPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one CasePayment that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CasePaymentFindUniqueOrThrowArgs} args - Arguments to find a CasePayment
+     * @example
+     * // Get one CasePayment
+     * const casePayment = await prisma.casePayment.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CasePaymentFindUniqueOrThrowArgs>(args: SelectSubset<T, CasePaymentFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CasePaymentClient<$Result.GetResult<Prisma.$CasePaymentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CasePayment that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CasePaymentFindFirstArgs} args - Arguments to find a CasePayment
+     * @example
+     * // Get one CasePayment
+     * const casePayment = await prisma.casePayment.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CasePaymentFindFirstArgs>(args?: SelectSubset<T, CasePaymentFindFirstArgs<ExtArgs>>): Prisma__CasePaymentClient<$Result.GetResult<Prisma.$CasePaymentPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CasePayment that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CasePaymentFindFirstOrThrowArgs} args - Arguments to find a CasePayment
+     * @example
+     * // Get one CasePayment
+     * const casePayment = await prisma.casePayment.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CasePaymentFindFirstOrThrowArgs>(args?: SelectSubset<T, CasePaymentFindFirstOrThrowArgs<ExtArgs>>): Prisma__CasePaymentClient<$Result.GetResult<Prisma.$CasePaymentPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CasePayments that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CasePaymentFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CasePayments
+     * const casePayments = await prisma.casePayment.findMany()
+     * 
+     * // Get first 10 CasePayments
+     * const casePayments = await prisma.casePayment.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const casePaymentWithIdOnly = await prisma.casePayment.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CasePaymentFindManyArgs>(args?: SelectSubset<T, CasePaymentFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CasePaymentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a CasePayment.
+     * @param {CasePaymentCreateArgs} args - Arguments to create a CasePayment.
+     * @example
+     * // Create one CasePayment
+     * const CasePayment = await prisma.casePayment.create({
+     *   data: {
+     *     // ... data to create a CasePayment
+     *   }
+     * })
+     * 
+     */
+    create<T extends CasePaymentCreateArgs>(args: SelectSubset<T, CasePaymentCreateArgs<ExtArgs>>): Prisma__CasePaymentClient<$Result.GetResult<Prisma.$CasePaymentPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many CasePayments.
+     * @param {CasePaymentCreateManyArgs} args - Arguments to create many CasePayments.
+     * @example
+     * // Create many CasePayments
+     * const casePayment = await prisma.casePayment.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CasePaymentCreateManyArgs>(args?: SelectSubset<T, CasePaymentCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many CasePayments and returns the data saved in the database.
+     * @param {CasePaymentCreateManyAndReturnArgs} args - Arguments to create many CasePayments.
+     * @example
+     * // Create many CasePayments
+     * const casePayment = await prisma.casePayment.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many CasePayments and only return the `id`
+     * const casePaymentWithIdOnly = await prisma.casePayment.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CasePaymentCreateManyAndReturnArgs>(args?: SelectSubset<T, CasePaymentCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CasePaymentPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a CasePayment.
+     * @param {CasePaymentDeleteArgs} args - Arguments to delete one CasePayment.
+     * @example
+     * // Delete one CasePayment
+     * const CasePayment = await prisma.casePayment.delete({
+     *   where: {
+     *     // ... filter to delete one CasePayment
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CasePaymentDeleteArgs>(args: SelectSubset<T, CasePaymentDeleteArgs<ExtArgs>>): Prisma__CasePaymentClient<$Result.GetResult<Prisma.$CasePaymentPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one CasePayment.
+     * @param {CasePaymentUpdateArgs} args - Arguments to update one CasePayment.
+     * @example
+     * // Update one CasePayment
+     * const casePayment = await prisma.casePayment.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CasePaymentUpdateArgs>(args: SelectSubset<T, CasePaymentUpdateArgs<ExtArgs>>): Prisma__CasePaymentClient<$Result.GetResult<Prisma.$CasePaymentPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more CasePayments.
+     * @param {CasePaymentDeleteManyArgs} args - Arguments to filter CasePayments to delete.
+     * @example
+     * // Delete a few CasePayments
+     * const { count } = await prisma.casePayment.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CasePaymentDeleteManyArgs>(args?: SelectSubset<T, CasePaymentDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CasePayments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CasePaymentUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CasePayments
+     * const casePayment = await prisma.casePayment.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CasePaymentUpdateManyArgs>(args: SelectSubset<T, CasePaymentUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CasePayments and returns the data updated in the database.
+     * @param {CasePaymentUpdateManyAndReturnArgs} args - Arguments to update many CasePayments.
+     * @example
+     * // Update many CasePayments
+     * const casePayment = await prisma.casePayment.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more CasePayments and only return the `id`
+     * const casePaymentWithIdOnly = await prisma.casePayment.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CasePaymentUpdateManyAndReturnArgs>(args: SelectSubset<T, CasePaymentUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CasePaymentPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one CasePayment.
+     * @param {CasePaymentUpsertArgs} args - Arguments to update or create a CasePayment.
+     * @example
+     * // Update or create a CasePayment
+     * const casePayment = await prisma.casePayment.upsert({
+     *   create: {
+     *     // ... data to create a CasePayment
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CasePayment we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CasePaymentUpsertArgs>(args: SelectSubset<T, CasePaymentUpsertArgs<ExtArgs>>): Prisma__CasePaymentClient<$Result.GetResult<Prisma.$CasePaymentPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of CasePayments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CasePaymentCountArgs} args - Arguments to filter CasePayments to count.
+     * @example
+     * // Count the number of CasePayments
+     * const count = await prisma.casePayment.count({
+     *   where: {
+     *     // ... the filter for the CasePayments we want to count
+     *   }
+     * })
+    **/
+    count<T extends CasePaymentCountArgs>(
+      args?: Subset<T, CasePaymentCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CasePaymentCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CasePayment.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CasePaymentAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CasePaymentAggregateArgs>(args: Subset<T, CasePaymentAggregateArgs>): Prisma.PrismaPromise<GetCasePaymentAggregateType<T>>
+
+    /**
+     * Group by CasePayment.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CasePaymentGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CasePaymentGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CasePaymentGroupByArgs['orderBy'] }
+        : { orderBy?: CasePaymentGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CasePaymentGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCasePaymentGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CasePayment model
+   */
+  readonly fields: CasePaymentFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CasePayment.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CasePaymentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    case<T extends CaseDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CaseDefaultArgs<ExtArgs>>): Prisma__CaseClient<$Result.GetResult<Prisma.$CasePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CasePayment model
+   */
+  interface CasePaymentFieldRefs {
+    readonly id: FieldRef<"CasePayment", 'String'>
+    readonly caseId: FieldRef<"CasePayment", 'String'>
+    readonly amount: FieldRef<"CasePayment", 'Decimal'>
+    readonly paymentDate: FieldRef<"CasePayment", 'DateTime'>
+    readonly method: FieldRef<"CasePayment", 'String'>
+    readonly referenceNo: FieldRef<"CasePayment", 'String'>
+    readonly notes: FieldRef<"CasePayment", 'String'>
+    readonly createdAt: FieldRef<"CasePayment", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CasePayment findUnique
+   */
+  export type CasePaymentFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CasePayment
+     */
+    select?: CasePaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CasePayment
+     */
+    omit?: CasePaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePaymentInclude<ExtArgs> | null
+    /**
+     * Filter, which CasePayment to fetch.
+     */
+    where: CasePaymentWhereUniqueInput
+  }
+
+  /**
+   * CasePayment findUniqueOrThrow
+   */
+  export type CasePaymentFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CasePayment
+     */
+    select?: CasePaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CasePayment
+     */
+    omit?: CasePaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePaymentInclude<ExtArgs> | null
+    /**
+     * Filter, which CasePayment to fetch.
+     */
+    where: CasePaymentWhereUniqueInput
+  }
+
+  /**
+   * CasePayment findFirst
+   */
+  export type CasePaymentFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CasePayment
+     */
+    select?: CasePaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CasePayment
+     */
+    omit?: CasePaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePaymentInclude<ExtArgs> | null
+    /**
+     * Filter, which CasePayment to fetch.
+     */
+    where?: CasePaymentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CasePayments to fetch.
+     */
+    orderBy?: CasePaymentOrderByWithRelationInput | CasePaymentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CasePayments.
+     */
+    cursor?: CasePaymentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CasePayments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CasePayments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CasePayments.
+     */
+    distinct?: CasePaymentScalarFieldEnum | CasePaymentScalarFieldEnum[]
+  }
+
+  /**
+   * CasePayment findFirstOrThrow
+   */
+  export type CasePaymentFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CasePayment
+     */
+    select?: CasePaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CasePayment
+     */
+    omit?: CasePaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePaymentInclude<ExtArgs> | null
+    /**
+     * Filter, which CasePayment to fetch.
+     */
+    where?: CasePaymentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CasePayments to fetch.
+     */
+    orderBy?: CasePaymentOrderByWithRelationInput | CasePaymentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CasePayments.
+     */
+    cursor?: CasePaymentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CasePayments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CasePayments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CasePayments.
+     */
+    distinct?: CasePaymentScalarFieldEnum | CasePaymentScalarFieldEnum[]
+  }
+
+  /**
+   * CasePayment findMany
+   */
+  export type CasePaymentFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CasePayment
+     */
+    select?: CasePaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CasePayment
+     */
+    omit?: CasePaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePaymentInclude<ExtArgs> | null
+    /**
+     * Filter, which CasePayments to fetch.
+     */
+    where?: CasePaymentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CasePayments to fetch.
+     */
+    orderBy?: CasePaymentOrderByWithRelationInput | CasePaymentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CasePayments.
+     */
+    cursor?: CasePaymentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CasePayments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CasePayments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CasePayments.
+     */
+    distinct?: CasePaymentScalarFieldEnum | CasePaymentScalarFieldEnum[]
+  }
+
+  /**
+   * CasePayment create
+   */
+  export type CasePaymentCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CasePayment
+     */
+    select?: CasePaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CasePayment
+     */
+    omit?: CasePaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePaymentInclude<ExtArgs> | null
+    /**
+     * The data needed to create a CasePayment.
+     */
+    data: XOR<CasePaymentCreateInput, CasePaymentUncheckedCreateInput>
+  }
+
+  /**
+   * CasePayment createMany
+   */
+  export type CasePaymentCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CasePayments.
+     */
+    data: CasePaymentCreateManyInput | CasePaymentCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CasePayment createManyAndReturn
+   */
+  export type CasePaymentCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CasePayment
+     */
+    select?: CasePaymentSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CasePayment
+     */
+    omit?: CasePaymentOmit<ExtArgs> | null
+    /**
+     * The data used to create many CasePayments.
+     */
+    data: CasePaymentCreateManyInput | CasePaymentCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePaymentIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CasePayment update
+   */
+  export type CasePaymentUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CasePayment
+     */
+    select?: CasePaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CasePayment
+     */
+    omit?: CasePaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePaymentInclude<ExtArgs> | null
+    /**
+     * The data needed to update a CasePayment.
+     */
+    data: XOR<CasePaymentUpdateInput, CasePaymentUncheckedUpdateInput>
+    /**
+     * Choose, which CasePayment to update.
+     */
+    where: CasePaymentWhereUniqueInput
+  }
+
+  /**
+   * CasePayment updateMany
+   */
+  export type CasePaymentUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CasePayments.
+     */
+    data: XOR<CasePaymentUpdateManyMutationInput, CasePaymentUncheckedUpdateManyInput>
+    /**
+     * Filter which CasePayments to update
+     */
+    where?: CasePaymentWhereInput
+    /**
+     * Limit how many CasePayments to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CasePayment updateManyAndReturn
+   */
+  export type CasePaymentUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CasePayment
+     */
+    select?: CasePaymentSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CasePayment
+     */
+    omit?: CasePaymentOmit<ExtArgs> | null
+    /**
+     * The data used to update CasePayments.
+     */
+    data: XOR<CasePaymentUpdateManyMutationInput, CasePaymentUncheckedUpdateManyInput>
+    /**
+     * Filter which CasePayments to update
+     */
+    where?: CasePaymentWhereInput
+    /**
+     * Limit how many CasePayments to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePaymentIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CasePayment upsert
+   */
+  export type CasePaymentUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CasePayment
+     */
+    select?: CasePaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CasePayment
+     */
+    omit?: CasePaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePaymentInclude<ExtArgs> | null
+    /**
+     * The filter to search for the CasePayment to update in case it exists.
+     */
+    where: CasePaymentWhereUniqueInput
+    /**
+     * In case the CasePayment found by the `where` argument doesn't exist, create a new CasePayment with this data.
+     */
+    create: XOR<CasePaymentCreateInput, CasePaymentUncheckedCreateInput>
+    /**
+     * In case the CasePayment was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CasePaymentUpdateInput, CasePaymentUncheckedUpdateInput>
+  }
+
+  /**
+   * CasePayment delete
+   */
+  export type CasePaymentDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CasePayment
+     */
+    select?: CasePaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CasePayment
+     */
+    omit?: CasePaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePaymentInclude<ExtArgs> | null
+    /**
+     * Filter which CasePayment to delete.
+     */
+    where: CasePaymentWhereUniqueInput
+  }
+
+  /**
+   * CasePayment deleteMany
+   */
+  export type CasePaymentDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CasePayments to delete
+     */
+    where?: CasePaymentWhereInput
+    /**
+     * Limit how many CasePayments to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CasePayment without action
+   */
+  export type CasePaymentDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CasePayment
+     */
+    select?: CasePaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CasePayment
+     */
+    omit?: CasePaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePaymentInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model CaseCounseling
+   */
+
+  export type AggregateCaseCounseling = {
+    _count: CaseCounselingCountAggregateOutputType | null
+    _min: CaseCounselingMinAggregateOutputType | null
+    _max: CaseCounselingMaxAggregateOutputType | null
+  }
+
+  export type CaseCounselingMinAggregateOutputType = {
+    id: string | null
+    caseId: string | null
+    counselorUserId: string | null
+    date: Date | null
+    notes: string | null
+    createdAt: Date | null
+  }
+
+  export type CaseCounselingMaxAggregateOutputType = {
+    id: string | null
+    caseId: string | null
+    counselorUserId: string | null
+    date: Date | null
+    notes: string | null
+    createdAt: Date | null
+  }
+
+  export type CaseCounselingCountAggregateOutputType = {
+    id: number
+    caseId: number
+    counselorUserId: number
+    date: number
+    notes: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type CaseCounselingMinAggregateInputType = {
+    id?: true
+    caseId?: true
+    counselorUserId?: true
+    date?: true
+    notes?: true
+    createdAt?: true
+  }
+
+  export type CaseCounselingMaxAggregateInputType = {
+    id?: true
+    caseId?: true
+    counselorUserId?: true
+    date?: true
+    notes?: true
+    createdAt?: true
+  }
+
+  export type CaseCounselingCountAggregateInputType = {
+    id?: true
+    caseId?: true
+    counselorUserId?: true
+    date?: true
+    notes?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type CaseCounselingAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CaseCounseling to aggregate.
+     */
+    where?: CaseCounselingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CaseCounselings to fetch.
+     */
+    orderBy?: CaseCounselingOrderByWithRelationInput | CaseCounselingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CaseCounselingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CaseCounselings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CaseCounselings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CaseCounselings
+    **/
+    _count?: true | CaseCounselingCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CaseCounselingMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CaseCounselingMaxAggregateInputType
+  }
+
+  export type GetCaseCounselingAggregateType<T extends CaseCounselingAggregateArgs> = {
+        [P in keyof T & keyof AggregateCaseCounseling]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCaseCounseling[P]>
+      : GetScalarType<T[P], AggregateCaseCounseling[P]>
+  }
+
+
+
+
+  export type CaseCounselingGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CaseCounselingWhereInput
+    orderBy?: CaseCounselingOrderByWithAggregationInput | CaseCounselingOrderByWithAggregationInput[]
+    by: CaseCounselingScalarFieldEnum[] | CaseCounselingScalarFieldEnum
+    having?: CaseCounselingScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CaseCounselingCountAggregateInputType | true
+    _min?: CaseCounselingMinAggregateInputType
+    _max?: CaseCounselingMaxAggregateInputType
+  }
+
+  export type CaseCounselingGroupByOutputType = {
+    id: string
+    caseId: string
+    counselorUserId: string | null
+    date: Date | null
+    notes: string
+    createdAt: Date
+    _count: CaseCounselingCountAggregateOutputType | null
+    _min: CaseCounselingMinAggregateOutputType | null
+    _max: CaseCounselingMaxAggregateOutputType | null
+  }
+
+  type GetCaseCounselingGroupByPayload<T extends CaseCounselingGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CaseCounselingGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CaseCounselingGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CaseCounselingGroupByOutputType[P]>
+            : GetScalarType<T[P], CaseCounselingGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CaseCounselingSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    caseId?: boolean
+    counselorUserId?: boolean
+    date?: boolean
+    notes?: boolean
+    createdAt?: boolean
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+    counselor?: boolean | CaseCounseling$counselorArgs<ExtArgs>
+  }, ExtArgs["result"]["caseCounseling"]>
+
+  export type CaseCounselingSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    caseId?: boolean
+    counselorUserId?: boolean
+    date?: boolean
+    notes?: boolean
+    createdAt?: boolean
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+    counselor?: boolean | CaseCounseling$counselorArgs<ExtArgs>
+  }, ExtArgs["result"]["caseCounseling"]>
+
+  export type CaseCounselingSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    caseId?: boolean
+    counselorUserId?: boolean
+    date?: boolean
+    notes?: boolean
+    createdAt?: boolean
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+    counselor?: boolean | CaseCounseling$counselorArgs<ExtArgs>
+  }, ExtArgs["result"]["caseCounseling"]>
+
+  export type CaseCounselingSelectScalar = {
+    id?: boolean
+    caseId?: boolean
+    counselorUserId?: boolean
+    date?: boolean
+    notes?: boolean
+    createdAt?: boolean
+  }
+
+  export type CaseCounselingOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "caseId" | "counselorUserId" | "date" | "notes" | "createdAt", ExtArgs["result"]["caseCounseling"]>
+  export type CaseCounselingInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+    counselor?: boolean | CaseCounseling$counselorArgs<ExtArgs>
+  }
+  export type CaseCounselingIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+    counselor?: boolean | CaseCounseling$counselorArgs<ExtArgs>
+  }
+  export type CaseCounselingIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+    counselor?: boolean | CaseCounseling$counselorArgs<ExtArgs>
+  }
+
+  export type $CaseCounselingPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CaseCounseling"
+    objects: {
+      case: Prisma.$CasePayload<ExtArgs>
+      counselor: Prisma.$UserPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      caseId: string
+      counselorUserId: string | null
+      date: Date | null
+      notes: string
+      createdAt: Date
+    }, ExtArgs["result"]["caseCounseling"]>
+    composites: {}
+  }
+
+  type CaseCounselingGetPayload<S extends boolean | null | undefined | CaseCounselingDefaultArgs> = $Result.GetResult<Prisma.$CaseCounselingPayload, S>
+
+  type CaseCounselingCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CaseCounselingFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CaseCounselingCountAggregateInputType | true
+    }
+
+  export interface CaseCounselingDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CaseCounseling'], meta: { name: 'CaseCounseling' } }
+    /**
+     * Find zero or one CaseCounseling that matches the filter.
+     * @param {CaseCounselingFindUniqueArgs} args - Arguments to find a CaseCounseling
+     * @example
+     * // Get one CaseCounseling
+     * const caseCounseling = await prisma.caseCounseling.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CaseCounselingFindUniqueArgs>(args: SelectSubset<T, CaseCounselingFindUniqueArgs<ExtArgs>>): Prisma__CaseCounselingClient<$Result.GetResult<Prisma.$CaseCounselingPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one CaseCounseling that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CaseCounselingFindUniqueOrThrowArgs} args - Arguments to find a CaseCounseling
+     * @example
+     * // Get one CaseCounseling
+     * const caseCounseling = await prisma.caseCounseling.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CaseCounselingFindUniqueOrThrowArgs>(args: SelectSubset<T, CaseCounselingFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CaseCounselingClient<$Result.GetResult<Prisma.$CaseCounselingPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CaseCounseling that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseCounselingFindFirstArgs} args - Arguments to find a CaseCounseling
+     * @example
+     * // Get one CaseCounseling
+     * const caseCounseling = await prisma.caseCounseling.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CaseCounselingFindFirstArgs>(args?: SelectSubset<T, CaseCounselingFindFirstArgs<ExtArgs>>): Prisma__CaseCounselingClient<$Result.GetResult<Prisma.$CaseCounselingPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CaseCounseling that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseCounselingFindFirstOrThrowArgs} args - Arguments to find a CaseCounseling
+     * @example
+     * // Get one CaseCounseling
+     * const caseCounseling = await prisma.caseCounseling.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CaseCounselingFindFirstOrThrowArgs>(args?: SelectSubset<T, CaseCounselingFindFirstOrThrowArgs<ExtArgs>>): Prisma__CaseCounselingClient<$Result.GetResult<Prisma.$CaseCounselingPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CaseCounselings that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseCounselingFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CaseCounselings
+     * const caseCounselings = await prisma.caseCounseling.findMany()
+     * 
+     * // Get first 10 CaseCounselings
+     * const caseCounselings = await prisma.caseCounseling.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const caseCounselingWithIdOnly = await prisma.caseCounseling.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CaseCounselingFindManyArgs>(args?: SelectSubset<T, CaseCounselingFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseCounselingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a CaseCounseling.
+     * @param {CaseCounselingCreateArgs} args - Arguments to create a CaseCounseling.
+     * @example
+     * // Create one CaseCounseling
+     * const CaseCounseling = await prisma.caseCounseling.create({
+     *   data: {
+     *     // ... data to create a CaseCounseling
+     *   }
+     * })
+     * 
+     */
+    create<T extends CaseCounselingCreateArgs>(args: SelectSubset<T, CaseCounselingCreateArgs<ExtArgs>>): Prisma__CaseCounselingClient<$Result.GetResult<Prisma.$CaseCounselingPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many CaseCounselings.
+     * @param {CaseCounselingCreateManyArgs} args - Arguments to create many CaseCounselings.
+     * @example
+     * // Create many CaseCounselings
+     * const caseCounseling = await prisma.caseCounseling.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CaseCounselingCreateManyArgs>(args?: SelectSubset<T, CaseCounselingCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many CaseCounselings and returns the data saved in the database.
+     * @param {CaseCounselingCreateManyAndReturnArgs} args - Arguments to create many CaseCounselings.
+     * @example
+     * // Create many CaseCounselings
+     * const caseCounseling = await prisma.caseCounseling.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many CaseCounselings and only return the `id`
+     * const caseCounselingWithIdOnly = await prisma.caseCounseling.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CaseCounselingCreateManyAndReturnArgs>(args?: SelectSubset<T, CaseCounselingCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseCounselingPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a CaseCounseling.
+     * @param {CaseCounselingDeleteArgs} args - Arguments to delete one CaseCounseling.
+     * @example
+     * // Delete one CaseCounseling
+     * const CaseCounseling = await prisma.caseCounseling.delete({
+     *   where: {
+     *     // ... filter to delete one CaseCounseling
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CaseCounselingDeleteArgs>(args: SelectSubset<T, CaseCounselingDeleteArgs<ExtArgs>>): Prisma__CaseCounselingClient<$Result.GetResult<Prisma.$CaseCounselingPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one CaseCounseling.
+     * @param {CaseCounselingUpdateArgs} args - Arguments to update one CaseCounseling.
+     * @example
+     * // Update one CaseCounseling
+     * const caseCounseling = await prisma.caseCounseling.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CaseCounselingUpdateArgs>(args: SelectSubset<T, CaseCounselingUpdateArgs<ExtArgs>>): Prisma__CaseCounselingClient<$Result.GetResult<Prisma.$CaseCounselingPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more CaseCounselings.
+     * @param {CaseCounselingDeleteManyArgs} args - Arguments to filter CaseCounselings to delete.
+     * @example
+     * // Delete a few CaseCounselings
+     * const { count } = await prisma.caseCounseling.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CaseCounselingDeleteManyArgs>(args?: SelectSubset<T, CaseCounselingDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CaseCounselings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseCounselingUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CaseCounselings
+     * const caseCounseling = await prisma.caseCounseling.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CaseCounselingUpdateManyArgs>(args: SelectSubset<T, CaseCounselingUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CaseCounselings and returns the data updated in the database.
+     * @param {CaseCounselingUpdateManyAndReturnArgs} args - Arguments to update many CaseCounselings.
+     * @example
+     * // Update many CaseCounselings
+     * const caseCounseling = await prisma.caseCounseling.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more CaseCounselings and only return the `id`
+     * const caseCounselingWithIdOnly = await prisma.caseCounseling.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CaseCounselingUpdateManyAndReturnArgs>(args: SelectSubset<T, CaseCounselingUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseCounselingPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one CaseCounseling.
+     * @param {CaseCounselingUpsertArgs} args - Arguments to update or create a CaseCounseling.
+     * @example
+     * // Update or create a CaseCounseling
+     * const caseCounseling = await prisma.caseCounseling.upsert({
+     *   create: {
+     *     // ... data to create a CaseCounseling
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CaseCounseling we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CaseCounselingUpsertArgs>(args: SelectSubset<T, CaseCounselingUpsertArgs<ExtArgs>>): Prisma__CaseCounselingClient<$Result.GetResult<Prisma.$CaseCounselingPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of CaseCounselings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseCounselingCountArgs} args - Arguments to filter CaseCounselings to count.
+     * @example
+     * // Count the number of CaseCounselings
+     * const count = await prisma.caseCounseling.count({
+     *   where: {
+     *     // ... the filter for the CaseCounselings we want to count
+     *   }
+     * })
+    **/
+    count<T extends CaseCounselingCountArgs>(
+      args?: Subset<T, CaseCounselingCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CaseCounselingCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CaseCounseling.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseCounselingAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CaseCounselingAggregateArgs>(args: Subset<T, CaseCounselingAggregateArgs>): Prisma.PrismaPromise<GetCaseCounselingAggregateType<T>>
+
+    /**
+     * Group by CaseCounseling.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseCounselingGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CaseCounselingGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CaseCounselingGroupByArgs['orderBy'] }
+        : { orderBy?: CaseCounselingGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CaseCounselingGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCaseCounselingGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CaseCounseling model
+   */
+  readonly fields: CaseCounselingFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CaseCounseling.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CaseCounselingClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    case<T extends CaseDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CaseDefaultArgs<ExtArgs>>): Prisma__CaseClient<$Result.GetResult<Prisma.$CasePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    counselor<T extends CaseCounseling$counselorArgs<ExtArgs> = {}>(args?: Subset<T, CaseCounseling$counselorArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CaseCounseling model
+   */
+  interface CaseCounselingFieldRefs {
+    readonly id: FieldRef<"CaseCounseling", 'String'>
+    readonly caseId: FieldRef<"CaseCounseling", 'String'>
+    readonly counselorUserId: FieldRef<"CaseCounseling", 'String'>
+    readonly date: FieldRef<"CaseCounseling", 'DateTime'>
+    readonly notes: FieldRef<"CaseCounseling", 'String'>
+    readonly createdAt: FieldRef<"CaseCounseling", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CaseCounseling findUnique
+   */
+  export type CaseCounselingFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseCounseling
+     */
+    select?: CaseCounselingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseCounseling
+     */
+    omit?: CaseCounselingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseCounselingInclude<ExtArgs> | null
+    /**
+     * Filter, which CaseCounseling to fetch.
+     */
+    where: CaseCounselingWhereUniqueInput
+  }
+
+  /**
+   * CaseCounseling findUniqueOrThrow
+   */
+  export type CaseCounselingFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseCounseling
+     */
+    select?: CaseCounselingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseCounseling
+     */
+    omit?: CaseCounselingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseCounselingInclude<ExtArgs> | null
+    /**
+     * Filter, which CaseCounseling to fetch.
+     */
+    where: CaseCounselingWhereUniqueInput
+  }
+
+  /**
+   * CaseCounseling findFirst
+   */
+  export type CaseCounselingFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseCounseling
+     */
+    select?: CaseCounselingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseCounseling
+     */
+    omit?: CaseCounselingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseCounselingInclude<ExtArgs> | null
+    /**
+     * Filter, which CaseCounseling to fetch.
+     */
+    where?: CaseCounselingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CaseCounselings to fetch.
+     */
+    orderBy?: CaseCounselingOrderByWithRelationInput | CaseCounselingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CaseCounselings.
+     */
+    cursor?: CaseCounselingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CaseCounselings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CaseCounselings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CaseCounselings.
+     */
+    distinct?: CaseCounselingScalarFieldEnum | CaseCounselingScalarFieldEnum[]
+  }
+
+  /**
+   * CaseCounseling findFirstOrThrow
+   */
+  export type CaseCounselingFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseCounseling
+     */
+    select?: CaseCounselingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseCounseling
+     */
+    omit?: CaseCounselingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseCounselingInclude<ExtArgs> | null
+    /**
+     * Filter, which CaseCounseling to fetch.
+     */
+    where?: CaseCounselingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CaseCounselings to fetch.
+     */
+    orderBy?: CaseCounselingOrderByWithRelationInput | CaseCounselingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CaseCounselings.
+     */
+    cursor?: CaseCounselingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CaseCounselings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CaseCounselings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CaseCounselings.
+     */
+    distinct?: CaseCounselingScalarFieldEnum | CaseCounselingScalarFieldEnum[]
+  }
+
+  /**
+   * CaseCounseling findMany
+   */
+  export type CaseCounselingFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseCounseling
+     */
+    select?: CaseCounselingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseCounseling
+     */
+    omit?: CaseCounselingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseCounselingInclude<ExtArgs> | null
+    /**
+     * Filter, which CaseCounselings to fetch.
+     */
+    where?: CaseCounselingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CaseCounselings to fetch.
+     */
+    orderBy?: CaseCounselingOrderByWithRelationInput | CaseCounselingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CaseCounselings.
+     */
+    cursor?: CaseCounselingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CaseCounselings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CaseCounselings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CaseCounselings.
+     */
+    distinct?: CaseCounselingScalarFieldEnum | CaseCounselingScalarFieldEnum[]
+  }
+
+  /**
+   * CaseCounseling create
+   */
+  export type CaseCounselingCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseCounseling
+     */
+    select?: CaseCounselingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseCounseling
+     */
+    omit?: CaseCounselingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseCounselingInclude<ExtArgs> | null
+    /**
+     * The data needed to create a CaseCounseling.
+     */
+    data: XOR<CaseCounselingCreateInput, CaseCounselingUncheckedCreateInput>
+  }
+
+  /**
+   * CaseCounseling createMany
+   */
+  export type CaseCounselingCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CaseCounselings.
+     */
+    data: CaseCounselingCreateManyInput | CaseCounselingCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CaseCounseling createManyAndReturn
+   */
+  export type CaseCounselingCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseCounseling
+     */
+    select?: CaseCounselingSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseCounseling
+     */
+    omit?: CaseCounselingOmit<ExtArgs> | null
+    /**
+     * The data used to create many CaseCounselings.
+     */
+    data: CaseCounselingCreateManyInput | CaseCounselingCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseCounselingIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CaseCounseling update
+   */
+  export type CaseCounselingUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseCounseling
+     */
+    select?: CaseCounselingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseCounseling
+     */
+    omit?: CaseCounselingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseCounselingInclude<ExtArgs> | null
+    /**
+     * The data needed to update a CaseCounseling.
+     */
+    data: XOR<CaseCounselingUpdateInput, CaseCounselingUncheckedUpdateInput>
+    /**
+     * Choose, which CaseCounseling to update.
+     */
+    where: CaseCounselingWhereUniqueInput
+  }
+
+  /**
+   * CaseCounseling updateMany
+   */
+  export type CaseCounselingUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CaseCounselings.
+     */
+    data: XOR<CaseCounselingUpdateManyMutationInput, CaseCounselingUncheckedUpdateManyInput>
+    /**
+     * Filter which CaseCounselings to update
+     */
+    where?: CaseCounselingWhereInput
+    /**
+     * Limit how many CaseCounselings to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CaseCounseling updateManyAndReturn
+   */
+  export type CaseCounselingUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseCounseling
+     */
+    select?: CaseCounselingSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseCounseling
+     */
+    omit?: CaseCounselingOmit<ExtArgs> | null
+    /**
+     * The data used to update CaseCounselings.
+     */
+    data: XOR<CaseCounselingUpdateManyMutationInput, CaseCounselingUncheckedUpdateManyInput>
+    /**
+     * Filter which CaseCounselings to update
+     */
+    where?: CaseCounselingWhereInput
+    /**
+     * Limit how many CaseCounselings to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseCounselingIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CaseCounseling upsert
+   */
+  export type CaseCounselingUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseCounseling
+     */
+    select?: CaseCounselingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseCounseling
+     */
+    omit?: CaseCounselingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseCounselingInclude<ExtArgs> | null
+    /**
+     * The filter to search for the CaseCounseling to update in case it exists.
+     */
+    where: CaseCounselingWhereUniqueInput
+    /**
+     * In case the CaseCounseling found by the `where` argument doesn't exist, create a new CaseCounseling with this data.
+     */
+    create: XOR<CaseCounselingCreateInput, CaseCounselingUncheckedCreateInput>
+    /**
+     * In case the CaseCounseling was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CaseCounselingUpdateInput, CaseCounselingUncheckedUpdateInput>
+  }
+
+  /**
+   * CaseCounseling delete
+   */
+  export type CaseCounselingDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseCounseling
+     */
+    select?: CaseCounselingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseCounseling
+     */
+    omit?: CaseCounselingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseCounselingInclude<ExtArgs> | null
+    /**
+     * Filter which CaseCounseling to delete.
+     */
+    where: CaseCounselingWhereUniqueInput
+  }
+
+  /**
+   * CaseCounseling deleteMany
+   */
+  export type CaseCounselingDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CaseCounselings to delete
+     */
+    where?: CaseCounselingWhereInput
+    /**
+     * Limit how many CaseCounselings to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CaseCounseling.counselor
+   */
+  export type CaseCounseling$counselorArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
+  }
+
+  /**
+   * CaseCounseling without action
+   */
+  export type CaseCounselingDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseCounseling
+     */
+    select?: CaseCounselingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseCounseling
+     */
+    omit?: CaseCounselingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseCounselingInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model CaseDocument
+   */
+
+  export type AggregateCaseDocument = {
+    _count: CaseDocumentCountAggregateOutputType | null
+    _min: CaseDocumentMinAggregateOutputType | null
+    _max: CaseDocumentMaxAggregateOutputType | null
+  }
+
+  export type CaseDocumentMinAggregateOutputType = {
+    id: string | null
+    caseId: string | null
+    documentUrl: string | null
+    fileName: string | null
+    description: string | null
+    createdAt: Date | null
+  }
+
+  export type CaseDocumentMaxAggregateOutputType = {
+    id: string | null
+    caseId: string | null
+    documentUrl: string | null
+    fileName: string | null
+    description: string | null
+    createdAt: Date | null
+  }
+
+  export type CaseDocumentCountAggregateOutputType = {
+    id: number
+    caseId: number
+    documentUrl: number
+    fileName: number
+    description: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type CaseDocumentMinAggregateInputType = {
+    id?: true
+    caseId?: true
+    documentUrl?: true
+    fileName?: true
+    description?: true
+    createdAt?: true
+  }
+
+  export type CaseDocumentMaxAggregateInputType = {
+    id?: true
+    caseId?: true
+    documentUrl?: true
+    fileName?: true
+    description?: true
+    createdAt?: true
+  }
+
+  export type CaseDocumentCountAggregateInputType = {
+    id?: true
+    caseId?: true
+    documentUrl?: true
+    fileName?: true
+    description?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type CaseDocumentAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CaseDocument to aggregate.
+     */
+    where?: CaseDocumentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CaseDocuments to fetch.
+     */
+    orderBy?: CaseDocumentOrderByWithRelationInput | CaseDocumentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CaseDocumentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CaseDocuments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CaseDocuments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CaseDocuments
+    **/
+    _count?: true | CaseDocumentCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CaseDocumentMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CaseDocumentMaxAggregateInputType
+  }
+
+  export type GetCaseDocumentAggregateType<T extends CaseDocumentAggregateArgs> = {
+        [P in keyof T & keyof AggregateCaseDocument]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCaseDocument[P]>
+      : GetScalarType<T[P], AggregateCaseDocument[P]>
+  }
+
+
+
+
+  export type CaseDocumentGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CaseDocumentWhereInput
+    orderBy?: CaseDocumentOrderByWithAggregationInput | CaseDocumentOrderByWithAggregationInput[]
+    by: CaseDocumentScalarFieldEnum[] | CaseDocumentScalarFieldEnum
+    having?: CaseDocumentScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CaseDocumentCountAggregateInputType | true
+    _min?: CaseDocumentMinAggregateInputType
+    _max?: CaseDocumentMaxAggregateInputType
+  }
+
+  export type CaseDocumentGroupByOutputType = {
+    id: string
+    caseId: string
+    documentUrl: string
+    fileName: string
+    description: string | null
+    createdAt: Date
+    _count: CaseDocumentCountAggregateOutputType | null
+    _min: CaseDocumentMinAggregateOutputType | null
+    _max: CaseDocumentMaxAggregateOutputType | null
+  }
+
+  type GetCaseDocumentGroupByPayload<T extends CaseDocumentGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CaseDocumentGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CaseDocumentGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CaseDocumentGroupByOutputType[P]>
+            : GetScalarType<T[P], CaseDocumentGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CaseDocumentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    caseId?: boolean
+    documentUrl?: boolean
+    fileName?: boolean
+    description?: boolean
+    createdAt?: boolean
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["caseDocument"]>
+
+  export type CaseDocumentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    caseId?: boolean
+    documentUrl?: boolean
+    fileName?: boolean
+    description?: boolean
+    createdAt?: boolean
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["caseDocument"]>
+
+  export type CaseDocumentSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    caseId?: boolean
+    documentUrl?: boolean
+    fileName?: boolean
+    description?: boolean
+    createdAt?: boolean
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["caseDocument"]>
+
+  export type CaseDocumentSelectScalar = {
+    id?: boolean
+    caseId?: boolean
+    documentUrl?: boolean
+    fileName?: boolean
+    description?: boolean
+    createdAt?: boolean
+  }
+
+  export type CaseDocumentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "caseId" | "documentUrl" | "fileName" | "description" | "createdAt", ExtArgs["result"]["caseDocument"]>
+  export type CaseDocumentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+  }
+  export type CaseDocumentIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+  }
+  export type CaseDocumentIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+  }
+
+  export type $CaseDocumentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CaseDocument"
+    objects: {
+      case: Prisma.$CasePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      caseId: string
+      documentUrl: string
+      fileName: string
+      description: string | null
+      createdAt: Date
+    }, ExtArgs["result"]["caseDocument"]>
+    composites: {}
+  }
+
+  type CaseDocumentGetPayload<S extends boolean | null | undefined | CaseDocumentDefaultArgs> = $Result.GetResult<Prisma.$CaseDocumentPayload, S>
+
+  type CaseDocumentCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CaseDocumentFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CaseDocumentCountAggregateInputType | true
+    }
+
+  export interface CaseDocumentDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CaseDocument'], meta: { name: 'CaseDocument' } }
+    /**
+     * Find zero or one CaseDocument that matches the filter.
+     * @param {CaseDocumentFindUniqueArgs} args - Arguments to find a CaseDocument
+     * @example
+     * // Get one CaseDocument
+     * const caseDocument = await prisma.caseDocument.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CaseDocumentFindUniqueArgs>(args: SelectSubset<T, CaseDocumentFindUniqueArgs<ExtArgs>>): Prisma__CaseDocumentClient<$Result.GetResult<Prisma.$CaseDocumentPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one CaseDocument that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CaseDocumentFindUniqueOrThrowArgs} args - Arguments to find a CaseDocument
+     * @example
+     * // Get one CaseDocument
+     * const caseDocument = await prisma.caseDocument.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CaseDocumentFindUniqueOrThrowArgs>(args: SelectSubset<T, CaseDocumentFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CaseDocumentClient<$Result.GetResult<Prisma.$CaseDocumentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CaseDocument that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseDocumentFindFirstArgs} args - Arguments to find a CaseDocument
+     * @example
+     * // Get one CaseDocument
+     * const caseDocument = await prisma.caseDocument.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CaseDocumentFindFirstArgs>(args?: SelectSubset<T, CaseDocumentFindFirstArgs<ExtArgs>>): Prisma__CaseDocumentClient<$Result.GetResult<Prisma.$CaseDocumentPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CaseDocument that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseDocumentFindFirstOrThrowArgs} args - Arguments to find a CaseDocument
+     * @example
+     * // Get one CaseDocument
+     * const caseDocument = await prisma.caseDocument.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CaseDocumentFindFirstOrThrowArgs>(args?: SelectSubset<T, CaseDocumentFindFirstOrThrowArgs<ExtArgs>>): Prisma__CaseDocumentClient<$Result.GetResult<Prisma.$CaseDocumentPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CaseDocuments that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseDocumentFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CaseDocuments
+     * const caseDocuments = await prisma.caseDocument.findMany()
+     * 
+     * // Get first 10 CaseDocuments
+     * const caseDocuments = await prisma.caseDocument.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const caseDocumentWithIdOnly = await prisma.caseDocument.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CaseDocumentFindManyArgs>(args?: SelectSubset<T, CaseDocumentFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseDocumentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a CaseDocument.
+     * @param {CaseDocumentCreateArgs} args - Arguments to create a CaseDocument.
+     * @example
+     * // Create one CaseDocument
+     * const CaseDocument = await prisma.caseDocument.create({
+     *   data: {
+     *     // ... data to create a CaseDocument
+     *   }
+     * })
+     * 
+     */
+    create<T extends CaseDocumentCreateArgs>(args: SelectSubset<T, CaseDocumentCreateArgs<ExtArgs>>): Prisma__CaseDocumentClient<$Result.GetResult<Prisma.$CaseDocumentPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many CaseDocuments.
+     * @param {CaseDocumentCreateManyArgs} args - Arguments to create many CaseDocuments.
+     * @example
+     * // Create many CaseDocuments
+     * const caseDocument = await prisma.caseDocument.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CaseDocumentCreateManyArgs>(args?: SelectSubset<T, CaseDocumentCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many CaseDocuments and returns the data saved in the database.
+     * @param {CaseDocumentCreateManyAndReturnArgs} args - Arguments to create many CaseDocuments.
+     * @example
+     * // Create many CaseDocuments
+     * const caseDocument = await prisma.caseDocument.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many CaseDocuments and only return the `id`
+     * const caseDocumentWithIdOnly = await prisma.caseDocument.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CaseDocumentCreateManyAndReturnArgs>(args?: SelectSubset<T, CaseDocumentCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseDocumentPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a CaseDocument.
+     * @param {CaseDocumentDeleteArgs} args - Arguments to delete one CaseDocument.
+     * @example
+     * // Delete one CaseDocument
+     * const CaseDocument = await prisma.caseDocument.delete({
+     *   where: {
+     *     // ... filter to delete one CaseDocument
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CaseDocumentDeleteArgs>(args: SelectSubset<T, CaseDocumentDeleteArgs<ExtArgs>>): Prisma__CaseDocumentClient<$Result.GetResult<Prisma.$CaseDocumentPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one CaseDocument.
+     * @param {CaseDocumentUpdateArgs} args - Arguments to update one CaseDocument.
+     * @example
+     * // Update one CaseDocument
+     * const caseDocument = await prisma.caseDocument.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CaseDocumentUpdateArgs>(args: SelectSubset<T, CaseDocumentUpdateArgs<ExtArgs>>): Prisma__CaseDocumentClient<$Result.GetResult<Prisma.$CaseDocumentPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more CaseDocuments.
+     * @param {CaseDocumentDeleteManyArgs} args - Arguments to filter CaseDocuments to delete.
+     * @example
+     * // Delete a few CaseDocuments
+     * const { count } = await prisma.caseDocument.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CaseDocumentDeleteManyArgs>(args?: SelectSubset<T, CaseDocumentDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CaseDocuments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseDocumentUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CaseDocuments
+     * const caseDocument = await prisma.caseDocument.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CaseDocumentUpdateManyArgs>(args: SelectSubset<T, CaseDocumentUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CaseDocuments and returns the data updated in the database.
+     * @param {CaseDocumentUpdateManyAndReturnArgs} args - Arguments to update many CaseDocuments.
+     * @example
+     * // Update many CaseDocuments
+     * const caseDocument = await prisma.caseDocument.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more CaseDocuments and only return the `id`
+     * const caseDocumentWithIdOnly = await prisma.caseDocument.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CaseDocumentUpdateManyAndReturnArgs>(args: SelectSubset<T, CaseDocumentUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseDocumentPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one CaseDocument.
+     * @param {CaseDocumentUpsertArgs} args - Arguments to update or create a CaseDocument.
+     * @example
+     * // Update or create a CaseDocument
+     * const caseDocument = await prisma.caseDocument.upsert({
+     *   create: {
+     *     // ... data to create a CaseDocument
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CaseDocument we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CaseDocumentUpsertArgs>(args: SelectSubset<T, CaseDocumentUpsertArgs<ExtArgs>>): Prisma__CaseDocumentClient<$Result.GetResult<Prisma.$CaseDocumentPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of CaseDocuments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseDocumentCountArgs} args - Arguments to filter CaseDocuments to count.
+     * @example
+     * // Count the number of CaseDocuments
+     * const count = await prisma.caseDocument.count({
+     *   where: {
+     *     // ... the filter for the CaseDocuments we want to count
+     *   }
+     * })
+    **/
+    count<T extends CaseDocumentCountArgs>(
+      args?: Subset<T, CaseDocumentCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CaseDocumentCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CaseDocument.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseDocumentAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CaseDocumentAggregateArgs>(args: Subset<T, CaseDocumentAggregateArgs>): Prisma.PrismaPromise<GetCaseDocumentAggregateType<T>>
+
+    /**
+     * Group by CaseDocument.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseDocumentGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CaseDocumentGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CaseDocumentGroupByArgs['orderBy'] }
+        : { orderBy?: CaseDocumentGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CaseDocumentGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCaseDocumentGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CaseDocument model
+   */
+  readonly fields: CaseDocumentFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CaseDocument.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CaseDocumentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    case<T extends CaseDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CaseDefaultArgs<ExtArgs>>): Prisma__CaseClient<$Result.GetResult<Prisma.$CasePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CaseDocument model
+   */
+  interface CaseDocumentFieldRefs {
+    readonly id: FieldRef<"CaseDocument", 'String'>
+    readonly caseId: FieldRef<"CaseDocument", 'String'>
+    readonly documentUrl: FieldRef<"CaseDocument", 'String'>
+    readonly fileName: FieldRef<"CaseDocument", 'String'>
+    readonly description: FieldRef<"CaseDocument", 'String'>
+    readonly createdAt: FieldRef<"CaseDocument", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CaseDocument findUnique
+   */
+  export type CaseDocumentFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseDocument
+     */
+    select?: CaseDocumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseDocument
+     */
+    omit?: CaseDocumentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseDocumentInclude<ExtArgs> | null
+    /**
+     * Filter, which CaseDocument to fetch.
+     */
+    where: CaseDocumentWhereUniqueInput
+  }
+
+  /**
+   * CaseDocument findUniqueOrThrow
+   */
+  export type CaseDocumentFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseDocument
+     */
+    select?: CaseDocumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseDocument
+     */
+    omit?: CaseDocumentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseDocumentInclude<ExtArgs> | null
+    /**
+     * Filter, which CaseDocument to fetch.
+     */
+    where: CaseDocumentWhereUniqueInput
+  }
+
+  /**
+   * CaseDocument findFirst
+   */
+  export type CaseDocumentFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseDocument
+     */
+    select?: CaseDocumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseDocument
+     */
+    omit?: CaseDocumentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseDocumentInclude<ExtArgs> | null
+    /**
+     * Filter, which CaseDocument to fetch.
+     */
+    where?: CaseDocumentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CaseDocuments to fetch.
+     */
+    orderBy?: CaseDocumentOrderByWithRelationInput | CaseDocumentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CaseDocuments.
+     */
+    cursor?: CaseDocumentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CaseDocuments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CaseDocuments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CaseDocuments.
+     */
+    distinct?: CaseDocumentScalarFieldEnum | CaseDocumentScalarFieldEnum[]
+  }
+
+  /**
+   * CaseDocument findFirstOrThrow
+   */
+  export type CaseDocumentFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseDocument
+     */
+    select?: CaseDocumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseDocument
+     */
+    omit?: CaseDocumentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseDocumentInclude<ExtArgs> | null
+    /**
+     * Filter, which CaseDocument to fetch.
+     */
+    where?: CaseDocumentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CaseDocuments to fetch.
+     */
+    orderBy?: CaseDocumentOrderByWithRelationInput | CaseDocumentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CaseDocuments.
+     */
+    cursor?: CaseDocumentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CaseDocuments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CaseDocuments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CaseDocuments.
+     */
+    distinct?: CaseDocumentScalarFieldEnum | CaseDocumentScalarFieldEnum[]
+  }
+
+  /**
+   * CaseDocument findMany
+   */
+  export type CaseDocumentFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseDocument
+     */
+    select?: CaseDocumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseDocument
+     */
+    omit?: CaseDocumentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseDocumentInclude<ExtArgs> | null
+    /**
+     * Filter, which CaseDocuments to fetch.
+     */
+    where?: CaseDocumentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CaseDocuments to fetch.
+     */
+    orderBy?: CaseDocumentOrderByWithRelationInput | CaseDocumentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CaseDocuments.
+     */
+    cursor?: CaseDocumentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CaseDocuments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CaseDocuments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CaseDocuments.
+     */
+    distinct?: CaseDocumentScalarFieldEnum | CaseDocumentScalarFieldEnum[]
+  }
+
+  /**
+   * CaseDocument create
+   */
+  export type CaseDocumentCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseDocument
+     */
+    select?: CaseDocumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseDocument
+     */
+    omit?: CaseDocumentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseDocumentInclude<ExtArgs> | null
+    /**
+     * The data needed to create a CaseDocument.
+     */
+    data: XOR<CaseDocumentCreateInput, CaseDocumentUncheckedCreateInput>
+  }
+
+  /**
+   * CaseDocument createMany
+   */
+  export type CaseDocumentCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CaseDocuments.
+     */
+    data: CaseDocumentCreateManyInput | CaseDocumentCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CaseDocument createManyAndReturn
+   */
+  export type CaseDocumentCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseDocument
+     */
+    select?: CaseDocumentSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseDocument
+     */
+    omit?: CaseDocumentOmit<ExtArgs> | null
+    /**
+     * The data used to create many CaseDocuments.
+     */
+    data: CaseDocumentCreateManyInput | CaseDocumentCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseDocumentIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CaseDocument update
+   */
+  export type CaseDocumentUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseDocument
+     */
+    select?: CaseDocumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseDocument
+     */
+    omit?: CaseDocumentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseDocumentInclude<ExtArgs> | null
+    /**
+     * The data needed to update a CaseDocument.
+     */
+    data: XOR<CaseDocumentUpdateInput, CaseDocumentUncheckedUpdateInput>
+    /**
+     * Choose, which CaseDocument to update.
+     */
+    where: CaseDocumentWhereUniqueInput
+  }
+
+  /**
+   * CaseDocument updateMany
+   */
+  export type CaseDocumentUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CaseDocuments.
+     */
+    data: XOR<CaseDocumentUpdateManyMutationInput, CaseDocumentUncheckedUpdateManyInput>
+    /**
+     * Filter which CaseDocuments to update
+     */
+    where?: CaseDocumentWhereInput
+    /**
+     * Limit how many CaseDocuments to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CaseDocument updateManyAndReturn
+   */
+  export type CaseDocumentUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseDocument
+     */
+    select?: CaseDocumentSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseDocument
+     */
+    omit?: CaseDocumentOmit<ExtArgs> | null
+    /**
+     * The data used to update CaseDocuments.
+     */
+    data: XOR<CaseDocumentUpdateManyMutationInput, CaseDocumentUncheckedUpdateManyInput>
+    /**
+     * Filter which CaseDocuments to update
+     */
+    where?: CaseDocumentWhereInput
+    /**
+     * Limit how many CaseDocuments to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseDocumentIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CaseDocument upsert
+   */
+  export type CaseDocumentUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseDocument
+     */
+    select?: CaseDocumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseDocument
+     */
+    omit?: CaseDocumentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseDocumentInclude<ExtArgs> | null
+    /**
+     * The filter to search for the CaseDocument to update in case it exists.
+     */
+    where: CaseDocumentWhereUniqueInput
+    /**
+     * In case the CaseDocument found by the `where` argument doesn't exist, create a new CaseDocument with this data.
+     */
+    create: XOR<CaseDocumentCreateInput, CaseDocumentUncheckedCreateInput>
+    /**
+     * In case the CaseDocument was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CaseDocumentUpdateInput, CaseDocumentUncheckedUpdateInput>
+  }
+
+  /**
+   * CaseDocument delete
+   */
+  export type CaseDocumentDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseDocument
+     */
+    select?: CaseDocumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseDocument
+     */
+    omit?: CaseDocumentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseDocumentInclude<ExtArgs> | null
+    /**
+     * Filter which CaseDocument to delete.
+     */
+    where: CaseDocumentWhereUniqueInput
+  }
+
+  /**
+   * CaseDocument deleteMany
+   */
+  export type CaseDocumentDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CaseDocuments to delete
+     */
+    where?: CaseDocumentWhereInput
+    /**
+     * Limit how many CaseDocuments to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CaseDocument without action
+   */
+  export type CaseDocumentDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseDocument
+     */
+    select?: CaseDocumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseDocument
+     */
+    omit?: CaseDocumentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseDocumentInclude<ExtArgs> | null
   }
 
 
@@ -13598,6 +29546,162 @@ export namespace Prisma {
   export type ResourceScalarFieldEnum = (typeof ResourceScalarFieldEnum)[keyof typeof ResourceScalarFieldEnum]
 
 
+  export const CourtLevelScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    nepaliName: 'nepaliName'
+  };
+
+  export type CourtLevelScalarFieldEnum = (typeof CourtLevelScalarFieldEnum)[keyof typeof CourtLevelScalarFieldEnum]
+
+
+  export const CaseNatureScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    nepaliName: 'nepaliName'
+  };
+
+  export type CaseNatureScalarFieldEnum = (typeof CaseNatureScalarFieldEnum)[keyof typeof CaseNatureScalarFieldEnum]
+
+
+  export const PartyRoleScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    nepaliName: 'nepaliName'
+  };
+
+  export type PartyRoleScalarFieldEnum = (typeof PartyRoleScalarFieldEnum)[keyof typeof PartyRoleScalarFieldEnum]
+
+
+  export const CaseScalarFieldEnum: {
+    id: 'id',
+    caseNumber: 'caseNumber',
+    caseName: 'caseName',
+    natureId: 'natureId',
+    registrationDate: 'registrationDate',
+    registrationFee: 'registrationFee',
+    sectionCourtRoom: 'sectionCourtRoom',
+    facts: 'facts',
+    relatedLaws: 'relatedLaws',
+    referredThrough: 'referredThrough',
+    noticeStatus: 'noticeStatus',
+    fullJudgmentDate: 'fullJudgmentDate',
+    judgmentVerifyDate: 'judgmentVerifyDate',
+    status: 'status',
+    paymentStatus: 'paymentStatus',
+    createdAt: 'createdAt'
+  };
+
+  export type CaseScalarFieldEnum = (typeof CaseScalarFieldEnum)[keyof typeof CaseScalarFieldEnum]
+
+
+  export const CaseLawyerScalarFieldEnum: {
+    caseId: 'caseId',
+    userId: 'userId',
+    isLead: 'isLead'
+  };
+
+  export type CaseLawyerScalarFieldEnum = (typeof CaseLawyerScalarFieldEnum)[keyof typeof CaseLawyerScalarFieldEnum]
+
+
+  export const CasePartyScalarFieldEnum: {
+    id: 'id',
+    caseId: 'caseId',
+    partyName: 'partyName',
+    roleId: 'roleId',
+    fee: 'fee',
+    contactInfo: 'contactInfo'
+  };
+
+  export type CasePartyScalarFieldEnum = (typeof CasePartyScalarFieldEnum)[keyof typeof CasePartyScalarFieldEnum]
+
+
+  export const CaseHearingScalarFieldEnum: {
+    id: 'id',
+    caseId: 'caseId',
+    nextHearingDate: 'nextHearingDate',
+    hearingDate: 'hearingDate',
+    hearingOrder: 'hearingOrder',
+    judgeName: 'judgeName'
+  };
+
+  export type CaseHearingScalarFieldEnum = (typeof CaseHearingScalarFieldEnum)[keyof typeof CaseHearingScalarFieldEnum]
+
+
+  export const CasePleadingScalarFieldEnum: {
+    id: 'id',
+    caseId: 'caseId',
+    pleaderUserId: 'pleaderUserId',
+    pleadingDate: 'pleadingDate',
+    pleadingNotes: 'pleadingNotes'
+  };
+
+  export type CasePleadingScalarFieldEnum = (typeof CasePleadingScalarFieldEnum)[keyof typeof CasePleadingScalarFieldEnum]
+
+
+  export const CourtProceedingScalarFieldEnum: {
+    id: 'id',
+    caseId: 'caseId',
+    courtLevelId: 'courtLevelId',
+    courtName: 'courtName',
+    judgeName: 'judgeName',
+    chargeCounseling: 'chargeCounseling',
+    verdict: 'verdict'
+  };
+
+  export type CourtProceedingScalarFieldEnum = (typeof CourtProceedingScalarFieldEnum)[keyof typeof CourtProceedingScalarFieldEnum]
+
+
+  export const CasePrecedentScalarFieldEnum: {
+    id: 'id',
+    caseId: 'caseId',
+    decisionNumber: 'decisionNumber',
+    plaintiff: 'plaintiff',
+    defendant: 'defendant',
+    citationNotes: 'citationNotes'
+  };
+
+  export type CasePrecedentScalarFieldEnum = (typeof CasePrecedentScalarFieldEnum)[keyof typeof CasePrecedentScalarFieldEnum]
+
+
+  export const CasePaymentScalarFieldEnum: {
+    id: 'id',
+    caseId: 'caseId',
+    amount: 'amount',
+    paymentDate: 'paymentDate',
+    method: 'method',
+    referenceNo: 'referenceNo',
+    notes: 'notes',
+    createdAt: 'createdAt'
+  };
+
+  export type CasePaymentScalarFieldEnum = (typeof CasePaymentScalarFieldEnum)[keyof typeof CasePaymentScalarFieldEnum]
+
+
+  export const CaseCounselingScalarFieldEnum: {
+    id: 'id',
+    caseId: 'caseId',
+    counselorUserId: 'counselorUserId',
+    date: 'date',
+    notes: 'notes',
+    createdAt: 'createdAt'
+  };
+
+  export type CaseCounselingScalarFieldEnum = (typeof CaseCounselingScalarFieldEnum)[keyof typeof CaseCounselingScalarFieldEnum]
+
+
+  export const CaseDocumentScalarFieldEnum: {
+    id: 'id',
+    caseId: 'caseId',
+    documentUrl: 'documentUrl',
+    fileName: 'fileName',
+    description: 'description',
+    createdAt: 'createdAt'
+  };
+
+  export type CaseDocumentScalarFieldEnum = (typeof CaseDocumentScalarFieldEnum)[keyof typeof CaseDocumentScalarFieldEnum]
+
+
   export const NotificationScalarFieldEnum: {
     id: 'id',
     user_id: 'user_id',
@@ -13800,6 +29904,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Decimal'
+   */
+  export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
+    
+
+
+  /**
+   * Reference to a field of type 'Decimal[]'
+   */
+  export type ListDecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Boolean'
    */
   export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
@@ -13847,6 +29965,9 @@ export namespace Prisma {
     refresh_tokens?: RefreshTokenListRelationFilter
     reset_tokens?: PasswordResetTokenListRelationFilter
     pages?: PageListRelationFilter
+    cases_as_lawyer?: CaseLawyerListRelationFilter
+    cases_as_pleader?: CasePleadingListRelationFilter
+    cases_as_counselor?: CaseCounselingListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -13870,6 +29991,9 @@ export namespace Prisma {
     refresh_tokens?: RefreshTokenOrderByRelationAggregateInput
     reset_tokens?: PasswordResetTokenOrderByRelationAggregateInput
     pages?: PageOrderByRelationAggregateInput
+    cases_as_lawyer?: CaseLawyerOrderByRelationAggregateInput
+    cases_as_pleader?: CasePleadingOrderByRelationAggregateInput
+    cases_as_counselor?: CaseCounselingOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -13896,6 +30020,9 @@ export namespace Prisma {
     refresh_tokens?: RefreshTokenListRelationFilter
     reset_tokens?: PasswordResetTokenListRelationFilter
     pages?: PageListRelationFilter
+    cases_as_lawyer?: CaseLawyerListRelationFilter
+    cases_as_pleader?: CasePleadingListRelationFilter
+    cases_as_counselor?: CaseCounselingListRelationFilter
   }, "id" | "email" | "invitation_token">
 
   export type UserOrderByWithAggregationInput = {
@@ -14124,6 +30251,835 @@ export namespace Prisma {
     created_at?: DateTimeWithAggregatesFilter<"Resource"> | Date | string
     updated_at?: DateTimeWithAggregatesFilter<"Resource"> | Date | string
     deleted_at?: DateTimeNullableWithAggregatesFilter<"Resource"> | Date | string | null
+  }
+
+  export type CourtLevelWhereInput = {
+    AND?: CourtLevelWhereInput | CourtLevelWhereInput[]
+    OR?: CourtLevelWhereInput[]
+    NOT?: CourtLevelWhereInput | CourtLevelWhereInput[]
+    id?: StringFilter<"CourtLevel"> | string
+    name?: StringFilter<"CourtLevel"> | string
+    nepaliName?: StringNullableFilter<"CourtLevel"> | string | null
+    proceedings?: CourtProceedingListRelationFilter
+  }
+
+  export type CourtLevelOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    nepaliName?: SortOrderInput | SortOrder
+    proceedings?: CourtProceedingOrderByRelationAggregateInput
+  }
+
+  export type CourtLevelWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    name?: string
+    AND?: CourtLevelWhereInput | CourtLevelWhereInput[]
+    OR?: CourtLevelWhereInput[]
+    NOT?: CourtLevelWhereInput | CourtLevelWhereInput[]
+    nepaliName?: StringNullableFilter<"CourtLevel"> | string | null
+    proceedings?: CourtProceedingListRelationFilter
+  }, "id" | "name">
+
+  export type CourtLevelOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    nepaliName?: SortOrderInput | SortOrder
+    _count?: CourtLevelCountOrderByAggregateInput
+    _max?: CourtLevelMaxOrderByAggregateInput
+    _min?: CourtLevelMinOrderByAggregateInput
+  }
+
+  export type CourtLevelScalarWhereWithAggregatesInput = {
+    AND?: CourtLevelScalarWhereWithAggregatesInput | CourtLevelScalarWhereWithAggregatesInput[]
+    OR?: CourtLevelScalarWhereWithAggregatesInput[]
+    NOT?: CourtLevelScalarWhereWithAggregatesInput | CourtLevelScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"CourtLevel"> | string
+    name?: StringWithAggregatesFilter<"CourtLevel"> | string
+    nepaliName?: StringNullableWithAggregatesFilter<"CourtLevel"> | string | null
+  }
+
+  export type CaseNatureWhereInput = {
+    AND?: CaseNatureWhereInput | CaseNatureWhereInput[]
+    OR?: CaseNatureWhereInput[]
+    NOT?: CaseNatureWhereInput | CaseNatureWhereInput[]
+    id?: StringFilter<"CaseNature"> | string
+    name?: StringFilter<"CaseNature"> | string
+    nepaliName?: StringNullableFilter<"CaseNature"> | string | null
+    cases?: CaseListRelationFilter
+  }
+
+  export type CaseNatureOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    nepaliName?: SortOrderInput | SortOrder
+    cases?: CaseOrderByRelationAggregateInput
+  }
+
+  export type CaseNatureWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    name?: string
+    AND?: CaseNatureWhereInput | CaseNatureWhereInput[]
+    OR?: CaseNatureWhereInput[]
+    NOT?: CaseNatureWhereInput | CaseNatureWhereInput[]
+    nepaliName?: StringNullableFilter<"CaseNature"> | string | null
+    cases?: CaseListRelationFilter
+  }, "id" | "name">
+
+  export type CaseNatureOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    nepaliName?: SortOrderInput | SortOrder
+    _count?: CaseNatureCountOrderByAggregateInput
+    _max?: CaseNatureMaxOrderByAggregateInput
+    _min?: CaseNatureMinOrderByAggregateInput
+  }
+
+  export type CaseNatureScalarWhereWithAggregatesInput = {
+    AND?: CaseNatureScalarWhereWithAggregatesInput | CaseNatureScalarWhereWithAggregatesInput[]
+    OR?: CaseNatureScalarWhereWithAggregatesInput[]
+    NOT?: CaseNatureScalarWhereWithAggregatesInput | CaseNatureScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"CaseNature"> | string
+    name?: StringWithAggregatesFilter<"CaseNature"> | string
+    nepaliName?: StringNullableWithAggregatesFilter<"CaseNature"> | string | null
+  }
+
+  export type PartyRoleWhereInput = {
+    AND?: PartyRoleWhereInput | PartyRoleWhereInput[]
+    OR?: PartyRoleWhereInput[]
+    NOT?: PartyRoleWhereInput | PartyRoleWhereInput[]
+    id?: StringFilter<"PartyRole"> | string
+    name?: StringFilter<"PartyRole"> | string
+    nepaliName?: StringNullableFilter<"PartyRole"> | string | null
+    parties?: CasePartyListRelationFilter
+  }
+
+  export type PartyRoleOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    nepaliName?: SortOrderInput | SortOrder
+    parties?: CasePartyOrderByRelationAggregateInput
+  }
+
+  export type PartyRoleWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    name?: string
+    AND?: PartyRoleWhereInput | PartyRoleWhereInput[]
+    OR?: PartyRoleWhereInput[]
+    NOT?: PartyRoleWhereInput | PartyRoleWhereInput[]
+    nepaliName?: StringNullableFilter<"PartyRole"> | string | null
+    parties?: CasePartyListRelationFilter
+  }, "id" | "name">
+
+  export type PartyRoleOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    nepaliName?: SortOrderInput | SortOrder
+    _count?: PartyRoleCountOrderByAggregateInput
+    _max?: PartyRoleMaxOrderByAggregateInput
+    _min?: PartyRoleMinOrderByAggregateInput
+  }
+
+  export type PartyRoleScalarWhereWithAggregatesInput = {
+    AND?: PartyRoleScalarWhereWithAggregatesInput | PartyRoleScalarWhereWithAggregatesInput[]
+    OR?: PartyRoleScalarWhereWithAggregatesInput[]
+    NOT?: PartyRoleScalarWhereWithAggregatesInput | PartyRoleScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"PartyRole"> | string
+    name?: StringWithAggregatesFilter<"PartyRole"> | string
+    nepaliName?: StringNullableWithAggregatesFilter<"PartyRole"> | string | null
+  }
+
+  export type CaseWhereInput = {
+    AND?: CaseWhereInput | CaseWhereInput[]
+    OR?: CaseWhereInput[]
+    NOT?: CaseWhereInput | CaseWhereInput[]
+    id?: StringFilter<"Case"> | string
+    caseNumber?: StringFilter<"Case"> | string
+    caseName?: StringFilter<"Case"> | string
+    natureId?: StringFilter<"Case"> | string
+    registrationDate?: DateTimeNullableFilter<"Case"> | Date | string | null
+    registrationFee?: DecimalNullableFilter<"Case"> | Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: StringNullableFilter<"Case"> | string | null
+    facts?: StringNullableFilter<"Case"> | string | null
+    relatedLaws?: StringNullableFilter<"Case"> | string | null
+    referredThrough?: StringNullableFilter<"Case"> | string | null
+    noticeStatus?: StringNullableFilter<"Case"> | string | null
+    fullJudgmentDate?: DateTimeNullableFilter<"Case"> | Date | string | null
+    judgmentVerifyDate?: DateTimeNullableFilter<"Case"> | Date | string | null
+    status?: StringFilter<"Case"> | string
+    paymentStatus?: StringFilter<"Case"> | string
+    createdAt?: DateTimeFilter<"Case"> | Date | string
+    nature?: XOR<CaseNatureScalarRelationFilter, CaseNatureWhereInput>
+    lawyers?: CaseLawyerListRelationFilter
+    parties?: CasePartyListRelationFilter
+    hearings?: CaseHearingListRelationFilter
+    pleadings?: CasePleadingListRelationFilter
+    proceedings?: CourtProceedingListRelationFilter
+    precedents?: CasePrecedentListRelationFilter
+    payments?: CasePaymentListRelationFilter
+    counselings?: CaseCounselingListRelationFilter
+    documents?: CaseDocumentListRelationFilter
+  }
+
+  export type CaseOrderByWithRelationInput = {
+    id?: SortOrder
+    caseNumber?: SortOrder
+    caseName?: SortOrder
+    natureId?: SortOrder
+    registrationDate?: SortOrderInput | SortOrder
+    registrationFee?: SortOrderInput | SortOrder
+    sectionCourtRoom?: SortOrderInput | SortOrder
+    facts?: SortOrderInput | SortOrder
+    relatedLaws?: SortOrderInput | SortOrder
+    referredThrough?: SortOrderInput | SortOrder
+    noticeStatus?: SortOrderInput | SortOrder
+    fullJudgmentDate?: SortOrderInput | SortOrder
+    judgmentVerifyDate?: SortOrderInput | SortOrder
+    status?: SortOrder
+    paymentStatus?: SortOrder
+    createdAt?: SortOrder
+    nature?: CaseNatureOrderByWithRelationInput
+    lawyers?: CaseLawyerOrderByRelationAggregateInput
+    parties?: CasePartyOrderByRelationAggregateInput
+    hearings?: CaseHearingOrderByRelationAggregateInput
+    pleadings?: CasePleadingOrderByRelationAggregateInput
+    proceedings?: CourtProceedingOrderByRelationAggregateInput
+    precedents?: CasePrecedentOrderByRelationAggregateInput
+    payments?: CasePaymentOrderByRelationAggregateInput
+    counselings?: CaseCounselingOrderByRelationAggregateInput
+    documents?: CaseDocumentOrderByRelationAggregateInput
+  }
+
+  export type CaseWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    caseNumber?: string
+    AND?: CaseWhereInput | CaseWhereInput[]
+    OR?: CaseWhereInput[]
+    NOT?: CaseWhereInput | CaseWhereInput[]
+    caseName?: StringFilter<"Case"> | string
+    natureId?: StringFilter<"Case"> | string
+    registrationDate?: DateTimeNullableFilter<"Case"> | Date | string | null
+    registrationFee?: DecimalNullableFilter<"Case"> | Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: StringNullableFilter<"Case"> | string | null
+    facts?: StringNullableFilter<"Case"> | string | null
+    relatedLaws?: StringNullableFilter<"Case"> | string | null
+    referredThrough?: StringNullableFilter<"Case"> | string | null
+    noticeStatus?: StringNullableFilter<"Case"> | string | null
+    fullJudgmentDate?: DateTimeNullableFilter<"Case"> | Date | string | null
+    judgmentVerifyDate?: DateTimeNullableFilter<"Case"> | Date | string | null
+    status?: StringFilter<"Case"> | string
+    paymentStatus?: StringFilter<"Case"> | string
+    createdAt?: DateTimeFilter<"Case"> | Date | string
+    nature?: XOR<CaseNatureScalarRelationFilter, CaseNatureWhereInput>
+    lawyers?: CaseLawyerListRelationFilter
+    parties?: CasePartyListRelationFilter
+    hearings?: CaseHearingListRelationFilter
+    pleadings?: CasePleadingListRelationFilter
+    proceedings?: CourtProceedingListRelationFilter
+    precedents?: CasePrecedentListRelationFilter
+    payments?: CasePaymentListRelationFilter
+    counselings?: CaseCounselingListRelationFilter
+    documents?: CaseDocumentListRelationFilter
+  }, "id" | "caseNumber">
+
+  export type CaseOrderByWithAggregationInput = {
+    id?: SortOrder
+    caseNumber?: SortOrder
+    caseName?: SortOrder
+    natureId?: SortOrder
+    registrationDate?: SortOrderInput | SortOrder
+    registrationFee?: SortOrderInput | SortOrder
+    sectionCourtRoom?: SortOrderInput | SortOrder
+    facts?: SortOrderInput | SortOrder
+    relatedLaws?: SortOrderInput | SortOrder
+    referredThrough?: SortOrderInput | SortOrder
+    noticeStatus?: SortOrderInput | SortOrder
+    fullJudgmentDate?: SortOrderInput | SortOrder
+    judgmentVerifyDate?: SortOrderInput | SortOrder
+    status?: SortOrder
+    paymentStatus?: SortOrder
+    createdAt?: SortOrder
+    _count?: CaseCountOrderByAggregateInput
+    _avg?: CaseAvgOrderByAggregateInput
+    _max?: CaseMaxOrderByAggregateInput
+    _min?: CaseMinOrderByAggregateInput
+    _sum?: CaseSumOrderByAggregateInput
+  }
+
+  export type CaseScalarWhereWithAggregatesInput = {
+    AND?: CaseScalarWhereWithAggregatesInput | CaseScalarWhereWithAggregatesInput[]
+    OR?: CaseScalarWhereWithAggregatesInput[]
+    NOT?: CaseScalarWhereWithAggregatesInput | CaseScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Case"> | string
+    caseNumber?: StringWithAggregatesFilter<"Case"> | string
+    caseName?: StringWithAggregatesFilter<"Case"> | string
+    natureId?: StringWithAggregatesFilter<"Case"> | string
+    registrationDate?: DateTimeNullableWithAggregatesFilter<"Case"> | Date | string | null
+    registrationFee?: DecimalNullableWithAggregatesFilter<"Case"> | Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: StringNullableWithAggregatesFilter<"Case"> | string | null
+    facts?: StringNullableWithAggregatesFilter<"Case"> | string | null
+    relatedLaws?: StringNullableWithAggregatesFilter<"Case"> | string | null
+    referredThrough?: StringNullableWithAggregatesFilter<"Case"> | string | null
+    noticeStatus?: StringNullableWithAggregatesFilter<"Case"> | string | null
+    fullJudgmentDate?: DateTimeNullableWithAggregatesFilter<"Case"> | Date | string | null
+    judgmentVerifyDate?: DateTimeNullableWithAggregatesFilter<"Case"> | Date | string | null
+    status?: StringWithAggregatesFilter<"Case"> | string
+    paymentStatus?: StringWithAggregatesFilter<"Case"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Case"> | Date | string
+  }
+
+  export type CaseLawyerWhereInput = {
+    AND?: CaseLawyerWhereInput | CaseLawyerWhereInput[]
+    OR?: CaseLawyerWhereInput[]
+    NOT?: CaseLawyerWhereInput | CaseLawyerWhereInput[]
+    caseId?: StringFilter<"CaseLawyer"> | string
+    userId?: StringFilter<"CaseLawyer"> | string
+    isLead?: BoolFilter<"CaseLawyer"> | boolean
+    case?: XOR<CaseScalarRelationFilter, CaseWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type CaseLawyerOrderByWithRelationInput = {
+    caseId?: SortOrder
+    userId?: SortOrder
+    isLead?: SortOrder
+    case?: CaseOrderByWithRelationInput
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type CaseLawyerWhereUniqueInput = Prisma.AtLeast<{
+    caseId_userId?: CaseLawyerCaseIdUserIdCompoundUniqueInput
+    AND?: CaseLawyerWhereInput | CaseLawyerWhereInput[]
+    OR?: CaseLawyerWhereInput[]
+    NOT?: CaseLawyerWhereInput | CaseLawyerWhereInput[]
+    caseId?: StringFilter<"CaseLawyer"> | string
+    userId?: StringFilter<"CaseLawyer"> | string
+    isLead?: BoolFilter<"CaseLawyer"> | boolean
+    case?: XOR<CaseScalarRelationFilter, CaseWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "caseId_userId">
+
+  export type CaseLawyerOrderByWithAggregationInput = {
+    caseId?: SortOrder
+    userId?: SortOrder
+    isLead?: SortOrder
+    _count?: CaseLawyerCountOrderByAggregateInput
+    _max?: CaseLawyerMaxOrderByAggregateInput
+    _min?: CaseLawyerMinOrderByAggregateInput
+  }
+
+  export type CaseLawyerScalarWhereWithAggregatesInput = {
+    AND?: CaseLawyerScalarWhereWithAggregatesInput | CaseLawyerScalarWhereWithAggregatesInput[]
+    OR?: CaseLawyerScalarWhereWithAggregatesInput[]
+    NOT?: CaseLawyerScalarWhereWithAggregatesInput | CaseLawyerScalarWhereWithAggregatesInput[]
+    caseId?: StringWithAggregatesFilter<"CaseLawyer"> | string
+    userId?: StringWithAggregatesFilter<"CaseLawyer"> | string
+    isLead?: BoolWithAggregatesFilter<"CaseLawyer"> | boolean
+  }
+
+  export type CasePartyWhereInput = {
+    AND?: CasePartyWhereInput | CasePartyWhereInput[]
+    OR?: CasePartyWhereInput[]
+    NOT?: CasePartyWhereInput | CasePartyWhereInput[]
+    id?: StringFilter<"CaseParty"> | string
+    caseId?: StringFilter<"CaseParty"> | string
+    partyName?: StringFilter<"CaseParty"> | string
+    roleId?: StringFilter<"CaseParty"> | string
+    fee?: DecimalNullableFilter<"CaseParty"> | Decimal | DecimalJsLike | number | string | null
+    contactInfo?: StringNullableFilter<"CaseParty"> | string | null
+    case?: XOR<CaseScalarRelationFilter, CaseWhereInput>
+    role?: XOR<PartyRoleScalarRelationFilter, PartyRoleWhereInput>
+  }
+
+  export type CasePartyOrderByWithRelationInput = {
+    id?: SortOrder
+    caseId?: SortOrder
+    partyName?: SortOrder
+    roleId?: SortOrder
+    fee?: SortOrderInput | SortOrder
+    contactInfo?: SortOrderInput | SortOrder
+    case?: CaseOrderByWithRelationInput
+    role?: PartyRoleOrderByWithRelationInput
+  }
+
+  export type CasePartyWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: CasePartyWhereInput | CasePartyWhereInput[]
+    OR?: CasePartyWhereInput[]
+    NOT?: CasePartyWhereInput | CasePartyWhereInput[]
+    caseId?: StringFilter<"CaseParty"> | string
+    partyName?: StringFilter<"CaseParty"> | string
+    roleId?: StringFilter<"CaseParty"> | string
+    fee?: DecimalNullableFilter<"CaseParty"> | Decimal | DecimalJsLike | number | string | null
+    contactInfo?: StringNullableFilter<"CaseParty"> | string | null
+    case?: XOR<CaseScalarRelationFilter, CaseWhereInput>
+    role?: XOR<PartyRoleScalarRelationFilter, PartyRoleWhereInput>
+  }, "id">
+
+  export type CasePartyOrderByWithAggregationInput = {
+    id?: SortOrder
+    caseId?: SortOrder
+    partyName?: SortOrder
+    roleId?: SortOrder
+    fee?: SortOrderInput | SortOrder
+    contactInfo?: SortOrderInput | SortOrder
+    _count?: CasePartyCountOrderByAggregateInput
+    _avg?: CasePartyAvgOrderByAggregateInput
+    _max?: CasePartyMaxOrderByAggregateInput
+    _min?: CasePartyMinOrderByAggregateInput
+    _sum?: CasePartySumOrderByAggregateInput
+  }
+
+  export type CasePartyScalarWhereWithAggregatesInput = {
+    AND?: CasePartyScalarWhereWithAggregatesInput | CasePartyScalarWhereWithAggregatesInput[]
+    OR?: CasePartyScalarWhereWithAggregatesInput[]
+    NOT?: CasePartyScalarWhereWithAggregatesInput | CasePartyScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"CaseParty"> | string
+    caseId?: StringWithAggregatesFilter<"CaseParty"> | string
+    partyName?: StringWithAggregatesFilter<"CaseParty"> | string
+    roleId?: StringWithAggregatesFilter<"CaseParty"> | string
+    fee?: DecimalNullableWithAggregatesFilter<"CaseParty"> | Decimal | DecimalJsLike | number | string | null
+    contactInfo?: StringNullableWithAggregatesFilter<"CaseParty"> | string | null
+  }
+
+  export type CaseHearingWhereInput = {
+    AND?: CaseHearingWhereInput | CaseHearingWhereInput[]
+    OR?: CaseHearingWhereInput[]
+    NOT?: CaseHearingWhereInput | CaseHearingWhereInput[]
+    id?: StringFilter<"CaseHearing"> | string
+    caseId?: StringFilter<"CaseHearing"> | string
+    nextHearingDate?: DateTimeNullableFilter<"CaseHearing"> | Date | string | null
+    hearingDate?: DateTimeNullableFilter<"CaseHearing"> | Date | string | null
+    hearingOrder?: StringNullableFilter<"CaseHearing"> | string | null
+    judgeName?: StringNullableFilter<"CaseHearing"> | string | null
+    case?: XOR<CaseScalarRelationFilter, CaseWhereInput>
+  }
+
+  export type CaseHearingOrderByWithRelationInput = {
+    id?: SortOrder
+    caseId?: SortOrder
+    nextHearingDate?: SortOrderInput | SortOrder
+    hearingDate?: SortOrderInput | SortOrder
+    hearingOrder?: SortOrderInput | SortOrder
+    judgeName?: SortOrderInput | SortOrder
+    case?: CaseOrderByWithRelationInput
+  }
+
+  export type CaseHearingWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: CaseHearingWhereInput | CaseHearingWhereInput[]
+    OR?: CaseHearingWhereInput[]
+    NOT?: CaseHearingWhereInput | CaseHearingWhereInput[]
+    caseId?: StringFilter<"CaseHearing"> | string
+    nextHearingDate?: DateTimeNullableFilter<"CaseHearing"> | Date | string | null
+    hearingDate?: DateTimeNullableFilter<"CaseHearing"> | Date | string | null
+    hearingOrder?: StringNullableFilter<"CaseHearing"> | string | null
+    judgeName?: StringNullableFilter<"CaseHearing"> | string | null
+    case?: XOR<CaseScalarRelationFilter, CaseWhereInput>
+  }, "id">
+
+  export type CaseHearingOrderByWithAggregationInput = {
+    id?: SortOrder
+    caseId?: SortOrder
+    nextHearingDate?: SortOrderInput | SortOrder
+    hearingDate?: SortOrderInput | SortOrder
+    hearingOrder?: SortOrderInput | SortOrder
+    judgeName?: SortOrderInput | SortOrder
+    _count?: CaseHearingCountOrderByAggregateInput
+    _max?: CaseHearingMaxOrderByAggregateInput
+    _min?: CaseHearingMinOrderByAggregateInput
+  }
+
+  export type CaseHearingScalarWhereWithAggregatesInput = {
+    AND?: CaseHearingScalarWhereWithAggregatesInput | CaseHearingScalarWhereWithAggregatesInput[]
+    OR?: CaseHearingScalarWhereWithAggregatesInput[]
+    NOT?: CaseHearingScalarWhereWithAggregatesInput | CaseHearingScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"CaseHearing"> | string
+    caseId?: StringWithAggregatesFilter<"CaseHearing"> | string
+    nextHearingDate?: DateTimeNullableWithAggregatesFilter<"CaseHearing"> | Date | string | null
+    hearingDate?: DateTimeNullableWithAggregatesFilter<"CaseHearing"> | Date | string | null
+    hearingOrder?: StringNullableWithAggregatesFilter<"CaseHearing"> | string | null
+    judgeName?: StringNullableWithAggregatesFilter<"CaseHearing"> | string | null
+  }
+
+  export type CasePleadingWhereInput = {
+    AND?: CasePleadingWhereInput | CasePleadingWhereInput[]
+    OR?: CasePleadingWhereInput[]
+    NOT?: CasePleadingWhereInput | CasePleadingWhereInput[]
+    id?: StringFilter<"CasePleading"> | string
+    caseId?: StringFilter<"CasePleading"> | string
+    pleaderUserId?: StringNullableFilter<"CasePleading"> | string | null
+    pleadingDate?: DateTimeNullableFilter<"CasePleading"> | Date | string | null
+    pleadingNotes?: StringFilter<"CasePleading"> | string
+    case?: XOR<CaseScalarRelationFilter, CaseWhereInput>
+    pleader?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+  }
+
+  export type CasePleadingOrderByWithRelationInput = {
+    id?: SortOrder
+    caseId?: SortOrder
+    pleaderUserId?: SortOrderInput | SortOrder
+    pleadingDate?: SortOrderInput | SortOrder
+    pleadingNotes?: SortOrder
+    case?: CaseOrderByWithRelationInput
+    pleader?: UserOrderByWithRelationInput
+  }
+
+  export type CasePleadingWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: CasePleadingWhereInput | CasePleadingWhereInput[]
+    OR?: CasePleadingWhereInput[]
+    NOT?: CasePleadingWhereInput | CasePleadingWhereInput[]
+    caseId?: StringFilter<"CasePleading"> | string
+    pleaderUserId?: StringNullableFilter<"CasePleading"> | string | null
+    pleadingDate?: DateTimeNullableFilter<"CasePleading"> | Date | string | null
+    pleadingNotes?: StringFilter<"CasePleading"> | string
+    case?: XOR<CaseScalarRelationFilter, CaseWhereInput>
+    pleader?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+  }, "id">
+
+  export type CasePleadingOrderByWithAggregationInput = {
+    id?: SortOrder
+    caseId?: SortOrder
+    pleaderUserId?: SortOrderInput | SortOrder
+    pleadingDate?: SortOrderInput | SortOrder
+    pleadingNotes?: SortOrder
+    _count?: CasePleadingCountOrderByAggregateInput
+    _max?: CasePleadingMaxOrderByAggregateInput
+    _min?: CasePleadingMinOrderByAggregateInput
+  }
+
+  export type CasePleadingScalarWhereWithAggregatesInput = {
+    AND?: CasePleadingScalarWhereWithAggregatesInput | CasePleadingScalarWhereWithAggregatesInput[]
+    OR?: CasePleadingScalarWhereWithAggregatesInput[]
+    NOT?: CasePleadingScalarWhereWithAggregatesInput | CasePleadingScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"CasePleading"> | string
+    caseId?: StringWithAggregatesFilter<"CasePleading"> | string
+    pleaderUserId?: StringNullableWithAggregatesFilter<"CasePleading"> | string | null
+    pleadingDate?: DateTimeNullableWithAggregatesFilter<"CasePleading"> | Date | string | null
+    pleadingNotes?: StringWithAggregatesFilter<"CasePleading"> | string
+  }
+
+  export type CourtProceedingWhereInput = {
+    AND?: CourtProceedingWhereInput | CourtProceedingWhereInput[]
+    OR?: CourtProceedingWhereInput[]
+    NOT?: CourtProceedingWhereInput | CourtProceedingWhereInput[]
+    id?: StringFilter<"CourtProceeding"> | string
+    caseId?: StringFilter<"CourtProceeding"> | string
+    courtLevelId?: StringFilter<"CourtProceeding"> | string
+    courtName?: StringFilter<"CourtProceeding"> | string
+    judgeName?: StringNullableFilter<"CourtProceeding"> | string | null
+    chargeCounseling?: StringNullableFilter<"CourtProceeding"> | string | null
+    verdict?: StringNullableFilter<"CourtProceeding"> | string | null
+    case?: XOR<CaseScalarRelationFilter, CaseWhereInput>
+    courtLevel?: XOR<CourtLevelScalarRelationFilter, CourtLevelWhereInput>
+  }
+
+  export type CourtProceedingOrderByWithRelationInput = {
+    id?: SortOrder
+    caseId?: SortOrder
+    courtLevelId?: SortOrder
+    courtName?: SortOrder
+    judgeName?: SortOrderInput | SortOrder
+    chargeCounseling?: SortOrderInput | SortOrder
+    verdict?: SortOrderInput | SortOrder
+    case?: CaseOrderByWithRelationInput
+    courtLevel?: CourtLevelOrderByWithRelationInput
+  }
+
+  export type CourtProceedingWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: CourtProceedingWhereInput | CourtProceedingWhereInput[]
+    OR?: CourtProceedingWhereInput[]
+    NOT?: CourtProceedingWhereInput | CourtProceedingWhereInput[]
+    caseId?: StringFilter<"CourtProceeding"> | string
+    courtLevelId?: StringFilter<"CourtProceeding"> | string
+    courtName?: StringFilter<"CourtProceeding"> | string
+    judgeName?: StringNullableFilter<"CourtProceeding"> | string | null
+    chargeCounseling?: StringNullableFilter<"CourtProceeding"> | string | null
+    verdict?: StringNullableFilter<"CourtProceeding"> | string | null
+    case?: XOR<CaseScalarRelationFilter, CaseWhereInput>
+    courtLevel?: XOR<CourtLevelScalarRelationFilter, CourtLevelWhereInput>
+  }, "id">
+
+  export type CourtProceedingOrderByWithAggregationInput = {
+    id?: SortOrder
+    caseId?: SortOrder
+    courtLevelId?: SortOrder
+    courtName?: SortOrder
+    judgeName?: SortOrderInput | SortOrder
+    chargeCounseling?: SortOrderInput | SortOrder
+    verdict?: SortOrderInput | SortOrder
+    _count?: CourtProceedingCountOrderByAggregateInput
+    _max?: CourtProceedingMaxOrderByAggregateInput
+    _min?: CourtProceedingMinOrderByAggregateInput
+  }
+
+  export type CourtProceedingScalarWhereWithAggregatesInput = {
+    AND?: CourtProceedingScalarWhereWithAggregatesInput | CourtProceedingScalarWhereWithAggregatesInput[]
+    OR?: CourtProceedingScalarWhereWithAggregatesInput[]
+    NOT?: CourtProceedingScalarWhereWithAggregatesInput | CourtProceedingScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"CourtProceeding"> | string
+    caseId?: StringWithAggregatesFilter<"CourtProceeding"> | string
+    courtLevelId?: StringWithAggregatesFilter<"CourtProceeding"> | string
+    courtName?: StringWithAggregatesFilter<"CourtProceeding"> | string
+    judgeName?: StringNullableWithAggregatesFilter<"CourtProceeding"> | string | null
+    chargeCounseling?: StringNullableWithAggregatesFilter<"CourtProceeding"> | string | null
+    verdict?: StringNullableWithAggregatesFilter<"CourtProceeding"> | string | null
+  }
+
+  export type CasePrecedentWhereInput = {
+    AND?: CasePrecedentWhereInput | CasePrecedentWhereInput[]
+    OR?: CasePrecedentWhereInput[]
+    NOT?: CasePrecedentWhereInput | CasePrecedentWhereInput[]
+    id?: StringFilter<"CasePrecedent"> | string
+    caseId?: StringFilter<"CasePrecedent"> | string
+    decisionNumber?: StringNullableFilter<"CasePrecedent"> | string | null
+    plaintiff?: StringNullableFilter<"CasePrecedent"> | string | null
+    defendant?: StringNullableFilter<"CasePrecedent"> | string | null
+    citationNotes?: StringNullableFilter<"CasePrecedent"> | string | null
+    case?: XOR<CaseScalarRelationFilter, CaseWhereInput>
+  }
+
+  export type CasePrecedentOrderByWithRelationInput = {
+    id?: SortOrder
+    caseId?: SortOrder
+    decisionNumber?: SortOrderInput | SortOrder
+    plaintiff?: SortOrderInput | SortOrder
+    defendant?: SortOrderInput | SortOrder
+    citationNotes?: SortOrderInput | SortOrder
+    case?: CaseOrderByWithRelationInput
+  }
+
+  export type CasePrecedentWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: CasePrecedentWhereInput | CasePrecedentWhereInput[]
+    OR?: CasePrecedentWhereInput[]
+    NOT?: CasePrecedentWhereInput | CasePrecedentWhereInput[]
+    caseId?: StringFilter<"CasePrecedent"> | string
+    decisionNumber?: StringNullableFilter<"CasePrecedent"> | string | null
+    plaintiff?: StringNullableFilter<"CasePrecedent"> | string | null
+    defendant?: StringNullableFilter<"CasePrecedent"> | string | null
+    citationNotes?: StringNullableFilter<"CasePrecedent"> | string | null
+    case?: XOR<CaseScalarRelationFilter, CaseWhereInput>
+  }, "id">
+
+  export type CasePrecedentOrderByWithAggregationInput = {
+    id?: SortOrder
+    caseId?: SortOrder
+    decisionNumber?: SortOrderInput | SortOrder
+    plaintiff?: SortOrderInput | SortOrder
+    defendant?: SortOrderInput | SortOrder
+    citationNotes?: SortOrderInput | SortOrder
+    _count?: CasePrecedentCountOrderByAggregateInput
+    _max?: CasePrecedentMaxOrderByAggregateInput
+    _min?: CasePrecedentMinOrderByAggregateInput
+  }
+
+  export type CasePrecedentScalarWhereWithAggregatesInput = {
+    AND?: CasePrecedentScalarWhereWithAggregatesInput | CasePrecedentScalarWhereWithAggregatesInput[]
+    OR?: CasePrecedentScalarWhereWithAggregatesInput[]
+    NOT?: CasePrecedentScalarWhereWithAggregatesInput | CasePrecedentScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"CasePrecedent"> | string
+    caseId?: StringWithAggregatesFilter<"CasePrecedent"> | string
+    decisionNumber?: StringNullableWithAggregatesFilter<"CasePrecedent"> | string | null
+    plaintiff?: StringNullableWithAggregatesFilter<"CasePrecedent"> | string | null
+    defendant?: StringNullableWithAggregatesFilter<"CasePrecedent"> | string | null
+    citationNotes?: StringNullableWithAggregatesFilter<"CasePrecedent"> | string | null
+  }
+
+  export type CasePaymentWhereInput = {
+    AND?: CasePaymentWhereInput | CasePaymentWhereInput[]
+    OR?: CasePaymentWhereInput[]
+    NOT?: CasePaymentWhereInput | CasePaymentWhereInput[]
+    id?: StringFilter<"CasePayment"> | string
+    caseId?: StringFilter<"CasePayment"> | string
+    amount?: DecimalFilter<"CasePayment"> | Decimal | DecimalJsLike | number | string
+    paymentDate?: DateTimeNullableFilter<"CasePayment"> | Date | string | null
+    method?: StringNullableFilter<"CasePayment"> | string | null
+    referenceNo?: StringNullableFilter<"CasePayment"> | string | null
+    notes?: StringNullableFilter<"CasePayment"> | string | null
+    createdAt?: DateTimeFilter<"CasePayment"> | Date | string
+    case?: XOR<CaseScalarRelationFilter, CaseWhereInput>
+  }
+
+  export type CasePaymentOrderByWithRelationInput = {
+    id?: SortOrder
+    caseId?: SortOrder
+    amount?: SortOrder
+    paymentDate?: SortOrderInput | SortOrder
+    method?: SortOrderInput | SortOrder
+    referenceNo?: SortOrderInput | SortOrder
+    notes?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    case?: CaseOrderByWithRelationInput
+  }
+
+  export type CasePaymentWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: CasePaymentWhereInput | CasePaymentWhereInput[]
+    OR?: CasePaymentWhereInput[]
+    NOT?: CasePaymentWhereInput | CasePaymentWhereInput[]
+    caseId?: StringFilter<"CasePayment"> | string
+    amount?: DecimalFilter<"CasePayment"> | Decimal | DecimalJsLike | number | string
+    paymentDate?: DateTimeNullableFilter<"CasePayment"> | Date | string | null
+    method?: StringNullableFilter<"CasePayment"> | string | null
+    referenceNo?: StringNullableFilter<"CasePayment"> | string | null
+    notes?: StringNullableFilter<"CasePayment"> | string | null
+    createdAt?: DateTimeFilter<"CasePayment"> | Date | string
+    case?: XOR<CaseScalarRelationFilter, CaseWhereInput>
+  }, "id">
+
+  export type CasePaymentOrderByWithAggregationInput = {
+    id?: SortOrder
+    caseId?: SortOrder
+    amount?: SortOrder
+    paymentDate?: SortOrderInput | SortOrder
+    method?: SortOrderInput | SortOrder
+    referenceNo?: SortOrderInput | SortOrder
+    notes?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    _count?: CasePaymentCountOrderByAggregateInput
+    _avg?: CasePaymentAvgOrderByAggregateInput
+    _max?: CasePaymentMaxOrderByAggregateInput
+    _min?: CasePaymentMinOrderByAggregateInput
+    _sum?: CasePaymentSumOrderByAggregateInput
+  }
+
+  export type CasePaymentScalarWhereWithAggregatesInput = {
+    AND?: CasePaymentScalarWhereWithAggregatesInput | CasePaymentScalarWhereWithAggregatesInput[]
+    OR?: CasePaymentScalarWhereWithAggregatesInput[]
+    NOT?: CasePaymentScalarWhereWithAggregatesInput | CasePaymentScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"CasePayment"> | string
+    caseId?: StringWithAggregatesFilter<"CasePayment"> | string
+    amount?: DecimalWithAggregatesFilter<"CasePayment"> | Decimal | DecimalJsLike | number | string
+    paymentDate?: DateTimeNullableWithAggregatesFilter<"CasePayment"> | Date | string | null
+    method?: StringNullableWithAggregatesFilter<"CasePayment"> | string | null
+    referenceNo?: StringNullableWithAggregatesFilter<"CasePayment"> | string | null
+    notes?: StringNullableWithAggregatesFilter<"CasePayment"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"CasePayment"> | Date | string
+  }
+
+  export type CaseCounselingWhereInput = {
+    AND?: CaseCounselingWhereInput | CaseCounselingWhereInput[]
+    OR?: CaseCounselingWhereInput[]
+    NOT?: CaseCounselingWhereInput | CaseCounselingWhereInput[]
+    id?: StringFilter<"CaseCounseling"> | string
+    caseId?: StringFilter<"CaseCounseling"> | string
+    counselorUserId?: StringNullableFilter<"CaseCounseling"> | string | null
+    date?: DateTimeNullableFilter<"CaseCounseling"> | Date | string | null
+    notes?: StringFilter<"CaseCounseling"> | string
+    createdAt?: DateTimeFilter<"CaseCounseling"> | Date | string
+    case?: XOR<CaseScalarRelationFilter, CaseWhereInput>
+    counselor?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+  }
+
+  export type CaseCounselingOrderByWithRelationInput = {
+    id?: SortOrder
+    caseId?: SortOrder
+    counselorUserId?: SortOrderInput | SortOrder
+    date?: SortOrderInput | SortOrder
+    notes?: SortOrder
+    createdAt?: SortOrder
+    case?: CaseOrderByWithRelationInput
+    counselor?: UserOrderByWithRelationInput
+  }
+
+  export type CaseCounselingWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: CaseCounselingWhereInput | CaseCounselingWhereInput[]
+    OR?: CaseCounselingWhereInput[]
+    NOT?: CaseCounselingWhereInput | CaseCounselingWhereInput[]
+    caseId?: StringFilter<"CaseCounseling"> | string
+    counselorUserId?: StringNullableFilter<"CaseCounseling"> | string | null
+    date?: DateTimeNullableFilter<"CaseCounseling"> | Date | string | null
+    notes?: StringFilter<"CaseCounseling"> | string
+    createdAt?: DateTimeFilter<"CaseCounseling"> | Date | string
+    case?: XOR<CaseScalarRelationFilter, CaseWhereInput>
+    counselor?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+  }, "id">
+
+  export type CaseCounselingOrderByWithAggregationInput = {
+    id?: SortOrder
+    caseId?: SortOrder
+    counselorUserId?: SortOrderInput | SortOrder
+    date?: SortOrderInput | SortOrder
+    notes?: SortOrder
+    createdAt?: SortOrder
+    _count?: CaseCounselingCountOrderByAggregateInput
+    _max?: CaseCounselingMaxOrderByAggregateInput
+    _min?: CaseCounselingMinOrderByAggregateInput
+  }
+
+  export type CaseCounselingScalarWhereWithAggregatesInput = {
+    AND?: CaseCounselingScalarWhereWithAggregatesInput | CaseCounselingScalarWhereWithAggregatesInput[]
+    OR?: CaseCounselingScalarWhereWithAggregatesInput[]
+    NOT?: CaseCounselingScalarWhereWithAggregatesInput | CaseCounselingScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"CaseCounseling"> | string
+    caseId?: StringWithAggregatesFilter<"CaseCounseling"> | string
+    counselorUserId?: StringNullableWithAggregatesFilter<"CaseCounseling"> | string | null
+    date?: DateTimeNullableWithAggregatesFilter<"CaseCounseling"> | Date | string | null
+    notes?: StringWithAggregatesFilter<"CaseCounseling"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"CaseCounseling"> | Date | string
+  }
+
+  export type CaseDocumentWhereInput = {
+    AND?: CaseDocumentWhereInput | CaseDocumentWhereInput[]
+    OR?: CaseDocumentWhereInput[]
+    NOT?: CaseDocumentWhereInput | CaseDocumentWhereInput[]
+    id?: StringFilter<"CaseDocument"> | string
+    caseId?: StringFilter<"CaseDocument"> | string
+    documentUrl?: StringFilter<"CaseDocument"> | string
+    fileName?: StringFilter<"CaseDocument"> | string
+    description?: StringNullableFilter<"CaseDocument"> | string | null
+    createdAt?: DateTimeFilter<"CaseDocument"> | Date | string
+    case?: XOR<CaseScalarRelationFilter, CaseWhereInput>
+  }
+
+  export type CaseDocumentOrderByWithRelationInput = {
+    id?: SortOrder
+    caseId?: SortOrder
+    documentUrl?: SortOrder
+    fileName?: SortOrder
+    description?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    case?: CaseOrderByWithRelationInput
+  }
+
+  export type CaseDocumentWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: CaseDocumentWhereInput | CaseDocumentWhereInput[]
+    OR?: CaseDocumentWhereInput[]
+    NOT?: CaseDocumentWhereInput | CaseDocumentWhereInput[]
+    caseId?: StringFilter<"CaseDocument"> | string
+    documentUrl?: StringFilter<"CaseDocument"> | string
+    fileName?: StringFilter<"CaseDocument"> | string
+    description?: StringNullableFilter<"CaseDocument"> | string | null
+    createdAt?: DateTimeFilter<"CaseDocument"> | Date | string
+    case?: XOR<CaseScalarRelationFilter, CaseWhereInput>
+  }, "id">
+
+  export type CaseDocumentOrderByWithAggregationInput = {
+    id?: SortOrder
+    caseId?: SortOrder
+    documentUrl?: SortOrder
+    fileName?: SortOrder
+    description?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    _count?: CaseDocumentCountOrderByAggregateInput
+    _max?: CaseDocumentMaxOrderByAggregateInput
+    _min?: CaseDocumentMinOrderByAggregateInput
+  }
+
+  export type CaseDocumentScalarWhereWithAggregatesInput = {
+    AND?: CaseDocumentScalarWhereWithAggregatesInput | CaseDocumentScalarWhereWithAggregatesInput[]
+    OR?: CaseDocumentScalarWhereWithAggregatesInput[]
+    NOT?: CaseDocumentScalarWhereWithAggregatesInput | CaseDocumentScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"CaseDocument"> | string
+    caseId?: StringWithAggregatesFilter<"CaseDocument"> | string
+    documentUrl?: StringWithAggregatesFilter<"CaseDocument"> | string
+    fileName?: StringWithAggregatesFilter<"CaseDocument"> | string
+    description?: StringNullableWithAggregatesFilter<"CaseDocument"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"CaseDocument"> | Date | string
   }
 
   export type NotificationWhereInput = {
@@ -14626,6 +31582,9 @@ export namespace Prisma {
     refresh_tokens?: RefreshTokenCreateNestedManyWithoutUserInput
     reset_tokens?: PasswordResetTokenCreateNestedManyWithoutUserInput
     pages?: PageCreateNestedManyWithoutAuthorInput
+    cases_as_lawyer?: CaseLawyerCreateNestedManyWithoutUserInput
+    cases_as_pleader?: CasePleadingCreateNestedManyWithoutPleaderInput
+    cases_as_counselor?: CaseCounselingCreateNestedManyWithoutCounselorInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -14647,6 +31606,9 @@ export namespace Prisma {
     refresh_tokens?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
     reset_tokens?: PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
     pages?: PageUncheckedCreateNestedManyWithoutAuthorInput
+    cases_as_lawyer?: CaseLawyerUncheckedCreateNestedManyWithoutUserInput
+    cases_as_pleader?: CasePleadingUncheckedCreateNestedManyWithoutPleaderInput
+    cases_as_counselor?: CaseCounselingUncheckedCreateNestedManyWithoutCounselorInput
   }
 
   export type UserUpdateInput = {
@@ -14668,6 +31630,9 @@ export namespace Prisma {
     refresh_tokens?: RefreshTokenUpdateManyWithoutUserNestedInput
     reset_tokens?: PasswordResetTokenUpdateManyWithoutUserNestedInput
     pages?: PageUpdateManyWithoutAuthorNestedInput
+    cases_as_lawyer?: CaseLawyerUpdateManyWithoutUserNestedInput
+    cases_as_pleader?: CasePleadingUpdateManyWithoutPleaderNestedInput
+    cases_as_counselor?: CaseCounselingUpdateManyWithoutCounselorNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -14689,6 +31654,9 @@ export namespace Prisma {
     refresh_tokens?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
     reset_tokens?: PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
     pages?: PageUncheckedUpdateManyWithoutAuthorNestedInput
+    cases_as_lawyer?: CaseLawyerUncheckedUpdateManyWithoutUserNestedInput
+    cases_as_pleader?: CasePleadingUncheckedUpdateManyWithoutPleaderNestedInput
+    cases_as_counselor?: CaseCounselingUncheckedUpdateManyWithoutCounselorNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -14937,6 +31905,858 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type CourtLevelCreateInput = {
+    id?: string
+    name: string
+    nepaliName?: string | null
+    proceedings?: CourtProceedingCreateNestedManyWithoutCourtLevelInput
+  }
+
+  export type CourtLevelUncheckedCreateInput = {
+    id?: string
+    name: string
+    nepaliName?: string | null
+    proceedings?: CourtProceedingUncheckedCreateNestedManyWithoutCourtLevelInput
+  }
+
+  export type CourtLevelUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    nepaliName?: NullableStringFieldUpdateOperationsInput | string | null
+    proceedings?: CourtProceedingUpdateManyWithoutCourtLevelNestedInput
+  }
+
+  export type CourtLevelUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    nepaliName?: NullableStringFieldUpdateOperationsInput | string | null
+    proceedings?: CourtProceedingUncheckedUpdateManyWithoutCourtLevelNestedInput
+  }
+
+  export type CourtLevelCreateManyInput = {
+    id?: string
+    name: string
+    nepaliName?: string | null
+  }
+
+  export type CourtLevelUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    nepaliName?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CourtLevelUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    nepaliName?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CaseNatureCreateInput = {
+    id?: string
+    name: string
+    nepaliName?: string | null
+    cases?: CaseCreateNestedManyWithoutNatureInput
+  }
+
+  export type CaseNatureUncheckedCreateInput = {
+    id?: string
+    name: string
+    nepaliName?: string | null
+    cases?: CaseUncheckedCreateNestedManyWithoutNatureInput
+  }
+
+  export type CaseNatureUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    nepaliName?: NullableStringFieldUpdateOperationsInput | string | null
+    cases?: CaseUpdateManyWithoutNatureNestedInput
+  }
+
+  export type CaseNatureUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    nepaliName?: NullableStringFieldUpdateOperationsInput | string | null
+    cases?: CaseUncheckedUpdateManyWithoutNatureNestedInput
+  }
+
+  export type CaseNatureCreateManyInput = {
+    id?: string
+    name: string
+    nepaliName?: string | null
+  }
+
+  export type CaseNatureUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    nepaliName?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CaseNatureUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    nepaliName?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type PartyRoleCreateInput = {
+    id?: string
+    name: string
+    nepaliName?: string | null
+    parties?: CasePartyCreateNestedManyWithoutRoleInput
+  }
+
+  export type PartyRoleUncheckedCreateInput = {
+    id?: string
+    name: string
+    nepaliName?: string | null
+    parties?: CasePartyUncheckedCreateNestedManyWithoutRoleInput
+  }
+
+  export type PartyRoleUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    nepaliName?: NullableStringFieldUpdateOperationsInput | string | null
+    parties?: CasePartyUpdateManyWithoutRoleNestedInput
+  }
+
+  export type PartyRoleUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    nepaliName?: NullableStringFieldUpdateOperationsInput | string | null
+    parties?: CasePartyUncheckedUpdateManyWithoutRoleNestedInput
+  }
+
+  export type PartyRoleCreateManyInput = {
+    id?: string
+    name: string
+    nepaliName?: string | null
+  }
+
+  export type PartyRoleUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    nepaliName?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type PartyRoleUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    nepaliName?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CaseCreateInput = {
+    id?: string
+    caseNumber: string
+    caseName: string
+    registrationDate?: Date | string | null
+    registrationFee?: Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: string | null
+    facts?: string | null
+    relatedLaws?: string | null
+    referredThrough?: string | null
+    noticeStatus?: string | null
+    fullJudgmentDate?: Date | string | null
+    judgmentVerifyDate?: Date | string | null
+    status?: string
+    paymentStatus?: string
+    createdAt?: Date | string
+    nature: CaseNatureCreateNestedOneWithoutCasesInput
+    lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
+    parties?: CasePartyCreateNestedManyWithoutCaseInput
+    hearings?: CaseHearingCreateNestedManyWithoutCaseInput
+    pleadings?: CasePleadingCreateNestedManyWithoutCaseInput
+    proceedings?: CourtProceedingCreateNestedManyWithoutCaseInput
+    precedents?: CasePrecedentCreateNestedManyWithoutCaseInput
+    payments?: CasePaymentCreateNestedManyWithoutCaseInput
+    counselings?: CaseCounselingCreateNestedManyWithoutCaseInput
+    documents?: CaseDocumentCreateNestedManyWithoutCaseInput
+  }
+
+  export type CaseUncheckedCreateInput = {
+    id?: string
+    caseNumber: string
+    caseName: string
+    natureId: string
+    registrationDate?: Date | string | null
+    registrationFee?: Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: string | null
+    facts?: string | null
+    relatedLaws?: string | null
+    referredThrough?: string | null
+    noticeStatus?: string | null
+    fullJudgmentDate?: Date | string | null
+    judgmentVerifyDate?: Date | string | null
+    status?: string
+    paymentStatus?: string
+    createdAt?: Date | string
+    lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
+    parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
+    hearings?: CaseHearingUncheckedCreateNestedManyWithoutCaseInput
+    pleadings?: CasePleadingUncheckedCreateNestedManyWithoutCaseInput
+    proceedings?: CourtProceedingUncheckedCreateNestedManyWithoutCaseInput
+    precedents?: CasePrecedentUncheckedCreateNestedManyWithoutCaseInput
+    payments?: CasePaymentUncheckedCreateNestedManyWithoutCaseInput
+    counselings?: CaseCounselingUncheckedCreateNestedManyWithoutCaseInput
+    documents?: CaseDocumentUncheckedCreateNestedManyWithoutCaseInput
+  }
+
+  export type CaseUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseNumber?: StringFieldUpdateOperationsInput | string
+    caseName?: StringFieldUpdateOperationsInput | string
+    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
+    facts?: NullableStringFieldUpdateOperationsInput | string | null
+    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
+    noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    paymentStatus?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    nature?: CaseNatureUpdateOneRequiredWithoutCasesNestedInput
+    lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
+    parties?: CasePartyUpdateManyWithoutCaseNestedInput
+    hearings?: CaseHearingUpdateManyWithoutCaseNestedInput
+    pleadings?: CasePleadingUpdateManyWithoutCaseNestedInput
+    proceedings?: CourtProceedingUpdateManyWithoutCaseNestedInput
+    precedents?: CasePrecedentUpdateManyWithoutCaseNestedInput
+    payments?: CasePaymentUpdateManyWithoutCaseNestedInput
+    counselings?: CaseCounselingUpdateManyWithoutCaseNestedInput
+    documents?: CaseDocumentUpdateManyWithoutCaseNestedInput
+  }
+
+  export type CaseUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseNumber?: StringFieldUpdateOperationsInput | string
+    caseName?: StringFieldUpdateOperationsInput | string
+    natureId?: StringFieldUpdateOperationsInput | string
+    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
+    facts?: NullableStringFieldUpdateOperationsInput | string | null
+    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
+    noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    paymentStatus?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
+    parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
+    hearings?: CaseHearingUncheckedUpdateManyWithoutCaseNestedInput
+    pleadings?: CasePleadingUncheckedUpdateManyWithoutCaseNestedInput
+    proceedings?: CourtProceedingUncheckedUpdateManyWithoutCaseNestedInput
+    precedents?: CasePrecedentUncheckedUpdateManyWithoutCaseNestedInput
+    payments?: CasePaymentUncheckedUpdateManyWithoutCaseNestedInput
+    counselings?: CaseCounselingUncheckedUpdateManyWithoutCaseNestedInput
+    documents?: CaseDocumentUncheckedUpdateManyWithoutCaseNestedInput
+  }
+
+  export type CaseCreateManyInput = {
+    id?: string
+    caseNumber: string
+    caseName: string
+    natureId: string
+    registrationDate?: Date | string | null
+    registrationFee?: Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: string | null
+    facts?: string | null
+    relatedLaws?: string | null
+    referredThrough?: string | null
+    noticeStatus?: string | null
+    fullJudgmentDate?: Date | string | null
+    judgmentVerifyDate?: Date | string | null
+    status?: string
+    paymentStatus?: string
+    createdAt?: Date | string
+  }
+
+  export type CaseUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseNumber?: StringFieldUpdateOperationsInput | string
+    caseName?: StringFieldUpdateOperationsInput | string
+    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
+    facts?: NullableStringFieldUpdateOperationsInput | string | null
+    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
+    noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    paymentStatus?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CaseUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseNumber?: StringFieldUpdateOperationsInput | string
+    caseName?: StringFieldUpdateOperationsInput | string
+    natureId?: StringFieldUpdateOperationsInput | string
+    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
+    facts?: NullableStringFieldUpdateOperationsInput | string | null
+    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
+    noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    paymentStatus?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CaseLawyerCreateInput = {
+    isLead?: boolean
+    case: CaseCreateNestedOneWithoutLawyersInput
+    user: UserCreateNestedOneWithoutCases_as_lawyerInput
+  }
+
+  export type CaseLawyerUncheckedCreateInput = {
+    caseId: string
+    userId: string
+    isLead?: boolean
+  }
+
+  export type CaseLawyerUpdateInput = {
+    isLead?: BoolFieldUpdateOperationsInput | boolean
+    case?: CaseUpdateOneRequiredWithoutLawyersNestedInput
+    user?: UserUpdateOneRequiredWithoutCases_as_lawyerNestedInput
+  }
+
+  export type CaseLawyerUncheckedUpdateInput = {
+    caseId?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    isLead?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type CaseLawyerCreateManyInput = {
+    caseId: string
+    userId: string
+    isLead?: boolean
+  }
+
+  export type CaseLawyerUpdateManyMutationInput = {
+    isLead?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type CaseLawyerUncheckedUpdateManyInput = {
+    caseId?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    isLead?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type CasePartyCreateInput = {
+    id?: string
+    partyName: string
+    fee?: Decimal | DecimalJsLike | number | string | null
+    contactInfo?: string | null
+    case: CaseCreateNestedOneWithoutPartiesInput
+    role: PartyRoleCreateNestedOneWithoutPartiesInput
+  }
+
+  export type CasePartyUncheckedCreateInput = {
+    id?: string
+    caseId: string
+    partyName: string
+    roleId: string
+    fee?: Decimal | DecimalJsLike | number | string | null
+    contactInfo?: string | null
+  }
+
+  export type CasePartyUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    partyName?: StringFieldUpdateOperationsInput | string
+    fee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    contactInfo?: NullableStringFieldUpdateOperationsInput | string | null
+    case?: CaseUpdateOneRequiredWithoutPartiesNestedInput
+    role?: PartyRoleUpdateOneRequiredWithoutPartiesNestedInput
+  }
+
+  export type CasePartyUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseId?: StringFieldUpdateOperationsInput | string
+    partyName?: StringFieldUpdateOperationsInput | string
+    roleId?: StringFieldUpdateOperationsInput | string
+    fee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    contactInfo?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CasePartyCreateManyInput = {
+    id?: string
+    caseId: string
+    partyName: string
+    roleId: string
+    fee?: Decimal | DecimalJsLike | number | string | null
+    contactInfo?: string | null
+  }
+
+  export type CasePartyUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    partyName?: StringFieldUpdateOperationsInput | string
+    fee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    contactInfo?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CasePartyUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseId?: StringFieldUpdateOperationsInput | string
+    partyName?: StringFieldUpdateOperationsInput | string
+    roleId?: StringFieldUpdateOperationsInput | string
+    fee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    contactInfo?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CaseHearingCreateInput = {
+    id?: string
+    nextHearingDate?: Date | string | null
+    hearingDate?: Date | string | null
+    hearingOrder?: string | null
+    judgeName?: string | null
+    case: CaseCreateNestedOneWithoutHearingsInput
+  }
+
+  export type CaseHearingUncheckedCreateInput = {
+    id?: string
+    caseId: string
+    nextHearingDate?: Date | string | null
+    hearingDate?: Date | string | null
+    hearingOrder?: string | null
+    judgeName?: string | null
+  }
+
+  export type CaseHearingUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nextHearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hearingOrder?: NullableStringFieldUpdateOperationsInput | string | null
+    judgeName?: NullableStringFieldUpdateOperationsInput | string | null
+    case?: CaseUpdateOneRequiredWithoutHearingsNestedInput
+  }
+
+  export type CaseHearingUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseId?: StringFieldUpdateOperationsInput | string
+    nextHearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hearingOrder?: NullableStringFieldUpdateOperationsInput | string | null
+    judgeName?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CaseHearingCreateManyInput = {
+    id?: string
+    caseId: string
+    nextHearingDate?: Date | string | null
+    hearingDate?: Date | string | null
+    hearingOrder?: string | null
+    judgeName?: string | null
+  }
+
+  export type CaseHearingUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nextHearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hearingOrder?: NullableStringFieldUpdateOperationsInput | string | null
+    judgeName?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CaseHearingUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseId?: StringFieldUpdateOperationsInput | string
+    nextHearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hearingOrder?: NullableStringFieldUpdateOperationsInput | string | null
+    judgeName?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CasePleadingCreateInput = {
+    id?: string
+    pleadingDate?: Date | string | null
+    pleadingNotes: string
+    case: CaseCreateNestedOneWithoutPleadingsInput
+    pleader?: UserCreateNestedOneWithoutCases_as_pleaderInput
+  }
+
+  export type CasePleadingUncheckedCreateInput = {
+    id?: string
+    caseId: string
+    pleaderUserId?: string | null
+    pleadingDate?: Date | string | null
+    pleadingNotes: string
+  }
+
+  export type CasePleadingUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    pleadingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    pleadingNotes?: StringFieldUpdateOperationsInput | string
+    case?: CaseUpdateOneRequiredWithoutPleadingsNestedInput
+    pleader?: UserUpdateOneWithoutCases_as_pleaderNestedInput
+  }
+
+  export type CasePleadingUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseId?: StringFieldUpdateOperationsInput | string
+    pleaderUserId?: NullableStringFieldUpdateOperationsInput | string | null
+    pleadingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    pleadingNotes?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CasePleadingCreateManyInput = {
+    id?: string
+    caseId: string
+    pleaderUserId?: string | null
+    pleadingDate?: Date | string | null
+    pleadingNotes: string
+  }
+
+  export type CasePleadingUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    pleadingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    pleadingNotes?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CasePleadingUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseId?: StringFieldUpdateOperationsInput | string
+    pleaderUserId?: NullableStringFieldUpdateOperationsInput | string | null
+    pleadingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    pleadingNotes?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CourtProceedingCreateInput = {
+    id?: string
+    courtName: string
+    judgeName?: string | null
+    chargeCounseling?: string | null
+    verdict?: string | null
+    case: CaseCreateNestedOneWithoutProceedingsInput
+    courtLevel: CourtLevelCreateNestedOneWithoutProceedingsInput
+  }
+
+  export type CourtProceedingUncheckedCreateInput = {
+    id?: string
+    caseId: string
+    courtLevelId: string
+    courtName: string
+    judgeName?: string | null
+    chargeCounseling?: string | null
+    verdict?: string | null
+  }
+
+  export type CourtProceedingUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    courtName?: StringFieldUpdateOperationsInput | string
+    judgeName?: NullableStringFieldUpdateOperationsInput | string | null
+    chargeCounseling?: NullableStringFieldUpdateOperationsInput | string | null
+    verdict?: NullableStringFieldUpdateOperationsInput | string | null
+    case?: CaseUpdateOneRequiredWithoutProceedingsNestedInput
+    courtLevel?: CourtLevelUpdateOneRequiredWithoutProceedingsNestedInput
+  }
+
+  export type CourtProceedingUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseId?: StringFieldUpdateOperationsInput | string
+    courtLevelId?: StringFieldUpdateOperationsInput | string
+    courtName?: StringFieldUpdateOperationsInput | string
+    judgeName?: NullableStringFieldUpdateOperationsInput | string | null
+    chargeCounseling?: NullableStringFieldUpdateOperationsInput | string | null
+    verdict?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CourtProceedingCreateManyInput = {
+    id?: string
+    caseId: string
+    courtLevelId: string
+    courtName: string
+    judgeName?: string | null
+    chargeCounseling?: string | null
+    verdict?: string | null
+  }
+
+  export type CourtProceedingUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    courtName?: StringFieldUpdateOperationsInput | string
+    judgeName?: NullableStringFieldUpdateOperationsInput | string | null
+    chargeCounseling?: NullableStringFieldUpdateOperationsInput | string | null
+    verdict?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CourtProceedingUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseId?: StringFieldUpdateOperationsInput | string
+    courtLevelId?: StringFieldUpdateOperationsInput | string
+    courtName?: StringFieldUpdateOperationsInput | string
+    judgeName?: NullableStringFieldUpdateOperationsInput | string | null
+    chargeCounseling?: NullableStringFieldUpdateOperationsInput | string | null
+    verdict?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CasePrecedentCreateInput = {
+    id?: string
+    decisionNumber?: string | null
+    plaintiff?: string | null
+    defendant?: string | null
+    citationNotes?: string | null
+    case: CaseCreateNestedOneWithoutPrecedentsInput
+  }
+
+  export type CasePrecedentUncheckedCreateInput = {
+    id?: string
+    caseId: string
+    decisionNumber?: string | null
+    plaintiff?: string | null
+    defendant?: string | null
+    citationNotes?: string | null
+  }
+
+  export type CasePrecedentUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    decisionNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    plaintiff?: NullableStringFieldUpdateOperationsInput | string | null
+    defendant?: NullableStringFieldUpdateOperationsInput | string | null
+    citationNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    case?: CaseUpdateOneRequiredWithoutPrecedentsNestedInput
+  }
+
+  export type CasePrecedentUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseId?: StringFieldUpdateOperationsInput | string
+    decisionNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    plaintiff?: NullableStringFieldUpdateOperationsInput | string | null
+    defendant?: NullableStringFieldUpdateOperationsInput | string | null
+    citationNotes?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CasePrecedentCreateManyInput = {
+    id?: string
+    caseId: string
+    decisionNumber?: string | null
+    plaintiff?: string | null
+    defendant?: string | null
+    citationNotes?: string | null
+  }
+
+  export type CasePrecedentUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    decisionNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    plaintiff?: NullableStringFieldUpdateOperationsInput | string | null
+    defendant?: NullableStringFieldUpdateOperationsInput | string | null
+    citationNotes?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CasePrecedentUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseId?: StringFieldUpdateOperationsInput | string
+    decisionNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    plaintiff?: NullableStringFieldUpdateOperationsInput | string | null
+    defendant?: NullableStringFieldUpdateOperationsInput | string | null
+    citationNotes?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CasePaymentCreateInput = {
+    id?: string
+    amount: Decimal | DecimalJsLike | number | string
+    paymentDate?: Date | string | null
+    method?: string | null
+    referenceNo?: string | null
+    notes?: string | null
+    createdAt?: Date | string
+    case: CaseCreateNestedOneWithoutPaymentsInput
+  }
+
+  export type CasePaymentUncheckedCreateInput = {
+    id?: string
+    caseId: string
+    amount: Decimal | DecimalJsLike | number | string
+    paymentDate?: Date | string | null
+    method?: string | null
+    referenceNo?: string | null
+    notes?: string | null
+    createdAt?: Date | string
+  }
+
+  export type CasePaymentUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    paymentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    method?: NullableStringFieldUpdateOperationsInput | string | null
+    referenceNo?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    case?: CaseUpdateOneRequiredWithoutPaymentsNestedInput
+  }
+
+  export type CasePaymentUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseId?: StringFieldUpdateOperationsInput | string
+    amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    paymentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    method?: NullableStringFieldUpdateOperationsInput | string | null
+    referenceNo?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CasePaymentCreateManyInput = {
+    id?: string
+    caseId: string
+    amount: Decimal | DecimalJsLike | number | string
+    paymentDate?: Date | string | null
+    method?: string | null
+    referenceNo?: string | null
+    notes?: string | null
+    createdAt?: Date | string
+  }
+
+  export type CasePaymentUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    paymentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    method?: NullableStringFieldUpdateOperationsInput | string | null
+    referenceNo?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CasePaymentUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseId?: StringFieldUpdateOperationsInput | string
+    amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    paymentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    method?: NullableStringFieldUpdateOperationsInput | string | null
+    referenceNo?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CaseCounselingCreateInput = {
+    id?: string
+    date?: Date | string | null
+    notes: string
+    createdAt?: Date | string
+    case: CaseCreateNestedOneWithoutCounselingsInput
+    counselor?: UserCreateNestedOneWithoutCases_as_counselorInput
+  }
+
+  export type CaseCounselingUncheckedCreateInput = {
+    id?: string
+    caseId: string
+    counselorUserId?: string | null
+    date?: Date | string | null
+    notes: string
+    createdAt?: Date | string
+  }
+
+  export type CaseCounselingUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    notes?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    case?: CaseUpdateOneRequiredWithoutCounselingsNestedInput
+    counselor?: UserUpdateOneWithoutCases_as_counselorNestedInput
+  }
+
+  export type CaseCounselingUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseId?: StringFieldUpdateOperationsInput | string
+    counselorUserId?: NullableStringFieldUpdateOperationsInput | string | null
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    notes?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CaseCounselingCreateManyInput = {
+    id?: string
+    caseId: string
+    counselorUserId?: string | null
+    date?: Date | string | null
+    notes: string
+    createdAt?: Date | string
+  }
+
+  export type CaseCounselingUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    notes?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CaseCounselingUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseId?: StringFieldUpdateOperationsInput | string
+    counselorUserId?: NullableStringFieldUpdateOperationsInput | string | null
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    notes?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CaseDocumentCreateInput = {
+    id?: string
+    documentUrl: string
+    fileName: string
+    description?: string | null
+    createdAt?: Date | string
+    case: CaseCreateNestedOneWithoutDocumentsInput
+  }
+
+  export type CaseDocumentUncheckedCreateInput = {
+    id?: string
+    caseId: string
+    documentUrl: string
+    fileName: string
+    description?: string | null
+    createdAt?: Date | string
+  }
+
+  export type CaseDocumentUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    documentUrl?: StringFieldUpdateOperationsInput | string
+    fileName?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    case?: CaseUpdateOneRequiredWithoutDocumentsNestedInput
+  }
+
+  export type CaseDocumentUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseId?: StringFieldUpdateOperationsInput | string
+    documentUrl?: StringFieldUpdateOperationsInput | string
+    fileName?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CaseDocumentCreateManyInput = {
+    id?: string
+    caseId: string
+    documentUrl: string
+    fileName: string
+    description?: string | null
+    createdAt?: Date | string
+  }
+
+  export type CaseDocumentUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    documentUrl?: StringFieldUpdateOperationsInput | string
+    fileName?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CaseDocumentUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseId?: StringFieldUpdateOperationsInput | string
+    documentUrl?: StringFieldUpdateOperationsInput | string
+    fileName?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type NotificationCreateInput = {
@@ -15578,6 +33398,24 @@ export namespace Prisma {
     none?: PageWhereInput
   }
 
+  export type CaseLawyerListRelationFilter = {
+    every?: CaseLawyerWhereInput
+    some?: CaseLawyerWhereInput
+    none?: CaseLawyerWhereInput
+  }
+
+  export type CasePleadingListRelationFilter = {
+    every?: CasePleadingWhereInput
+    some?: CasePleadingWhereInput
+    none?: CasePleadingWhereInput
+  }
+
+  export type CaseCounselingListRelationFilter = {
+    every?: CaseCounselingWhereInput
+    some?: CaseCounselingWhereInput
+    none?: CaseCounselingWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -15596,6 +33434,18 @@ export namespace Prisma {
   }
 
   export type PageOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type CaseLawyerOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type CasePleadingOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type CaseCounselingOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -15879,9 +33729,546 @@ export namespace Prisma {
     _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
+  export type CourtProceedingListRelationFilter = {
+    every?: CourtProceedingWhereInput
+    some?: CourtProceedingWhereInput
+    none?: CourtProceedingWhereInput
+  }
+
+  export type CourtProceedingOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type CourtLevelCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    nepaliName?: SortOrder
+  }
+
+  export type CourtLevelMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    nepaliName?: SortOrder
+  }
+
+  export type CourtLevelMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    nepaliName?: SortOrder
+  }
+
+  export type CaseListRelationFilter = {
+    every?: CaseWhereInput
+    some?: CaseWhereInput
+    none?: CaseWhereInput
+  }
+
+  export type CaseOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type CaseNatureCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    nepaliName?: SortOrder
+  }
+
+  export type CaseNatureMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    nepaliName?: SortOrder
+  }
+
+  export type CaseNatureMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    nepaliName?: SortOrder
+  }
+
+  export type CasePartyListRelationFilter = {
+    every?: CasePartyWhereInput
+    some?: CasePartyWhereInput
+    none?: CasePartyWhereInput
+  }
+
+  export type CasePartyOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type PartyRoleCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    nepaliName?: SortOrder
+  }
+
+  export type PartyRoleMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    nepaliName?: SortOrder
+  }
+
+  export type PartyRoleMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    nepaliName?: SortOrder
+  }
+
+  export type DecimalNullableFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+  }
+
+  export type CaseNatureScalarRelationFilter = {
+    is?: CaseNatureWhereInput
+    isNot?: CaseNatureWhereInput
+  }
+
+  export type CaseHearingListRelationFilter = {
+    every?: CaseHearingWhereInput
+    some?: CaseHearingWhereInput
+    none?: CaseHearingWhereInput
+  }
+
+  export type CasePrecedentListRelationFilter = {
+    every?: CasePrecedentWhereInput
+    some?: CasePrecedentWhereInput
+    none?: CasePrecedentWhereInput
+  }
+
+  export type CasePaymentListRelationFilter = {
+    every?: CasePaymentWhereInput
+    some?: CasePaymentWhereInput
+    none?: CasePaymentWhereInput
+  }
+
+  export type CaseDocumentListRelationFilter = {
+    every?: CaseDocumentWhereInput
+    some?: CaseDocumentWhereInput
+    none?: CaseDocumentWhereInput
+  }
+
+  export type CaseHearingOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type CasePrecedentOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type CasePaymentOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type CaseDocumentOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type CaseCountOrderByAggregateInput = {
+    id?: SortOrder
+    caseNumber?: SortOrder
+    caseName?: SortOrder
+    natureId?: SortOrder
+    registrationDate?: SortOrder
+    registrationFee?: SortOrder
+    sectionCourtRoom?: SortOrder
+    facts?: SortOrder
+    relatedLaws?: SortOrder
+    referredThrough?: SortOrder
+    noticeStatus?: SortOrder
+    fullJudgmentDate?: SortOrder
+    judgmentVerifyDate?: SortOrder
+    status?: SortOrder
+    paymentStatus?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type CaseAvgOrderByAggregateInput = {
+    registrationFee?: SortOrder
+  }
+
+  export type CaseMaxOrderByAggregateInput = {
+    id?: SortOrder
+    caseNumber?: SortOrder
+    caseName?: SortOrder
+    natureId?: SortOrder
+    registrationDate?: SortOrder
+    registrationFee?: SortOrder
+    sectionCourtRoom?: SortOrder
+    facts?: SortOrder
+    relatedLaws?: SortOrder
+    referredThrough?: SortOrder
+    noticeStatus?: SortOrder
+    fullJudgmentDate?: SortOrder
+    judgmentVerifyDate?: SortOrder
+    status?: SortOrder
+    paymentStatus?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type CaseMinOrderByAggregateInput = {
+    id?: SortOrder
+    caseNumber?: SortOrder
+    caseName?: SortOrder
+    natureId?: SortOrder
+    registrationDate?: SortOrder
+    registrationFee?: SortOrder
+    sectionCourtRoom?: SortOrder
+    facts?: SortOrder
+    relatedLaws?: SortOrder
+    referredThrough?: SortOrder
+    noticeStatus?: SortOrder
+    fullJudgmentDate?: SortOrder
+    judgmentVerifyDate?: SortOrder
+    status?: SortOrder
+    paymentStatus?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type CaseSumOrderByAggregateInput = {
+    registrationFee?: SortOrder
+  }
+
+  export type DecimalNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalNullableWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedDecimalNullableFilter<$PrismaModel>
+    _sum?: NestedDecimalNullableFilter<$PrismaModel>
+    _min?: NestedDecimalNullableFilter<$PrismaModel>
+    _max?: NestedDecimalNullableFilter<$PrismaModel>
+  }
+
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type CaseScalarRelationFilter = {
+    is?: CaseWhereInput
+    isNot?: CaseWhereInput
+  }
+
+  export type CaseLawyerCaseIdUserIdCompoundUniqueInput = {
+    caseId: string
+    userId: string
+  }
+
+  export type CaseLawyerCountOrderByAggregateInput = {
+    caseId?: SortOrder
+    userId?: SortOrder
+    isLead?: SortOrder
+  }
+
+  export type CaseLawyerMaxOrderByAggregateInput = {
+    caseId?: SortOrder
+    userId?: SortOrder
+    isLead?: SortOrder
+  }
+
+  export type CaseLawyerMinOrderByAggregateInput = {
+    caseId?: SortOrder
+    userId?: SortOrder
+    isLead?: SortOrder
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type PartyRoleScalarRelationFilter = {
+    is?: PartyRoleWhereInput
+    isNot?: PartyRoleWhereInput
+  }
+
+  export type CasePartyCountOrderByAggregateInput = {
+    id?: SortOrder
+    caseId?: SortOrder
+    partyName?: SortOrder
+    roleId?: SortOrder
+    fee?: SortOrder
+    contactInfo?: SortOrder
+  }
+
+  export type CasePartyAvgOrderByAggregateInput = {
+    fee?: SortOrder
+  }
+
+  export type CasePartyMaxOrderByAggregateInput = {
+    id?: SortOrder
+    caseId?: SortOrder
+    partyName?: SortOrder
+    roleId?: SortOrder
+    fee?: SortOrder
+    contactInfo?: SortOrder
+  }
+
+  export type CasePartyMinOrderByAggregateInput = {
+    id?: SortOrder
+    caseId?: SortOrder
+    partyName?: SortOrder
+    roleId?: SortOrder
+    fee?: SortOrder
+    contactInfo?: SortOrder
+  }
+
+  export type CasePartySumOrderByAggregateInput = {
+    fee?: SortOrder
+  }
+
+  export type CaseHearingCountOrderByAggregateInput = {
+    id?: SortOrder
+    caseId?: SortOrder
+    nextHearingDate?: SortOrder
+    hearingDate?: SortOrder
+    hearingOrder?: SortOrder
+    judgeName?: SortOrder
+  }
+
+  export type CaseHearingMaxOrderByAggregateInput = {
+    id?: SortOrder
+    caseId?: SortOrder
+    nextHearingDate?: SortOrder
+    hearingDate?: SortOrder
+    hearingOrder?: SortOrder
+    judgeName?: SortOrder
+  }
+
+  export type CaseHearingMinOrderByAggregateInput = {
+    id?: SortOrder
+    caseId?: SortOrder
+    nextHearingDate?: SortOrder
+    hearingDate?: SortOrder
+    hearingOrder?: SortOrder
+    judgeName?: SortOrder
+  }
+
   export type UserNullableScalarRelationFilter = {
     is?: UserWhereInput | null
     isNot?: UserWhereInput | null
+  }
+
+  export type CasePleadingCountOrderByAggregateInput = {
+    id?: SortOrder
+    caseId?: SortOrder
+    pleaderUserId?: SortOrder
+    pleadingDate?: SortOrder
+    pleadingNotes?: SortOrder
+  }
+
+  export type CasePleadingMaxOrderByAggregateInput = {
+    id?: SortOrder
+    caseId?: SortOrder
+    pleaderUserId?: SortOrder
+    pleadingDate?: SortOrder
+    pleadingNotes?: SortOrder
+  }
+
+  export type CasePleadingMinOrderByAggregateInput = {
+    id?: SortOrder
+    caseId?: SortOrder
+    pleaderUserId?: SortOrder
+    pleadingDate?: SortOrder
+    pleadingNotes?: SortOrder
+  }
+
+  export type CourtLevelScalarRelationFilter = {
+    is?: CourtLevelWhereInput
+    isNot?: CourtLevelWhereInput
+  }
+
+  export type CourtProceedingCountOrderByAggregateInput = {
+    id?: SortOrder
+    caseId?: SortOrder
+    courtLevelId?: SortOrder
+    courtName?: SortOrder
+    judgeName?: SortOrder
+    chargeCounseling?: SortOrder
+    verdict?: SortOrder
+  }
+
+  export type CourtProceedingMaxOrderByAggregateInput = {
+    id?: SortOrder
+    caseId?: SortOrder
+    courtLevelId?: SortOrder
+    courtName?: SortOrder
+    judgeName?: SortOrder
+    chargeCounseling?: SortOrder
+    verdict?: SortOrder
+  }
+
+  export type CourtProceedingMinOrderByAggregateInput = {
+    id?: SortOrder
+    caseId?: SortOrder
+    courtLevelId?: SortOrder
+    courtName?: SortOrder
+    judgeName?: SortOrder
+    chargeCounseling?: SortOrder
+    verdict?: SortOrder
+  }
+
+  export type CasePrecedentCountOrderByAggregateInput = {
+    id?: SortOrder
+    caseId?: SortOrder
+    decisionNumber?: SortOrder
+    plaintiff?: SortOrder
+    defendant?: SortOrder
+    citationNotes?: SortOrder
+  }
+
+  export type CasePrecedentMaxOrderByAggregateInput = {
+    id?: SortOrder
+    caseId?: SortOrder
+    decisionNumber?: SortOrder
+    plaintiff?: SortOrder
+    defendant?: SortOrder
+    citationNotes?: SortOrder
+  }
+
+  export type CasePrecedentMinOrderByAggregateInput = {
+    id?: SortOrder
+    caseId?: SortOrder
+    decisionNumber?: SortOrder
+    plaintiff?: SortOrder
+    defendant?: SortOrder
+    citationNotes?: SortOrder
+  }
+
+  export type DecimalFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+  }
+
+  export type CasePaymentCountOrderByAggregateInput = {
+    id?: SortOrder
+    caseId?: SortOrder
+    amount?: SortOrder
+    paymentDate?: SortOrder
+    method?: SortOrder
+    referenceNo?: SortOrder
+    notes?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type CasePaymentAvgOrderByAggregateInput = {
+    amount?: SortOrder
+  }
+
+  export type CasePaymentMaxOrderByAggregateInput = {
+    id?: SortOrder
+    caseId?: SortOrder
+    amount?: SortOrder
+    paymentDate?: SortOrder
+    method?: SortOrder
+    referenceNo?: SortOrder
+    notes?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type CasePaymentMinOrderByAggregateInput = {
+    id?: SortOrder
+    caseId?: SortOrder
+    amount?: SortOrder
+    paymentDate?: SortOrder
+    method?: SortOrder
+    referenceNo?: SortOrder
+    notes?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type CasePaymentSumOrderByAggregateInput = {
+    amount?: SortOrder
+  }
+
+  export type DecimalWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedDecimalFilter<$PrismaModel>
+    _sum?: NestedDecimalFilter<$PrismaModel>
+    _min?: NestedDecimalFilter<$PrismaModel>
+    _max?: NestedDecimalFilter<$PrismaModel>
+  }
+
+  export type CaseCounselingCountOrderByAggregateInput = {
+    id?: SortOrder
+    caseId?: SortOrder
+    counselorUserId?: SortOrder
+    date?: SortOrder
+    notes?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type CaseCounselingMaxOrderByAggregateInput = {
+    id?: SortOrder
+    caseId?: SortOrder
+    counselorUserId?: SortOrder
+    date?: SortOrder
+    notes?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type CaseCounselingMinOrderByAggregateInput = {
+    id?: SortOrder
+    caseId?: SortOrder
+    counselorUserId?: SortOrder
+    date?: SortOrder
+    notes?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type CaseDocumentCountOrderByAggregateInput = {
+    id?: SortOrder
+    caseId?: SortOrder
+    documentUrl?: SortOrder
+    fileName?: SortOrder
+    description?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type CaseDocumentMaxOrderByAggregateInput = {
+    id?: SortOrder
+    caseId?: SortOrder
+    documentUrl?: SortOrder
+    fileName?: SortOrder
+    description?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type CaseDocumentMinOrderByAggregateInput = {
+    id?: SortOrder
+    caseId?: SortOrder
+    documentUrl?: SortOrder
+    fileName?: SortOrder
+    description?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type NotificationCountOrderByAggregateInput = {
@@ -16143,11 +34530,6 @@ export namespace Prisma {
     updated_at?: SortOrder
   }
 
-  export type BoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
-  }
-
   export type RoleCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
@@ -16177,14 +34559,6 @@ export namespace Prisma {
     created_at?: SortOrder
     updated_at?: SortOrder
     deleted_at?: SortOrder
-  }
-
-  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type ResourceCreateNestedOneWithoutUsersInput = {
@@ -16227,6 +34601,27 @@ export namespace Prisma {
     connect?: PageWhereUniqueInput | PageWhereUniqueInput[]
   }
 
+  export type CaseLawyerCreateNestedManyWithoutUserInput = {
+    create?: XOR<CaseLawyerCreateWithoutUserInput, CaseLawyerUncheckedCreateWithoutUserInput> | CaseLawyerCreateWithoutUserInput[] | CaseLawyerUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CaseLawyerCreateOrConnectWithoutUserInput | CaseLawyerCreateOrConnectWithoutUserInput[]
+    createMany?: CaseLawyerCreateManyUserInputEnvelope
+    connect?: CaseLawyerWhereUniqueInput | CaseLawyerWhereUniqueInput[]
+  }
+
+  export type CasePleadingCreateNestedManyWithoutPleaderInput = {
+    create?: XOR<CasePleadingCreateWithoutPleaderInput, CasePleadingUncheckedCreateWithoutPleaderInput> | CasePleadingCreateWithoutPleaderInput[] | CasePleadingUncheckedCreateWithoutPleaderInput[]
+    connectOrCreate?: CasePleadingCreateOrConnectWithoutPleaderInput | CasePleadingCreateOrConnectWithoutPleaderInput[]
+    createMany?: CasePleadingCreateManyPleaderInputEnvelope
+    connect?: CasePleadingWhereUniqueInput | CasePleadingWhereUniqueInput[]
+  }
+
+  export type CaseCounselingCreateNestedManyWithoutCounselorInput = {
+    create?: XOR<CaseCounselingCreateWithoutCounselorInput, CaseCounselingUncheckedCreateWithoutCounselorInput> | CaseCounselingCreateWithoutCounselorInput[] | CaseCounselingUncheckedCreateWithoutCounselorInput[]
+    connectOrCreate?: CaseCounselingCreateOrConnectWithoutCounselorInput | CaseCounselingCreateOrConnectWithoutCounselorInput[]
+    createMany?: CaseCounselingCreateManyCounselorInputEnvelope
+    connect?: CaseCounselingWhereUniqueInput | CaseCounselingWhereUniqueInput[]
+  }
+
   export type NotificationUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<NotificationCreateWithoutUserInput, NotificationUncheckedCreateWithoutUserInput> | NotificationCreateWithoutUserInput[] | NotificationUncheckedCreateWithoutUserInput[]
     connectOrCreate?: NotificationCreateOrConnectWithoutUserInput | NotificationCreateOrConnectWithoutUserInput[]
@@ -16253,6 +34648,27 @@ export namespace Prisma {
     connectOrCreate?: PageCreateOrConnectWithoutAuthorInput | PageCreateOrConnectWithoutAuthorInput[]
     createMany?: PageCreateManyAuthorInputEnvelope
     connect?: PageWhereUniqueInput | PageWhereUniqueInput[]
+  }
+
+  export type CaseLawyerUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<CaseLawyerCreateWithoutUserInput, CaseLawyerUncheckedCreateWithoutUserInput> | CaseLawyerCreateWithoutUserInput[] | CaseLawyerUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CaseLawyerCreateOrConnectWithoutUserInput | CaseLawyerCreateOrConnectWithoutUserInput[]
+    createMany?: CaseLawyerCreateManyUserInputEnvelope
+    connect?: CaseLawyerWhereUniqueInput | CaseLawyerWhereUniqueInput[]
+  }
+
+  export type CasePleadingUncheckedCreateNestedManyWithoutPleaderInput = {
+    create?: XOR<CasePleadingCreateWithoutPleaderInput, CasePleadingUncheckedCreateWithoutPleaderInput> | CasePleadingCreateWithoutPleaderInput[] | CasePleadingUncheckedCreateWithoutPleaderInput[]
+    connectOrCreate?: CasePleadingCreateOrConnectWithoutPleaderInput | CasePleadingCreateOrConnectWithoutPleaderInput[]
+    createMany?: CasePleadingCreateManyPleaderInputEnvelope
+    connect?: CasePleadingWhereUniqueInput | CasePleadingWhereUniqueInput[]
+  }
+
+  export type CaseCounselingUncheckedCreateNestedManyWithoutCounselorInput = {
+    create?: XOR<CaseCounselingCreateWithoutCounselorInput, CaseCounselingUncheckedCreateWithoutCounselorInput> | CaseCounselingCreateWithoutCounselorInput[] | CaseCounselingUncheckedCreateWithoutCounselorInput[]
+    connectOrCreate?: CaseCounselingCreateOrConnectWithoutCounselorInput | CaseCounselingCreateOrConnectWithoutCounselorInput[]
+    createMany?: CaseCounselingCreateManyCounselorInputEnvelope
+    connect?: CaseCounselingWhereUniqueInput | CaseCounselingWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -16347,6 +34763,48 @@ export namespace Prisma {
     deleteMany?: PageScalarWhereInput | PageScalarWhereInput[]
   }
 
+  export type CaseLawyerUpdateManyWithoutUserNestedInput = {
+    create?: XOR<CaseLawyerCreateWithoutUserInput, CaseLawyerUncheckedCreateWithoutUserInput> | CaseLawyerCreateWithoutUserInput[] | CaseLawyerUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CaseLawyerCreateOrConnectWithoutUserInput | CaseLawyerCreateOrConnectWithoutUserInput[]
+    upsert?: CaseLawyerUpsertWithWhereUniqueWithoutUserInput | CaseLawyerUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: CaseLawyerCreateManyUserInputEnvelope
+    set?: CaseLawyerWhereUniqueInput | CaseLawyerWhereUniqueInput[]
+    disconnect?: CaseLawyerWhereUniqueInput | CaseLawyerWhereUniqueInput[]
+    delete?: CaseLawyerWhereUniqueInput | CaseLawyerWhereUniqueInput[]
+    connect?: CaseLawyerWhereUniqueInput | CaseLawyerWhereUniqueInput[]
+    update?: CaseLawyerUpdateWithWhereUniqueWithoutUserInput | CaseLawyerUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: CaseLawyerUpdateManyWithWhereWithoutUserInput | CaseLawyerUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: CaseLawyerScalarWhereInput | CaseLawyerScalarWhereInput[]
+  }
+
+  export type CasePleadingUpdateManyWithoutPleaderNestedInput = {
+    create?: XOR<CasePleadingCreateWithoutPleaderInput, CasePleadingUncheckedCreateWithoutPleaderInput> | CasePleadingCreateWithoutPleaderInput[] | CasePleadingUncheckedCreateWithoutPleaderInput[]
+    connectOrCreate?: CasePleadingCreateOrConnectWithoutPleaderInput | CasePleadingCreateOrConnectWithoutPleaderInput[]
+    upsert?: CasePleadingUpsertWithWhereUniqueWithoutPleaderInput | CasePleadingUpsertWithWhereUniqueWithoutPleaderInput[]
+    createMany?: CasePleadingCreateManyPleaderInputEnvelope
+    set?: CasePleadingWhereUniqueInput | CasePleadingWhereUniqueInput[]
+    disconnect?: CasePleadingWhereUniqueInput | CasePleadingWhereUniqueInput[]
+    delete?: CasePleadingWhereUniqueInput | CasePleadingWhereUniqueInput[]
+    connect?: CasePleadingWhereUniqueInput | CasePleadingWhereUniqueInput[]
+    update?: CasePleadingUpdateWithWhereUniqueWithoutPleaderInput | CasePleadingUpdateWithWhereUniqueWithoutPleaderInput[]
+    updateMany?: CasePleadingUpdateManyWithWhereWithoutPleaderInput | CasePleadingUpdateManyWithWhereWithoutPleaderInput[]
+    deleteMany?: CasePleadingScalarWhereInput | CasePleadingScalarWhereInput[]
+  }
+
+  export type CaseCounselingUpdateManyWithoutCounselorNestedInput = {
+    create?: XOR<CaseCounselingCreateWithoutCounselorInput, CaseCounselingUncheckedCreateWithoutCounselorInput> | CaseCounselingCreateWithoutCounselorInput[] | CaseCounselingUncheckedCreateWithoutCounselorInput[]
+    connectOrCreate?: CaseCounselingCreateOrConnectWithoutCounselorInput | CaseCounselingCreateOrConnectWithoutCounselorInput[]
+    upsert?: CaseCounselingUpsertWithWhereUniqueWithoutCounselorInput | CaseCounselingUpsertWithWhereUniqueWithoutCounselorInput[]
+    createMany?: CaseCounselingCreateManyCounselorInputEnvelope
+    set?: CaseCounselingWhereUniqueInput | CaseCounselingWhereUniqueInput[]
+    disconnect?: CaseCounselingWhereUniqueInput | CaseCounselingWhereUniqueInput[]
+    delete?: CaseCounselingWhereUniqueInput | CaseCounselingWhereUniqueInput[]
+    connect?: CaseCounselingWhereUniqueInput | CaseCounselingWhereUniqueInput[]
+    update?: CaseCounselingUpdateWithWhereUniqueWithoutCounselorInput | CaseCounselingUpdateWithWhereUniqueWithoutCounselorInput[]
+    updateMany?: CaseCounselingUpdateManyWithWhereWithoutCounselorInput | CaseCounselingUpdateManyWithWhereWithoutCounselorInput[]
+    deleteMany?: CaseCounselingScalarWhereInput | CaseCounselingScalarWhereInput[]
+  }
+
   export type NotificationUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<NotificationCreateWithoutUserInput, NotificationUncheckedCreateWithoutUserInput> | NotificationCreateWithoutUserInput[] | NotificationUncheckedCreateWithoutUserInput[]
     connectOrCreate?: NotificationCreateOrConnectWithoutUserInput | NotificationCreateOrConnectWithoutUserInput[]
@@ -16401,6 +34859,48 @@ export namespace Prisma {
     update?: PageUpdateWithWhereUniqueWithoutAuthorInput | PageUpdateWithWhereUniqueWithoutAuthorInput[]
     updateMany?: PageUpdateManyWithWhereWithoutAuthorInput | PageUpdateManyWithWhereWithoutAuthorInput[]
     deleteMany?: PageScalarWhereInput | PageScalarWhereInput[]
+  }
+
+  export type CaseLawyerUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<CaseLawyerCreateWithoutUserInput, CaseLawyerUncheckedCreateWithoutUserInput> | CaseLawyerCreateWithoutUserInput[] | CaseLawyerUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: CaseLawyerCreateOrConnectWithoutUserInput | CaseLawyerCreateOrConnectWithoutUserInput[]
+    upsert?: CaseLawyerUpsertWithWhereUniqueWithoutUserInput | CaseLawyerUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: CaseLawyerCreateManyUserInputEnvelope
+    set?: CaseLawyerWhereUniqueInput | CaseLawyerWhereUniqueInput[]
+    disconnect?: CaseLawyerWhereUniqueInput | CaseLawyerWhereUniqueInput[]
+    delete?: CaseLawyerWhereUniqueInput | CaseLawyerWhereUniqueInput[]
+    connect?: CaseLawyerWhereUniqueInput | CaseLawyerWhereUniqueInput[]
+    update?: CaseLawyerUpdateWithWhereUniqueWithoutUserInput | CaseLawyerUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: CaseLawyerUpdateManyWithWhereWithoutUserInput | CaseLawyerUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: CaseLawyerScalarWhereInput | CaseLawyerScalarWhereInput[]
+  }
+
+  export type CasePleadingUncheckedUpdateManyWithoutPleaderNestedInput = {
+    create?: XOR<CasePleadingCreateWithoutPleaderInput, CasePleadingUncheckedCreateWithoutPleaderInput> | CasePleadingCreateWithoutPleaderInput[] | CasePleadingUncheckedCreateWithoutPleaderInput[]
+    connectOrCreate?: CasePleadingCreateOrConnectWithoutPleaderInput | CasePleadingCreateOrConnectWithoutPleaderInput[]
+    upsert?: CasePleadingUpsertWithWhereUniqueWithoutPleaderInput | CasePleadingUpsertWithWhereUniqueWithoutPleaderInput[]
+    createMany?: CasePleadingCreateManyPleaderInputEnvelope
+    set?: CasePleadingWhereUniqueInput | CasePleadingWhereUniqueInput[]
+    disconnect?: CasePleadingWhereUniqueInput | CasePleadingWhereUniqueInput[]
+    delete?: CasePleadingWhereUniqueInput | CasePleadingWhereUniqueInput[]
+    connect?: CasePleadingWhereUniqueInput | CasePleadingWhereUniqueInput[]
+    update?: CasePleadingUpdateWithWhereUniqueWithoutPleaderInput | CasePleadingUpdateWithWhereUniqueWithoutPleaderInput[]
+    updateMany?: CasePleadingUpdateManyWithWhereWithoutPleaderInput | CasePleadingUpdateManyWithWhereWithoutPleaderInput[]
+    deleteMany?: CasePleadingScalarWhereInput | CasePleadingScalarWhereInput[]
+  }
+
+  export type CaseCounselingUncheckedUpdateManyWithoutCounselorNestedInput = {
+    create?: XOR<CaseCounselingCreateWithoutCounselorInput, CaseCounselingUncheckedCreateWithoutCounselorInput> | CaseCounselingCreateWithoutCounselorInput[] | CaseCounselingUncheckedCreateWithoutCounselorInput[]
+    connectOrCreate?: CaseCounselingCreateOrConnectWithoutCounselorInput | CaseCounselingCreateOrConnectWithoutCounselorInput[]
+    upsert?: CaseCounselingUpsertWithWhereUniqueWithoutCounselorInput | CaseCounselingUpsertWithWhereUniqueWithoutCounselorInput[]
+    createMany?: CaseCounselingCreateManyCounselorInputEnvelope
+    set?: CaseCounselingWhereUniqueInput | CaseCounselingWhereUniqueInput[]
+    disconnect?: CaseCounselingWhereUniqueInput | CaseCounselingWhereUniqueInput[]
+    delete?: CaseCounselingWhereUniqueInput | CaseCounselingWhereUniqueInput[]
+    connect?: CaseCounselingWhereUniqueInput | CaseCounselingWhereUniqueInput[]
+    update?: CaseCounselingUpdateWithWhereUniqueWithoutCounselorInput | CaseCounselingUpdateWithWhereUniqueWithoutCounselorInput[]
+    updateMany?: CaseCounselingUpdateManyWithWhereWithoutCounselorInput | CaseCounselingUpdateManyWithWhereWithoutCounselorInput[]
+    deleteMany?: CaseCounselingScalarWhereInput | CaseCounselingScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutRefresh_tokensInput = {
@@ -16563,6 +35063,744 @@ export namespace Prisma {
     update?: PageSeoUpdateWithWhereUniqueWithoutOg_imageInput | PageSeoUpdateWithWhereUniqueWithoutOg_imageInput[]
     updateMany?: PageSeoUpdateManyWithWhereWithoutOg_imageInput | PageSeoUpdateManyWithWhereWithoutOg_imageInput[]
     deleteMany?: PageSeoScalarWhereInput | PageSeoScalarWhereInput[]
+  }
+
+  export type CourtProceedingCreateNestedManyWithoutCourtLevelInput = {
+    create?: XOR<CourtProceedingCreateWithoutCourtLevelInput, CourtProceedingUncheckedCreateWithoutCourtLevelInput> | CourtProceedingCreateWithoutCourtLevelInput[] | CourtProceedingUncheckedCreateWithoutCourtLevelInput[]
+    connectOrCreate?: CourtProceedingCreateOrConnectWithoutCourtLevelInput | CourtProceedingCreateOrConnectWithoutCourtLevelInput[]
+    createMany?: CourtProceedingCreateManyCourtLevelInputEnvelope
+    connect?: CourtProceedingWhereUniqueInput | CourtProceedingWhereUniqueInput[]
+  }
+
+  export type CourtProceedingUncheckedCreateNestedManyWithoutCourtLevelInput = {
+    create?: XOR<CourtProceedingCreateWithoutCourtLevelInput, CourtProceedingUncheckedCreateWithoutCourtLevelInput> | CourtProceedingCreateWithoutCourtLevelInput[] | CourtProceedingUncheckedCreateWithoutCourtLevelInput[]
+    connectOrCreate?: CourtProceedingCreateOrConnectWithoutCourtLevelInput | CourtProceedingCreateOrConnectWithoutCourtLevelInput[]
+    createMany?: CourtProceedingCreateManyCourtLevelInputEnvelope
+    connect?: CourtProceedingWhereUniqueInput | CourtProceedingWhereUniqueInput[]
+  }
+
+  export type CourtProceedingUpdateManyWithoutCourtLevelNestedInput = {
+    create?: XOR<CourtProceedingCreateWithoutCourtLevelInput, CourtProceedingUncheckedCreateWithoutCourtLevelInput> | CourtProceedingCreateWithoutCourtLevelInput[] | CourtProceedingUncheckedCreateWithoutCourtLevelInput[]
+    connectOrCreate?: CourtProceedingCreateOrConnectWithoutCourtLevelInput | CourtProceedingCreateOrConnectWithoutCourtLevelInput[]
+    upsert?: CourtProceedingUpsertWithWhereUniqueWithoutCourtLevelInput | CourtProceedingUpsertWithWhereUniqueWithoutCourtLevelInput[]
+    createMany?: CourtProceedingCreateManyCourtLevelInputEnvelope
+    set?: CourtProceedingWhereUniqueInput | CourtProceedingWhereUniqueInput[]
+    disconnect?: CourtProceedingWhereUniqueInput | CourtProceedingWhereUniqueInput[]
+    delete?: CourtProceedingWhereUniqueInput | CourtProceedingWhereUniqueInput[]
+    connect?: CourtProceedingWhereUniqueInput | CourtProceedingWhereUniqueInput[]
+    update?: CourtProceedingUpdateWithWhereUniqueWithoutCourtLevelInput | CourtProceedingUpdateWithWhereUniqueWithoutCourtLevelInput[]
+    updateMany?: CourtProceedingUpdateManyWithWhereWithoutCourtLevelInput | CourtProceedingUpdateManyWithWhereWithoutCourtLevelInput[]
+    deleteMany?: CourtProceedingScalarWhereInput | CourtProceedingScalarWhereInput[]
+  }
+
+  export type CourtProceedingUncheckedUpdateManyWithoutCourtLevelNestedInput = {
+    create?: XOR<CourtProceedingCreateWithoutCourtLevelInput, CourtProceedingUncheckedCreateWithoutCourtLevelInput> | CourtProceedingCreateWithoutCourtLevelInput[] | CourtProceedingUncheckedCreateWithoutCourtLevelInput[]
+    connectOrCreate?: CourtProceedingCreateOrConnectWithoutCourtLevelInput | CourtProceedingCreateOrConnectWithoutCourtLevelInput[]
+    upsert?: CourtProceedingUpsertWithWhereUniqueWithoutCourtLevelInput | CourtProceedingUpsertWithWhereUniqueWithoutCourtLevelInput[]
+    createMany?: CourtProceedingCreateManyCourtLevelInputEnvelope
+    set?: CourtProceedingWhereUniqueInput | CourtProceedingWhereUniqueInput[]
+    disconnect?: CourtProceedingWhereUniqueInput | CourtProceedingWhereUniqueInput[]
+    delete?: CourtProceedingWhereUniqueInput | CourtProceedingWhereUniqueInput[]
+    connect?: CourtProceedingWhereUniqueInput | CourtProceedingWhereUniqueInput[]
+    update?: CourtProceedingUpdateWithWhereUniqueWithoutCourtLevelInput | CourtProceedingUpdateWithWhereUniqueWithoutCourtLevelInput[]
+    updateMany?: CourtProceedingUpdateManyWithWhereWithoutCourtLevelInput | CourtProceedingUpdateManyWithWhereWithoutCourtLevelInput[]
+    deleteMany?: CourtProceedingScalarWhereInput | CourtProceedingScalarWhereInput[]
+  }
+
+  export type CaseCreateNestedManyWithoutNatureInput = {
+    create?: XOR<CaseCreateWithoutNatureInput, CaseUncheckedCreateWithoutNatureInput> | CaseCreateWithoutNatureInput[] | CaseUncheckedCreateWithoutNatureInput[]
+    connectOrCreate?: CaseCreateOrConnectWithoutNatureInput | CaseCreateOrConnectWithoutNatureInput[]
+    createMany?: CaseCreateManyNatureInputEnvelope
+    connect?: CaseWhereUniqueInput | CaseWhereUniqueInput[]
+  }
+
+  export type CaseUncheckedCreateNestedManyWithoutNatureInput = {
+    create?: XOR<CaseCreateWithoutNatureInput, CaseUncheckedCreateWithoutNatureInput> | CaseCreateWithoutNatureInput[] | CaseUncheckedCreateWithoutNatureInput[]
+    connectOrCreate?: CaseCreateOrConnectWithoutNatureInput | CaseCreateOrConnectWithoutNatureInput[]
+    createMany?: CaseCreateManyNatureInputEnvelope
+    connect?: CaseWhereUniqueInput | CaseWhereUniqueInput[]
+  }
+
+  export type CaseUpdateManyWithoutNatureNestedInput = {
+    create?: XOR<CaseCreateWithoutNatureInput, CaseUncheckedCreateWithoutNatureInput> | CaseCreateWithoutNatureInput[] | CaseUncheckedCreateWithoutNatureInput[]
+    connectOrCreate?: CaseCreateOrConnectWithoutNatureInput | CaseCreateOrConnectWithoutNatureInput[]
+    upsert?: CaseUpsertWithWhereUniqueWithoutNatureInput | CaseUpsertWithWhereUniqueWithoutNatureInput[]
+    createMany?: CaseCreateManyNatureInputEnvelope
+    set?: CaseWhereUniqueInput | CaseWhereUniqueInput[]
+    disconnect?: CaseWhereUniqueInput | CaseWhereUniqueInput[]
+    delete?: CaseWhereUniqueInput | CaseWhereUniqueInput[]
+    connect?: CaseWhereUniqueInput | CaseWhereUniqueInput[]
+    update?: CaseUpdateWithWhereUniqueWithoutNatureInput | CaseUpdateWithWhereUniqueWithoutNatureInput[]
+    updateMany?: CaseUpdateManyWithWhereWithoutNatureInput | CaseUpdateManyWithWhereWithoutNatureInput[]
+    deleteMany?: CaseScalarWhereInput | CaseScalarWhereInput[]
+  }
+
+  export type CaseUncheckedUpdateManyWithoutNatureNestedInput = {
+    create?: XOR<CaseCreateWithoutNatureInput, CaseUncheckedCreateWithoutNatureInput> | CaseCreateWithoutNatureInput[] | CaseUncheckedCreateWithoutNatureInput[]
+    connectOrCreate?: CaseCreateOrConnectWithoutNatureInput | CaseCreateOrConnectWithoutNatureInput[]
+    upsert?: CaseUpsertWithWhereUniqueWithoutNatureInput | CaseUpsertWithWhereUniqueWithoutNatureInput[]
+    createMany?: CaseCreateManyNatureInputEnvelope
+    set?: CaseWhereUniqueInput | CaseWhereUniqueInput[]
+    disconnect?: CaseWhereUniqueInput | CaseWhereUniqueInput[]
+    delete?: CaseWhereUniqueInput | CaseWhereUniqueInput[]
+    connect?: CaseWhereUniqueInput | CaseWhereUniqueInput[]
+    update?: CaseUpdateWithWhereUniqueWithoutNatureInput | CaseUpdateWithWhereUniqueWithoutNatureInput[]
+    updateMany?: CaseUpdateManyWithWhereWithoutNatureInput | CaseUpdateManyWithWhereWithoutNatureInput[]
+    deleteMany?: CaseScalarWhereInput | CaseScalarWhereInput[]
+  }
+
+  export type CasePartyCreateNestedManyWithoutRoleInput = {
+    create?: XOR<CasePartyCreateWithoutRoleInput, CasePartyUncheckedCreateWithoutRoleInput> | CasePartyCreateWithoutRoleInput[] | CasePartyUncheckedCreateWithoutRoleInput[]
+    connectOrCreate?: CasePartyCreateOrConnectWithoutRoleInput | CasePartyCreateOrConnectWithoutRoleInput[]
+    createMany?: CasePartyCreateManyRoleInputEnvelope
+    connect?: CasePartyWhereUniqueInput | CasePartyWhereUniqueInput[]
+  }
+
+  export type CasePartyUncheckedCreateNestedManyWithoutRoleInput = {
+    create?: XOR<CasePartyCreateWithoutRoleInput, CasePartyUncheckedCreateWithoutRoleInput> | CasePartyCreateWithoutRoleInput[] | CasePartyUncheckedCreateWithoutRoleInput[]
+    connectOrCreate?: CasePartyCreateOrConnectWithoutRoleInput | CasePartyCreateOrConnectWithoutRoleInput[]
+    createMany?: CasePartyCreateManyRoleInputEnvelope
+    connect?: CasePartyWhereUniqueInput | CasePartyWhereUniqueInput[]
+  }
+
+  export type CasePartyUpdateManyWithoutRoleNestedInput = {
+    create?: XOR<CasePartyCreateWithoutRoleInput, CasePartyUncheckedCreateWithoutRoleInput> | CasePartyCreateWithoutRoleInput[] | CasePartyUncheckedCreateWithoutRoleInput[]
+    connectOrCreate?: CasePartyCreateOrConnectWithoutRoleInput | CasePartyCreateOrConnectWithoutRoleInput[]
+    upsert?: CasePartyUpsertWithWhereUniqueWithoutRoleInput | CasePartyUpsertWithWhereUniqueWithoutRoleInput[]
+    createMany?: CasePartyCreateManyRoleInputEnvelope
+    set?: CasePartyWhereUniqueInput | CasePartyWhereUniqueInput[]
+    disconnect?: CasePartyWhereUniqueInput | CasePartyWhereUniqueInput[]
+    delete?: CasePartyWhereUniqueInput | CasePartyWhereUniqueInput[]
+    connect?: CasePartyWhereUniqueInput | CasePartyWhereUniqueInput[]
+    update?: CasePartyUpdateWithWhereUniqueWithoutRoleInput | CasePartyUpdateWithWhereUniqueWithoutRoleInput[]
+    updateMany?: CasePartyUpdateManyWithWhereWithoutRoleInput | CasePartyUpdateManyWithWhereWithoutRoleInput[]
+    deleteMany?: CasePartyScalarWhereInput | CasePartyScalarWhereInput[]
+  }
+
+  export type CasePartyUncheckedUpdateManyWithoutRoleNestedInput = {
+    create?: XOR<CasePartyCreateWithoutRoleInput, CasePartyUncheckedCreateWithoutRoleInput> | CasePartyCreateWithoutRoleInput[] | CasePartyUncheckedCreateWithoutRoleInput[]
+    connectOrCreate?: CasePartyCreateOrConnectWithoutRoleInput | CasePartyCreateOrConnectWithoutRoleInput[]
+    upsert?: CasePartyUpsertWithWhereUniqueWithoutRoleInput | CasePartyUpsertWithWhereUniqueWithoutRoleInput[]
+    createMany?: CasePartyCreateManyRoleInputEnvelope
+    set?: CasePartyWhereUniqueInput | CasePartyWhereUniqueInput[]
+    disconnect?: CasePartyWhereUniqueInput | CasePartyWhereUniqueInput[]
+    delete?: CasePartyWhereUniqueInput | CasePartyWhereUniqueInput[]
+    connect?: CasePartyWhereUniqueInput | CasePartyWhereUniqueInput[]
+    update?: CasePartyUpdateWithWhereUniqueWithoutRoleInput | CasePartyUpdateWithWhereUniqueWithoutRoleInput[]
+    updateMany?: CasePartyUpdateManyWithWhereWithoutRoleInput | CasePartyUpdateManyWithWhereWithoutRoleInput[]
+    deleteMany?: CasePartyScalarWhereInput | CasePartyScalarWhereInput[]
+  }
+
+  export type CaseNatureCreateNestedOneWithoutCasesInput = {
+    create?: XOR<CaseNatureCreateWithoutCasesInput, CaseNatureUncheckedCreateWithoutCasesInput>
+    connectOrCreate?: CaseNatureCreateOrConnectWithoutCasesInput
+    connect?: CaseNatureWhereUniqueInput
+  }
+
+  export type CaseLawyerCreateNestedManyWithoutCaseInput = {
+    create?: XOR<CaseLawyerCreateWithoutCaseInput, CaseLawyerUncheckedCreateWithoutCaseInput> | CaseLawyerCreateWithoutCaseInput[] | CaseLawyerUncheckedCreateWithoutCaseInput[]
+    connectOrCreate?: CaseLawyerCreateOrConnectWithoutCaseInput | CaseLawyerCreateOrConnectWithoutCaseInput[]
+    createMany?: CaseLawyerCreateManyCaseInputEnvelope
+    connect?: CaseLawyerWhereUniqueInput | CaseLawyerWhereUniqueInput[]
+  }
+
+  export type CasePartyCreateNestedManyWithoutCaseInput = {
+    create?: XOR<CasePartyCreateWithoutCaseInput, CasePartyUncheckedCreateWithoutCaseInput> | CasePartyCreateWithoutCaseInput[] | CasePartyUncheckedCreateWithoutCaseInput[]
+    connectOrCreate?: CasePartyCreateOrConnectWithoutCaseInput | CasePartyCreateOrConnectWithoutCaseInput[]
+    createMany?: CasePartyCreateManyCaseInputEnvelope
+    connect?: CasePartyWhereUniqueInput | CasePartyWhereUniqueInput[]
+  }
+
+  export type CaseHearingCreateNestedManyWithoutCaseInput = {
+    create?: XOR<CaseHearingCreateWithoutCaseInput, CaseHearingUncheckedCreateWithoutCaseInput> | CaseHearingCreateWithoutCaseInput[] | CaseHearingUncheckedCreateWithoutCaseInput[]
+    connectOrCreate?: CaseHearingCreateOrConnectWithoutCaseInput | CaseHearingCreateOrConnectWithoutCaseInput[]
+    createMany?: CaseHearingCreateManyCaseInputEnvelope
+    connect?: CaseHearingWhereUniqueInput | CaseHearingWhereUniqueInput[]
+  }
+
+  export type CasePleadingCreateNestedManyWithoutCaseInput = {
+    create?: XOR<CasePleadingCreateWithoutCaseInput, CasePleadingUncheckedCreateWithoutCaseInput> | CasePleadingCreateWithoutCaseInput[] | CasePleadingUncheckedCreateWithoutCaseInput[]
+    connectOrCreate?: CasePleadingCreateOrConnectWithoutCaseInput | CasePleadingCreateOrConnectWithoutCaseInput[]
+    createMany?: CasePleadingCreateManyCaseInputEnvelope
+    connect?: CasePleadingWhereUniqueInput | CasePleadingWhereUniqueInput[]
+  }
+
+  export type CourtProceedingCreateNestedManyWithoutCaseInput = {
+    create?: XOR<CourtProceedingCreateWithoutCaseInput, CourtProceedingUncheckedCreateWithoutCaseInput> | CourtProceedingCreateWithoutCaseInput[] | CourtProceedingUncheckedCreateWithoutCaseInput[]
+    connectOrCreate?: CourtProceedingCreateOrConnectWithoutCaseInput | CourtProceedingCreateOrConnectWithoutCaseInput[]
+    createMany?: CourtProceedingCreateManyCaseInputEnvelope
+    connect?: CourtProceedingWhereUniqueInput | CourtProceedingWhereUniqueInput[]
+  }
+
+  export type CasePrecedentCreateNestedManyWithoutCaseInput = {
+    create?: XOR<CasePrecedentCreateWithoutCaseInput, CasePrecedentUncheckedCreateWithoutCaseInput> | CasePrecedentCreateWithoutCaseInput[] | CasePrecedentUncheckedCreateWithoutCaseInput[]
+    connectOrCreate?: CasePrecedentCreateOrConnectWithoutCaseInput | CasePrecedentCreateOrConnectWithoutCaseInput[]
+    createMany?: CasePrecedentCreateManyCaseInputEnvelope
+    connect?: CasePrecedentWhereUniqueInput | CasePrecedentWhereUniqueInput[]
+  }
+
+  export type CasePaymentCreateNestedManyWithoutCaseInput = {
+    create?: XOR<CasePaymentCreateWithoutCaseInput, CasePaymentUncheckedCreateWithoutCaseInput> | CasePaymentCreateWithoutCaseInput[] | CasePaymentUncheckedCreateWithoutCaseInput[]
+    connectOrCreate?: CasePaymentCreateOrConnectWithoutCaseInput | CasePaymentCreateOrConnectWithoutCaseInput[]
+    createMany?: CasePaymentCreateManyCaseInputEnvelope
+    connect?: CasePaymentWhereUniqueInput | CasePaymentWhereUniqueInput[]
+  }
+
+  export type CaseCounselingCreateNestedManyWithoutCaseInput = {
+    create?: XOR<CaseCounselingCreateWithoutCaseInput, CaseCounselingUncheckedCreateWithoutCaseInput> | CaseCounselingCreateWithoutCaseInput[] | CaseCounselingUncheckedCreateWithoutCaseInput[]
+    connectOrCreate?: CaseCounselingCreateOrConnectWithoutCaseInput | CaseCounselingCreateOrConnectWithoutCaseInput[]
+    createMany?: CaseCounselingCreateManyCaseInputEnvelope
+    connect?: CaseCounselingWhereUniqueInput | CaseCounselingWhereUniqueInput[]
+  }
+
+  export type CaseDocumentCreateNestedManyWithoutCaseInput = {
+    create?: XOR<CaseDocumentCreateWithoutCaseInput, CaseDocumentUncheckedCreateWithoutCaseInput> | CaseDocumentCreateWithoutCaseInput[] | CaseDocumentUncheckedCreateWithoutCaseInput[]
+    connectOrCreate?: CaseDocumentCreateOrConnectWithoutCaseInput | CaseDocumentCreateOrConnectWithoutCaseInput[]
+    createMany?: CaseDocumentCreateManyCaseInputEnvelope
+    connect?: CaseDocumentWhereUniqueInput | CaseDocumentWhereUniqueInput[]
+  }
+
+  export type CaseLawyerUncheckedCreateNestedManyWithoutCaseInput = {
+    create?: XOR<CaseLawyerCreateWithoutCaseInput, CaseLawyerUncheckedCreateWithoutCaseInput> | CaseLawyerCreateWithoutCaseInput[] | CaseLawyerUncheckedCreateWithoutCaseInput[]
+    connectOrCreate?: CaseLawyerCreateOrConnectWithoutCaseInput | CaseLawyerCreateOrConnectWithoutCaseInput[]
+    createMany?: CaseLawyerCreateManyCaseInputEnvelope
+    connect?: CaseLawyerWhereUniqueInput | CaseLawyerWhereUniqueInput[]
+  }
+
+  export type CasePartyUncheckedCreateNestedManyWithoutCaseInput = {
+    create?: XOR<CasePartyCreateWithoutCaseInput, CasePartyUncheckedCreateWithoutCaseInput> | CasePartyCreateWithoutCaseInput[] | CasePartyUncheckedCreateWithoutCaseInput[]
+    connectOrCreate?: CasePartyCreateOrConnectWithoutCaseInput | CasePartyCreateOrConnectWithoutCaseInput[]
+    createMany?: CasePartyCreateManyCaseInputEnvelope
+    connect?: CasePartyWhereUniqueInput | CasePartyWhereUniqueInput[]
+  }
+
+  export type CaseHearingUncheckedCreateNestedManyWithoutCaseInput = {
+    create?: XOR<CaseHearingCreateWithoutCaseInput, CaseHearingUncheckedCreateWithoutCaseInput> | CaseHearingCreateWithoutCaseInput[] | CaseHearingUncheckedCreateWithoutCaseInput[]
+    connectOrCreate?: CaseHearingCreateOrConnectWithoutCaseInput | CaseHearingCreateOrConnectWithoutCaseInput[]
+    createMany?: CaseHearingCreateManyCaseInputEnvelope
+    connect?: CaseHearingWhereUniqueInput | CaseHearingWhereUniqueInput[]
+  }
+
+  export type CasePleadingUncheckedCreateNestedManyWithoutCaseInput = {
+    create?: XOR<CasePleadingCreateWithoutCaseInput, CasePleadingUncheckedCreateWithoutCaseInput> | CasePleadingCreateWithoutCaseInput[] | CasePleadingUncheckedCreateWithoutCaseInput[]
+    connectOrCreate?: CasePleadingCreateOrConnectWithoutCaseInput | CasePleadingCreateOrConnectWithoutCaseInput[]
+    createMany?: CasePleadingCreateManyCaseInputEnvelope
+    connect?: CasePleadingWhereUniqueInput | CasePleadingWhereUniqueInput[]
+  }
+
+  export type CourtProceedingUncheckedCreateNestedManyWithoutCaseInput = {
+    create?: XOR<CourtProceedingCreateWithoutCaseInput, CourtProceedingUncheckedCreateWithoutCaseInput> | CourtProceedingCreateWithoutCaseInput[] | CourtProceedingUncheckedCreateWithoutCaseInput[]
+    connectOrCreate?: CourtProceedingCreateOrConnectWithoutCaseInput | CourtProceedingCreateOrConnectWithoutCaseInput[]
+    createMany?: CourtProceedingCreateManyCaseInputEnvelope
+    connect?: CourtProceedingWhereUniqueInput | CourtProceedingWhereUniqueInput[]
+  }
+
+  export type CasePrecedentUncheckedCreateNestedManyWithoutCaseInput = {
+    create?: XOR<CasePrecedentCreateWithoutCaseInput, CasePrecedentUncheckedCreateWithoutCaseInput> | CasePrecedentCreateWithoutCaseInput[] | CasePrecedentUncheckedCreateWithoutCaseInput[]
+    connectOrCreate?: CasePrecedentCreateOrConnectWithoutCaseInput | CasePrecedentCreateOrConnectWithoutCaseInput[]
+    createMany?: CasePrecedentCreateManyCaseInputEnvelope
+    connect?: CasePrecedentWhereUniqueInput | CasePrecedentWhereUniqueInput[]
+  }
+
+  export type CasePaymentUncheckedCreateNestedManyWithoutCaseInput = {
+    create?: XOR<CasePaymentCreateWithoutCaseInput, CasePaymentUncheckedCreateWithoutCaseInput> | CasePaymentCreateWithoutCaseInput[] | CasePaymentUncheckedCreateWithoutCaseInput[]
+    connectOrCreate?: CasePaymentCreateOrConnectWithoutCaseInput | CasePaymentCreateOrConnectWithoutCaseInput[]
+    createMany?: CasePaymentCreateManyCaseInputEnvelope
+    connect?: CasePaymentWhereUniqueInput | CasePaymentWhereUniqueInput[]
+  }
+
+  export type CaseCounselingUncheckedCreateNestedManyWithoutCaseInput = {
+    create?: XOR<CaseCounselingCreateWithoutCaseInput, CaseCounselingUncheckedCreateWithoutCaseInput> | CaseCounselingCreateWithoutCaseInput[] | CaseCounselingUncheckedCreateWithoutCaseInput[]
+    connectOrCreate?: CaseCounselingCreateOrConnectWithoutCaseInput | CaseCounselingCreateOrConnectWithoutCaseInput[]
+    createMany?: CaseCounselingCreateManyCaseInputEnvelope
+    connect?: CaseCounselingWhereUniqueInput | CaseCounselingWhereUniqueInput[]
+  }
+
+  export type CaseDocumentUncheckedCreateNestedManyWithoutCaseInput = {
+    create?: XOR<CaseDocumentCreateWithoutCaseInput, CaseDocumentUncheckedCreateWithoutCaseInput> | CaseDocumentCreateWithoutCaseInput[] | CaseDocumentUncheckedCreateWithoutCaseInput[]
+    connectOrCreate?: CaseDocumentCreateOrConnectWithoutCaseInput | CaseDocumentCreateOrConnectWithoutCaseInput[]
+    createMany?: CaseDocumentCreateManyCaseInputEnvelope
+    connect?: CaseDocumentWhereUniqueInput | CaseDocumentWhereUniqueInput[]
+  }
+
+  export type NullableDecimalFieldUpdateOperationsInput = {
+    set?: Decimal | DecimalJsLike | number | string | null
+    increment?: Decimal | DecimalJsLike | number | string
+    decrement?: Decimal | DecimalJsLike | number | string
+    multiply?: Decimal | DecimalJsLike | number | string
+    divide?: Decimal | DecimalJsLike | number | string
+  }
+
+  export type CaseNatureUpdateOneRequiredWithoutCasesNestedInput = {
+    create?: XOR<CaseNatureCreateWithoutCasesInput, CaseNatureUncheckedCreateWithoutCasesInput>
+    connectOrCreate?: CaseNatureCreateOrConnectWithoutCasesInput
+    upsert?: CaseNatureUpsertWithoutCasesInput
+    connect?: CaseNatureWhereUniqueInput
+    update?: XOR<XOR<CaseNatureUpdateToOneWithWhereWithoutCasesInput, CaseNatureUpdateWithoutCasesInput>, CaseNatureUncheckedUpdateWithoutCasesInput>
+  }
+
+  export type CaseLawyerUpdateManyWithoutCaseNestedInput = {
+    create?: XOR<CaseLawyerCreateWithoutCaseInput, CaseLawyerUncheckedCreateWithoutCaseInput> | CaseLawyerCreateWithoutCaseInput[] | CaseLawyerUncheckedCreateWithoutCaseInput[]
+    connectOrCreate?: CaseLawyerCreateOrConnectWithoutCaseInput | CaseLawyerCreateOrConnectWithoutCaseInput[]
+    upsert?: CaseLawyerUpsertWithWhereUniqueWithoutCaseInput | CaseLawyerUpsertWithWhereUniqueWithoutCaseInput[]
+    createMany?: CaseLawyerCreateManyCaseInputEnvelope
+    set?: CaseLawyerWhereUniqueInput | CaseLawyerWhereUniqueInput[]
+    disconnect?: CaseLawyerWhereUniqueInput | CaseLawyerWhereUniqueInput[]
+    delete?: CaseLawyerWhereUniqueInput | CaseLawyerWhereUniqueInput[]
+    connect?: CaseLawyerWhereUniqueInput | CaseLawyerWhereUniqueInput[]
+    update?: CaseLawyerUpdateWithWhereUniqueWithoutCaseInput | CaseLawyerUpdateWithWhereUniqueWithoutCaseInput[]
+    updateMany?: CaseLawyerUpdateManyWithWhereWithoutCaseInput | CaseLawyerUpdateManyWithWhereWithoutCaseInput[]
+    deleteMany?: CaseLawyerScalarWhereInput | CaseLawyerScalarWhereInput[]
+  }
+
+  export type CasePartyUpdateManyWithoutCaseNestedInput = {
+    create?: XOR<CasePartyCreateWithoutCaseInput, CasePartyUncheckedCreateWithoutCaseInput> | CasePartyCreateWithoutCaseInput[] | CasePartyUncheckedCreateWithoutCaseInput[]
+    connectOrCreate?: CasePartyCreateOrConnectWithoutCaseInput | CasePartyCreateOrConnectWithoutCaseInput[]
+    upsert?: CasePartyUpsertWithWhereUniqueWithoutCaseInput | CasePartyUpsertWithWhereUniqueWithoutCaseInput[]
+    createMany?: CasePartyCreateManyCaseInputEnvelope
+    set?: CasePartyWhereUniqueInput | CasePartyWhereUniqueInput[]
+    disconnect?: CasePartyWhereUniqueInput | CasePartyWhereUniqueInput[]
+    delete?: CasePartyWhereUniqueInput | CasePartyWhereUniqueInput[]
+    connect?: CasePartyWhereUniqueInput | CasePartyWhereUniqueInput[]
+    update?: CasePartyUpdateWithWhereUniqueWithoutCaseInput | CasePartyUpdateWithWhereUniqueWithoutCaseInput[]
+    updateMany?: CasePartyUpdateManyWithWhereWithoutCaseInput | CasePartyUpdateManyWithWhereWithoutCaseInput[]
+    deleteMany?: CasePartyScalarWhereInput | CasePartyScalarWhereInput[]
+  }
+
+  export type CaseHearingUpdateManyWithoutCaseNestedInput = {
+    create?: XOR<CaseHearingCreateWithoutCaseInput, CaseHearingUncheckedCreateWithoutCaseInput> | CaseHearingCreateWithoutCaseInput[] | CaseHearingUncheckedCreateWithoutCaseInput[]
+    connectOrCreate?: CaseHearingCreateOrConnectWithoutCaseInput | CaseHearingCreateOrConnectWithoutCaseInput[]
+    upsert?: CaseHearingUpsertWithWhereUniqueWithoutCaseInput | CaseHearingUpsertWithWhereUniqueWithoutCaseInput[]
+    createMany?: CaseHearingCreateManyCaseInputEnvelope
+    set?: CaseHearingWhereUniqueInput | CaseHearingWhereUniqueInput[]
+    disconnect?: CaseHearingWhereUniqueInput | CaseHearingWhereUniqueInput[]
+    delete?: CaseHearingWhereUniqueInput | CaseHearingWhereUniqueInput[]
+    connect?: CaseHearingWhereUniqueInput | CaseHearingWhereUniqueInput[]
+    update?: CaseHearingUpdateWithWhereUniqueWithoutCaseInput | CaseHearingUpdateWithWhereUniqueWithoutCaseInput[]
+    updateMany?: CaseHearingUpdateManyWithWhereWithoutCaseInput | CaseHearingUpdateManyWithWhereWithoutCaseInput[]
+    deleteMany?: CaseHearingScalarWhereInput | CaseHearingScalarWhereInput[]
+  }
+
+  export type CasePleadingUpdateManyWithoutCaseNestedInput = {
+    create?: XOR<CasePleadingCreateWithoutCaseInput, CasePleadingUncheckedCreateWithoutCaseInput> | CasePleadingCreateWithoutCaseInput[] | CasePleadingUncheckedCreateWithoutCaseInput[]
+    connectOrCreate?: CasePleadingCreateOrConnectWithoutCaseInput | CasePleadingCreateOrConnectWithoutCaseInput[]
+    upsert?: CasePleadingUpsertWithWhereUniqueWithoutCaseInput | CasePleadingUpsertWithWhereUniqueWithoutCaseInput[]
+    createMany?: CasePleadingCreateManyCaseInputEnvelope
+    set?: CasePleadingWhereUniqueInput | CasePleadingWhereUniqueInput[]
+    disconnect?: CasePleadingWhereUniqueInput | CasePleadingWhereUniqueInput[]
+    delete?: CasePleadingWhereUniqueInput | CasePleadingWhereUniqueInput[]
+    connect?: CasePleadingWhereUniqueInput | CasePleadingWhereUniqueInput[]
+    update?: CasePleadingUpdateWithWhereUniqueWithoutCaseInput | CasePleadingUpdateWithWhereUniqueWithoutCaseInput[]
+    updateMany?: CasePleadingUpdateManyWithWhereWithoutCaseInput | CasePleadingUpdateManyWithWhereWithoutCaseInput[]
+    deleteMany?: CasePleadingScalarWhereInput | CasePleadingScalarWhereInput[]
+  }
+
+  export type CourtProceedingUpdateManyWithoutCaseNestedInput = {
+    create?: XOR<CourtProceedingCreateWithoutCaseInput, CourtProceedingUncheckedCreateWithoutCaseInput> | CourtProceedingCreateWithoutCaseInput[] | CourtProceedingUncheckedCreateWithoutCaseInput[]
+    connectOrCreate?: CourtProceedingCreateOrConnectWithoutCaseInput | CourtProceedingCreateOrConnectWithoutCaseInput[]
+    upsert?: CourtProceedingUpsertWithWhereUniqueWithoutCaseInput | CourtProceedingUpsertWithWhereUniqueWithoutCaseInput[]
+    createMany?: CourtProceedingCreateManyCaseInputEnvelope
+    set?: CourtProceedingWhereUniqueInput | CourtProceedingWhereUniqueInput[]
+    disconnect?: CourtProceedingWhereUniqueInput | CourtProceedingWhereUniqueInput[]
+    delete?: CourtProceedingWhereUniqueInput | CourtProceedingWhereUniqueInput[]
+    connect?: CourtProceedingWhereUniqueInput | CourtProceedingWhereUniqueInput[]
+    update?: CourtProceedingUpdateWithWhereUniqueWithoutCaseInput | CourtProceedingUpdateWithWhereUniqueWithoutCaseInput[]
+    updateMany?: CourtProceedingUpdateManyWithWhereWithoutCaseInput | CourtProceedingUpdateManyWithWhereWithoutCaseInput[]
+    deleteMany?: CourtProceedingScalarWhereInput | CourtProceedingScalarWhereInput[]
+  }
+
+  export type CasePrecedentUpdateManyWithoutCaseNestedInput = {
+    create?: XOR<CasePrecedentCreateWithoutCaseInput, CasePrecedentUncheckedCreateWithoutCaseInput> | CasePrecedentCreateWithoutCaseInput[] | CasePrecedentUncheckedCreateWithoutCaseInput[]
+    connectOrCreate?: CasePrecedentCreateOrConnectWithoutCaseInput | CasePrecedentCreateOrConnectWithoutCaseInput[]
+    upsert?: CasePrecedentUpsertWithWhereUniqueWithoutCaseInput | CasePrecedentUpsertWithWhereUniqueWithoutCaseInput[]
+    createMany?: CasePrecedentCreateManyCaseInputEnvelope
+    set?: CasePrecedentWhereUniqueInput | CasePrecedentWhereUniqueInput[]
+    disconnect?: CasePrecedentWhereUniqueInput | CasePrecedentWhereUniqueInput[]
+    delete?: CasePrecedentWhereUniqueInput | CasePrecedentWhereUniqueInput[]
+    connect?: CasePrecedentWhereUniqueInput | CasePrecedentWhereUniqueInput[]
+    update?: CasePrecedentUpdateWithWhereUniqueWithoutCaseInput | CasePrecedentUpdateWithWhereUniqueWithoutCaseInput[]
+    updateMany?: CasePrecedentUpdateManyWithWhereWithoutCaseInput | CasePrecedentUpdateManyWithWhereWithoutCaseInput[]
+    deleteMany?: CasePrecedentScalarWhereInput | CasePrecedentScalarWhereInput[]
+  }
+
+  export type CasePaymentUpdateManyWithoutCaseNestedInput = {
+    create?: XOR<CasePaymentCreateWithoutCaseInput, CasePaymentUncheckedCreateWithoutCaseInput> | CasePaymentCreateWithoutCaseInput[] | CasePaymentUncheckedCreateWithoutCaseInput[]
+    connectOrCreate?: CasePaymentCreateOrConnectWithoutCaseInput | CasePaymentCreateOrConnectWithoutCaseInput[]
+    upsert?: CasePaymentUpsertWithWhereUniqueWithoutCaseInput | CasePaymentUpsertWithWhereUniqueWithoutCaseInput[]
+    createMany?: CasePaymentCreateManyCaseInputEnvelope
+    set?: CasePaymentWhereUniqueInput | CasePaymentWhereUniqueInput[]
+    disconnect?: CasePaymentWhereUniqueInput | CasePaymentWhereUniqueInput[]
+    delete?: CasePaymentWhereUniqueInput | CasePaymentWhereUniqueInput[]
+    connect?: CasePaymentWhereUniqueInput | CasePaymentWhereUniqueInput[]
+    update?: CasePaymentUpdateWithWhereUniqueWithoutCaseInput | CasePaymentUpdateWithWhereUniqueWithoutCaseInput[]
+    updateMany?: CasePaymentUpdateManyWithWhereWithoutCaseInput | CasePaymentUpdateManyWithWhereWithoutCaseInput[]
+    deleteMany?: CasePaymentScalarWhereInput | CasePaymentScalarWhereInput[]
+  }
+
+  export type CaseCounselingUpdateManyWithoutCaseNestedInput = {
+    create?: XOR<CaseCounselingCreateWithoutCaseInput, CaseCounselingUncheckedCreateWithoutCaseInput> | CaseCounselingCreateWithoutCaseInput[] | CaseCounselingUncheckedCreateWithoutCaseInput[]
+    connectOrCreate?: CaseCounselingCreateOrConnectWithoutCaseInput | CaseCounselingCreateOrConnectWithoutCaseInput[]
+    upsert?: CaseCounselingUpsertWithWhereUniqueWithoutCaseInput | CaseCounselingUpsertWithWhereUniqueWithoutCaseInput[]
+    createMany?: CaseCounselingCreateManyCaseInputEnvelope
+    set?: CaseCounselingWhereUniqueInput | CaseCounselingWhereUniqueInput[]
+    disconnect?: CaseCounselingWhereUniqueInput | CaseCounselingWhereUniqueInput[]
+    delete?: CaseCounselingWhereUniqueInput | CaseCounselingWhereUniqueInput[]
+    connect?: CaseCounselingWhereUniqueInput | CaseCounselingWhereUniqueInput[]
+    update?: CaseCounselingUpdateWithWhereUniqueWithoutCaseInput | CaseCounselingUpdateWithWhereUniqueWithoutCaseInput[]
+    updateMany?: CaseCounselingUpdateManyWithWhereWithoutCaseInput | CaseCounselingUpdateManyWithWhereWithoutCaseInput[]
+    deleteMany?: CaseCounselingScalarWhereInput | CaseCounselingScalarWhereInput[]
+  }
+
+  export type CaseDocumentUpdateManyWithoutCaseNestedInput = {
+    create?: XOR<CaseDocumentCreateWithoutCaseInput, CaseDocumentUncheckedCreateWithoutCaseInput> | CaseDocumentCreateWithoutCaseInput[] | CaseDocumentUncheckedCreateWithoutCaseInput[]
+    connectOrCreate?: CaseDocumentCreateOrConnectWithoutCaseInput | CaseDocumentCreateOrConnectWithoutCaseInput[]
+    upsert?: CaseDocumentUpsertWithWhereUniqueWithoutCaseInput | CaseDocumentUpsertWithWhereUniqueWithoutCaseInput[]
+    createMany?: CaseDocumentCreateManyCaseInputEnvelope
+    set?: CaseDocumentWhereUniqueInput | CaseDocumentWhereUniqueInput[]
+    disconnect?: CaseDocumentWhereUniqueInput | CaseDocumentWhereUniqueInput[]
+    delete?: CaseDocumentWhereUniqueInput | CaseDocumentWhereUniqueInput[]
+    connect?: CaseDocumentWhereUniqueInput | CaseDocumentWhereUniqueInput[]
+    update?: CaseDocumentUpdateWithWhereUniqueWithoutCaseInput | CaseDocumentUpdateWithWhereUniqueWithoutCaseInput[]
+    updateMany?: CaseDocumentUpdateManyWithWhereWithoutCaseInput | CaseDocumentUpdateManyWithWhereWithoutCaseInput[]
+    deleteMany?: CaseDocumentScalarWhereInput | CaseDocumentScalarWhereInput[]
+  }
+
+  export type CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput = {
+    create?: XOR<CaseLawyerCreateWithoutCaseInput, CaseLawyerUncheckedCreateWithoutCaseInput> | CaseLawyerCreateWithoutCaseInput[] | CaseLawyerUncheckedCreateWithoutCaseInput[]
+    connectOrCreate?: CaseLawyerCreateOrConnectWithoutCaseInput | CaseLawyerCreateOrConnectWithoutCaseInput[]
+    upsert?: CaseLawyerUpsertWithWhereUniqueWithoutCaseInput | CaseLawyerUpsertWithWhereUniqueWithoutCaseInput[]
+    createMany?: CaseLawyerCreateManyCaseInputEnvelope
+    set?: CaseLawyerWhereUniqueInput | CaseLawyerWhereUniqueInput[]
+    disconnect?: CaseLawyerWhereUniqueInput | CaseLawyerWhereUniqueInput[]
+    delete?: CaseLawyerWhereUniqueInput | CaseLawyerWhereUniqueInput[]
+    connect?: CaseLawyerWhereUniqueInput | CaseLawyerWhereUniqueInput[]
+    update?: CaseLawyerUpdateWithWhereUniqueWithoutCaseInput | CaseLawyerUpdateWithWhereUniqueWithoutCaseInput[]
+    updateMany?: CaseLawyerUpdateManyWithWhereWithoutCaseInput | CaseLawyerUpdateManyWithWhereWithoutCaseInput[]
+    deleteMany?: CaseLawyerScalarWhereInput | CaseLawyerScalarWhereInput[]
+  }
+
+  export type CasePartyUncheckedUpdateManyWithoutCaseNestedInput = {
+    create?: XOR<CasePartyCreateWithoutCaseInput, CasePartyUncheckedCreateWithoutCaseInput> | CasePartyCreateWithoutCaseInput[] | CasePartyUncheckedCreateWithoutCaseInput[]
+    connectOrCreate?: CasePartyCreateOrConnectWithoutCaseInput | CasePartyCreateOrConnectWithoutCaseInput[]
+    upsert?: CasePartyUpsertWithWhereUniqueWithoutCaseInput | CasePartyUpsertWithWhereUniqueWithoutCaseInput[]
+    createMany?: CasePartyCreateManyCaseInputEnvelope
+    set?: CasePartyWhereUniqueInput | CasePartyWhereUniqueInput[]
+    disconnect?: CasePartyWhereUniqueInput | CasePartyWhereUniqueInput[]
+    delete?: CasePartyWhereUniqueInput | CasePartyWhereUniqueInput[]
+    connect?: CasePartyWhereUniqueInput | CasePartyWhereUniqueInput[]
+    update?: CasePartyUpdateWithWhereUniqueWithoutCaseInput | CasePartyUpdateWithWhereUniqueWithoutCaseInput[]
+    updateMany?: CasePartyUpdateManyWithWhereWithoutCaseInput | CasePartyUpdateManyWithWhereWithoutCaseInput[]
+    deleteMany?: CasePartyScalarWhereInput | CasePartyScalarWhereInput[]
+  }
+
+  export type CaseHearingUncheckedUpdateManyWithoutCaseNestedInput = {
+    create?: XOR<CaseHearingCreateWithoutCaseInput, CaseHearingUncheckedCreateWithoutCaseInput> | CaseHearingCreateWithoutCaseInput[] | CaseHearingUncheckedCreateWithoutCaseInput[]
+    connectOrCreate?: CaseHearingCreateOrConnectWithoutCaseInput | CaseHearingCreateOrConnectWithoutCaseInput[]
+    upsert?: CaseHearingUpsertWithWhereUniqueWithoutCaseInput | CaseHearingUpsertWithWhereUniqueWithoutCaseInput[]
+    createMany?: CaseHearingCreateManyCaseInputEnvelope
+    set?: CaseHearingWhereUniqueInput | CaseHearingWhereUniqueInput[]
+    disconnect?: CaseHearingWhereUniqueInput | CaseHearingWhereUniqueInput[]
+    delete?: CaseHearingWhereUniqueInput | CaseHearingWhereUniqueInput[]
+    connect?: CaseHearingWhereUniqueInput | CaseHearingWhereUniqueInput[]
+    update?: CaseHearingUpdateWithWhereUniqueWithoutCaseInput | CaseHearingUpdateWithWhereUniqueWithoutCaseInput[]
+    updateMany?: CaseHearingUpdateManyWithWhereWithoutCaseInput | CaseHearingUpdateManyWithWhereWithoutCaseInput[]
+    deleteMany?: CaseHearingScalarWhereInput | CaseHearingScalarWhereInput[]
+  }
+
+  export type CasePleadingUncheckedUpdateManyWithoutCaseNestedInput = {
+    create?: XOR<CasePleadingCreateWithoutCaseInput, CasePleadingUncheckedCreateWithoutCaseInput> | CasePleadingCreateWithoutCaseInput[] | CasePleadingUncheckedCreateWithoutCaseInput[]
+    connectOrCreate?: CasePleadingCreateOrConnectWithoutCaseInput | CasePleadingCreateOrConnectWithoutCaseInput[]
+    upsert?: CasePleadingUpsertWithWhereUniqueWithoutCaseInput | CasePleadingUpsertWithWhereUniqueWithoutCaseInput[]
+    createMany?: CasePleadingCreateManyCaseInputEnvelope
+    set?: CasePleadingWhereUniqueInput | CasePleadingWhereUniqueInput[]
+    disconnect?: CasePleadingWhereUniqueInput | CasePleadingWhereUniqueInput[]
+    delete?: CasePleadingWhereUniqueInput | CasePleadingWhereUniqueInput[]
+    connect?: CasePleadingWhereUniqueInput | CasePleadingWhereUniqueInput[]
+    update?: CasePleadingUpdateWithWhereUniqueWithoutCaseInput | CasePleadingUpdateWithWhereUniqueWithoutCaseInput[]
+    updateMany?: CasePleadingUpdateManyWithWhereWithoutCaseInput | CasePleadingUpdateManyWithWhereWithoutCaseInput[]
+    deleteMany?: CasePleadingScalarWhereInput | CasePleadingScalarWhereInput[]
+  }
+
+  export type CourtProceedingUncheckedUpdateManyWithoutCaseNestedInput = {
+    create?: XOR<CourtProceedingCreateWithoutCaseInput, CourtProceedingUncheckedCreateWithoutCaseInput> | CourtProceedingCreateWithoutCaseInput[] | CourtProceedingUncheckedCreateWithoutCaseInput[]
+    connectOrCreate?: CourtProceedingCreateOrConnectWithoutCaseInput | CourtProceedingCreateOrConnectWithoutCaseInput[]
+    upsert?: CourtProceedingUpsertWithWhereUniqueWithoutCaseInput | CourtProceedingUpsertWithWhereUniqueWithoutCaseInput[]
+    createMany?: CourtProceedingCreateManyCaseInputEnvelope
+    set?: CourtProceedingWhereUniqueInput | CourtProceedingWhereUniqueInput[]
+    disconnect?: CourtProceedingWhereUniqueInput | CourtProceedingWhereUniqueInput[]
+    delete?: CourtProceedingWhereUniqueInput | CourtProceedingWhereUniqueInput[]
+    connect?: CourtProceedingWhereUniqueInput | CourtProceedingWhereUniqueInput[]
+    update?: CourtProceedingUpdateWithWhereUniqueWithoutCaseInput | CourtProceedingUpdateWithWhereUniqueWithoutCaseInput[]
+    updateMany?: CourtProceedingUpdateManyWithWhereWithoutCaseInput | CourtProceedingUpdateManyWithWhereWithoutCaseInput[]
+    deleteMany?: CourtProceedingScalarWhereInput | CourtProceedingScalarWhereInput[]
+  }
+
+  export type CasePrecedentUncheckedUpdateManyWithoutCaseNestedInput = {
+    create?: XOR<CasePrecedentCreateWithoutCaseInput, CasePrecedentUncheckedCreateWithoutCaseInput> | CasePrecedentCreateWithoutCaseInput[] | CasePrecedentUncheckedCreateWithoutCaseInput[]
+    connectOrCreate?: CasePrecedentCreateOrConnectWithoutCaseInput | CasePrecedentCreateOrConnectWithoutCaseInput[]
+    upsert?: CasePrecedentUpsertWithWhereUniqueWithoutCaseInput | CasePrecedentUpsertWithWhereUniqueWithoutCaseInput[]
+    createMany?: CasePrecedentCreateManyCaseInputEnvelope
+    set?: CasePrecedentWhereUniqueInput | CasePrecedentWhereUniqueInput[]
+    disconnect?: CasePrecedentWhereUniqueInput | CasePrecedentWhereUniqueInput[]
+    delete?: CasePrecedentWhereUniqueInput | CasePrecedentWhereUniqueInput[]
+    connect?: CasePrecedentWhereUniqueInput | CasePrecedentWhereUniqueInput[]
+    update?: CasePrecedentUpdateWithWhereUniqueWithoutCaseInput | CasePrecedentUpdateWithWhereUniqueWithoutCaseInput[]
+    updateMany?: CasePrecedentUpdateManyWithWhereWithoutCaseInput | CasePrecedentUpdateManyWithWhereWithoutCaseInput[]
+    deleteMany?: CasePrecedentScalarWhereInput | CasePrecedentScalarWhereInput[]
+  }
+
+  export type CasePaymentUncheckedUpdateManyWithoutCaseNestedInput = {
+    create?: XOR<CasePaymentCreateWithoutCaseInput, CasePaymentUncheckedCreateWithoutCaseInput> | CasePaymentCreateWithoutCaseInput[] | CasePaymentUncheckedCreateWithoutCaseInput[]
+    connectOrCreate?: CasePaymentCreateOrConnectWithoutCaseInput | CasePaymentCreateOrConnectWithoutCaseInput[]
+    upsert?: CasePaymentUpsertWithWhereUniqueWithoutCaseInput | CasePaymentUpsertWithWhereUniqueWithoutCaseInput[]
+    createMany?: CasePaymentCreateManyCaseInputEnvelope
+    set?: CasePaymentWhereUniqueInput | CasePaymentWhereUniqueInput[]
+    disconnect?: CasePaymentWhereUniqueInput | CasePaymentWhereUniqueInput[]
+    delete?: CasePaymentWhereUniqueInput | CasePaymentWhereUniqueInput[]
+    connect?: CasePaymentWhereUniqueInput | CasePaymentWhereUniqueInput[]
+    update?: CasePaymentUpdateWithWhereUniqueWithoutCaseInput | CasePaymentUpdateWithWhereUniqueWithoutCaseInput[]
+    updateMany?: CasePaymentUpdateManyWithWhereWithoutCaseInput | CasePaymentUpdateManyWithWhereWithoutCaseInput[]
+    deleteMany?: CasePaymentScalarWhereInput | CasePaymentScalarWhereInput[]
+  }
+
+  export type CaseCounselingUncheckedUpdateManyWithoutCaseNestedInput = {
+    create?: XOR<CaseCounselingCreateWithoutCaseInput, CaseCounselingUncheckedCreateWithoutCaseInput> | CaseCounselingCreateWithoutCaseInput[] | CaseCounselingUncheckedCreateWithoutCaseInput[]
+    connectOrCreate?: CaseCounselingCreateOrConnectWithoutCaseInput | CaseCounselingCreateOrConnectWithoutCaseInput[]
+    upsert?: CaseCounselingUpsertWithWhereUniqueWithoutCaseInput | CaseCounselingUpsertWithWhereUniqueWithoutCaseInput[]
+    createMany?: CaseCounselingCreateManyCaseInputEnvelope
+    set?: CaseCounselingWhereUniqueInput | CaseCounselingWhereUniqueInput[]
+    disconnect?: CaseCounselingWhereUniqueInput | CaseCounselingWhereUniqueInput[]
+    delete?: CaseCounselingWhereUniqueInput | CaseCounselingWhereUniqueInput[]
+    connect?: CaseCounselingWhereUniqueInput | CaseCounselingWhereUniqueInput[]
+    update?: CaseCounselingUpdateWithWhereUniqueWithoutCaseInput | CaseCounselingUpdateWithWhereUniqueWithoutCaseInput[]
+    updateMany?: CaseCounselingUpdateManyWithWhereWithoutCaseInput | CaseCounselingUpdateManyWithWhereWithoutCaseInput[]
+    deleteMany?: CaseCounselingScalarWhereInput | CaseCounselingScalarWhereInput[]
+  }
+
+  export type CaseDocumentUncheckedUpdateManyWithoutCaseNestedInput = {
+    create?: XOR<CaseDocumentCreateWithoutCaseInput, CaseDocumentUncheckedCreateWithoutCaseInput> | CaseDocumentCreateWithoutCaseInput[] | CaseDocumentUncheckedCreateWithoutCaseInput[]
+    connectOrCreate?: CaseDocumentCreateOrConnectWithoutCaseInput | CaseDocumentCreateOrConnectWithoutCaseInput[]
+    upsert?: CaseDocumentUpsertWithWhereUniqueWithoutCaseInput | CaseDocumentUpsertWithWhereUniqueWithoutCaseInput[]
+    createMany?: CaseDocumentCreateManyCaseInputEnvelope
+    set?: CaseDocumentWhereUniqueInput | CaseDocumentWhereUniqueInput[]
+    disconnect?: CaseDocumentWhereUniqueInput | CaseDocumentWhereUniqueInput[]
+    delete?: CaseDocumentWhereUniqueInput | CaseDocumentWhereUniqueInput[]
+    connect?: CaseDocumentWhereUniqueInput | CaseDocumentWhereUniqueInput[]
+    update?: CaseDocumentUpdateWithWhereUniqueWithoutCaseInput | CaseDocumentUpdateWithWhereUniqueWithoutCaseInput[]
+    updateMany?: CaseDocumentUpdateManyWithWhereWithoutCaseInput | CaseDocumentUpdateManyWithWhereWithoutCaseInput[]
+    deleteMany?: CaseDocumentScalarWhereInput | CaseDocumentScalarWhereInput[]
+  }
+
+  export type CaseCreateNestedOneWithoutLawyersInput = {
+    create?: XOR<CaseCreateWithoutLawyersInput, CaseUncheckedCreateWithoutLawyersInput>
+    connectOrCreate?: CaseCreateOrConnectWithoutLawyersInput
+    connect?: CaseWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutCases_as_lawyerInput = {
+    create?: XOR<UserCreateWithoutCases_as_lawyerInput, UserUncheckedCreateWithoutCases_as_lawyerInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCases_as_lawyerInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
+  export type CaseUpdateOneRequiredWithoutLawyersNestedInput = {
+    create?: XOR<CaseCreateWithoutLawyersInput, CaseUncheckedCreateWithoutLawyersInput>
+    connectOrCreate?: CaseCreateOrConnectWithoutLawyersInput
+    upsert?: CaseUpsertWithoutLawyersInput
+    connect?: CaseWhereUniqueInput
+    update?: XOR<XOR<CaseUpdateToOneWithWhereWithoutLawyersInput, CaseUpdateWithoutLawyersInput>, CaseUncheckedUpdateWithoutLawyersInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutCases_as_lawyerNestedInput = {
+    create?: XOR<UserCreateWithoutCases_as_lawyerInput, UserUncheckedCreateWithoutCases_as_lawyerInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCases_as_lawyerInput
+    upsert?: UserUpsertWithoutCases_as_lawyerInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCases_as_lawyerInput, UserUpdateWithoutCases_as_lawyerInput>, UserUncheckedUpdateWithoutCases_as_lawyerInput>
+  }
+
+  export type CaseCreateNestedOneWithoutPartiesInput = {
+    create?: XOR<CaseCreateWithoutPartiesInput, CaseUncheckedCreateWithoutPartiesInput>
+    connectOrCreate?: CaseCreateOrConnectWithoutPartiesInput
+    connect?: CaseWhereUniqueInput
+  }
+
+  export type PartyRoleCreateNestedOneWithoutPartiesInput = {
+    create?: XOR<PartyRoleCreateWithoutPartiesInput, PartyRoleUncheckedCreateWithoutPartiesInput>
+    connectOrCreate?: PartyRoleCreateOrConnectWithoutPartiesInput
+    connect?: PartyRoleWhereUniqueInput
+  }
+
+  export type CaseUpdateOneRequiredWithoutPartiesNestedInput = {
+    create?: XOR<CaseCreateWithoutPartiesInput, CaseUncheckedCreateWithoutPartiesInput>
+    connectOrCreate?: CaseCreateOrConnectWithoutPartiesInput
+    upsert?: CaseUpsertWithoutPartiesInput
+    connect?: CaseWhereUniqueInput
+    update?: XOR<XOR<CaseUpdateToOneWithWhereWithoutPartiesInput, CaseUpdateWithoutPartiesInput>, CaseUncheckedUpdateWithoutPartiesInput>
+  }
+
+  export type PartyRoleUpdateOneRequiredWithoutPartiesNestedInput = {
+    create?: XOR<PartyRoleCreateWithoutPartiesInput, PartyRoleUncheckedCreateWithoutPartiesInput>
+    connectOrCreate?: PartyRoleCreateOrConnectWithoutPartiesInput
+    upsert?: PartyRoleUpsertWithoutPartiesInput
+    connect?: PartyRoleWhereUniqueInput
+    update?: XOR<XOR<PartyRoleUpdateToOneWithWhereWithoutPartiesInput, PartyRoleUpdateWithoutPartiesInput>, PartyRoleUncheckedUpdateWithoutPartiesInput>
+  }
+
+  export type CaseCreateNestedOneWithoutHearingsInput = {
+    create?: XOR<CaseCreateWithoutHearingsInput, CaseUncheckedCreateWithoutHearingsInput>
+    connectOrCreate?: CaseCreateOrConnectWithoutHearingsInput
+    connect?: CaseWhereUniqueInput
+  }
+
+  export type CaseUpdateOneRequiredWithoutHearingsNestedInput = {
+    create?: XOR<CaseCreateWithoutHearingsInput, CaseUncheckedCreateWithoutHearingsInput>
+    connectOrCreate?: CaseCreateOrConnectWithoutHearingsInput
+    upsert?: CaseUpsertWithoutHearingsInput
+    connect?: CaseWhereUniqueInput
+    update?: XOR<XOR<CaseUpdateToOneWithWhereWithoutHearingsInput, CaseUpdateWithoutHearingsInput>, CaseUncheckedUpdateWithoutHearingsInput>
+  }
+
+  export type CaseCreateNestedOneWithoutPleadingsInput = {
+    create?: XOR<CaseCreateWithoutPleadingsInput, CaseUncheckedCreateWithoutPleadingsInput>
+    connectOrCreate?: CaseCreateOrConnectWithoutPleadingsInput
+    connect?: CaseWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutCases_as_pleaderInput = {
+    create?: XOR<UserCreateWithoutCases_as_pleaderInput, UserUncheckedCreateWithoutCases_as_pleaderInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCases_as_pleaderInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type CaseUpdateOneRequiredWithoutPleadingsNestedInput = {
+    create?: XOR<CaseCreateWithoutPleadingsInput, CaseUncheckedCreateWithoutPleadingsInput>
+    connectOrCreate?: CaseCreateOrConnectWithoutPleadingsInput
+    upsert?: CaseUpsertWithoutPleadingsInput
+    connect?: CaseWhereUniqueInput
+    update?: XOR<XOR<CaseUpdateToOneWithWhereWithoutPleadingsInput, CaseUpdateWithoutPleadingsInput>, CaseUncheckedUpdateWithoutPleadingsInput>
+  }
+
+  export type UserUpdateOneWithoutCases_as_pleaderNestedInput = {
+    create?: XOR<UserCreateWithoutCases_as_pleaderInput, UserUncheckedCreateWithoutCases_as_pleaderInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCases_as_pleaderInput
+    upsert?: UserUpsertWithoutCases_as_pleaderInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCases_as_pleaderInput, UserUpdateWithoutCases_as_pleaderInput>, UserUncheckedUpdateWithoutCases_as_pleaderInput>
+  }
+
+  export type CaseCreateNestedOneWithoutProceedingsInput = {
+    create?: XOR<CaseCreateWithoutProceedingsInput, CaseUncheckedCreateWithoutProceedingsInput>
+    connectOrCreate?: CaseCreateOrConnectWithoutProceedingsInput
+    connect?: CaseWhereUniqueInput
+  }
+
+  export type CourtLevelCreateNestedOneWithoutProceedingsInput = {
+    create?: XOR<CourtLevelCreateWithoutProceedingsInput, CourtLevelUncheckedCreateWithoutProceedingsInput>
+    connectOrCreate?: CourtLevelCreateOrConnectWithoutProceedingsInput
+    connect?: CourtLevelWhereUniqueInput
+  }
+
+  export type CaseUpdateOneRequiredWithoutProceedingsNestedInput = {
+    create?: XOR<CaseCreateWithoutProceedingsInput, CaseUncheckedCreateWithoutProceedingsInput>
+    connectOrCreate?: CaseCreateOrConnectWithoutProceedingsInput
+    upsert?: CaseUpsertWithoutProceedingsInput
+    connect?: CaseWhereUniqueInput
+    update?: XOR<XOR<CaseUpdateToOneWithWhereWithoutProceedingsInput, CaseUpdateWithoutProceedingsInput>, CaseUncheckedUpdateWithoutProceedingsInput>
+  }
+
+  export type CourtLevelUpdateOneRequiredWithoutProceedingsNestedInput = {
+    create?: XOR<CourtLevelCreateWithoutProceedingsInput, CourtLevelUncheckedCreateWithoutProceedingsInput>
+    connectOrCreate?: CourtLevelCreateOrConnectWithoutProceedingsInput
+    upsert?: CourtLevelUpsertWithoutProceedingsInput
+    connect?: CourtLevelWhereUniqueInput
+    update?: XOR<XOR<CourtLevelUpdateToOneWithWhereWithoutProceedingsInput, CourtLevelUpdateWithoutProceedingsInput>, CourtLevelUncheckedUpdateWithoutProceedingsInput>
+  }
+
+  export type CaseCreateNestedOneWithoutPrecedentsInput = {
+    create?: XOR<CaseCreateWithoutPrecedentsInput, CaseUncheckedCreateWithoutPrecedentsInput>
+    connectOrCreate?: CaseCreateOrConnectWithoutPrecedentsInput
+    connect?: CaseWhereUniqueInput
+  }
+
+  export type CaseUpdateOneRequiredWithoutPrecedentsNestedInput = {
+    create?: XOR<CaseCreateWithoutPrecedentsInput, CaseUncheckedCreateWithoutPrecedentsInput>
+    connectOrCreate?: CaseCreateOrConnectWithoutPrecedentsInput
+    upsert?: CaseUpsertWithoutPrecedentsInput
+    connect?: CaseWhereUniqueInput
+    update?: XOR<XOR<CaseUpdateToOneWithWhereWithoutPrecedentsInput, CaseUpdateWithoutPrecedentsInput>, CaseUncheckedUpdateWithoutPrecedentsInput>
+  }
+
+  export type CaseCreateNestedOneWithoutPaymentsInput = {
+    create?: XOR<CaseCreateWithoutPaymentsInput, CaseUncheckedCreateWithoutPaymentsInput>
+    connectOrCreate?: CaseCreateOrConnectWithoutPaymentsInput
+    connect?: CaseWhereUniqueInput
+  }
+
+  export type DecimalFieldUpdateOperationsInput = {
+    set?: Decimal | DecimalJsLike | number | string
+    increment?: Decimal | DecimalJsLike | number | string
+    decrement?: Decimal | DecimalJsLike | number | string
+    multiply?: Decimal | DecimalJsLike | number | string
+    divide?: Decimal | DecimalJsLike | number | string
+  }
+
+  export type CaseUpdateOneRequiredWithoutPaymentsNestedInput = {
+    create?: XOR<CaseCreateWithoutPaymentsInput, CaseUncheckedCreateWithoutPaymentsInput>
+    connectOrCreate?: CaseCreateOrConnectWithoutPaymentsInput
+    upsert?: CaseUpsertWithoutPaymentsInput
+    connect?: CaseWhereUniqueInput
+    update?: XOR<XOR<CaseUpdateToOneWithWhereWithoutPaymentsInput, CaseUpdateWithoutPaymentsInput>, CaseUncheckedUpdateWithoutPaymentsInput>
+  }
+
+  export type CaseCreateNestedOneWithoutCounselingsInput = {
+    create?: XOR<CaseCreateWithoutCounselingsInput, CaseUncheckedCreateWithoutCounselingsInput>
+    connectOrCreate?: CaseCreateOrConnectWithoutCounselingsInput
+    connect?: CaseWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutCases_as_counselorInput = {
+    create?: XOR<UserCreateWithoutCases_as_counselorInput, UserUncheckedCreateWithoutCases_as_counselorInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCases_as_counselorInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type CaseUpdateOneRequiredWithoutCounselingsNestedInput = {
+    create?: XOR<CaseCreateWithoutCounselingsInput, CaseUncheckedCreateWithoutCounselingsInput>
+    connectOrCreate?: CaseCreateOrConnectWithoutCounselingsInput
+    upsert?: CaseUpsertWithoutCounselingsInput
+    connect?: CaseWhereUniqueInput
+    update?: XOR<XOR<CaseUpdateToOneWithWhereWithoutCounselingsInput, CaseUpdateWithoutCounselingsInput>, CaseUncheckedUpdateWithoutCounselingsInput>
+  }
+
+  export type UserUpdateOneWithoutCases_as_counselorNestedInput = {
+    create?: XOR<UserCreateWithoutCases_as_counselorInput, UserUncheckedCreateWithoutCases_as_counselorInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCases_as_counselorInput
+    upsert?: UserUpsertWithoutCases_as_counselorInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCases_as_counselorInput, UserUpdateWithoutCases_as_counselorInput>, UserUncheckedUpdateWithoutCases_as_counselorInput>
+  }
+
+  export type CaseCreateNestedOneWithoutDocumentsInput = {
+    create?: XOR<CaseCreateWithoutDocumentsInput, CaseUncheckedCreateWithoutDocumentsInput>
+    connectOrCreate?: CaseCreateOrConnectWithoutDocumentsInput
+    connect?: CaseWhereUniqueInput
+  }
+
+  export type CaseUpdateOneRequiredWithoutDocumentsNestedInput = {
+    create?: XOR<CaseCreateWithoutDocumentsInput, CaseUncheckedCreateWithoutDocumentsInput>
+    connectOrCreate?: CaseCreateOrConnectWithoutDocumentsInput
+    upsert?: CaseUpsertWithoutDocumentsInput
+    connect?: CaseWhereUniqueInput
+    update?: XOR<XOR<CaseUpdateToOneWithWhereWithoutDocumentsInput, CaseUpdateWithoutDocumentsInput>, CaseUncheckedUpdateWithoutDocumentsInput>
   }
 
   export type UserCreateNestedOneWithoutNotificationsInput = {
@@ -16851,10 +36089,6 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
   }
 
-  export type BoolFieldUpdateOperationsInput = {
-    set?: boolean
-  }
-
   export type UserUpdateManyWithoutRoleNestedInput = {
     create?: XOR<UserCreateWithoutRoleInput, UserUncheckedCreateWithoutRoleInput> | UserCreateWithoutRoleInput[] | UserUncheckedCreateWithoutRoleInput[]
     connectOrCreate?: UserCreateOrConnectWithoutRoleInput | UserCreateOrConnectWithoutRoleInput[]
@@ -17066,6 +36300,73 @@ export namespace Prisma {
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
+
+  export type NestedDecimalNullableFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+  }
+
+  export type NestedDecimalNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalNullableWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedDecimalNullableFilter<$PrismaModel>
+    _sum?: NestedDecimalNullableFilter<$PrismaModel>
+    _min?: NestedDecimalNullableFilter<$PrismaModel>
+    _max?: NestedDecimalNullableFilter<$PrismaModel>
+  }
+
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type NestedDecimalFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+  }
+
+  export type NestedDecimalWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedDecimalFilter<$PrismaModel>
+    _sum?: NestedDecimalFilter<$PrismaModel>
+    _min?: NestedDecimalFilter<$PrismaModel>
+    _max?: NestedDecimalFilter<$PrismaModel>
+  }
   export type NestedJsonFilter<$PrismaModel = never> =
     | PatchUndefined<
         Either<Required<NestedJsonFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>,
@@ -17088,19 +36389,6 @@ export namespace Prisma {
     gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-  }
-
-  export type NestedBoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
-  }
-
-  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type ResourceCreateWithoutUsersInput = {
@@ -17286,6 +36574,76 @@ export namespace Prisma {
 
   export type PageCreateManyAuthorInputEnvelope = {
     data: PageCreateManyAuthorInput | PageCreateManyAuthorInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CaseLawyerCreateWithoutUserInput = {
+    isLead?: boolean
+    case: CaseCreateNestedOneWithoutLawyersInput
+  }
+
+  export type CaseLawyerUncheckedCreateWithoutUserInput = {
+    caseId: string
+    isLead?: boolean
+  }
+
+  export type CaseLawyerCreateOrConnectWithoutUserInput = {
+    where: CaseLawyerWhereUniqueInput
+    create: XOR<CaseLawyerCreateWithoutUserInput, CaseLawyerUncheckedCreateWithoutUserInput>
+  }
+
+  export type CaseLawyerCreateManyUserInputEnvelope = {
+    data: CaseLawyerCreateManyUserInput | CaseLawyerCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CasePleadingCreateWithoutPleaderInput = {
+    id?: string
+    pleadingDate?: Date | string | null
+    pleadingNotes: string
+    case: CaseCreateNestedOneWithoutPleadingsInput
+  }
+
+  export type CasePleadingUncheckedCreateWithoutPleaderInput = {
+    id?: string
+    caseId: string
+    pleadingDate?: Date | string | null
+    pleadingNotes: string
+  }
+
+  export type CasePleadingCreateOrConnectWithoutPleaderInput = {
+    where: CasePleadingWhereUniqueInput
+    create: XOR<CasePleadingCreateWithoutPleaderInput, CasePleadingUncheckedCreateWithoutPleaderInput>
+  }
+
+  export type CasePleadingCreateManyPleaderInputEnvelope = {
+    data: CasePleadingCreateManyPleaderInput | CasePleadingCreateManyPleaderInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CaseCounselingCreateWithoutCounselorInput = {
+    id?: string
+    date?: Date | string | null
+    notes: string
+    createdAt?: Date | string
+    case: CaseCreateNestedOneWithoutCounselingsInput
+  }
+
+  export type CaseCounselingUncheckedCreateWithoutCounselorInput = {
+    id?: string
+    caseId: string
+    date?: Date | string | null
+    notes: string
+    createdAt?: Date | string
+  }
+
+  export type CaseCounselingCreateOrConnectWithoutCounselorInput = {
+    where: CaseCounselingWhereUniqueInput
+    create: XOR<CaseCounselingCreateWithoutCounselorInput, CaseCounselingUncheckedCreateWithoutCounselorInput>
+  }
+
+  export type CaseCounselingCreateManyCounselorInputEnvelope = {
+    data: CaseCounselingCreateManyCounselorInput | CaseCounselingCreateManyCounselorInput[]
     skipDuplicates?: boolean
   }
 
@@ -17480,6 +36838,86 @@ export namespace Prisma {
     deleted_at?: DateTimeNullableFilter<"Page"> | Date | string | null
   }
 
+  export type CaseLawyerUpsertWithWhereUniqueWithoutUserInput = {
+    where: CaseLawyerWhereUniqueInput
+    update: XOR<CaseLawyerUpdateWithoutUserInput, CaseLawyerUncheckedUpdateWithoutUserInput>
+    create: XOR<CaseLawyerCreateWithoutUserInput, CaseLawyerUncheckedCreateWithoutUserInput>
+  }
+
+  export type CaseLawyerUpdateWithWhereUniqueWithoutUserInput = {
+    where: CaseLawyerWhereUniqueInput
+    data: XOR<CaseLawyerUpdateWithoutUserInput, CaseLawyerUncheckedUpdateWithoutUserInput>
+  }
+
+  export type CaseLawyerUpdateManyWithWhereWithoutUserInput = {
+    where: CaseLawyerScalarWhereInput
+    data: XOR<CaseLawyerUpdateManyMutationInput, CaseLawyerUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type CaseLawyerScalarWhereInput = {
+    AND?: CaseLawyerScalarWhereInput | CaseLawyerScalarWhereInput[]
+    OR?: CaseLawyerScalarWhereInput[]
+    NOT?: CaseLawyerScalarWhereInput | CaseLawyerScalarWhereInput[]
+    caseId?: StringFilter<"CaseLawyer"> | string
+    userId?: StringFilter<"CaseLawyer"> | string
+    isLead?: BoolFilter<"CaseLawyer"> | boolean
+  }
+
+  export type CasePleadingUpsertWithWhereUniqueWithoutPleaderInput = {
+    where: CasePleadingWhereUniqueInput
+    update: XOR<CasePleadingUpdateWithoutPleaderInput, CasePleadingUncheckedUpdateWithoutPleaderInput>
+    create: XOR<CasePleadingCreateWithoutPleaderInput, CasePleadingUncheckedCreateWithoutPleaderInput>
+  }
+
+  export type CasePleadingUpdateWithWhereUniqueWithoutPleaderInput = {
+    where: CasePleadingWhereUniqueInput
+    data: XOR<CasePleadingUpdateWithoutPleaderInput, CasePleadingUncheckedUpdateWithoutPleaderInput>
+  }
+
+  export type CasePleadingUpdateManyWithWhereWithoutPleaderInput = {
+    where: CasePleadingScalarWhereInput
+    data: XOR<CasePleadingUpdateManyMutationInput, CasePleadingUncheckedUpdateManyWithoutPleaderInput>
+  }
+
+  export type CasePleadingScalarWhereInput = {
+    AND?: CasePleadingScalarWhereInput | CasePleadingScalarWhereInput[]
+    OR?: CasePleadingScalarWhereInput[]
+    NOT?: CasePleadingScalarWhereInput | CasePleadingScalarWhereInput[]
+    id?: StringFilter<"CasePleading"> | string
+    caseId?: StringFilter<"CasePleading"> | string
+    pleaderUserId?: StringNullableFilter<"CasePleading"> | string | null
+    pleadingDate?: DateTimeNullableFilter<"CasePleading"> | Date | string | null
+    pleadingNotes?: StringFilter<"CasePleading"> | string
+  }
+
+  export type CaseCounselingUpsertWithWhereUniqueWithoutCounselorInput = {
+    where: CaseCounselingWhereUniqueInput
+    update: XOR<CaseCounselingUpdateWithoutCounselorInput, CaseCounselingUncheckedUpdateWithoutCounselorInput>
+    create: XOR<CaseCounselingCreateWithoutCounselorInput, CaseCounselingUncheckedCreateWithoutCounselorInput>
+  }
+
+  export type CaseCounselingUpdateWithWhereUniqueWithoutCounselorInput = {
+    where: CaseCounselingWhereUniqueInput
+    data: XOR<CaseCounselingUpdateWithoutCounselorInput, CaseCounselingUncheckedUpdateWithoutCounselorInput>
+  }
+
+  export type CaseCounselingUpdateManyWithWhereWithoutCounselorInput = {
+    where: CaseCounselingScalarWhereInput
+    data: XOR<CaseCounselingUpdateManyMutationInput, CaseCounselingUncheckedUpdateManyWithoutCounselorInput>
+  }
+
+  export type CaseCounselingScalarWhereInput = {
+    AND?: CaseCounselingScalarWhereInput | CaseCounselingScalarWhereInput[]
+    OR?: CaseCounselingScalarWhereInput[]
+    NOT?: CaseCounselingScalarWhereInput | CaseCounselingScalarWhereInput[]
+    id?: StringFilter<"CaseCounseling"> | string
+    caseId?: StringFilter<"CaseCounseling"> | string
+    counselorUserId?: StringNullableFilter<"CaseCounseling"> | string | null
+    date?: DateTimeNullableFilter<"CaseCounseling"> | Date | string | null
+    notes?: StringFilter<"CaseCounseling"> | string
+    createdAt?: DateTimeFilter<"CaseCounseling"> | Date | string
+  }
+
   export type UserCreateWithoutRefresh_tokensInput = {
     id?: string
     email: string
@@ -17498,6 +36936,9 @@ export namespace Prisma {
     notifications?: NotificationCreateNestedManyWithoutUserInput
     reset_tokens?: PasswordResetTokenCreateNestedManyWithoutUserInput
     pages?: PageCreateNestedManyWithoutAuthorInput
+    cases_as_lawyer?: CaseLawyerCreateNestedManyWithoutUserInput
+    cases_as_pleader?: CasePleadingCreateNestedManyWithoutPleaderInput
+    cases_as_counselor?: CaseCounselingCreateNestedManyWithoutCounselorInput
   }
 
   export type UserUncheckedCreateWithoutRefresh_tokensInput = {
@@ -17518,6 +36959,9 @@ export namespace Prisma {
     notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
     reset_tokens?: PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
     pages?: PageUncheckedCreateNestedManyWithoutAuthorInput
+    cases_as_lawyer?: CaseLawyerUncheckedCreateNestedManyWithoutUserInput
+    cases_as_pleader?: CasePleadingUncheckedCreateNestedManyWithoutPleaderInput
+    cases_as_counselor?: CaseCounselingUncheckedCreateNestedManyWithoutCounselorInput
   }
 
   export type UserCreateOrConnectWithoutRefresh_tokensInput = {
@@ -17554,6 +36998,9 @@ export namespace Prisma {
     notifications?: NotificationUpdateManyWithoutUserNestedInput
     reset_tokens?: PasswordResetTokenUpdateManyWithoutUserNestedInput
     pages?: PageUpdateManyWithoutAuthorNestedInput
+    cases_as_lawyer?: CaseLawyerUpdateManyWithoutUserNestedInput
+    cases_as_pleader?: CasePleadingUpdateManyWithoutPleaderNestedInput
+    cases_as_counselor?: CaseCounselingUpdateManyWithoutCounselorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutRefresh_tokensInput = {
@@ -17574,6 +37021,9 @@ export namespace Prisma {
     notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
     reset_tokens?: PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
     pages?: PageUncheckedUpdateManyWithoutAuthorNestedInput
+    cases_as_lawyer?: CaseLawyerUncheckedUpdateManyWithoutUserNestedInput
+    cases_as_pleader?: CasePleadingUncheckedUpdateManyWithoutPleaderNestedInput
+    cases_as_counselor?: CaseCounselingUncheckedUpdateManyWithoutCounselorNestedInput
   }
 
   export type UserCreateWithoutReset_tokensInput = {
@@ -17594,6 +37044,9 @@ export namespace Prisma {
     notifications?: NotificationCreateNestedManyWithoutUserInput
     refresh_tokens?: RefreshTokenCreateNestedManyWithoutUserInput
     pages?: PageCreateNestedManyWithoutAuthorInput
+    cases_as_lawyer?: CaseLawyerCreateNestedManyWithoutUserInput
+    cases_as_pleader?: CasePleadingCreateNestedManyWithoutPleaderInput
+    cases_as_counselor?: CaseCounselingCreateNestedManyWithoutCounselorInput
   }
 
   export type UserUncheckedCreateWithoutReset_tokensInput = {
@@ -17614,6 +37067,9 @@ export namespace Prisma {
     notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
     refresh_tokens?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
     pages?: PageUncheckedCreateNestedManyWithoutAuthorInput
+    cases_as_lawyer?: CaseLawyerUncheckedCreateNestedManyWithoutUserInput
+    cases_as_pleader?: CasePleadingUncheckedCreateNestedManyWithoutPleaderInput
+    cases_as_counselor?: CaseCounselingUncheckedCreateNestedManyWithoutCounselorInput
   }
 
   export type UserCreateOrConnectWithoutReset_tokensInput = {
@@ -17650,6 +37106,9 @@ export namespace Prisma {
     notifications?: NotificationUpdateManyWithoutUserNestedInput
     refresh_tokens?: RefreshTokenUpdateManyWithoutUserNestedInput
     pages?: PageUpdateManyWithoutAuthorNestedInput
+    cases_as_lawyer?: CaseLawyerUpdateManyWithoutUserNestedInput
+    cases_as_pleader?: CasePleadingUpdateManyWithoutPleaderNestedInput
+    cases_as_counselor?: CaseCounselingUpdateManyWithoutCounselorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutReset_tokensInput = {
@@ -17670,6 +37129,9 @@ export namespace Prisma {
     notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
     refresh_tokens?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
     pages?: PageUncheckedUpdateManyWithoutAuthorNestedInput
+    cases_as_lawyer?: CaseLawyerUncheckedUpdateManyWithoutUserNestedInput
+    cases_as_pleader?: CasePleadingUncheckedUpdateManyWithoutPleaderNestedInput
+    cases_as_counselor?: CaseCounselingUncheckedUpdateManyWithoutCounselorNestedInput
   }
 
   export type UserCreateWithoutAvatarInput = {
@@ -17690,6 +37152,9 @@ export namespace Prisma {
     refresh_tokens?: RefreshTokenCreateNestedManyWithoutUserInput
     reset_tokens?: PasswordResetTokenCreateNestedManyWithoutUserInput
     pages?: PageCreateNestedManyWithoutAuthorInput
+    cases_as_lawyer?: CaseLawyerCreateNestedManyWithoutUserInput
+    cases_as_pleader?: CasePleadingCreateNestedManyWithoutPleaderInput
+    cases_as_counselor?: CaseCounselingCreateNestedManyWithoutCounselorInput
   }
 
   export type UserUncheckedCreateWithoutAvatarInput = {
@@ -17710,6 +37175,9 @@ export namespace Prisma {
     refresh_tokens?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
     reset_tokens?: PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
     pages?: PageUncheckedCreateNestedManyWithoutAuthorInput
+    cases_as_lawyer?: CaseLawyerUncheckedCreateNestedManyWithoutUserInput
+    cases_as_pleader?: CasePleadingUncheckedCreateNestedManyWithoutPleaderInput
+    cases_as_counselor?: CaseCounselingUncheckedCreateNestedManyWithoutCounselorInput
   }
 
   export type UserCreateOrConnectWithoutAvatarInput = {
@@ -17894,6 +37362,2205 @@ export namespace Prisma {
     updated_at?: DateTimeFilter<"PageSeo"> | Date | string
   }
 
+  export type CourtProceedingCreateWithoutCourtLevelInput = {
+    id?: string
+    courtName: string
+    judgeName?: string | null
+    chargeCounseling?: string | null
+    verdict?: string | null
+    case: CaseCreateNestedOneWithoutProceedingsInput
+  }
+
+  export type CourtProceedingUncheckedCreateWithoutCourtLevelInput = {
+    id?: string
+    caseId: string
+    courtName: string
+    judgeName?: string | null
+    chargeCounseling?: string | null
+    verdict?: string | null
+  }
+
+  export type CourtProceedingCreateOrConnectWithoutCourtLevelInput = {
+    where: CourtProceedingWhereUniqueInput
+    create: XOR<CourtProceedingCreateWithoutCourtLevelInput, CourtProceedingUncheckedCreateWithoutCourtLevelInput>
+  }
+
+  export type CourtProceedingCreateManyCourtLevelInputEnvelope = {
+    data: CourtProceedingCreateManyCourtLevelInput | CourtProceedingCreateManyCourtLevelInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CourtProceedingUpsertWithWhereUniqueWithoutCourtLevelInput = {
+    where: CourtProceedingWhereUniqueInput
+    update: XOR<CourtProceedingUpdateWithoutCourtLevelInput, CourtProceedingUncheckedUpdateWithoutCourtLevelInput>
+    create: XOR<CourtProceedingCreateWithoutCourtLevelInput, CourtProceedingUncheckedCreateWithoutCourtLevelInput>
+  }
+
+  export type CourtProceedingUpdateWithWhereUniqueWithoutCourtLevelInput = {
+    where: CourtProceedingWhereUniqueInput
+    data: XOR<CourtProceedingUpdateWithoutCourtLevelInput, CourtProceedingUncheckedUpdateWithoutCourtLevelInput>
+  }
+
+  export type CourtProceedingUpdateManyWithWhereWithoutCourtLevelInput = {
+    where: CourtProceedingScalarWhereInput
+    data: XOR<CourtProceedingUpdateManyMutationInput, CourtProceedingUncheckedUpdateManyWithoutCourtLevelInput>
+  }
+
+  export type CourtProceedingScalarWhereInput = {
+    AND?: CourtProceedingScalarWhereInput | CourtProceedingScalarWhereInput[]
+    OR?: CourtProceedingScalarWhereInput[]
+    NOT?: CourtProceedingScalarWhereInput | CourtProceedingScalarWhereInput[]
+    id?: StringFilter<"CourtProceeding"> | string
+    caseId?: StringFilter<"CourtProceeding"> | string
+    courtLevelId?: StringFilter<"CourtProceeding"> | string
+    courtName?: StringFilter<"CourtProceeding"> | string
+    judgeName?: StringNullableFilter<"CourtProceeding"> | string | null
+    chargeCounseling?: StringNullableFilter<"CourtProceeding"> | string | null
+    verdict?: StringNullableFilter<"CourtProceeding"> | string | null
+  }
+
+  export type CaseCreateWithoutNatureInput = {
+    id?: string
+    caseNumber: string
+    caseName: string
+    registrationDate?: Date | string | null
+    registrationFee?: Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: string | null
+    facts?: string | null
+    relatedLaws?: string | null
+    referredThrough?: string | null
+    noticeStatus?: string | null
+    fullJudgmentDate?: Date | string | null
+    judgmentVerifyDate?: Date | string | null
+    status?: string
+    paymentStatus?: string
+    createdAt?: Date | string
+    lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
+    parties?: CasePartyCreateNestedManyWithoutCaseInput
+    hearings?: CaseHearingCreateNestedManyWithoutCaseInput
+    pleadings?: CasePleadingCreateNestedManyWithoutCaseInput
+    proceedings?: CourtProceedingCreateNestedManyWithoutCaseInput
+    precedents?: CasePrecedentCreateNestedManyWithoutCaseInput
+    payments?: CasePaymentCreateNestedManyWithoutCaseInput
+    counselings?: CaseCounselingCreateNestedManyWithoutCaseInput
+    documents?: CaseDocumentCreateNestedManyWithoutCaseInput
+  }
+
+  export type CaseUncheckedCreateWithoutNatureInput = {
+    id?: string
+    caseNumber: string
+    caseName: string
+    registrationDate?: Date | string | null
+    registrationFee?: Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: string | null
+    facts?: string | null
+    relatedLaws?: string | null
+    referredThrough?: string | null
+    noticeStatus?: string | null
+    fullJudgmentDate?: Date | string | null
+    judgmentVerifyDate?: Date | string | null
+    status?: string
+    paymentStatus?: string
+    createdAt?: Date | string
+    lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
+    parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
+    hearings?: CaseHearingUncheckedCreateNestedManyWithoutCaseInput
+    pleadings?: CasePleadingUncheckedCreateNestedManyWithoutCaseInput
+    proceedings?: CourtProceedingUncheckedCreateNestedManyWithoutCaseInput
+    precedents?: CasePrecedentUncheckedCreateNestedManyWithoutCaseInput
+    payments?: CasePaymentUncheckedCreateNestedManyWithoutCaseInput
+    counselings?: CaseCounselingUncheckedCreateNestedManyWithoutCaseInput
+    documents?: CaseDocumentUncheckedCreateNestedManyWithoutCaseInput
+  }
+
+  export type CaseCreateOrConnectWithoutNatureInput = {
+    where: CaseWhereUniqueInput
+    create: XOR<CaseCreateWithoutNatureInput, CaseUncheckedCreateWithoutNatureInput>
+  }
+
+  export type CaseCreateManyNatureInputEnvelope = {
+    data: CaseCreateManyNatureInput | CaseCreateManyNatureInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CaseUpsertWithWhereUniqueWithoutNatureInput = {
+    where: CaseWhereUniqueInput
+    update: XOR<CaseUpdateWithoutNatureInput, CaseUncheckedUpdateWithoutNatureInput>
+    create: XOR<CaseCreateWithoutNatureInput, CaseUncheckedCreateWithoutNatureInput>
+  }
+
+  export type CaseUpdateWithWhereUniqueWithoutNatureInput = {
+    where: CaseWhereUniqueInput
+    data: XOR<CaseUpdateWithoutNatureInput, CaseUncheckedUpdateWithoutNatureInput>
+  }
+
+  export type CaseUpdateManyWithWhereWithoutNatureInput = {
+    where: CaseScalarWhereInput
+    data: XOR<CaseUpdateManyMutationInput, CaseUncheckedUpdateManyWithoutNatureInput>
+  }
+
+  export type CaseScalarWhereInput = {
+    AND?: CaseScalarWhereInput | CaseScalarWhereInput[]
+    OR?: CaseScalarWhereInput[]
+    NOT?: CaseScalarWhereInput | CaseScalarWhereInput[]
+    id?: StringFilter<"Case"> | string
+    caseNumber?: StringFilter<"Case"> | string
+    caseName?: StringFilter<"Case"> | string
+    natureId?: StringFilter<"Case"> | string
+    registrationDate?: DateTimeNullableFilter<"Case"> | Date | string | null
+    registrationFee?: DecimalNullableFilter<"Case"> | Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: StringNullableFilter<"Case"> | string | null
+    facts?: StringNullableFilter<"Case"> | string | null
+    relatedLaws?: StringNullableFilter<"Case"> | string | null
+    referredThrough?: StringNullableFilter<"Case"> | string | null
+    noticeStatus?: StringNullableFilter<"Case"> | string | null
+    fullJudgmentDate?: DateTimeNullableFilter<"Case"> | Date | string | null
+    judgmentVerifyDate?: DateTimeNullableFilter<"Case"> | Date | string | null
+    status?: StringFilter<"Case"> | string
+    paymentStatus?: StringFilter<"Case"> | string
+    createdAt?: DateTimeFilter<"Case"> | Date | string
+  }
+
+  export type CasePartyCreateWithoutRoleInput = {
+    id?: string
+    partyName: string
+    fee?: Decimal | DecimalJsLike | number | string | null
+    contactInfo?: string | null
+    case: CaseCreateNestedOneWithoutPartiesInput
+  }
+
+  export type CasePartyUncheckedCreateWithoutRoleInput = {
+    id?: string
+    caseId: string
+    partyName: string
+    fee?: Decimal | DecimalJsLike | number | string | null
+    contactInfo?: string | null
+  }
+
+  export type CasePartyCreateOrConnectWithoutRoleInput = {
+    where: CasePartyWhereUniqueInput
+    create: XOR<CasePartyCreateWithoutRoleInput, CasePartyUncheckedCreateWithoutRoleInput>
+  }
+
+  export type CasePartyCreateManyRoleInputEnvelope = {
+    data: CasePartyCreateManyRoleInput | CasePartyCreateManyRoleInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CasePartyUpsertWithWhereUniqueWithoutRoleInput = {
+    where: CasePartyWhereUniqueInput
+    update: XOR<CasePartyUpdateWithoutRoleInput, CasePartyUncheckedUpdateWithoutRoleInput>
+    create: XOR<CasePartyCreateWithoutRoleInput, CasePartyUncheckedCreateWithoutRoleInput>
+  }
+
+  export type CasePartyUpdateWithWhereUniqueWithoutRoleInput = {
+    where: CasePartyWhereUniqueInput
+    data: XOR<CasePartyUpdateWithoutRoleInput, CasePartyUncheckedUpdateWithoutRoleInput>
+  }
+
+  export type CasePartyUpdateManyWithWhereWithoutRoleInput = {
+    where: CasePartyScalarWhereInput
+    data: XOR<CasePartyUpdateManyMutationInput, CasePartyUncheckedUpdateManyWithoutRoleInput>
+  }
+
+  export type CasePartyScalarWhereInput = {
+    AND?: CasePartyScalarWhereInput | CasePartyScalarWhereInput[]
+    OR?: CasePartyScalarWhereInput[]
+    NOT?: CasePartyScalarWhereInput | CasePartyScalarWhereInput[]
+    id?: StringFilter<"CaseParty"> | string
+    caseId?: StringFilter<"CaseParty"> | string
+    partyName?: StringFilter<"CaseParty"> | string
+    roleId?: StringFilter<"CaseParty"> | string
+    fee?: DecimalNullableFilter<"CaseParty"> | Decimal | DecimalJsLike | number | string | null
+    contactInfo?: StringNullableFilter<"CaseParty"> | string | null
+  }
+
+  export type CaseNatureCreateWithoutCasesInput = {
+    id?: string
+    name: string
+    nepaliName?: string | null
+  }
+
+  export type CaseNatureUncheckedCreateWithoutCasesInput = {
+    id?: string
+    name: string
+    nepaliName?: string | null
+  }
+
+  export type CaseNatureCreateOrConnectWithoutCasesInput = {
+    where: CaseNatureWhereUniqueInput
+    create: XOR<CaseNatureCreateWithoutCasesInput, CaseNatureUncheckedCreateWithoutCasesInput>
+  }
+
+  export type CaseLawyerCreateWithoutCaseInput = {
+    isLead?: boolean
+    user: UserCreateNestedOneWithoutCases_as_lawyerInput
+  }
+
+  export type CaseLawyerUncheckedCreateWithoutCaseInput = {
+    userId: string
+    isLead?: boolean
+  }
+
+  export type CaseLawyerCreateOrConnectWithoutCaseInput = {
+    where: CaseLawyerWhereUniqueInput
+    create: XOR<CaseLawyerCreateWithoutCaseInput, CaseLawyerUncheckedCreateWithoutCaseInput>
+  }
+
+  export type CaseLawyerCreateManyCaseInputEnvelope = {
+    data: CaseLawyerCreateManyCaseInput | CaseLawyerCreateManyCaseInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CasePartyCreateWithoutCaseInput = {
+    id?: string
+    partyName: string
+    fee?: Decimal | DecimalJsLike | number | string | null
+    contactInfo?: string | null
+    role: PartyRoleCreateNestedOneWithoutPartiesInput
+  }
+
+  export type CasePartyUncheckedCreateWithoutCaseInput = {
+    id?: string
+    partyName: string
+    roleId: string
+    fee?: Decimal | DecimalJsLike | number | string | null
+    contactInfo?: string | null
+  }
+
+  export type CasePartyCreateOrConnectWithoutCaseInput = {
+    where: CasePartyWhereUniqueInput
+    create: XOR<CasePartyCreateWithoutCaseInput, CasePartyUncheckedCreateWithoutCaseInput>
+  }
+
+  export type CasePartyCreateManyCaseInputEnvelope = {
+    data: CasePartyCreateManyCaseInput | CasePartyCreateManyCaseInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CaseHearingCreateWithoutCaseInput = {
+    id?: string
+    nextHearingDate?: Date | string | null
+    hearingDate?: Date | string | null
+    hearingOrder?: string | null
+    judgeName?: string | null
+  }
+
+  export type CaseHearingUncheckedCreateWithoutCaseInput = {
+    id?: string
+    nextHearingDate?: Date | string | null
+    hearingDate?: Date | string | null
+    hearingOrder?: string | null
+    judgeName?: string | null
+  }
+
+  export type CaseHearingCreateOrConnectWithoutCaseInput = {
+    where: CaseHearingWhereUniqueInput
+    create: XOR<CaseHearingCreateWithoutCaseInput, CaseHearingUncheckedCreateWithoutCaseInput>
+  }
+
+  export type CaseHearingCreateManyCaseInputEnvelope = {
+    data: CaseHearingCreateManyCaseInput | CaseHearingCreateManyCaseInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CasePleadingCreateWithoutCaseInput = {
+    id?: string
+    pleadingDate?: Date | string | null
+    pleadingNotes: string
+    pleader?: UserCreateNestedOneWithoutCases_as_pleaderInput
+  }
+
+  export type CasePleadingUncheckedCreateWithoutCaseInput = {
+    id?: string
+    pleaderUserId?: string | null
+    pleadingDate?: Date | string | null
+    pleadingNotes: string
+  }
+
+  export type CasePleadingCreateOrConnectWithoutCaseInput = {
+    where: CasePleadingWhereUniqueInput
+    create: XOR<CasePleadingCreateWithoutCaseInput, CasePleadingUncheckedCreateWithoutCaseInput>
+  }
+
+  export type CasePleadingCreateManyCaseInputEnvelope = {
+    data: CasePleadingCreateManyCaseInput | CasePleadingCreateManyCaseInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CourtProceedingCreateWithoutCaseInput = {
+    id?: string
+    courtName: string
+    judgeName?: string | null
+    chargeCounseling?: string | null
+    verdict?: string | null
+    courtLevel: CourtLevelCreateNestedOneWithoutProceedingsInput
+  }
+
+  export type CourtProceedingUncheckedCreateWithoutCaseInput = {
+    id?: string
+    courtLevelId: string
+    courtName: string
+    judgeName?: string | null
+    chargeCounseling?: string | null
+    verdict?: string | null
+  }
+
+  export type CourtProceedingCreateOrConnectWithoutCaseInput = {
+    where: CourtProceedingWhereUniqueInput
+    create: XOR<CourtProceedingCreateWithoutCaseInput, CourtProceedingUncheckedCreateWithoutCaseInput>
+  }
+
+  export type CourtProceedingCreateManyCaseInputEnvelope = {
+    data: CourtProceedingCreateManyCaseInput | CourtProceedingCreateManyCaseInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CasePrecedentCreateWithoutCaseInput = {
+    id?: string
+    decisionNumber?: string | null
+    plaintiff?: string | null
+    defendant?: string | null
+    citationNotes?: string | null
+  }
+
+  export type CasePrecedentUncheckedCreateWithoutCaseInput = {
+    id?: string
+    decisionNumber?: string | null
+    plaintiff?: string | null
+    defendant?: string | null
+    citationNotes?: string | null
+  }
+
+  export type CasePrecedentCreateOrConnectWithoutCaseInput = {
+    where: CasePrecedentWhereUniqueInput
+    create: XOR<CasePrecedentCreateWithoutCaseInput, CasePrecedentUncheckedCreateWithoutCaseInput>
+  }
+
+  export type CasePrecedentCreateManyCaseInputEnvelope = {
+    data: CasePrecedentCreateManyCaseInput | CasePrecedentCreateManyCaseInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CasePaymentCreateWithoutCaseInput = {
+    id?: string
+    amount: Decimal | DecimalJsLike | number | string
+    paymentDate?: Date | string | null
+    method?: string | null
+    referenceNo?: string | null
+    notes?: string | null
+    createdAt?: Date | string
+  }
+
+  export type CasePaymentUncheckedCreateWithoutCaseInput = {
+    id?: string
+    amount: Decimal | DecimalJsLike | number | string
+    paymentDate?: Date | string | null
+    method?: string | null
+    referenceNo?: string | null
+    notes?: string | null
+    createdAt?: Date | string
+  }
+
+  export type CasePaymentCreateOrConnectWithoutCaseInput = {
+    where: CasePaymentWhereUniqueInput
+    create: XOR<CasePaymentCreateWithoutCaseInput, CasePaymentUncheckedCreateWithoutCaseInput>
+  }
+
+  export type CasePaymentCreateManyCaseInputEnvelope = {
+    data: CasePaymentCreateManyCaseInput | CasePaymentCreateManyCaseInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CaseCounselingCreateWithoutCaseInput = {
+    id?: string
+    date?: Date | string | null
+    notes: string
+    createdAt?: Date | string
+    counselor?: UserCreateNestedOneWithoutCases_as_counselorInput
+  }
+
+  export type CaseCounselingUncheckedCreateWithoutCaseInput = {
+    id?: string
+    counselorUserId?: string | null
+    date?: Date | string | null
+    notes: string
+    createdAt?: Date | string
+  }
+
+  export type CaseCounselingCreateOrConnectWithoutCaseInput = {
+    where: CaseCounselingWhereUniqueInput
+    create: XOR<CaseCounselingCreateWithoutCaseInput, CaseCounselingUncheckedCreateWithoutCaseInput>
+  }
+
+  export type CaseCounselingCreateManyCaseInputEnvelope = {
+    data: CaseCounselingCreateManyCaseInput | CaseCounselingCreateManyCaseInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CaseDocumentCreateWithoutCaseInput = {
+    id?: string
+    documentUrl: string
+    fileName: string
+    description?: string | null
+    createdAt?: Date | string
+  }
+
+  export type CaseDocumentUncheckedCreateWithoutCaseInput = {
+    id?: string
+    documentUrl: string
+    fileName: string
+    description?: string | null
+    createdAt?: Date | string
+  }
+
+  export type CaseDocumentCreateOrConnectWithoutCaseInput = {
+    where: CaseDocumentWhereUniqueInput
+    create: XOR<CaseDocumentCreateWithoutCaseInput, CaseDocumentUncheckedCreateWithoutCaseInput>
+  }
+
+  export type CaseDocumentCreateManyCaseInputEnvelope = {
+    data: CaseDocumentCreateManyCaseInput | CaseDocumentCreateManyCaseInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CaseNatureUpsertWithoutCasesInput = {
+    update: XOR<CaseNatureUpdateWithoutCasesInput, CaseNatureUncheckedUpdateWithoutCasesInput>
+    create: XOR<CaseNatureCreateWithoutCasesInput, CaseNatureUncheckedCreateWithoutCasesInput>
+    where?: CaseNatureWhereInput
+  }
+
+  export type CaseNatureUpdateToOneWithWhereWithoutCasesInput = {
+    where?: CaseNatureWhereInput
+    data: XOR<CaseNatureUpdateWithoutCasesInput, CaseNatureUncheckedUpdateWithoutCasesInput>
+  }
+
+  export type CaseNatureUpdateWithoutCasesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    nepaliName?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CaseNatureUncheckedUpdateWithoutCasesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    nepaliName?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CaseLawyerUpsertWithWhereUniqueWithoutCaseInput = {
+    where: CaseLawyerWhereUniqueInput
+    update: XOR<CaseLawyerUpdateWithoutCaseInput, CaseLawyerUncheckedUpdateWithoutCaseInput>
+    create: XOR<CaseLawyerCreateWithoutCaseInput, CaseLawyerUncheckedCreateWithoutCaseInput>
+  }
+
+  export type CaseLawyerUpdateWithWhereUniqueWithoutCaseInput = {
+    where: CaseLawyerWhereUniqueInput
+    data: XOR<CaseLawyerUpdateWithoutCaseInput, CaseLawyerUncheckedUpdateWithoutCaseInput>
+  }
+
+  export type CaseLawyerUpdateManyWithWhereWithoutCaseInput = {
+    where: CaseLawyerScalarWhereInput
+    data: XOR<CaseLawyerUpdateManyMutationInput, CaseLawyerUncheckedUpdateManyWithoutCaseInput>
+  }
+
+  export type CasePartyUpsertWithWhereUniqueWithoutCaseInput = {
+    where: CasePartyWhereUniqueInput
+    update: XOR<CasePartyUpdateWithoutCaseInput, CasePartyUncheckedUpdateWithoutCaseInput>
+    create: XOR<CasePartyCreateWithoutCaseInput, CasePartyUncheckedCreateWithoutCaseInput>
+  }
+
+  export type CasePartyUpdateWithWhereUniqueWithoutCaseInput = {
+    where: CasePartyWhereUniqueInput
+    data: XOR<CasePartyUpdateWithoutCaseInput, CasePartyUncheckedUpdateWithoutCaseInput>
+  }
+
+  export type CasePartyUpdateManyWithWhereWithoutCaseInput = {
+    where: CasePartyScalarWhereInput
+    data: XOR<CasePartyUpdateManyMutationInput, CasePartyUncheckedUpdateManyWithoutCaseInput>
+  }
+
+  export type CaseHearingUpsertWithWhereUniqueWithoutCaseInput = {
+    where: CaseHearingWhereUniqueInput
+    update: XOR<CaseHearingUpdateWithoutCaseInput, CaseHearingUncheckedUpdateWithoutCaseInput>
+    create: XOR<CaseHearingCreateWithoutCaseInput, CaseHearingUncheckedCreateWithoutCaseInput>
+  }
+
+  export type CaseHearingUpdateWithWhereUniqueWithoutCaseInput = {
+    where: CaseHearingWhereUniqueInput
+    data: XOR<CaseHearingUpdateWithoutCaseInput, CaseHearingUncheckedUpdateWithoutCaseInput>
+  }
+
+  export type CaseHearingUpdateManyWithWhereWithoutCaseInput = {
+    where: CaseHearingScalarWhereInput
+    data: XOR<CaseHearingUpdateManyMutationInput, CaseHearingUncheckedUpdateManyWithoutCaseInput>
+  }
+
+  export type CaseHearingScalarWhereInput = {
+    AND?: CaseHearingScalarWhereInput | CaseHearingScalarWhereInput[]
+    OR?: CaseHearingScalarWhereInput[]
+    NOT?: CaseHearingScalarWhereInput | CaseHearingScalarWhereInput[]
+    id?: StringFilter<"CaseHearing"> | string
+    caseId?: StringFilter<"CaseHearing"> | string
+    nextHearingDate?: DateTimeNullableFilter<"CaseHearing"> | Date | string | null
+    hearingDate?: DateTimeNullableFilter<"CaseHearing"> | Date | string | null
+    hearingOrder?: StringNullableFilter<"CaseHearing"> | string | null
+    judgeName?: StringNullableFilter<"CaseHearing"> | string | null
+  }
+
+  export type CasePleadingUpsertWithWhereUniqueWithoutCaseInput = {
+    where: CasePleadingWhereUniqueInput
+    update: XOR<CasePleadingUpdateWithoutCaseInput, CasePleadingUncheckedUpdateWithoutCaseInput>
+    create: XOR<CasePleadingCreateWithoutCaseInput, CasePleadingUncheckedCreateWithoutCaseInput>
+  }
+
+  export type CasePleadingUpdateWithWhereUniqueWithoutCaseInput = {
+    where: CasePleadingWhereUniqueInput
+    data: XOR<CasePleadingUpdateWithoutCaseInput, CasePleadingUncheckedUpdateWithoutCaseInput>
+  }
+
+  export type CasePleadingUpdateManyWithWhereWithoutCaseInput = {
+    where: CasePleadingScalarWhereInput
+    data: XOR<CasePleadingUpdateManyMutationInput, CasePleadingUncheckedUpdateManyWithoutCaseInput>
+  }
+
+  export type CourtProceedingUpsertWithWhereUniqueWithoutCaseInput = {
+    where: CourtProceedingWhereUniqueInput
+    update: XOR<CourtProceedingUpdateWithoutCaseInput, CourtProceedingUncheckedUpdateWithoutCaseInput>
+    create: XOR<CourtProceedingCreateWithoutCaseInput, CourtProceedingUncheckedCreateWithoutCaseInput>
+  }
+
+  export type CourtProceedingUpdateWithWhereUniqueWithoutCaseInput = {
+    where: CourtProceedingWhereUniqueInput
+    data: XOR<CourtProceedingUpdateWithoutCaseInput, CourtProceedingUncheckedUpdateWithoutCaseInput>
+  }
+
+  export type CourtProceedingUpdateManyWithWhereWithoutCaseInput = {
+    where: CourtProceedingScalarWhereInput
+    data: XOR<CourtProceedingUpdateManyMutationInput, CourtProceedingUncheckedUpdateManyWithoutCaseInput>
+  }
+
+  export type CasePrecedentUpsertWithWhereUniqueWithoutCaseInput = {
+    where: CasePrecedentWhereUniqueInput
+    update: XOR<CasePrecedentUpdateWithoutCaseInput, CasePrecedentUncheckedUpdateWithoutCaseInput>
+    create: XOR<CasePrecedentCreateWithoutCaseInput, CasePrecedentUncheckedCreateWithoutCaseInput>
+  }
+
+  export type CasePrecedentUpdateWithWhereUniqueWithoutCaseInput = {
+    where: CasePrecedentWhereUniqueInput
+    data: XOR<CasePrecedentUpdateWithoutCaseInput, CasePrecedentUncheckedUpdateWithoutCaseInput>
+  }
+
+  export type CasePrecedentUpdateManyWithWhereWithoutCaseInput = {
+    where: CasePrecedentScalarWhereInput
+    data: XOR<CasePrecedentUpdateManyMutationInput, CasePrecedentUncheckedUpdateManyWithoutCaseInput>
+  }
+
+  export type CasePrecedentScalarWhereInput = {
+    AND?: CasePrecedentScalarWhereInput | CasePrecedentScalarWhereInput[]
+    OR?: CasePrecedentScalarWhereInput[]
+    NOT?: CasePrecedentScalarWhereInput | CasePrecedentScalarWhereInput[]
+    id?: StringFilter<"CasePrecedent"> | string
+    caseId?: StringFilter<"CasePrecedent"> | string
+    decisionNumber?: StringNullableFilter<"CasePrecedent"> | string | null
+    plaintiff?: StringNullableFilter<"CasePrecedent"> | string | null
+    defendant?: StringNullableFilter<"CasePrecedent"> | string | null
+    citationNotes?: StringNullableFilter<"CasePrecedent"> | string | null
+  }
+
+  export type CasePaymentUpsertWithWhereUniqueWithoutCaseInput = {
+    where: CasePaymentWhereUniqueInput
+    update: XOR<CasePaymentUpdateWithoutCaseInput, CasePaymentUncheckedUpdateWithoutCaseInput>
+    create: XOR<CasePaymentCreateWithoutCaseInput, CasePaymentUncheckedCreateWithoutCaseInput>
+  }
+
+  export type CasePaymentUpdateWithWhereUniqueWithoutCaseInput = {
+    where: CasePaymentWhereUniqueInput
+    data: XOR<CasePaymentUpdateWithoutCaseInput, CasePaymentUncheckedUpdateWithoutCaseInput>
+  }
+
+  export type CasePaymentUpdateManyWithWhereWithoutCaseInput = {
+    where: CasePaymentScalarWhereInput
+    data: XOR<CasePaymentUpdateManyMutationInput, CasePaymentUncheckedUpdateManyWithoutCaseInput>
+  }
+
+  export type CasePaymentScalarWhereInput = {
+    AND?: CasePaymentScalarWhereInput | CasePaymentScalarWhereInput[]
+    OR?: CasePaymentScalarWhereInput[]
+    NOT?: CasePaymentScalarWhereInput | CasePaymentScalarWhereInput[]
+    id?: StringFilter<"CasePayment"> | string
+    caseId?: StringFilter<"CasePayment"> | string
+    amount?: DecimalFilter<"CasePayment"> | Decimal | DecimalJsLike | number | string
+    paymentDate?: DateTimeNullableFilter<"CasePayment"> | Date | string | null
+    method?: StringNullableFilter<"CasePayment"> | string | null
+    referenceNo?: StringNullableFilter<"CasePayment"> | string | null
+    notes?: StringNullableFilter<"CasePayment"> | string | null
+    createdAt?: DateTimeFilter<"CasePayment"> | Date | string
+  }
+
+  export type CaseCounselingUpsertWithWhereUniqueWithoutCaseInput = {
+    where: CaseCounselingWhereUniqueInput
+    update: XOR<CaseCounselingUpdateWithoutCaseInput, CaseCounselingUncheckedUpdateWithoutCaseInput>
+    create: XOR<CaseCounselingCreateWithoutCaseInput, CaseCounselingUncheckedCreateWithoutCaseInput>
+  }
+
+  export type CaseCounselingUpdateWithWhereUniqueWithoutCaseInput = {
+    where: CaseCounselingWhereUniqueInput
+    data: XOR<CaseCounselingUpdateWithoutCaseInput, CaseCounselingUncheckedUpdateWithoutCaseInput>
+  }
+
+  export type CaseCounselingUpdateManyWithWhereWithoutCaseInput = {
+    where: CaseCounselingScalarWhereInput
+    data: XOR<CaseCounselingUpdateManyMutationInput, CaseCounselingUncheckedUpdateManyWithoutCaseInput>
+  }
+
+  export type CaseDocumentUpsertWithWhereUniqueWithoutCaseInput = {
+    where: CaseDocumentWhereUniqueInput
+    update: XOR<CaseDocumentUpdateWithoutCaseInput, CaseDocumentUncheckedUpdateWithoutCaseInput>
+    create: XOR<CaseDocumentCreateWithoutCaseInput, CaseDocumentUncheckedCreateWithoutCaseInput>
+  }
+
+  export type CaseDocumentUpdateWithWhereUniqueWithoutCaseInput = {
+    where: CaseDocumentWhereUniqueInput
+    data: XOR<CaseDocumentUpdateWithoutCaseInput, CaseDocumentUncheckedUpdateWithoutCaseInput>
+  }
+
+  export type CaseDocumentUpdateManyWithWhereWithoutCaseInput = {
+    where: CaseDocumentScalarWhereInput
+    data: XOR<CaseDocumentUpdateManyMutationInput, CaseDocumentUncheckedUpdateManyWithoutCaseInput>
+  }
+
+  export type CaseDocumentScalarWhereInput = {
+    AND?: CaseDocumentScalarWhereInput | CaseDocumentScalarWhereInput[]
+    OR?: CaseDocumentScalarWhereInput[]
+    NOT?: CaseDocumentScalarWhereInput | CaseDocumentScalarWhereInput[]
+    id?: StringFilter<"CaseDocument"> | string
+    caseId?: StringFilter<"CaseDocument"> | string
+    documentUrl?: StringFilter<"CaseDocument"> | string
+    fileName?: StringFilter<"CaseDocument"> | string
+    description?: StringNullableFilter<"CaseDocument"> | string | null
+    createdAt?: DateTimeFilter<"CaseDocument"> | Date | string
+  }
+
+  export type CaseCreateWithoutLawyersInput = {
+    id?: string
+    caseNumber: string
+    caseName: string
+    registrationDate?: Date | string | null
+    registrationFee?: Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: string | null
+    facts?: string | null
+    relatedLaws?: string | null
+    referredThrough?: string | null
+    noticeStatus?: string | null
+    fullJudgmentDate?: Date | string | null
+    judgmentVerifyDate?: Date | string | null
+    status?: string
+    paymentStatus?: string
+    createdAt?: Date | string
+    nature: CaseNatureCreateNestedOneWithoutCasesInput
+    parties?: CasePartyCreateNestedManyWithoutCaseInput
+    hearings?: CaseHearingCreateNestedManyWithoutCaseInput
+    pleadings?: CasePleadingCreateNestedManyWithoutCaseInput
+    proceedings?: CourtProceedingCreateNestedManyWithoutCaseInput
+    precedents?: CasePrecedentCreateNestedManyWithoutCaseInput
+    payments?: CasePaymentCreateNestedManyWithoutCaseInput
+    counselings?: CaseCounselingCreateNestedManyWithoutCaseInput
+    documents?: CaseDocumentCreateNestedManyWithoutCaseInput
+  }
+
+  export type CaseUncheckedCreateWithoutLawyersInput = {
+    id?: string
+    caseNumber: string
+    caseName: string
+    natureId: string
+    registrationDate?: Date | string | null
+    registrationFee?: Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: string | null
+    facts?: string | null
+    relatedLaws?: string | null
+    referredThrough?: string | null
+    noticeStatus?: string | null
+    fullJudgmentDate?: Date | string | null
+    judgmentVerifyDate?: Date | string | null
+    status?: string
+    paymentStatus?: string
+    createdAt?: Date | string
+    parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
+    hearings?: CaseHearingUncheckedCreateNestedManyWithoutCaseInput
+    pleadings?: CasePleadingUncheckedCreateNestedManyWithoutCaseInput
+    proceedings?: CourtProceedingUncheckedCreateNestedManyWithoutCaseInput
+    precedents?: CasePrecedentUncheckedCreateNestedManyWithoutCaseInput
+    payments?: CasePaymentUncheckedCreateNestedManyWithoutCaseInput
+    counselings?: CaseCounselingUncheckedCreateNestedManyWithoutCaseInput
+    documents?: CaseDocumentUncheckedCreateNestedManyWithoutCaseInput
+  }
+
+  export type CaseCreateOrConnectWithoutLawyersInput = {
+    where: CaseWhereUniqueInput
+    create: XOR<CaseCreateWithoutLawyersInput, CaseUncheckedCreateWithoutLawyersInput>
+  }
+
+  export type UserCreateWithoutCases_as_lawyerInput = {
+    id?: string
+    email: string
+    first_name: string
+    last_name: string
+    password?: string | null
+    status?: string
+    invitation_token?: string | null
+    invitation_expires_at?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    detail?: NullableJsonNullValueInput | InputJsonValue
+    avatar?: ResourceCreateNestedOneWithoutUsersInput
+    role?: RoleCreateNestedOneWithoutUsersInput
+    notifications?: NotificationCreateNestedManyWithoutUserInput
+    refresh_tokens?: RefreshTokenCreateNestedManyWithoutUserInput
+    reset_tokens?: PasswordResetTokenCreateNestedManyWithoutUserInput
+    pages?: PageCreateNestedManyWithoutAuthorInput
+    cases_as_pleader?: CasePleadingCreateNestedManyWithoutPleaderInput
+    cases_as_counselor?: CaseCounselingCreateNestedManyWithoutCounselorInput
+  }
+
+  export type UserUncheckedCreateWithoutCases_as_lawyerInput = {
+    id?: string
+    email: string
+    first_name: string
+    last_name: string
+    password?: string | null
+    status?: string
+    invitation_token?: string | null
+    invitation_expires_at?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    detail?: NullableJsonNullValueInput | InputJsonValue
+    avatar_id?: string | null
+    role_id?: string | null
+    notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
+    refresh_tokens?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
+    reset_tokens?: PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
+    pages?: PageUncheckedCreateNestedManyWithoutAuthorInput
+    cases_as_pleader?: CasePleadingUncheckedCreateNestedManyWithoutPleaderInput
+    cases_as_counselor?: CaseCounselingUncheckedCreateNestedManyWithoutCounselorInput
+  }
+
+  export type UserCreateOrConnectWithoutCases_as_lawyerInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutCases_as_lawyerInput, UserUncheckedCreateWithoutCases_as_lawyerInput>
+  }
+
+  export type CaseUpsertWithoutLawyersInput = {
+    update: XOR<CaseUpdateWithoutLawyersInput, CaseUncheckedUpdateWithoutLawyersInput>
+    create: XOR<CaseCreateWithoutLawyersInput, CaseUncheckedCreateWithoutLawyersInput>
+    where?: CaseWhereInput
+  }
+
+  export type CaseUpdateToOneWithWhereWithoutLawyersInput = {
+    where?: CaseWhereInput
+    data: XOR<CaseUpdateWithoutLawyersInput, CaseUncheckedUpdateWithoutLawyersInput>
+  }
+
+  export type CaseUpdateWithoutLawyersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseNumber?: StringFieldUpdateOperationsInput | string
+    caseName?: StringFieldUpdateOperationsInput | string
+    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
+    facts?: NullableStringFieldUpdateOperationsInput | string | null
+    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
+    noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    paymentStatus?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    nature?: CaseNatureUpdateOneRequiredWithoutCasesNestedInput
+    parties?: CasePartyUpdateManyWithoutCaseNestedInput
+    hearings?: CaseHearingUpdateManyWithoutCaseNestedInput
+    pleadings?: CasePleadingUpdateManyWithoutCaseNestedInput
+    proceedings?: CourtProceedingUpdateManyWithoutCaseNestedInput
+    precedents?: CasePrecedentUpdateManyWithoutCaseNestedInput
+    payments?: CasePaymentUpdateManyWithoutCaseNestedInput
+    counselings?: CaseCounselingUpdateManyWithoutCaseNestedInput
+    documents?: CaseDocumentUpdateManyWithoutCaseNestedInput
+  }
+
+  export type CaseUncheckedUpdateWithoutLawyersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseNumber?: StringFieldUpdateOperationsInput | string
+    caseName?: StringFieldUpdateOperationsInput | string
+    natureId?: StringFieldUpdateOperationsInput | string
+    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
+    facts?: NullableStringFieldUpdateOperationsInput | string | null
+    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
+    noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    paymentStatus?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
+    hearings?: CaseHearingUncheckedUpdateManyWithoutCaseNestedInput
+    pleadings?: CasePleadingUncheckedUpdateManyWithoutCaseNestedInput
+    proceedings?: CourtProceedingUncheckedUpdateManyWithoutCaseNestedInput
+    precedents?: CasePrecedentUncheckedUpdateManyWithoutCaseNestedInput
+    payments?: CasePaymentUncheckedUpdateManyWithoutCaseNestedInput
+    counselings?: CaseCounselingUncheckedUpdateManyWithoutCaseNestedInput
+    documents?: CaseDocumentUncheckedUpdateManyWithoutCaseNestedInput
+  }
+
+  export type UserUpsertWithoutCases_as_lawyerInput = {
+    update: XOR<UserUpdateWithoutCases_as_lawyerInput, UserUncheckedUpdateWithoutCases_as_lawyerInput>
+    create: XOR<UserCreateWithoutCases_as_lawyerInput, UserUncheckedCreateWithoutCases_as_lawyerInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutCases_as_lawyerInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutCases_as_lawyerInput, UserUncheckedUpdateWithoutCases_as_lawyerInput>
+  }
+
+  export type UserUpdateWithoutCases_as_lawyerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    first_name?: StringFieldUpdateOperationsInput | string
+    last_name?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    invitation_token?: NullableStringFieldUpdateOperationsInput | string | null
+    invitation_expires_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    detail?: NullableJsonNullValueInput | InputJsonValue
+    avatar?: ResourceUpdateOneWithoutUsersNestedInput
+    role?: RoleUpdateOneWithoutUsersNestedInput
+    notifications?: NotificationUpdateManyWithoutUserNestedInput
+    refresh_tokens?: RefreshTokenUpdateManyWithoutUserNestedInput
+    reset_tokens?: PasswordResetTokenUpdateManyWithoutUserNestedInput
+    pages?: PageUpdateManyWithoutAuthorNestedInput
+    cases_as_pleader?: CasePleadingUpdateManyWithoutPleaderNestedInput
+    cases_as_counselor?: CaseCounselingUpdateManyWithoutCounselorNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutCases_as_lawyerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    first_name?: StringFieldUpdateOperationsInput | string
+    last_name?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    invitation_token?: NullableStringFieldUpdateOperationsInput | string | null
+    invitation_expires_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    detail?: NullableJsonNullValueInput | InputJsonValue
+    avatar_id?: NullableStringFieldUpdateOperationsInput | string | null
+    role_id?: NullableStringFieldUpdateOperationsInput | string | null
+    notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+    refresh_tokens?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
+    reset_tokens?: PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
+    pages?: PageUncheckedUpdateManyWithoutAuthorNestedInput
+    cases_as_pleader?: CasePleadingUncheckedUpdateManyWithoutPleaderNestedInput
+    cases_as_counselor?: CaseCounselingUncheckedUpdateManyWithoutCounselorNestedInput
+  }
+
+  export type CaseCreateWithoutPartiesInput = {
+    id?: string
+    caseNumber: string
+    caseName: string
+    registrationDate?: Date | string | null
+    registrationFee?: Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: string | null
+    facts?: string | null
+    relatedLaws?: string | null
+    referredThrough?: string | null
+    noticeStatus?: string | null
+    fullJudgmentDate?: Date | string | null
+    judgmentVerifyDate?: Date | string | null
+    status?: string
+    paymentStatus?: string
+    createdAt?: Date | string
+    nature: CaseNatureCreateNestedOneWithoutCasesInput
+    lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
+    hearings?: CaseHearingCreateNestedManyWithoutCaseInput
+    pleadings?: CasePleadingCreateNestedManyWithoutCaseInput
+    proceedings?: CourtProceedingCreateNestedManyWithoutCaseInput
+    precedents?: CasePrecedentCreateNestedManyWithoutCaseInput
+    payments?: CasePaymentCreateNestedManyWithoutCaseInput
+    counselings?: CaseCounselingCreateNestedManyWithoutCaseInput
+    documents?: CaseDocumentCreateNestedManyWithoutCaseInput
+  }
+
+  export type CaseUncheckedCreateWithoutPartiesInput = {
+    id?: string
+    caseNumber: string
+    caseName: string
+    natureId: string
+    registrationDate?: Date | string | null
+    registrationFee?: Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: string | null
+    facts?: string | null
+    relatedLaws?: string | null
+    referredThrough?: string | null
+    noticeStatus?: string | null
+    fullJudgmentDate?: Date | string | null
+    judgmentVerifyDate?: Date | string | null
+    status?: string
+    paymentStatus?: string
+    createdAt?: Date | string
+    lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
+    hearings?: CaseHearingUncheckedCreateNestedManyWithoutCaseInput
+    pleadings?: CasePleadingUncheckedCreateNestedManyWithoutCaseInput
+    proceedings?: CourtProceedingUncheckedCreateNestedManyWithoutCaseInput
+    precedents?: CasePrecedentUncheckedCreateNestedManyWithoutCaseInput
+    payments?: CasePaymentUncheckedCreateNestedManyWithoutCaseInput
+    counselings?: CaseCounselingUncheckedCreateNestedManyWithoutCaseInput
+    documents?: CaseDocumentUncheckedCreateNestedManyWithoutCaseInput
+  }
+
+  export type CaseCreateOrConnectWithoutPartiesInput = {
+    where: CaseWhereUniqueInput
+    create: XOR<CaseCreateWithoutPartiesInput, CaseUncheckedCreateWithoutPartiesInput>
+  }
+
+  export type PartyRoleCreateWithoutPartiesInput = {
+    id?: string
+    name: string
+    nepaliName?: string | null
+  }
+
+  export type PartyRoleUncheckedCreateWithoutPartiesInput = {
+    id?: string
+    name: string
+    nepaliName?: string | null
+  }
+
+  export type PartyRoleCreateOrConnectWithoutPartiesInput = {
+    where: PartyRoleWhereUniqueInput
+    create: XOR<PartyRoleCreateWithoutPartiesInput, PartyRoleUncheckedCreateWithoutPartiesInput>
+  }
+
+  export type CaseUpsertWithoutPartiesInput = {
+    update: XOR<CaseUpdateWithoutPartiesInput, CaseUncheckedUpdateWithoutPartiesInput>
+    create: XOR<CaseCreateWithoutPartiesInput, CaseUncheckedCreateWithoutPartiesInput>
+    where?: CaseWhereInput
+  }
+
+  export type CaseUpdateToOneWithWhereWithoutPartiesInput = {
+    where?: CaseWhereInput
+    data: XOR<CaseUpdateWithoutPartiesInput, CaseUncheckedUpdateWithoutPartiesInput>
+  }
+
+  export type CaseUpdateWithoutPartiesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseNumber?: StringFieldUpdateOperationsInput | string
+    caseName?: StringFieldUpdateOperationsInput | string
+    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
+    facts?: NullableStringFieldUpdateOperationsInput | string | null
+    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
+    noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    paymentStatus?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    nature?: CaseNatureUpdateOneRequiredWithoutCasesNestedInput
+    lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
+    hearings?: CaseHearingUpdateManyWithoutCaseNestedInput
+    pleadings?: CasePleadingUpdateManyWithoutCaseNestedInput
+    proceedings?: CourtProceedingUpdateManyWithoutCaseNestedInput
+    precedents?: CasePrecedentUpdateManyWithoutCaseNestedInput
+    payments?: CasePaymentUpdateManyWithoutCaseNestedInput
+    counselings?: CaseCounselingUpdateManyWithoutCaseNestedInput
+    documents?: CaseDocumentUpdateManyWithoutCaseNestedInput
+  }
+
+  export type CaseUncheckedUpdateWithoutPartiesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseNumber?: StringFieldUpdateOperationsInput | string
+    caseName?: StringFieldUpdateOperationsInput | string
+    natureId?: StringFieldUpdateOperationsInput | string
+    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
+    facts?: NullableStringFieldUpdateOperationsInput | string | null
+    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
+    noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    paymentStatus?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
+    hearings?: CaseHearingUncheckedUpdateManyWithoutCaseNestedInput
+    pleadings?: CasePleadingUncheckedUpdateManyWithoutCaseNestedInput
+    proceedings?: CourtProceedingUncheckedUpdateManyWithoutCaseNestedInput
+    precedents?: CasePrecedentUncheckedUpdateManyWithoutCaseNestedInput
+    payments?: CasePaymentUncheckedUpdateManyWithoutCaseNestedInput
+    counselings?: CaseCounselingUncheckedUpdateManyWithoutCaseNestedInput
+    documents?: CaseDocumentUncheckedUpdateManyWithoutCaseNestedInput
+  }
+
+  export type PartyRoleUpsertWithoutPartiesInput = {
+    update: XOR<PartyRoleUpdateWithoutPartiesInput, PartyRoleUncheckedUpdateWithoutPartiesInput>
+    create: XOR<PartyRoleCreateWithoutPartiesInput, PartyRoleUncheckedCreateWithoutPartiesInput>
+    where?: PartyRoleWhereInput
+  }
+
+  export type PartyRoleUpdateToOneWithWhereWithoutPartiesInput = {
+    where?: PartyRoleWhereInput
+    data: XOR<PartyRoleUpdateWithoutPartiesInput, PartyRoleUncheckedUpdateWithoutPartiesInput>
+  }
+
+  export type PartyRoleUpdateWithoutPartiesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    nepaliName?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type PartyRoleUncheckedUpdateWithoutPartiesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    nepaliName?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CaseCreateWithoutHearingsInput = {
+    id?: string
+    caseNumber: string
+    caseName: string
+    registrationDate?: Date | string | null
+    registrationFee?: Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: string | null
+    facts?: string | null
+    relatedLaws?: string | null
+    referredThrough?: string | null
+    noticeStatus?: string | null
+    fullJudgmentDate?: Date | string | null
+    judgmentVerifyDate?: Date | string | null
+    status?: string
+    paymentStatus?: string
+    createdAt?: Date | string
+    nature: CaseNatureCreateNestedOneWithoutCasesInput
+    lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
+    parties?: CasePartyCreateNestedManyWithoutCaseInput
+    pleadings?: CasePleadingCreateNestedManyWithoutCaseInput
+    proceedings?: CourtProceedingCreateNestedManyWithoutCaseInput
+    precedents?: CasePrecedentCreateNestedManyWithoutCaseInput
+    payments?: CasePaymentCreateNestedManyWithoutCaseInput
+    counselings?: CaseCounselingCreateNestedManyWithoutCaseInput
+    documents?: CaseDocumentCreateNestedManyWithoutCaseInput
+  }
+
+  export type CaseUncheckedCreateWithoutHearingsInput = {
+    id?: string
+    caseNumber: string
+    caseName: string
+    natureId: string
+    registrationDate?: Date | string | null
+    registrationFee?: Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: string | null
+    facts?: string | null
+    relatedLaws?: string | null
+    referredThrough?: string | null
+    noticeStatus?: string | null
+    fullJudgmentDate?: Date | string | null
+    judgmentVerifyDate?: Date | string | null
+    status?: string
+    paymentStatus?: string
+    createdAt?: Date | string
+    lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
+    parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
+    pleadings?: CasePleadingUncheckedCreateNestedManyWithoutCaseInput
+    proceedings?: CourtProceedingUncheckedCreateNestedManyWithoutCaseInput
+    precedents?: CasePrecedentUncheckedCreateNestedManyWithoutCaseInput
+    payments?: CasePaymentUncheckedCreateNestedManyWithoutCaseInput
+    counselings?: CaseCounselingUncheckedCreateNestedManyWithoutCaseInput
+    documents?: CaseDocumentUncheckedCreateNestedManyWithoutCaseInput
+  }
+
+  export type CaseCreateOrConnectWithoutHearingsInput = {
+    where: CaseWhereUniqueInput
+    create: XOR<CaseCreateWithoutHearingsInput, CaseUncheckedCreateWithoutHearingsInput>
+  }
+
+  export type CaseUpsertWithoutHearingsInput = {
+    update: XOR<CaseUpdateWithoutHearingsInput, CaseUncheckedUpdateWithoutHearingsInput>
+    create: XOR<CaseCreateWithoutHearingsInput, CaseUncheckedCreateWithoutHearingsInput>
+    where?: CaseWhereInput
+  }
+
+  export type CaseUpdateToOneWithWhereWithoutHearingsInput = {
+    where?: CaseWhereInput
+    data: XOR<CaseUpdateWithoutHearingsInput, CaseUncheckedUpdateWithoutHearingsInput>
+  }
+
+  export type CaseUpdateWithoutHearingsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseNumber?: StringFieldUpdateOperationsInput | string
+    caseName?: StringFieldUpdateOperationsInput | string
+    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
+    facts?: NullableStringFieldUpdateOperationsInput | string | null
+    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
+    noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    paymentStatus?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    nature?: CaseNatureUpdateOneRequiredWithoutCasesNestedInput
+    lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
+    parties?: CasePartyUpdateManyWithoutCaseNestedInput
+    pleadings?: CasePleadingUpdateManyWithoutCaseNestedInput
+    proceedings?: CourtProceedingUpdateManyWithoutCaseNestedInput
+    precedents?: CasePrecedentUpdateManyWithoutCaseNestedInput
+    payments?: CasePaymentUpdateManyWithoutCaseNestedInput
+    counselings?: CaseCounselingUpdateManyWithoutCaseNestedInput
+    documents?: CaseDocumentUpdateManyWithoutCaseNestedInput
+  }
+
+  export type CaseUncheckedUpdateWithoutHearingsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseNumber?: StringFieldUpdateOperationsInput | string
+    caseName?: StringFieldUpdateOperationsInput | string
+    natureId?: StringFieldUpdateOperationsInput | string
+    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
+    facts?: NullableStringFieldUpdateOperationsInput | string | null
+    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
+    noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    paymentStatus?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
+    parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
+    pleadings?: CasePleadingUncheckedUpdateManyWithoutCaseNestedInput
+    proceedings?: CourtProceedingUncheckedUpdateManyWithoutCaseNestedInput
+    precedents?: CasePrecedentUncheckedUpdateManyWithoutCaseNestedInput
+    payments?: CasePaymentUncheckedUpdateManyWithoutCaseNestedInput
+    counselings?: CaseCounselingUncheckedUpdateManyWithoutCaseNestedInput
+    documents?: CaseDocumentUncheckedUpdateManyWithoutCaseNestedInput
+  }
+
+  export type CaseCreateWithoutPleadingsInput = {
+    id?: string
+    caseNumber: string
+    caseName: string
+    registrationDate?: Date | string | null
+    registrationFee?: Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: string | null
+    facts?: string | null
+    relatedLaws?: string | null
+    referredThrough?: string | null
+    noticeStatus?: string | null
+    fullJudgmentDate?: Date | string | null
+    judgmentVerifyDate?: Date | string | null
+    status?: string
+    paymentStatus?: string
+    createdAt?: Date | string
+    nature: CaseNatureCreateNestedOneWithoutCasesInput
+    lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
+    parties?: CasePartyCreateNestedManyWithoutCaseInput
+    hearings?: CaseHearingCreateNestedManyWithoutCaseInput
+    proceedings?: CourtProceedingCreateNestedManyWithoutCaseInput
+    precedents?: CasePrecedentCreateNestedManyWithoutCaseInput
+    payments?: CasePaymentCreateNestedManyWithoutCaseInput
+    counselings?: CaseCounselingCreateNestedManyWithoutCaseInput
+    documents?: CaseDocumentCreateNestedManyWithoutCaseInput
+  }
+
+  export type CaseUncheckedCreateWithoutPleadingsInput = {
+    id?: string
+    caseNumber: string
+    caseName: string
+    natureId: string
+    registrationDate?: Date | string | null
+    registrationFee?: Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: string | null
+    facts?: string | null
+    relatedLaws?: string | null
+    referredThrough?: string | null
+    noticeStatus?: string | null
+    fullJudgmentDate?: Date | string | null
+    judgmentVerifyDate?: Date | string | null
+    status?: string
+    paymentStatus?: string
+    createdAt?: Date | string
+    lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
+    parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
+    hearings?: CaseHearingUncheckedCreateNestedManyWithoutCaseInput
+    proceedings?: CourtProceedingUncheckedCreateNestedManyWithoutCaseInput
+    precedents?: CasePrecedentUncheckedCreateNestedManyWithoutCaseInput
+    payments?: CasePaymentUncheckedCreateNestedManyWithoutCaseInput
+    counselings?: CaseCounselingUncheckedCreateNestedManyWithoutCaseInput
+    documents?: CaseDocumentUncheckedCreateNestedManyWithoutCaseInput
+  }
+
+  export type CaseCreateOrConnectWithoutPleadingsInput = {
+    where: CaseWhereUniqueInput
+    create: XOR<CaseCreateWithoutPleadingsInput, CaseUncheckedCreateWithoutPleadingsInput>
+  }
+
+  export type UserCreateWithoutCases_as_pleaderInput = {
+    id?: string
+    email: string
+    first_name: string
+    last_name: string
+    password?: string | null
+    status?: string
+    invitation_token?: string | null
+    invitation_expires_at?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    detail?: NullableJsonNullValueInput | InputJsonValue
+    avatar?: ResourceCreateNestedOneWithoutUsersInput
+    role?: RoleCreateNestedOneWithoutUsersInput
+    notifications?: NotificationCreateNestedManyWithoutUserInput
+    refresh_tokens?: RefreshTokenCreateNestedManyWithoutUserInput
+    reset_tokens?: PasswordResetTokenCreateNestedManyWithoutUserInput
+    pages?: PageCreateNestedManyWithoutAuthorInput
+    cases_as_lawyer?: CaseLawyerCreateNestedManyWithoutUserInput
+    cases_as_counselor?: CaseCounselingCreateNestedManyWithoutCounselorInput
+  }
+
+  export type UserUncheckedCreateWithoutCases_as_pleaderInput = {
+    id?: string
+    email: string
+    first_name: string
+    last_name: string
+    password?: string | null
+    status?: string
+    invitation_token?: string | null
+    invitation_expires_at?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    detail?: NullableJsonNullValueInput | InputJsonValue
+    avatar_id?: string | null
+    role_id?: string | null
+    notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
+    refresh_tokens?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
+    reset_tokens?: PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
+    pages?: PageUncheckedCreateNestedManyWithoutAuthorInput
+    cases_as_lawyer?: CaseLawyerUncheckedCreateNestedManyWithoutUserInput
+    cases_as_counselor?: CaseCounselingUncheckedCreateNestedManyWithoutCounselorInput
+  }
+
+  export type UserCreateOrConnectWithoutCases_as_pleaderInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutCases_as_pleaderInput, UserUncheckedCreateWithoutCases_as_pleaderInput>
+  }
+
+  export type CaseUpsertWithoutPleadingsInput = {
+    update: XOR<CaseUpdateWithoutPleadingsInput, CaseUncheckedUpdateWithoutPleadingsInput>
+    create: XOR<CaseCreateWithoutPleadingsInput, CaseUncheckedCreateWithoutPleadingsInput>
+    where?: CaseWhereInput
+  }
+
+  export type CaseUpdateToOneWithWhereWithoutPleadingsInput = {
+    where?: CaseWhereInput
+    data: XOR<CaseUpdateWithoutPleadingsInput, CaseUncheckedUpdateWithoutPleadingsInput>
+  }
+
+  export type CaseUpdateWithoutPleadingsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseNumber?: StringFieldUpdateOperationsInput | string
+    caseName?: StringFieldUpdateOperationsInput | string
+    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
+    facts?: NullableStringFieldUpdateOperationsInput | string | null
+    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
+    noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    paymentStatus?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    nature?: CaseNatureUpdateOneRequiredWithoutCasesNestedInput
+    lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
+    parties?: CasePartyUpdateManyWithoutCaseNestedInput
+    hearings?: CaseHearingUpdateManyWithoutCaseNestedInput
+    proceedings?: CourtProceedingUpdateManyWithoutCaseNestedInput
+    precedents?: CasePrecedentUpdateManyWithoutCaseNestedInput
+    payments?: CasePaymentUpdateManyWithoutCaseNestedInput
+    counselings?: CaseCounselingUpdateManyWithoutCaseNestedInput
+    documents?: CaseDocumentUpdateManyWithoutCaseNestedInput
+  }
+
+  export type CaseUncheckedUpdateWithoutPleadingsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseNumber?: StringFieldUpdateOperationsInput | string
+    caseName?: StringFieldUpdateOperationsInput | string
+    natureId?: StringFieldUpdateOperationsInput | string
+    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
+    facts?: NullableStringFieldUpdateOperationsInput | string | null
+    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
+    noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    paymentStatus?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
+    parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
+    hearings?: CaseHearingUncheckedUpdateManyWithoutCaseNestedInput
+    proceedings?: CourtProceedingUncheckedUpdateManyWithoutCaseNestedInput
+    precedents?: CasePrecedentUncheckedUpdateManyWithoutCaseNestedInput
+    payments?: CasePaymentUncheckedUpdateManyWithoutCaseNestedInput
+    counselings?: CaseCounselingUncheckedUpdateManyWithoutCaseNestedInput
+    documents?: CaseDocumentUncheckedUpdateManyWithoutCaseNestedInput
+  }
+
+  export type UserUpsertWithoutCases_as_pleaderInput = {
+    update: XOR<UserUpdateWithoutCases_as_pleaderInput, UserUncheckedUpdateWithoutCases_as_pleaderInput>
+    create: XOR<UserCreateWithoutCases_as_pleaderInput, UserUncheckedCreateWithoutCases_as_pleaderInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutCases_as_pleaderInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutCases_as_pleaderInput, UserUncheckedUpdateWithoutCases_as_pleaderInput>
+  }
+
+  export type UserUpdateWithoutCases_as_pleaderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    first_name?: StringFieldUpdateOperationsInput | string
+    last_name?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    invitation_token?: NullableStringFieldUpdateOperationsInput | string | null
+    invitation_expires_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    detail?: NullableJsonNullValueInput | InputJsonValue
+    avatar?: ResourceUpdateOneWithoutUsersNestedInput
+    role?: RoleUpdateOneWithoutUsersNestedInput
+    notifications?: NotificationUpdateManyWithoutUserNestedInput
+    refresh_tokens?: RefreshTokenUpdateManyWithoutUserNestedInput
+    reset_tokens?: PasswordResetTokenUpdateManyWithoutUserNestedInput
+    pages?: PageUpdateManyWithoutAuthorNestedInput
+    cases_as_lawyer?: CaseLawyerUpdateManyWithoutUserNestedInput
+    cases_as_counselor?: CaseCounselingUpdateManyWithoutCounselorNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutCases_as_pleaderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    first_name?: StringFieldUpdateOperationsInput | string
+    last_name?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    invitation_token?: NullableStringFieldUpdateOperationsInput | string | null
+    invitation_expires_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    detail?: NullableJsonNullValueInput | InputJsonValue
+    avatar_id?: NullableStringFieldUpdateOperationsInput | string | null
+    role_id?: NullableStringFieldUpdateOperationsInput | string | null
+    notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+    refresh_tokens?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
+    reset_tokens?: PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
+    pages?: PageUncheckedUpdateManyWithoutAuthorNestedInput
+    cases_as_lawyer?: CaseLawyerUncheckedUpdateManyWithoutUserNestedInput
+    cases_as_counselor?: CaseCounselingUncheckedUpdateManyWithoutCounselorNestedInput
+  }
+
+  export type CaseCreateWithoutProceedingsInput = {
+    id?: string
+    caseNumber: string
+    caseName: string
+    registrationDate?: Date | string | null
+    registrationFee?: Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: string | null
+    facts?: string | null
+    relatedLaws?: string | null
+    referredThrough?: string | null
+    noticeStatus?: string | null
+    fullJudgmentDate?: Date | string | null
+    judgmentVerifyDate?: Date | string | null
+    status?: string
+    paymentStatus?: string
+    createdAt?: Date | string
+    nature: CaseNatureCreateNestedOneWithoutCasesInput
+    lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
+    parties?: CasePartyCreateNestedManyWithoutCaseInput
+    hearings?: CaseHearingCreateNestedManyWithoutCaseInput
+    pleadings?: CasePleadingCreateNestedManyWithoutCaseInput
+    precedents?: CasePrecedentCreateNestedManyWithoutCaseInput
+    payments?: CasePaymentCreateNestedManyWithoutCaseInput
+    counselings?: CaseCounselingCreateNestedManyWithoutCaseInput
+    documents?: CaseDocumentCreateNestedManyWithoutCaseInput
+  }
+
+  export type CaseUncheckedCreateWithoutProceedingsInput = {
+    id?: string
+    caseNumber: string
+    caseName: string
+    natureId: string
+    registrationDate?: Date | string | null
+    registrationFee?: Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: string | null
+    facts?: string | null
+    relatedLaws?: string | null
+    referredThrough?: string | null
+    noticeStatus?: string | null
+    fullJudgmentDate?: Date | string | null
+    judgmentVerifyDate?: Date | string | null
+    status?: string
+    paymentStatus?: string
+    createdAt?: Date | string
+    lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
+    parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
+    hearings?: CaseHearingUncheckedCreateNestedManyWithoutCaseInput
+    pleadings?: CasePleadingUncheckedCreateNestedManyWithoutCaseInput
+    precedents?: CasePrecedentUncheckedCreateNestedManyWithoutCaseInput
+    payments?: CasePaymentUncheckedCreateNestedManyWithoutCaseInput
+    counselings?: CaseCounselingUncheckedCreateNestedManyWithoutCaseInput
+    documents?: CaseDocumentUncheckedCreateNestedManyWithoutCaseInput
+  }
+
+  export type CaseCreateOrConnectWithoutProceedingsInput = {
+    where: CaseWhereUniqueInput
+    create: XOR<CaseCreateWithoutProceedingsInput, CaseUncheckedCreateWithoutProceedingsInput>
+  }
+
+  export type CourtLevelCreateWithoutProceedingsInput = {
+    id?: string
+    name: string
+    nepaliName?: string | null
+  }
+
+  export type CourtLevelUncheckedCreateWithoutProceedingsInput = {
+    id?: string
+    name: string
+    nepaliName?: string | null
+  }
+
+  export type CourtLevelCreateOrConnectWithoutProceedingsInput = {
+    where: CourtLevelWhereUniqueInput
+    create: XOR<CourtLevelCreateWithoutProceedingsInput, CourtLevelUncheckedCreateWithoutProceedingsInput>
+  }
+
+  export type CaseUpsertWithoutProceedingsInput = {
+    update: XOR<CaseUpdateWithoutProceedingsInput, CaseUncheckedUpdateWithoutProceedingsInput>
+    create: XOR<CaseCreateWithoutProceedingsInput, CaseUncheckedCreateWithoutProceedingsInput>
+    where?: CaseWhereInput
+  }
+
+  export type CaseUpdateToOneWithWhereWithoutProceedingsInput = {
+    where?: CaseWhereInput
+    data: XOR<CaseUpdateWithoutProceedingsInput, CaseUncheckedUpdateWithoutProceedingsInput>
+  }
+
+  export type CaseUpdateWithoutProceedingsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseNumber?: StringFieldUpdateOperationsInput | string
+    caseName?: StringFieldUpdateOperationsInput | string
+    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
+    facts?: NullableStringFieldUpdateOperationsInput | string | null
+    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
+    noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    paymentStatus?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    nature?: CaseNatureUpdateOneRequiredWithoutCasesNestedInput
+    lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
+    parties?: CasePartyUpdateManyWithoutCaseNestedInput
+    hearings?: CaseHearingUpdateManyWithoutCaseNestedInput
+    pleadings?: CasePleadingUpdateManyWithoutCaseNestedInput
+    precedents?: CasePrecedentUpdateManyWithoutCaseNestedInput
+    payments?: CasePaymentUpdateManyWithoutCaseNestedInput
+    counselings?: CaseCounselingUpdateManyWithoutCaseNestedInput
+    documents?: CaseDocumentUpdateManyWithoutCaseNestedInput
+  }
+
+  export type CaseUncheckedUpdateWithoutProceedingsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseNumber?: StringFieldUpdateOperationsInput | string
+    caseName?: StringFieldUpdateOperationsInput | string
+    natureId?: StringFieldUpdateOperationsInput | string
+    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
+    facts?: NullableStringFieldUpdateOperationsInput | string | null
+    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
+    noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    paymentStatus?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
+    parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
+    hearings?: CaseHearingUncheckedUpdateManyWithoutCaseNestedInput
+    pleadings?: CasePleadingUncheckedUpdateManyWithoutCaseNestedInput
+    precedents?: CasePrecedentUncheckedUpdateManyWithoutCaseNestedInput
+    payments?: CasePaymentUncheckedUpdateManyWithoutCaseNestedInput
+    counselings?: CaseCounselingUncheckedUpdateManyWithoutCaseNestedInput
+    documents?: CaseDocumentUncheckedUpdateManyWithoutCaseNestedInput
+  }
+
+  export type CourtLevelUpsertWithoutProceedingsInput = {
+    update: XOR<CourtLevelUpdateWithoutProceedingsInput, CourtLevelUncheckedUpdateWithoutProceedingsInput>
+    create: XOR<CourtLevelCreateWithoutProceedingsInput, CourtLevelUncheckedCreateWithoutProceedingsInput>
+    where?: CourtLevelWhereInput
+  }
+
+  export type CourtLevelUpdateToOneWithWhereWithoutProceedingsInput = {
+    where?: CourtLevelWhereInput
+    data: XOR<CourtLevelUpdateWithoutProceedingsInput, CourtLevelUncheckedUpdateWithoutProceedingsInput>
+  }
+
+  export type CourtLevelUpdateWithoutProceedingsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    nepaliName?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CourtLevelUncheckedUpdateWithoutProceedingsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    nepaliName?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CaseCreateWithoutPrecedentsInput = {
+    id?: string
+    caseNumber: string
+    caseName: string
+    registrationDate?: Date | string | null
+    registrationFee?: Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: string | null
+    facts?: string | null
+    relatedLaws?: string | null
+    referredThrough?: string | null
+    noticeStatus?: string | null
+    fullJudgmentDate?: Date | string | null
+    judgmentVerifyDate?: Date | string | null
+    status?: string
+    paymentStatus?: string
+    createdAt?: Date | string
+    nature: CaseNatureCreateNestedOneWithoutCasesInput
+    lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
+    parties?: CasePartyCreateNestedManyWithoutCaseInput
+    hearings?: CaseHearingCreateNestedManyWithoutCaseInput
+    pleadings?: CasePleadingCreateNestedManyWithoutCaseInput
+    proceedings?: CourtProceedingCreateNestedManyWithoutCaseInput
+    payments?: CasePaymentCreateNestedManyWithoutCaseInput
+    counselings?: CaseCounselingCreateNestedManyWithoutCaseInput
+    documents?: CaseDocumentCreateNestedManyWithoutCaseInput
+  }
+
+  export type CaseUncheckedCreateWithoutPrecedentsInput = {
+    id?: string
+    caseNumber: string
+    caseName: string
+    natureId: string
+    registrationDate?: Date | string | null
+    registrationFee?: Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: string | null
+    facts?: string | null
+    relatedLaws?: string | null
+    referredThrough?: string | null
+    noticeStatus?: string | null
+    fullJudgmentDate?: Date | string | null
+    judgmentVerifyDate?: Date | string | null
+    status?: string
+    paymentStatus?: string
+    createdAt?: Date | string
+    lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
+    parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
+    hearings?: CaseHearingUncheckedCreateNestedManyWithoutCaseInput
+    pleadings?: CasePleadingUncheckedCreateNestedManyWithoutCaseInput
+    proceedings?: CourtProceedingUncheckedCreateNestedManyWithoutCaseInput
+    payments?: CasePaymentUncheckedCreateNestedManyWithoutCaseInput
+    counselings?: CaseCounselingUncheckedCreateNestedManyWithoutCaseInput
+    documents?: CaseDocumentUncheckedCreateNestedManyWithoutCaseInput
+  }
+
+  export type CaseCreateOrConnectWithoutPrecedentsInput = {
+    where: CaseWhereUniqueInput
+    create: XOR<CaseCreateWithoutPrecedentsInput, CaseUncheckedCreateWithoutPrecedentsInput>
+  }
+
+  export type CaseUpsertWithoutPrecedentsInput = {
+    update: XOR<CaseUpdateWithoutPrecedentsInput, CaseUncheckedUpdateWithoutPrecedentsInput>
+    create: XOR<CaseCreateWithoutPrecedentsInput, CaseUncheckedCreateWithoutPrecedentsInput>
+    where?: CaseWhereInput
+  }
+
+  export type CaseUpdateToOneWithWhereWithoutPrecedentsInput = {
+    where?: CaseWhereInput
+    data: XOR<CaseUpdateWithoutPrecedentsInput, CaseUncheckedUpdateWithoutPrecedentsInput>
+  }
+
+  export type CaseUpdateWithoutPrecedentsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseNumber?: StringFieldUpdateOperationsInput | string
+    caseName?: StringFieldUpdateOperationsInput | string
+    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
+    facts?: NullableStringFieldUpdateOperationsInput | string | null
+    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
+    noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    paymentStatus?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    nature?: CaseNatureUpdateOneRequiredWithoutCasesNestedInput
+    lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
+    parties?: CasePartyUpdateManyWithoutCaseNestedInput
+    hearings?: CaseHearingUpdateManyWithoutCaseNestedInput
+    pleadings?: CasePleadingUpdateManyWithoutCaseNestedInput
+    proceedings?: CourtProceedingUpdateManyWithoutCaseNestedInput
+    payments?: CasePaymentUpdateManyWithoutCaseNestedInput
+    counselings?: CaseCounselingUpdateManyWithoutCaseNestedInput
+    documents?: CaseDocumentUpdateManyWithoutCaseNestedInput
+  }
+
+  export type CaseUncheckedUpdateWithoutPrecedentsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseNumber?: StringFieldUpdateOperationsInput | string
+    caseName?: StringFieldUpdateOperationsInput | string
+    natureId?: StringFieldUpdateOperationsInput | string
+    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
+    facts?: NullableStringFieldUpdateOperationsInput | string | null
+    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
+    noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    paymentStatus?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
+    parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
+    hearings?: CaseHearingUncheckedUpdateManyWithoutCaseNestedInput
+    pleadings?: CasePleadingUncheckedUpdateManyWithoutCaseNestedInput
+    proceedings?: CourtProceedingUncheckedUpdateManyWithoutCaseNestedInput
+    payments?: CasePaymentUncheckedUpdateManyWithoutCaseNestedInput
+    counselings?: CaseCounselingUncheckedUpdateManyWithoutCaseNestedInput
+    documents?: CaseDocumentUncheckedUpdateManyWithoutCaseNestedInput
+  }
+
+  export type CaseCreateWithoutPaymentsInput = {
+    id?: string
+    caseNumber: string
+    caseName: string
+    registrationDate?: Date | string | null
+    registrationFee?: Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: string | null
+    facts?: string | null
+    relatedLaws?: string | null
+    referredThrough?: string | null
+    noticeStatus?: string | null
+    fullJudgmentDate?: Date | string | null
+    judgmentVerifyDate?: Date | string | null
+    status?: string
+    paymentStatus?: string
+    createdAt?: Date | string
+    nature: CaseNatureCreateNestedOneWithoutCasesInput
+    lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
+    parties?: CasePartyCreateNestedManyWithoutCaseInput
+    hearings?: CaseHearingCreateNestedManyWithoutCaseInput
+    pleadings?: CasePleadingCreateNestedManyWithoutCaseInput
+    proceedings?: CourtProceedingCreateNestedManyWithoutCaseInput
+    precedents?: CasePrecedentCreateNestedManyWithoutCaseInput
+    counselings?: CaseCounselingCreateNestedManyWithoutCaseInput
+    documents?: CaseDocumentCreateNestedManyWithoutCaseInput
+  }
+
+  export type CaseUncheckedCreateWithoutPaymentsInput = {
+    id?: string
+    caseNumber: string
+    caseName: string
+    natureId: string
+    registrationDate?: Date | string | null
+    registrationFee?: Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: string | null
+    facts?: string | null
+    relatedLaws?: string | null
+    referredThrough?: string | null
+    noticeStatus?: string | null
+    fullJudgmentDate?: Date | string | null
+    judgmentVerifyDate?: Date | string | null
+    status?: string
+    paymentStatus?: string
+    createdAt?: Date | string
+    lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
+    parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
+    hearings?: CaseHearingUncheckedCreateNestedManyWithoutCaseInput
+    pleadings?: CasePleadingUncheckedCreateNestedManyWithoutCaseInput
+    proceedings?: CourtProceedingUncheckedCreateNestedManyWithoutCaseInput
+    precedents?: CasePrecedentUncheckedCreateNestedManyWithoutCaseInput
+    counselings?: CaseCounselingUncheckedCreateNestedManyWithoutCaseInput
+    documents?: CaseDocumentUncheckedCreateNestedManyWithoutCaseInput
+  }
+
+  export type CaseCreateOrConnectWithoutPaymentsInput = {
+    where: CaseWhereUniqueInput
+    create: XOR<CaseCreateWithoutPaymentsInput, CaseUncheckedCreateWithoutPaymentsInput>
+  }
+
+  export type CaseUpsertWithoutPaymentsInput = {
+    update: XOR<CaseUpdateWithoutPaymentsInput, CaseUncheckedUpdateWithoutPaymentsInput>
+    create: XOR<CaseCreateWithoutPaymentsInput, CaseUncheckedCreateWithoutPaymentsInput>
+    where?: CaseWhereInput
+  }
+
+  export type CaseUpdateToOneWithWhereWithoutPaymentsInput = {
+    where?: CaseWhereInput
+    data: XOR<CaseUpdateWithoutPaymentsInput, CaseUncheckedUpdateWithoutPaymentsInput>
+  }
+
+  export type CaseUpdateWithoutPaymentsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseNumber?: StringFieldUpdateOperationsInput | string
+    caseName?: StringFieldUpdateOperationsInput | string
+    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
+    facts?: NullableStringFieldUpdateOperationsInput | string | null
+    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
+    noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    paymentStatus?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    nature?: CaseNatureUpdateOneRequiredWithoutCasesNestedInput
+    lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
+    parties?: CasePartyUpdateManyWithoutCaseNestedInput
+    hearings?: CaseHearingUpdateManyWithoutCaseNestedInput
+    pleadings?: CasePleadingUpdateManyWithoutCaseNestedInput
+    proceedings?: CourtProceedingUpdateManyWithoutCaseNestedInput
+    precedents?: CasePrecedentUpdateManyWithoutCaseNestedInput
+    counselings?: CaseCounselingUpdateManyWithoutCaseNestedInput
+    documents?: CaseDocumentUpdateManyWithoutCaseNestedInput
+  }
+
+  export type CaseUncheckedUpdateWithoutPaymentsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseNumber?: StringFieldUpdateOperationsInput | string
+    caseName?: StringFieldUpdateOperationsInput | string
+    natureId?: StringFieldUpdateOperationsInput | string
+    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
+    facts?: NullableStringFieldUpdateOperationsInput | string | null
+    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
+    noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    paymentStatus?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
+    parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
+    hearings?: CaseHearingUncheckedUpdateManyWithoutCaseNestedInput
+    pleadings?: CasePleadingUncheckedUpdateManyWithoutCaseNestedInput
+    proceedings?: CourtProceedingUncheckedUpdateManyWithoutCaseNestedInput
+    precedents?: CasePrecedentUncheckedUpdateManyWithoutCaseNestedInput
+    counselings?: CaseCounselingUncheckedUpdateManyWithoutCaseNestedInput
+    documents?: CaseDocumentUncheckedUpdateManyWithoutCaseNestedInput
+  }
+
+  export type CaseCreateWithoutCounselingsInput = {
+    id?: string
+    caseNumber: string
+    caseName: string
+    registrationDate?: Date | string | null
+    registrationFee?: Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: string | null
+    facts?: string | null
+    relatedLaws?: string | null
+    referredThrough?: string | null
+    noticeStatus?: string | null
+    fullJudgmentDate?: Date | string | null
+    judgmentVerifyDate?: Date | string | null
+    status?: string
+    paymentStatus?: string
+    createdAt?: Date | string
+    nature: CaseNatureCreateNestedOneWithoutCasesInput
+    lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
+    parties?: CasePartyCreateNestedManyWithoutCaseInput
+    hearings?: CaseHearingCreateNestedManyWithoutCaseInput
+    pleadings?: CasePleadingCreateNestedManyWithoutCaseInput
+    proceedings?: CourtProceedingCreateNestedManyWithoutCaseInput
+    precedents?: CasePrecedentCreateNestedManyWithoutCaseInput
+    payments?: CasePaymentCreateNestedManyWithoutCaseInput
+    documents?: CaseDocumentCreateNestedManyWithoutCaseInput
+  }
+
+  export type CaseUncheckedCreateWithoutCounselingsInput = {
+    id?: string
+    caseNumber: string
+    caseName: string
+    natureId: string
+    registrationDate?: Date | string | null
+    registrationFee?: Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: string | null
+    facts?: string | null
+    relatedLaws?: string | null
+    referredThrough?: string | null
+    noticeStatus?: string | null
+    fullJudgmentDate?: Date | string | null
+    judgmentVerifyDate?: Date | string | null
+    status?: string
+    paymentStatus?: string
+    createdAt?: Date | string
+    lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
+    parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
+    hearings?: CaseHearingUncheckedCreateNestedManyWithoutCaseInput
+    pleadings?: CasePleadingUncheckedCreateNestedManyWithoutCaseInput
+    proceedings?: CourtProceedingUncheckedCreateNestedManyWithoutCaseInput
+    precedents?: CasePrecedentUncheckedCreateNestedManyWithoutCaseInput
+    payments?: CasePaymentUncheckedCreateNestedManyWithoutCaseInput
+    documents?: CaseDocumentUncheckedCreateNestedManyWithoutCaseInput
+  }
+
+  export type CaseCreateOrConnectWithoutCounselingsInput = {
+    where: CaseWhereUniqueInput
+    create: XOR<CaseCreateWithoutCounselingsInput, CaseUncheckedCreateWithoutCounselingsInput>
+  }
+
+  export type UserCreateWithoutCases_as_counselorInput = {
+    id?: string
+    email: string
+    first_name: string
+    last_name: string
+    password?: string | null
+    status?: string
+    invitation_token?: string | null
+    invitation_expires_at?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    detail?: NullableJsonNullValueInput | InputJsonValue
+    avatar?: ResourceCreateNestedOneWithoutUsersInput
+    role?: RoleCreateNestedOneWithoutUsersInput
+    notifications?: NotificationCreateNestedManyWithoutUserInput
+    refresh_tokens?: RefreshTokenCreateNestedManyWithoutUserInput
+    reset_tokens?: PasswordResetTokenCreateNestedManyWithoutUserInput
+    pages?: PageCreateNestedManyWithoutAuthorInput
+    cases_as_lawyer?: CaseLawyerCreateNestedManyWithoutUserInput
+    cases_as_pleader?: CasePleadingCreateNestedManyWithoutPleaderInput
+  }
+
+  export type UserUncheckedCreateWithoutCases_as_counselorInput = {
+    id?: string
+    email: string
+    first_name: string
+    last_name: string
+    password?: string | null
+    status?: string
+    invitation_token?: string | null
+    invitation_expires_at?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    detail?: NullableJsonNullValueInput | InputJsonValue
+    avatar_id?: string | null
+    role_id?: string | null
+    notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
+    refresh_tokens?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
+    reset_tokens?: PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
+    pages?: PageUncheckedCreateNestedManyWithoutAuthorInput
+    cases_as_lawyer?: CaseLawyerUncheckedCreateNestedManyWithoutUserInput
+    cases_as_pleader?: CasePleadingUncheckedCreateNestedManyWithoutPleaderInput
+  }
+
+  export type UserCreateOrConnectWithoutCases_as_counselorInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutCases_as_counselorInput, UserUncheckedCreateWithoutCases_as_counselorInput>
+  }
+
+  export type CaseUpsertWithoutCounselingsInput = {
+    update: XOR<CaseUpdateWithoutCounselingsInput, CaseUncheckedUpdateWithoutCounselingsInput>
+    create: XOR<CaseCreateWithoutCounselingsInput, CaseUncheckedCreateWithoutCounselingsInput>
+    where?: CaseWhereInput
+  }
+
+  export type CaseUpdateToOneWithWhereWithoutCounselingsInput = {
+    where?: CaseWhereInput
+    data: XOR<CaseUpdateWithoutCounselingsInput, CaseUncheckedUpdateWithoutCounselingsInput>
+  }
+
+  export type CaseUpdateWithoutCounselingsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseNumber?: StringFieldUpdateOperationsInput | string
+    caseName?: StringFieldUpdateOperationsInput | string
+    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
+    facts?: NullableStringFieldUpdateOperationsInput | string | null
+    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
+    noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    paymentStatus?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    nature?: CaseNatureUpdateOneRequiredWithoutCasesNestedInput
+    lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
+    parties?: CasePartyUpdateManyWithoutCaseNestedInput
+    hearings?: CaseHearingUpdateManyWithoutCaseNestedInput
+    pleadings?: CasePleadingUpdateManyWithoutCaseNestedInput
+    proceedings?: CourtProceedingUpdateManyWithoutCaseNestedInput
+    precedents?: CasePrecedentUpdateManyWithoutCaseNestedInput
+    payments?: CasePaymentUpdateManyWithoutCaseNestedInput
+    documents?: CaseDocumentUpdateManyWithoutCaseNestedInput
+  }
+
+  export type CaseUncheckedUpdateWithoutCounselingsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseNumber?: StringFieldUpdateOperationsInput | string
+    caseName?: StringFieldUpdateOperationsInput | string
+    natureId?: StringFieldUpdateOperationsInput | string
+    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
+    facts?: NullableStringFieldUpdateOperationsInput | string | null
+    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
+    noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    paymentStatus?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
+    parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
+    hearings?: CaseHearingUncheckedUpdateManyWithoutCaseNestedInput
+    pleadings?: CasePleadingUncheckedUpdateManyWithoutCaseNestedInput
+    proceedings?: CourtProceedingUncheckedUpdateManyWithoutCaseNestedInput
+    precedents?: CasePrecedentUncheckedUpdateManyWithoutCaseNestedInput
+    payments?: CasePaymentUncheckedUpdateManyWithoutCaseNestedInput
+    documents?: CaseDocumentUncheckedUpdateManyWithoutCaseNestedInput
+  }
+
+  export type UserUpsertWithoutCases_as_counselorInput = {
+    update: XOR<UserUpdateWithoutCases_as_counselorInput, UserUncheckedUpdateWithoutCases_as_counselorInput>
+    create: XOR<UserCreateWithoutCases_as_counselorInput, UserUncheckedCreateWithoutCases_as_counselorInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutCases_as_counselorInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutCases_as_counselorInput, UserUncheckedUpdateWithoutCases_as_counselorInput>
+  }
+
+  export type UserUpdateWithoutCases_as_counselorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    first_name?: StringFieldUpdateOperationsInput | string
+    last_name?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    invitation_token?: NullableStringFieldUpdateOperationsInput | string | null
+    invitation_expires_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    detail?: NullableJsonNullValueInput | InputJsonValue
+    avatar?: ResourceUpdateOneWithoutUsersNestedInput
+    role?: RoleUpdateOneWithoutUsersNestedInput
+    notifications?: NotificationUpdateManyWithoutUserNestedInput
+    refresh_tokens?: RefreshTokenUpdateManyWithoutUserNestedInput
+    reset_tokens?: PasswordResetTokenUpdateManyWithoutUserNestedInput
+    pages?: PageUpdateManyWithoutAuthorNestedInput
+    cases_as_lawyer?: CaseLawyerUpdateManyWithoutUserNestedInput
+    cases_as_pleader?: CasePleadingUpdateManyWithoutPleaderNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutCases_as_counselorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    first_name?: StringFieldUpdateOperationsInput | string
+    last_name?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    invitation_token?: NullableStringFieldUpdateOperationsInput | string | null
+    invitation_expires_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    detail?: NullableJsonNullValueInput | InputJsonValue
+    avatar_id?: NullableStringFieldUpdateOperationsInput | string | null
+    role_id?: NullableStringFieldUpdateOperationsInput | string | null
+    notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+    refresh_tokens?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
+    reset_tokens?: PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
+    pages?: PageUncheckedUpdateManyWithoutAuthorNestedInput
+    cases_as_lawyer?: CaseLawyerUncheckedUpdateManyWithoutUserNestedInput
+    cases_as_pleader?: CasePleadingUncheckedUpdateManyWithoutPleaderNestedInput
+  }
+
+  export type CaseCreateWithoutDocumentsInput = {
+    id?: string
+    caseNumber: string
+    caseName: string
+    registrationDate?: Date | string | null
+    registrationFee?: Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: string | null
+    facts?: string | null
+    relatedLaws?: string | null
+    referredThrough?: string | null
+    noticeStatus?: string | null
+    fullJudgmentDate?: Date | string | null
+    judgmentVerifyDate?: Date | string | null
+    status?: string
+    paymentStatus?: string
+    createdAt?: Date | string
+    nature: CaseNatureCreateNestedOneWithoutCasesInput
+    lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
+    parties?: CasePartyCreateNestedManyWithoutCaseInput
+    hearings?: CaseHearingCreateNestedManyWithoutCaseInput
+    pleadings?: CasePleadingCreateNestedManyWithoutCaseInput
+    proceedings?: CourtProceedingCreateNestedManyWithoutCaseInput
+    precedents?: CasePrecedentCreateNestedManyWithoutCaseInput
+    payments?: CasePaymentCreateNestedManyWithoutCaseInput
+    counselings?: CaseCounselingCreateNestedManyWithoutCaseInput
+  }
+
+  export type CaseUncheckedCreateWithoutDocumentsInput = {
+    id?: string
+    caseNumber: string
+    caseName: string
+    natureId: string
+    registrationDate?: Date | string | null
+    registrationFee?: Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: string | null
+    facts?: string | null
+    relatedLaws?: string | null
+    referredThrough?: string | null
+    noticeStatus?: string | null
+    fullJudgmentDate?: Date | string | null
+    judgmentVerifyDate?: Date | string | null
+    status?: string
+    paymentStatus?: string
+    createdAt?: Date | string
+    lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
+    parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
+    hearings?: CaseHearingUncheckedCreateNestedManyWithoutCaseInput
+    pleadings?: CasePleadingUncheckedCreateNestedManyWithoutCaseInput
+    proceedings?: CourtProceedingUncheckedCreateNestedManyWithoutCaseInput
+    precedents?: CasePrecedentUncheckedCreateNestedManyWithoutCaseInput
+    payments?: CasePaymentUncheckedCreateNestedManyWithoutCaseInput
+    counselings?: CaseCounselingUncheckedCreateNestedManyWithoutCaseInput
+  }
+
+  export type CaseCreateOrConnectWithoutDocumentsInput = {
+    where: CaseWhereUniqueInput
+    create: XOR<CaseCreateWithoutDocumentsInput, CaseUncheckedCreateWithoutDocumentsInput>
+  }
+
+  export type CaseUpsertWithoutDocumentsInput = {
+    update: XOR<CaseUpdateWithoutDocumentsInput, CaseUncheckedUpdateWithoutDocumentsInput>
+    create: XOR<CaseCreateWithoutDocumentsInput, CaseUncheckedCreateWithoutDocumentsInput>
+    where?: CaseWhereInput
+  }
+
+  export type CaseUpdateToOneWithWhereWithoutDocumentsInput = {
+    where?: CaseWhereInput
+    data: XOR<CaseUpdateWithoutDocumentsInput, CaseUncheckedUpdateWithoutDocumentsInput>
+  }
+
+  export type CaseUpdateWithoutDocumentsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseNumber?: StringFieldUpdateOperationsInput | string
+    caseName?: StringFieldUpdateOperationsInput | string
+    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
+    facts?: NullableStringFieldUpdateOperationsInput | string | null
+    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
+    noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    paymentStatus?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    nature?: CaseNatureUpdateOneRequiredWithoutCasesNestedInput
+    lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
+    parties?: CasePartyUpdateManyWithoutCaseNestedInput
+    hearings?: CaseHearingUpdateManyWithoutCaseNestedInput
+    pleadings?: CasePleadingUpdateManyWithoutCaseNestedInput
+    proceedings?: CourtProceedingUpdateManyWithoutCaseNestedInput
+    precedents?: CasePrecedentUpdateManyWithoutCaseNestedInput
+    payments?: CasePaymentUpdateManyWithoutCaseNestedInput
+    counselings?: CaseCounselingUpdateManyWithoutCaseNestedInput
+  }
+
+  export type CaseUncheckedUpdateWithoutDocumentsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseNumber?: StringFieldUpdateOperationsInput | string
+    caseName?: StringFieldUpdateOperationsInput | string
+    natureId?: StringFieldUpdateOperationsInput | string
+    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
+    facts?: NullableStringFieldUpdateOperationsInput | string | null
+    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
+    noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    paymentStatus?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
+    parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
+    hearings?: CaseHearingUncheckedUpdateManyWithoutCaseNestedInput
+    pleadings?: CasePleadingUncheckedUpdateManyWithoutCaseNestedInput
+    proceedings?: CourtProceedingUncheckedUpdateManyWithoutCaseNestedInput
+    precedents?: CasePrecedentUncheckedUpdateManyWithoutCaseNestedInput
+    payments?: CasePaymentUncheckedUpdateManyWithoutCaseNestedInput
+    counselings?: CaseCounselingUncheckedUpdateManyWithoutCaseNestedInput
+  }
+
   export type UserCreateWithoutNotificationsInput = {
     id?: string
     email: string
@@ -17912,6 +39579,9 @@ export namespace Prisma {
     refresh_tokens?: RefreshTokenCreateNestedManyWithoutUserInput
     reset_tokens?: PasswordResetTokenCreateNestedManyWithoutUserInput
     pages?: PageCreateNestedManyWithoutAuthorInput
+    cases_as_lawyer?: CaseLawyerCreateNestedManyWithoutUserInput
+    cases_as_pleader?: CasePleadingCreateNestedManyWithoutPleaderInput
+    cases_as_counselor?: CaseCounselingCreateNestedManyWithoutCounselorInput
   }
 
   export type UserUncheckedCreateWithoutNotificationsInput = {
@@ -17932,6 +39602,9 @@ export namespace Prisma {
     refresh_tokens?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
     reset_tokens?: PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
     pages?: PageUncheckedCreateNestedManyWithoutAuthorInput
+    cases_as_lawyer?: CaseLawyerUncheckedCreateNestedManyWithoutUserInput
+    cases_as_pleader?: CasePleadingUncheckedCreateNestedManyWithoutPleaderInput
+    cases_as_counselor?: CaseCounselingUncheckedCreateNestedManyWithoutCounselorInput
   }
 
   export type UserCreateOrConnectWithoutNotificationsInput = {
@@ -17968,6 +39641,9 @@ export namespace Prisma {
     refresh_tokens?: RefreshTokenUpdateManyWithoutUserNestedInput
     reset_tokens?: PasswordResetTokenUpdateManyWithoutUserNestedInput
     pages?: PageUpdateManyWithoutAuthorNestedInput
+    cases_as_lawyer?: CaseLawyerUpdateManyWithoutUserNestedInput
+    cases_as_pleader?: CasePleadingUpdateManyWithoutPleaderNestedInput
+    cases_as_counselor?: CaseCounselingUpdateManyWithoutCounselorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutNotificationsInput = {
@@ -17988,6 +39664,9 @@ export namespace Prisma {
     refresh_tokens?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
     reset_tokens?: PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
     pages?: PageUncheckedUpdateManyWithoutAuthorNestedInput
+    cases_as_lawyer?: CaseLawyerUncheckedUpdateManyWithoutUserNestedInput
+    cases_as_pleader?: CasePleadingUncheckedUpdateManyWithoutPleaderNestedInput
+    cases_as_counselor?: CaseCounselingUncheckedUpdateManyWithoutCounselorNestedInput
   }
 
   export type PageCreateWithoutPage_typeInput = {
@@ -18219,6 +39898,9 @@ export namespace Prisma {
     notifications?: NotificationCreateNestedManyWithoutUserInput
     refresh_tokens?: RefreshTokenCreateNestedManyWithoutUserInput
     reset_tokens?: PasswordResetTokenCreateNestedManyWithoutUserInput
+    cases_as_lawyer?: CaseLawyerCreateNestedManyWithoutUserInput
+    cases_as_pleader?: CasePleadingCreateNestedManyWithoutPleaderInput
+    cases_as_counselor?: CaseCounselingCreateNestedManyWithoutCounselorInput
   }
 
   export type UserUncheckedCreateWithoutPagesInput = {
@@ -18239,6 +39921,9 @@ export namespace Prisma {
     notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
     refresh_tokens?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
     reset_tokens?: PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
+    cases_as_lawyer?: CaseLawyerUncheckedCreateNestedManyWithoutUserInput
+    cases_as_pleader?: CasePleadingUncheckedCreateNestedManyWithoutPleaderInput
+    cases_as_counselor?: CaseCounselingUncheckedCreateNestedManyWithoutCounselorInput
   }
 
   export type UserCreateOrConnectWithoutPagesInput = {
@@ -18462,6 +40147,9 @@ export namespace Prisma {
     notifications?: NotificationUpdateManyWithoutUserNestedInput
     refresh_tokens?: RefreshTokenUpdateManyWithoutUserNestedInput
     reset_tokens?: PasswordResetTokenUpdateManyWithoutUserNestedInput
+    cases_as_lawyer?: CaseLawyerUpdateManyWithoutUserNestedInput
+    cases_as_pleader?: CasePleadingUpdateManyWithoutPleaderNestedInput
+    cases_as_counselor?: CaseCounselingUpdateManyWithoutCounselorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutPagesInput = {
@@ -18482,6 +40170,9 @@ export namespace Prisma {
     notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
     refresh_tokens?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
     reset_tokens?: PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
+    cases_as_lawyer?: CaseLawyerUncheckedUpdateManyWithoutUserNestedInput
+    cases_as_pleader?: CasePleadingUncheckedUpdateManyWithoutPleaderNestedInput
+    cases_as_counselor?: CaseCounselingUncheckedUpdateManyWithoutCounselorNestedInput
   }
 
   export type PageSeoUpsertWithoutPageInput = {
@@ -18820,6 +40511,9 @@ export namespace Prisma {
     refresh_tokens?: RefreshTokenCreateNestedManyWithoutUserInput
     reset_tokens?: PasswordResetTokenCreateNestedManyWithoutUserInput
     pages?: PageCreateNestedManyWithoutAuthorInput
+    cases_as_lawyer?: CaseLawyerCreateNestedManyWithoutUserInput
+    cases_as_pleader?: CasePleadingCreateNestedManyWithoutPleaderInput
+    cases_as_counselor?: CaseCounselingCreateNestedManyWithoutCounselorInput
   }
 
   export type UserUncheckedCreateWithoutRoleInput = {
@@ -18840,6 +40534,9 @@ export namespace Prisma {
     refresh_tokens?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
     reset_tokens?: PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
     pages?: PageUncheckedCreateNestedManyWithoutAuthorInput
+    cases_as_lawyer?: CaseLawyerUncheckedCreateNestedManyWithoutUserInput
+    cases_as_pleader?: CasePleadingUncheckedCreateNestedManyWithoutPleaderInput
+    cases_as_counselor?: CaseCounselingUncheckedCreateNestedManyWithoutCounselorInput
   }
 
   export type UserCreateOrConnectWithoutRoleInput = {
@@ -18907,6 +40604,26 @@ export namespace Prisma {
     created_at?: Date | string
     updated_at?: Date | string
     deleted_at?: Date | string | null
+  }
+
+  export type CaseLawyerCreateManyUserInput = {
+    caseId: string
+    isLead?: boolean
+  }
+
+  export type CasePleadingCreateManyPleaderInput = {
+    id?: string
+    caseId: string
+    pleadingDate?: Date | string | null
+    pleadingNotes: string
+  }
+
+  export type CaseCounselingCreateManyCounselorInput = {
+    id?: string
+    caseId: string
+    date?: Date | string | null
+    notes: string
+    createdAt?: Date | string
   }
 
   export type NotificationUpdateWithoutUserInput = {
@@ -19038,6 +40755,66 @@ export namespace Prisma {
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
+  export type CaseLawyerUpdateWithoutUserInput = {
+    isLead?: BoolFieldUpdateOperationsInput | boolean
+    case?: CaseUpdateOneRequiredWithoutLawyersNestedInput
+  }
+
+  export type CaseLawyerUncheckedUpdateWithoutUserInput = {
+    caseId?: StringFieldUpdateOperationsInput | string
+    isLead?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type CaseLawyerUncheckedUpdateManyWithoutUserInput = {
+    caseId?: StringFieldUpdateOperationsInput | string
+    isLead?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type CasePleadingUpdateWithoutPleaderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    pleadingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    pleadingNotes?: StringFieldUpdateOperationsInput | string
+    case?: CaseUpdateOneRequiredWithoutPleadingsNestedInput
+  }
+
+  export type CasePleadingUncheckedUpdateWithoutPleaderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseId?: StringFieldUpdateOperationsInput | string
+    pleadingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    pleadingNotes?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CasePleadingUncheckedUpdateManyWithoutPleaderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseId?: StringFieldUpdateOperationsInput | string
+    pleadingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    pleadingNotes?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CaseCounselingUpdateWithoutCounselorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    notes?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    case?: CaseUpdateOneRequiredWithoutCounselingsNestedInput
+  }
+
+  export type CaseCounselingUncheckedUpdateWithoutCounselorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseId?: StringFieldUpdateOperationsInput | string
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    notes?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CaseCounselingUncheckedUpdateManyWithoutCounselorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseId?: StringFieldUpdateOperationsInput | string
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    notes?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type UserCreateManyAvatarInput = {
     id?: string
     email: string
@@ -19102,6 +40879,9 @@ export namespace Prisma {
     refresh_tokens?: RefreshTokenUpdateManyWithoutUserNestedInput
     reset_tokens?: PasswordResetTokenUpdateManyWithoutUserNestedInput
     pages?: PageUpdateManyWithoutAuthorNestedInput
+    cases_as_lawyer?: CaseLawyerUpdateManyWithoutUserNestedInput
+    cases_as_pleader?: CasePleadingUpdateManyWithoutPleaderNestedInput
+    cases_as_counselor?: CaseCounselingUpdateManyWithoutCounselorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAvatarInput = {
@@ -19122,6 +40902,9 @@ export namespace Prisma {
     refresh_tokens?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
     reset_tokens?: PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
     pages?: PageUncheckedUpdateManyWithoutAuthorNestedInput
+    cases_as_lawyer?: CaseLawyerUncheckedUpdateManyWithoutUserNestedInput
+    cases_as_pleader?: CasePleadingUncheckedUpdateManyWithoutPleaderNestedInput
+    cases_as_counselor?: CaseCounselingUncheckedUpdateManyWithoutCounselorNestedInput
   }
 
   export type UserUncheckedUpdateManyWithoutAvatarInput = {
@@ -19234,6 +41017,448 @@ export namespace Prisma {
     robots?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CourtProceedingCreateManyCourtLevelInput = {
+    id?: string
+    caseId: string
+    courtName: string
+    judgeName?: string | null
+    chargeCounseling?: string | null
+    verdict?: string | null
+  }
+
+  export type CourtProceedingUpdateWithoutCourtLevelInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    courtName?: StringFieldUpdateOperationsInput | string
+    judgeName?: NullableStringFieldUpdateOperationsInput | string | null
+    chargeCounseling?: NullableStringFieldUpdateOperationsInput | string | null
+    verdict?: NullableStringFieldUpdateOperationsInput | string | null
+    case?: CaseUpdateOneRequiredWithoutProceedingsNestedInput
+  }
+
+  export type CourtProceedingUncheckedUpdateWithoutCourtLevelInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseId?: StringFieldUpdateOperationsInput | string
+    courtName?: StringFieldUpdateOperationsInput | string
+    judgeName?: NullableStringFieldUpdateOperationsInput | string | null
+    chargeCounseling?: NullableStringFieldUpdateOperationsInput | string | null
+    verdict?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CourtProceedingUncheckedUpdateManyWithoutCourtLevelInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseId?: StringFieldUpdateOperationsInput | string
+    courtName?: StringFieldUpdateOperationsInput | string
+    judgeName?: NullableStringFieldUpdateOperationsInput | string | null
+    chargeCounseling?: NullableStringFieldUpdateOperationsInput | string | null
+    verdict?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CaseCreateManyNatureInput = {
+    id?: string
+    caseNumber: string
+    caseName: string
+    registrationDate?: Date | string | null
+    registrationFee?: Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: string | null
+    facts?: string | null
+    relatedLaws?: string | null
+    referredThrough?: string | null
+    noticeStatus?: string | null
+    fullJudgmentDate?: Date | string | null
+    judgmentVerifyDate?: Date | string | null
+    status?: string
+    paymentStatus?: string
+    createdAt?: Date | string
+  }
+
+  export type CaseUpdateWithoutNatureInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseNumber?: StringFieldUpdateOperationsInput | string
+    caseName?: StringFieldUpdateOperationsInput | string
+    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
+    facts?: NullableStringFieldUpdateOperationsInput | string | null
+    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
+    noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    paymentStatus?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
+    parties?: CasePartyUpdateManyWithoutCaseNestedInput
+    hearings?: CaseHearingUpdateManyWithoutCaseNestedInput
+    pleadings?: CasePleadingUpdateManyWithoutCaseNestedInput
+    proceedings?: CourtProceedingUpdateManyWithoutCaseNestedInput
+    precedents?: CasePrecedentUpdateManyWithoutCaseNestedInput
+    payments?: CasePaymentUpdateManyWithoutCaseNestedInput
+    counselings?: CaseCounselingUpdateManyWithoutCaseNestedInput
+    documents?: CaseDocumentUpdateManyWithoutCaseNestedInput
+  }
+
+  export type CaseUncheckedUpdateWithoutNatureInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseNumber?: StringFieldUpdateOperationsInput | string
+    caseName?: StringFieldUpdateOperationsInput | string
+    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
+    facts?: NullableStringFieldUpdateOperationsInput | string | null
+    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
+    noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    paymentStatus?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
+    parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
+    hearings?: CaseHearingUncheckedUpdateManyWithoutCaseNestedInput
+    pleadings?: CasePleadingUncheckedUpdateManyWithoutCaseNestedInput
+    proceedings?: CourtProceedingUncheckedUpdateManyWithoutCaseNestedInput
+    precedents?: CasePrecedentUncheckedUpdateManyWithoutCaseNestedInput
+    payments?: CasePaymentUncheckedUpdateManyWithoutCaseNestedInput
+    counselings?: CaseCounselingUncheckedUpdateManyWithoutCaseNestedInput
+    documents?: CaseDocumentUncheckedUpdateManyWithoutCaseNestedInput
+  }
+
+  export type CaseUncheckedUpdateManyWithoutNatureInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseNumber?: StringFieldUpdateOperationsInput | string
+    caseName?: StringFieldUpdateOperationsInput | string
+    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
+    facts?: NullableStringFieldUpdateOperationsInput | string | null
+    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
+    noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    paymentStatus?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CasePartyCreateManyRoleInput = {
+    id?: string
+    caseId: string
+    partyName: string
+    fee?: Decimal | DecimalJsLike | number | string | null
+    contactInfo?: string | null
+  }
+
+  export type CasePartyUpdateWithoutRoleInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    partyName?: StringFieldUpdateOperationsInput | string
+    fee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    contactInfo?: NullableStringFieldUpdateOperationsInput | string | null
+    case?: CaseUpdateOneRequiredWithoutPartiesNestedInput
+  }
+
+  export type CasePartyUncheckedUpdateWithoutRoleInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseId?: StringFieldUpdateOperationsInput | string
+    partyName?: StringFieldUpdateOperationsInput | string
+    fee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    contactInfo?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CasePartyUncheckedUpdateManyWithoutRoleInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseId?: StringFieldUpdateOperationsInput | string
+    partyName?: StringFieldUpdateOperationsInput | string
+    fee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    contactInfo?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CaseLawyerCreateManyCaseInput = {
+    userId: string
+    isLead?: boolean
+  }
+
+  export type CasePartyCreateManyCaseInput = {
+    id?: string
+    partyName: string
+    roleId: string
+    fee?: Decimal | DecimalJsLike | number | string | null
+    contactInfo?: string | null
+  }
+
+  export type CaseHearingCreateManyCaseInput = {
+    id?: string
+    nextHearingDate?: Date | string | null
+    hearingDate?: Date | string | null
+    hearingOrder?: string | null
+    judgeName?: string | null
+  }
+
+  export type CasePleadingCreateManyCaseInput = {
+    id?: string
+    pleaderUserId?: string | null
+    pleadingDate?: Date | string | null
+    pleadingNotes: string
+  }
+
+  export type CourtProceedingCreateManyCaseInput = {
+    id?: string
+    courtLevelId: string
+    courtName: string
+    judgeName?: string | null
+    chargeCounseling?: string | null
+    verdict?: string | null
+  }
+
+  export type CasePrecedentCreateManyCaseInput = {
+    id?: string
+    decisionNumber?: string | null
+    plaintiff?: string | null
+    defendant?: string | null
+    citationNotes?: string | null
+  }
+
+  export type CasePaymentCreateManyCaseInput = {
+    id?: string
+    amount: Decimal | DecimalJsLike | number | string
+    paymentDate?: Date | string | null
+    method?: string | null
+    referenceNo?: string | null
+    notes?: string | null
+    createdAt?: Date | string
+  }
+
+  export type CaseCounselingCreateManyCaseInput = {
+    id?: string
+    counselorUserId?: string | null
+    date?: Date | string | null
+    notes: string
+    createdAt?: Date | string
+  }
+
+  export type CaseDocumentCreateManyCaseInput = {
+    id?: string
+    documentUrl: string
+    fileName: string
+    description?: string | null
+    createdAt?: Date | string
+  }
+
+  export type CaseLawyerUpdateWithoutCaseInput = {
+    isLead?: BoolFieldUpdateOperationsInput | boolean
+    user?: UserUpdateOneRequiredWithoutCases_as_lawyerNestedInput
+  }
+
+  export type CaseLawyerUncheckedUpdateWithoutCaseInput = {
+    userId?: StringFieldUpdateOperationsInput | string
+    isLead?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type CaseLawyerUncheckedUpdateManyWithoutCaseInput = {
+    userId?: StringFieldUpdateOperationsInput | string
+    isLead?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type CasePartyUpdateWithoutCaseInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    partyName?: StringFieldUpdateOperationsInput | string
+    fee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    contactInfo?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: PartyRoleUpdateOneRequiredWithoutPartiesNestedInput
+  }
+
+  export type CasePartyUncheckedUpdateWithoutCaseInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    partyName?: StringFieldUpdateOperationsInput | string
+    roleId?: StringFieldUpdateOperationsInput | string
+    fee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    contactInfo?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CasePartyUncheckedUpdateManyWithoutCaseInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    partyName?: StringFieldUpdateOperationsInput | string
+    roleId?: StringFieldUpdateOperationsInput | string
+    fee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    contactInfo?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CaseHearingUpdateWithoutCaseInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nextHearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hearingOrder?: NullableStringFieldUpdateOperationsInput | string | null
+    judgeName?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CaseHearingUncheckedUpdateWithoutCaseInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nextHearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hearingOrder?: NullableStringFieldUpdateOperationsInput | string | null
+    judgeName?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CaseHearingUncheckedUpdateManyWithoutCaseInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nextHearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hearingOrder?: NullableStringFieldUpdateOperationsInput | string | null
+    judgeName?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CasePleadingUpdateWithoutCaseInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    pleadingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    pleadingNotes?: StringFieldUpdateOperationsInput | string
+    pleader?: UserUpdateOneWithoutCases_as_pleaderNestedInput
+  }
+
+  export type CasePleadingUncheckedUpdateWithoutCaseInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    pleaderUserId?: NullableStringFieldUpdateOperationsInput | string | null
+    pleadingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    pleadingNotes?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CasePleadingUncheckedUpdateManyWithoutCaseInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    pleaderUserId?: NullableStringFieldUpdateOperationsInput | string | null
+    pleadingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    pleadingNotes?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CourtProceedingUpdateWithoutCaseInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    courtName?: StringFieldUpdateOperationsInput | string
+    judgeName?: NullableStringFieldUpdateOperationsInput | string | null
+    chargeCounseling?: NullableStringFieldUpdateOperationsInput | string | null
+    verdict?: NullableStringFieldUpdateOperationsInput | string | null
+    courtLevel?: CourtLevelUpdateOneRequiredWithoutProceedingsNestedInput
+  }
+
+  export type CourtProceedingUncheckedUpdateWithoutCaseInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    courtLevelId?: StringFieldUpdateOperationsInput | string
+    courtName?: StringFieldUpdateOperationsInput | string
+    judgeName?: NullableStringFieldUpdateOperationsInput | string | null
+    chargeCounseling?: NullableStringFieldUpdateOperationsInput | string | null
+    verdict?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CourtProceedingUncheckedUpdateManyWithoutCaseInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    courtLevelId?: StringFieldUpdateOperationsInput | string
+    courtName?: StringFieldUpdateOperationsInput | string
+    judgeName?: NullableStringFieldUpdateOperationsInput | string | null
+    chargeCounseling?: NullableStringFieldUpdateOperationsInput | string | null
+    verdict?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CasePrecedentUpdateWithoutCaseInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    decisionNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    plaintiff?: NullableStringFieldUpdateOperationsInput | string | null
+    defendant?: NullableStringFieldUpdateOperationsInput | string | null
+    citationNotes?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CasePrecedentUncheckedUpdateWithoutCaseInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    decisionNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    plaintiff?: NullableStringFieldUpdateOperationsInput | string | null
+    defendant?: NullableStringFieldUpdateOperationsInput | string | null
+    citationNotes?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CasePrecedentUncheckedUpdateManyWithoutCaseInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    decisionNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    plaintiff?: NullableStringFieldUpdateOperationsInput | string | null
+    defendant?: NullableStringFieldUpdateOperationsInput | string | null
+    citationNotes?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CasePaymentUpdateWithoutCaseInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    paymentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    method?: NullableStringFieldUpdateOperationsInput | string | null
+    referenceNo?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CasePaymentUncheckedUpdateWithoutCaseInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    paymentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    method?: NullableStringFieldUpdateOperationsInput | string | null
+    referenceNo?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CasePaymentUncheckedUpdateManyWithoutCaseInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    paymentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    method?: NullableStringFieldUpdateOperationsInput | string | null
+    referenceNo?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CaseCounselingUpdateWithoutCaseInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    notes?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    counselor?: UserUpdateOneWithoutCases_as_counselorNestedInput
+  }
+
+  export type CaseCounselingUncheckedUpdateWithoutCaseInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    counselorUserId?: NullableStringFieldUpdateOperationsInput | string | null
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    notes?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CaseCounselingUncheckedUpdateManyWithoutCaseInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    counselorUserId?: NullableStringFieldUpdateOperationsInput | string | null
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    notes?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CaseDocumentUpdateWithoutCaseInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    documentUrl?: StringFieldUpdateOperationsInput | string
+    fileName?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CaseDocumentUncheckedUpdateWithoutCaseInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    documentUrl?: StringFieldUpdateOperationsInput | string
+    fileName?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CaseDocumentUncheckedUpdateManyWithoutCaseInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    documentUrl?: StringFieldUpdateOperationsInput | string
+    fileName?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type PageCreateManyPage_typeInput = {
@@ -19410,6 +41635,9 @@ export namespace Prisma {
     refresh_tokens?: RefreshTokenUpdateManyWithoutUserNestedInput
     reset_tokens?: PasswordResetTokenUpdateManyWithoutUserNestedInput
     pages?: PageUpdateManyWithoutAuthorNestedInput
+    cases_as_lawyer?: CaseLawyerUpdateManyWithoutUserNestedInput
+    cases_as_pleader?: CasePleadingUpdateManyWithoutPleaderNestedInput
+    cases_as_counselor?: CaseCounselingUpdateManyWithoutCounselorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutRoleInput = {
@@ -19430,6 +41658,9 @@ export namespace Prisma {
     refresh_tokens?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
     reset_tokens?: PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
     pages?: PageUncheckedUpdateManyWithoutAuthorNestedInput
+    cases_as_lawyer?: CaseLawyerUncheckedUpdateManyWithoutUserNestedInput
+    cases_as_pleader?: CasePleadingUncheckedUpdateManyWithoutPleaderNestedInput
+    cases_as_counselor?: CaseCounselingUncheckedUpdateManyWithoutCounselorNestedInput
   }
 
   export type UserUncheckedUpdateManyWithoutRoleInput = {

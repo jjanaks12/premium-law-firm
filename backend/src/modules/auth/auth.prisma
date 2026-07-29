@@ -23,6 +23,9 @@ model User {
   refresh_tokens RefreshToken[]
   reset_tokens   PasswordResetToken[]
   pages          Page[] @relation("page_author")
+  cases_as_lawyer CaseLawyer[]
+  cases_as_pleader CasePleading[]
+  cases_as_counselor CaseCounseling[]
 
   @@map("users")
 }

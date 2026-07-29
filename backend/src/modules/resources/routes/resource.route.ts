@@ -1,5 +1,5 @@
 import { Router } from "express";
-import * as resourceController from "./controller/resource.controller";
+import * as resourceController from "../controller/resource.controller";
 import { verifyAccessToken } from "@/middlewares/checkAuth";
 import { can } from "@/middlewares/checkPermission";
 import multer from "multer";
