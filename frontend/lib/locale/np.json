@@ -117,19 +117,31 @@
     "cards": [
       {
         "title": "चेम्बरमा आउनुहोस्",
-        "lines": ["भगवती मार्ग, नक्साल", "काठमाडौं ४४६००, नेपाल"]
+        "lines": [
+          "भगवती मार्ग, नक्साल",
+          "काठमाडौं ४४६००, नेपाल"
+        ]
       },
       {
         "title": "फर्मलाई कल गर्नुहोस्",
-        "lines": ["+९७७ १ ४४४ ११२२", "+९७७ १ ४४४ ११२३"]
+        "lines": [
+          "+९७७ १ ४४४ ११२२",
+          "+९७७ १ ४४४ ११२३"
+        ]
       },
       {
         "title": "हामीलाई लेख्नुहोस्",
-        "lines": ["chambers@premiumlaw.com.np", "consult@premiumlaw.com.np"]
+        "lines": [
+          "chambers@premiumlaw.com.np",
+          "consult@premiumlaw.com.np"
+        ]
       },
       {
         "title": "कार्यालय समय",
-        "lines": ["सोम – शुक्र · ८:३० – १८:३०", "शनिबार · भेटघाटद्वारा मात्र"]
+        "lines": [
+          "सोम – शुक्र · ८:३० – १८:३०",
+          "शनिबार · भेटघाटद्वारा मात्र"
+        ]
       }
     ],
     "formEyebrow": "सन्देश पठाउनुहोस्",
@@ -256,5 +268,34 @@
     "confirmRestoreDesc": "यसले प्रयोगकर्ताको खाता पुनर्स्थापना गर्नेछ र तिनीहरूलाई लग इन गर्न अनुमति दिनेछ।",
     "confirmRestoreBtn": "पुनर्स्थापना गर्नुहोस्",
     "successInviteToast": "निमन्त्रणा इमेल सफलतापूर्वक पठाइयो!"
+  },
+  "CasesPage": {
+    "title": "Cases Management",
+    "description": "Manage case records, natures, parties, and court proceedings.",
+    "addBtn": "Add Case",
+    "searchPlaceholder": "Search by case number or name...",
+    "colCaseNumber": "Case Number",
+    "colCaseName": "Case Name",
+    "colNature": "Nature",
+    "colRegDate": "Reg. Date",
+    "colActions": "Actions",
+    "noCasesFound": "No Cases Found",
+    "noCasesFoundDesc": "Get started by adding a new case record.",
+    "addModalTitle": "Add New Case",
+    "addModalDesc": "Enter the core details for the new case.",
+    "editModalTitle": "Edit Case",
+    "editModalDesc": "Update the core details of this case.",
+    "formNumber": "Case Number",
+    "formName": "Case Name",
+    "formNature": "Nature ID",
+    "formRegDate": "Registration Date",
+    "formFacts": "Facts",
+    "cancel": "Cancel",
+    "submitAdd": "Save Case",
+    "submitUpdate": "Update Case",
+    "loading": "Loading cases...",
+    "confirmDeleteTitle": "Are you absolutely sure?",
+    "confirmDeleteDesc": "This action will permanently delete the case and its related records.",
+    "confirmDeleteBtn": "Delete Case"
   }
 }
