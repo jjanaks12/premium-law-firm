@@ -48,6 +48,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     fetchProfile();
+
+    const handleAuthExpired = () => {
+      setUser(null);
+    };
+
+    window.addEventListener("auth-expired", handleAuthExpired);
+    return () => window.removeEventListener("auth-expired", handleAuthExpired);
   }, []);
 
   const login = (

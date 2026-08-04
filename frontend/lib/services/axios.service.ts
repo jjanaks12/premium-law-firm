@@ -60,14 +60,20 @@ export const useAxios = () => {
                     description: "Please log in again.",
                     type: 'error'
                 })
+                window.dispatchEvent(new Event('auth-expired'))
                 router.push('/login')
             }
 
             const rejectedError = new Error(errorMessage) as any
             if (isNetworkError) {
+                toast.add({
+                    title: "Network Error",
+                    description: errorMessage,
+                    type: 'error'
+                })
                 rejectedError.isNetworkError = true
             }
-            return Promise.reject(rejectedError)
+            return error
         }
     )
 

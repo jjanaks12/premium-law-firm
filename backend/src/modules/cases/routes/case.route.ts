@@ -52,6 +52,7 @@ router.delete("/:id", caseController.destroy);
 
 // Nested Relations
 router.post("/:id/parties", relationsController.addParty);
+router.put("/:id/parties/:subId", relationsController.updateParty);
 router.delete("/:id/parties/:subId", relationsController.removeParty);
 
 router.post("/:id/lawyers", relationsController.addLawyer);

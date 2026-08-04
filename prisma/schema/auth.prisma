@@ -26,6 +26,7 @@ model User {
   cases_as_lawyer CaseLawyer[]
   cases_as_pleader CasePleading[]
   cases_as_counselor CaseCounseling[]
+  cases_created      Case[] @relation("CaseCreatedBy")
 
   @@map("users")
 }

@@ -28,7 +28,6 @@ import { Link, usePathname, useRouter } from "@/src/i18n/routing";
 import { ChevronRightIcon, LogOutIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { User } from "@/components/User";
-import Language from "@/components/Language";
 
 export default function AdminSidebar() {
   const pathname = usePathname();
@@ -157,12 +156,13 @@ export default function AdminSidebar() {
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter className="p-4 border-t border-border">
-        <Language theme="dark" className="justify-start" />
         {user && <User user={user} />}
         <Button
           onClick={async () => {
             await logout();
-            router.replace("/login");
+            router.replace(
+              "/login?redirectUrl=" + encodeURIComponent(pathname),
+            );
           }}
           variant="outline"
           size={!isSidebarOpened ? "icon" : "default"}

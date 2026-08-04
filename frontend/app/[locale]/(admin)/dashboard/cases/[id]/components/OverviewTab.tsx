@@ -49,7 +49,12 @@ export default function OverviewTab({
     if (open && users.length === 0) {
       axios
         .get("/users")
-        .then((res) => setUsers(res.data.data))
+        .then((res) => {
+          const lawyersOnly = res.data.data.filter(
+            (u: any) => u.role?.name?.toLowerCase() === "lawyer"
+          );
+          setUsers(lawyersOnly);
+        })
         .catch(console.error);
     }
   }, [open, users.length, axios]);

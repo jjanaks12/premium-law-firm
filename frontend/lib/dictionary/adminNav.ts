@@ -76,17 +76,17 @@ const adminMenu: Menu[] = [
         }, {
             label: 'Case Natures',
             href: '/dashboard/case-natures',
-            resource: 'cases',
+            resource: 'case-natures',
             icon: FolderCogIcon,
         }, {
             label: 'Party Roles',
             href: '/dashboard/party-roles',
-            resource: 'cases',
+            resource: 'party-roles',
             icon: UsersIcon,
         }, {
             label: 'Court Levels',
             href: '/dashboard/court-levels',
-            resource: 'cases',
+            resource: 'court-levels',
             icon: BookOpenIcon,
         }]
     },

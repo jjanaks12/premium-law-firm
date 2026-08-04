@@ -1,6 +1,7 @@
 import prisma from "@/lib/prisma";
 import { NextFunction, Request, Response } from "express";
 import createHttpError from "http-errors";
+import { queueEmail } from "@/modules/notifications/notification.queue";
 
 export const getPartyRoles = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -70,11 +71,80 @@ export const deleteCourtLevel = async (req: Request, res: Response, next: NextFu
 export const addParty = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { id } = req.params;
-    const { partyName, roleId, fee, contactInfo, representative } = req.body;
+    const { partyName, roleId, fee, citizenshipNo, permanentAddress, temporaryAddress, contactNo, waris } = req.body;
+    
+    const warisRole = await prisma.partyRole.findUnique({
+      where: { name: 'Waris' },
+    });
+    const warisRoleId = warisRole?.id;
+
     const party = await prisma.caseParty.create({
-      data: { caseId: id as string, partyName, roleId, fee, contactInfo, representative }
+      data: { 
+        caseId: id as string, 
+        partyName, 
+        roleId, 
+        fee, 
+        citizenshipNo, 
+        permanentAddress, 
+        temporaryAddress, 
+        contactNo,
+        waris: waris && waris.partyName && warisRoleId ? {
+          create: [
+            {
+              caseId: id as string,
+              partyName: waris.partyName,
+              roleId: warisRoleId,
+              citizenshipNo: waris.citizenshipNo,
+              permanentAddress: waris.permanentAddress,
+              temporaryAddress: waris.temporaryAddress,
+              contactNo: waris.contactNo,
+            }
+          ]
+        } : undefined
+      }
     });
     res.status(201).json({ data: party });
+  } catch (error) { next(error); }
+};
+export const updateParty = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { id, subId } = req.params;
+    const { partyName, roleId, fee, citizenshipNo, permanentAddress, temporaryAddress, contactNo, waris } = req.body;
+    
+    const warisRole = await prisma.partyRole.findUnique({
+      where: { name: 'Waris' },
+    });
+    const warisRoleId = warisRole?.id;
+
+    const party = await prisma.caseParty.update({
+      where: { id: subId as string },
+      data: { 
+        partyName, 
+        roleId, 
+        fee, 
+        citizenshipNo, 
+        permanentAddress, 
+        temporaryAddress, 
+        contactNo,
+        waris: {
+          deleteMany: {},
+          ...(waris && waris.partyName && warisRoleId ? {
+            create: [
+              {
+                caseId: id as string,
+                partyName: waris.partyName,
+                roleId: warisRoleId,
+                citizenshipNo: waris.citizenshipNo,
+                permanentAddress: waris.permanentAddress,
+                temporaryAddress: waris.temporaryAddress,
+                contactNo: waris.contactNo,
+              }
+            ]
+          } : {})
+        }
+      }
+    });
+    res.json({ data: party });
   } catch (error) { next(error); }
 };
 export const removeParty = async (req: Request, res: Response, next: NextFunction) => {
@@ -92,6 +162,20 @@ export const addLawyer = async (req: Request, res: Response, next: NextFunction)
     const lawyer = await prisma.caseLawyer.create({
       data: { caseId: id as string, userId, isLead }
     });
+    
+    // Notify the user about the case assignment
+    const user = await prisma.user.findUnique({ where: { id: userId } });
+    const caseData = await prisma.case.findUnique({ where: { id: id as string } });
+
+    if (user && caseData) {
+      await queueEmail({
+        to: user.email,
+        subject: `Assigned to Case: ${caseData.caseNumber}`,
+        text: `Hello ${user.first_name},\n\nYou have been assigned as a ${isLead ? 'Lead Lawyer' : 'Lawyer'} for the case "${caseData.caseName}" (${caseData.caseNumber}).\n\nPlease log in to view the case details.`,
+        userId: user.id
+      });
+    }
+
     res.status(201).json({ data: lawyer });
   } catch (error) { next(error); }
 };

@@ -155,7 +155,7 @@ export default function LoginForm({ className }: { className?: string }) {
                 href="/forgot-password"
                 className="text-sm underline font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 hover:text-navy-deep"
               >
-                Forgot password
+                {t("forgot_password")}
               </Link>
             </div>
           </div>

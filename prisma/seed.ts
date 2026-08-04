@@ -82,6 +82,57 @@ async function main() {
   });
 
   console.log('✅ Created/verified admin user:', adminUser);
+
+  // 3. Create Court Levels
+  const courtLevels = [
+    { name: 'Supreme Court', nepaliName: 'सर्वोच्च अदालत' },
+    { name: 'High Court', nepaliName: 'उच्च अदालत' },
+    { name: 'District Court', nepaliName: 'जिल्ला अदालत' },
+    { name: 'Special Court', nepaliName: 'विशेष अदालत' },
+  ];
+  for (const level of courtLevels) {
+    await prisma.courtLevel.upsert({
+      where: { name: level.name },
+      update: { nepaliName: level.nepaliName },
+      create: level,
+    });
+  }
+  console.log('✅ Created/verified court levels');
+
+  // 4. Create Party Roles
+  const partyRoles = [
+    { name: 'Plaintiff', nepaliName: 'वादी' },
+    { name: 'Defendant', nepaliName: 'प्रतिवादी' },
+    { name: 'Petitioner', nepaliName: 'निवेदक' },
+    { name: 'Respondent', nepaliName: 'विपक्षी' },
+    { name: 'Appellant', nepaliName: 'पुनरावेदक' },
+    { name: 'Waris', nepaliName: 'वारेस' },
+  ];
+  for (const role of partyRoles) {
+    await prisma.partyRole.upsert({
+      where: { name: role.name },
+      update: { nepaliName: role.nepaliName },
+      create: role,
+    });
+  }
+  console.log('✅ Created/verified party roles');
+
+  // 5. Create Case Natures
+  const caseNatures = [
+    { name: 'Civil', nepaliName: 'देवानी' },
+    { name: 'Criminal', nepaliName: 'फौजदारी' },
+    { name: 'Writ', nepaliName: 'रिट' },
+    { name: 'Commercial', nepaliName: 'वाणिज्य' },
+  ];
+  for (const nature of caseNatures) {
+    await prisma.caseNature.upsert({
+      where: { name: nature.name },
+      update: { nepaliName: nature.nepaliName },
+      create: nature,
+    });
+  }
+  console.log('✅ Created/verified case natures');
+
   console.log('🌱 Seeding completed successfully.');
 }
 

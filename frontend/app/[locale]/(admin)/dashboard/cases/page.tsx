@@ -32,12 +32,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
+
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -47,19 +42,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import dayjs from "dayjs";
-import CaseForm from "./CaseForm";
-
-export interface CaseData {
-  id: string;
-  caseNumber: string;
-  caseName: string;
-  natureId: string;
-  nature?: { id: string; name: string };
-  registrationDate: string | null;
-  facts: string | null;
-  status: string;
-  // Omitting relations for brevity in the list view
-}
+import { CaseData } from "@app/types";
 
 export default function CasesPage() {
   const { axios } = useAxios();
@@ -73,13 +56,6 @@ export default function CasesPage() {
   const [search, setSearch] = useState("");
   const [partySearch, setPartySearch] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
-
-  // Form Modal States
-  const [showForm, setShowForm] = useState(false);
-  const [isEditing, setIsEditing] = useState(false);
-  const [selectedCase, setSelectedCase] = useState<CaseData | undefined>(
-    undefined,
-  );
 
   // Delete Dialog States
   const [deleteId, setDeleteId] = useState<string | null>(null);
@@ -119,25 +95,11 @@ export default function CasesPage() {
 
   // Handlers for Add/Edit Form
   const handleAddClick = () => {
-    setSelectedCase(undefined);
-    setIsEditing(false);
-    setShowForm(true);
+    router.push("/dashboard/cases/create");
   };
 
   const handleEditClick = (c: CaseData) => {
-    setSelectedCase(c);
-    setIsEditing(true);
-    setShowForm(true);
-  };
-
-  const closeForm = () => {
-    setShowForm(false);
-    setSelectedCase(undefined);
-  };
-
-  const handleFormSuccess = () => {
-    closeForm();
-    fetchCases();
+    router.push(`/dashboard/cases/${c.id}/edit`);
   };
 
   // Handlers for Delete
@@ -286,8 +248,11 @@ export default function CasesPage() {
                         <Button
                           variant="ghost"
                           size="icon"
-                          onClick={() => router.push(`/dashboard/cases/${c.id}`)}
+                          onClick={() =>
+                            router.push(`/dashboard/cases/${c.id}`)
+                          }
                           title="View Details"
+                          permission="cases.read"
                         >
                           <EyeIcon className="h-4 w-4" />
                         </Button>
@@ -295,6 +260,7 @@ export default function CasesPage() {
                           variant="ghost"
                           size="icon"
                           onClick={() => handleEditClick(c)}
+                          permission="cases.update"
                         >
                           <Edit2Icon className="h-4 w-4" />
                         </Button>
@@ -303,6 +269,7 @@ export default function CasesPage() {
                           size="icon"
                           className="text-destructive hover:text-destructive hover:bg-destructive/10"
                           onClick={() => handleDeleteClick(c.id)}
+                          permission="cases.delete"
                         >
                           <Trash2Icon className="h-4 w-4" />
                         </Button>
@@ -341,27 +308,6 @@ export default function CasesPage() {
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
-
-      {/* Add / Edit Case Modal */}
-      <Dialog open={showForm} onOpenChange={setShowForm}>
-        <DialogContent className="sm:max-w-150 max-h-[90vh] overflow-y-auto">
-          <DialogHeader>
-            <DialogTitle>
-              {isEditing ? t("editModalTitle") : t("addModalTitle")}
-            </DialogTitle>
-          </DialogHeader>
-          <div className="mt-4">
-            {showForm && (
-              <CaseForm
-                caseData={selectedCase}
-                isEditing={isEditing}
-                onClose={closeForm}
-                onSuccess={handleFormSuccess}
-              />
-            )}
-          </div>
-        </DialogContent>
-      </Dialog>
     </div>
   );
 }

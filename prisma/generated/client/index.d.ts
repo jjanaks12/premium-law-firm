@@ -2903,6 +2903,7 @@ export namespace Prisma {
     cases_as_lawyer: number
     cases_as_pleader: number
     cases_as_counselor: number
+    cases_created: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2913,6 +2914,7 @@ export namespace Prisma {
     cases_as_lawyer?: boolean | UserCountOutputTypeCountCases_as_lawyerArgs
     cases_as_pleader?: boolean | UserCountOutputTypeCountCases_as_pleaderArgs
     cases_as_counselor?: boolean | UserCountOutputTypeCountCases_as_counselorArgs
+    cases_created?: boolean | UserCountOutputTypeCountCases_createdArgs
   }
 
   // Custom InputTypes
@@ -2973,6 +2975,13 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountCases_as_counselorArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CaseCounselingWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountCases_createdArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CaseWhereInput
   }
 
 
@@ -3218,6 +3227,37 @@ export namespace Prisma {
    */
   export type CaseCountOutputTypeCountDocumentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CaseDocumentWhereInput
+  }
+
+
+  /**
+   * Count Type CasePartyCountOutputType
+   */
+
+  export type CasePartyCountOutputType = {
+    waris: number
+  }
+
+  export type CasePartyCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    waris?: boolean | CasePartyCountOutputTypeCountWarisArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * CasePartyCountOutputType without action
+   */
+  export type CasePartyCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CasePartyCountOutputType
+     */
+    select?: CasePartyCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * CasePartyCountOutputType without action
+   */
+  export type CasePartyCountOutputTypeCountWarisArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CasePartyWhereInput
   }
 
 
@@ -3559,6 +3599,7 @@ export namespace Prisma {
     cases_as_lawyer?: boolean | User$cases_as_lawyerArgs<ExtArgs>
     cases_as_pleader?: boolean | User$cases_as_pleaderArgs<ExtArgs>
     cases_as_counselor?: boolean | User$cases_as_counselorArgs<ExtArgs>
+    cases_created?: boolean | User$cases_createdArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -3628,6 +3669,7 @@ export namespace Prisma {
     cases_as_lawyer?: boolean | User$cases_as_lawyerArgs<ExtArgs>
     cases_as_pleader?: boolean | User$cases_as_pleaderArgs<ExtArgs>
     cases_as_counselor?: boolean | User$cases_as_counselorArgs<ExtArgs>
+    cases_created?: boolean | User$cases_createdArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3651,6 +3693,7 @@ export namespace Prisma {
       cases_as_lawyer: Prisma.$CaseLawyerPayload<ExtArgs>[]
       cases_as_pleader: Prisma.$CasePleadingPayload<ExtArgs>[]
       cases_as_counselor: Prisma.$CaseCounselingPayload<ExtArgs>[]
+      cases_created: Prisma.$CasePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -4070,6 +4113,7 @@ export namespace Prisma {
     cases_as_lawyer<T extends User$cases_as_lawyerArgs<ExtArgs> = {}>(args?: Subset<T, User$cases_as_lawyerArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseLawyerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     cases_as_pleader<T extends User$cases_as_pleaderArgs<ExtArgs> = {}>(args?: Subset<T, User$cases_as_pleaderArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CasePleadingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     cases_as_counselor<T extends User$cases_as_counselorArgs<ExtArgs> = {}>(args?: Subset<T, User$cases_as_counselorArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseCounselingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    cases_created<T extends User$cases_createdArgs<ExtArgs> = {}>(args?: Subset<T, User$cases_createdArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CasePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4717,6 +4761,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: CaseCounselingScalarFieldEnum | CaseCounselingScalarFieldEnum[]
+  }
+
+  /**
+   * User.cases_created
+   */
+  export type User$cases_createdArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Case
+     */
+    select?: CaseSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Case
+     */
+    omit?: CaseOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseInclude<ExtArgs> | null
+    where?: CaseWhereInput
+    orderBy?: CaseOrderByWithRelationInput | CaseOrderByWithRelationInput[]
+    cursor?: CaseWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CaseScalarFieldEnum | CaseScalarFieldEnum[]
   }
 
   /**
@@ -11250,6 +11318,7 @@ export namespace Prisma {
     fullJudgmentDate: Date | null
     judgmentVerifyDate: Date | null
     status: string | null
+    createdById: string | null
     createdAt: Date | null
   }
 
@@ -11268,6 +11337,7 @@ export namespace Prisma {
     fullJudgmentDate: Date | null
     judgmentVerifyDate: Date | null
     status: string | null
+    createdById: string | null
     createdAt: Date | null
   }
 
@@ -11286,6 +11356,7 @@ export namespace Prisma {
     fullJudgmentDate: number
     judgmentVerifyDate: number
     status: number
+    createdById: number
     createdAt: number
     _all: number
   }
@@ -11314,6 +11385,7 @@ export namespace Prisma {
     fullJudgmentDate?: true
     judgmentVerifyDate?: true
     status?: true
+    createdById?: true
     createdAt?: true
   }
 
@@ -11332,6 +11404,7 @@ export namespace Prisma {
     fullJudgmentDate?: true
     judgmentVerifyDate?: true
     status?: true
+    createdById?: true
     createdAt?: true
   }
 
@@ -11350,6 +11423,7 @@ export namespace Prisma {
     fullJudgmentDate?: true
     judgmentVerifyDate?: true
     status?: true
+    createdById?: true
     createdAt?: true
     _all?: true
   }
@@ -11455,6 +11529,7 @@ export namespace Prisma {
     fullJudgmentDate: Date | null
     judgmentVerifyDate: Date | null
     status: string
+    createdById: string | null
     createdAt: Date
     _count: CaseCountAggregateOutputType | null
     _avg: CaseAvgAggregateOutputType | null
@@ -11492,8 +11567,10 @@ export namespace Prisma {
     fullJudgmentDate?: boolean
     judgmentVerifyDate?: boolean
     status?: boolean
+    createdById?: boolean
     createdAt?: boolean
     nature?: boolean | CaseNatureDefaultArgs<ExtArgs>
+    createdBy?: boolean | Case$createdByArgs<ExtArgs>
     lawyers?: boolean | Case$lawyersArgs<ExtArgs>
     parties?: boolean | Case$partiesArgs<ExtArgs>
     hearings?: boolean | Case$hearingsArgs<ExtArgs>
@@ -11521,8 +11598,10 @@ export namespace Prisma {
     fullJudgmentDate?: boolean
     judgmentVerifyDate?: boolean
     status?: boolean
+    createdById?: boolean
     createdAt?: boolean
     nature?: boolean | CaseNatureDefaultArgs<ExtArgs>
+    createdBy?: boolean | Case$createdByArgs<ExtArgs>
   }, ExtArgs["result"]["case"]>
 
   export type CaseSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -11540,8 +11619,10 @@ export namespace Prisma {
     fullJudgmentDate?: boolean
     judgmentVerifyDate?: boolean
     status?: boolean
+    createdById?: boolean
     createdAt?: boolean
     nature?: boolean | CaseNatureDefaultArgs<ExtArgs>
+    createdBy?: boolean | Case$createdByArgs<ExtArgs>
   }, ExtArgs["result"]["case"]>
 
   export type CaseSelectScalar = {
@@ -11559,12 +11640,14 @@ export namespace Prisma {
     fullJudgmentDate?: boolean
     judgmentVerifyDate?: boolean
     status?: boolean
+    createdById?: boolean
     createdAt?: boolean
   }
 
-  export type CaseOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "caseNumber" | "caseName" | "natureId" | "registrationDate" | "registrationFee" | "sectionCourtRoom" | "facts" | "relatedLaws" | "referredThrough" | "noticeStatus" | "fullJudgmentDate" | "judgmentVerifyDate" | "status" | "createdAt", ExtArgs["result"]["case"]>
+  export type CaseOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "caseNumber" | "caseName" | "natureId" | "registrationDate" | "registrationFee" | "sectionCourtRoom" | "facts" | "relatedLaws" | "referredThrough" | "noticeStatus" | "fullJudgmentDate" | "judgmentVerifyDate" | "status" | "createdById" | "createdAt", ExtArgs["result"]["case"]>
   export type CaseInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     nature?: boolean | CaseNatureDefaultArgs<ExtArgs>
+    createdBy?: boolean | Case$createdByArgs<ExtArgs>
     lawyers?: boolean | Case$lawyersArgs<ExtArgs>
     parties?: boolean | Case$partiesArgs<ExtArgs>
     hearings?: boolean | Case$hearingsArgs<ExtArgs>
@@ -11578,15 +11661,18 @@ export namespace Prisma {
   }
   export type CaseIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     nature?: boolean | CaseNatureDefaultArgs<ExtArgs>
+    createdBy?: boolean | Case$createdByArgs<ExtArgs>
   }
   export type CaseIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     nature?: boolean | CaseNatureDefaultArgs<ExtArgs>
+    createdBy?: boolean | Case$createdByArgs<ExtArgs>
   }
 
   export type $CasePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Case"
     objects: {
       nature: Prisma.$CaseNaturePayload<ExtArgs>
+      createdBy: Prisma.$UserPayload<ExtArgs> | null
       lawyers: Prisma.$CaseLawyerPayload<ExtArgs>[]
       parties: Prisma.$CasePartyPayload<ExtArgs>[]
       hearings: Prisma.$CaseHearingPayload<ExtArgs>[]
@@ -11612,6 +11698,7 @@ export namespace Prisma {
       fullJudgmentDate: Date | null
       judgmentVerifyDate: Date | null
       status: string
+      createdById: string | null
       createdAt: Date
     }, ExtArgs["result"]["case"]>
     composites: {}
@@ -12008,6 +12095,7 @@ export namespace Prisma {
   export interface Prisma__CaseClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     nature<T extends CaseNatureDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CaseNatureDefaultArgs<ExtArgs>>): Prisma__CaseNatureClient<$Result.GetResult<Prisma.$CaseNaturePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    createdBy<T extends Case$createdByArgs<ExtArgs> = {}>(args?: Subset<T, Case$createdByArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     lawyers<T extends Case$lawyersArgs<ExtArgs> = {}>(args?: Subset<T, Case$lawyersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseLawyerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     parties<T extends Case$partiesArgs<ExtArgs> = {}>(args?: Subset<T, Case$partiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CasePartyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     hearings<T extends Case$hearingsArgs<ExtArgs> = {}>(args?: Subset<T, Case$hearingsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseHearingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -12060,6 +12148,7 @@ export namespace Prisma {
     readonly fullJudgmentDate: FieldRef<"Case", 'DateTime'>
     readonly judgmentVerifyDate: FieldRef<"Case", 'DateTime'>
     readonly status: FieldRef<"Case", 'String'>
+    readonly createdById: FieldRef<"Case", 'String'>
     readonly createdAt: FieldRef<"Case", 'DateTime'>
   }
     
@@ -12459,6 +12548,25 @@ export namespace Prisma {
      * Limit how many Cases to delete.
      */
     limit?: number
+  }
+
+  /**
+   * Case.createdBy
+   */
+  export type Case$createdByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
   }
 
   /**
@@ -13767,8 +13875,11 @@ export namespace Prisma {
     partyName: string | null
     roleId: string | null
     fee: Decimal | null
-    contactInfo: string | null
-    representative: string | null
+    citizenshipNo: string | null
+    permanentAddress: string | null
+    temporaryAddress: string | null
+    contactNo: string | null
+    parentId: string | null
   }
 
   export type CasePartyMaxAggregateOutputType = {
@@ -13777,8 +13888,11 @@ export namespace Prisma {
     partyName: string | null
     roleId: string | null
     fee: Decimal | null
-    contactInfo: string | null
-    representative: string | null
+    citizenshipNo: string | null
+    permanentAddress: string | null
+    temporaryAddress: string | null
+    contactNo: string | null
+    parentId: string | null
   }
 
   export type CasePartyCountAggregateOutputType = {
@@ -13787,8 +13901,11 @@ export namespace Prisma {
     partyName: number
     roleId: number
     fee: number
-    contactInfo: number
-    representative: number
+    citizenshipNo: number
+    permanentAddress: number
+    temporaryAddress: number
+    contactNo: number
+    parentId: number
     _all: number
   }
 
@@ -13807,8 +13924,11 @@ export namespace Prisma {
     partyName?: true
     roleId?: true
     fee?: true
-    contactInfo?: true
-    representative?: true
+    citizenshipNo?: true
+    permanentAddress?: true
+    temporaryAddress?: true
+    contactNo?: true
+    parentId?: true
   }
 
   export type CasePartyMaxAggregateInputType = {
@@ -13817,8 +13937,11 @@ export namespace Prisma {
     partyName?: true
     roleId?: true
     fee?: true
-    contactInfo?: true
-    representative?: true
+    citizenshipNo?: true
+    permanentAddress?: true
+    temporaryAddress?: true
+    contactNo?: true
+    parentId?: true
   }
 
   export type CasePartyCountAggregateInputType = {
@@ -13827,8 +13950,11 @@ export namespace Prisma {
     partyName?: true
     roleId?: true
     fee?: true
-    contactInfo?: true
-    representative?: true
+    citizenshipNo?: true
+    permanentAddress?: true
+    temporaryAddress?: true
+    contactNo?: true
+    parentId?: true
     _all?: true
   }
 
@@ -13924,8 +14050,11 @@ export namespace Prisma {
     partyName: string
     roleId: string
     fee: Decimal | null
-    contactInfo: string | null
-    representative: string | null
+    citizenshipNo: string | null
+    permanentAddress: string | null
+    temporaryAddress: string | null
+    contactNo: string | null
+    parentId: string | null
     _count: CasePartyCountAggregateOutputType | null
     _avg: CasePartyAvgAggregateOutputType | null
     _sum: CasePartySumAggregateOutputType | null
@@ -13953,10 +14082,16 @@ export namespace Prisma {
     partyName?: boolean
     roleId?: boolean
     fee?: boolean
-    contactInfo?: boolean
-    representative?: boolean
+    citizenshipNo?: boolean
+    permanentAddress?: boolean
+    temporaryAddress?: boolean
+    contactNo?: boolean
+    parentId?: boolean
     case?: boolean | CaseDefaultArgs<ExtArgs>
     role?: boolean | PartyRoleDefaultArgs<ExtArgs>
+    parent?: boolean | CaseParty$parentArgs<ExtArgs>
+    waris?: boolean | CaseParty$warisArgs<ExtArgs>
+    _count?: boolean | CasePartyCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["caseParty"]>
 
   export type CasePartySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -13965,10 +14100,14 @@ export namespace Prisma {
     partyName?: boolean
     roleId?: boolean
     fee?: boolean
-    contactInfo?: boolean
-    representative?: boolean
+    citizenshipNo?: boolean
+    permanentAddress?: boolean
+    temporaryAddress?: boolean
+    contactNo?: boolean
+    parentId?: boolean
     case?: boolean | CaseDefaultArgs<ExtArgs>
     role?: boolean | PartyRoleDefaultArgs<ExtArgs>
+    parent?: boolean | CaseParty$parentArgs<ExtArgs>
   }, ExtArgs["result"]["caseParty"]>
 
   export type CasePartySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -13977,10 +14116,14 @@ export namespace Prisma {
     partyName?: boolean
     roleId?: boolean
     fee?: boolean
-    contactInfo?: boolean
-    representative?: boolean
+    citizenshipNo?: boolean
+    permanentAddress?: boolean
+    temporaryAddress?: boolean
+    contactNo?: boolean
+    parentId?: boolean
     case?: boolean | CaseDefaultArgs<ExtArgs>
     role?: boolean | PartyRoleDefaultArgs<ExtArgs>
+    parent?: boolean | CaseParty$parentArgs<ExtArgs>
   }, ExtArgs["result"]["caseParty"]>
 
   export type CasePartySelectScalar = {
@@ -13989,22 +14132,30 @@ export namespace Prisma {
     partyName?: boolean
     roleId?: boolean
     fee?: boolean
-    contactInfo?: boolean
-    representative?: boolean
+    citizenshipNo?: boolean
+    permanentAddress?: boolean
+    temporaryAddress?: boolean
+    contactNo?: boolean
+    parentId?: boolean
   }
 
-  export type CasePartyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "caseId" | "partyName" | "roleId" | "fee" | "contactInfo" | "representative", ExtArgs["result"]["caseParty"]>
+  export type CasePartyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "caseId" | "partyName" | "roleId" | "fee" | "citizenshipNo" | "permanentAddress" | "temporaryAddress" | "contactNo" | "parentId", ExtArgs["result"]["caseParty"]>
   export type CasePartyInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     case?: boolean | CaseDefaultArgs<ExtArgs>
     role?: boolean | PartyRoleDefaultArgs<ExtArgs>
+    parent?: boolean | CaseParty$parentArgs<ExtArgs>
+    waris?: boolean | CaseParty$warisArgs<ExtArgs>
+    _count?: boolean | CasePartyCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type CasePartyIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     case?: boolean | CaseDefaultArgs<ExtArgs>
     role?: boolean | PartyRoleDefaultArgs<ExtArgs>
+    parent?: boolean | CaseParty$parentArgs<ExtArgs>
   }
   export type CasePartyIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     case?: boolean | CaseDefaultArgs<ExtArgs>
     role?: boolean | PartyRoleDefaultArgs<ExtArgs>
+    parent?: boolean | CaseParty$parentArgs<ExtArgs>
   }
 
   export type $CasePartyPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -14012,6 +14163,8 @@ export namespace Prisma {
     objects: {
       case: Prisma.$CasePayload<ExtArgs>
       role: Prisma.$PartyRolePayload<ExtArgs>
+      parent: Prisma.$CasePartyPayload<ExtArgs> | null
+      waris: Prisma.$CasePartyPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -14019,8 +14172,11 @@ export namespace Prisma {
       partyName: string
       roleId: string
       fee: Prisma.Decimal | null
-      contactInfo: string | null
-      representative: string | null
+      citizenshipNo: string | null
+      permanentAddress: string | null
+      temporaryAddress: string | null
+      contactNo: string | null
+      parentId: string | null
     }, ExtArgs["result"]["caseParty"]>
     composites: {}
   }
@@ -14417,6 +14573,8 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     case<T extends CaseDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CaseDefaultArgs<ExtArgs>>): Prisma__CaseClient<$Result.GetResult<Prisma.$CasePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     role<T extends PartyRoleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PartyRoleDefaultArgs<ExtArgs>>): Prisma__PartyRoleClient<$Result.GetResult<Prisma.$PartyRolePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    parent<T extends CaseParty$parentArgs<ExtArgs> = {}>(args?: Subset<T, CaseParty$parentArgs<ExtArgs>>): Prisma__CasePartyClient<$Result.GetResult<Prisma.$CasePartyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    waris<T extends CaseParty$warisArgs<ExtArgs> = {}>(args?: Subset<T, CaseParty$warisArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CasePartyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -14451,8 +14609,11 @@ export namespace Prisma {
     readonly partyName: FieldRef<"CaseParty", 'String'>
     readonly roleId: FieldRef<"CaseParty", 'String'>
     readonly fee: FieldRef<"CaseParty", 'Decimal'>
-    readonly contactInfo: FieldRef<"CaseParty", 'String'>
-    readonly representative: FieldRef<"CaseParty", 'String'>
+    readonly citizenshipNo: FieldRef<"CaseParty", 'String'>
+    readonly permanentAddress: FieldRef<"CaseParty", 'String'>
+    readonly temporaryAddress: FieldRef<"CaseParty", 'String'>
+    readonly contactNo: FieldRef<"CaseParty", 'String'>
+    readonly parentId: FieldRef<"CaseParty", 'String'>
   }
     
 
@@ -14851,6 +15012,49 @@ export namespace Prisma {
      * Limit how many CaseParties to delete.
      */
     limit?: number
+  }
+
+  /**
+   * CaseParty.parent
+   */
+  export type CaseParty$parentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseParty
+     */
+    select?: CasePartySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseParty
+     */
+    omit?: CasePartyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePartyInclude<ExtArgs> | null
+    where?: CasePartyWhereInput
+  }
+
+  /**
+   * CaseParty.waris
+   */
+  export type CaseParty$warisArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseParty
+     */
+    select?: CasePartySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseParty
+     */
+    omit?: CasePartyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePartyInclude<ExtArgs> | null
+    where?: CasePartyWhereInput
+    orderBy?: CasePartyOrderByWithRelationInput | CasePartyOrderByWithRelationInput[]
+    cursor?: CasePartyWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CasePartyScalarFieldEnum | CasePartyScalarFieldEnum[]
   }
 
   /**
@@ -29588,6 +29792,7 @@ export namespace Prisma {
     fullJudgmentDate: 'fullJudgmentDate',
     judgmentVerifyDate: 'judgmentVerifyDate',
     status: 'status',
+    createdById: 'createdById',
     createdAt: 'createdAt'
   };
 
@@ -29609,8 +29814,11 @@ export namespace Prisma {
     partyName: 'partyName',
     roleId: 'roleId',
     fee: 'fee',
-    contactInfo: 'contactInfo',
-    representative: 'representative'
+    citizenshipNo: 'citizenshipNo',
+    permanentAddress: 'permanentAddress',
+    temporaryAddress: 'temporaryAddress',
+    contactNo: 'contactNo',
+    parentId: 'parentId'
   };
 
   export type CasePartyScalarFieldEnum = (typeof CasePartyScalarFieldEnum)[keyof typeof CasePartyScalarFieldEnum]
@@ -29968,6 +30176,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerListRelationFilter
     cases_as_pleader?: CasePleadingListRelationFilter
     cases_as_counselor?: CaseCounselingListRelationFilter
+    cases_created?: CaseListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -29994,6 +30203,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerOrderByRelationAggregateInput
     cases_as_pleader?: CasePleadingOrderByRelationAggregateInput
     cases_as_counselor?: CaseCounselingOrderByRelationAggregateInput
+    cases_created?: CaseOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -30023,6 +30233,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerListRelationFilter
     cases_as_pleader?: CasePleadingListRelationFilter
     cases_as_counselor?: CaseCounselingListRelationFilter
+    cases_created?: CaseListRelationFilter
   }, "id" | "email" | "invitation_token">
 
   export type UserOrderByWithAggregationInput = {
@@ -30406,8 +30617,10 @@ export namespace Prisma {
     fullJudgmentDate?: DateTimeNullableFilter<"Case"> | Date | string | null
     judgmentVerifyDate?: DateTimeNullableFilter<"Case"> | Date | string | null
     status?: StringFilter<"Case"> | string
+    createdById?: StringNullableFilter<"Case"> | string | null
     createdAt?: DateTimeFilter<"Case"> | Date | string
     nature?: XOR<CaseNatureScalarRelationFilter, CaseNatureWhereInput>
+    createdBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     lawyers?: CaseLawyerListRelationFilter
     parties?: CasePartyListRelationFilter
     hearings?: CaseHearingListRelationFilter
@@ -30434,8 +30647,10 @@ export namespace Prisma {
     fullJudgmentDate?: SortOrderInput | SortOrder
     judgmentVerifyDate?: SortOrderInput | SortOrder
     status?: SortOrder
+    createdById?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     nature?: CaseNatureOrderByWithRelationInput
+    createdBy?: UserOrderByWithRelationInput
     lawyers?: CaseLawyerOrderByRelationAggregateInput
     parties?: CasePartyOrderByRelationAggregateInput
     hearings?: CaseHearingOrderByRelationAggregateInput
@@ -30465,8 +30680,10 @@ export namespace Prisma {
     fullJudgmentDate?: DateTimeNullableFilter<"Case"> | Date | string | null
     judgmentVerifyDate?: DateTimeNullableFilter<"Case"> | Date | string | null
     status?: StringFilter<"Case"> | string
+    createdById?: StringNullableFilter<"Case"> | string | null
     createdAt?: DateTimeFilter<"Case"> | Date | string
     nature?: XOR<CaseNatureScalarRelationFilter, CaseNatureWhereInput>
+    createdBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     lawyers?: CaseLawyerListRelationFilter
     parties?: CasePartyListRelationFilter
     hearings?: CaseHearingListRelationFilter
@@ -30493,6 +30710,7 @@ export namespace Prisma {
     fullJudgmentDate?: SortOrderInput | SortOrder
     judgmentVerifyDate?: SortOrderInput | SortOrder
     status?: SortOrder
+    createdById?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     _count?: CaseCountOrderByAggregateInput
     _avg?: CaseAvgOrderByAggregateInput
@@ -30519,6 +30737,7 @@ export namespace Prisma {
     fullJudgmentDate?: DateTimeNullableWithAggregatesFilter<"Case"> | Date | string | null
     judgmentVerifyDate?: DateTimeNullableWithAggregatesFilter<"Case"> | Date | string | null
     status?: StringWithAggregatesFilter<"Case"> | string
+    createdById?: StringNullableWithAggregatesFilter<"Case"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Case"> | Date | string
   }
 
@@ -30580,10 +30799,15 @@ export namespace Prisma {
     partyName?: StringFilter<"CaseParty"> | string
     roleId?: StringFilter<"CaseParty"> | string
     fee?: DecimalNullableFilter<"CaseParty"> | Decimal | DecimalJsLike | number | string | null
-    contactInfo?: StringNullableFilter<"CaseParty"> | string | null
-    representative?: StringNullableFilter<"CaseParty"> | string | null
+    citizenshipNo?: StringNullableFilter<"CaseParty"> | string | null
+    permanentAddress?: StringNullableFilter<"CaseParty"> | string | null
+    temporaryAddress?: StringNullableFilter<"CaseParty"> | string | null
+    contactNo?: StringNullableFilter<"CaseParty"> | string | null
+    parentId?: StringNullableFilter<"CaseParty"> | string | null
     case?: XOR<CaseScalarRelationFilter, CaseWhereInput>
     role?: XOR<PartyRoleScalarRelationFilter, PartyRoleWhereInput>
+    parent?: XOR<CasePartyNullableScalarRelationFilter, CasePartyWhereInput> | null
+    waris?: CasePartyListRelationFilter
   }
 
   export type CasePartyOrderByWithRelationInput = {
@@ -30592,10 +30816,15 @@ export namespace Prisma {
     partyName?: SortOrder
     roleId?: SortOrder
     fee?: SortOrderInput | SortOrder
-    contactInfo?: SortOrderInput | SortOrder
-    representative?: SortOrderInput | SortOrder
+    citizenshipNo?: SortOrderInput | SortOrder
+    permanentAddress?: SortOrderInput | SortOrder
+    temporaryAddress?: SortOrderInput | SortOrder
+    contactNo?: SortOrderInput | SortOrder
+    parentId?: SortOrderInput | SortOrder
     case?: CaseOrderByWithRelationInput
     role?: PartyRoleOrderByWithRelationInput
+    parent?: CasePartyOrderByWithRelationInput
+    waris?: CasePartyOrderByRelationAggregateInput
   }
 
   export type CasePartyWhereUniqueInput = Prisma.AtLeast<{
@@ -30607,10 +30836,15 @@ export namespace Prisma {
     partyName?: StringFilter<"CaseParty"> | string
     roleId?: StringFilter<"CaseParty"> | string
     fee?: DecimalNullableFilter<"CaseParty"> | Decimal | DecimalJsLike | number | string | null
-    contactInfo?: StringNullableFilter<"CaseParty"> | string | null
-    representative?: StringNullableFilter<"CaseParty"> | string | null
+    citizenshipNo?: StringNullableFilter<"CaseParty"> | string | null
+    permanentAddress?: StringNullableFilter<"CaseParty"> | string | null
+    temporaryAddress?: StringNullableFilter<"CaseParty"> | string | null
+    contactNo?: StringNullableFilter<"CaseParty"> | string | null
+    parentId?: StringNullableFilter<"CaseParty"> | string | null
     case?: XOR<CaseScalarRelationFilter, CaseWhereInput>
     role?: XOR<PartyRoleScalarRelationFilter, PartyRoleWhereInput>
+    parent?: XOR<CasePartyNullableScalarRelationFilter, CasePartyWhereInput> | null
+    waris?: CasePartyListRelationFilter
   }, "id">
 
   export type CasePartyOrderByWithAggregationInput = {
@@ -30619,8 +30853,11 @@ export namespace Prisma {
     partyName?: SortOrder
     roleId?: SortOrder
     fee?: SortOrderInput | SortOrder
-    contactInfo?: SortOrderInput | SortOrder
-    representative?: SortOrderInput | SortOrder
+    citizenshipNo?: SortOrderInput | SortOrder
+    permanentAddress?: SortOrderInput | SortOrder
+    temporaryAddress?: SortOrderInput | SortOrder
+    contactNo?: SortOrderInput | SortOrder
+    parentId?: SortOrderInput | SortOrder
     _count?: CasePartyCountOrderByAggregateInput
     _avg?: CasePartyAvgOrderByAggregateInput
     _max?: CasePartyMaxOrderByAggregateInput
@@ -30637,8 +30874,11 @@ export namespace Prisma {
     partyName?: StringWithAggregatesFilter<"CaseParty"> | string
     roleId?: StringWithAggregatesFilter<"CaseParty"> | string
     fee?: DecimalNullableWithAggregatesFilter<"CaseParty"> | Decimal | DecimalJsLike | number | string | null
-    contactInfo?: StringNullableWithAggregatesFilter<"CaseParty"> | string | null
-    representative?: StringNullableWithAggregatesFilter<"CaseParty"> | string | null
+    citizenshipNo?: StringNullableWithAggregatesFilter<"CaseParty"> | string | null
+    permanentAddress?: StringNullableWithAggregatesFilter<"CaseParty"> | string | null
+    temporaryAddress?: StringNullableWithAggregatesFilter<"CaseParty"> | string | null
+    contactNo?: StringNullableWithAggregatesFilter<"CaseParty"> | string | null
+    parentId?: StringNullableWithAggregatesFilter<"CaseParty"> | string | null
   }
 
   export type CaseHearingWhereInput = {
@@ -31585,6 +31825,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerCreateNestedManyWithoutUserInput
     cases_as_pleader?: CasePleadingCreateNestedManyWithoutPleaderInput
     cases_as_counselor?: CaseCounselingCreateNestedManyWithoutCounselorInput
+    cases_created?: CaseCreateNestedManyWithoutCreatedByInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -31609,6 +31850,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerUncheckedCreateNestedManyWithoutUserInput
     cases_as_pleader?: CasePleadingUncheckedCreateNestedManyWithoutPleaderInput
     cases_as_counselor?: CaseCounselingUncheckedCreateNestedManyWithoutCounselorInput
+    cases_created?: CaseUncheckedCreateNestedManyWithoutCreatedByInput
   }
 
   export type UserUpdateInput = {
@@ -31633,6 +31875,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerUpdateManyWithoutUserNestedInput
     cases_as_pleader?: CasePleadingUpdateManyWithoutPleaderNestedInput
     cases_as_counselor?: CaseCounselingUpdateManyWithoutCounselorNestedInput
+    cases_created?: CaseUpdateManyWithoutCreatedByNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -31657,6 +31900,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerUncheckedUpdateManyWithoutUserNestedInput
     cases_as_pleader?: CasePleadingUncheckedUpdateManyWithoutPleaderNestedInput
     cases_as_counselor?: CaseCounselingUncheckedUpdateManyWithoutCounselorNestedInput
+    cases_created?: CaseUncheckedUpdateManyWithoutCreatedByNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -32061,6 +32305,7 @@ export namespace Prisma {
     status?: string
     createdAt?: Date | string
     nature: CaseNatureCreateNestedOneWithoutCasesInput
+    createdBy?: UserCreateNestedOneWithoutCases_createdInput
     lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
     parties?: CasePartyCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingCreateNestedManyWithoutCaseInput
@@ -32087,6 +32332,7 @@ export namespace Prisma {
     fullJudgmentDate?: Date | string | null
     judgmentVerifyDate?: Date | string | null
     status?: string
+    createdById?: string | null
     createdAt?: Date | string
     lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
     parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
@@ -32115,6 +32361,7 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     nature?: CaseNatureUpdateOneRequiredWithoutCasesNestedInput
+    createdBy?: UserUpdateOneWithoutCases_createdNestedInput
     lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUpdateManyWithoutCaseNestedInput
@@ -32141,6 +32388,7 @@ export namespace Prisma {
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: StringFieldUpdateOperationsInput | string
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
@@ -32168,6 +32416,7 @@ export namespace Prisma {
     fullJudgmentDate?: Date | string | null
     judgmentVerifyDate?: Date | string | null
     status?: string
+    createdById?: string | null
     createdAt?: Date | string
   }
 
@@ -32203,6 +32452,7 @@ export namespace Prisma {
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: StringFieldUpdateOperationsInput | string
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -32250,10 +32500,14 @@ export namespace Prisma {
     id?: string
     partyName: string
     fee?: Decimal | DecimalJsLike | number | string | null
-    contactInfo?: string | null
-    representative?: string | null
+    citizenshipNo?: string | null
+    permanentAddress?: string | null
+    temporaryAddress?: string | null
+    contactNo?: string | null
     case: CaseCreateNestedOneWithoutPartiesInput
     role: PartyRoleCreateNestedOneWithoutPartiesInput
+    parent?: CasePartyCreateNestedOneWithoutWarisInput
+    waris?: CasePartyCreateNestedManyWithoutParentInput
   }
 
   export type CasePartyUncheckedCreateInput = {
@@ -32262,18 +32516,26 @@ export namespace Prisma {
     partyName: string
     roleId: string
     fee?: Decimal | DecimalJsLike | number | string | null
-    contactInfo?: string | null
-    representative?: string | null
+    citizenshipNo?: string | null
+    permanentAddress?: string | null
+    temporaryAddress?: string | null
+    contactNo?: string | null
+    parentId?: string | null
+    waris?: CasePartyUncheckedCreateNestedManyWithoutParentInput
   }
 
   export type CasePartyUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     partyName?: StringFieldUpdateOperationsInput | string
     fee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    contactInfo?: NullableStringFieldUpdateOperationsInput | string | null
-    representative?: NullableStringFieldUpdateOperationsInput | string | null
+    citizenshipNo?: NullableStringFieldUpdateOperationsInput | string | null
+    permanentAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    contactNo?: NullableStringFieldUpdateOperationsInput | string | null
     case?: CaseUpdateOneRequiredWithoutPartiesNestedInput
     role?: PartyRoleUpdateOneRequiredWithoutPartiesNestedInput
+    parent?: CasePartyUpdateOneWithoutWarisNestedInput
+    waris?: CasePartyUpdateManyWithoutParentNestedInput
   }
 
   export type CasePartyUncheckedUpdateInput = {
@@ -32282,8 +32544,12 @@ export namespace Prisma {
     partyName?: StringFieldUpdateOperationsInput | string
     roleId?: StringFieldUpdateOperationsInput | string
     fee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    contactInfo?: NullableStringFieldUpdateOperationsInput | string | null
-    representative?: NullableStringFieldUpdateOperationsInput | string | null
+    citizenshipNo?: NullableStringFieldUpdateOperationsInput | string | null
+    permanentAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    contactNo?: NullableStringFieldUpdateOperationsInput | string | null
+    parentId?: NullableStringFieldUpdateOperationsInput | string | null
+    waris?: CasePartyUncheckedUpdateManyWithoutParentNestedInput
   }
 
   export type CasePartyCreateManyInput = {
@@ -32292,16 +32558,21 @@ export namespace Prisma {
     partyName: string
     roleId: string
     fee?: Decimal | DecimalJsLike | number | string | null
-    contactInfo?: string | null
-    representative?: string | null
+    citizenshipNo?: string | null
+    permanentAddress?: string | null
+    temporaryAddress?: string | null
+    contactNo?: string | null
+    parentId?: string | null
   }
 
   export type CasePartyUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     partyName?: StringFieldUpdateOperationsInput | string
     fee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    contactInfo?: NullableStringFieldUpdateOperationsInput | string | null
-    representative?: NullableStringFieldUpdateOperationsInput | string | null
+    citizenshipNo?: NullableStringFieldUpdateOperationsInput | string | null
+    permanentAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    contactNo?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CasePartyUncheckedUpdateManyInput = {
@@ -32310,8 +32581,11 @@ export namespace Prisma {
     partyName?: StringFieldUpdateOperationsInput | string
     roleId?: StringFieldUpdateOperationsInput | string
     fee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    contactInfo?: NullableStringFieldUpdateOperationsInput | string | null
-    representative?: NullableStringFieldUpdateOperationsInput | string | null
+    citizenshipNo?: NullableStringFieldUpdateOperationsInput | string | null
+    permanentAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    contactNo?: NullableStringFieldUpdateOperationsInput | string | null
+    parentId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CaseHearingCreateInput = {
@@ -33416,6 +33690,12 @@ export namespace Prisma {
     none?: CaseCounselingWhereInput
   }
 
+  export type CaseListRelationFilter = {
+    every?: CaseWhereInput
+    some?: CaseWhereInput
+    none?: CaseWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -33446,6 +33726,10 @@ export namespace Prisma {
   }
 
   export type CaseCounselingOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type CaseOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -33757,16 +34041,6 @@ export namespace Prisma {
     nepaliName?: SortOrder
   }
 
-  export type CaseListRelationFilter = {
-    every?: CaseWhereInput
-    some?: CaseWhereInput
-    none?: CaseWhereInput
-  }
-
-  export type CaseOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
   export type CaseNatureCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
@@ -33829,6 +34103,11 @@ export namespace Prisma {
     isNot?: CaseNatureWhereInput
   }
 
+  export type UserNullableScalarRelationFilter = {
+    is?: UserWhereInput | null
+    isNot?: UserWhereInput | null
+  }
+
   export type CaseHearingListRelationFilter = {
     every?: CaseHearingWhereInput
     some?: CaseHearingWhereInput
@@ -33884,6 +34163,7 @@ export namespace Prisma {
     fullJudgmentDate?: SortOrder
     judgmentVerifyDate?: SortOrder
     status?: SortOrder
+    createdById?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -33906,6 +34186,7 @@ export namespace Prisma {
     fullJudgmentDate?: SortOrder
     judgmentVerifyDate?: SortOrder
     status?: SortOrder
+    createdById?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -33924,6 +34205,7 @@ export namespace Prisma {
     fullJudgmentDate?: SortOrder
     judgmentVerifyDate?: SortOrder
     status?: SortOrder
+    createdById?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -33993,14 +34275,22 @@ export namespace Prisma {
     isNot?: PartyRoleWhereInput
   }
 
+  export type CasePartyNullableScalarRelationFilter = {
+    is?: CasePartyWhereInput | null
+    isNot?: CasePartyWhereInput | null
+  }
+
   export type CasePartyCountOrderByAggregateInput = {
     id?: SortOrder
     caseId?: SortOrder
     partyName?: SortOrder
     roleId?: SortOrder
     fee?: SortOrder
-    contactInfo?: SortOrder
-    representative?: SortOrder
+    citizenshipNo?: SortOrder
+    permanentAddress?: SortOrder
+    temporaryAddress?: SortOrder
+    contactNo?: SortOrder
+    parentId?: SortOrder
   }
 
   export type CasePartyAvgOrderByAggregateInput = {
@@ -34013,8 +34303,11 @@ export namespace Prisma {
     partyName?: SortOrder
     roleId?: SortOrder
     fee?: SortOrder
-    contactInfo?: SortOrder
-    representative?: SortOrder
+    citizenshipNo?: SortOrder
+    permanentAddress?: SortOrder
+    temporaryAddress?: SortOrder
+    contactNo?: SortOrder
+    parentId?: SortOrder
   }
 
   export type CasePartyMinOrderByAggregateInput = {
@@ -34023,8 +34316,11 @@ export namespace Prisma {
     partyName?: SortOrder
     roleId?: SortOrder
     fee?: SortOrder
-    contactInfo?: SortOrder
-    representative?: SortOrder
+    citizenshipNo?: SortOrder
+    permanentAddress?: SortOrder
+    temporaryAddress?: SortOrder
+    contactNo?: SortOrder
+    parentId?: SortOrder
   }
 
   export type CasePartySumOrderByAggregateInput = {
@@ -34056,11 +34352,6 @@ export namespace Prisma {
     hearingDate?: SortOrder
     hearingOrder?: SortOrder
     judgeName?: SortOrder
-  }
-
-  export type UserNullableScalarRelationFilter = {
-    is?: UserWhereInput | null
-    isNot?: UserWhereInput | null
   }
 
   export type CasePleadingCountOrderByAggregateInput = {
@@ -34622,6 +34913,13 @@ export namespace Prisma {
     connect?: CaseCounselingWhereUniqueInput | CaseCounselingWhereUniqueInput[]
   }
 
+  export type CaseCreateNestedManyWithoutCreatedByInput = {
+    create?: XOR<CaseCreateWithoutCreatedByInput, CaseUncheckedCreateWithoutCreatedByInput> | CaseCreateWithoutCreatedByInput[] | CaseUncheckedCreateWithoutCreatedByInput[]
+    connectOrCreate?: CaseCreateOrConnectWithoutCreatedByInput | CaseCreateOrConnectWithoutCreatedByInput[]
+    createMany?: CaseCreateManyCreatedByInputEnvelope
+    connect?: CaseWhereUniqueInput | CaseWhereUniqueInput[]
+  }
+
   export type NotificationUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<NotificationCreateWithoutUserInput, NotificationUncheckedCreateWithoutUserInput> | NotificationCreateWithoutUserInput[] | NotificationUncheckedCreateWithoutUserInput[]
     connectOrCreate?: NotificationCreateOrConnectWithoutUserInput | NotificationCreateOrConnectWithoutUserInput[]
@@ -34669,6 +34967,13 @@ export namespace Prisma {
     connectOrCreate?: CaseCounselingCreateOrConnectWithoutCounselorInput | CaseCounselingCreateOrConnectWithoutCounselorInput[]
     createMany?: CaseCounselingCreateManyCounselorInputEnvelope
     connect?: CaseCounselingWhereUniqueInput | CaseCounselingWhereUniqueInput[]
+  }
+
+  export type CaseUncheckedCreateNestedManyWithoutCreatedByInput = {
+    create?: XOR<CaseCreateWithoutCreatedByInput, CaseUncheckedCreateWithoutCreatedByInput> | CaseCreateWithoutCreatedByInput[] | CaseUncheckedCreateWithoutCreatedByInput[]
+    connectOrCreate?: CaseCreateOrConnectWithoutCreatedByInput | CaseCreateOrConnectWithoutCreatedByInput[]
+    createMany?: CaseCreateManyCreatedByInputEnvelope
+    connect?: CaseWhereUniqueInput | CaseWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -34805,6 +35110,20 @@ export namespace Prisma {
     deleteMany?: CaseCounselingScalarWhereInput | CaseCounselingScalarWhereInput[]
   }
 
+  export type CaseUpdateManyWithoutCreatedByNestedInput = {
+    create?: XOR<CaseCreateWithoutCreatedByInput, CaseUncheckedCreateWithoutCreatedByInput> | CaseCreateWithoutCreatedByInput[] | CaseUncheckedCreateWithoutCreatedByInput[]
+    connectOrCreate?: CaseCreateOrConnectWithoutCreatedByInput | CaseCreateOrConnectWithoutCreatedByInput[]
+    upsert?: CaseUpsertWithWhereUniqueWithoutCreatedByInput | CaseUpsertWithWhereUniqueWithoutCreatedByInput[]
+    createMany?: CaseCreateManyCreatedByInputEnvelope
+    set?: CaseWhereUniqueInput | CaseWhereUniqueInput[]
+    disconnect?: CaseWhereUniqueInput | CaseWhereUniqueInput[]
+    delete?: CaseWhereUniqueInput | CaseWhereUniqueInput[]
+    connect?: CaseWhereUniqueInput | CaseWhereUniqueInput[]
+    update?: CaseUpdateWithWhereUniqueWithoutCreatedByInput | CaseUpdateWithWhereUniqueWithoutCreatedByInput[]
+    updateMany?: CaseUpdateManyWithWhereWithoutCreatedByInput | CaseUpdateManyWithWhereWithoutCreatedByInput[]
+    deleteMany?: CaseScalarWhereInput | CaseScalarWhereInput[]
+  }
+
   export type NotificationUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<NotificationCreateWithoutUserInput, NotificationUncheckedCreateWithoutUserInput> | NotificationCreateWithoutUserInput[] | NotificationUncheckedCreateWithoutUserInput[]
     connectOrCreate?: NotificationCreateOrConnectWithoutUserInput | NotificationCreateOrConnectWithoutUserInput[]
@@ -34901,6 +35220,20 @@ export namespace Prisma {
     update?: CaseCounselingUpdateWithWhereUniqueWithoutCounselorInput | CaseCounselingUpdateWithWhereUniqueWithoutCounselorInput[]
     updateMany?: CaseCounselingUpdateManyWithWhereWithoutCounselorInput | CaseCounselingUpdateManyWithWhereWithoutCounselorInput[]
     deleteMany?: CaseCounselingScalarWhereInput | CaseCounselingScalarWhereInput[]
+  }
+
+  export type CaseUncheckedUpdateManyWithoutCreatedByNestedInput = {
+    create?: XOR<CaseCreateWithoutCreatedByInput, CaseUncheckedCreateWithoutCreatedByInput> | CaseCreateWithoutCreatedByInput[] | CaseUncheckedCreateWithoutCreatedByInput[]
+    connectOrCreate?: CaseCreateOrConnectWithoutCreatedByInput | CaseCreateOrConnectWithoutCreatedByInput[]
+    upsert?: CaseUpsertWithWhereUniqueWithoutCreatedByInput | CaseUpsertWithWhereUniqueWithoutCreatedByInput[]
+    createMany?: CaseCreateManyCreatedByInputEnvelope
+    set?: CaseWhereUniqueInput | CaseWhereUniqueInput[]
+    disconnect?: CaseWhereUniqueInput | CaseWhereUniqueInput[]
+    delete?: CaseWhereUniqueInput | CaseWhereUniqueInput[]
+    connect?: CaseWhereUniqueInput | CaseWhereUniqueInput[]
+    update?: CaseUpdateWithWhereUniqueWithoutCreatedByInput | CaseUpdateWithWhereUniqueWithoutCreatedByInput[]
+    updateMany?: CaseUpdateManyWithWhereWithoutCreatedByInput | CaseUpdateManyWithWhereWithoutCreatedByInput[]
+    deleteMany?: CaseScalarWhereInput | CaseScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutRefresh_tokensInput = {
@@ -35197,6 +35530,12 @@ export namespace Prisma {
     connect?: CaseNatureWhereUniqueInput
   }
 
+  export type UserCreateNestedOneWithoutCases_createdInput = {
+    create?: XOR<UserCreateWithoutCases_createdInput, UserUncheckedCreateWithoutCases_createdInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCases_createdInput
+    connect?: UserWhereUniqueInput
+  }
+
   export type CaseLawyerCreateNestedManyWithoutCaseInput = {
     create?: XOR<CaseLawyerCreateWithoutCaseInput, CaseLawyerUncheckedCreateWithoutCaseInput> | CaseLawyerCreateWithoutCaseInput[] | CaseLawyerUncheckedCreateWithoutCaseInput[]
     connectOrCreate?: CaseLawyerCreateOrConnectWithoutCaseInput | CaseLawyerCreateOrConnectWithoutCaseInput[]
@@ -35337,6 +35676,16 @@ export namespace Prisma {
     upsert?: CaseNatureUpsertWithoutCasesInput
     connect?: CaseNatureWhereUniqueInput
     update?: XOR<XOR<CaseNatureUpdateToOneWithWhereWithoutCasesInput, CaseNatureUpdateWithoutCasesInput>, CaseNatureUncheckedUpdateWithoutCasesInput>
+  }
+
+  export type UserUpdateOneWithoutCases_createdNestedInput = {
+    create?: XOR<UserCreateWithoutCases_createdInput, UserUncheckedCreateWithoutCases_createdInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCases_createdInput
+    upsert?: UserUpsertWithoutCases_createdInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCases_createdInput, UserUpdateWithoutCases_createdInput>, UserUncheckedUpdateWithoutCases_createdInput>
   }
 
   export type CaseLawyerUpdateManyWithoutCaseNestedInput = {
@@ -35635,6 +35984,26 @@ export namespace Prisma {
     connect?: PartyRoleWhereUniqueInput
   }
 
+  export type CasePartyCreateNestedOneWithoutWarisInput = {
+    create?: XOR<CasePartyCreateWithoutWarisInput, CasePartyUncheckedCreateWithoutWarisInput>
+    connectOrCreate?: CasePartyCreateOrConnectWithoutWarisInput
+    connect?: CasePartyWhereUniqueInput
+  }
+
+  export type CasePartyCreateNestedManyWithoutParentInput = {
+    create?: XOR<CasePartyCreateWithoutParentInput, CasePartyUncheckedCreateWithoutParentInput> | CasePartyCreateWithoutParentInput[] | CasePartyUncheckedCreateWithoutParentInput[]
+    connectOrCreate?: CasePartyCreateOrConnectWithoutParentInput | CasePartyCreateOrConnectWithoutParentInput[]
+    createMany?: CasePartyCreateManyParentInputEnvelope
+    connect?: CasePartyWhereUniqueInput | CasePartyWhereUniqueInput[]
+  }
+
+  export type CasePartyUncheckedCreateNestedManyWithoutParentInput = {
+    create?: XOR<CasePartyCreateWithoutParentInput, CasePartyUncheckedCreateWithoutParentInput> | CasePartyCreateWithoutParentInput[] | CasePartyUncheckedCreateWithoutParentInput[]
+    connectOrCreate?: CasePartyCreateOrConnectWithoutParentInput | CasePartyCreateOrConnectWithoutParentInput[]
+    createMany?: CasePartyCreateManyParentInputEnvelope
+    connect?: CasePartyWhereUniqueInput | CasePartyWhereUniqueInput[]
+  }
+
   export type CaseUpdateOneRequiredWithoutPartiesNestedInput = {
     create?: XOR<CaseCreateWithoutPartiesInput, CaseUncheckedCreateWithoutPartiesInput>
     connectOrCreate?: CaseCreateOrConnectWithoutPartiesInput
@@ -35649,6 +36018,44 @@ export namespace Prisma {
     upsert?: PartyRoleUpsertWithoutPartiesInput
     connect?: PartyRoleWhereUniqueInput
     update?: XOR<XOR<PartyRoleUpdateToOneWithWhereWithoutPartiesInput, PartyRoleUpdateWithoutPartiesInput>, PartyRoleUncheckedUpdateWithoutPartiesInput>
+  }
+
+  export type CasePartyUpdateOneWithoutWarisNestedInput = {
+    create?: XOR<CasePartyCreateWithoutWarisInput, CasePartyUncheckedCreateWithoutWarisInput>
+    connectOrCreate?: CasePartyCreateOrConnectWithoutWarisInput
+    upsert?: CasePartyUpsertWithoutWarisInput
+    disconnect?: CasePartyWhereInput | boolean
+    delete?: CasePartyWhereInput | boolean
+    connect?: CasePartyWhereUniqueInput
+    update?: XOR<XOR<CasePartyUpdateToOneWithWhereWithoutWarisInput, CasePartyUpdateWithoutWarisInput>, CasePartyUncheckedUpdateWithoutWarisInput>
+  }
+
+  export type CasePartyUpdateManyWithoutParentNestedInput = {
+    create?: XOR<CasePartyCreateWithoutParentInput, CasePartyUncheckedCreateWithoutParentInput> | CasePartyCreateWithoutParentInput[] | CasePartyUncheckedCreateWithoutParentInput[]
+    connectOrCreate?: CasePartyCreateOrConnectWithoutParentInput | CasePartyCreateOrConnectWithoutParentInput[]
+    upsert?: CasePartyUpsertWithWhereUniqueWithoutParentInput | CasePartyUpsertWithWhereUniqueWithoutParentInput[]
+    createMany?: CasePartyCreateManyParentInputEnvelope
+    set?: CasePartyWhereUniqueInput | CasePartyWhereUniqueInput[]
+    disconnect?: CasePartyWhereUniqueInput | CasePartyWhereUniqueInput[]
+    delete?: CasePartyWhereUniqueInput | CasePartyWhereUniqueInput[]
+    connect?: CasePartyWhereUniqueInput | CasePartyWhereUniqueInput[]
+    update?: CasePartyUpdateWithWhereUniqueWithoutParentInput | CasePartyUpdateWithWhereUniqueWithoutParentInput[]
+    updateMany?: CasePartyUpdateManyWithWhereWithoutParentInput | CasePartyUpdateManyWithWhereWithoutParentInput[]
+    deleteMany?: CasePartyScalarWhereInput | CasePartyScalarWhereInput[]
+  }
+
+  export type CasePartyUncheckedUpdateManyWithoutParentNestedInput = {
+    create?: XOR<CasePartyCreateWithoutParentInput, CasePartyUncheckedCreateWithoutParentInput> | CasePartyCreateWithoutParentInput[] | CasePartyUncheckedCreateWithoutParentInput[]
+    connectOrCreate?: CasePartyCreateOrConnectWithoutParentInput | CasePartyCreateOrConnectWithoutParentInput[]
+    upsert?: CasePartyUpsertWithWhereUniqueWithoutParentInput | CasePartyUpsertWithWhereUniqueWithoutParentInput[]
+    createMany?: CasePartyCreateManyParentInputEnvelope
+    set?: CasePartyWhereUniqueInput | CasePartyWhereUniqueInput[]
+    disconnect?: CasePartyWhereUniqueInput | CasePartyWhereUniqueInput[]
+    delete?: CasePartyWhereUniqueInput | CasePartyWhereUniqueInput[]
+    connect?: CasePartyWhereUniqueInput | CasePartyWhereUniqueInput[]
+    update?: CasePartyUpdateWithWhereUniqueWithoutParentInput | CasePartyUpdateWithWhereUniqueWithoutParentInput[]
+    updateMany?: CasePartyUpdateManyWithWhereWithoutParentInput | CasePartyUpdateManyWithWhereWithoutParentInput[]
+    deleteMany?: CasePartyScalarWhereInput | CasePartyScalarWhereInput[]
   }
 
   export type CaseCreateNestedOneWithoutHearingsInput = {
@@ -36647,6 +37054,70 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type CaseCreateWithoutCreatedByInput = {
+    id?: string
+    caseNumber: string
+    caseName: string
+    registrationDate?: Date | string | null
+    registrationFee?: Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: string | null
+    facts?: string | null
+    relatedLaws?: string | null
+    referredThrough?: string | null
+    noticeStatus?: string | null
+    fullJudgmentDate?: Date | string | null
+    judgmentVerifyDate?: Date | string | null
+    status?: string
+    createdAt?: Date | string
+    nature: CaseNatureCreateNestedOneWithoutCasesInput
+    lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
+    parties?: CasePartyCreateNestedManyWithoutCaseInput
+    hearings?: CaseHearingCreateNestedManyWithoutCaseInput
+    pleadings?: CasePleadingCreateNestedManyWithoutCaseInput
+    proceedings?: CourtProceedingCreateNestedManyWithoutCaseInput
+    precedents?: CasePrecedentCreateNestedManyWithoutCaseInput
+    payments?: CasePaymentCreateNestedManyWithoutCaseInput
+    counselings?: CaseCounselingCreateNestedManyWithoutCaseInput
+    documents?: CaseDocumentCreateNestedManyWithoutCaseInput
+  }
+
+  export type CaseUncheckedCreateWithoutCreatedByInput = {
+    id?: string
+    caseNumber: string
+    caseName: string
+    natureId: string
+    registrationDate?: Date | string | null
+    registrationFee?: Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: string | null
+    facts?: string | null
+    relatedLaws?: string | null
+    referredThrough?: string | null
+    noticeStatus?: string | null
+    fullJudgmentDate?: Date | string | null
+    judgmentVerifyDate?: Date | string | null
+    status?: string
+    createdAt?: Date | string
+    lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
+    parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
+    hearings?: CaseHearingUncheckedCreateNestedManyWithoutCaseInput
+    pleadings?: CasePleadingUncheckedCreateNestedManyWithoutCaseInput
+    proceedings?: CourtProceedingUncheckedCreateNestedManyWithoutCaseInput
+    precedents?: CasePrecedentUncheckedCreateNestedManyWithoutCaseInput
+    payments?: CasePaymentUncheckedCreateNestedManyWithoutCaseInput
+    counselings?: CaseCounselingUncheckedCreateNestedManyWithoutCaseInput
+    documents?: CaseDocumentUncheckedCreateNestedManyWithoutCaseInput
+  }
+
+  export type CaseCreateOrConnectWithoutCreatedByInput = {
+    where: CaseWhereUniqueInput
+    create: XOR<CaseCreateWithoutCreatedByInput, CaseUncheckedCreateWithoutCreatedByInput>
+  }
+
+  export type CaseCreateManyCreatedByInputEnvelope = {
+    data: CaseCreateManyCreatedByInput | CaseCreateManyCreatedByInput[]
+    skipDuplicates?: boolean
+  }
+
   export type ResourceUpsertWithoutUsersInput = {
     update: XOR<ResourceUpdateWithoutUsersInput, ResourceUncheckedUpdateWithoutUsersInput>
     create: XOR<ResourceCreateWithoutUsersInput, ResourceUncheckedCreateWithoutUsersInput>
@@ -36918,6 +37389,44 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"CaseCounseling"> | Date | string
   }
 
+  export type CaseUpsertWithWhereUniqueWithoutCreatedByInput = {
+    where: CaseWhereUniqueInput
+    update: XOR<CaseUpdateWithoutCreatedByInput, CaseUncheckedUpdateWithoutCreatedByInput>
+    create: XOR<CaseCreateWithoutCreatedByInput, CaseUncheckedCreateWithoutCreatedByInput>
+  }
+
+  export type CaseUpdateWithWhereUniqueWithoutCreatedByInput = {
+    where: CaseWhereUniqueInput
+    data: XOR<CaseUpdateWithoutCreatedByInput, CaseUncheckedUpdateWithoutCreatedByInput>
+  }
+
+  export type CaseUpdateManyWithWhereWithoutCreatedByInput = {
+    where: CaseScalarWhereInput
+    data: XOR<CaseUpdateManyMutationInput, CaseUncheckedUpdateManyWithoutCreatedByInput>
+  }
+
+  export type CaseScalarWhereInput = {
+    AND?: CaseScalarWhereInput | CaseScalarWhereInput[]
+    OR?: CaseScalarWhereInput[]
+    NOT?: CaseScalarWhereInput | CaseScalarWhereInput[]
+    id?: StringFilter<"Case"> | string
+    caseNumber?: StringFilter<"Case"> | string
+    caseName?: StringFilter<"Case"> | string
+    natureId?: StringFilter<"Case"> | string
+    registrationDate?: DateTimeNullableFilter<"Case"> | Date | string | null
+    registrationFee?: DecimalNullableFilter<"Case"> | Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: StringNullableFilter<"Case"> | string | null
+    facts?: StringNullableFilter<"Case"> | string | null
+    relatedLaws?: StringNullableFilter<"Case"> | string | null
+    referredThrough?: StringNullableFilter<"Case"> | string | null
+    noticeStatus?: StringNullableFilter<"Case"> | string | null
+    fullJudgmentDate?: DateTimeNullableFilter<"Case"> | Date | string | null
+    judgmentVerifyDate?: DateTimeNullableFilter<"Case"> | Date | string | null
+    status?: StringFilter<"Case"> | string
+    createdById?: StringNullableFilter<"Case"> | string | null
+    createdAt?: DateTimeFilter<"Case"> | Date | string
+  }
+
   export type UserCreateWithoutRefresh_tokensInput = {
     id?: string
     email: string
@@ -36939,6 +37448,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerCreateNestedManyWithoutUserInput
     cases_as_pleader?: CasePleadingCreateNestedManyWithoutPleaderInput
     cases_as_counselor?: CaseCounselingCreateNestedManyWithoutCounselorInput
+    cases_created?: CaseCreateNestedManyWithoutCreatedByInput
   }
 
   export type UserUncheckedCreateWithoutRefresh_tokensInput = {
@@ -36962,6 +37472,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerUncheckedCreateNestedManyWithoutUserInput
     cases_as_pleader?: CasePleadingUncheckedCreateNestedManyWithoutPleaderInput
     cases_as_counselor?: CaseCounselingUncheckedCreateNestedManyWithoutCounselorInput
+    cases_created?: CaseUncheckedCreateNestedManyWithoutCreatedByInput
   }
 
   export type UserCreateOrConnectWithoutRefresh_tokensInput = {
@@ -37001,6 +37512,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerUpdateManyWithoutUserNestedInput
     cases_as_pleader?: CasePleadingUpdateManyWithoutPleaderNestedInput
     cases_as_counselor?: CaseCounselingUpdateManyWithoutCounselorNestedInput
+    cases_created?: CaseUpdateManyWithoutCreatedByNestedInput
   }
 
   export type UserUncheckedUpdateWithoutRefresh_tokensInput = {
@@ -37024,6 +37536,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerUncheckedUpdateManyWithoutUserNestedInput
     cases_as_pleader?: CasePleadingUncheckedUpdateManyWithoutPleaderNestedInput
     cases_as_counselor?: CaseCounselingUncheckedUpdateManyWithoutCounselorNestedInput
+    cases_created?: CaseUncheckedUpdateManyWithoutCreatedByNestedInput
   }
 
   export type UserCreateWithoutReset_tokensInput = {
@@ -37047,6 +37560,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerCreateNestedManyWithoutUserInput
     cases_as_pleader?: CasePleadingCreateNestedManyWithoutPleaderInput
     cases_as_counselor?: CaseCounselingCreateNestedManyWithoutCounselorInput
+    cases_created?: CaseCreateNestedManyWithoutCreatedByInput
   }
 
   export type UserUncheckedCreateWithoutReset_tokensInput = {
@@ -37070,6 +37584,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerUncheckedCreateNestedManyWithoutUserInput
     cases_as_pleader?: CasePleadingUncheckedCreateNestedManyWithoutPleaderInput
     cases_as_counselor?: CaseCounselingUncheckedCreateNestedManyWithoutCounselorInput
+    cases_created?: CaseUncheckedCreateNestedManyWithoutCreatedByInput
   }
 
   export type UserCreateOrConnectWithoutReset_tokensInput = {
@@ -37109,6 +37624,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerUpdateManyWithoutUserNestedInput
     cases_as_pleader?: CasePleadingUpdateManyWithoutPleaderNestedInput
     cases_as_counselor?: CaseCounselingUpdateManyWithoutCounselorNestedInput
+    cases_created?: CaseUpdateManyWithoutCreatedByNestedInput
   }
 
   export type UserUncheckedUpdateWithoutReset_tokensInput = {
@@ -37132,6 +37648,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerUncheckedUpdateManyWithoutUserNestedInput
     cases_as_pleader?: CasePleadingUncheckedUpdateManyWithoutPleaderNestedInput
     cases_as_counselor?: CaseCounselingUncheckedUpdateManyWithoutCounselorNestedInput
+    cases_created?: CaseUncheckedUpdateManyWithoutCreatedByNestedInput
   }
 
   export type UserCreateWithoutAvatarInput = {
@@ -37155,6 +37672,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerCreateNestedManyWithoutUserInput
     cases_as_pleader?: CasePleadingCreateNestedManyWithoutPleaderInput
     cases_as_counselor?: CaseCounselingCreateNestedManyWithoutCounselorInput
+    cases_created?: CaseCreateNestedManyWithoutCreatedByInput
   }
 
   export type UserUncheckedCreateWithoutAvatarInput = {
@@ -37178,6 +37696,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerUncheckedCreateNestedManyWithoutUserInput
     cases_as_pleader?: CasePleadingUncheckedCreateNestedManyWithoutPleaderInput
     cases_as_counselor?: CaseCounselingUncheckedCreateNestedManyWithoutCounselorInput
+    cases_created?: CaseUncheckedCreateNestedManyWithoutCreatedByInput
   }
 
   export type UserCreateOrConnectWithoutAvatarInput = {
@@ -37434,6 +37953,7 @@ export namespace Prisma {
     judgmentVerifyDate?: Date | string | null
     status?: string
     createdAt?: Date | string
+    createdBy?: UserCreateNestedOneWithoutCases_createdInput
     lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
     parties?: CasePartyCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingCreateNestedManyWithoutCaseInput
@@ -37459,6 +37979,7 @@ export namespace Prisma {
     fullJudgmentDate?: Date | string | null
     judgmentVerifyDate?: Date | string | null
     status?: string
+    createdById?: string | null
     createdAt?: Date | string
     lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
     parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
@@ -37497,34 +38018,17 @@ export namespace Prisma {
     data: XOR<CaseUpdateManyMutationInput, CaseUncheckedUpdateManyWithoutNatureInput>
   }
 
-  export type CaseScalarWhereInput = {
-    AND?: CaseScalarWhereInput | CaseScalarWhereInput[]
-    OR?: CaseScalarWhereInput[]
-    NOT?: CaseScalarWhereInput | CaseScalarWhereInput[]
-    id?: StringFilter<"Case"> | string
-    caseNumber?: StringFilter<"Case"> | string
-    caseName?: StringFilter<"Case"> | string
-    natureId?: StringFilter<"Case"> | string
-    registrationDate?: DateTimeNullableFilter<"Case"> | Date | string | null
-    registrationFee?: DecimalNullableFilter<"Case"> | Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: StringNullableFilter<"Case"> | string | null
-    facts?: StringNullableFilter<"Case"> | string | null
-    relatedLaws?: StringNullableFilter<"Case"> | string | null
-    referredThrough?: StringNullableFilter<"Case"> | string | null
-    noticeStatus?: StringNullableFilter<"Case"> | string | null
-    fullJudgmentDate?: DateTimeNullableFilter<"Case"> | Date | string | null
-    judgmentVerifyDate?: DateTimeNullableFilter<"Case"> | Date | string | null
-    status?: StringFilter<"Case"> | string
-    createdAt?: DateTimeFilter<"Case"> | Date | string
-  }
-
   export type CasePartyCreateWithoutRoleInput = {
     id?: string
     partyName: string
     fee?: Decimal | DecimalJsLike | number | string | null
-    contactInfo?: string | null
-    representative?: string | null
+    citizenshipNo?: string | null
+    permanentAddress?: string | null
+    temporaryAddress?: string | null
+    contactNo?: string | null
     case: CaseCreateNestedOneWithoutPartiesInput
+    parent?: CasePartyCreateNestedOneWithoutWarisInput
+    waris?: CasePartyCreateNestedManyWithoutParentInput
   }
 
   export type CasePartyUncheckedCreateWithoutRoleInput = {
@@ -37532,8 +38036,12 @@ export namespace Prisma {
     caseId: string
     partyName: string
     fee?: Decimal | DecimalJsLike | number | string | null
-    contactInfo?: string | null
-    representative?: string | null
+    citizenshipNo?: string | null
+    permanentAddress?: string | null
+    temporaryAddress?: string | null
+    contactNo?: string | null
+    parentId?: string | null
+    waris?: CasePartyUncheckedCreateNestedManyWithoutParentInput
   }
 
   export type CasePartyCreateOrConnectWithoutRoleInput = {
@@ -37571,8 +38079,11 @@ export namespace Prisma {
     partyName?: StringFilter<"CaseParty"> | string
     roleId?: StringFilter<"CaseParty"> | string
     fee?: DecimalNullableFilter<"CaseParty"> | Decimal | DecimalJsLike | number | string | null
-    contactInfo?: StringNullableFilter<"CaseParty"> | string | null
-    representative?: StringNullableFilter<"CaseParty"> | string | null
+    citizenshipNo?: StringNullableFilter<"CaseParty"> | string | null
+    permanentAddress?: StringNullableFilter<"CaseParty"> | string | null
+    temporaryAddress?: StringNullableFilter<"CaseParty"> | string | null
+    contactNo?: StringNullableFilter<"CaseParty"> | string | null
+    parentId?: StringNullableFilter<"CaseParty"> | string | null
   }
 
   export type CaseNatureCreateWithoutCasesInput = {
@@ -37590,6 +38101,59 @@ export namespace Prisma {
   export type CaseNatureCreateOrConnectWithoutCasesInput = {
     where: CaseNatureWhereUniqueInput
     create: XOR<CaseNatureCreateWithoutCasesInput, CaseNatureUncheckedCreateWithoutCasesInput>
+  }
+
+  export type UserCreateWithoutCases_createdInput = {
+    id?: string
+    email: string
+    first_name: string
+    last_name: string
+    password?: string | null
+    status?: string
+    invitation_token?: string | null
+    invitation_expires_at?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    detail?: NullableJsonNullValueInput | InputJsonValue
+    avatar?: ResourceCreateNestedOneWithoutUsersInput
+    role?: RoleCreateNestedOneWithoutUsersInput
+    notifications?: NotificationCreateNestedManyWithoutUserInput
+    refresh_tokens?: RefreshTokenCreateNestedManyWithoutUserInput
+    reset_tokens?: PasswordResetTokenCreateNestedManyWithoutUserInput
+    pages?: PageCreateNestedManyWithoutAuthorInput
+    cases_as_lawyer?: CaseLawyerCreateNestedManyWithoutUserInput
+    cases_as_pleader?: CasePleadingCreateNestedManyWithoutPleaderInput
+    cases_as_counselor?: CaseCounselingCreateNestedManyWithoutCounselorInput
+  }
+
+  export type UserUncheckedCreateWithoutCases_createdInput = {
+    id?: string
+    email: string
+    first_name: string
+    last_name: string
+    password?: string | null
+    status?: string
+    invitation_token?: string | null
+    invitation_expires_at?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    detail?: NullableJsonNullValueInput | InputJsonValue
+    avatar_id?: string | null
+    role_id?: string | null
+    notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
+    refresh_tokens?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
+    reset_tokens?: PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
+    pages?: PageUncheckedCreateNestedManyWithoutAuthorInput
+    cases_as_lawyer?: CaseLawyerUncheckedCreateNestedManyWithoutUserInput
+    cases_as_pleader?: CasePleadingUncheckedCreateNestedManyWithoutPleaderInput
+    cases_as_counselor?: CaseCounselingUncheckedCreateNestedManyWithoutCounselorInput
+  }
+
+  export type UserCreateOrConnectWithoutCases_createdInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutCases_createdInput, UserUncheckedCreateWithoutCases_createdInput>
   }
 
   export type CaseLawyerCreateWithoutCaseInput = {
@@ -37616,9 +38180,13 @@ export namespace Prisma {
     id?: string
     partyName: string
     fee?: Decimal | DecimalJsLike | number | string | null
-    contactInfo?: string | null
-    representative?: string | null
+    citizenshipNo?: string | null
+    permanentAddress?: string | null
+    temporaryAddress?: string | null
+    contactNo?: string | null
     role: PartyRoleCreateNestedOneWithoutPartiesInput
+    parent?: CasePartyCreateNestedOneWithoutWarisInput
+    waris?: CasePartyCreateNestedManyWithoutParentInput
   }
 
   export type CasePartyUncheckedCreateWithoutCaseInput = {
@@ -37626,8 +38194,12 @@ export namespace Prisma {
     partyName: string
     roleId: string
     fee?: Decimal | DecimalJsLike | number | string | null
-    contactInfo?: string | null
-    representative?: string | null
+    citizenshipNo?: string | null
+    permanentAddress?: string | null
+    temporaryAddress?: string | null
+    contactNo?: string | null
+    parentId?: string | null
+    waris?: CasePartyUncheckedCreateNestedManyWithoutParentInput
   }
 
   export type CasePartyCreateOrConnectWithoutCaseInput = {
@@ -37849,6 +38421,65 @@ export namespace Prisma {
     nepaliName?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
+  export type UserUpsertWithoutCases_createdInput = {
+    update: XOR<UserUpdateWithoutCases_createdInput, UserUncheckedUpdateWithoutCases_createdInput>
+    create: XOR<UserCreateWithoutCases_createdInput, UserUncheckedCreateWithoutCases_createdInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutCases_createdInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutCases_createdInput, UserUncheckedUpdateWithoutCases_createdInput>
+  }
+
+  export type UserUpdateWithoutCases_createdInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    first_name?: StringFieldUpdateOperationsInput | string
+    last_name?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    invitation_token?: NullableStringFieldUpdateOperationsInput | string | null
+    invitation_expires_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    detail?: NullableJsonNullValueInput | InputJsonValue
+    avatar?: ResourceUpdateOneWithoutUsersNestedInput
+    role?: RoleUpdateOneWithoutUsersNestedInput
+    notifications?: NotificationUpdateManyWithoutUserNestedInput
+    refresh_tokens?: RefreshTokenUpdateManyWithoutUserNestedInput
+    reset_tokens?: PasswordResetTokenUpdateManyWithoutUserNestedInput
+    pages?: PageUpdateManyWithoutAuthorNestedInput
+    cases_as_lawyer?: CaseLawyerUpdateManyWithoutUserNestedInput
+    cases_as_pleader?: CasePleadingUpdateManyWithoutPleaderNestedInput
+    cases_as_counselor?: CaseCounselingUpdateManyWithoutCounselorNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutCases_createdInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    first_name?: StringFieldUpdateOperationsInput | string
+    last_name?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    invitation_token?: NullableStringFieldUpdateOperationsInput | string | null
+    invitation_expires_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    detail?: NullableJsonNullValueInput | InputJsonValue
+    avatar_id?: NullableStringFieldUpdateOperationsInput | string | null
+    role_id?: NullableStringFieldUpdateOperationsInput | string | null
+    notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+    refresh_tokens?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
+    reset_tokens?: PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
+    pages?: PageUncheckedUpdateManyWithoutAuthorNestedInput
+    cases_as_lawyer?: CaseLawyerUncheckedUpdateManyWithoutUserNestedInput
+    cases_as_pleader?: CasePleadingUncheckedUpdateManyWithoutPleaderNestedInput
+    cases_as_counselor?: CaseCounselingUncheckedUpdateManyWithoutCounselorNestedInput
+  }
+
   export type CaseLawyerUpsertWithWhereUniqueWithoutCaseInput = {
     where: CaseLawyerWhereUniqueInput
     update: XOR<CaseLawyerUpdateWithoutCaseInput, CaseLawyerUncheckedUpdateWithoutCaseInput>
@@ -38059,6 +38690,7 @@ export namespace Prisma {
     status?: string
     createdAt?: Date | string
     nature: CaseNatureCreateNestedOneWithoutCasesInput
+    createdBy?: UserCreateNestedOneWithoutCases_createdInput
     parties?: CasePartyCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingCreateNestedManyWithoutCaseInput
     pleadings?: CasePleadingCreateNestedManyWithoutCaseInput
@@ -38084,6 +38716,7 @@ export namespace Prisma {
     fullJudgmentDate?: Date | string | null
     judgmentVerifyDate?: Date | string | null
     status?: string
+    createdById?: string | null
     createdAt?: Date | string
     parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingUncheckedCreateNestedManyWithoutCaseInput
@@ -38121,6 +38754,7 @@ export namespace Prisma {
     pages?: PageCreateNestedManyWithoutAuthorInput
     cases_as_pleader?: CasePleadingCreateNestedManyWithoutPleaderInput
     cases_as_counselor?: CaseCounselingCreateNestedManyWithoutCounselorInput
+    cases_created?: CaseCreateNestedManyWithoutCreatedByInput
   }
 
   export type UserUncheckedCreateWithoutCases_as_lawyerInput = {
@@ -38144,6 +38778,7 @@ export namespace Prisma {
     pages?: PageUncheckedCreateNestedManyWithoutAuthorInput
     cases_as_pleader?: CasePleadingUncheckedCreateNestedManyWithoutPleaderInput
     cases_as_counselor?: CaseCounselingUncheckedCreateNestedManyWithoutCounselorInput
+    cases_created?: CaseUncheckedCreateNestedManyWithoutCreatedByInput
   }
 
   export type UserCreateOrConnectWithoutCases_as_lawyerInput = {
@@ -38178,6 +38813,7 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     nature?: CaseNatureUpdateOneRequiredWithoutCasesNestedInput
+    createdBy?: UserUpdateOneWithoutCases_createdNestedInput
     parties?: CasePartyUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUpdateManyWithoutCaseNestedInput
     pleadings?: CasePleadingUpdateManyWithoutCaseNestedInput
@@ -38203,6 +38839,7 @@ export namespace Prisma {
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: StringFieldUpdateOperationsInput | string
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUncheckedUpdateManyWithoutCaseNestedInput
@@ -38246,6 +38883,7 @@ export namespace Prisma {
     pages?: PageUpdateManyWithoutAuthorNestedInput
     cases_as_pleader?: CasePleadingUpdateManyWithoutPleaderNestedInput
     cases_as_counselor?: CaseCounselingUpdateManyWithoutCounselorNestedInput
+    cases_created?: CaseUpdateManyWithoutCreatedByNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCases_as_lawyerInput = {
@@ -38269,6 +38907,7 @@ export namespace Prisma {
     pages?: PageUncheckedUpdateManyWithoutAuthorNestedInput
     cases_as_pleader?: CasePleadingUncheckedUpdateManyWithoutPleaderNestedInput
     cases_as_counselor?: CaseCounselingUncheckedUpdateManyWithoutCounselorNestedInput
+    cases_created?: CaseUncheckedUpdateManyWithoutCreatedByNestedInput
   }
 
   export type CaseCreateWithoutPartiesInput = {
@@ -38287,6 +38926,7 @@ export namespace Prisma {
     status?: string
     createdAt?: Date | string
     nature: CaseNatureCreateNestedOneWithoutCasesInput
+    createdBy?: UserCreateNestedOneWithoutCases_createdInput
     lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingCreateNestedManyWithoutCaseInput
     pleadings?: CasePleadingCreateNestedManyWithoutCaseInput
@@ -38312,6 +38952,7 @@ export namespace Prisma {
     fullJudgmentDate?: Date | string | null
     judgmentVerifyDate?: Date | string | null
     status?: string
+    createdById?: string | null
     createdAt?: Date | string
     lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingUncheckedCreateNestedManyWithoutCaseInput
@@ -38345,6 +38986,73 @@ export namespace Prisma {
     create: XOR<PartyRoleCreateWithoutPartiesInput, PartyRoleUncheckedCreateWithoutPartiesInput>
   }
 
+  export type CasePartyCreateWithoutWarisInput = {
+    id?: string
+    partyName: string
+    fee?: Decimal | DecimalJsLike | number | string | null
+    citizenshipNo?: string | null
+    permanentAddress?: string | null
+    temporaryAddress?: string | null
+    contactNo?: string | null
+    case: CaseCreateNestedOneWithoutPartiesInput
+    role: PartyRoleCreateNestedOneWithoutPartiesInput
+    parent?: CasePartyCreateNestedOneWithoutWarisInput
+  }
+
+  export type CasePartyUncheckedCreateWithoutWarisInput = {
+    id?: string
+    caseId: string
+    partyName: string
+    roleId: string
+    fee?: Decimal | DecimalJsLike | number | string | null
+    citizenshipNo?: string | null
+    permanentAddress?: string | null
+    temporaryAddress?: string | null
+    contactNo?: string | null
+    parentId?: string | null
+  }
+
+  export type CasePartyCreateOrConnectWithoutWarisInput = {
+    where: CasePartyWhereUniqueInput
+    create: XOR<CasePartyCreateWithoutWarisInput, CasePartyUncheckedCreateWithoutWarisInput>
+  }
+
+  export type CasePartyCreateWithoutParentInput = {
+    id?: string
+    partyName: string
+    fee?: Decimal | DecimalJsLike | number | string | null
+    citizenshipNo?: string | null
+    permanentAddress?: string | null
+    temporaryAddress?: string | null
+    contactNo?: string | null
+    case: CaseCreateNestedOneWithoutPartiesInput
+    role: PartyRoleCreateNestedOneWithoutPartiesInput
+    waris?: CasePartyCreateNestedManyWithoutParentInput
+  }
+
+  export type CasePartyUncheckedCreateWithoutParentInput = {
+    id?: string
+    caseId: string
+    partyName: string
+    roleId: string
+    fee?: Decimal | DecimalJsLike | number | string | null
+    citizenshipNo?: string | null
+    permanentAddress?: string | null
+    temporaryAddress?: string | null
+    contactNo?: string | null
+    waris?: CasePartyUncheckedCreateNestedManyWithoutParentInput
+  }
+
+  export type CasePartyCreateOrConnectWithoutParentInput = {
+    where: CasePartyWhereUniqueInput
+    create: XOR<CasePartyCreateWithoutParentInput, CasePartyUncheckedCreateWithoutParentInput>
+  }
+
+  export type CasePartyCreateManyParentInputEnvelope = {
+    data: CasePartyCreateManyParentInput | CasePartyCreateManyParentInput[]
+    skipDuplicates?: boolean
+  }
+
   export type CaseUpsertWithoutPartiesInput = {
     update: XOR<CaseUpdateWithoutPartiesInput, CaseUncheckedUpdateWithoutPartiesInput>
     create: XOR<CaseCreateWithoutPartiesInput, CaseUncheckedCreateWithoutPartiesInput>
@@ -38372,6 +39080,7 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     nature?: CaseNatureUpdateOneRequiredWithoutCasesNestedInput
+    createdBy?: UserUpdateOneWithoutCases_createdNestedInput
     lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUpdateManyWithoutCaseNestedInput
     pleadings?: CasePleadingUpdateManyWithoutCaseNestedInput
@@ -38397,6 +39106,7 @@ export namespace Prisma {
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: StringFieldUpdateOperationsInput | string
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUncheckedUpdateManyWithoutCaseNestedInput
@@ -38431,6 +39141,59 @@ export namespace Prisma {
     nepaliName?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
+  export type CasePartyUpsertWithoutWarisInput = {
+    update: XOR<CasePartyUpdateWithoutWarisInput, CasePartyUncheckedUpdateWithoutWarisInput>
+    create: XOR<CasePartyCreateWithoutWarisInput, CasePartyUncheckedCreateWithoutWarisInput>
+    where?: CasePartyWhereInput
+  }
+
+  export type CasePartyUpdateToOneWithWhereWithoutWarisInput = {
+    where?: CasePartyWhereInput
+    data: XOR<CasePartyUpdateWithoutWarisInput, CasePartyUncheckedUpdateWithoutWarisInput>
+  }
+
+  export type CasePartyUpdateWithoutWarisInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    partyName?: StringFieldUpdateOperationsInput | string
+    fee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    citizenshipNo?: NullableStringFieldUpdateOperationsInput | string | null
+    permanentAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    contactNo?: NullableStringFieldUpdateOperationsInput | string | null
+    case?: CaseUpdateOneRequiredWithoutPartiesNestedInput
+    role?: PartyRoleUpdateOneRequiredWithoutPartiesNestedInput
+    parent?: CasePartyUpdateOneWithoutWarisNestedInput
+  }
+
+  export type CasePartyUncheckedUpdateWithoutWarisInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseId?: StringFieldUpdateOperationsInput | string
+    partyName?: StringFieldUpdateOperationsInput | string
+    roleId?: StringFieldUpdateOperationsInput | string
+    fee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    citizenshipNo?: NullableStringFieldUpdateOperationsInput | string | null
+    permanentAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    contactNo?: NullableStringFieldUpdateOperationsInput | string | null
+    parentId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CasePartyUpsertWithWhereUniqueWithoutParentInput = {
+    where: CasePartyWhereUniqueInput
+    update: XOR<CasePartyUpdateWithoutParentInput, CasePartyUncheckedUpdateWithoutParentInput>
+    create: XOR<CasePartyCreateWithoutParentInput, CasePartyUncheckedCreateWithoutParentInput>
+  }
+
+  export type CasePartyUpdateWithWhereUniqueWithoutParentInput = {
+    where: CasePartyWhereUniqueInput
+    data: XOR<CasePartyUpdateWithoutParentInput, CasePartyUncheckedUpdateWithoutParentInput>
+  }
+
+  export type CasePartyUpdateManyWithWhereWithoutParentInput = {
+    where: CasePartyScalarWhereInput
+    data: XOR<CasePartyUpdateManyMutationInput, CasePartyUncheckedUpdateManyWithoutParentInput>
+  }
+
   export type CaseCreateWithoutHearingsInput = {
     id?: string
     caseNumber: string
@@ -38447,6 +39210,7 @@ export namespace Prisma {
     status?: string
     createdAt?: Date | string
     nature: CaseNatureCreateNestedOneWithoutCasesInput
+    createdBy?: UserCreateNestedOneWithoutCases_createdInput
     lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
     parties?: CasePartyCreateNestedManyWithoutCaseInput
     pleadings?: CasePleadingCreateNestedManyWithoutCaseInput
@@ -38472,6 +39236,7 @@ export namespace Prisma {
     fullJudgmentDate?: Date | string | null
     judgmentVerifyDate?: Date | string | null
     status?: string
+    createdById?: string | null
     createdAt?: Date | string
     lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
     parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
@@ -38515,6 +39280,7 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     nature?: CaseNatureUpdateOneRequiredWithoutCasesNestedInput
+    createdBy?: UserUpdateOneWithoutCases_createdNestedInput
     lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUpdateManyWithoutCaseNestedInput
     pleadings?: CasePleadingUpdateManyWithoutCaseNestedInput
@@ -38540,6 +39306,7 @@ export namespace Prisma {
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: StringFieldUpdateOperationsInput | string
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
@@ -38567,6 +39334,7 @@ export namespace Prisma {
     status?: string
     createdAt?: Date | string
     nature: CaseNatureCreateNestedOneWithoutCasesInput
+    createdBy?: UserCreateNestedOneWithoutCases_createdInput
     lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
     parties?: CasePartyCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingCreateNestedManyWithoutCaseInput
@@ -38592,6 +39360,7 @@ export namespace Prisma {
     fullJudgmentDate?: Date | string | null
     judgmentVerifyDate?: Date | string | null
     status?: string
+    createdById?: string | null
     createdAt?: Date | string
     lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
     parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
@@ -38629,6 +39398,7 @@ export namespace Prisma {
     pages?: PageCreateNestedManyWithoutAuthorInput
     cases_as_lawyer?: CaseLawyerCreateNestedManyWithoutUserInput
     cases_as_counselor?: CaseCounselingCreateNestedManyWithoutCounselorInput
+    cases_created?: CaseCreateNestedManyWithoutCreatedByInput
   }
 
   export type UserUncheckedCreateWithoutCases_as_pleaderInput = {
@@ -38652,6 +39422,7 @@ export namespace Prisma {
     pages?: PageUncheckedCreateNestedManyWithoutAuthorInput
     cases_as_lawyer?: CaseLawyerUncheckedCreateNestedManyWithoutUserInput
     cases_as_counselor?: CaseCounselingUncheckedCreateNestedManyWithoutCounselorInput
+    cases_created?: CaseUncheckedCreateNestedManyWithoutCreatedByInput
   }
 
   export type UserCreateOrConnectWithoutCases_as_pleaderInput = {
@@ -38686,6 +39457,7 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     nature?: CaseNatureUpdateOneRequiredWithoutCasesNestedInput
+    createdBy?: UserUpdateOneWithoutCases_createdNestedInput
     lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUpdateManyWithoutCaseNestedInput
@@ -38711,6 +39483,7 @@ export namespace Prisma {
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: StringFieldUpdateOperationsInput | string
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
@@ -38754,6 +39527,7 @@ export namespace Prisma {
     pages?: PageUpdateManyWithoutAuthorNestedInput
     cases_as_lawyer?: CaseLawyerUpdateManyWithoutUserNestedInput
     cases_as_counselor?: CaseCounselingUpdateManyWithoutCounselorNestedInput
+    cases_created?: CaseUpdateManyWithoutCreatedByNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCases_as_pleaderInput = {
@@ -38777,6 +39551,7 @@ export namespace Prisma {
     pages?: PageUncheckedUpdateManyWithoutAuthorNestedInput
     cases_as_lawyer?: CaseLawyerUncheckedUpdateManyWithoutUserNestedInput
     cases_as_counselor?: CaseCounselingUncheckedUpdateManyWithoutCounselorNestedInput
+    cases_created?: CaseUncheckedUpdateManyWithoutCreatedByNestedInput
   }
 
   export type CaseCreateWithoutProceedingsInput = {
@@ -38795,6 +39570,7 @@ export namespace Prisma {
     status?: string
     createdAt?: Date | string
     nature: CaseNatureCreateNestedOneWithoutCasesInput
+    createdBy?: UserCreateNestedOneWithoutCases_createdInput
     lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
     parties?: CasePartyCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingCreateNestedManyWithoutCaseInput
@@ -38820,6 +39596,7 @@ export namespace Prisma {
     fullJudgmentDate?: Date | string | null
     judgmentVerifyDate?: Date | string | null
     status?: string
+    createdById?: string | null
     createdAt?: Date | string
     lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
     parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
@@ -38880,6 +39657,7 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     nature?: CaseNatureUpdateOneRequiredWithoutCasesNestedInput
+    createdBy?: UserUpdateOneWithoutCases_createdNestedInput
     lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUpdateManyWithoutCaseNestedInput
@@ -38905,6 +39683,7 @@ export namespace Prisma {
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: StringFieldUpdateOperationsInput | string
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
@@ -38955,6 +39734,7 @@ export namespace Prisma {
     status?: string
     createdAt?: Date | string
     nature: CaseNatureCreateNestedOneWithoutCasesInput
+    createdBy?: UserCreateNestedOneWithoutCases_createdInput
     lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
     parties?: CasePartyCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingCreateNestedManyWithoutCaseInput
@@ -38980,6 +39760,7 @@ export namespace Prisma {
     fullJudgmentDate?: Date | string | null
     judgmentVerifyDate?: Date | string | null
     status?: string
+    createdById?: string | null
     createdAt?: Date | string
     lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
     parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
@@ -39023,6 +39804,7 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     nature?: CaseNatureUpdateOneRequiredWithoutCasesNestedInput
+    createdBy?: UserUpdateOneWithoutCases_createdNestedInput
     lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUpdateManyWithoutCaseNestedInput
@@ -39048,6 +39830,7 @@ export namespace Prisma {
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: StringFieldUpdateOperationsInput | string
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
@@ -39075,6 +39858,7 @@ export namespace Prisma {
     status?: string
     createdAt?: Date | string
     nature: CaseNatureCreateNestedOneWithoutCasesInput
+    createdBy?: UserCreateNestedOneWithoutCases_createdInput
     lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
     parties?: CasePartyCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingCreateNestedManyWithoutCaseInput
@@ -39100,6 +39884,7 @@ export namespace Prisma {
     fullJudgmentDate?: Date | string | null
     judgmentVerifyDate?: Date | string | null
     status?: string
+    createdById?: string | null
     createdAt?: Date | string
     lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
     parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
@@ -39143,6 +39928,7 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     nature?: CaseNatureUpdateOneRequiredWithoutCasesNestedInput
+    createdBy?: UserUpdateOneWithoutCases_createdNestedInput
     lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUpdateManyWithoutCaseNestedInput
@@ -39168,6 +39954,7 @@ export namespace Prisma {
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: StringFieldUpdateOperationsInput | string
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
@@ -39195,6 +39982,7 @@ export namespace Prisma {
     status?: string
     createdAt?: Date | string
     nature: CaseNatureCreateNestedOneWithoutCasesInput
+    createdBy?: UserCreateNestedOneWithoutCases_createdInput
     lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
     parties?: CasePartyCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingCreateNestedManyWithoutCaseInput
@@ -39220,6 +40008,7 @@ export namespace Prisma {
     fullJudgmentDate?: Date | string | null
     judgmentVerifyDate?: Date | string | null
     status?: string
+    createdById?: string | null
     createdAt?: Date | string
     lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
     parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
@@ -39257,6 +40046,7 @@ export namespace Prisma {
     pages?: PageCreateNestedManyWithoutAuthorInput
     cases_as_lawyer?: CaseLawyerCreateNestedManyWithoutUserInput
     cases_as_pleader?: CasePleadingCreateNestedManyWithoutPleaderInput
+    cases_created?: CaseCreateNestedManyWithoutCreatedByInput
   }
 
   export type UserUncheckedCreateWithoutCases_as_counselorInput = {
@@ -39280,6 +40070,7 @@ export namespace Prisma {
     pages?: PageUncheckedCreateNestedManyWithoutAuthorInput
     cases_as_lawyer?: CaseLawyerUncheckedCreateNestedManyWithoutUserInput
     cases_as_pleader?: CasePleadingUncheckedCreateNestedManyWithoutPleaderInput
+    cases_created?: CaseUncheckedCreateNestedManyWithoutCreatedByInput
   }
 
   export type UserCreateOrConnectWithoutCases_as_counselorInput = {
@@ -39314,6 +40105,7 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     nature?: CaseNatureUpdateOneRequiredWithoutCasesNestedInput
+    createdBy?: UserUpdateOneWithoutCases_createdNestedInput
     lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUpdateManyWithoutCaseNestedInput
@@ -39339,6 +40131,7 @@ export namespace Prisma {
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: StringFieldUpdateOperationsInput | string
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
@@ -39382,6 +40175,7 @@ export namespace Prisma {
     pages?: PageUpdateManyWithoutAuthorNestedInput
     cases_as_lawyer?: CaseLawyerUpdateManyWithoutUserNestedInput
     cases_as_pleader?: CasePleadingUpdateManyWithoutPleaderNestedInput
+    cases_created?: CaseUpdateManyWithoutCreatedByNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCases_as_counselorInput = {
@@ -39405,6 +40199,7 @@ export namespace Prisma {
     pages?: PageUncheckedUpdateManyWithoutAuthorNestedInput
     cases_as_lawyer?: CaseLawyerUncheckedUpdateManyWithoutUserNestedInput
     cases_as_pleader?: CasePleadingUncheckedUpdateManyWithoutPleaderNestedInput
+    cases_created?: CaseUncheckedUpdateManyWithoutCreatedByNestedInput
   }
 
   export type CaseCreateWithoutDocumentsInput = {
@@ -39423,6 +40218,7 @@ export namespace Prisma {
     status?: string
     createdAt?: Date | string
     nature: CaseNatureCreateNestedOneWithoutCasesInput
+    createdBy?: UserCreateNestedOneWithoutCases_createdInput
     lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
     parties?: CasePartyCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingCreateNestedManyWithoutCaseInput
@@ -39448,6 +40244,7 @@ export namespace Prisma {
     fullJudgmentDate?: Date | string | null
     judgmentVerifyDate?: Date | string | null
     status?: string
+    createdById?: string | null
     createdAt?: Date | string
     lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
     parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
@@ -39491,6 +40288,7 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     nature?: CaseNatureUpdateOneRequiredWithoutCasesNestedInput
+    createdBy?: UserUpdateOneWithoutCases_createdNestedInput
     lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUpdateManyWithoutCaseNestedInput
@@ -39516,6 +40314,7 @@ export namespace Prisma {
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: StringFieldUpdateOperationsInput | string
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
@@ -39548,6 +40347,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerCreateNestedManyWithoutUserInput
     cases_as_pleader?: CasePleadingCreateNestedManyWithoutPleaderInput
     cases_as_counselor?: CaseCounselingCreateNestedManyWithoutCounselorInput
+    cases_created?: CaseCreateNestedManyWithoutCreatedByInput
   }
 
   export type UserUncheckedCreateWithoutNotificationsInput = {
@@ -39571,6 +40371,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerUncheckedCreateNestedManyWithoutUserInput
     cases_as_pleader?: CasePleadingUncheckedCreateNestedManyWithoutPleaderInput
     cases_as_counselor?: CaseCounselingUncheckedCreateNestedManyWithoutCounselorInput
+    cases_created?: CaseUncheckedCreateNestedManyWithoutCreatedByInput
   }
 
   export type UserCreateOrConnectWithoutNotificationsInput = {
@@ -39610,6 +40411,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerUpdateManyWithoutUserNestedInput
     cases_as_pleader?: CasePleadingUpdateManyWithoutPleaderNestedInput
     cases_as_counselor?: CaseCounselingUpdateManyWithoutCounselorNestedInput
+    cases_created?: CaseUpdateManyWithoutCreatedByNestedInput
   }
 
   export type UserUncheckedUpdateWithoutNotificationsInput = {
@@ -39633,6 +40435,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerUncheckedUpdateManyWithoutUserNestedInput
     cases_as_pleader?: CasePleadingUncheckedUpdateManyWithoutPleaderNestedInput
     cases_as_counselor?: CaseCounselingUncheckedUpdateManyWithoutCounselorNestedInput
+    cases_created?: CaseUncheckedUpdateManyWithoutCreatedByNestedInput
   }
 
   export type PageCreateWithoutPage_typeInput = {
@@ -39867,6 +40670,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerCreateNestedManyWithoutUserInput
     cases_as_pleader?: CasePleadingCreateNestedManyWithoutPleaderInput
     cases_as_counselor?: CaseCounselingCreateNestedManyWithoutCounselorInput
+    cases_created?: CaseCreateNestedManyWithoutCreatedByInput
   }
 
   export type UserUncheckedCreateWithoutPagesInput = {
@@ -39890,6 +40694,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerUncheckedCreateNestedManyWithoutUserInput
     cases_as_pleader?: CasePleadingUncheckedCreateNestedManyWithoutPleaderInput
     cases_as_counselor?: CaseCounselingUncheckedCreateNestedManyWithoutCounselorInput
+    cases_created?: CaseUncheckedCreateNestedManyWithoutCreatedByInput
   }
 
   export type UserCreateOrConnectWithoutPagesInput = {
@@ -40116,6 +40921,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerUpdateManyWithoutUserNestedInput
     cases_as_pleader?: CasePleadingUpdateManyWithoutPleaderNestedInput
     cases_as_counselor?: CaseCounselingUpdateManyWithoutCounselorNestedInput
+    cases_created?: CaseUpdateManyWithoutCreatedByNestedInput
   }
 
   export type UserUncheckedUpdateWithoutPagesInput = {
@@ -40139,6 +40945,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerUncheckedUpdateManyWithoutUserNestedInput
     cases_as_pleader?: CasePleadingUncheckedUpdateManyWithoutPleaderNestedInput
     cases_as_counselor?: CaseCounselingUncheckedUpdateManyWithoutCounselorNestedInput
+    cases_created?: CaseUncheckedUpdateManyWithoutCreatedByNestedInput
   }
 
   export type PageSeoUpsertWithoutPageInput = {
@@ -40480,6 +41287,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerCreateNestedManyWithoutUserInput
     cases_as_pleader?: CasePleadingCreateNestedManyWithoutPleaderInput
     cases_as_counselor?: CaseCounselingCreateNestedManyWithoutCounselorInput
+    cases_created?: CaseCreateNestedManyWithoutCreatedByInput
   }
 
   export type UserUncheckedCreateWithoutRoleInput = {
@@ -40503,6 +41311,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerUncheckedCreateNestedManyWithoutUserInput
     cases_as_pleader?: CasePleadingUncheckedCreateNestedManyWithoutPleaderInput
     cases_as_counselor?: CaseCounselingUncheckedCreateNestedManyWithoutCounselorInput
+    cases_created?: CaseUncheckedCreateNestedManyWithoutCreatedByInput
   }
 
   export type UserCreateOrConnectWithoutRoleInput = {
@@ -40589,6 +41398,24 @@ export namespace Prisma {
     caseId: string
     date?: Date | string | null
     notes: string
+    createdAt?: Date | string
+  }
+
+  export type CaseCreateManyCreatedByInput = {
+    id?: string
+    caseNumber: string
+    caseName: string
+    natureId: string
+    registrationDate?: Date | string | null
+    registrationFee?: Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: string | null
+    facts?: string | null
+    relatedLaws?: string | null
+    referredThrough?: string | null
+    noticeStatus?: string | null
+    fullJudgmentDate?: Date | string | null
+    judgmentVerifyDate?: Date | string | null
+    status?: string
     createdAt?: Date | string
   }
 
@@ -40781,6 +41608,78 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type CaseUpdateWithoutCreatedByInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseNumber?: StringFieldUpdateOperationsInput | string
+    caseName?: StringFieldUpdateOperationsInput | string
+    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
+    facts?: NullableStringFieldUpdateOperationsInput | string | null
+    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
+    noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    nature?: CaseNatureUpdateOneRequiredWithoutCasesNestedInput
+    lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
+    parties?: CasePartyUpdateManyWithoutCaseNestedInput
+    hearings?: CaseHearingUpdateManyWithoutCaseNestedInput
+    pleadings?: CasePleadingUpdateManyWithoutCaseNestedInput
+    proceedings?: CourtProceedingUpdateManyWithoutCaseNestedInput
+    precedents?: CasePrecedentUpdateManyWithoutCaseNestedInput
+    payments?: CasePaymentUpdateManyWithoutCaseNestedInput
+    counselings?: CaseCounselingUpdateManyWithoutCaseNestedInput
+    documents?: CaseDocumentUpdateManyWithoutCaseNestedInput
+  }
+
+  export type CaseUncheckedUpdateWithoutCreatedByInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseNumber?: StringFieldUpdateOperationsInput | string
+    caseName?: StringFieldUpdateOperationsInput | string
+    natureId?: StringFieldUpdateOperationsInput | string
+    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
+    facts?: NullableStringFieldUpdateOperationsInput | string | null
+    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
+    noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
+    parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
+    hearings?: CaseHearingUncheckedUpdateManyWithoutCaseNestedInput
+    pleadings?: CasePleadingUncheckedUpdateManyWithoutCaseNestedInput
+    proceedings?: CourtProceedingUncheckedUpdateManyWithoutCaseNestedInput
+    precedents?: CasePrecedentUncheckedUpdateManyWithoutCaseNestedInput
+    payments?: CasePaymentUncheckedUpdateManyWithoutCaseNestedInput
+    counselings?: CaseCounselingUncheckedUpdateManyWithoutCaseNestedInput
+    documents?: CaseDocumentUncheckedUpdateManyWithoutCaseNestedInput
+  }
+
+  export type CaseUncheckedUpdateManyWithoutCreatedByInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseNumber?: StringFieldUpdateOperationsInput | string
+    caseName?: StringFieldUpdateOperationsInput | string
+    natureId?: StringFieldUpdateOperationsInput | string
+    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
+    facts?: NullableStringFieldUpdateOperationsInput | string | null
+    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
+    noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type UserCreateManyAvatarInput = {
     id?: string
     email: string
@@ -40848,6 +41747,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerUpdateManyWithoutUserNestedInput
     cases_as_pleader?: CasePleadingUpdateManyWithoutPleaderNestedInput
     cases_as_counselor?: CaseCounselingUpdateManyWithoutCounselorNestedInput
+    cases_created?: CaseUpdateManyWithoutCreatedByNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAvatarInput = {
@@ -40871,6 +41771,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerUncheckedUpdateManyWithoutUserNestedInput
     cases_as_pleader?: CasePleadingUncheckedUpdateManyWithoutPleaderNestedInput
     cases_as_counselor?: CaseCounselingUncheckedUpdateManyWithoutCounselorNestedInput
+    cases_created?: CaseUncheckedUpdateManyWithoutCreatedByNestedInput
   }
 
   export type UserUncheckedUpdateManyWithoutAvatarInput = {
@@ -41035,6 +41936,7 @@ export namespace Prisma {
     fullJudgmentDate?: Date | string | null
     judgmentVerifyDate?: Date | string | null
     status?: string
+    createdById?: string | null
     createdAt?: Date | string
   }
 
@@ -41053,6 +41955,7 @@ export namespace Prisma {
     judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdBy?: UserUpdateOneWithoutCases_createdNestedInput
     lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUpdateManyWithoutCaseNestedInput
@@ -41078,6 +41981,7 @@ export namespace Prisma {
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: StringFieldUpdateOperationsInput | string
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
@@ -41104,6 +42008,7 @@ export namespace Prisma {
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: StringFieldUpdateOperationsInput | string
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -41112,17 +42017,24 @@ export namespace Prisma {
     caseId: string
     partyName: string
     fee?: Decimal | DecimalJsLike | number | string | null
-    contactInfo?: string | null
-    representative?: string | null
+    citizenshipNo?: string | null
+    permanentAddress?: string | null
+    temporaryAddress?: string | null
+    contactNo?: string | null
+    parentId?: string | null
   }
 
   export type CasePartyUpdateWithoutRoleInput = {
     id?: StringFieldUpdateOperationsInput | string
     partyName?: StringFieldUpdateOperationsInput | string
     fee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    contactInfo?: NullableStringFieldUpdateOperationsInput | string | null
-    representative?: NullableStringFieldUpdateOperationsInput | string | null
+    citizenshipNo?: NullableStringFieldUpdateOperationsInput | string | null
+    permanentAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    contactNo?: NullableStringFieldUpdateOperationsInput | string | null
     case?: CaseUpdateOneRequiredWithoutPartiesNestedInput
+    parent?: CasePartyUpdateOneWithoutWarisNestedInput
+    waris?: CasePartyUpdateManyWithoutParentNestedInput
   }
 
   export type CasePartyUncheckedUpdateWithoutRoleInput = {
@@ -41130,8 +42042,12 @@ export namespace Prisma {
     caseId?: StringFieldUpdateOperationsInput | string
     partyName?: StringFieldUpdateOperationsInput | string
     fee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    contactInfo?: NullableStringFieldUpdateOperationsInput | string | null
-    representative?: NullableStringFieldUpdateOperationsInput | string | null
+    citizenshipNo?: NullableStringFieldUpdateOperationsInput | string | null
+    permanentAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    contactNo?: NullableStringFieldUpdateOperationsInput | string | null
+    parentId?: NullableStringFieldUpdateOperationsInput | string | null
+    waris?: CasePartyUncheckedUpdateManyWithoutParentNestedInput
   }
 
   export type CasePartyUncheckedUpdateManyWithoutRoleInput = {
@@ -41139,8 +42055,11 @@ export namespace Prisma {
     caseId?: StringFieldUpdateOperationsInput | string
     partyName?: StringFieldUpdateOperationsInput | string
     fee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    contactInfo?: NullableStringFieldUpdateOperationsInput | string | null
-    representative?: NullableStringFieldUpdateOperationsInput | string | null
+    citizenshipNo?: NullableStringFieldUpdateOperationsInput | string | null
+    permanentAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    contactNo?: NullableStringFieldUpdateOperationsInput | string | null
+    parentId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CaseLawyerCreateManyCaseInput = {
@@ -41153,8 +42072,11 @@ export namespace Prisma {
     partyName: string
     roleId: string
     fee?: Decimal | DecimalJsLike | number | string | null
-    contactInfo?: string | null
-    representative?: string | null
+    citizenshipNo?: string | null
+    permanentAddress?: string | null
+    temporaryAddress?: string | null
+    contactNo?: string | null
+    parentId?: string | null
   }
 
   export type CaseHearingCreateManyCaseInput = {
@@ -41234,9 +42156,13 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     partyName?: StringFieldUpdateOperationsInput | string
     fee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    contactInfo?: NullableStringFieldUpdateOperationsInput | string | null
-    representative?: NullableStringFieldUpdateOperationsInput | string | null
+    citizenshipNo?: NullableStringFieldUpdateOperationsInput | string | null
+    permanentAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    contactNo?: NullableStringFieldUpdateOperationsInput | string | null
     role?: PartyRoleUpdateOneRequiredWithoutPartiesNestedInput
+    parent?: CasePartyUpdateOneWithoutWarisNestedInput
+    waris?: CasePartyUpdateManyWithoutParentNestedInput
   }
 
   export type CasePartyUncheckedUpdateWithoutCaseInput = {
@@ -41244,8 +42170,12 @@ export namespace Prisma {
     partyName?: StringFieldUpdateOperationsInput | string
     roleId?: StringFieldUpdateOperationsInput | string
     fee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    contactInfo?: NullableStringFieldUpdateOperationsInput | string | null
-    representative?: NullableStringFieldUpdateOperationsInput | string | null
+    citizenshipNo?: NullableStringFieldUpdateOperationsInput | string | null
+    permanentAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    contactNo?: NullableStringFieldUpdateOperationsInput | string | null
+    parentId?: NullableStringFieldUpdateOperationsInput | string | null
+    waris?: CasePartyUncheckedUpdateManyWithoutParentNestedInput
   }
 
   export type CasePartyUncheckedUpdateManyWithoutCaseInput = {
@@ -41253,8 +42183,11 @@ export namespace Prisma {
     partyName?: StringFieldUpdateOperationsInput | string
     roleId?: StringFieldUpdateOperationsInput | string
     fee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    contactInfo?: NullableStringFieldUpdateOperationsInput | string | null
-    representative?: NullableStringFieldUpdateOperationsInput | string | null
+    citizenshipNo?: NullableStringFieldUpdateOperationsInput | string | null
+    permanentAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    contactNo?: NullableStringFieldUpdateOperationsInput | string | null
+    parentId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CaseHearingUpdateWithoutCaseInput = {
@@ -41429,6 +42362,56 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     documentUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CasePartyCreateManyParentInput = {
+    id?: string
+    caseId: string
+    partyName: string
+    roleId: string
+    fee?: Decimal | DecimalJsLike | number | string | null
+    citizenshipNo?: string | null
+    permanentAddress?: string | null
+    temporaryAddress?: string | null
+    contactNo?: string | null
+  }
+
+  export type CasePartyUpdateWithoutParentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    partyName?: StringFieldUpdateOperationsInput | string
+    fee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    citizenshipNo?: NullableStringFieldUpdateOperationsInput | string | null
+    permanentAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    contactNo?: NullableStringFieldUpdateOperationsInput | string | null
+    case?: CaseUpdateOneRequiredWithoutPartiesNestedInput
+    role?: PartyRoleUpdateOneRequiredWithoutPartiesNestedInput
+    waris?: CasePartyUpdateManyWithoutParentNestedInput
+  }
+
+  export type CasePartyUncheckedUpdateWithoutParentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseId?: StringFieldUpdateOperationsInput | string
+    partyName?: StringFieldUpdateOperationsInput | string
+    roleId?: StringFieldUpdateOperationsInput | string
+    fee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    citizenshipNo?: NullableStringFieldUpdateOperationsInput | string | null
+    permanentAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    contactNo?: NullableStringFieldUpdateOperationsInput | string | null
+    waris?: CasePartyUncheckedUpdateManyWithoutParentNestedInput
+  }
+
+  export type CasePartyUncheckedUpdateManyWithoutParentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseId?: StringFieldUpdateOperationsInput | string
+    partyName?: StringFieldUpdateOperationsInput | string
+    roleId?: StringFieldUpdateOperationsInput | string
+    fee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    citizenshipNo?: NullableStringFieldUpdateOperationsInput | string | null
+    permanentAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    contactNo?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type PageCreateManyPage_typeInput = {
@@ -41608,6 +42591,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerUpdateManyWithoutUserNestedInput
     cases_as_pleader?: CasePleadingUpdateManyWithoutPleaderNestedInput
     cases_as_counselor?: CaseCounselingUpdateManyWithoutCounselorNestedInput
+    cases_created?: CaseUpdateManyWithoutCreatedByNestedInput
   }
 
   export type UserUncheckedUpdateWithoutRoleInput = {
@@ -41631,6 +42615,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerUncheckedUpdateManyWithoutUserNestedInput
     cases_as_pleader?: CasePleadingUncheckedUpdateManyWithoutPleaderNestedInput
     cases_as_counselor?: CaseCounselingUncheckedUpdateManyWithoutCounselorNestedInput
+    cases_created?: CaseUncheckedUpdateManyWithoutCreatedByNestedInput
   }
 
   export type UserUncheckedUpdateManyWithoutRoleInput = {

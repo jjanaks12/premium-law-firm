@@ -1,10 +1,15 @@
 "use client";
 
 import { ErrorMessage, Field, FieldProps, Form, Formik } from "formik";
-import { AlertTriangleIcon, LoaderIcon, EyeIcon, EyeClosedIcon } from "lucide-react";
+import {
+  AlertTriangleIcon,
+  LoaderIcon,
+  EyeIcon,
+  EyeClosedIcon,
+} from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useState, Suspense } from "react";
-import { useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import * as yup from "yup";
 
 import { Button } from "@/components/ui/button";
@@ -17,6 +22,7 @@ import { useRouter } from "@/src/i18n/routing";
 
 function AcceptInvitationFormContent({ className }: { className: string }) {
   const { axios } = useAxios();
+  const pathname = usePathname();
   const router = useRouter();
   const searchParams = useSearchParams();
   const token = searchParams.get("token") || "";
@@ -27,17 +33,17 @@ function AcceptInvitationFormContent({ className }: { className: string }) {
   const t = useTranslations("AcceptInvitationPage");
 
   const validationSchema = yup.object({
-    password: yup.string().min(6, t("passwordMinError")).required(t("passwordRequired")),
+    password: yup
+      .string()
+      .min(6, t("passwordMinError"))
+      .required(t("passwordRequired")),
     confirmPassword: yup
       .string()
       .oneOf([yup.ref("password")], t("passwordsMustMatch"))
       .required(t("confirmPasswordRequired")),
   });
 
-  const handleSubmit = async (
-    values: any,
-    { setSubmitting }: any,
-  ) => {
+  const handleSubmit = async (values: any, { setSubmitting }: any) => {
     if (!token) {
       setErrorMsg(t("missingTokenError"));
       setSubmitting(false);
@@ -57,12 +63,14 @@ function AcceptInvitationFormContent({ className }: { className: string }) {
           description: t("successDescription"),
           type: "success",
         });
-        router.push("/login");
+        router.replace("/login?redirectUrl=" + encodeURIComponent(pathname));
       }
     } catch (error: any) {
       setErrorMsg(
         error.response?.data?.message ||
-        (typeof error === "string" ? error : error.message || t("genericError"))
+          (typeof error === "string"
+            ? error
+            : error.message || t("genericError")),
       );
     } finally {
       setSubmitting(false);
@@ -74,9 +82,7 @@ function AcceptInvitationFormContent({ className }: { className: string }) {
       <h2 className="text-3xl font-bold mb-2 text-foreground font-serif">
         {t("formTitle")}
       </h2>
-      <p className="text-sm text-muted-foreground mb-8">
-        {t("formSubTitle")}
-      </p>
+      <p className="text-sm text-muted-foreground mb-8">{t("formSubTitle")}</p>
 
       {!token && (
         <div className="mb-6 p-4 rounded-xl bg-destructive/10 border border-destructive/20 text-destructive flex items-center gap-2 text-sm font-medium">
@@ -194,14 +200,25 @@ function AcceptInvitationFormContent({ className }: { className: string }) {
   );
 }
 
-export default function AcceptInvitationForm({ className }: { className: string }) {
+export default function AcceptInvitationForm({
+  className,
+}: {
+  className: string;
+}) {
   return (
-    <Suspense fallback={
-      <div className={cn("flex flex-col justify-center items-center min-h-screen", className)}>
-        <LoaderIcon className="animate-spin size-8 text-primary" />
-        <span className="text-sm text-muted-foreground mt-2">Loading...</span>
-      </div>
-    }>
+    <Suspense
+      fallback={
+        <div
+          className={cn(
+            "flex flex-col justify-center items-center min-h-screen",
+            className,
+          )}
+        >
+          <LoaderIcon className="animate-spin size-8 text-primary" />
+          <span className="text-sm text-muted-foreground mt-2">Loading...</span>
+        </div>
+      }
+    >
       <AcceptInvitationFormContent className={className} />
     </Suspense>
   );

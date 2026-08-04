@@ -54,14 +54,14 @@ moduleRegistry.register('/pages', pageRoutes, {
 moduleRegistry.register('/cases', caseRoutes, {
   name: 'Cases',
   description: 'Handles case creations, listing, updating and deleting case records along with parties and lawyers',
-  resources: ['cases'],
+  resources: ['cases', 'case-natures', 'court-levels', 'party-roles'],
   actions: ["create", "read", "update", "delete", "list"],
 });
 
 moduleRegistry.register('/case-natures', caseNatureRoutes, {
   name: 'Case Natures',
-  description: 'Handles CRUD operations for case nature lookups',
-  resources: ['cases'], // Assigning to cases resource permission for simplicity
+  description: 'Handles case natures listing, creation, updating, and deletion',
+  resources: ['case-natures'],
   actions: ["create", "read", "update", "delete", "list"],
 });
 

@@ -6,7 +6,6 @@ import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Brand from "@/components/Brand";
-import Language from "@/components/Language";
 import { useNavLink } from "@/lib/dictionary/defaultNav";
 
 export default function Header() {
@@ -30,7 +29,6 @@ export default function Header() {
           ))}
         </nav>
         <div className="flex items-center gap-4">
-          <Language />
           <Link href="/contact" className="hidden lg:inline-flex btn-gold">
             {t("bookConsultation")}
           </Link>

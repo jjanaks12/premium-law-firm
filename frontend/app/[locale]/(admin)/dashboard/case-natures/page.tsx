@@ -181,7 +181,6 @@ export default function CaseNaturesPage() {
           <Table>
             <TableHeader className="bg-muted/50">
               <TableRow>
-                <TableHead className="w-20">{t("colId")}</TableHead>
                 <TableHead>{t("colName")}</TableHead>
                 <TableHead>{t("colNepaliName")}</TableHead>
                 <TableHead className="text-right">{t("colActions")}</TableHead>
@@ -212,7 +211,6 @@ export default function CaseNaturesPage() {
               ) : (
                 natures.map((n) => (
                   <TableRow key={n.id}>
-                    <TableCell className="font-medium">{n.id}</TableCell>
                     <TableCell>{n.name}</TableCell>
                     <TableCell>{n.nepaliName || "—"}</TableCell>
                     <TableCell className="text-right">

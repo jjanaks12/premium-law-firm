@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@app/types": "*",
     "@app/validations": "*",
     "@prisma/generated": "file:../prisma/generated/client",
     "bcrypt": "^6.0.0",
@@ -27,6 +28,7 @@
     "jsonwebtoken": "^9.0.3",
     "multer": "^2.2.0",
     "nodemailer": "^9.0.3",
+    "uuid": "^14.0.1",
     "yup": "^1.7.1"
   },
   "devDependencies": {
@@ -38,6 +40,7 @@
     "@types/multer": "^2.2.0",
     "@types/nodemailer": "^8.0.1",
     "@types/pg": "^8.20.0",
+    "@types/uuid": "^10.0.0",
     "nodemon": "^3.1.14",
     "tsc-alias": "^1.9.1",
     "tsx": "^4.23.1",

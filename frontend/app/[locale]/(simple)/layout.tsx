@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect } from "react";
-import Language from "@/components/Language";
 import { useAuth } from "@/lib/context/AuthContext";
 import { useRouter } from "@/src/i18n/routing";
 
@@ -28,10 +27,5 @@ export default function SimpleLayout({
     );
   }
 
-  return (
-    <main id="main">
-      {children}
-      <Language className="absolute top-4 right-4" />
-    </main>
-  );
+  return <main id="main">{children}</main>;
 }

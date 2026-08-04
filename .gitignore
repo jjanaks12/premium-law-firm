@@ -5,3 +5,6 @@ public/uploads
 backend/uploads
 *.log
 .DS_Store
+
+prisma/schema/*.prisma
+prisma/generated/*
