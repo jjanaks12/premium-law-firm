@@ -61,7 +61,8 @@ export const useAxios = () => {
                     type: 'error'
                 })
                 window.dispatchEvent(new Event('auth-expired'))
-                router.push('/login')
+                const currentPath = window.location.pathname + window.location.search
+                router.push(`/login?redirectUrl=${encodeURIComponent(currentPath)}`)
             }
 
             const rejectedError = new Error(errorMessage) as any

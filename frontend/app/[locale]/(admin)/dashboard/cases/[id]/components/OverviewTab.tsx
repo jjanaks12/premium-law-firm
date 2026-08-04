@@ -29,6 +29,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { useAxios } from "@/lib/services/axios.service";
 import { toast } from "@/components/ui/toast";
+import { useTranslations } from "next-intl";
 
 export default function OverviewTab({
   caseData,
@@ -38,6 +39,7 @@ export default function OverviewTab({
   refresh: () => void;
 }) {
   const { axios } = useAxios();
+  const t = useTranslations("OverviewTab");
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [users, setUsers] = useState<any[]>([]);
@@ -65,15 +67,15 @@ export default function OverviewTab({
     setLoading(true);
     try {
       await axios.post(`/cases/${caseData.id}/lawyers`, { userId, isLead });
-      toast.add({ title: "Lawyer assigned" });
+      toast.add({ title: t("lawyerAssigned") });
       setOpen(false);
       refresh();
       setUserId("");
       setIsLead(false);
     } catch (error: any) {
       toast.add({
-        title: "Error",
-        description: error.response?.data?.message || "Unknown error",
+        title: t("errorTitle"),
+        description: error.response?.data?.message || t("unknownError"),
         type: "destructive",
       });
     } finally {
@@ -85,10 +87,10 @@ export default function OverviewTab({
     if (!deleteId) return;
     try {
       await axios.delete(`/cases/${caseData.id}/lawyers/${deleteId}`);
-      toast.add({ title: "Lawyer removed" });
+      toast.add({ title: t("lawyerRemoved") });
       refresh();
     } catch (e) {
-      toast.add({ title: "Error", type: "destructive" });
+      toast.add({ title: t("errorTitle"), type: "destructive" });
     } finally {
       setDeleteId(null);
     }
@@ -98,37 +100,41 @@ export default function OverviewTab({
     <div className="space-y-4">
       <Card>
         <CardHeader>
-          <CardTitle>Case Information</CardTitle>
+          <CardTitle>{t("caseInfo")}</CardTitle>
         </CardHeader>
         <CardContent className="grid grid-cols-2 gap-4">
           <div>
-            <p className="text-sm text-muted-foreground">Case Number</p>
+            <p className="text-sm text-muted-foreground">{t("caseNumber")}</p>
             <p className="font-medium">{caseData.caseNumber}</p>
           </div>
           <div>
-            <p className="text-sm text-muted-foreground">Registration Date</p>
+            <p className="text-sm text-muted-foreground">{t("regDate")}</p>
             <p className="font-medium">
               {caseData.registrationDate
                 ? new Date(caseData.registrationDate).toLocaleDateString()
-                : "N/A"}
+                : t("na")}
             </p>
           </div>
           <div>
-            <p className="text-sm text-muted-foreground">Status</p>
+            <p className="text-sm text-muted-foreground">{t("status")}</p>
             <p className="font-medium">{caseData.status}</p>
           </div>
           <div>
-            <p className="text-sm text-muted-foreground">Nature</p>
-            <p className="font-medium">{caseData.nature?.name || "N/A"}</p>
+            <p className="text-sm text-muted-foreground">{t("nature")}</p>
+            <p className="font-medium">{caseData.nature?.name || t("na")}</p>
+          </div>
+          <div>
+            <p className="text-sm text-muted-foreground">{t("faat")}</p>
+            <p className="font-medium">{caseData.sectionCourtRoom || t("na")}</p>
           </div>
         </CardContent>
       </Card>
 
       <Card>
         <CardHeader className="flex flex-row items-center justify-between">
-          <CardTitle>Lawyers</CardTitle>
+          <CardTitle>{t("lawyers")}</CardTitle>
           <Button onClick={() => setOpen(true)} size="sm">
-            <PlusIcon className="w-4 h-4 mr-2" /> Assign Lawyer
+            <PlusIcon className="w-4 h-4 mr-2" /> {t("assignLawyer")}
           </Button>
         </CardHeader>
         <CardContent>
@@ -145,7 +151,7 @@ export default function OverviewTab({
                     </span>
                     {l.isLead && (
                       <span className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">
-                        Lead
+                        {t("lead")}
                       </span>
                     )}
                   </div>
@@ -161,7 +167,7 @@ export default function OverviewTab({
               ))}
             </ul>
           ) : (
-            <p className="text-muted-foreground">No lawyers assigned.</p>
+            <p className="text-muted-foreground">{t("noLawyers")}</p>
           )}
         </CardContent>
       </Card>
@@ -169,17 +175,17 @@ export default function OverviewTab({
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Assign Lawyer</DialogTitle>
+            <DialogTitle>{t("assignLawyer")}</DialogTitle>
           </DialogHeader>
           <form onSubmit={handleAssign} className="space-y-4">
             <div className="space-y-2">
-              <Label>Lawyer</Label>
+              <Label>{t("lawyers")}</Label>
               <Select
                 value={userId}
                 onValueChange={(a) => setUserId(a as string)}
               >
                 <SelectTrigger>
-                  <SelectValue placeholder="Select a lawyer" />
+                  <SelectValue placeholder={t("selectLawyer")} />
                 </SelectTrigger>
                 <SelectContent>
                   {users.map((u) => (
@@ -196,7 +202,7 @@ export default function OverviewTab({
                 checked={isLead}
                 onCheckedChange={(val) => setIsLead(!!val)}
               />
-              <Label htmlFor="isLead">Is Lead Lawyer?</Label>
+              <Label htmlFor="isLead">{t("isLeadLawyer")}</Label>
             </div>
             <div className="flex justify-end pt-4">
               <Button
@@ -205,10 +211,10 @@ export default function OverviewTab({
                 className="mr-2"
                 onClick={() => setOpen(false)}
               >
-                Cancel
+                {t("cancel")}
               </Button>
               <Button type="submit" disabled={loading || !userId}>
-                {loading ? "Saving..." : "Save"}
+                {loading ? t("saving") : t("save")}
               </Button>
             </div>
           </form>
@@ -221,14 +227,13 @@ export default function OverviewTab({
       >
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+            <AlertDialogTitle>{t("confirmDeleteTitle")}</AlertDialogTitle>
             <AlertDialogDescription>
-              This action cannot be undone. This will remove the lawyer from the
-              case.
+              {t("confirmDeleteDesc")}
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogCancel>{t("cancel")}</AlertDialogCancel>
             <AlertDialogAction
               className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
               onClick={(e) => {
@@ -236,7 +241,7 @@ export default function OverviewTab({
                 confirmDelete();
               }}
             >
-              Remove
+              {t("remove")}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

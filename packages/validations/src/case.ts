@@ -7,6 +7,7 @@ export const caseValidationSchema = yup.object({
   registrationDate: yup.date().nullable(),
   facts: yup.string().nullable(),
   status: yup.string().required("Status is required"),
+  sectionCourtRoom: yup.string().nullable(),
   parties: yup.array().of(
     yup.object({
       partyName: yup.string().required("Party Name is required"),

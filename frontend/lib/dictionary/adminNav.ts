@@ -1,6 +1,7 @@
 import { User, Role } from "@prisma/client";
 import { BellIcon, BookOpenIcon, FolderCogIcon, FolderOpenIcon, FingerprintIcon, LayoutDashboardIcon, ListTreeIcon, SettingsIcon, UserCogIcon, UserKeyIcon, UsersIcon, BriefcaseIcon } from "lucide-react";
 import { can } from "@/lib/services/authorization.service";
+import { useTranslations } from "next-intl";
 
 export type UserWithRole = User & {
     role?: Role | null;
@@ -18,95 +19,95 @@ interface Menu {
 
 const adminMenu: Menu[] = [
     {
-        label: 'Dashboard',
+        label: 'dashboard',
         icon: LayoutDashboardIcon,
         href: '/dashboard',
         resource: 'dashboard'
     },
     {
-        label: 'Users',
+        label: 'users',
         icon: UsersIcon,
         href: '/dashboard/users',
         resource: '*',
         submenu: [{
-            label: 'List',
+            label: 'list',
             href: '/dashboard/users',
             resource: 'users',
             icon: ListTreeIcon,
         }, {
-            label: 'Roles',
+            label: 'roles',
             href: '/dashboard/roles',
             resource: 'roles',
             icon: UserKeyIcon,
         }]
     },
     {
-        label: 'Resources',
+        label: 'resources',
         icon: FolderOpenIcon,
         href: '/dashboard/resources',
         resource: 'resources'
     },
     {
-        label: 'Pages',
+        label: 'pages',
         icon: BookOpenIcon,
         href: '/dashboard/pages',
         resource: '*',
         submenu: [{
-            label: 'All Pages',
+            label: 'allPages',
             href: '/dashboard/pages',
             resource: 'pages',
             icon: ListTreeIcon,
         }, {
-            label: 'Page Types',
+            label: 'pageTypes',
             href: '/dashboard/pages/types',
             resource: 'pages',
             icon: FolderCogIcon,
         }]
     },
     {
-        label: 'Cases',
+        label: 'cases',
         icon: BriefcaseIcon,
         href: '/dashboard/cases',
         resource: 'cases',
         submenu: [{
-            label: 'All Cases',
+            label: 'allCases',
             href: '/dashboard/cases',
             resource: 'cases',
             icon: ListTreeIcon,
         }, {
-            label: 'Case Natures',
+            label: 'caseNatures',
             href: '/dashboard/case-natures',
             resource: 'case-natures',
             icon: FolderCogIcon,
         }, {
-            label: 'Party Roles',
+            label: 'partyRoles',
             href: '/dashboard/party-roles',
             resource: 'party-roles',
             icon: UsersIcon,
         }, {
-            label: 'Court Levels',
+            label: 'courtLevels',
             href: '/dashboard/court-levels',
             resource: 'court-levels',
             icon: BookOpenIcon,
         }]
     },
     {
-        label: 'Settings',
+        label: 'settings',
         icon: SettingsIcon,
         href: '/dashboard/settings',
         resource: '*',
         submenu: [{
-            label: 'Profile',
+            label: 'profile',
             href: '/dashboard/settings/profile',
             resource: '*',
             icon: UserCogIcon,
         }, {
-            label: 'Notification',
+            label: 'notification',
             href: '/dashboard/settings/notification',
             resource: '*',
             icon: BellIcon,
         }, {
-            label: 'Change password',
+            label: 'changePassword',
             href: '/dashboard/settings/change-password',
             resource: '*',
             icon: FingerprintIcon,
@@ -115,6 +116,7 @@ const adminMenu: Menu[] = [
 ]
 
 export const useNavLink = (user?: UserWithRole | null): { menus: Menu[] } => {
+    const t = useTranslations("AdminNav");
     let menus: Menu[] = []
 
     if (user) {
@@ -124,15 +126,17 @@ export const useNavLink = (user?: UserWithRole | null): { menus: Menu[] } => {
                     const hasAccess = menu.resource === '*' || can(menu.resource, user.role)
                     if (!hasAccess) return null
 
+                    const translatedMenu = { ...menu, label: t(menu.label as any) }
+
                     if (menu.submenu) {
                         const filteredSubmenu = filterMenus(menu.submenu)
                         if (filteredSubmenu.length === 0) {
                             return null
                         }
-                        return { ...menu, submenu: filteredSubmenu }
+                        return { ...translatedMenu, submenu: filteredSubmenu }
                     }
 
-                    return menu
+                    return translatedMenu
                 })
                 .filter((menu): menu is Menu => menu !== null)
         }

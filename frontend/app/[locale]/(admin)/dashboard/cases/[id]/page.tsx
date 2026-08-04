@@ -6,6 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, Loader2 } from "lucide-react";
 import { useAxios } from "@/lib/services/axios.service";
+import { useTranslations } from "next-intl";
 import OverviewTab from "./components/OverviewTab";
 import PartiesTab from "./components/PartiesTab";
 import HearingsTab from "./components/HearingsTab";
@@ -15,12 +16,14 @@ import PleadingsTab from "./components/PleadingsTab";
 import PrecedentsTab from "./components/PrecedentsTab";
 import PaymentsTab from "./components/PaymentsTab";
 import DocumentsTab from "./components/DocumentsTab";
+import { Link } from "@/src/i18n/routing";
 
 export default function CaseDetailPage() {
   const params = useParams();
   const router = useRouter();
   const id = params.id as string;
   const { axios } = useAxios();
+  const t = useTranslations();
 
   const [caseData, setCaseData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
@@ -49,7 +52,7 @@ export default function CaseDetailPage() {
   }
 
   if (!caseData) {
-    return <div className="p-6">Case not found.</div>;
+    return <div className="p-6">{t("CaseDetailPage.caseNotFound")}</div>;
   }
 
   return (
@@ -58,25 +61,48 @@ export default function CaseDetailPage() {
         <Button variant="outline" size="icon" onClick={() => router.back()}>
           <ChevronLeft className="h-4 w-4" />
         </Button>
-        <div>
+        <div className="grow">
           <h1 className="text-2xl font-bold tracking-tight">
-            Case: {caseData.caseNumber}
+            {t("CaseDetailPage.caseTitle", { caseNumber: caseData.caseNumber })}
           </h1>
           <p className="text-muted-foreground">{caseData.caseName}</p>
+        </div>
+        <div className="shrink-0">
+          <Link href={`/dashboard/cases/${id}/edit`}>
+            <Button>{t("CasesPage.editBtn")}</Button>
+          </Link>
         </div>
       </div>
 
       <Tabs defaultValue="overview" className="w-full">
         <TabsList className="mb-4 flex-wrap w-full justify-start h-auto gap-2">
-          <TabsTrigger value="overview">Overview</TabsTrigger>
-          <TabsTrigger value="parties">Parties</TabsTrigger>
-          <TabsTrigger value="hearings">Hearings</TabsTrigger>
-          <TabsTrigger value="proceedings">Proceedings</TabsTrigger>
-          <TabsTrigger value="counselings">Counselling</TabsTrigger>
-          <TabsTrigger value="pleadings">Bahas / Pleadings</TabsTrigger>
-          <TabsTrigger value="precedents">Precedents</TabsTrigger>
-          <TabsTrigger value="payments">Payments</TabsTrigger>
-          <TabsTrigger value="documents">Documents</TabsTrigger>
+          <TabsTrigger value="overview">
+            {t("CaseDetailPage.overview")}
+          </TabsTrigger>
+          <TabsTrigger value="parties">
+            {t("CaseDetailPage.parties")}
+          </TabsTrigger>
+          <TabsTrigger value="hearings">
+            {t("CaseDetailPage.hearings")}
+          </TabsTrigger>
+          <TabsTrigger value="proceedings">
+            {t("CaseDetailPage.proceedings")}
+          </TabsTrigger>
+          <TabsTrigger value="counselings">
+            {t("CaseDetailPage.counselings")}
+          </TabsTrigger>
+          <TabsTrigger value="pleadings">
+            {t("CaseDetailPage.pleadings")}
+          </TabsTrigger>
+          <TabsTrigger value="precedents">
+            {t("CaseDetailPage.precedents")}
+          </TabsTrigger>
+          <TabsTrigger value="payments">
+            {t("CaseDetailPage.payments")}
+          </TabsTrigger>
+          <TabsTrigger value="documents">
+            {t("CaseDetailPage.documents")}
+          </TabsTrigger>
         </TabsList>
 
         <TabsContent value="overview">

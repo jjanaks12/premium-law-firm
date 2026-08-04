@@ -40,7 +40,7 @@ export default function AdminSidebar() {
   return (
     <Sidebar
       collapsible="icon"
-      className="w-[320px] border-r border-border bg-background relative"
+      className="w-[320px] border-r border-border bg-background sticky"
     >
       <SidebarHeader className="h-14 border-b border-border flex items-center justify-center px-4 shrink-0">
         <Brand theme="dark" compact={!isSidebarOpened} />

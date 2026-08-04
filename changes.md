@@ -1,5 +1,5 @@
 ## case
-### info
+[X] ### info
 - notes
 - type
 - referred from
@@ -10,13 +10,13 @@
     3. contact no
     4. name
 
-#### waris
+[X] #### waris
 1. citizenship no
 2. address - permanent / temporary
 3. contact no
 4. name
 
-### court details
+[X] ### court details
 - case name
 - case number
 - case date

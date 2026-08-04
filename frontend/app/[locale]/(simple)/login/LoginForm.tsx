@@ -10,6 +10,7 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { cn } from "@/lib/utils";
+import { useSearchParams } from "next/navigation";
 import { useAxios } from "@/lib/services/axios.service";
 import { Link, useRouter } from "@/src/i18n/routing";
 import { LoginInput, loginSchema } from "@app/validations";
@@ -23,6 +24,7 @@ import { useAuth } from "@/lib/context/AuthContext";
 export default function LoginForm({ className }: { className?: string }) {
   const { axios } = useAxios();
   const router = useRouter();
+  const searchParams = useSearchParams();
   const t = useTranslations("LoginForm");
   const [errorMsg, setErrorMsg] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -42,7 +44,15 @@ export default function LoginForm({ className }: { className?: string }) {
           values.remember ?? false,
         );
         await refreshUser();
-        router.push("/dashboard");
+        const redirectUrl = searchParams.get("redirectUrl");
+        console.log("Redirect URL:", redirectUrl);
+        
+        const finalUrl = redirectUrl && redirectUrl.startsWith("/") ? redirectUrl : "/dashboard";
+        
+        // Use window.location.href for a clean state reload, 
+        // avoiding stale layout states and router cache issues.
+        const currentLocale = window.location.pathname.split('/')[1] || 'np';
+        window.location.href = `/${currentLocale}${finalUrl}`;
       }
     } catch (error: any) {
       setErrorMsg(typeof error === "string" ? error : error.message);

@@ -22,7 +22,7 @@ export default function AdminLayout({
 
   useEffect(() => {
     if (!loading && !user) {
-      router.replace("/login");
+      router.replace(`/login?redirectUrl=${pathname}`);
     }
   }, [user, loading, router]);
 

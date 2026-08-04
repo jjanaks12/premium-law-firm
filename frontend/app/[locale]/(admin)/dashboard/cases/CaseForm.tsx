@@ -146,6 +146,7 @@ export default function CaseForm({
     caseNumber: caseData?.caseNumber || "",
     caseName: caseData?.caseName || "",
     natureId: caseData?.natureId || "",
+    sectionCourtRoom: caseData?.sectionCourtRoom || "",
     registrationDate: caseData?.registrationDate
       ? dayjs(caseData.registrationDate).format("YYYY-MM-DD")
       : "",
@@ -185,121 +186,140 @@ export default function CaseForm({
     >
       {({ isSubmitting }) => (
         <Form className="space-y-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <Label htmlFor="caseNumber">
-                {t("formNumber")} <span className="text-destructive">*</span>
-              </Label>
-              <Field name="caseNumber">
-                {({ field }: FieldProps) => (
-                  <Input
-                    {...field}
-                    id="caseNumber"
-                    placeholder="e.g. 078-CR-1234"
-                  />
-                )}
-              </Field>
-              <ErrorMessage
-                name="caseNumber"
-                component="div"
-                className="text-sm text-destructive"
-              />
+          <div className="space-y-4 border rounded-md p-4 bg-muted/20">
+            <div className="flex items-center justify-between">
+              <h3 className="text-lg font-medium">{t("courtDetails")}</h3>
             </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="caseName">
-                {t("formName")} <span className="text-destructive">*</span>
-              </Label>
-              <Field name="caseName">
-                {({ field }: FieldProps) => (
-                  <Input
-                    {...field}
-                    id="caseName"
-                    placeholder="e.g. State vs Ram"
-                  />
-                )}
-              </Field>
-              <ErrorMessage
-                name="caseName"
-                component="div"
-                className="text-sm text-destructive"
-              />
-            </div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <Label htmlFor="natureId">
-                {t("formNature")} <span className="text-destructive">*</span>
-              </Label>
-              <Field name="natureId">
-                {({ field, form }: FieldProps) => (
-                  <Select
-                    onValueChange={(value) =>
-                      form.setFieldValue(field.name, value)
-                    }
-                    value={field.value?.toString() || null}
-                  >
-                    <SelectTrigger
-                      id="natureId"
-                      disabled={loadingNatures}
-                      className="w-full"
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="caseName">
+                  {t("formName")} <span className="text-destructive">*</span>
+                </Label>
+                <Field name="caseName">
+                  {({ field }: FieldProps) => (
+                    <Input
+                      {...field}
+                      id="caseName"
+                      placeholder="e.g. State vs Ram"
+                    />
+                  )}
+                </Field>
+                <ErrorMessage
+                  name="caseName"
+                  component="div"
+                  className="text-sm text-destructive"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="caseNumber">
+                  {t("formNumber")} <span className="text-destructive">*</span>
+                </Label>
+                <Field name="caseNumber">
+                  {({ field }: FieldProps) => (
+                    <Input
+                      {...field}
+                      id="caseNumber"
+                      placeholder="e.g. 078-CR-1234"
+                    />
+                  )}
+                </Field>
+                <ErrorMessage
+                  name="caseNumber"
+                  component="div"
+                  className="text-sm text-destructive"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="registrationDate">{t("formRegDate")}</Label>
+                <Field name="registrationDate">
+                  {({ field, form }: FieldProps) => (
+                    <DatePicker
+                      id="registrationDate"
+                      value={field.value}
+                      onChange={(date) => {
+                        form.setFieldValue(
+                          field.name,
+                          date ? dayjs(date).format("YYYY-MM-DD") : "",
+                        );
+                      }}
+                    />
+                  )}
+                </Field>
+                <ErrorMessage
+                  name="registrationDate"
+                  component="div"
+                  className="text-sm text-destructive"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="natureId">
+                  {t("formNature")} <span className="text-destructive">*</span>
+                </Label>
+                <Field name="natureId">
+                  {({ field, form }: FieldProps) => (
+                    <Select
+                      onValueChange={(value) =>
+                        form.setFieldValue(field.name, value)
+                      }
+                      value={field.value?.toString() || null}
                     >
-                      <SelectValue placeholder="Select a case nature">
-                        {(() => {
-                          if (!field.value) return "Select a case nature";
-                          const n = natures.find(
-                            (x) => x.id.toString() === field.value?.toString(),
-                          );
-                          if (!n) return "Select a case nature";
-                          return locale === "np" && n.nepaliName
-                            ? n.nepaliName
-                            : n.name;
-                        })()}
-                      </SelectValue>
-                    </SelectTrigger>
-                    <SelectContent>
-                      {natures.map((nature) => (
-                        <SelectItem
-                          key={nature.id}
-                          value={nature.id.toString()}
-                        >
-                          {locale === "np" && nature.nepaliName
-                            ? nature.nepaliName
-                            : nature.name}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                )}
-              </Field>
-              <ErrorMessage
-                name="natureId"
-                component="div"
-                className="text-sm text-destructive"
-              />
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="registrationDate">{t("formRegDate")}</Label>
-              <Field name="registrationDate">
-                {({ field, form }: FieldProps) => (
-                  <DatePicker
-                    id="registrationDate"
-                    value={field.value}
-                    onChange={(date) => {
-                      form.setFieldValue(
-                        field.name,
-                        date ? dayjs(date).format("YYYY-MM-DD") : "",
-                      );
-                    }}
-                  />
-                )}
-              </Field>
-              <ErrorMessage
-                name="registrationDate"
-                component="div"
-                className="text-sm text-destructive"
-              />
+                      <SelectTrigger
+                        id="natureId"
+                        disabled={loadingNatures}
+                        className="w-full"
+                      >
+                        <SelectValue placeholder="Select a case nature">
+                          {(() => {
+                            if (!field.value) return "Select a case nature";
+                            const n = natures.find(
+                              (x) =>
+                                x.id.toString() === field.value?.toString(),
+                            );
+                            if (!n) return "Select a case nature";
+                            return locale === "np" && n.nepaliName
+                              ? n.nepaliName
+                              : n.name;
+                          })()}
+                        </SelectValue>
+                      </SelectTrigger>
+                      <SelectContent>
+                        {natures.map((nature) => (
+                          <SelectItem
+                            key={nature.id}
+                            value={nature.id.toString()}
+                          >
+                            {locale === "np" && nature.nepaliName
+                              ? nature.nepaliName
+                              : nature.name}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  )}
+                </Field>
+                <ErrorMessage
+                  name="natureId"
+                  component="div"
+                  className="text-sm text-destructive"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="sectionCourtRoom">{t("formFaat")}</Label>
+                <Field name="sectionCourtRoom">
+                  {({ field }: FieldProps) => (
+                    <Input
+                      {...field}
+                      id="sectionCourtRoom"
+                      placeholder="e.g. Room No 3 / 11 Faat"
+                    />
+                  )}
+                </Field>
+                <ErrorMessage
+                  name="sectionCourtRoom"
+                  component="div"
+                  className="text-sm text-destructive"
+                />
+              </div>
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -352,7 +372,7 @@ export default function CaseForm({
 
           <div className="space-y-4 border rounded-md p-4 bg-muted/20">
             <div className="flex items-center justify-between">
-              <h3 className="text-lg font-medium">Parties</h3>
+              <h3 className="text-lg font-medium">{t("formPartiesTitle")}</h3>
             </div>
             <FieldArray name="parties">
               {({ insert, remove, push, form }) => (
@@ -366,7 +386,7 @@ export default function CaseForm({
                       >
                         <div className="flex justify-between items-center">
                           <h4 className="font-medium text-sm">
-                            Party {index + 1}
+                            {t("formPartyTitle")} {index + 1}
                           </h4>
                           {form.values.parties.length > 1 && (
                             <Button
@@ -383,12 +403,12 @@ export default function CaseForm({
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-start">
                           <div className="space-y-2">
                             <Label>
-                              Party Name{" "}
+                              {t("formPartyName")}{" "}
                               <span className="text-destructive">*</span>
                             </Label>
                             <Field name={`parties.${index}.partyName`}>
                               {({ field }: FieldProps) => (
-                                <Input {...field} placeholder="Name" />
+                                <Input {...field} placeholder={t("formPartyName")} />
                               )}
                             </Field>
                             <ErrorMessage
@@ -399,7 +419,7 @@ export default function CaseForm({
                           </div>
                           <div className="space-y-2">
                             <Label>
-                              Role <span className="text-destructive">*</span>
+                              {t("formRole")} <span className="text-destructive">*</span>
                             </Label>
                             <Field name={`parties.${index}.roleId`}>
                               {({ field, form }: FieldProps) => (
@@ -413,13 +433,13 @@ export default function CaseForm({
                                     disabled={loadingRoles}
                                     className="w-full"
                                   >
-                                    <SelectValue placeholder="Select Role">
+                                    <SelectValue placeholder={t("formSelectRole")}>
                                       {(() => {
-                                        if (!field.value) return "Select Role";
+                                        if (!field.value) return t("formSelectRole");
                                         const r = partyRoles.find(
                                           (x) => x.id === field.value,
                                         );
-                                        if (!r) return "Select Role";
+                                        if (!r) return t("formSelectRole");
                                         return locale === "np" && r.nepaliName
                                           ? r.nepaliName
                                           : r.name;
@@ -448,12 +468,12 @@ export default function CaseForm({
                             />
                           </div>
                           <div className="space-y-2">
-                            <Label>Citizenship No</Label>
+                            <Label>{t("formCitizenshipNo")}</Label>
                             <Field name={`parties.${index}.citizenshipNo`}>
                               {({ field }: FieldProps) => (
                                 <Input
                                   {...field}
-                                  placeholder="Citizenship No"
+                                  placeholder={t("formCitizenshipNo")}
                                 />
                               )}
                             </Field>
@@ -464,10 +484,10 @@ export default function CaseForm({
                             />
                           </div>
                           <div className="space-y-2">
-                            <Label>Contact No</Label>
+                            <Label>{t("formContactNo")}</Label>
                             <Field name={`parties.${index}.contactNo`}>
                               {({ field }: FieldProps) => (
-                                <Input {...field} placeholder="Phone/Mobile" />
+                                <Input {...field} placeholder={t("formContactNo")} />
                               )}
                             </Field>
                             <ErrorMessage
@@ -477,12 +497,12 @@ export default function CaseForm({
                             />
                           </div>
                           <div className="space-y-2">
-                            <Label>Permanent Address</Label>
+                            <Label>{t("formPermanentAddress")}</Label>
                             <Field name={`parties.${index}.permanentAddress`}>
                               {({ field }: FieldProps) => (
                                 <Input
                                   {...field}
-                                  placeholder="Permanent Address"
+                                  placeholder={t("formPermanentAddress")}
                                 />
                               )}
                             </Field>
@@ -493,12 +513,12 @@ export default function CaseForm({
                             />
                           </div>
                           <div className="space-y-2">
-                            <Label>Temporary Address</Label>
+                            <Label>{t("formTemporaryAddress")}</Label>
                             <Field name={`parties.${index}.temporaryAddress`}>
                               {({ field }: FieldProps) => (
                                 <Input
                                   {...field}
-                                  placeholder="Temporary Address"
+                                  placeholder={t("formTemporaryAddress")}
                                 />
                               )}
                             </Field>
@@ -526,57 +546,99 @@ export default function CaseForm({
                                     contactNo: "",
                                   });
                                 } else {
-                                  form.setFieldValue(`parties.${index}.waris`, null);
+                                  form.setFieldValue(
+                                    `parties.${index}.waris`,
+                                    null,
+                                  );
                                 }
                               }}
                             />
                             <Label htmlFor={`parties.${index}.hasWaris`}>
-                              {locale === "np" ? t("formHasWaris") : "Has Waris?"}
+                              {t("formHasWaris")}
                             </Label>
                           </div>
-                          
+
                           {form.values.parties[index].waris && (
                             <div className="pl-6 border-l-2 border-primary/20 space-y-4">
-                              <h5 className="text-sm font-semibold">{locale === "np" ? "वारेस विवरण" : "Waris Details"}</h5>
+                              <h5 className="text-sm font-semibold">
+                                {t("formHasWaris")}
+                              </h5>
                               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div className="space-y-2">
-                                  <Label>{locale === "np" ? t("formWarisName") : "Waris Name"} <span className="text-destructive">*</span></Label>
-                                  <Field name={`parties.${index}.waris.partyName`}>
+                                  <Label>
+                                    {t("formWarisName")}{" "}
+                                    <span className="text-destructive">*</span>
+                                  </Label>
+                                  <Field
+                                    name={`parties.${index}.waris.partyName`}
+                                  >
                                     {({ field }: FieldProps) => (
-                                      <Input {...field} placeholder="Name" />
+                                      <Input {...field} placeholder={t("formWarisName")} />
                                     )}
                                   </Field>
-                                  <ErrorMessage name={`parties.${index}.waris.partyName`} component="div" className="text-sm text-destructive" />
+                                  <ErrorMessage
+                                    name={`parties.${index}.waris.partyName`}
+                                    component="div"
+                                    className="text-sm text-destructive"
+                                  />
                                 </div>
                                 <div className="space-y-2">
-                                  <Label>{locale === "np" ? t("formWarisCitizenship") : "Citizenship No"}</Label>
-                                  <Field name={`parties.${index}.waris.citizenshipNo`}>
+                                  <Label>
+                                    {t("formWarisCitizenship")}
+                                  </Label>
+                                  <Field
+                                    name={`parties.${index}.waris.citizenshipNo`}
+                                  >
                                     {({ field }: FieldProps) => (
-                                      <Input {...field} placeholder="Citizenship No" />
+                                      <Input
+                                        {...field}
+                                        placeholder={t("formWarisCitizenship")}
+                                      />
                                     )}
                                   </Field>
                                 </div>
                                 <div className="space-y-2">
-                                  <Label>{locale === "np" ? t("formWarisContact") : "Contact No"}</Label>
-                                  <Field name={`parties.${index}.waris.contactNo`}>
+                                  <Label>
+                                    {t("formWarisContact")}
+                                  </Label>
+                                  <Field
+                                    name={`parties.${index}.waris.contactNo`}
+                                  >
                                     {({ field }: FieldProps) => (
-                                      <Input {...field} placeholder="Contact No" />
+                                      <Input
+                                        {...field}
+                                        placeholder={t("formWarisContact")}
+                                      />
                                     )}
                                   </Field>
                                 </div>
                                 <div className="space-y-2">
-                                  <Label>{locale === "np" ? t("formWarisPermanentAddress") : "Permanent Address"}</Label>
-                                  <Field name={`parties.${index}.waris.permanentAddress`}>
+                                  <Label>
+                                    {t("formWarisPermanentAddress")}
+                                  </Label>
+                                  <Field
+                                    name={`parties.${index}.waris.permanentAddress`}
+                                  >
                                     {({ field }: FieldProps) => (
-                                      <Input {...field} placeholder="Permanent Address" />
+                                      <Input
+                                        {...field}
+                                        placeholder={t("formWarisPermanentAddress")}
+                                      />
                                     )}
                                   </Field>
                                 </div>
                                 <div className="space-y-2">
-                                  <Label>{locale === "np" ? t("formWarisTemporaryAddress") : "Temporary Address"}</Label>
-                                  <Field name={`parties.${index}.waris.temporaryAddress`}>
+                                  <Label>
+                                    {t("formWarisTemporaryAddress")}
+                                  </Label>
+                                  <Field
+                                    name={`parties.${index}.waris.temporaryAddress`}
+                                  >
                                     {({ field }: FieldProps) => (
-                                      <Input {...field} placeholder="Temporary Address" />
+                                      <Input
+                                        {...field}
+                                        placeholder={t("formWarisTemporaryAddress")}
+                                      />
                                     )}
                                   </Field>
                                 </div>
@@ -584,7 +646,6 @@ export default function CaseForm({
                             </div>
                           )}
                         </div>
-
                       </div>
                     ))}
                   <Button
@@ -604,7 +665,7 @@ export default function CaseForm({
                       })
                     }
                   >
-                    <PlusIcon className="mr-2 h-4 w-4" /> Add Party
+                    <PlusIcon className="mr-2 h-4 w-4" /> {t("addPartyBtn")}
                   </Button>
                 </div>
               )}
@@ -695,13 +756,17 @@ export default function CaseForm({
                                   checked={field.value}
                                   onCheckedChange={(checked) => {
                                     if (checked) {
-                                      const updatedLawyers = form.values.lawyers.map(
-                                        (l: any, i: number) => ({
-                                          ...l,
-                                          isLead: i === index,
-                                        })
+                                      const updatedLawyers =
+                                        form.values.lawyers.map(
+                                          (l: any, i: number) => ({
+                                            ...l,
+                                            isLead: i === index,
+                                          }),
+                                        );
+                                      form.setFieldValue(
+                                        "lawyers",
+                                        updatedLawyers,
                                       );
-                                      form.setFieldValue("lawyers", updatedLawyers);
                                     } else {
                                       form.setFieldValue(field.name, checked);
                                     }
@@ -749,7 +814,7 @@ export default function CaseForm({
             />
           </div>
 
-          <div className="flex justify-end gap-2 pt-4">
+          <div className="bg-white flex justify-end gap-2 p-4 fixed bottom-0 left-0 right-0 border-t">
             <Button
               type="button"
               variant="outline"
