@@ -104,8 +104,9 @@ export const show = async (req: Request, res: Response, next: NextFunction) => {
         hearings: {
           include: { caseCourtDetail: true }
         },
-
-
+        judgements: {
+          include: { caseCourtDetail: true }
+        },
         payments: {
           include: { receivedByUser: true }
         },
@@ -129,7 +130,8 @@ export const store = async (req: Request, res: Response, next: NextFunction) => 
     const {
       natureId,
       facts,
-      relatedLaws,
+      details,
+      relatedLaw,
       referredThrough,
       noticeStatus,
       parties,
@@ -165,7 +167,8 @@ export const store = async (req: Request, res: Response, next: NextFunction) => 
         createdById: req.auth_user?.id,
         natureId,
         facts,
-        relatedLaws,
+        details,
+        relatedLaw,
         referredThrough,
         noticeStatus,
         status: status || "Draft",
@@ -232,7 +235,8 @@ export const update = async (req: Request, res: Response, next: NextFunction) =>
     const {
       natureId,
       facts,
-      relatedLaws,
+      details,
+      relatedLaw,
       referredThrough,
       noticeStatus,
       fullJudgmentDate,
@@ -277,7 +281,8 @@ export const update = async (req: Request, res: Response, next: NextFunction) =>
       data: {
         natureId: natureId ? natureId : undefined,
         facts,
-        relatedLaws,
+        details,
+        relatedLaw,
         referredThrough,
         noticeStatus,
         fullJudgmentDate: fullJudgmentDate ? new Date(fullJudgmentDate) : undefined,

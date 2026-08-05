@@ -281,3 +281,69 @@ export const removeDocument = async (req: Request, res: Response, next: NextFunc
     res.json({ message: "Document removed" });
   } catch (error) { next(error); }
 };
+
+// JUDGEMENTS
+export const addJudgement = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { id } = req.params;
+    const { caseCourtDetailId, type, date, verifiedDate, detail } = req.body;
+    
+    // Create Judgement
+    const judgement = await prisma.caseJudgement.create({
+      data: {
+        caseId: id as string,
+        caseCourtDetailId,
+        type,
+        date: date ? new Date(date) : null,
+        verifiedDate: verifiedDate ? new Date(verifiedDate) : null,
+        detail
+      }
+    });
+
+    // Close the case
+    await prisma.case.update({
+      where: { id: id as string },
+      data: { status: "Closed" }
+    });
+
+    res.status(201).json({ data: judgement });
+  } catch (error) { next(error); }
+};
+
+export const appealNextCourt = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { id } = req.params;
+    const { parentCourtDetailId, caseName, caseNumber, registrationDate, sectionCourtRoom, judgeName, courtType } = req.body;
+
+    // Set old detail to inactive
+    if (parentCourtDetailId) {
+      await prisma.caseCourtDetail.update({
+        where: { id: parentCourtDetailId },
+        data: { isActive: false }
+      });
+    }
+
+    // Create new detail
+    const newDetail = await prisma.caseCourtDetail.create({
+      data: {
+        caseId: id as string,
+        parentId: parentCourtDetailId || null,
+        caseName,
+        caseNumber: caseNumber || "",
+        registrationDate: registrationDate ? new Date(registrationDate) : null,
+        sectionCourtRoom,
+        judgeName,
+        courtType,
+        isActive: true
+      }
+    });
+
+    // Reopen the case
+    await prisma.case.update({
+      where: { id: id as string },
+      data: { status: "Active/Ongoing" }
+    });
+
+    res.status(201).json({ data: newDetail });
+  } catch (error) { next(error); }
+};

@@ -32,7 +32,8 @@ model Case {
   nature                 CaseNature             @relation(fields: [natureId], references: [id])
   registrationFee        Decimal?
   facts                  String?                @db.Text
-  relatedLaws            String?                @db.Text
+  details                Json?
+  relatedLaw             Json?
   referredThrough        String?
   noticeStatus           String?
   fullJudgmentDate       DateTime?
@@ -49,6 +50,7 @@ model Case {
   hearings               CaseHearing[]
   payments               CasePayment[]
   documents              CaseDocument[]
+  judgements             CaseJudgement[]
 
   createdAt              DateTime               @default(now())
 
@@ -70,6 +72,7 @@ model CaseCourtDetail {
   children         CaseCourtDetail[] @relation("CourtDetailHistory")
   isActive         Boolean           @default(true)
   hearings         CaseHearing[]
+  judgements       CaseJudgement[]
 
   createdAt        DateTime          @default(now())
   updatedAt        DateTime          @updatedAt
@@ -149,4 +152,21 @@ model CaseDocument {
   createdAt   DateTime @default(now())
 
   @@map("case_documents")
+}
+
+model CaseJudgement {
+  id                 String            @id @default(uuid())
+  caseId             String
+  case               Case              @relation(fields: [caseId], references: [id], onDelete: Cascade)
+  caseCourtDetailId  String
+  caseCourtDetail    CaseCourtDetail   @relation(fields: [caseCourtDetailId], references: [id], onDelete: Cascade)
+  type               String
+  date               DateTime?
+  verifiedDate       DateTime?
+  detail             Json?
+  
+  createdAt          DateTime          @default(now())
+  updatedAt          DateTime          @updatedAt
+
+  @@map("case_judgements")
 }

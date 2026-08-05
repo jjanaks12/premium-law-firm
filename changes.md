@@ -34,7 +34,7 @@
     1. date
     2. comment
 
-### Case file
+[X] ### Case file
 1. facts
 2. sambanda kaanun - textarea[]
 3. sambanda najir
@@ -53,7 +53,7 @@
 ### baahas bakpatra[] // lets ask 
 - 
 
-### Faisala
+[X] ### Faisala
 - type  closeed / next court appeal
 - document + details
 - judge name

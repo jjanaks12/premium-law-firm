@@ -11,6 +11,8 @@ import OverviewTab from "./components/OverviewTab";
 import CourtDetailsTab from "./components/CourtDetailsTab";
 import PartiesTab from "./components/PartiesTab";
 import HearingsTab from "./components/HearingsTab";
+import CaseFileTab from "./components/CaseFileTab";
+import JudgementsTab from "./components/JudgementsTab";
 import PaymentsTab from "./components/PaymentsTab";
 import DocumentsTab from "./components/DocumentsTab";
 import { Link } from "@/src/i18n/routing";
@@ -53,6 +55,22 @@ export default function CaseDetailPage() {
   }
 
   const activeDetail = caseData?.courtDetails?.find((d: any) => d.isActive) || caseData?.courtDetails?.[0];
+  const isClosed = caseData?.status === "Closed";
+
+  const handleAppeal = async () => {
+    if (!activeDetail) return;
+    try {
+      await axios.post(`/cases/${id}/appeal`, {
+        parentCourtDetailId: activeDetail.id,
+        caseName: activeDetail.caseName,
+        caseNumber: "",
+        courtType: activeDetail.courtType,
+      });
+      fetchCase();
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div className="flex flex-col h-full bg-background p-6 space-y-6 overflow-y-auto">
@@ -66,9 +84,12 @@ export default function CaseDetailPage() {
           </h1>
           <p className="text-muted-foreground">{activeDetail?.caseName || "N/A"}</p>
         </div>
-        <div className="shrink-0">
+        <div className="shrink-0 space-x-2 flex">
+          {isClosed ? (
+            <Button onClick={handleAppeal}>{t("JudgementsTab.appealBtn")}</Button>
+          ) : null}
           <Link href={`/dashboard/cases/${id}/edit`}>
-            <Button>{t("CasesPage.editBtn")}</Button>
+            <Button disabled={isClosed}>{t("CasesPage.editBtn")}</Button>
           </Link>
         </div>
       </div>
@@ -87,6 +108,12 @@ export default function CaseDetailPage() {
           <TabsTrigger value="hearings">
             {t("CaseDetailPage.hearings")}
           </TabsTrigger>
+          <TabsTrigger value="caseFile">
+            {t("CaseDetailPage.caseFile")}
+          </TabsTrigger>
+          <TabsTrigger value="judgements">
+            {t("CaseDetailPage.judgements")}
+          </TabsTrigger>
           <TabsTrigger value="payments">
             {t("CaseDetailPage.payments")}
           </TabsTrigger>
@@ -99,19 +126,37 @@ export default function CaseDetailPage() {
           <OverviewTab caseData={caseData} refresh={fetchCase} />
         </TabsContent>
         <TabsContent value="courtDetails">
-          <CourtDetailsTab caseData={caseData} refresh={fetchCase} />
+          <div className={isClosed ? "pointer-events-none opacity-50" : ""}>
+            <CourtDetailsTab caseData={caseData} refresh={fetchCase} />
+          </div>
         </TabsContent>
         <TabsContent value="parties">
-          <PartiesTab caseData={caseData} refresh={fetchCase} />
+          <div className={isClosed ? "pointer-events-none opacity-50" : ""}>
+            <PartiesTab caseData={caseData} refresh={fetchCase} />
+          </div>
         </TabsContent>
         <TabsContent value="hearings">
-          <HearingsTab caseData={caseData} refresh={fetchCase} />
+          <div className={isClosed ? "pointer-events-none opacity-50" : ""}>
+            <HearingsTab caseData={caseData} refresh={fetchCase} />
+          </div>
+        </TabsContent>
+        <TabsContent value="caseFile">
+          <div className={isClosed ? "pointer-events-none opacity-50" : ""}>
+            <CaseFileTab caseData={caseData} refresh={fetchCase} />
+          </div>
+        </TabsContent>
+        <TabsContent value="judgements">
+          <JudgementsTab caseData={caseData} refresh={fetchCase} isClosed={isClosed} />
         </TabsContent>
         <TabsContent value="payments">
-          <PaymentsTab caseData={caseData} refresh={fetchCase} />
+          <div className={isClosed ? "pointer-events-none opacity-50" : ""}>
+            <PaymentsTab caseData={caseData} refresh={fetchCase} />
+          </div>
         </TabsContent>
         <TabsContent value="documents">
-          <DocumentsTab caseData={caseData} refresh={fetchCase} />
+          <div className={isClosed ? "pointer-events-none opacity-50" : ""}>
+            <DocumentsTab caseData={caseData} refresh={fetchCase} />
+          </div>
         </TabsContent>
       </Tabs>
     </div>

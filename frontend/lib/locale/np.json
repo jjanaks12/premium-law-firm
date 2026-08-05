@@ -461,7 +461,9 @@
     "pleadings": "बहस / प्लीडिंग्स",
     "precedents": "नजिरहरू",
     "payments": "भुक्तानीहरू",
-    "documents": "कागजातहरू"
+    "documents": "कागजातहरू",
+    "caseFile": "मिसिल",
+    "judgements": "फैसला"
   },
   "AdminNav": {
     "dashboard": "ड्यासबोर्ड",
@@ -481,5 +483,44 @@
     "profile": "प्रोफाइल",
     "notification": "सूचना",
     "changePassword": "पासवर्ड परिवर्तन गर्नुहोस्"
+  },
+  "CaseFileTab": {
+    "successMsg": "मिसिल सफलतापूर्वक अपडेट गरियो",
+    "errorMsg": "मिसिल अपडेट गर्न विफल",
+    "title": "मिसिल",
+    "facts": "तथ्य",
+    "enterFacts": "तथ्य प्रविष्ट गर्नुहोस्...",
+    "details": "सम्बद्ध कानुन",
+    "addDetail": "विवरण थप्नुहोस्",
+    "detailPlaceholder": "विवरण",
+    "relatedLaws": "सम्बद्ध नजिर",
+    "addLaw": "नजिर थप्नुहोस्",
+    "decisionNumber": "निर्णय नम्बर",
+    "relatedParties": "सम्बन्धित पक्षहरू (बादी/प्रतिवादी)",
+    "saving": "बचत गर्दै...",
+    "save": "मिसिल बचत गर्नुहोस्"
+  },
+  "JudgementsTab": {
+    "history": "फैसला इतिहास",
+    "noJudgements": "कुनै फैसला छैन",
+    "type": "प्रकार",
+    "date": "मिति",
+    "verifiedDate": "प्रमाणित मिति",
+    "court": "अदालत",
+    "details": "विवरण",
+    "viewDocument": "कागजात हेर्नुहोस्",
+    "addJudgement": "फैसला थप्नुहोस्",
+    "typeClosed": "बन्द गरियो",
+    "typeAppeal": "अर्को अदालतमा पुनरावेदन",
+    "addDetail": "विवरण थप्नुहोस्",
+    "detailText": "विवरण पाठ",
+    "detailTextPlaceholder": "विवरण प्रविष्ट गर्नुहोस्",
+    "documentUrl": "कागजात लिङ्क",
+    "documentUrlPlaceholder": "कागजात लिङ्क प्रविष्ट गर्नुहोस्",
+    "saving": "सेभ गर्दै...",
+    "save": "फैसला सेभ गर्नुहोस्",
+    "successMsg": "फैसला सफलतापूर्वक थपियो",
+    "errorMsg": "फैसला थप्न विफल",
+    "appealBtn": "अर्को अदालतमा पुनरावेदन गर्नुहोस्"
   }
 }

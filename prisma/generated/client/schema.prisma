@@ -24,8 +24,6 @@ model User {
   reset_tokens           PasswordResetToken[]
   pages                  Page[]               @relation("page_author")
   cases_as_lawyer        CaseLawyer[]
-  cases_as_pleader       CasePleading[]
-  cases_as_counselor     CaseCounseling[]
   cases_payment_received CasePayment[]
   cases_created          Case[]               @relation("CaseCreatedBy")
 
@@ -85,10 +83,9 @@ generator client {
 }
 
 model CourtLevel {
-  id          String            @id @default(uuid())
-  name        String            @unique
-  nepaliName  String?
-  proceedings CourtProceeding[]
+  id         String  @id @default(uuid())
+  name       String  @unique
+  nepaliName String?
 
   @@map("court_levels")
 }
@@ -119,7 +116,8 @@ model Case {
   nature             CaseNature @relation(fields: [natureId], references: [id])
   registrationFee    Decimal?
   facts              String?    @db.Text
-  relatedLaws        String?    @db.Text
+  details            Json?
+  relatedLaw         Json?
   referredThrough    String?
   noticeStatus       String?
   fullJudgmentDate   DateTime?
@@ -134,12 +132,9 @@ model Case {
   lawyers      CaseLawyer[] // Joined to User via CaseLawyer
   parties      CaseParty[]
   hearings     CaseHearing[]
-  pleadings    CasePleading[]
-  proceedings  CourtProceeding[]
-  precedents   CasePrecedent[]
   payments     CasePayment[]
-  counselings  CaseCounseling[]
   documents    CaseDocument[]
+  judgements   CaseJudgement[]
 
   createdAt DateTime @default(now())
 
@@ -161,6 +156,7 @@ model CaseCourtDetail {
   children         CaseCourtDetail[] @relation("CourtDetailHistory")
   isActive         Boolean           @default(true)
   hearings         CaseHearing[]
+  judgements       CaseJudgement[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -211,44 +207,6 @@ model CaseHearing {
   @@map("case_hearings")
 }
 
-model CasePleading {
-  id            String    @id @default(uuid())
-  caseId        String
-  case          Case      @relation(fields: [caseId], references: [id], onDelete: Cascade)
-  pleaderUserId String?
-  pleader       User?     @relation(fields: [pleaderUserId], references: [id], onDelete: SetNull)
-  pleadingDate  DateTime?
-  pleadingNotes String    @db.Text
-
-  @@map("case_pleadings")
-}
-
-model CourtProceeding {
-  id               String     @id @default(uuid())
-  caseId           String
-  case             Case       @relation(fields: [caseId], references: [id], onDelete: Cascade)
-  courtLevelId     String
-  courtLevel       CourtLevel @relation(fields: [courtLevelId], references: [id])
-  courtName        String
-  judgeName        String?
-  chargeCounseling String?    @db.Text
-  verdict          String?    @db.Text
-
-  @@map("court_proceedings")
-}
-
-model CasePrecedent {
-  id             String  @id @default(uuid())
-  caseId         String
-  case           Case    @relation(fields: [caseId], references: [id], onDelete: Cascade)
-  decisionNumber String?
-  plaintiff      String?
-  defendant      String?
-  citationNotes  String? @db.Text
-
-  @@map("case_precedents")
-}
-
 model CasePayment {
   id               String    @id @default(uuid())
   caseId           String
@@ -267,20 +225,6 @@ model CasePayment {
   @@map("case_payments")
 }
 
-model CaseCounseling {
-  id              String    @id @default(uuid())
-  caseId          String
-  case            Case      @relation(fields: [caseId], references: [id], onDelete: Cascade)
-  counselorUserId String?
-  counselor       User?     @relation(fields: [counselorUserId], references: [id], onDelete: SetNull)
-  date            DateTime?
-  notes           String    @db.Text
-
-  createdAt DateTime @default(now())
-
-  @@map("case_counselings")
-}
-
 model CaseDocument {
   id          String  @id @default(uuid())
   caseId      String
@@ -292,6 +236,23 @@ model CaseDocument {
   createdAt DateTime @default(now())
 
   @@map("case_documents")
+}
+
+model CaseJudgement {
+  id                String          @id @default(uuid())
+  caseId            String
+  case              Case            @relation(fields: [caseId], references: [id], onDelete: Cascade)
+  caseCourtDetailId String
+  caseCourtDetail   CaseCourtDetail @relation(fields: [caseCourtDetailId], references: [id], onDelete: Cascade)
+  type              String
+  date              DateTime?
+  verifiedDate      DateTime?
+  detail            Json?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("case_judgements")
 }
 
 // Notifications module Prisma schema

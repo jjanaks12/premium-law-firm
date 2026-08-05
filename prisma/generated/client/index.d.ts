@@ -74,35 +74,20 @@ export type CaseParty = $Result.DefaultSelection<Prisma.$CasePartyPayload>
  */
 export type CaseHearing = $Result.DefaultSelection<Prisma.$CaseHearingPayload>
 /**
- * Model CasePleading
- * 
- */
-export type CasePleading = $Result.DefaultSelection<Prisma.$CasePleadingPayload>
-/**
- * Model CourtProceeding
- * 
- */
-export type CourtProceeding = $Result.DefaultSelection<Prisma.$CourtProceedingPayload>
-/**
- * Model CasePrecedent
- * 
- */
-export type CasePrecedent = $Result.DefaultSelection<Prisma.$CasePrecedentPayload>
-/**
  * Model CasePayment
  * 
  */
 export type CasePayment = $Result.DefaultSelection<Prisma.$CasePaymentPayload>
 /**
- * Model CaseCounseling
- * 
- */
-export type CaseCounseling = $Result.DefaultSelection<Prisma.$CaseCounselingPayload>
-/**
  * Model CaseDocument
  * 
  */
 export type CaseDocument = $Result.DefaultSelection<Prisma.$CaseDocumentPayload>
+/**
+ * Model CaseJudgement
+ * 
+ */
+export type CaseJudgement = $Result.DefaultSelection<Prisma.$CaseJudgementPayload>
 /**
  * Model Notification
  * 
@@ -376,36 +361,6 @@ export class PrismaClient<
   get caseHearing(): Prisma.CaseHearingDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.casePleading`: Exposes CRUD operations for the **CasePleading** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more CasePleadings
-    * const casePleadings = await prisma.casePleading.findMany()
-    * ```
-    */
-  get casePleading(): Prisma.CasePleadingDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.courtProceeding`: Exposes CRUD operations for the **CourtProceeding** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more CourtProceedings
-    * const courtProceedings = await prisma.courtProceeding.findMany()
-    * ```
-    */
-  get courtProceeding(): Prisma.CourtProceedingDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.casePrecedent`: Exposes CRUD operations for the **CasePrecedent** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more CasePrecedents
-    * const casePrecedents = await prisma.casePrecedent.findMany()
-    * ```
-    */
-  get casePrecedent(): Prisma.CasePrecedentDelegate<ExtArgs, ClientOptions>;
-
-  /**
    * `prisma.casePayment`: Exposes CRUD operations for the **CasePayment** model.
     * Example usage:
     * ```ts
@@ -416,16 +371,6 @@ export class PrismaClient<
   get casePayment(): Prisma.CasePaymentDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.caseCounseling`: Exposes CRUD operations for the **CaseCounseling** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more CaseCounselings
-    * const caseCounselings = await prisma.caseCounseling.findMany()
-    * ```
-    */
-  get caseCounseling(): Prisma.CaseCounselingDelegate<ExtArgs, ClientOptions>;
-
-  /**
    * `prisma.caseDocument`: Exposes CRUD operations for the **CaseDocument** model.
     * Example usage:
     * ```ts
@@ -434,6 +379,16 @@ export class PrismaClient<
     * ```
     */
   get caseDocument(): Prisma.CaseDocumentDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.caseJudgement`: Exposes CRUD operations for the **CaseJudgement** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CaseJudgements
+    * const caseJudgements = await prisma.caseJudgement.findMany()
+    * ```
+    */
+  get caseJudgement(): Prisma.CaseJudgementDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.notification`: Exposes CRUD operations for the **Notification** model.
@@ -953,12 +908,9 @@ export namespace Prisma {
     CaseLawyer: 'CaseLawyer',
     CaseParty: 'CaseParty',
     CaseHearing: 'CaseHearing',
-    CasePleading: 'CasePleading',
-    CourtProceeding: 'CourtProceeding',
-    CasePrecedent: 'CasePrecedent',
     CasePayment: 'CasePayment',
-    CaseCounseling: 'CaseCounseling',
     CaseDocument: 'CaseDocument',
+    CaseJudgement: 'CaseJudgement',
     Notification: 'Notification',
     PageType: 'PageType',
     Page: 'Page',
@@ -980,7 +932,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "refreshToken" | "passwordResetToken" | "resource" | "courtLevel" | "caseNature" | "partyRole" | "case" | "caseCourtDetail" | "caseLawyer" | "caseParty" | "caseHearing" | "casePleading" | "courtProceeding" | "casePrecedent" | "casePayment" | "caseCounseling" | "caseDocument" | "notification" | "pageType" | "page" | "pageSeo" | "pageSchema" | "role"
+      modelProps: "user" | "refreshToken" | "passwordResetToken" | "resource" | "courtLevel" | "caseNature" | "partyRole" | "case" | "caseCourtDetail" | "caseLawyer" | "caseParty" | "caseHearing" | "casePayment" | "caseDocument" | "caseJudgement" | "notification" | "pageType" | "page" | "pageSeo" | "pageSchema" | "role"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1872,228 +1824,6 @@ export namespace Prisma {
           }
         }
       }
-      CasePleading: {
-        payload: Prisma.$CasePleadingPayload<ExtArgs>
-        fields: Prisma.CasePleadingFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.CasePleadingFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CasePleadingPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.CasePleadingFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CasePleadingPayload>
-          }
-          findFirst: {
-            args: Prisma.CasePleadingFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CasePleadingPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.CasePleadingFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CasePleadingPayload>
-          }
-          findMany: {
-            args: Prisma.CasePleadingFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CasePleadingPayload>[]
-          }
-          create: {
-            args: Prisma.CasePleadingCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CasePleadingPayload>
-          }
-          createMany: {
-            args: Prisma.CasePleadingCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.CasePleadingCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CasePleadingPayload>[]
-          }
-          delete: {
-            args: Prisma.CasePleadingDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CasePleadingPayload>
-          }
-          update: {
-            args: Prisma.CasePleadingUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CasePleadingPayload>
-          }
-          deleteMany: {
-            args: Prisma.CasePleadingDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.CasePleadingUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.CasePleadingUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CasePleadingPayload>[]
-          }
-          upsert: {
-            args: Prisma.CasePleadingUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CasePleadingPayload>
-          }
-          aggregate: {
-            args: Prisma.CasePleadingAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateCasePleading>
-          }
-          groupBy: {
-            args: Prisma.CasePleadingGroupByArgs<ExtArgs>
-            result: $Utils.Optional<CasePleadingGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.CasePleadingCountArgs<ExtArgs>
-            result: $Utils.Optional<CasePleadingCountAggregateOutputType> | number
-          }
-        }
-      }
-      CourtProceeding: {
-        payload: Prisma.$CourtProceedingPayload<ExtArgs>
-        fields: Prisma.CourtProceedingFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.CourtProceedingFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CourtProceedingPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.CourtProceedingFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CourtProceedingPayload>
-          }
-          findFirst: {
-            args: Prisma.CourtProceedingFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CourtProceedingPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.CourtProceedingFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CourtProceedingPayload>
-          }
-          findMany: {
-            args: Prisma.CourtProceedingFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CourtProceedingPayload>[]
-          }
-          create: {
-            args: Prisma.CourtProceedingCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CourtProceedingPayload>
-          }
-          createMany: {
-            args: Prisma.CourtProceedingCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.CourtProceedingCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CourtProceedingPayload>[]
-          }
-          delete: {
-            args: Prisma.CourtProceedingDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CourtProceedingPayload>
-          }
-          update: {
-            args: Prisma.CourtProceedingUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CourtProceedingPayload>
-          }
-          deleteMany: {
-            args: Prisma.CourtProceedingDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.CourtProceedingUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.CourtProceedingUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CourtProceedingPayload>[]
-          }
-          upsert: {
-            args: Prisma.CourtProceedingUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CourtProceedingPayload>
-          }
-          aggregate: {
-            args: Prisma.CourtProceedingAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateCourtProceeding>
-          }
-          groupBy: {
-            args: Prisma.CourtProceedingGroupByArgs<ExtArgs>
-            result: $Utils.Optional<CourtProceedingGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.CourtProceedingCountArgs<ExtArgs>
-            result: $Utils.Optional<CourtProceedingCountAggregateOutputType> | number
-          }
-        }
-      }
-      CasePrecedent: {
-        payload: Prisma.$CasePrecedentPayload<ExtArgs>
-        fields: Prisma.CasePrecedentFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.CasePrecedentFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CasePrecedentPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.CasePrecedentFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CasePrecedentPayload>
-          }
-          findFirst: {
-            args: Prisma.CasePrecedentFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CasePrecedentPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.CasePrecedentFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CasePrecedentPayload>
-          }
-          findMany: {
-            args: Prisma.CasePrecedentFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CasePrecedentPayload>[]
-          }
-          create: {
-            args: Prisma.CasePrecedentCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CasePrecedentPayload>
-          }
-          createMany: {
-            args: Prisma.CasePrecedentCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.CasePrecedentCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CasePrecedentPayload>[]
-          }
-          delete: {
-            args: Prisma.CasePrecedentDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CasePrecedentPayload>
-          }
-          update: {
-            args: Prisma.CasePrecedentUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CasePrecedentPayload>
-          }
-          deleteMany: {
-            args: Prisma.CasePrecedentDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.CasePrecedentUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.CasePrecedentUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CasePrecedentPayload>[]
-          }
-          upsert: {
-            args: Prisma.CasePrecedentUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CasePrecedentPayload>
-          }
-          aggregate: {
-            args: Prisma.CasePrecedentAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateCasePrecedent>
-          }
-          groupBy: {
-            args: Prisma.CasePrecedentGroupByArgs<ExtArgs>
-            result: $Utils.Optional<CasePrecedentGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.CasePrecedentCountArgs<ExtArgs>
-            result: $Utils.Optional<CasePrecedentCountAggregateOutputType> | number
-          }
-        }
-      }
       CasePayment: {
         payload: Prisma.$CasePaymentPayload<ExtArgs>
         fields: Prisma.CasePaymentFieldRefs
@@ -2168,80 +1898,6 @@ export namespace Prisma {
           }
         }
       }
-      CaseCounseling: {
-        payload: Prisma.$CaseCounselingPayload<ExtArgs>
-        fields: Prisma.CaseCounselingFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.CaseCounselingFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CaseCounselingPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.CaseCounselingFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CaseCounselingPayload>
-          }
-          findFirst: {
-            args: Prisma.CaseCounselingFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CaseCounselingPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.CaseCounselingFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CaseCounselingPayload>
-          }
-          findMany: {
-            args: Prisma.CaseCounselingFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CaseCounselingPayload>[]
-          }
-          create: {
-            args: Prisma.CaseCounselingCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CaseCounselingPayload>
-          }
-          createMany: {
-            args: Prisma.CaseCounselingCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.CaseCounselingCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CaseCounselingPayload>[]
-          }
-          delete: {
-            args: Prisma.CaseCounselingDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CaseCounselingPayload>
-          }
-          update: {
-            args: Prisma.CaseCounselingUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CaseCounselingPayload>
-          }
-          deleteMany: {
-            args: Prisma.CaseCounselingDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.CaseCounselingUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.CaseCounselingUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CaseCounselingPayload>[]
-          }
-          upsert: {
-            args: Prisma.CaseCounselingUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CaseCounselingPayload>
-          }
-          aggregate: {
-            args: Prisma.CaseCounselingAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateCaseCounseling>
-          }
-          groupBy: {
-            args: Prisma.CaseCounselingGroupByArgs<ExtArgs>
-            result: $Utils.Optional<CaseCounselingGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.CaseCounselingCountArgs<ExtArgs>
-            result: $Utils.Optional<CaseCounselingCountAggregateOutputType> | number
-          }
-        }
-      }
       CaseDocument: {
         payload: Prisma.$CaseDocumentPayload<ExtArgs>
         fields: Prisma.CaseDocumentFieldRefs
@@ -2313,6 +1969,80 @@ export namespace Prisma {
           count: {
             args: Prisma.CaseDocumentCountArgs<ExtArgs>
             result: $Utils.Optional<CaseDocumentCountAggregateOutputType> | number
+          }
+        }
+      }
+      CaseJudgement: {
+        payload: Prisma.$CaseJudgementPayload<ExtArgs>
+        fields: Prisma.CaseJudgementFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CaseJudgementFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseJudgementPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CaseJudgementFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseJudgementPayload>
+          }
+          findFirst: {
+            args: Prisma.CaseJudgementFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseJudgementPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CaseJudgementFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseJudgementPayload>
+          }
+          findMany: {
+            args: Prisma.CaseJudgementFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseJudgementPayload>[]
+          }
+          create: {
+            args: Prisma.CaseJudgementCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseJudgementPayload>
+          }
+          createMany: {
+            args: Prisma.CaseJudgementCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CaseJudgementCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseJudgementPayload>[]
+          }
+          delete: {
+            args: Prisma.CaseJudgementDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseJudgementPayload>
+          }
+          update: {
+            args: Prisma.CaseJudgementUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseJudgementPayload>
+          }
+          deleteMany: {
+            args: Prisma.CaseJudgementDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CaseJudgementUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CaseJudgementUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseJudgementPayload>[]
+          }
+          upsert: {
+            args: Prisma.CaseJudgementUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseJudgementPayload>
+          }
+          aggregate: {
+            args: Prisma.CaseJudgementAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCaseJudgement>
+          }
+          groupBy: {
+            args: Prisma.CaseJudgementGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CaseJudgementGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CaseJudgementCountArgs<ExtArgs>
+            result: $Utils.Optional<CaseJudgementCountAggregateOutputType> | number
           }
         }
       }
@@ -2895,12 +2625,9 @@ export namespace Prisma {
     caseLawyer?: CaseLawyerOmit
     caseParty?: CasePartyOmit
     caseHearing?: CaseHearingOmit
-    casePleading?: CasePleadingOmit
-    courtProceeding?: CourtProceedingOmit
-    casePrecedent?: CasePrecedentOmit
     casePayment?: CasePaymentOmit
-    caseCounseling?: CaseCounselingOmit
     caseDocument?: CaseDocumentOmit
+    caseJudgement?: CaseJudgementOmit
     notification?: NotificationOmit
     pageType?: PageTypeOmit
     page?: PageOmit
@@ -2992,8 +2719,6 @@ export namespace Prisma {
     reset_tokens: number
     pages: number
     cases_as_lawyer: number
-    cases_as_pleader: number
-    cases_as_counselor: number
     cases_payment_received: number
     cases_created: number
   }
@@ -3004,8 +2729,6 @@ export namespace Prisma {
     reset_tokens?: boolean | UserCountOutputTypeCountReset_tokensArgs
     pages?: boolean | UserCountOutputTypeCountPagesArgs
     cases_as_lawyer?: boolean | UserCountOutputTypeCountCases_as_lawyerArgs
-    cases_as_pleader?: boolean | UserCountOutputTypeCountCases_as_pleaderArgs
-    cases_as_counselor?: boolean | UserCountOutputTypeCountCases_as_counselorArgs
     cases_payment_received?: boolean | UserCountOutputTypeCountCases_payment_receivedArgs
     cases_created?: boolean | UserCountOutputTypeCountCases_createdArgs
   }
@@ -3054,20 +2777,6 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountCases_as_lawyerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CaseLawyerWhereInput
-  }
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountCases_as_pleaderArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: CasePleadingWhereInput
-  }
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountCases_as_counselorArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: CaseCounselingWhereInput
   }
 
   /**
@@ -3131,37 +2840,6 @@ export namespace Prisma {
    */
   export type ResourceCountOutputTypeCountPage_seo_og_imagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: PageSeoWhereInput
-  }
-
-
-  /**
-   * Count Type CourtLevelCountOutputType
-   */
-
-  export type CourtLevelCountOutputType = {
-    proceedings: number
-  }
-
-  export type CourtLevelCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    proceedings?: boolean | CourtLevelCountOutputTypeCountProceedingsArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * CourtLevelCountOutputType without action
-   */
-  export type CourtLevelCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CourtLevelCountOutputType
-     */
-    select?: CourtLevelCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * CourtLevelCountOutputType without action
-   */
-  export type CourtLevelCountOutputTypeCountProceedingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: CourtProceedingWhereInput
   }
 
 
@@ -3236,12 +2914,9 @@ export namespace Prisma {
     lawyers: number
     parties: number
     hearings: number
-    pleadings: number
-    proceedings: number
-    precedents: number
     payments: number
-    counselings: number
     documents: number
+    judgements: number
   }
 
   export type CaseCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3249,12 +2924,9 @@ export namespace Prisma {
     lawyers?: boolean | CaseCountOutputTypeCountLawyersArgs
     parties?: boolean | CaseCountOutputTypeCountPartiesArgs
     hearings?: boolean | CaseCountOutputTypeCountHearingsArgs
-    pleadings?: boolean | CaseCountOutputTypeCountPleadingsArgs
-    proceedings?: boolean | CaseCountOutputTypeCountProceedingsArgs
-    precedents?: boolean | CaseCountOutputTypeCountPrecedentsArgs
     payments?: boolean | CaseCountOutputTypeCountPaymentsArgs
-    counselings?: boolean | CaseCountOutputTypeCountCounselingsArgs
     documents?: boolean | CaseCountOutputTypeCountDocumentsArgs
+    judgements?: boolean | CaseCountOutputTypeCountJudgementsArgs
   }
 
   // Custom InputTypes
@@ -3299,27 +2971,6 @@ export namespace Prisma {
   /**
    * CaseCountOutputType without action
    */
-  export type CaseCountOutputTypeCountPleadingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: CasePleadingWhereInput
-  }
-
-  /**
-   * CaseCountOutputType without action
-   */
-  export type CaseCountOutputTypeCountProceedingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: CourtProceedingWhereInput
-  }
-
-  /**
-   * CaseCountOutputType without action
-   */
-  export type CaseCountOutputTypeCountPrecedentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: CasePrecedentWhereInput
-  }
-
-  /**
-   * CaseCountOutputType without action
-   */
   export type CaseCountOutputTypeCountPaymentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CasePaymentWhereInput
   }
@@ -3327,15 +2978,15 @@ export namespace Prisma {
   /**
    * CaseCountOutputType without action
    */
-  export type CaseCountOutputTypeCountCounselingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: CaseCounselingWhereInput
+  export type CaseCountOutputTypeCountDocumentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CaseDocumentWhereInput
   }
 
   /**
    * CaseCountOutputType without action
    */
-  export type CaseCountOutputTypeCountDocumentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: CaseDocumentWhereInput
+  export type CaseCountOutputTypeCountJudgementsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CaseJudgementWhereInput
   }
 
 
@@ -3346,11 +2997,13 @@ export namespace Prisma {
   export type CaseCourtDetailCountOutputType = {
     children: number
     hearings: number
+    judgements: number
   }
 
   export type CaseCourtDetailCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     children?: boolean | CaseCourtDetailCountOutputTypeCountChildrenArgs
     hearings?: boolean | CaseCourtDetailCountOutputTypeCountHearingsArgs
+    judgements?: boolean | CaseCourtDetailCountOutputTypeCountJudgementsArgs
   }
 
   // Custom InputTypes
@@ -3376,6 +3029,13 @@ export namespace Prisma {
    */
   export type CaseCourtDetailCountOutputTypeCountHearingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CaseHearingWhereInput
+  }
+
+  /**
+   * CaseCourtDetailCountOutputType without action
+   */
+  export type CaseCourtDetailCountOutputTypeCountJudgementsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CaseJudgementWhereInput
   }
 
 
@@ -3746,8 +3406,6 @@ export namespace Prisma {
     reset_tokens?: boolean | User$reset_tokensArgs<ExtArgs>
     pages?: boolean | User$pagesArgs<ExtArgs>
     cases_as_lawyer?: boolean | User$cases_as_lawyerArgs<ExtArgs>
-    cases_as_pleader?: boolean | User$cases_as_pleaderArgs<ExtArgs>
-    cases_as_counselor?: boolean | User$cases_as_counselorArgs<ExtArgs>
     cases_payment_received?: boolean | User$cases_payment_receivedArgs<ExtArgs>
     cases_created?: boolean | User$cases_createdArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -3817,8 +3475,6 @@ export namespace Prisma {
     reset_tokens?: boolean | User$reset_tokensArgs<ExtArgs>
     pages?: boolean | User$pagesArgs<ExtArgs>
     cases_as_lawyer?: boolean | User$cases_as_lawyerArgs<ExtArgs>
-    cases_as_pleader?: boolean | User$cases_as_pleaderArgs<ExtArgs>
-    cases_as_counselor?: boolean | User$cases_as_counselorArgs<ExtArgs>
     cases_payment_received?: boolean | User$cases_payment_receivedArgs<ExtArgs>
     cases_created?: boolean | User$cases_createdArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -3842,8 +3498,6 @@ export namespace Prisma {
       reset_tokens: Prisma.$PasswordResetTokenPayload<ExtArgs>[]
       pages: Prisma.$PagePayload<ExtArgs>[]
       cases_as_lawyer: Prisma.$CaseLawyerPayload<ExtArgs>[]
-      cases_as_pleader: Prisma.$CasePleadingPayload<ExtArgs>[]
-      cases_as_counselor: Prisma.$CaseCounselingPayload<ExtArgs>[]
       cases_payment_received: Prisma.$CasePaymentPayload<ExtArgs>[]
       cases_created: Prisma.$CasePayload<ExtArgs>[]
     }
@@ -4263,8 +3917,6 @@ export namespace Prisma {
     reset_tokens<T extends User$reset_tokensArgs<ExtArgs> = {}>(args?: Subset<T, User$reset_tokensArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PasswordResetTokenPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     pages<T extends User$pagesArgs<ExtArgs> = {}>(args?: Subset<T, User$pagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     cases_as_lawyer<T extends User$cases_as_lawyerArgs<ExtArgs> = {}>(args?: Subset<T, User$cases_as_lawyerArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseLawyerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    cases_as_pleader<T extends User$cases_as_pleaderArgs<ExtArgs> = {}>(args?: Subset<T, User$cases_as_pleaderArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CasePleadingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    cases_as_counselor<T extends User$cases_as_counselorArgs<ExtArgs> = {}>(args?: Subset<T, User$cases_as_counselorArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseCounselingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     cases_payment_received<T extends User$cases_payment_receivedArgs<ExtArgs> = {}>(args?: Subset<T, User$cases_payment_receivedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CasePaymentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     cases_created<T extends User$cases_createdArgs<ExtArgs> = {}>(args?: Subset<T, User$cases_createdArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CasePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
@@ -4866,54 +4518,6 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: CaseLawyerScalarFieldEnum | CaseLawyerScalarFieldEnum[]
-  }
-
-  /**
-   * User.cases_as_pleader
-   */
-  export type User$cases_as_pleaderArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CasePleading
-     */
-    select?: CasePleadingSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CasePleading
-     */
-    omit?: CasePleadingOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CasePleadingInclude<ExtArgs> | null
-    where?: CasePleadingWhereInput
-    orderBy?: CasePleadingOrderByWithRelationInput | CasePleadingOrderByWithRelationInput[]
-    cursor?: CasePleadingWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: CasePleadingScalarFieldEnum | CasePleadingScalarFieldEnum[]
-  }
-
-  /**
-   * User.cases_as_counselor
-   */
-  export type User$cases_as_counselorArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CaseCounseling
-     */
-    select?: CaseCounselingSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CaseCounseling
-     */
-    omit?: CaseCounselingOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CaseCounselingInclude<ExtArgs> | null
-    where?: CaseCounselingWhereInput
-    orderBy?: CaseCounselingOrderByWithRelationInput | CaseCounselingOrderByWithRelationInput[]
-    cursor?: CaseCounselingWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: CaseCounselingScalarFieldEnum | CaseCounselingScalarFieldEnum[]
   }
 
   /**
@@ -8461,8 +8065,6 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     nepaliName?: boolean
-    proceedings?: boolean | CourtLevel$proceedingsArgs<ExtArgs>
-    _count?: boolean | CourtLevelCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["courtLevel"]>
 
   export type CourtLevelSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -8484,18 +8086,10 @@ export namespace Prisma {
   }
 
   export type CourtLevelOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "nepaliName", ExtArgs["result"]["courtLevel"]>
-  export type CourtLevelInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    proceedings?: boolean | CourtLevel$proceedingsArgs<ExtArgs>
-    _count?: boolean | CourtLevelCountOutputTypeDefaultArgs<ExtArgs>
-  }
-  export type CourtLevelIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type CourtLevelIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $CourtLevelPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "CourtLevel"
-    objects: {
-      proceedings: Prisma.$CourtProceedingPayload<ExtArgs>[]
-    }
+    objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string
@@ -8894,7 +8488,6 @@ export namespace Prisma {
    */
   export interface Prisma__CourtLevelClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    proceedings<T extends CourtLevel$proceedingsArgs<ExtArgs> = {}>(args?: Subset<T, CourtLevel$proceedingsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CourtProceedingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8944,10 +8537,6 @@ export namespace Prisma {
      */
     omit?: CourtLevelOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CourtLevelInclude<ExtArgs> | null
-    /**
      * Filter, which CourtLevel to fetch.
      */
     where: CourtLevelWhereUniqueInput
@@ -8966,10 +8555,6 @@ export namespace Prisma {
      */
     omit?: CourtLevelOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CourtLevelInclude<ExtArgs> | null
-    /**
      * Filter, which CourtLevel to fetch.
      */
     where: CourtLevelWhereUniqueInput
@@ -8987,10 +8572,6 @@ export namespace Prisma {
      * Omit specific fields from the CourtLevel
      */
     omit?: CourtLevelOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CourtLevelInclude<ExtArgs> | null
     /**
      * Filter, which CourtLevel to fetch.
      */
@@ -9040,10 +8621,6 @@ export namespace Prisma {
      */
     omit?: CourtLevelOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CourtLevelInclude<ExtArgs> | null
-    /**
      * Filter, which CourtLevel to fetch.
      */
     where?: CourtLevelWhereInput
@@ -9091,10 +8668,6 @@ export namespace Prisma {
      * Omit specific fields from the CourtLevel
      */
     omit?: CourtLevelOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CourtLevelInclude<ExtArgs> | null
     /**
      * Filter, which CourtLevels to fetch.
      */
@@ -9144,10 +8717,6 @@ export namespace Prisma {
      */
     omit?: CourtLevelOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CourtLevelInclude<ExtArgs> | null
-    /**
      * The data needed to create a CourtLevel.
      */
     data: XOR<CourtLevelCreateInput, CourtLevelUncheckedCreateInput>
@@ -9195,10 +8764,6 @@ export namespace Prisma {
      * Omit specific fields from the CourtLevel
      */
     omit?: CourtLevelOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CourtLevelInclude<ExtArgs> | null
     /**
      * The data needed to update a CourtLevel.
      */
@@ -9266,10 +8831,6 @@ export namespace Prisma {
      */
     omit?: CourtLevelOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CourtLevelInclude<ExtArgs> | null
-    /**
      * The filter to search for the CourtLevel to update in case it exists.
      */
     where: CourtLevelWhereUniqueInput
@@ -9296,10 +8857,6 @@ export namespace Prisma {
      */
     omit?: CourtLevelOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CourtLevelInclude<ExtArgs> | null
-    /**
      * Filter which CourtLevel to delete.
      */
     where: CourtLevelWhereUniqueInput
@@ -9320,30 +8877,6 @@ export namespace Prisma {
   }
 
   /**
-   * CourtLevel.proceedings
-   */
-  export type CourtLevel$proceedingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CourtProceeding
-     */
-    select?: CourtProceedingSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CourtProceeding
-     */
-    omit?: CourtProceedingOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CourtProceedingInclude<ExtArgs> | null
-    where?: CourtProceedingWhereInput
-    orderBy?: CourtProceedingOrderByWithRelationInput | CourtProceedingOrderByWithRelationInput[]
-    cursor?: CourtProceedingWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: CourtProceedingScalarFieldEnum | CourtProceedingScalarFieldEnum[]
-  }
-
-  /**
    * CourtLevel without action
    */
   export type CourtLevelDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -9355,10 +8888,6 @@ export namespace Prisma {
      * Omit specific fields from the CourtLevel
      */
     omit?: CourtLevelOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CourtLevelInclude<ExtArgs> | null
   }
 
 
@@ -11485,7 +11014,6 @@ export namespace Prisma {
     natureId: string | null
     registrationFee: Decimal | null
     facts: string | null
-    relatedLaws: string | null
     referredThrough: string | null
     noticeStatus: string | null
     fullJudgmentDate: Date | null
@@ -11500,7 +11028,6 @@ export namespace Prisma {
     natureId: string | null
     registrationFee: Decimal | null
     facts: string | null
-    relatedLaws: string | null
     referredThrough: string | null
     noticeStatus: string | null
     fullJudgmentDate: Date | null
@@ -11515,7 +11042,8 @@ export namespace Prisma {
     natureId: number
     registrationFee: number
     facts: number
-    relatedLaws: number
+    details: number
+    relatedLaw: number
     referredThrough: number
     noticeStatus: number
     fullJudgmentDate: number
@@ -11540,7 +11068,6 @@ export namespace Prisma {
     natureId?: true
     registrationFee?: true
     facts?: true
-    relatedLaws?: true
     referredThrough?: true
     noticeStatus?: true
     fullJudgmentDate?: true
@@ -11555,7 +11082,6 @@ export namespace Prisma {
     natureId?: true
     registrationFee?: true
     facts?: true
-    relatedLaws?: true
     referredThrough?: true
     noticeStatus?: true
     fullJudgmentDate?: true
@@ -11570,7 +11096,8 @@ export namespace Prisma {
     natureId?: true
     registrationFee?: true
     facts?: true
-    relatedLaws?: true
+    details?: true
+    relatedLaw?: true
     referredThrough?: true
     noticeStatus?: true
     fullJudgmentDate?: true
@@ -11672,7 +11199,8 @@ export namespace Prisma {
     natureId: string
     registrationFee: Decimal | null
     facts: string | null
-    relatedLaws: string | null
+    details: JsonValue | null
+    relatedLaw: JsonValue | null
     referredThrough: string | null
     noticeStatus: string | null
     fullJudgmentDate: Date | null
@@ -11706,7 +11234,8 @@ export namespace Prisma {
     natureId?: boolean
     registrationFee?: boolean
     facts?: boolean
-    relatedLaws?: boolean
+    details?: boolean
+    relatedLaw?: boolean
     referredThrough?: boolean
     noticeStatus?: boolean
     fullJudgmentDate?: boolean
@@ -11720,12 +11249,9 @@ export namespace Prisma {
     lawyers?: boolean | Case$lawyersArgs<ExtArgs>
     parties?: boolean | Case$partiesArgs<ExtArgs>
     hearings?: boolean | Case$hearingsArgs<ExtArgs>
-    pleadings?: boolean | Case$pleadingsArgs<ExtArgs>
-    proceedings?: boolean | Case$proceedingsArgs<ExtArgs>
-    precedents?: boolean | Case$precedentsArgs<ExtArgs>
     payments?: boolean | Case$paymentsArgs<ExtArgs>
-    counselings?: boolean | Case$counselingsArgs<ExtArgs>
     documents?: boolean | Case$documentsArgs<ExtArgs>
+    judgements?: boolean | Case$judgementsArgs<ExtArgs>
     _count?: boolean | CaseCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["case"]>
 
@@ -11734,7 +11260,8 @@ export namespace Prisma {
     natureId?: boolean
     registrationFee?: boolean
     facts?: boolean
-    relatedLaws?: boolean
+    details?: boolean
+    relatedLaw?: boolean
     referredThrough?: boolean
     noticeStatus?: boolean
     fullJudgmentDate?: boolean
@@ -11751,7 +11278,8 @@ export namespace Prisma {
     natureId?: boolean
     registrationFee?: boolean
     facts?: boolean
-    relatedLaws?: boolean
+    details?: boolean
+    relatedLaw?: boolean
     referredThrough?: boolean
     noticeStatus?: boolean
     fullJudgmentDate?: boolean
@@ -11768,7 +11296,8 @@ export namespace Prisma {
     natureId?: boolean
     registrationFee?: boolean
     facts?: boolean
-    relatedLaws?: boolean
+    details?: boolean
+    relatedLaw?: boolean
     referredThrough?: boolean
     noticeStatus?: boolean
     fullJudgmentDate?: boolean
@@ -11778,7 +11307,7 @@ export namespace Prisma {
     createdAt?: boolean
   }
 
-  export type CaseOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "natureId" | "registrationFee" | "facts" | "relatedLaws" | "referredThrough" | "noticeStatus" | "fullJudgmentDate" | "judgmentVerifyDate" | "status" | "createdById" | "createdAt", ExtArgs["result"]["case"]>
+  export type CaseOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "natureId" | "registrationFee" | "facts" | "details" | "relatedLaw" | "referredThrough" | "noticeStatus" | "fullJudgmentDate" | "judgmentVerifyDate" | "status" | "createdById" | "createdAt", ExtArgs["result"]["case"]>
   export type CaseInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     nature?: boolean | CaseNatureDefaultArgs<ExtArgs>
     createdBy?: boolean | Case$createdByArgs<ExtArgs>
@@ -11786,12 +11315,9 @@ export namespace Prisma {
     lawyers?: boolean | Case$lawyersArgs<ExtArgs>
     parties?: boolean | Case$partiesArgs<ExtArgs>
     hearings?: boolean | Case$hearingsArgs<ExtArgs>
-    pleadings?: boolean | Case$pleadingsArgs<ExtArgs>
-    proceedings?: boolean | Case$proceedingsArgs<ExtArgs>
-    precedents?: boolean | Case$precedentsArgs<ExtArgs>
     payments?: boolean | Case$paymentsArgs<ExtArgs>
-    counselings?: boolean | Case$counselingsArgs<ExtArgs>
     documents?: boolean | Case$documentsArgs<ExtArgs>
+    judgements?: boolean | Case$judgementsArgs<ExtArgs>
     _count?: boolean | CaseCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type CaseIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -11812,19 +11338,17 @@ export namespace Prisma {
       lawyers: Prisma.$CaseLawyerPayload<ExtArgs>[]
       parties: Prisma.$CasePartyPayload<ExtArgs>[]
       hearings: Prisma.$CaseHearingPayload<ExtArgs>[]
-      pleadings: Prisma.$CasePleadingPayload<ExtArgs>[]
-      proceedings: Prisma.$CourtProceedingPayload<ExtArgs>[]
-      precedents: Prisma.$CasePrecedentPayload<ExtArgs>[]
       payments: Prisma.$CasePaymentPayload<ExtArgs>[]
-      counselings: Prisma.$CaseCounselingPayload<ExtArgs>[]
       documents: Prisma.$CaseDocumentPayload<ExtArgs>[]
+      judgements: Prisma.$CaseJudgementPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       natureId: string
       registrationFee: Prisma.Decimal | null
       facts: string | null
-      relatedLaws: string | null
+      details: Prisma.JsonValue | null
+      relatedLaw: Prisma.JsonValue | null
       referredThrough: string | null
       noticeStatus: string | null
       fullJudgmentDate: Date | null
@@ -12232,12 +11756,9 @@ export namespace Prisma {
     lawyers<T extends Case$lawyersArgs<ExtArgs> = {}>(args?: Subset<T, Case$lawyersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseLawyerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     parties<T extends Case$partiesArgs<ExtArgs> = {}>(args?: Subset<T, Case$partiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CasePartyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     hearings<T extends Case$hearingsArgs<ExtArgs> = {}>(args?: Subset<T, Case$hearingsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseHearingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    pleadings<T extends Case$pleadingsArgs<ExtArgs> = {}>(args?: Subset<T, Case$pleadingsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CasePleadingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    proceedings<T extends Case$proceedingsArgs<ExtArgs> = {}>(args?: Subset<T, Case$proceedingsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CourtProceedingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    precedents<T extends Case$precedentsArgs<ExtArgs> = {}>(args?: Subset<T, Case$precedentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CasePrecedentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     payments<T extends Case$paymentsArgs<ExtArgs> = {}>(args?: Subset<T, Case$paymentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CasePaymentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    counselings<T extends Case$counselingsArgs<ExtArgs> = {}>(args?: Subset<T, Case$counselingsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseCounselingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     documents<T extends Case$documentsArgs<ExtArgs> = {}>(args?: Subset<T, Case$documentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseDocumentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    judgements<T extends Case$judgementsArgs<ExtArgs> = {}>(args?: Subset<T, Case$judgementsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseJudgementPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -12271,7 +11792,8 @@ export namespace Prisma {
     readonly natureId: FieldRef<"Case", 'String'>
     readonly registrationFee: FieldRef<"Case", 'Decimal'>
     readonly facts: FieldRef<"Case", 'String'>
-    readonly relatedLaws: FieldRef<"Case", 'String'>
+    readonly details: FieldRef<"Case", 'Json'>
+    readonly relatedLaw: FieldRef<"Case", 'Json'>
     readonly referredThrough: FieldRef<"Case", 'String'>
     readonly noticeStatus: FieldRef<"Case", 'String'>
     readonly fullJudgmentDate: FieldRef<"Case", 'DateTime'>
@@ -12795,78 +12317,6 @@ export namespace Prisma {
   }
 
   /**
-   * Case.pleadings
-   */
-  export type Case$pleadingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CasePleading
-     */
-    select?: CasePleadingSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CasePleading
-     */
-    omit?: CasePleadingOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CasePleadingInclude<ExtArgs> | null
-    where?: CasePleadingWhereInput
-    orderBy?: CasePleadingOrderByWithRelationInput | CasePleadingOrderByWithRelationInput[]
-    cursor?: CasePleadingWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: CasePleadingScalarFieldEnum | CasePleadingScalarFieldEnum[]
-  }
-
-  /**
-   * Case.proceedings
-   */
-  export type Case$proceedingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CourtProceeding
-     */
-    select?: CourtProceedingSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CourtProceeding
-     */
-    omit?: CourtProceedingOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CourtProceedingInclude<ExtArgs> | null
-    where?: CourtProceedingWhereInput
-    orderBy?: CourtProceedingOrderByWithRelationInput | CourtProceedingOrderByWithRelationInput[]
-    cursor?: CourtProceedingWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: CourtProceedingScalarFieldEnum | CourtProceedingScalarFieldEnum[]
-  }
-
-  /**
-   * Case.precedents
-   */
-  export type Case$precedentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CasePrecedent
-     */
-    select?: CasePrecedentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CasePrecedent
-     */
-    omit?: CasePrecedentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CasePrecedentInclude<ExtArgs> | null
-    where?: CasePrecedentWhereInput
-    orderBy?: CasePrecedentOrderByWithRelationInput | CasePrecedentOrderByWithRelationInput[]
-    cursor?: CasePrecedentWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: CasePrecedentScalarFieldEnum | CasePrecedentScalarFieldEnum[]
-  }
-
-  /**
    * Case.payments
    */
   export type Case$paymentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -12891,30 +12341,6 @@ export namespace Prisma {
   }
 
   /**
-   * Case.counselings
-   */
-  export type Case$counselingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CaseCounseling
-     */
-    select?: CaseCounselingSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CaseCounseling
-     */
-    omit?: CaseCounselingOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CaseCounselingInclude<ExtArgs> | null
-    where?: CaseCounselingWhereInput
-    orderBy?: CaseCounselingOrderByWithRelationInput | CaseCounselingOrderByWithRelationInput[]
-    cursor?: CaseCounselingWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: CaseCounselingScalarFieldEnum | CaseCounselingScalarFieldEnum[]
-  }
-
-  /**
    * Case.documents
    */
   export type Case$documentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -12936,6 +12362,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: CaseDocumentScalarFieldEnum | CaseDocumentScalarFieldEnum[]
+  }
+
+  /**
+   * Case.judgements
+   */
+  export type Case$judgementsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseJudgement
+     */
+    select?: CaseJudgementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseJudgement
+     */
+    omit?: CaseJudgementOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseJudgementInclude<ExtArgs> | null
+    where?: CaseJudgementWhereInput
+    orderBy?: CaseJudgementOrderByWithRelationInput | CaseJudgementOrderByWithRelationInput[]
+    cursor?: CaseJudgementWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CaseJudgementScalarFieldEnum | CaseJudgementScalarFieldEnum[]
   }
 
   /**
@@ -13181,6 +12631,7 @@ export namespace Prisma {
     parent?: boolean | CaseCourtDetail$parentArgs<ExtArgs>
     children?: boolean | CaseCourtDetail$childrenArgs<ExtArgs>
     hearings?: boolean | CaseCourtDetail$hearingsArgs<ExtArgs>
+    judgements?: boolean | CaseCourtDetail$judgementsArgs<ExtArgs>
     _count?: boolean | CaseCourtDetailCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["caseCourtDetail"]>
 
@@ -13239,6 +12690,7 @@ export namespace Prisma {
     parent?: boolean | CaseCourtDetail$parentArgs<ExtArgs>
     children?: boolean | CaseCourtDetail$childrenArgs<ExtArgs>
     hearings?: boolean | CaseCourtDetail$hearingsArgs<ExtArgs>
+    judgements?: boolean | CaseCourtDetail$judgementsArgs<ExtArgs>
     _count?: boolean | CaseCourtDetailCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type CaseCourtDetailIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -13257,6 +12709,7 @@ export namespace Prisma {
       parent: Prisma.$CaseCourtDetailPayload<ExtArgs> | null
       children: Prisma.$CaseCourtDetailPayload<ExtArgs>[]
       hearings: Prisma.$CaseHearingPayload<ExtArgs>[]
+      judgements: Prisma.$CaseJudgementPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -13669,6 +13122,7 @@ export namespace Prisma {
     parent<T extends CaseCourtDetail$parentArgs<ExtArgs> = {}>(args?: Subset<T, CaseCourtDetail$parentArgs<ExtArgs>>): Prisma__CaseCourtDetailClient<$Result.GetResult<Prisma.$CaseCourtDetailPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     children<T extends CaseCourtDetail$childrenArgs<ExtArgs> = {}>(args?: Subset<T, CaseCourtDetail$childrenArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseCourtDetailPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     hearings<T extends CaseCourtDetail$hearingsArgs<ExtArgs> = {}>(args?: Subset<T, CaseCourtDetail$hearingsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseHearingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    judgements<T extends CaseCourtDetail$judgementsArgs<ExtArgs> = {}>(args?: Subset<T, CaseCourtDetail$judgementsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseJudgementPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -14175,6 +13629,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: CaseHearingScalarFieldEnum | CaseHearingScalarFieldEnum[]
+  }
+
+  /**
+   * CaseCourtDetail.judgements
+   */
+  export type CaseCourtDetail$judgementsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseJudgement
+     */
+    select?: CaseJudgementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseJudgement
+     */
+    omit?: CaseJudgementOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseJudgementInclude<ExtArgs> | null
+    where?: CaseJudgementWhereInput
+    orderBy?: CaseJudgementOrderByWithRelationInput | CaseJudgementOrderByWithRelationInput[]
+    cursor?: CaseJudgementWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CaseJudgementScalarFieldEnum | CaseJudgementScalarFieldEnum[]
   }
 
   /**
@@ -17572,3269 +17050,6 @@ export namespace Prisma {
 
 
   /**
-   * Model CasePleading
-   */
-
-  export type AggregateCasePleading = {
-    _count: CasePleadingCountAggregateOutputType | null
-    _min: CasePleadingMinAggregateOutputType | null
-    _max: CasePleadingMaxAggregateOutputType | null
-  }
-
-  export type CasePleadingMinAggregateOutputType = {
-    id: string | null
-    caseId: string | null
-    pleaderUserId: string | null
-    pleadingDate: Date | null
-    pleadingNotes: string | null
-  }
-
-  export type CasePleadingMaxAggregateOutputType = {
-    id: string | null
-    caseId: string | null
-    pleaderUserId: string | null
-    pleadingDate: Date | null
-    pleadingNotes: string | null
-  }
-
-  export type CasePleadingCountAggregateOutputType = {
-    id: number
-    caseId: number
-    pleaderUserId: number
-    pleadingDate: number
-    pleadingNotes: number
-    _all: number
-  }
-
-
-  export type CasePleadingMinAggregateInputType = {
-    id?: true
-    caseId?: true
-    pleaderUserId?: true
-    pleadingDate?: true
-    pleadingNotes?: true
-  }
-
-  export type CasePleadingMaxAggregateInputType = {
-    id?: true
-    caseId?: true
-    pleaderUserId?: true
-    pleadingDate?: true
-    pleadingNotes?: true
-  }
-
-  export type CasePleadingCountAggregateInputType = {
-    id?: true
-    caseId?: true
-    pleaderUserId?: true
-    pleadingDate?: true
-    pleadingNotes?: true
-    _all?: true
-  }
-
-  export type CasePleadingAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which CasePleading to aggregate.
-     */
-    where?: CasePleadingWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of CasePleadings to fetch.
-     */
-    orderBy?: CasePleadingOrderByWithRelationInput | CasePleadingOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: CasePleadingWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` CasePleadings from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` CasePleadings.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned CasePleadings
-    **/
-    _count?: true | CasePleadingCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: CasePleadingMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: CasePleadingMaxAggregateInputType
-  }
-
-  export type GetCasePleadingAggregateType<T extends CasePleadingAggregateArgs> = {
-        [P in keyof T & keyof AggregateCasePleading]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateCasePleading[P]>
-      : GetScalarType<T[P], AggregateCasePleading[P]>
-  }
-
-
-
-
-  export type CasePleadingGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: CasePleadingWhereInput
-    orderBy?: CasePleadingOrderByWithAggregationInput | CasePleadingOrderByWithAggregationInput[]
-    by: CasePleadingScalarFieldEnum[] | CasePleadingScalarFieldEnum
-    having?: CasePleadingScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: CasePleadingCountAggregateInputType | true
-    _min?: CasePleadingMinAggregateInputType
-    _max?: CasePleadingMaxAggregateInputType
-  }
-
-  export type CasePleadingGroupByOutputType = {
-    id: string
-    caseId: string
-    pleaderUserId: string | null
-    pleadingDate: Date | null
-    pleadingNotes: string
-    _count: CasePleadingCountAggregateOutputType | null
-    _min: CasePleadingMinAggregateOutputType | null
-    _max: CasePleadingMaxAggregateOutputType | null
-  }
-
-  type GetCasePleadingGroupByPayload<T extends CasePleadingGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<CasePleadingGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof CasePleadingGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], CasePleadingGroupByOutputType[P]>
-            : GetScalarType<T[P], CasePleadingGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type CasePleadingSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    caseId?: boolean
-    pleaderUserId?: boolean
-    pleadingDate?: boolean
-    pleadingNotes?: boolean
-    case?: boolean | CaseDefaultArgs<ExtArgs>
-    pleader?: boolean | CasePleading$pleaderArgs<ExtArgs>
-  }, ExtArgs["result"]["casePleading"]>
-
-  export type CasePleadingSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    caseId?: boolean
-    pleaderUserId?: boolean
-    pleadingDate?: boolean
-    pleadingNotes?: boolean
-    case?: boolean | CaseDefaultArgs<ExtArgs>
-    pleader?: boolean | CasePleading$pleaderArgs<ExtArgs>
-  }, ExtArgs["result"]["casePleading"]>
-
-  export type CasePleadingSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    caseId?: boolean
-    pleaderUserId?: boolean
-    pleadingDate?: boolean
-    pleadingNotes?: boolean
-    case?: boolean | CaseDefaultArgs<ExtArgs>
-    pleader?: boolean | CasePleading$pleaderArgs<ExtArgs>
-  }, ExtArgs["result"]["casePleading"]>
-
-  export type CasePleadingSelectScalar = {
-    id?: boolean
-    caseId?: boolean
-    pleaderUserId?: boolean
-    pleadingDate?: boolean
-    pleadingNotes?: boolean
-  }
-
-  export type CasePleadingOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "caseId" | "pleaderUserId" | "pleadingDate" | "pleadingNotes", ExtArgs["result"]["casePleading"]>
-  export type CasePleadingInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    case?: boolean | CaseDefaultArgs<ExtArgs>
-    pleader?: boolean | CasePleading$pleaderArgs<ExtArgs>
-  }
-  export type CasePleadingIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    case?: boolean | CaseDefaultArgs<ExtArgs>
-    pleader?: boolean | CasePleading$pleaderArgs<ExtArgs>
-  }
-  export type CasePleadingIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    case?: boolean | CaseDefaultArgs<ExtArgs>
-    pleader?: boolean | CasePleading$pleaderArgs<ExtArgs>
-  }
-
-  export type $CasePleadingPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "CasePleading"
-    objects: {
-      case: Prisma.$CasePayload<ExtArgs>
-      pleader: Prisma.$UserPayload<ExtArgs> | null
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: string
-      caseId: string
-      pleaderUserId: string | null
-      pleadingDate: Date | null
-      pleadingNotes: string
-    }, ExtArgs["result"]["casePleading"]>
-    composites: {}
-  }
-
-  type CasePleadingGetPayload<S extends boolean | null | undefined | CasePleadingDefaultArgs> = $Result.GetResult<Prisma.$CasePleadingPayload, S>
-
-  type CasePleadingCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<CasePleadingFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: CasePleadingCountAggregateInputType | true
-    }
-
-  export interface CasePleadingDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CasePleading'], meta: { name: 'CasePleading' } }
-    /**
-     * Find zero or one CasePleading that matches the filter.
-     * @param {CasePleadingFindUniqueArgs} args - Arguments to find a CasePleading
-     * @example
-     * // Get one CasePleading
-     * const casePleading = await prisma.casePleading.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends CasePleadingFindUniqueArgs>(args: SelectSubset<T, CasePleadingFindUniqueArgs<ExtArgs>>): Prisma__CasePleadingClient<$Result.GetResult<Prisma.$CasePleadingPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one CasePleading that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {CasePleadingFindUniqueOrThrowArgs} args - Arguments to find a CasePleading
-     * @example
-     * // Get one CasePleading
-     * const casePleading = await prisma.casePleading.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends CasePleadingFindUniqueOrThrowArgs>(args: SelectSubset<T, CasePleadingFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CasePleadingClient<$Result.GetResult<Prisma.$CasePleadingPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first CasePleading that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CasePleadingFindFirstArgs} args - Arguments to find a CasePleading
-     * @example
-     * // Get one CasePleading
-     * const casePleading = await prisma.casePleading.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends CasePleadingFindFirstArgs>(args?: SelectSubset<T, CasePleadingFindFirstArgs<ExtArgs>>): Prisma__CasePleadingClient<$Result.GetResult<Prisma.$CasePleadingPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first CasePleading that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CasePleadingFindFirstOrThrowArgs} args - Arguments to find a CasePleading
-     * @example
-     * // Get one CasePleading
-     * const casePleading = await prisma.casePleading.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends CasePleadingFindFirstOrThrowArgs>(args?: SelectSubset<T, CasePleadingFindFirstOrThrowArgs<ExtArgs>>): Prisma__CasePleadingClient<$Result.GetResult<Prisma.$CasePleadingPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more CasePleadings that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CasePleadingFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all CasePleadings
-     * const casePleadings = await prisma.casePleading.findMany()
-     * 
-     * // Get first 10 CasePleadings
-     * const casePleadings = await prisma.casePleading.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const casePleadingWithIdOnly = await prisma.casePleading.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends CasePleadingFindManyArgs>(args?: SelectSubset<T, CasePleadingFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CasePleadingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a CasePleading.
-     * @param {CasePleadingCreateArgs} args - Arguments to create a CasePleading.
-     * @example
-     * // Create one CasePleading
-     * const CasePleading = await prisma.casePleading.create({
-     *   data: {
-     *     // ... data to create a CasePleading
-     *   }
-     * })
-     * 
-     */
-    create<T extends CasePleadingCreateArgs>(args: SelectSubset<T, CasePleadingCreateArgs<ExtArgs>>): Prisma__CasePleadingClient<$Result.GetResult<Prisma.$CasePleadingPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many CasePleadings.
-     * @param {CasePleadingCreateManyArgs} args - Arguments to create many CasePleadings.
-     * @example
-     * // Create many CasePleadings
-     * const casePleading = await prisma.casePleading.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends CasePleadingCreateManyArgs>(args?: SelectSubset<T, CasePleadingCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many CasePleadings and returns the data saved in the database.
-     * @param {CasePleadingCreateManyAndReturnArgs} args - Arguments to create many CasePleadings.
-     * @example
-     * // Create many CasePleadings
-     * const casePleading = await prisma.casePleading.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many CasePleadings and only return the `id`
-     * const casePleadingWithIdOnly = await prisma.casePleading.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends CasePleadingCreateManyAndReturnArgs>(args?: SelectSubset<T, CasePleadingCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CasePleadingPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a CasePleading.
-     * @param {CasePleadingDeleteArgs} args - Arguments to delete one CasePleading.
-     * @example
-     * // Delete one CasePleading
-     * const CasePleading = await prisma.casePleading.delete({
-     *   where: {
-     *     // ... filter to delete one CasePleading
-     *   }
-     * })
-     * 
-     */
-    delete<T extends CasePleadingDeleteArgs>(args: SelectSubset<T, CasePleadingDeleteArgs<ExtArgs>>): Prisma__CasePleadingClient<$Result.GetResult<Prisma.$CasePleadingPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one CasePleading.
-     * @param {CasePleadingUpdateArgs} args - Arguments to update one CasePleading.
-     * @example
-     * // Update one CasePleading
-     * const casePleading = await prisma.casePleading.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends CasePleadingUpdateArgs>(args: SelectSubset<T, CasePleadingUpdateArgs<ExtArgs>>): Prisma__CasePleadingClient<$Result.GetResult<Prisma.$CasePleadingPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more CasePleadings.
-     * @param {CasePleadingDeleteManyArgs} args - Arguments to filter CasePleadings to delete.
-     * @example
-     * // Delete a few CasePleadings
-     * const { count } = await prisma.casePleading.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends CasePleadingDeleteManyArgs>(args?: SelectSubset<T, CasePleadingDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more CasePleadings.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CasePleadingUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many CasePleadings
-     * const casePleading = await prisma.casePleading.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends CasePleadingUpdateManyArgs>(args: SelectSubset<T, CasePleadingUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more CasePleadings and returns the data updated in the database.
-     * @param {CasePleadingUpdateManyAndReturnArgs} args - Arguments to update many CasePleadings.
-     * @example
-     * // Update many CasePleadings
-     * const casePleading = await prisma.casePleading.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more CasePleadings and only return the `id`
-     * const casePleadingWithIdOnly = await prisma.casePleading.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends CasePleadingUpdateManyAndReturnArgs>(args: SelectSubset<T, CasePleadingUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CasePleadingPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one CasePleading.
-     * @param {CasePleadingUpsertArgs} args - Arguments to update or create a CasePleading.
-     * @example
-     * // Update or create a CasePleading
-     * const casePleading = await prisma.casePleading.upsert({
-     *   create: {
-     *     // ... data to create a CasePleading
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the CasePleading we want to update
-     *   }
-     * })
-     */
-    upsert<T extends CasePleadingUpsertArgs>(args: SelectSubset<T, CasePleadingUpsertArgs<ExtArgs>>): Prisma__CasePleadingClient<$Result.GetResult<Prisma.$CasePleadingPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of CasePleadings.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CasePleadingCountArgs} args - Arguments to filter CasePleadings to count.
-     * @example
-     * // Count the number of CasePleadings
-     * const count = await prisma.casePleading.count({
-     *   where: {
-     *     // ... the filter for the CasePleadings we want to count
-     *   }
-     * })
-    **/
-    count<T extends CasePleadingCountArgs>(
-      args?: Subset<T, CasePleadingCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], CasePleadingCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a CasePleading.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CasePleadingAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends CasePleadingAggregateArgs>(args: Subset<T, CasePleadingAggregateArgs>): Prisma.PrismaPromise<GetCasePleadingAggregateType<T>>
-
-    /**
-     * Group by CasePleading.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CasePleadingGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends CasePleadingGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: CasePleadingGroupByArgs['orderBy'] }
-        : { orderBy?: CasePleadingGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, CasePleadingGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCasePleadingGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the CasePleading model
-   */
-  readonly fields: CasePleadingFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for CasePleading.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__CasePleadingClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    case<T extends CaseDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CaseDefaultArgs<ExtArgs>>): Prisma__CaseClient<$Result.GetResult<Prisma.$CasePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    pleader<T extends CasePleading$pleaderArgs<ExtArgs> = {}>(args?: Subset<T, CasePleading$pleaderArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the CasePleading model
-   */
-  interface CasePleadingFieldRefs {
-    readonly id: FieldRef<"CasePleading", 'String'>
-    readonly caseId: FieldRef<"CasePleading", 'String'>
-    readonly pleaderUserId: FieldRef<"CasePleading", 'String'>
-    readonly pleadingDate: FieldRef<"CasePleading", 'DateTime'>
-    readonly pleadingNotes: FieldRef<"CasePleading", 'String'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * CasePleading findUnique
-   */
-  export type CasePleadingFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CasePleading
-     */
-    select?: CasePleadingSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CasePleading
-     */
-    omit?: CasePleadingOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CasePleadingInclude<ExtArgs> | null
-    /**
-     * Filter, which CasePleading to fetch.
-     */
-    where: CasePleadingWhereUniqueInput
-  }
-
-  /**
-   * CasePleading findUniqueOrThrow
-   */
-  export type CasePleadingFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CasePleading
-     */
-    select?: CasePleadingSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CasePleading
-     */
-    omit?: CasePleadingOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CasePleadingInclude<ExtArgs> | null
-    /**
-     * Filter, which CasePleading to fetch.
-     */
-    where: CasePleadingWhereUniqueInput
-  }
-
-  /**
-   * CasePleading findFirst
-   */
-  export type CasePleadingFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CasePleading
-     */
-    select?: CasePleadingSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CasePleading
-     */
-    omit?: CasePleadingOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CasePleadingInclude<ExtArgs> | null
-    /**
-     * Filter, which CasePleading to fetch.
-     */
-    where?: CasePleadingWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of CasePleadings to fetch.
-     */
-    orderBy?: CasePleadingOrderByWithRelationInput | CasePleadingOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for CasePleadings.
-     */
-    cursor?: CasePleadingWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` CasePleadings from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` CasePleadings.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of CasePleadings.
-     */
-    distinct?: CasePleadingScalarFieldEnum | CasePleadingScalarFieldEnum[]
-  }
-
-  /**
-   * CasePleading findFirstOrThrow
-   */
-  export type CasePleadingFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CasePleading
-     */
-    select?: CasePleadingSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CasePleading
-     */
-    omit?: CasePleadingOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CasePleadingInclude<ExtArgs> | null
-    /**
-     * Filter, which CasePleading to fetch.
-     */
-    where?: CasePleadingWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of CasePleadings to fetch.
-     */
-    orderBy?: CasePleadingOrderByWithRelationInput | CasePleadingOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for CasePleadings.
-     */
-    cursor?: CasePleadingWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` CasePleadings from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` CasePleadings.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of CasePleadings.
-     */
-    distinct?: CasePleadingScalarFieldEnum | CasePleadingScalarFieldEnum[]
-  }
-
-  /**
-   * CasePleading findMany
-   */
-  export type CasePleadingFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CasePleading
-     */
-    select?: CasePleadingSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CasePleading
-     */
-    omit?: CasePleadingOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CasePleadingInclude<ExtArgs> | null
-    /**
-     * Filter, which CasePleadings to fetch.
-     */
-    where?: CasePleadingWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of CasePleadings to fetch.
-     */
-    orderBy?: CasePleadingOrderByWithRelationInput | CasePleadingOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing CasePleadings.
-     */
-    cursor?: CasePleadingWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` CasePleadings from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` CasePleadings.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of CasePleadings.
-     */
-    distinct?: CasePleadingScalarFieldEnum | CasePleadingScalarFieldEnum[]
-  }
-
-  /**
-   * CasePleading create
-   */
-  export type CasePleadingCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CasePleading
-     */
-    select?: CasePleadingSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CasePleading
-     */
-    omit?: CasePleadingOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CasePleadingInclude<ExtArgs> | null
-    /**
-     * The data needed to create a CasePleading.
-     */
-    data: XOR<CasePleadingCreateInput, CasePleadingUncheckedCreateInput>
-  }
-
-  /**
-   * CasePleading createMany
-   */
-  export type CasePleadingCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many CasePleadings.
-     */
-    data: CasePleadingCreateManyInput | CasePleadingCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * CasePleading createManyAndReturn
-   */
-  export type CasePleadingCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CasePleading
-     */
-    select?: CasePleadingSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the CasePleading
-     */
-    omit?: CasePleadingOmit<ExtArgs> | null
-    /**
-     * The data used to create many CasePleadings.
-     */
-    data: CasePleadingCreateManyInput | CasePleadingCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CasePleadingIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * CasePleading update
-   */
-  export type CasePleadingUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CasePleading
-     */
-    select?: CasePleadingSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CasePleading
-     */
-    omit?: CasePleadingOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CasePleadingInclude<ExtArgs> | null
-    /**
-     * The data needed to update a CasePleading.
-     */
-    data: XOR<CasePleadingUpdateInput, CasePleadingUncheckedUpdateInput>
-    /**
-     * Choose, which CasePleading to update.
-     */
-    where: CasePleadingWhereUniqueInput
-  }
-
-  /**
-   * CasePleading updateMany
-   */
-  export type CasePleadingUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update CasePleadings.
-     */
-    data: XOR<CasePleadingUpdateManyMutationInput, CasePleadingUncheckedUpdateManyInput>
-    /**
-     * Filter which CasePleadings to update
-     */
-    where?: CasePleadingWhereInput
-    /**
-     * Limit how many CasePleadings to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * CasePleading updateManyAndReturn
-   */
-  export type CasePleadingUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CasePleading
-     */
-    select?: CasePleadingSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the CasePleading
-     */
-    omit?: CasePleadingOmit<ExtArgs> | null
-    /**
-     * The data used to update CasePleadings.
-     */
-    data: XOR<CasePleadingUpdateManyMutationInput, CasePleadingUncheckedUpdateManyInput>
-    /**
-     * Filter which CasePleadings to update
-     */
-    where?: CasePleadingWhereInput
-    /**
-     * Limit how many CasePleadings to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CasePleadingIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * CasePleading upsert
-   */
-  export type CasePleadingUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CasePleading
-     */
-    select?: CasePleadingSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CasePleading
-     */
-    omit?: CasePleadingOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CasePleadingInclude<ExtArgs> | null
-    /**
-     * The filter to search for the CasePleading to update in case it exists.
-     */
-    where: CasePleadingWhereUniqueInput
-    /**
-     * In case the CasePleading found by the `where` argument doesn't exist, create a new CasePleading with this data.
-     */
-    create: XOR<CasePleadingCreateInput, CasePleadingUncheckedCreateInput>
-    /**
-     * In case the CasePleading was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<CasePleadingUpdateInput, CasePleadingUncheckedUpdateInput>
-  }
-
-  /**
-   * CasePleading delete
-   */
-  export type CasePleadingDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CasePleading
-     */
-    select?: CasePleadingSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CasePleading
-     */
-    omit?: CasePleadingOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CasePleadingInclude<ExtArgs> | null
-    /**
-     * Filter which CasePleading to delete.
-     */
-    where: CasePleadingWhereUniqueInput
-  }
-
-  /**
-   * CasePleading deleteMany
-   */
-  export type CasePleadingDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which CasePleadings to delete
-     */
-    where?: CasePleadingWhereInput
-    /**
-     * Limit how many CasePleadings to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * CasePleading.pleader
-   */
-  export type CasePleading$pleaderArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the User
-     */
-    select?: UserSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserInclude<ExtArgs> | null
-    where?: UserWhereInput
-  }
-
-  /**
-   * CasePleading without action
-   */
-  export type CasePleadingDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CasePleading
-     */
-    select?: CasePleadingSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CasePleading
-     */
-    omit?: CasePleadingOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CasePleadingInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model CourtProceeding
-   */
-
-  export type AggregateCourtProceeding = {
-    _count: CourtProceedingCountAggregateOutputType | null
-    _min: CourtProceedingMinAggregateOutputType | null
-    _max: CourtProceedingMaxAggregateOutputType | null
-  }
-
-  export type CourtProceedingMinAggregateOutputType = {
-    id: string | null
-    caseId: string | null
-    courtLevelId: string | null
-    courtName: string | null
-    judgeName: string | null
-    chargeCounseling: string | null
-    verdict: string | null
-  }
-
-  export type CourtProceedingMaxAggregateOutputType = {
-    id: string | null
-    caseId: string | null
-    courtLevelId: string | null
-    courtName: string | null
-    judgeName: string | null
-    chargeCounseling: string | null
-    verdict: string | null
-  }
-
-  export type CourtProceedingCountAggregateOutputType = {
-    id: number
-    caseId: number
-    courtLevelId: number
-    courtName: number
-    judgeName: number
-    chargeCounseling: number
-    verdict: number
-    _all: number
-  }
-
-
-  export type CourtProceedingMinAggregateInputType = {
-    id?: true
-    caseId?: true
-    courtLevelId?: true
-    courtName?: true
-    judgeName?: true
-    chargeCounseling?: true
-    verdict?: true
-  }
-
-  export type CourtProceedingMaxAggregateInputType = {
-    id?: true
-    caseId?: true
-    courtLevelId?: true
-    courtName?: true
-    judgeName?: true
-    chargeCounseling?: true
-    verdict?: true
-  }
-
-  export type CourtProceedingCountAggregateInputType = {
-    id?: true
-    caseId?: true
-    courtLevelId?: true
-    courtName?: true
-    judgeName?: true
-    chargeCounseling?: true
-    verdict?: true
-    _all?: true
-  }
-
-  export type CourtProceedingAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which CourtProceeding to aggregate.
-     */
-    where?: CourtProceedingWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of CourtProceedings to fetch.
-     */
-    orderBy?: CourtProceedingOrderByWithRelationInput | CourtProceedingOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: CourtProceedingWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` CourtProceedings from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` CourtProceedings.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned CourtProceedings
-    **/
-    _count?: true | CourtProceedingCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: CourtProceedingMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: CourtProceedingMaxAggregateInputType
-  }
-
-  export type GetCourtProceedingAggregateType<T extends CourtProceedingAggregateArgs> = {
-        [P in keyof T & keyof AggregateCourtProceeding]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateCourtProceeding[P]>
-      : GetScalarType<T[P], AggregateCourtProceeding[P]>
-  }
-
-
-
-
-  export type CourtProceedingGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: CourtProceedingWhereInput
-    orderBy?: CourtProceedingOrderByWithAggregationInput | CourtProceedingOrderByWithAggregationInput[]
-    by: CourtProceedingScalarFieldEnum[] | CourtProceedingScalarFieldEnum
-    having?: CourtProceedingScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: CourtProceedingCountAggregateInputType | true
-    _min?: CourtProceedingMinAggregateInputType
-    _max?: CourtProceedingMaxAggregateInputType
-  }
-
-  export type CourtProceedingGroupByOutputType = {
-    id: string
-    caseId: string
-    courtLevelId: string
-    courtName: string
-    judgeName: string | null
-    chargeCounseling: string | null
-    verdict: string | null
-    _count: CourtProceedingCountAggregateOutputType | null
-    _min: CourtProceedingMinAggregateOutputType | null
-    _max: CourtProceedingMaxAggregateOutputType | null
-  }
-
-  type GetCourtProceedingGroupByPayload<T extends CourtProceedingGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<CourtProceedingGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof CourtProceedingGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], CourtProceedingGroupByOutputType[P]>
-            : GetScalarType<T[P], CourtProceedingGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type CourtProceedingSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    caseId?: boolean
-    courtLevelId?: boolean
-    courtName?: boolean
-    judgeName?: boolean
-    chargeCounseling?: boolean
-    verdict?: boolean
-    case?: boolean | CaseDefaultArgs<ExtArgs>
-    courtLevel?: boolean | CourtLevelDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["courtProceeding"]>
-
-  export type CourtProceedingSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    caseId?: boolean
-    courtLevelId?: boolean
-    courtName?: boolean
-    judgeName?: boolean
-    chargeCounseling?: boolean
-    verdict?: boolean
-    case?: boolean | CaseDefaultArgs<ExtArgs>
-    courtLevel?: boolean | CourtLevelDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["courtProceeding"]>
-
-  export type CourtProceedingSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    caseId?: boolean
-    courtLevelId?: boolean
-    courtName?: boolean
-    judgeName?: boolean
-    chargeCounseling?: boolean
-    verdict?: boolean
-    case?: boolean | CaseDefaultArgs<ExtArgs>
-    courtLevel?: boolean | CourtLevelDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["courtProceeding"]>
-
-  export type CourtProceedingSelectScalar = {
-    id?: boolean
-    caseId?: boolean
-    courtLevelId?: boolean
-    courtName?: boolean
-    judgeName?: boolean
-    chargeCounseling?: boolean
-    verdict?: boolean
-  }
-
-  export type CourtProceedingOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "caseId" | "courtLevelId" | "courtName" | "judgeName" | "chargeCounseling" | "verdict", ExtArgs["result"]["courtProceeding"]>
-  export type CourtProceedingInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    case?: boolean | CaseDefaultArgs<ExtArgs>
-    courtLevel?: boolean | CourtLevelDefaultArgs<ExtArgs>
-  }
-  export type CourtProceedingIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    case?: boolean | CaseDefaultArgs<ExtArgs>
-    courtLevel?: boolean | CourtLevelDefaultArgs<ExtArgs>
-  }
-  export type CourtProceedingIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    case?: boolean | CaseDefaultArgs<ExtArgs>
-    courtLevel?: boolean | CourtLevelDefaultArgs<ExtArgs>
-  }
-
-  export type $CourtProceedingPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "CourtProceeding"
-    objects: {
-      case: Prisma.$CasePayload<ExtArgs>
-      courtLevel: Prisma.$CourtLevelPayload<ExtArgs>
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: string
-      caseId: string
-      courtLevelId: string
-      courtName: string
-      judgeName: string | null
-      chargeCounseling: string | null
-      verdict: string | null
-    }, ExtArgs["result"]["courtProceeding"]>
-    composites: {}
-  }
-
-  type CourtProceedingGetPayload<S extends boolean | null | undefined | CourtProceedingDefaultArgs> = $Result.GetResult<Prisma.$CourtProceedingPayload, S>
-
-  type CourtProceedingCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<CourtProceedingFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: CourtProceedingCountAggregateInputType | true
-    }
-
-  export interface CourtProceedingDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CourtProceeding'], meta: { name: 'CourtProceeding' } }
-    /**
-     * Find zero or one CourtProceeding that matches the filter.
-     * @param {CourtProceedingFindUniqueArgs} args - Arguments to find a CourtProceeding
-     * @example
-     * // Get one CourtProceeding
-     * const courtProceeding = await prisma.courtProceeding.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends CourtProceedingFindUniqueArgs>(args: SelectSubset<T, CourtProceedingFindUniqueArgs<ExtArgs>>): Prisma__CourtProceedingClient<$Result.GetResult<Prisma.$CourtProceedingPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one CourtProceeding that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {CourtProceedingFindUniqueOrThrowArgs} args - Arguments to find a CourtProceeding
-     * @example
-     * // Get one CourtProceeding
-     * const courtProceeding = await prisma.courtProceeding.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends CourtProceedingFindUniqueOrThrowArgs>(args: SelectSubset<T, CourtProceedingFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CourtProceedingClient<$Result.GetResult<Prisma.$CourtProceedingPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first CourtProceeding that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CourtProceedingFindFirstArgs} args - Arguments to find a CourtProceeding
-     * @example
-     * // Get one CourtProceeding
-     * const courtProceeding = await prisma.courtProceeding.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends CourtProceedingFindFirstArgs>(args?: SelectSubset<T, CourtProceedingFindFirstArgs<ExtArgs>>): Prisma__CourtProceedingClient<$Result.GetResult<Prisma.$CourtProceedingPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first CourtProceeding that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CourtProceedingFindFirstOrThrowArgs} args - Arguments to find a CourtProceeding
-     * @example
-     * // Get one CourtProceeding
-     * const courtProceeding = await prisma.courtProceeding.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends CourtProceedingFindFirstOrThrowArgs>(args?: SelectSubset<T, CourtProceedingFindFirstOrThrowArgs<ExtArgs>>): Prisma__CourtProceedingClient<$Result.GetResult<Prisma.$CourtProceedingPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more CourtProceedings that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CourtProceedingFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all CourtProceedings
-     * const courtProceedings = await prisma.courtProceeding.findMany()
-     * 
-     * // Get first 10 CourtProceedings
-     * const courtProceedings = await prisma.courtProceeding.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const courtProceedingWithIdOnly = await prisma.courtProceeding.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends CourtProceedingFindManyArgs>(args?: SelectSubset<T, CourtProceedingFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CourtProceedingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a CourtProceeding.
-     * @param {CourtProceedingCreateArgs} args - Arguments to create a CourtProceeding.
-     * @example
-     * // Create one CourtProceeding
-     * const CourtProceeding = await prisma.courtProceeding.create({
-     *   data: {
-     *     // ... data to create a CourtProceeding
-     *   }
-     * })
-     * 
-     */
-    create<T extends CourtProceedingCreateArgs>(args: SelectSubset<T, CourtProceedingCreateArgs<ExtArgs>>): Prisma__CourtProceedingClient<$Result.GetResult<Prisma.$CourtProceedingPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many CourtProceedings.
-     * @param {CourtProceedingCreateManyArgs} args - Arguments to create many CourtProceedings.
-     * @example
-     * // Create many CourtProceedings
-     * const courtProceeding = await prisma.courtProceeding.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends CourtProceedingCreateManyArgs>(args?: SelectSubset<T, CourtProceedingCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many CourtProceedings and returns the data saved in the database.
-     * @param {CourtProceedingCreateManyAndReturnArgs} args - Arguments to create many CourtProceedings.
-     * @example
-     * // Create many CourtProceedings
-     * const courtProceeding = await prisma.courtProceeding.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many CourtProceedings and only return the `id`
-     * const courtProceedingWithIdOnly = await prisma.courtProceeding.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends CourtProceedingCreateManyAndReturnArgs>(args?: SelectSubset<T, CourtProceedingCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CourtProceedingPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a CourtProceeding.
-     * @param {CourtProceedingDeleteArgs} args - Arguments to delete one CourtProceeding.
-     * @example
-     * // Delete one CourtProceeding
-     * const CourtProceeding = await prisma.courtProceeding.delete({
-     *   where: {
-     *     // ... filter to delete one CourtProceeding
-     *   }
-     * })
-     * 
-     */
-    delete<T extends CourtProceedingDeleteArgs>(args: SelectSubset<T, CourtProceedingDeleteArgs<ExtArgs>>): Prisma__CourtProceedingClient<$Result.GetResult<Prisma.$CourtProceedingPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one CourtProceeding.
-     * @param {CourtProceedingUpdateArgs} args - Arguments to update one CourtProceeding.
-     * @example
-     * // Update one CourtProceeding
-     * const courtProceeding = await prisma.courtProceeding.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends CourtProceedingUpdateArgs>(args: SelectSubset<T, CourtProceedingUpdateArgs<ExtArgs>>): Prisma__CourtProceedingClient<$Result.GetResult<Prisma.$CourtProceedingPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more CourtProceedings.
-     * @param {CourtProceedingDeleteManyArgs} args - Arguments to filter CourtProceedings to delete.
-     * @example
-     * // Delete a few CourtProceedings
-     * const { count } = await prisma.courtProceeding.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends CourtProceedingDeleteManyArgs>(args?: SelectSubset<T, CourtProceedingDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more CourtProceedings.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CourtProceedingUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many CourtProceedings
-     * const courtProceeding = await prisma.courtProceeding.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends CourtProceedingUpdateManyArgs>(args: SelectSubset<T, CourtProceedingUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more CourtProceedings and returns the data updated in the database.
-     * @param {CourtProceedingUpdateManyAndReturnArgs} args - Arguments to update many CourtProceedings.
-     * @example
-     * // Update many CourtProceedings
-     * const courtProceeding = await prisma.courtProceeding.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more CourtProceedings and only return the `id`
-     * const courtProceedingWithIdOnly = await prisma.courtProceeding.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends CourtProceedingUpdateManyAndReturnArgs>(args: SelectSubset<T, CourtProceedingUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CourtProceedingPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one CourtProceeding.
-     * @param {CourtProceedingUpsertArgs} args - Arguments to update or create a CourtProceeding.
-     * @example
-     * // Update or create a CourtProceeding
-     * const courtProceeding = await prisma.courtProceeding.upsert({
-     *   create: {
-     *     // ... data to create a CourtProceeding
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the CourtProceeding we want to update
-     *   }
-     * })
-     */
-    upsert<T extends CourtProceedingUpsertArgs>(args: SelectSubset<T, CourtProceedingUpsertArgs<ExtArgs>>): Prisma__CourtProceedingClient<$Result.GetResult<Prisma.$CourtProceedingPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of CourtProceedings.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CourtProceedingCountArgs} args - Arguments to filter CourtProceedings to count.
-     * @example
-     * // Count the number of CourtProceedings
-     * const count = await prisma.courtProceeding.count({
-     *   where: {
-     *     // ... the filter for the CourtProceedings we want to count
-     *   }
-     * })
-    **/
-    count<T extends CourtProceedingCountArgs>(
-      args?: Subset<T, CourtProceedingCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], CourtProceedingCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a CourtProceeding.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CourtProceedingAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends CourtProceedingAggregateArgs>(args: Subset<T, CourtProceedingAggregateArgs>): Prisma.PrismaPromise<GetCourtProceedingAggregateType<T>>
-
-    /**
-     * Group by CourtProceeding.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CourtProceedingGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends CourtProceedingGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: CourtProceedingGroupByArgs['orderBy'] }
-        : { orderBy?: CourtProceedingGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, CourtProceedingGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCourtProceedingGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the CourtProceeding model
-   */
-  readonly fields: CourtProceedingFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for CourtProceeding.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__CourtProceedingClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    case<T extends CaseDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CaseDefaultArgs<ExtArgs>>): Prisma__CaseClient<$Result.GetResult<Prisma.$CasePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    courtLevel<T extends CourtLevelDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CourtLevelDefaultArgs<ExtArgs>>): Prisma__CourtLevelClient<$Result.GetResult<Prisma.$CourtLevelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the CourtProceeding model
-   */
-  interface CourtProceedingFieldRefs {
-    readonly id: FieldRef<"CourtProceeding", 'String'>
-    readonly caseId: FieldRef<"CourtProceeding", 'String'>
-    readonly courtLevelId: FieldRef<"CourtProceeding", 'String'>
-    readonly courtName: FieldRef<"CourtProceeding", 'String'>
-    readonly judgeName: FieldRef<"CourtProceeding", 'String'>
-    readonly chargeCounseling: FieldRef<"CourtProceeding", 'String'>
-    readonly verdict: FieldRef<"CourtProceeding", 'String'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * CourtProceeding findUnique
-   */
-  export type CourtProceedingFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CourtProceeding
-     */
-    select?: CourtProceedingSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CourtProceeding
-     */
-    omit?: CourtProceedingOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CourtProceedingInclude<ExtArgs> | null
-    /**
-     * Filter, which CourtProceeding to fetch.
-     */
-    where: CourtProceedingWhereUniqueInput
-  }
-
-  /**
-   * CourtProceeding findUniqueOrThrow
-   */
-  export type CourtProceedingFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CourtProceeding
-     */
-    select?: CourtProceedingSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CourtProceeding
-     */
-    omit?: CourtProceedingOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CourtProceedingInclude<ExtArgs> | null
-    /**
-     * Filter, which CourtProceeding to fetch.
-     */
-    where: CourtProceedingWhereUniqueInput
-  }
-
-  /**
-   * CourtProceeding findFirst
-   */
-  export type CourtProceedingFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CourtProceeding
-     */
-    select?: CourtProceedingSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CourtProceeding
-     */
-    omit?: CourtProceedingOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CourtProceedingInclude<ExtArgs> | null
-    /**
-     * Filter, which CourtProceeding to fetch.
-     */
-    where?: CourtProceedingWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of CourtProceedings to fetch.
-     */
-    orderBy?: CourtProceedingOrderByWithRelationInput | CourtProceedingOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for CourtProceedings.
-     */
-    cursor?: CourtProceedingWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` CourtProceedings from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` CourtProceedings.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of CourtProceedings.
-     */
-    distinct?: CourtProceedingScalarFieldEnum | CourtProceedingScalarFieldEnum[]
-  }
-
-  /**
-   * CourtProceeding findFirstOrThrow
-   */
-  export type CourtProceedingFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CourtProceeding
-     */
-    select?: CourtProceedingSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CourtProceeding
-     */
-    omit?: CourtProceedingOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CourtProceedingInclude<ExtArgs> | null
-    /**
-     * Filter, which CourtProceeding to fetch.
-     */
-    where?: CourtProceedingWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of CourtProceedings to fetch.
-     */
-    orderBy?: CourtProceedingOrderByWithRelationInput | CourtProceedingOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for CourtProceedings.
-     */
-    cursor?: CourtProceedingWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` CourtProceedings from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` CourtProceedings.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of CourtProceedings.
-     */
-    distinct?: CourtProceedingScalarFieldEnum | CourtProceedingScalarFieldEnum[]
-  }
-
-  /**
-   * CourtProceeding findMany
-   */
-  export type CourtProceedingFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CourtProceeding
-     */
-    select?: CourtProceedingSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CourtProceeding
-     */
-    omit?: CourtProceedingOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CourtProceedingInclude<ExtArgs> | null
-    /**
-     * Filter, which CourtProceedings to fetch.
-     */
-    where?: CourtProceedingWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of CourtProceedings to fetch.
-     */
-    orderBy?: CourtProceedingOrderByWithRelationInput | CourtProceedingOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing CourtProceedings.
-     */
-    cursor?: CourtProceedingWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` CourtProceedings from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` CourtProceedings.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of CourtProceedings.
-     */
-    distinct?: CourtProceedingScalarFieldEnum | CourtProceedingScalarFieldEnum[]
-  }
-
-  /**
-   * CourtProceeding create
-   */
-  export type CourtProceedingCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CourtProceeding
-     */
-    select?: CourtProceedingSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CourtProceeding
-     */
-    omit?: CourtProceedingOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CourtProceedingInclude<ExtArgs> | null
-    /**
-     * The data needed to create a CourtProceeding.
-     */
-    data: XOR<CourtProceedingCreateInput, CourtProceedingUncheckedCreateInput>
-  }
-
-  /**
-   * CourtProceeding createMany
-   */
-  export type CourtProceedingCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many CourtProceedings.
-     */
-    data: CourtProceedingCreateManyInput | CourtProceedingCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * CourtProceeding createManyAndReturn
-   */
-  export type CourtProceedingCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CourtProceeding
-     */
-    select?: CourtProceedingSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the CourtProceeding
-     */
-    omit?: CourtProceedingOmit<ExtArgs> | null
-    /**
-     * The data used to create many CourtProceedings.
-     */
-    data: CourtProceedingCreateManyInput | CourtProceedingCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CourtProceedingIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * CourtProceeding update
-   */
-  export type CourtProceedingUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CourtProceeding
-     */
-    select?: CourtProceedingSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CourtProceeding
-     */
-    omit?: CourtProceedingOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CourtProceedingInclude<ExtArgs> | null
-    /**
-     * The data needed to update a CourtProceeding.
-     */
-    data: XOR<CourtProceedingUpdateInput, CourtProceedingUncheckedUpdateInput>
-    /**
-     * Choose, which CourtProceeding to update.
-     */
-    where: CourtProceedingWhereUniqueInput
-  }
-
-  /**
-   * CourtProceeding updateMany
-   */
-  export type CourtProceedingUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update CourtProceedings.
-     */
-    data: XOR<CourtProceedingUpdateManyMutationInput, CourtProceedingUncheckedUpdateManyInput>
-    /**
-     * Filter which CourtProceedings to update
-     */
-    where?: CourtProceedingWhereInput
-    /**
-     * Limit how many CourtProceedings to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * CourtProceeding updateManyAndReturn
-   */
-  export type CourtProceedingUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CourtProceeding
-     */
-    select?: CourtProceedingSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the CourtProceeding
-     */
-    omit?: CourtProceedingOmit<ExtArgs> | null
-    /**
-     * The data used to update CourtProceedings.
-     */
-    data: XOR<CourtProceedingUpdateManyMutationInput, CourtProceedingUncheckedUpdateManyInput>
-    /**
-     * Filter which CourtProceedings to update
-     */
-    where?: CourtProceedingWhereInput
-    /**
-     * Limit how many CourtProceedings to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CourtProceedingIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * CourtProceeding upsert
-   */
-  export type CourtProceedingUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CourtProceeding
-     */
-    select?: CourtProceedingSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CourtProceeding
-     */
-    omit?: CourtProceedingOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CourtProceedingInclude<ExtArgs> | null
-    /**
-     * The filter to search for the CourtProceeding to update in case it exists.
-     */
-    where: CourtProceedingWhereUniqueInput
-    /**
-     * In case the CourtProceeding found by the `where` argument doesn't exist, create a new CourtProceeding with this data.
-     */
-    create: XOR<CourtProceedingCreateInput, CourtProceedingUncheckedCreateInput>
-    /**
-     * In case the CourtProceeding was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<CourtProceedingUpdateInput, CourtProceedingUncheckedUpdateInput>
-  }
-
-  /**
-   * CourtProceeding delete
-   */
-  export type CourtProceedingDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CourtProceeding
-     */
-    select?: CourtProceedingSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CourtProceeding
-     */
-    omit?: CourtProceedingOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CourtProceedingInclude<ExtArgs> | null
-    /**
-     * Filter which CourtProceeding to delete.
-     */
-    where: CourtProceedingWhereUniqueInput
-  }
-
-  /**
-   * CourtProceeding deleteMany
-   */
-  export type CourtProceedingDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which CourtProceedings to delete
-     */
-    where?: CourtProceedingWhereInput
-    /**
-     * Limit how many CourtProceedings to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * CourtProceeding without action
-   */
-  export type CourtProceedingDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CourtProceeding
-     */
-    select?: CourtProceedingSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CourtProceeding
-     */
-    omit?: CourtProceedingOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CourtProceedingInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model CasePrecedent
-   */
-
-  export type AggregateCasePrecedent = {
-    _count: CasePrecedentCountAggregateOutputType | null
-    _min: CasePrecedentMinAggregateOutputType | null
-    _max: CasePrecedentMaxAggregateOutputType | null
-  }
-
-  export type CasePrecedentMinAggregateOutputType = {
-    id: string | null
-    caseId: string | null
-    decisionNumber: string | null
-    plaintiff: string | null
-    defendant: string | null
-    citationNotes: string | null
-  }
-
-  export type CasePrecedentMaxAggregateOutputType = {
-    id: string | null
-    caseId: string | null
-    decisionNumber: string | null
-    plaintiff: string | null
-    defendant: string | null
-    citationNotes: string | null
-  }
-
-  export type CasePrecedentCountAggregateOutputType = {
-    id: number
-    caseId: number
-    decisionNumber: number
-    plaintiff: number
-    defendant: number
-    citationNotes: number
-    _all: number
-  }
-
-
-  export type CasePrecedentMinAggregateInputType = {
-    id?: true
-    caseId?: true
-    decisionNumber?: true
-    plaintiff?: true
-    defendant?: true
-    citationNotes?: true
-  }
-
-  export type CasePrecedentMaxAggregateInputType = {
-    id?: true
-    caseId?: true
-    decisionNumber?: true
-    plaintiff?: true
-    defendant?: true
-    citationNotes?: true
-  }
-
-  export type CasePrecedentCountAggregateInputType = {
-    id?: true
-    caseId?: true
-    decisionNumber?: true
-    plaintiff?: true
-    defendant?: true
-    citationNotes?: true
-    _all?: true
-  }
-
-  export type CasePrecedentAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which CasePrecedent to aggregate.
-     */
-    where?: CasePrecedentWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of CasePrecedents to fetch.
-     */
-    orderBy?: CasePrecedentOrderByWithRelationInput | CasePrecedentOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: CasePrecedentWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` CasePrecedents from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` CasePrecedents.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned CasePrecedents
-    **/
-    _count?: true | CasePrecedentCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: CasePrecedentMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: CasePrecedentMaxAggregateInputType
-  }
-
-  export type GetCasePrecedentAggregateType<T extends CasePrecedentAggregateArgs> = {
-        [P in keyof T & keyof AggregateCasePrecedent]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateCasePrecedent[P]>
-      : GetScalarType<T[P], AggregateCasePrecedent[P]>
-  }
-
-
-
-
-  export type CasePrecedentGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: CasePrecedentWhereInput
-    orderBy?: CasePrecedentOrderByWithAggregationInput | CasePrecedentOrderByWithAggregationInput[]
-    by: CasePrecedentScalarFieldEnum[] | CasePrecedentScalarFieldEnum
-    having?: CasePrecedentScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: CasePrecedentCountAggregateInputType | true
-    _min?: CasePrecedentMinAggregateInputType
-    _max?: CasePrecedentMaxAggregateInputType
-  }
-
-  export type CasePrecedentGroupByOutputType = {
-    id: string
-    caseId: string
-    decisionNumber: string | null
-    plaintiff: string | null
-    defendant: string | null
-    citationNotes: string | null
-    _count: CasePrecedentCountAggregateOutputType | null
-    _min: CasePrecedentMinAggregateOutputType | null
-    _max: CasePrecedentMaxAggregateOutputType | null
-  }
-
-  type GetCasePrecedentGroupByPayload<T extends CasePrecedentGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<CasePrecedentGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof CasePrecedentGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], CasePrecedentGroupByOutputType[P]>
-            : GetScalarType<T[P], CasePrecedentGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type CasePrecedentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    caseId?: boolean
-    decisionNumber?: boolean
-    plaintiff?: boolean
-    defendant?: boolean
-    citationNotes?: boolean
-    case?: boolean | CaseDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["casePrecedent"]>
-
-  export type CasePrecedentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    caseId?: boolean
-    decisionNumber?: boolean
-    plaintiff?: boolean
-    defendant?: boolean
-    citationNotes?: boolean
-    case?: boolean | CaseDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["casePrecedent"]>
-
-  export type CasePrecedentSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    caseId?: boolean
-    decisionNumber?: boolean
-    plaintiff?: boolean
-    defendant?: boolean
-    citationNotes?: boolean
-    case?: boolean | CaseDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["casePrecedent"]>
-
-  export type CasePrecedentSelectScalar = {
-    id?: boolean
-    caseId?: boolean
-    decisionNumber?: boolean
-    plaintiff?: boolean
-    defendant?: boolean
-    citationNotes?: boolean
-  }
-
-  export type CasePrecedentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "caseId" | "decisionNumber" | "plaintiff" | "defendant" | "citationNotes", ExtArgs["result"]["casePrecedent"]>
-  export type CasePrecedentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    case?: boolean | CaseDefaultArgs<ExtArgs>
-  }
-  export type CasePrecedentIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    case?: boolean | CaseDefaultArgs<ExtArgs>
-  }
-  export type CasePrecedentIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    case?: boolean | CaseDefaultArgs<ExtArgs>
-  }
-
-  export type $CasePrecedentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "CasePrecedent"
-    objects: {
-      case: Prisma.$CasePayload<ExtArgs>
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: string
-      caseId: string
-      decisionNumber: string | null
-      plaintiff: string | null
-      defendant: string | null
-      citationNotes: string | null
-    }, ExtArgs["result"]["casePrecedent"]>
-    composites: {}
-  }
-
-  type CasePrecedentGetPayload<S extends boolean | null | undefined | CasePrecedentDefaultArgs> = $Result.GetResult<Prisma.$CasePrecedentPayload, S>
-
-  type CasePrecedentCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<CasePrecedentFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: CasePrecedentCountAggregateInputType | true
-    }
-
-  export interface CasePrecedentDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CasePrecedent'], meta: { name: 'CasePrecedent' } }
-    /**
-     * Find zero or one CasePrecedent that matches the filter.
-     * @param {CasePrecedentFindUniqueArgs} args - Arguments to find a CasePrecedent
-     * @example
-     * // Get one CasePrecedent
-     * const casePrecedent = await prisma.casePrecedent.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends CasePrecedentFindUniqueArgs>(args: SelectSubset<T, CasePrecedentFindUniqueArgs<ExtArgs>>): Prisma__CasePrecedentClient<$Result.GetResult<Prisma.$CasePrecedentPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one CasePrecedent that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {CasePrecedentFindUniqueOrThrowArgs} args - Arguments to find a CasePrecedent
-     * @example
-     * // Get one CasePrecedent
-     * const casePrecedent = await prisma.casePrecedent.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends CasePrecedentFindUniqueOrThrowArgs>(args: SelectSubset<T, CasePrecedentFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CasePrecedentClient<$Result.GetResult<Prisma.$CasePrecedentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first CasePrecedent that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CasePrecedentFindFirstArgs} args - Arguments to find a CasePrecedent
-     * @example
-     * // Get one CasePrecedent
-     * const casePrecedent = await prisma.casePrecedent.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends CasePrecedentFindFirstArgs>(args?: SelectSubset<T, CasePrecedentFindFirstArgs<ExtArgs>>): Prisma__CasePrecedentClient<$Result.GetResult<Prisma.$CasePrecedentPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first CasePrecedent that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CasePrecedentFindFirstOrThrowArgs} args - Arguments to find a CasePrecedent
-     * @example
-     * // Get one CasePrecedent
-     * const casePrecedent = await prisma.casePrecedent.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends CasePrecedentFindFirstOrThrowArgs>(args?: SelectSubset<T, CasePrecedentFindFirstOrThrowArgs<ExtArgs>>): Prisma__CasePrecedentClient<$Result.GetResult<Prisma.$CasePrecedentPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more CasePrecedents that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CasePrecedentFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all CasePrecedents
-     * const casePrecedents = await prisma.casePrecedent.findMany()
-     * 
-     * // Get first 10 CasePrecedents
-     * const casePrecedents = await prisma.casePrecedent.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const casePrecedentWithIdOnly = await prisma.casePrecedent.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends CasePrecedentFindManyArgs>(args?: SelectSubset<T, CasePrecedentFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CasePrecedentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a CasePrecedent.
-     * @param {CasePrecedentCreateArgs} args - Arguments to create a CasePrecedent.
-     * @example
-     * // Create one CasePrecedent
-     * const CasePrecedent = await prisma.casePrecedent.create({
-     *   data: {
-     *     // ... data to create a CasePrecedent
-     *   }
-     * })
-     * 
-     */
-    create<T extends CasePrecedentCreateArgs>(args: SelectSubset<T, CasePrecedentCreateArgs<ExtArgs>>): Prisma__CasePrecedentClient<$Result.GetResult<Prisma.$CasePrecedentPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many CasePrecedents.
-     * @param {CasePrecedentCreateManyArgs} args - Arguments to create many CasePrecedents.
-     * @example
-     * // Create many CasePrecedents
-     * const casePrecedent = await prisma.casePrecedent.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends CasePrecedentCreateManyArgs>(args?: SelectSubset<T, CasePrecedentCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many CasePrecedents and returns the data saved in the database.
-     * @param {CasePrecedentCreateManyAndReturnArgs} args - Arguments to create many CasePrecedents.
-     * @example
-     * // Create many CasePrecedents
-     * const casePrecedent = await prisma.casePrecedent.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many CasePrecedents and only return the `id`
-     * const casePrecedentWithIdOnly = await prisma.casePrecedent.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends CasePrecedentCreateManyAndReturnArgs>(args?: SelectSubset<T, CasePrecedentCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CasePrecedentPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a CasePrecedent.
-     * @param {CasePrecedentDeleteArgs} args - Arguments to delete one CasePrecedent.
-     * @example
-     * // Delete one CasePrecedent
-     * const CasePrecedent = await prisma.casePrecedent.delete({
-     *   where: {
-     *     // ... filter to delete one CasePrecedent
-     *   }
-     * })
-     * 
-     */
-    delete<T extends CasePrecedentDeleteArgs>(args: SelectSubset<T, CasePrecedentDeleteArgs<ExtArgs>>): Prisma__CasePrecedentClient<$Result.GetResult<Prisma.$CasePrecedentPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one CasePrecedent.
-     * @param {CasePrecedentUpdateArgs} args - Arguments to update one CasePrecedent.
-     * @example
-     * // Update one CasePrecedent
-     * const casePrecedent = await prisma.casePrecedent.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends CasePrecedentUpdateArgs>(args: SelectSubset<T, CasePrecedentUpdateArgs<ExtArgs>>): Prisma__CasePrecedentClient<$Result.GetResult<Prisma.$CasePrecedentPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more CasePrecedents.
-     * @param {CasePrecedentDeleteManyArgs} args - Arguments to filter CasePrecedents to delete.
-     * @example
-     * // Delete a few CasePrecedents
-     * const { count } = await prisma.casePrecedent.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends CasePrecedentDeleteManyArgs>(args?: SelectSubset<T, CasePrecedentDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more CasePrecedents.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CasePrecedentUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many CasePrecedents
-     * const casePrecedent = await prisma.casePrecedent.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends CasePrecedentUpdateManyArgs>(args: SelectSubset<T, CasePrecedentUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more CasePrecedents and returns the data updated in the database.
-     * @param {CasePrecedentUpdateManyAndReturnArgs} args - Arguments to update many CasePrecedents.
-     * @example
-     * // Update many CasePrecedents
-     * const casePrecedent = await prisma.casePrecedent.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more CasePrecedents and only return the `id`
-     * const casePrecedentWithIdOnly = await prisma.casePrecedent.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends CasePrecedentUpdateManyAndReturnArgs>(args: SelectSubset<T, CasePrecedentUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CasePrecedentPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one CasePrecedent.
-     * @param {CasePrecedentUpsertArgs} args - Arguments to update or create a CasePrecedent.
-     * @example
-     * // Update or create a CasePrecedent
-     * const casePrecedent = await prisma.casePrecedent.upsert({
-     *   create: {
-     *     // ... data to create a CasePrecedent
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the CasePrecedent we want to update
-     *   }
-     * })
-     */
-    upsert<T extends CasePrecedentUpsertArgs>(args: SelectSubset<T, CasePrecedentUpsertArgs<ExtArgs>>): Prisma__CasePrecedentClient<$Result.GetResult<Prisma.$CasePrecedentPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of CasePrecedents.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CasePrecedentCountArgs} args - Arguments to filter CasePrecedents to count.
-     * @example
-     * // Count the number of CasePrecedents
-     * const count = await prisma.casePrecedent.count({
-     *   where: {
-     *     // ... the filter for the CasePrecedents we want to count
-     *   }
-     * })
-    **/
-    count<T extends CasePrecedentCountArgs>(
-      args?: Subset<T, CasePrecedentCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], CasePrecedentCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a CasePrecedent.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CasePrecedentAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends CasePrecedentAggregateArgs>(args: Subset<T, CasePrecedentAggregateArgs>): Prisma.PrismaPromise<GetCasePrecedentAggregateType<T>>
-
-    /**
-     * Group by CasePrecedent.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CasePrecedentGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends CasePrecedentGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: CasePrecedentGroupByArgs['orderBy'] }
-        : { orderBy?: CasePrecedentGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, CasePrecedentGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCasePrecedentGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the CasePrecedent model
-   */
-  readonly fields: CasePrecedentFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for CasePrecedent.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__CasePrecedentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    case<T extends CaseDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CaseDefaultArgs<ExtArgs>>): Prisma__CaseClient<$Result.GetResult<Prisma.$CasePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the CasePrecedent model
-   */
-  interface CasePrecedentFieldRefs {
-    readonly id: FieldRef<"CasePrecedent", 'String'>
-    readonly caseId: FieldRef<"CasePrecedent", 'String'>
-    readonly decisionNumber: FieldRef<"CasePrecedent", 'String'>
-    readonly plaintiff: FieldRef<"CasePrecedent", 'String'>
-    readonly defendant: FieldRef<"CasePrecedent", 'String'>
-    readonly citationNotes: FieldRef<"CasePrecedent", 'String'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * CasePrecedent findUnique
-   */
-  export type CasePrecedentFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CasePrecedent
-     */
-    select?: CasePrecedentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CasePrecedent
-     */
-    omit?: CasePrecedentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CasePrecedentInclude<ExtArgs> | null
-    /**
-     * Filter, which CasePrecedent to fetch.
-     */
-    where: CasePrecedentWhereUniqueInput
-  }
-
-  /**
-   * CasePrecedent findUniqueOrThrow
-   */
-  export type CasePrecedentFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CasePrecedent
-     */
-    select?: CasePrecedentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CasePrecedent
-     */
-    omit?: CasePrecedentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CasePrecedentInclude<ExtArgs> | null
-    /**
-     * Filter, which CasePrecedent to fetch.
-     */
-    where: CasePrecedentWhereUniqueInput
-  }
-
-  /**
-   * CasePrecedent findFirst
-   */
-  export type CasePrecedentFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CasePrecedent
-     */
-    select?: CasePrecedentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CasePrecedent
-     */
-    omit?: CasePrecedentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CasePrecedentInclude<ExtArgs> | null
-    /**
-     * Filter, which CasePrecedent to fetch.
-     */
-    where?: CasePrecedentWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of CasePrecedents to fetch.
-     */
-    orderBy?: CasePrecedentOrderByWithRelationInput | CasePrecedentOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for CasePrecedents.
-     */
-    cursor?: CasePrecedentWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` CasePrecedents from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` CasePrecedents.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of CasePrecedents.
-     */
-    distinct?: CasePrecedentScalarFieldEnum | CasePrecedentScalarFieldEnum[]
-  }
-
-  /**
-   * CasePrecedent findFirstOrThrow
-   */
-  export type CasePrecedentFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CasePrecedent
-     */
-    select?: CasePrecedentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CasePrecedent
-     */
-    omit?: CasePrecedentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CasePrecedentInclude<ExtArgs> | null
-    /**
-     * Filter, which CasePrecedent to fetch.
-     */
-    where?: CasePrecedentWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of CasePrecedents to fetch.
-     */
-    orderBy?: CasePrecedentOrderByWithRelationInput | CasePrecedentOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for CasePrecedents.
-     */
-    cursor?: CasePrecedentWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` CasePrecedents from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` CasePrecedents.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of CasePrecedents.
-     */
-    distinct?: CasePrecedentScalarFieldEnum | CasePrecedentScalarFieldEnum[]
-  }
-
-  /**
-   * CasePrecedent findMany
-   */
-  export type CasePrecedentFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CasePrecedent
-     */
-    select?: CasePrecedentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CasePrecedent
-     */
-    omit?: CasePrecedentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CasePrecedentInclude<ExtArgs> | null
-    /**
-     * Filter, which CasePrecedents to fetch.
-     */
-    where?: CasePrecedentWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of CasePrecedents to fetch.
-     */
-    orderBy?: CasePrecedentOrderByWithRelationInput | CasePrecedentOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing CasePrecedents.
-     */
-    cursor?: CasePrecedentWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` CasePrecedents from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` CasePrecedents.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of CasePrecedents.
-     */
-    distinct?: CasePrecedentScalarFieldEnum | CasePrecedentScalarFieldEnum[]
-  }
-
-  /**
-   * CasePrecedent create
-   */
-  export type CasePrecedentCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CasePrecedent
-     */
-    select?: CasePrecedentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CasePrecedent
-     */
-    omit?: CasePrecedentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CasePrecedentInclude<ExtArgs> | null
-    /**
-     * The data needed to create a CasePrecedent.
-     */
-    data: XOR<CasePrecedentCreateInput, CasePrecedentUncheckedCreateInput>
-  }
-
-  /**
-   * CasePrecedent createMany
-   */
-  export type CasePrecedentCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many CasePrecedents.
-     */
-    data: CasePrecedentCreateManyInput | CasePrecedentCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * CasePrecedent createManyAndReturn
-   */
-  export type CasePrecedentCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CasePrecedent
-     */
-    select?: CasePrecedentSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the CasePrecedent
-     */
-    omit?: CasePrecedentOmit<ExtArgs> | null
-    /**
-     * The data used to create many CasePrecedents.
-     */
-    data: CasePrecedentCreateManyInput | CasePrecedentCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CasePrecedentIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * CasePrecedent update
-   */
-  export type CasePrecedentUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CasePrecedent
-     */
-    select?: CasePrecedentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CasePrecedent
-     */
-    omit?: CasePrecedentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CasePrecedentInclude<ExtArgs> | null
-    /**
-     * The data needed to update a CasePrecedent.
-     */
-    data: XOR<CasePrecedentUpdateInput, CasePrecedentUncheckedUpdateInput>
-    /**
-     * Choose, which CasePrecedent to update.
-     */
-    where: CasePrecedentWhereUniqueInput
-  }
-
-  /**
-   * CasePrecedent updateMany
-   */
-  export type CasePrecedentUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update CasePrecedents.
-     */
-    data: XOR<CasePrecedentUpdateManyMutationInput, CasePrecedentUncheckedUpdateManyInput>
-    /**
-     * Filter which CasePrecedents to update
-     */
-    where?: CasePrecedentWhereInput
-    /**
-     * Limit how many CasePrecedents to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * CasePrecedent updateManyAndReturn
-   */
-  export type CasePrecedentUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CasePrecedent
-     */
-    select?: CasePrecedentSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the CasePrecedent
-     */
-    omit?: CasePrecedentOmit<ExtArgs> | null
-    /**
-     * The data used to update CasePrecedents.
-     */
-    data: XOR<CasePrecedentUpdateManyMutationInput, CasePrecedentUncheckedUpdateManyInput>
-    /**
-     * Filter which CasePrecedents to update
-     */
-    where?: CasePrecedentWhereInput
-    /**
-     * Limit how many CasePrecedents to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CasePrecedentIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * CasePrecedent upsert
-   */
-  export type CasePrecedentUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CasePrecedent
-     */
-    select?: CasePrecedentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CasePrecedent
-     */
-    omit?: CasePrecedentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CasePrecedentInclude<ExtArgs> | null
-    /**
-     * The filter to search for the CasePrecedent to update in case it exists.
-     */
-    where: CasePrecedentWhereUniqueInput
-    /**
-     * In case the CasePrecedent found by the `where` argument doesn't exist, create a new CasePrecedent with this data.
-     */
-    create: XOR<CasePrecedentCreateInput, CasePrecedentUncheckedCreateInput>
-    /**
-     * In case the CasePrecedent was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<CasePrecedentUpdateInput, CasePrecedentUncheckedUpdateInput>
-  }
-
-  /**
-   * CasePrecedent delete
-   */
-  export type CasePrecedentDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CasePrecedent
-     */
-    select?: CasePrecedentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CasePrecedent
-     */
-    omit?: CasePrecedentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CasePrecedentInclude<ExtArgs> | null
-    /**
-     * Filter which CasePrecedent to delete.
-     */
-    where: CasePrecedentWhereUniqueInput
-  }
-
-  /**
-   * CasePrecedent deleteMany
-   */
-  export type CasePrecedentDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which CasePrecedents to delete
-     */
-    where?: CasePrecedentWhereInput
-    /**
-     * Limit how many CasePrecedents to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * CasePrecedent without action
-   */
-  export type CasePrecedentDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CasePrecedent
-     */
-    select?: CasePrecedentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CasePrecedent
-     */
-    omit?: CasePrecedentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CasePrecedentInclude<ExtArgs> | null
-  }
-
-
-  /**
    * Model CasePayment
    */
 
@@ -22024,1109 +18239,6 @@ export namespace Prisma {
 
 
   /**
-   * Model CaseCounseling
-   */
-
-  export type AggregateCaseCounseling = {
-    _count: CaseCounselingCountAggregateOutputType | null
-    _min: CaseCounselingMinAggregateOutputType | null
-    _max: CaseCounselingMaxAggregateOutputType | null
-  }
-
-  export type CaseCounselingMinAggregateOutputType = {
-    id: string | null
-    caseId: string | null
-    counselorUserId: string | null
-    date: Date | null
-    notes: string | null
-    createdAt: Date | null
-  }
-
-  export type CaseCounselingMaxAggregateOutputType = {
-    id: string | null
-    caseId: string | null
-    counselorUserId: string | null
-    date: Date | null
-    notes: string | null
-    createdAt: Date | null
-  }
-
-  export type CaseCounselingCountAggregateOutputType = {
-    id: number
-    caseId: number
-    counselorUserId: number
-    date: number
-    notes: number
-    createdAt: number
-    _all: number
-  }
-
-
-  export type CaseCounselingMinAggregateInputType = {
-    id?: true
-    caseId?: true
-    counselorUserId?: true
-    date?: true
-    notes?: true
-    createdAt?: true
-  }
-
-  export type CaseCounselingMaxAggregateInputType = {
-    id?: true
-    caseId?: true
-    counselorUserId?: true
-    date?: true
-    notes?: true
-    createdAt?: true
-  }
-
-  export type CaseCounselingCountAggregateInputType = {
-    id?: true
-    caseId?: true
-    counselorUserId?: true
-    date?: true
-    notes?: true
-    createdAt?: true
-    _all?: true
-  }
-
-  export type CaseCounselingAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which CaseCounseling to aggregate.
-     */
-    where?: CaseCounselingWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of CaseCounselings to fetch.
-     */
-    orderBy?: CaseCounselingOrderByWithRelationInput | CaseCounselingOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: CaseCounselingWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` CaseCounselings from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` CaseCounselings.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned CaseCounselings
-    **/
-    _count?: true | CaseCounselingCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: CaseCounselingMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: CaseCounselingMaxAggregateInputType
-  }
-
-  export type GetCaseCounselingAggregateType<T extends CaseCounselingAggregateArgs> = {
-        [P in keyof T & keyof AggregateCaseCounseling]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateCaseCounseling[P]>
-      : GetScalarType<T[P], AggregateCaseCounseling[P]>
-  }
-
-
-
-
-  export type CaseCounselingGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: CaseCounselingWhereInput
-    orderBy?: CaseCounselingOrderByWithAggregationInput | CaseCounselingOrderByWithAggregationInput[]
-    by: CaseCounselingScalarFieldEnum[] | CaseCounselingScalarFieldEnum
-    having?: CaseCounselingScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: CaseCounselingCountAggregateInputType | true
-    _min?: CaseCounselingMinAggregateInputType
-    _max?: CaseCounselingMaxAggregateInputType
-  }
-
-  export type CaseCounselingGroupByOutputType = {
-    id: string
-    caseId: string
-    counselorUserId: string | null
-    date: Date | null
-    notes: string
-    createdAt: Date
-    _count: CaseCounselingCountAggregateOutputType | null
-    _min: CaseCounselingMinAggregateOutputType | null
-    _max: CaseCounselingMaxAggregateOutputType | null
-  }
-
-  type GetCaseCounselingGroupByPayload<T extends CaseCounselingGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<CaseCounselingGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof CaseCounselingGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], CaseCounselingGroupByOutputType[P]>
-            : GetScalarType<T[P], CaseCounselingGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type CaseCounselingSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    caseId?: boolean
-    counselorUserId?: boolean
-    date?: boolean
-    notes?: boolean
-    createdAt?: boolean
-    case?: boolean | CaseDefaultArgs<ExtArgs>
-    counselor?: boolean | CaseCounseling$counselorArgs<ExtArgs>
-  }, ExtArgs["result"]["caseCounseling"]>
-
-  export type CaseCounselingSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    caseId?: boolean
-    counselorUserId?: boolean
-    date?: boolean
-    notes?: boolean
-    createdAt?: boolean
-    case?: boolean | CaseDefaultArgs<ExtArgs>
-    counselor?: boolean | CaseCounseling$counselorArgs<ExtArgs>
-  }, ExtArgs["result"]["caseCounseling"]>
-
-  export type CaseCounselingSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    caseId?: boolean
-    counselorUserId?: boolean
-    date?: boolean
-    notes?: boolean
-    createdAt?: boolean
-    case?: boolean | CaseDefaultArgs<ExtArgs>
-    counselor?: boolean | CaseCounseling$counselorArgs<ExtArgs>
-  }, ExtArgs["result"]["caseCounseling"]>
-
-  export type CaseCounselingSelectScalar = {
-    id?: boolean
-    caseId?: boolean
-    counselorUserId?: boolean
-    date?: boolean
-    notes?: boolean
-    createdAt?: boolean
-  }
-
-  export type CaseCounselingOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "caseId" | "counselorUserId" | "date" | "notes" | "createdAt", ExtArgs["result"]["caseCounseling"]>
-  export type CaseCounselingInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    case?: boolean | CaseDefaultArgs<ExtArgs>
-    counselor?: boolean | CaseCounseling$counselorArgs<ExtArgs>
-  }
-  export type CaseCounselingIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    case?: boolean | CaseDefaultArgs<ExtArgs>
-    counselor?: boolean | CaseCounseling$counselorArgs<ExtArgs>
-  }
-  export type CaseCounselingIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    case?: boolean | CaseDefaultArgs<ExtArgs>
-    counselor?: boolean | CaseCounseling$counselorArgs<ExtArgs>
-  }
-
-  export type $CaseCounselingPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "CaseCounseling"
-    objects: {
-      case: Prisma.$CasePayload<ExtArgs>
-      counselor: Prisma.$UserPayload<ExtArgs> | null
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: string
-      caseId: string
-      counselorUserId: string | null
-      date: Date | null
-      notes: string
-      createdAt: Date
-    }, ExtArgs["result"]["caseCounseling"]>
-    composites: {}
-  }
-
-  type CaseCounselingGetPayload<S extends boolean | null | undefined | CaseCounselingDefaultArgs> = $Result.GetResult<Prisma.$CaseCounselingPayload, S>
-
-  type CaseCounselingCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<CaseCounselingFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: CaseCounselingCountAggregateInputType | true
-    }
-
-  export interface CaseCounselingDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CaseCounseling'], meta: { name: 'CaseCounseling' } }
-    /**
-     * Find zero or one CaseCounseling that matches the filter.
-     * @param {CaseCounselingFindUniqueArgs} args - Arguments to find a CaseCounseling
-     * @example
-     * // Get one CaseCounseling
-     * const caseCounseling = await prisma.caseCounseling.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends CaseCounselingFindUniqueArgs>(args: SelectSubset<T, CaseCounselingFindUniqueArgs<ExtArgs>>): Prisma__CaseCounselingClient<$Result.GetResult<Prisma.$CaseCounselingPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one CaseCounseling that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {CaseCounselingFindUniqueOrThrowArgs} args - Arguments to find a CaseCounseling
-     * @example
-     * // Get one CaseCounseling
-     * const caseCounseling = await prisma.caseCounseling.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends CaseCounselingFindUniqueOrThrowArgs>(args: SelectSubset<T, CaseCounselingFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CaseCounselingClient<$Result.GetResult<Prisma.$CaseCounselingPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first CaseCounseling that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CaseCounselingFindFirstArgs} args - Arguments to find a CaseCounseling
-     * @example
-     * // Get one CaseCounseling
-     * const caseCounseling = await prisma.caseCounseling.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends CaseCounselingFindFirstArgs>(args?: SelectSubset<T, CaseCounselingFindFirstArgs<ExtArgs>>): Prisma__CaseCounselingClient<$Result.GetResult<Prisma.$CaseCounselingPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first CaseCounseling that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CaseCounselingFindFirstOrThrowArgs} args - Arguments to find a CaseCounseling
-     * @example
-     * // Get one CaseCounseling
-     * const caseCounseling = await prisma.caseCounseling.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends CaseCounselingFindFirstOrThrowArgs>(args?: SelectSubset<T, CaseCounselingFindFirstOrThrowArgs<ExtArgs>>): Prisma__CaseCounselingClient<$Result.GetResult<Prisma.$CaseCounselingPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more CaseCounselings that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CaseCounselingFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all CaseCounselings
-     * const caseCounselings = await prisma.caseCounseling.findMany()
-     * 
-     * // Get first 10 CaseCounselings
-     * const caseCounselings = await prisma.caseCounseling.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const caseCounselingWithIdOnly = await prisma.caseCounseling.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends CaseCounselingFindManyArgs>(args?: SelectSubset<T, CaseCounselingFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseCounselingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a CaseCounseling.
-     * @param {CaseCounselingCreateArgs} args - Arguments to create a CaseCounseling.
-     * @example
-     * // Create one CaseCounseling
-     * const CaseCounseling = await prisma.caseCounseling.create({
-     *   data: {
-     *     // ... data to create a CaseCounseling
-     *   }
-     * })
-     * 
-     */
-    create<T extends CaseCounselingCreateArgs>(args: SelectSubset<T, CaseCounselingCreateArgs<ExtArgs>>): Prisma__CaseCounselingClient<$Result.GetResult<Prisma.$CaseCounselingPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many CaseCounselings.
-     * @param {CaseCounselingCreateManyArgs} args - Arguments to create many CaseCounselings.
-     * @example
-     * // Create many CaseCounselings
-     * const caseCounseling = await prisma.caseCounseling.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends CaseCounselingCreateManyArgs>(args?: SelectSubset<T, CaseCounselingCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many CaseCounselings and returns the data saved in the database.
-     * @param {CaseCounselingCreateManyAndReturnArgs} args - Arguments to create many CaseCounselings.
-     * @example
-     * // Create many CaseCounselings
-     * const caseCounseling = await prisma.caseCounseling.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many CaseCounselings and only return the `id`
-     * const caseCounselingWithIdOnly = await prisma.caseCounseling.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends CaseCounselingCreateManyAndReturnArgs>(args?: SelectSubset<T, CaseCounselingCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseCounselingPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a CaseCounseling.
-     * @param {CaseCounselingDeleteArgs} args - Arguments to delete one CaseCounseling.
-     * @example
-     * // Delete one CaseCounseling
-     * const CaseCounseling = await prisma.caseCounseling.delete({
-     *   where: {
-     *     // ... filter to delete one CaseCounseling
-     *   }
-     * })
-     * 
-     */
-    delete<T extends CaseCounselingDeleteArgs>(args: SelectSubset<T, CaseCounselingDeleteArgs<ExtArgs>>): Prisma__CaseCounselingClient<$Result.GetResult<Prisma.$CaseCounselingPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one CaseCounseling.
-     * @param {CaseCounselingUpdateArgs} args - Arguments to update one CaseCounseling.
-     * @example
-     * // Update one CaseCounseling
-     * const caseCounseling = await prisma.caseCounseling.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends CaseCounselingUpdateArgs>(args: SelectSubset<T, CaseCounselingUpdateArgs<ExtArgs>>): Prisma__CaseCounselingClient<$Result.GetResult<Prisma.$CaseCounselingPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more CaseCounselings.
-     * @param {CaseCounselingDeleteManyArgs} args - Arguments to filter CaseCounselings to delete.
-     * @example
-     * // Delete a few CaseCounselings
-     * const { count } = await prisma.caseCounseling.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends CaseCounselingDeleteManyArgs>(args?: SelectSubset<T, CaseCounselingDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more CaseCounselings.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CaseCounselingUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many CaseCounselings
-     * const caseCounseling = await prisma.caseCounseling.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends CaseCounselingUpdateManyArgs>(args: SelectSubset<T, CaseCounselingUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more CaseCounselings and returns the data updated in the database.
-     * @param {CaseCounselingUpdateManyAndReturnArgs} args - Arguments to update many CaseCounselings.
-     * @example
-     * // Update many CaseCounselings
-     * const caseCounseling = await prisma.caseCounseling.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more CaseCounselings and only return the `id`
-     * const caseCounselingWithIdOnly = await prisma.caseCounseling.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends CaseCounselingUpdateManyAndReturnArgs>(args: SelectSubset<T, CaseCounselingUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseCounselingPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one CaseCounseling.
-     * @param {CaseCounselingUpsertArgs} args - Arguments to update or create a CaseCounseling.
-     * @example
-     * // Update or create a CaseCounseling
-     * const caseCounseling = await prisma.caseCounseling.upsert({
-     *   create: {
-     *     // ... data to create a CaseCounseling
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the CaseCounseling we want to update
-     *   }
-     * })
-     */
-    upsert<T extends CaseCounselingUpsertArgs>(args: SelectSubset<T, CaseCounselingUpsertArgs<ExtArgs>>): Prisma__CaseCounselingClient<$Result.GetResult<Prisma.$CaseCounselingPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of CaseCounselings.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CaseCounselingCountArgs} args - Arguments to filter CaseCounselings to count.
-     * @example
-     * // Count the number of CaseCounselings
-     * const count = await prisma.caseCounseling.count({
-     *   where: {
-     *     // ... the filter for the CaseCounselings we want to count
-     *   }
-     * })
-    **/
-    count<T extends CaseCounselingCountArgs>(
-      args?: Subset<T, CaseCounselingCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], CaseCounselingCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a CaseCounseling.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CaseCounselingAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends CaseCounselingAggregateArgs>(args: Subset<T, CaseCounselingAggregateArgs>): Prisma.PrismaPromise<GetCaseCounselingAggregateType<T>>
-
-    /**
-     * Group by CaseCounseling.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CaseCounselingGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends CaseCounselingGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: CaseCounselingGroupByArgs['orderBy'] }
-        : { orderBy?: CaseCounselingGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, CaseCounselingGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCaseCounselingGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the CaseCounseling model
-   */
-  readonly fields: CaseCounselingFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for CaseCounseling.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__CaseCounselingClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    case<T extends CaseDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CaseDefaultArgs<ExtArgs>>): Prisma__CaseClient<$Result.GetResult<Prisma.$CasePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    counselor<T extends CaseCounseling$counselorArgs<ExtArgs> = {}>(args?: Subset<T, CaseCounseling$counselorArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the CaseCounseling model
-   */
-  interface CaseCounselingFieldRefs {
-    readonly id: FieldRef<"CaseCounseling", 'String'>
-    readonly caseId: FieldRef<"CaseCounseling", 'String'>
-    readonly counselorUserId: FieldRef<"CaseCounseling", 'String'>
-    readonly date: FieldRef<"CaseCounseling", 'DateTime'>
-    readonly notes: FieldRef<"CaseCounseling", 'String'>
-    readonly createdAt: FieldRef<"CaseCounseling", 'DateTime'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * CaseCounseling findUnique
-   */
-  export type CaseCounselingFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CaseCounseling
-     */
-    select?: CaseCounselingSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CaseCounseling
-     */
-    omit?: CaseCounselingOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CaseCounselingInclude<ExtArgs> | null
-    /**
-     * Filter, which CaseCounseling to fetch.
-     */
-    where: CaseCounselingWhereUniqueInput
-  }
-
-  /**
-   * CaseCounseling findUniqueOrThrow
-   */
-  export type CaseCounselingFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CaseCounseling
-     */
-    select?: CaseCounselingSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CaseCounseling
-     */
-    omit?: CaseCounselingOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CaseCounselingInclude<ExtArgs> | null
-    /**
-     * Filter, which CaseCounseling to fetch.
-     */
-    where: CaseCounselingWhereUniqueInput
-  }
-
-  /**
-   * CaseCounseling findFirst
-   */
-  export type CaseCounselingFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CaseCounseling
-     */
-    select?: CaseCounselingSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CaseCounseling
-     */
-    omit?: CaseCounselingOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CaseCounselingInclude<ExtArgs> | null
-    /**
-     * Filter, which CaseCounseling to fetch.
-     */
-    where?: CaseCounselingWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of CaseCounselings to fetch.
-     */
-    orderBy?: CaseCounselingOrderByWithRelationInput | CaseCounselingOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for CaseCounselings.
-     */
-    cursor?: CaseCounselingWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` CaseCounselings from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` CaseCounselings.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of CaseCounselings.
-     */
-    distinct?: CaseCounselingScalarFieldEnum | CaseCounselingScalarFieldEnum[]
-  }
-
-  /**
-   * CaseCounseling findFirstOrThrow
-   */
-  export type CaseCounselingFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CaseCounseling
-     */
-    select?: CaseCounselingSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CaseCounseling
-     */
-    omit?: CaseCounselingOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CaseCounselingInclude<ExtArgs> | null
-    /**
-     * Filter, which CaseCounseling to fetch.
-     */
-    where?: CaseCounselingWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of CaseCounselings to fetch.
-     */
-    orderBy?: CaseCounselingOrderByWithRelationInput | CaseCounselingOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for CaseCounselings.
-     */
-    cursor?: CaseCounselingWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` CaseCounselings from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` CaseCounselings.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of CaseCounselings.
-     */
-    distinct?: CaseCounselingScalarFieldEnum | CaseCounselingScalarFieldEnum[]
-  }
-
-  /**
-   * CaseCounseling findMany
-   */
-  export type CaseCounselingFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CaseCounseling
-     */
-    select?: CaseCounselingSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CaseCounseling
-     */
-    omit?: CaseCounselingOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CaseCounselingInclude<ExtArgs> | null
-    /**
-     * Filter, which CaseCounselings to fetch.
-     */
-    where?: CaseCounselingWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of CaseCounselings to fetch.
-     */
-    orderBy?: CaseCounselingOrderByWithRelationInput | CaseCounselingOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing CaseCounselings.
-     */
-    cursor?: CaseCounselingWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` CaseCounselings from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` CaseCounselings.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of CaseCounselings.
-     */
-    distinct?: CaseCounselingScalarFieldEnum | CaseCounselingScalarFieldEnum[]
-  }
-
-  /**
-   * CaseCounseling create
-   */
-  export type CaseCounselingCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CaseCounseling
-     */
-    select?: CaseCounselingSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CaseCounseling
-     */
-    omit?: CaseCounselingOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CaseCounselingInclude<ExtArgs> | null
-    /**
-     * The data needed to create a CaseCounseling.
-     */
-    data: XOR<CaseCounselingCreateInput, CaseCounselingUncheckedCreateInput>
-  }
-
-  /**
-   * CaseCounseling createMany
-   */
-  export type CaseCounselingCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many CaseCounselings.
-     */
-    data: CaseCounselingCreateManyInput | CaseCounselingCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * CaseCounseling createManyAndReturn
-   */
-  export type CaseCounselingCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CaseCounseling
-     */
-    select?: CaseCounselingSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the CaseCounseling
-     */
-    omit?: CaseCounselingOmit<ExtArgs> | null
-    /**
-     * The data used to create many CaseCounselings.
-     */
-    data: CaseCounselingCreateManyInput | CaseCounselingCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CaseCounselingIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * CaseCounseling update
-   */
-  export type CaseCounselingUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CaseCounseling
-     */
-    select?: CaseCounselingSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CaseCounseling
-     */
-    omit?: CaseCounselingOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CaseCounselingInclude<ExtArgs> | null
-    /**
-     * The data needed to update a CaseCounseling.
-     */
-    data: XOR<CaseCounselingUpdateInput, CaseCounselingUncheckedUpdateInput>
-    /**
-     * Choose, which CaseCounseling to update.
-     */
-    where: CaseCounselingWhereUniqueInput
-  }
-
-  /**
-   * CaseCounseling updateMany
-   */
-  export type CaseCounselingUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update CaseCounselings.
-     */
-    data: XOR<CaseCounselingUpdateManyMutationInput, CaseCounselingUncheckedUpdateManyInput>
-    /**
-     * Filter which CaseCounselings to update
-     */
-    where?: CaseCounselingWhereInput
-    /**
-     * Limit how many CaseCounselings to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * CaseCounseling updateManyAndReturn
-   */
-  export type CaseCounselingUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CaseCounseling
-     */
-    select?: CaseCounselingSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the CaseCounseling
-     */
-    omit?: CaseCounselingOmit<ExtArgs> | null
-    /**
-     * The data used to update CaseCounselings.
-     */
-    data: XOR<CaseCounselingUpdateManyMutationInput, CaseCounselingUncheckedUpdateManyInput>
-    /**
-     * Filter which CaseCounselings to update
-     */
-    where?: CaseCounselingWhereInput
-    /**
-     * Limit how many CaseCounselings to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CaseCounselingIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * CaseCounseling upsert
-   */
-  export type CaseCounselingUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CaseCounseling
-     */
-    select?: CaseCounselingSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CaseCounseling
-     */
-    omit?: CaseCounselingOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CaseCounselingInclude<ExtArgs> | null
-    /**
-     * The filter to search for the CaseCounseling to update in case it exists.
-     */
-    where: CaseCounselingWhereUniqueInput
-    /**
-     * In case the CaseCounseling found by the `where` argument doesn't exist, create a new CaseCounseling with this data.
-     */
-    create: XOR<CaseCounselingCreateInput, CaseCounselingUncheckedCreateInput>
-    /**
-     * In case the CaseCounseling was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<CaseCounselingUpdateInput, CaseCounselingUncheckedUpdateInput>
-  }
-
-  /**
-   * CaseCounseling delete
-   */
-  export type CaseCounselingDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CaseCounseling
-     */
-    select?: CaseCounselingSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CaseCounseling
-     */
-    omit?: CaseCounselingOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CaseCounselingInclude<ExtArgs> | null
-    /**
-     * Filter which CaseCounseling to delete.
-     */
-    where: CaseCounselingWhereUniqueInput
-  }
-
-  /**
-   * CaseCounseling deleteMany
-   */
-  export type CaseCounselingDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which CaseCounselings to delete
-     */
-    where?: CaseCounselingWhereInput
-    /**
-     * Limit how many CaseCounselings to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * CaseCounseling.counselor
-   */
-  export type CaseCounseling$counselorArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the User
-     */
-    select?: UserSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserInclude<ExtArgs> | null
-    where?: UserWhereInput
-  }
-
-  /**
-   * CaseCounseling without action
-   */
-  export type CaseCounselingDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CaseCounseling
-     */
-    select?: CaseCounselingSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CaseCounseling
-     */
-    omit?: CaseCounselingOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CaseCounselingInclude<ExtArgs> | null
-  }
-
-
-  /**
    * Model CaseDocument
    */
 
@@ -24199,6 +19311,1125 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: CaseDocumentInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model CaseJudgement
+   */
+
+  export type AggregateCaseJudgement = {
+    _count: CaseJudgementCountAggregateOutputType | null
+    _min: CaseJudgementMinAggregateOutputType | null
+    _max: CaseJudgementMaxAggregateOutputType | null
+  }
+
+  export type CaseJudgementMinAggregateOutputType = {
+    id: string | null
+    caseId: string | null
+    caseCourtDetailId: string | null
+    type: string | null
+    date: Date | null
+    verifiedDate: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type CaseJudgementMaxAggregateOutputType = {
+    id: string | null
+    caseId: string | null
+    caseCourtDetailId: string | null
+    type: string | null
+    date: Date | null
+    verifiedDate: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type CaseJudgementCountAggregateOutputType = {
+    id: number
+    caseId: number
+    caseCourtDetailId: number
+    type: number
+    date: number
+    verifiedDate: number
+    detail: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type CaseJudgementMinAggregateInputType = {
+    id?: true
+    caseId?: true
+    caseCourtDetailId?: true
+    type?: true
+    date?: true
+    verifiedDate?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type CaseJudgementMaxAggregateInputType = {
+    id?: true
+    caseId?: true
+    caseCourtDetailId?: true
+    type?: true
+    date?: true
+    verifiedDate?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type CaseJudgementCountAggregateInputType = {
+    id?: true
+    caseId?: true
+    caseCourtDetailId?: true
+    type?: true
+    date?: true
+    verifiedDate?: true
+    detail?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type CaseJudgementAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CaseJudgement to aggregate.
+     */
+    where?: CaseJudgementWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CaseJudgements to fetch.
+     */
+    orderBy?: CaseJudgementOrderByWithRelationInput | CaseJudgementOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CaseJudgementWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CaseJudgements from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CaseJudgements.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CaseJudgements
+    **/
+    _count?: true | CaseJudgementCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CaseJudgementMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CaseJudgementMaxAggregateInputType
+  }
+
+  export type GetCaseJudgementAggregateType<T extends CaseJudgementAggregateArgs> = {
+        [P in keyof T & keyof AggregateCaseJudgement]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCaseJudgement[P]>
+      : GetScalarType<T[P], AggregateCaseJudgement[P]>
+  }
+
+
+
+
+  export type CaseJudgementGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CaseJudgementWhereInput
+    orderBy?: CaseJudgementOrderByWithAggregationInput | CaseJudgementOrderByWithAggregationInput[]
+    by: CaseJudgementScalarFieldEnum[] | CaseJudgementScalarFieldEnum
+    having?: CaseJudgementScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CaseJudgementCountAggregateInputType | true
+    _min?: CaseJudgementMinAggregateInputType
+    _max?: CaseJudgementMaxAggregateInputType
+  }
+
+  export type CaseJudgementGroupByOutputType = {
+    id: string
+    caseId: string
+    caseCourtDetailId: string
+    type: string
+    date: Date | null
+    verifiedDate: Date | null
+    detail: JsonValue | null
+    createdAt: Date
+    updatedAt: Date
+    _count: CaseJudgementCountAggregateOutputType | null
+    _min: CaseJudgementMinAggregateOutputType | null
+    _max: CaseJudgementMaxAggregateOutputType | null
+  }
+
+  type GetCaseJudgementGroupByPayload<T extends CaseJudgementGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CaseJudgementGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CaseJudgementGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CaseJudgementGroupByOutputType[P]>
+            : GetScalarType<T[P], CaseJudgementGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CaseJudgementSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    caseId?: boolean
+    caseCourtDetailId?: boolean
+    type?: boolean
+    date?: boolean
+    verifiedDate?: boolean
+    detail?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+    caseCourtDetail?: boolean | CaseCourtDetailDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["caseJudgement"]>
+
+  export type CaseJudgementSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    caseId?: boolean
+    caseCourtDetailId?: boolean
+    type?: boolean
+    date?: boolean
+    verifiedDate?: boolean
+    detail?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+    caseCourtDetail?: boolean | CaseCourtDetailDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["caseJudgement"]>
+
+  export type CaseJudgementSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    caseId?: boolean
+    caseCourtDetailId?: boolean
+    type?: boolean
+    date?: boolean
+    verifiedDate?: boolean
+    detail?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+    caseCourtDetail?: boolean | CaseCourtDetailDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["caseJudgement"]>
+
+  export type CaseJudgementSelectScalar = {
+    id?: boolean
+    caseId?: boolean
+    caseCourtDetailId?: boolean
+    type?: boolean
+    date?: boolean
+    verifiedDate?: boolean
+    detail?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type CaseJudgementOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "caseId" | "caseCourtDetailId" | "type" | "date" | "verifiedDate" | "detail" | "createdAt" | "updatedAt", ExtArgs["result"]["caseJudgement"]>
+  export type CaseJudgementInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+    caseCourtDetail?: boolean | CaseCourtDetailDefaultArgs<ExtArgs>
+  }
+  export type CaseJudgementIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+    caseCourtDetail?: boolean | CaseCourtDetailDefaultArgs<ExtArgs>
+  }
+  export type CaseJudgementIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+    caseCourtDetail?: boolean | CaseCourtDetailDefaultArgs<ExtArgs>
+  }
+
+  export type $CaseJudgementPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CaseJudgement"
+    objects: {
+      case: Prisma.$CasePayload<ExtArgs>
+      caseCourtDetail: Prisma.$CaseCourtDetailPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      caseId: string
+      caseCourtDetailId: string
+      type: string
+      date: Date | null
+      verifiedDate: Date | null
+      detail: Prisma.JsonValue | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["caseJudgement"]>
+    composites: {}
+  }
+
+  type CaseJudgementGetPayload<S extends boolean | null | undefined | CaseJudgementDefaultArgs> = $Result.GetResult<Prisma.$CaseJudgementPayload, S>
+
+  type CaseJudgementCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CaseJudgementFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CaseJudgementCountAggregateInputType | true
+    }
+
+  export interface CaseJudgementDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CaseJudgement'], meta: { name: 'CaseJudgement' } }
+    /**
+     * Find zero or one CaseJudgement that matches the filter.
+     * @param {CaseJudgementFindUniqueArgs} args - Arguments to find a CaseJudgement
+     * @example
+     * // Get one CaseJudgement
+     * const caseJudgement = await prisma.caseJudgement.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CaseJudgementFindUniqueArgs>(args: SelectSubset<T, CaseJudgementFindUniqueArgs<ExtArgs>>): Prisma__CaseJudgementClient<$Result.GetResult<Prisma.$CaseJudgementPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one CaseJudgement that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CaseJudgementFindUniqueOrThrowArgs} args - Arguments to find a CaseJudgement
+     * @example
+     * // Get one CaseJudgement
+     * const caseJudgement = await prisma.caseJudgement.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CaseJudgementFindUniqueOrThrowArgs>(args: SelectSubset<T, CaseJudgementFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CaseJudgementClient<$Result.GetResult<Prisma.$CaseJudgementPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CaseJudgement that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseJudgementFindFirstArgs} args - Arguments to find a CaseJudgement
+     * @example
+     * // Get one CaseJudgement
+     * const caseJudgement = await prisma.caseJudgement.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CaseJudgementFindFirstArgs>(args?: SelectSubset<T, CaseJudgementFindFirstArgs<ExtArgs>>): Prisma__CaseJudgementClient<$Result.GetResult<Prisma.$CaseJudgementPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CaseJudgement that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseJudgementFindFirstOrThrowArgs} args - Arguments to find a CaseJudgement
+     * @example
+     * // Get one CaseJudgement
+     * const caseJudgement = await prisma.caseJudgement.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CaseJudgementFindFirstOrThrowArgs>(args?: SelectSubset<T, CaseJudgementFindFirstOrThrowArgs<ExtArgs>>): Prisma__CaseJudgementClient<$Result.GetResult<Prisma.$CaseJudgementPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CaseJudgements that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseJudgementFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CaseJudgements
+     * const caseJudgements = await prisma.caseJudgement.findMany()
+     * 
+     * // Get first 10 CaseJudgements
+     * const caseJudgements = await prisma.caseJudgement.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const caseJudgementWithIdOnly = await prisma.caseJudgement.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CaseJudgementFindManyArgs>(args?: SelectSubset<T, CaseJudgementFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseJudgementPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a CaseJudgement.
+     * @param {CaseJudgementCreateArgs} args - Arguments to create a CaseJudgement.
+     * @example
+     * // Create one CaseJudgement
+     * const CaseJudgement = await prisma.caseJudgement.create({
+     *   data: {
+     *     // ... data to create a CaseJudgement
+     *   }
+     * })
+     * 
+     */
+    create<T extends CaseJudgementCreateArgs>(args: SelectSubset<T, CaseJudgementCreateArgs<ExtArgs>>): Prisma__CaseJudgementClient<$Result.GetResult<Prisma.$CaseJudgementPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many CaseJudgements.
+     * @param {CaseJudgementCreateManyArgs} args - Arguments to create many CaseJudgements.
+     * @example
+     * // Create many CaseJudgements
+     * const caseJudgement = await prisma.caseJudgement.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CaseJudgementCreateManyArgs>(args?: SelectSubset<T, CaseJudgementCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many CaseJudgements and returns the data saved in the database.
+     * @param {CaseJudgementCreateManyAndReturnArgs} args - Arguments to create many CaseJudgements.
+     * @example
+     * // Create many CaseJudgements
+     * const caseJudgement = await prisma.caseJudgement.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many CaseJudgements and only return the `id`
+     * const caseJudgementWithIdOnly = await prisma.caseJudgement.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CaseJudgementCreateManyAndReturnArgs>(args?: SelectSubset<T, CaseJudgementCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseJudgementPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a CaseJudgement.
+     * @param {CaseJudgementDeleteArgs} args - Arguments to delete one CaseJudgement.
+     * @example
+     * // Delete one CaseJudgement
+     * const CaseJudgement = await prisma.caseJudgement.delete({
+     *   where: {
+     *     // ... filter to delete one CaseJudgement
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CaseJudgementDeleteArgs>(args: SelectSubset<T, CaseJudgementDeleteArgs<ExtArgs>>): Prisma__CaseJudgementClient<$Result.GetResult<Prisma.$CaseJudgementPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one CaseJudgement.
+     * @param {CaseJudgementUpdateArgs} args - Arguments to update one CaseJudgement.
+     * @example
+     * // Update one CaseJudgement
+     * const caseJudgement = await prisma.caseJudgement.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CaseJudgementUpdateArgs>(args: SelectSubset<T, CaseJudgementUpdateArgs<ExtArgs>>): Prisma__CaseJudgementClient<$Result.GetResult<Prisma.$CaseJudgementPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more CaseJudgements.
+     * @param {CaseJudgementDeleteManyArgs} args - Arguments to filter CaseJudgements to delete.
+     * @example
+     * // Delete a few CaseJudgements
+     * const { count } = await prisma.caseJudgement.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CaseJudgementDeleteManyArgs>(args?: SelectSubset<T, CaseJudgementDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CaseJudgements.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseJudgementUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CaseJudgements
+     * const caseJudgement = await prisma.caseJudgement.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CaseJudgementUpdateManyArgs>(args: SelectSubset<T, CaseJudgementUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CaseJudgements and returns the data updated in the database.
+     * @param {CaseJudgementUpdateManyAndReturnArgs} args - Arguments to update many CaseJudgements.
+     * @example
+     * // Update many CaseJudgements
+     * const caseJudgement = await prisma.caseJudgement.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more CaseJudgements and only return the `id`
+     * const caseJudgementWithIdOnly = await prisma.caseJudgement.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CaseJudgementUpdateManyAndReturnArgs>(args: SelectSubset<T, CaseJudgementUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseJudgementPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one CaseJudgement.
+     * @param {CaseJudgementUpsertArgs} args - Arguments to update or create a CaseJudgement.
+     * @example
+     * // Update or create a CaseJudgement
+     * const caseJudgement = await prisma.caseJudgement.upsert({
+     *   create: {
+     *     // ... data to create a CaseJudgement
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CaseJudgement we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CaseJudgementUpsertArgs>(args: SelectSubset<T, CaseJudgementUpsertArgs<ExtArgs>>): Prisma__CaseJudgementClient<$Result.GetResult<Prisma.$CaseJudgementPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of CaseJudgements.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseJudgementCountArgs} args - Arguments to filter CaseJudgements to count.
+     * @example
+     * // Count the number of CaseJudgements
+     * const count = await prisma.caseJudgement.count({
+     *   where: {
+     *     // ... the filter for the CaseJudgements we want to count
+     *   }
+     * })
+    **/
+    count<T extends CaseJudgementCountArgs>(
+      args?: Subset<T, CaseJudgementCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CaseJudgementCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CaseJudgement.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseJudgementAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CaseJudgementAggregateArgs>(args: Subset<T, CaseJudgementAggregateArgs>): Prisma.PrismaPromise<GetCaseJudgementAggregateType<T>>
+
+    /**
+     * Group by CaseJudgement.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseJudgementGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CaseJudgementGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CaseJudgementGroupByArgs['orderBy'] }
+        : { orderBy?: CaseJudgementGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CaseJudgementGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCaseJudgementGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CaseJudgement model
+   */
+  readonly fields: CaseJudgementFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CaseJudgement.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CaseJudgementClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    case<T extends CaseDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CaseDefaultArgs<ExtArgs>>): Prisma__CaseClient<$Result.GetResult<Prisma.$CasePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    caseCourtDetail<T extends CaseCourtDetailDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CaseCourtDetailDefaultArgs<ExtArgs>>): Prisma__CaseCourtDetailClient<$Result.GetResult<Prisma.$CaseCourtDetailPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CaseJudgement model
+   */
+  interface CaseJudgementFieldRefs {
+    readonly id: FieldRef<"CaseJudgement", 'String'>
+    readonly caseId: FieldRef<"CaseJudgement", 'String'>
+    readonly caseCourtDetailId: FieldRef<"CaseJudgement", 'String'>
+    readonly type: FieldRef<"CaseJudgement", 'String'>
+    readonly date: FieldRef<"CaseJudgement", 'DateTime'>
+    readonly verifiedDate: FieldRef<"CaseJudgement", 'DateTime'>
+    readonly detail: FieldRef<"CaseJudgement", 'Json'>
+    readonly createdAt: FieldRef<"CaseJudgement", 'DateTime'>
+    readonly updatedAt: FieldRef<"CaseJudgement", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CaseJudgement findUnique
+   */
+  export type CaseJudgementFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseJudgement
+     */
+    select?: CaseJudgementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseJudgement
+     */
+    omit?: CaseJudgementOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseJudgementInclude<ExtArgs> | null
+    /**
+     * Filter, which CaseJudgement to fetch.
+     */
+    where: CaseJudgementWhereUniqueInput
+  }
+
+  /**
+   * CaseJudgement findUniqueOrThrow
+   */
+  export type CaseJudgementFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseJudgement
+     */
+    select?: CaseJudgementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseJudgement
+     */
+    omit?: CaseJudgementOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseJudgementInclude<ExtArgs> | null
+    /**
+     * Filter, which CaseJudgement to fetch.
+     */
+    where: CaseJudgementWhereUniqueInput
+  }
+
+  /**
+   * CaseJudgement findFirst
+   */
+  export type CaseJudgementFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseJudgement
+     */
+    select?: CaseJudgementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseJudgement
+     */
+    omit?: CaseJudgementOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseJudgementInclude<ExtArgs> | null
+    /**
+     * Filter, which CaseJudgement to fetch.
+     */
+    where?: CaseJudgementWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CaseJudgements to fetch.
+     */
+    orderBy?: CaseJudgementOrderByWithRelationInput | CaseJudgementOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CaseJudgements.
+     */
+    cursor?: CaseJudgementWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CaseJudgements from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CaseJudgements.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CaseJudgements.
+     */
+    distinct?: CaseJudgementScalarFieldEnum | CaseJudgementScalarFieldEnum[]
+  }
+
+  /**
+   * CaseJudgement findFirstOrThrow
+   */
+  export type CaseJudgementFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseJudgement
+     */
+    select?: CaseJudgementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseJudgement
+     */
+    omit?: CaseJudgementOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseJudgementInclude<ExtArgs> | null
+    /**
+     * Filter, which CaseJudgement to fetch.
+     */
+    where?: CaseJudgementWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CaseJudgements to fetch.
+     */
+    orderBy?: CaseJudgementOrderByWithRelationInput | CaseJudgementOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CaseJudgements.
+     */
+    cursor?: CaseJudgementWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CaseJudgements from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CaseJudgements.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CaseJudgements.
+     */
+    distinct?: CaseJudgementScalarFieldEnum | CaseJudgementScalarFieldEnum[]
+  }
+
+  /**
+   * CaseJudgement findMany
+   */
+  export type CaseJudgementFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseJudgement
+     */
+    select?: CaseJudgementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseJudgement
+     */
+    omit?: CaseJudgementOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseJudgementInclude<ExtArgs> | null
+    /**
+     * Filter, which CaseJudgements to fetch.
+     */
+    where?: CaseJudgementWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CaseJudgements to fetch.
+     */
+    orderBy?: CaseJudgementOrderByWithRelationInput | CaseJudgementOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CaseJudgements.
+     */
+    cursor?: CaseJudgementWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CaseJudgements from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CaseJudgements.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CaseJudgements.
+     */
+    distinct?: CaseJudgementScalarFieldEnum | CaseJudgementScalarFieldEnum[]
+  }
+
+  /**
+   * CaseJudgement create
+   */
+  export type CaseJudgementCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseJudgement
+     */
+    select?: CaseJudgementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseJudgement
+     */
+    omit?: CaseJudgementOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseJudgementInclude<ExtArgs> | null
+    /**
+     * The data needed to create a CaseJudgement.
+     */
+    data: XOR<CaseJudgementCreateInput, CaseJudgementUncheckedCreateInput>
+  }
+
+  /**
+   * CaseJudgement createMany
+   */
+  export type CaseJudgementCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CaseJudgements.
+     */
+    data: CaseJudgementCreateManyInput | CaseJudgementCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CaseJudgement createManyAndReturn
+   */
+  export type CaseJudgementCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseJudgement
+     */
+    select?: CaseJudgementSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseJudgement
+     */
+    omit?: CaseJudgementOmit<ExtArgs> | null
+    /**
+     * The data used to create many CaseJudgements.
+     */
+    data: CaseJudgementCreateManyInput | CaseJudgementCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseJudgementIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CaseJudgement update
+   */
+  export type CaseJudgementUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseJudgement
+     */
+    select?: CaseJudgementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseJudgement
+     */
+    omit?: CaseJudgementOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseJudgementInclude<ExtArgs> | null
+    /**
+     * The data needed to update a CaseJudgement.
+     */
+    data: XOR<CaseJudgementUpdateInput, CaseJudgementUncheckedUpdateInput>
+    /**
+     * Choose, which CaseJudgement to update.
+     */
+    where: CaseJudgementWhereUniqueInput
+  }
+
+  /**
+   * CaseJudgement updateMany
+   */
+  export type CaseJudgementUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CaseJudgements.
+     */
+    data: XOR<CaseJudgementUpdateManyMutationInput, CaseJudgementUncheckedUpdateManyInput>
+    /**
+     * Filter which CaseJudgements to update
+     */
+    where?: CaseJudgementWhereInput
+    /**
+     * Limit how many CaseJudgements to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CaseJudgement updateManyAndReturn
+   */
+  export type CaseJudgementUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseJudgement
+     */
+    select?: CaseJudgementSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseJudgement
+     */
+    omit?: CaseJudgementOmit<ExtArgs> | null
+    /**
+     * The data used to update CaseJudgements.
+     */
+    data: XOR<CaseJudgementUpdateManyMutationInput, CaseJudgementUncheckedUpdateManyInput>
+    /**
+     * Filter which CaseJudgements to update
+     */
+    where?: CaseJudgementWhereInput
+    /**
+     * Limit how many CaseJudgements to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseJudgementIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CaseJudgement upsert
+   */
+  export type CaseJudgementUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseJudgement
+     */
+    select?: CaseJudgementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseJudgement
+     */
+    omit?: CaseJudgementOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseJudgementInclude<ExtArgs> | null
+    /**
+     * The filter to search for the CaseJudgement to update in case it exists.
+     */
+    where: CaseJudgementWhereUniqueInput
+    /**
+     * In case the CaseJudgement found by the `where` argument doesn't exist, create a new CaseJudgement with this data.
+     */
+    create: XOR<CaseJudgementCreateInput, CaseJudgementUncheckedCreateInput>
+    /**
+     * In case the CaseJudgement was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CaseJudgementUpdateInput, CaseJudgementUncheckedUpdateInput>
+  }
+
+  /**
+   * CaseJudgement delete
+   */
+  export type CaseJudgementDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseJudgement
+     */
+    select?: CaseJudgementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseJudgement
+     */
+    omit?: CaseJudgementOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseJudgementInclude<ExtArgs> | null
+    /**
+     * Filter which CaseJudgement to delete.
+     */
+    where: CaseJudgementWhereUniqueInput
+  }
+
+  /**
+   * CaseJudgement deleteMany
+   */
+  export type CaseJudgementDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CaseJudgements to delete
+     */
+    where?: CaseJudgementWhereInput
+    /**
+     * Limit how many CaseJudgements to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CaseJudgement without action
+   */
+  export type CaseJudgementDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseJudgement
+     */
+    select?: CaseJudgementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseJudgement
+     */
+    omit?: CaseJudgementOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseJudgementInclude<ExtArgs> | null
   }
 
 
@@ -31254,7 +27485,8 @@ export namespace Prisma {
     natureId: 'natureId',
     registrationFee: 'registrationFee',
     facts: 'facts',
-    relatedLaws: 'relatedLaws',
+    details: 'details',
+    relatedLaw: 'relatedLaw',
     referredThrough: 'referredThrough',
     noticeStatus: 'noticeStatus',
     fullJudgmentDate: 'fullJudgmentDate',
@@ -31322,42 +27554,6 @@ export namespace Prisma {
   export type CaseHearingScalarFieldEnum = (typeof CaseHearingScalarFieldEnum)[keyof typeof CaseHearingScalarFieldEnum]
 
 
-  export const CasePleadingScalarFieldEnum: {
-    id: 'id',
-    caseId: 'caseId',
-    pleaderUserId: 'pleaderUserId',
-    pleadingDate: 'pleadingDate',
-    pleadingNotes: 'pleadingNotes'
-  };
-
-  export type CasePleadingScalarFieldEnum = (typeof CasePleadingScalarFieldEnum)[keyof typeof CasePleadingScalarFieldEnum]
-
-
-  export const CourtProceedingScalarFieldEnum: {
-    id: 'id',
-    caseId: 'caseId',
-    courtLevelId: 'courtLevelId',
-    courtName: 'courtName',
-    judgeName: 'judgeName',
-    chargeCounseling: 'chargeCounseling',
-    verdict: 'verdict'
-  };
-
-  export type CourtProceedingScalarFieldEnum = (typeof CourtProceedingScalarFieldEnum)[keyof typeof CourtProceedingScalarFieldEnum]
-
-
-  export const CasePrecedentScalarFieldEnum: {
-    id: 'id',
-    caseId: 'caseId',
-    decisionNumber: 'decisionNumber',
-    plaintiff: 'plaintiff',
-    defendant: 'defendant',
-    citationNotes: 'citationNotes'
-  };
-
-  export type CasePrecedentScalarFieldEnum = (typeof CasePrecedentScalarFieldEnum)[keyof typeof CasePrecedentScalarFieldEnum]
-
-
   export const CasePaymentScalarFieldEnum: {
     id: 'id',
     caseId: 'caseId',
@@ -31374,18 +27570,6 @@ export namespace Prisma {
   export type CasePaymentScalarFieldEnum = (typeof CasePaymentScalarFieldEnum)[keyof typeof CasePaymentScalarFieldEnum]
 
 
-  export const CaseCounselingScalarFieldEnum: {
-    id: 'id',
-    caseId: 'caseId',
-    counselorUserId: 'counselorUserId',
-    date: 'date',
-    notes: 'notes',
-    createdAt: 'createdAt'
-  };
-
-  export type CaseCounselingScalarFieldEnum = (typeof CaseCounselingScalarFieldEnum)[keyof typeof CaseCounselingScalarFieldEnum]
-
-
   export const CaseDocumentScalarFieldEnum: {
     id: 'id',
     caseId: 'caseId',
@@ -31396,6 +27580,21 @@ export namespace Prisma {
   };
 
   export type CaseDocumentScalarFieldEnum = (typeof CaseDocumentScalarFieldEnum)[keyof typeof CaseDocumentScalarFieldEnum]
+
+
+  export const CaseJudgementScalarFieldEnum: {
+    id: 'id',
+    caseId: 'caseId',
+    caseCourtDetailId: 'caseCourtDetailId',
+    type: 'type',
+    date: 'date',
+    verifiedDate: 'verifiedDate',
+    detail: 'detail',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type CaseJudgementScalarFieldEnum = (typeof CaseJudgementScalarFieldEnum)[keyof typeof CaseJudgementScalarFieldEnum]
 
 
   export const NotificationScalarFieldEnum: {
@@ -31662,8 +27861,6 @@ export namespace Prisma {
     reset_tokens?: PasswordResetTokenListRelationFilter
     pages?: PageListRelationFilter
     cases_as_lawyer?: CaseLawyerListRelationFilter
-    cases_as_pleader?: CasePleadingListRelationFilter
-    cases_as_counselor?: CaseCounselingListRelationFilter
     cases_payment_received?: CasePaymentListRelationFilter
     cases_created?: CaseListRelationFilter
   }
@@ -31690,8 +27887,6 @@ export namespace Prisma {
     reset_tokens?: PasswordResetTokenOrderByRelationAggregateInput
     pages?: PageOrderByRelationAggregateInput
     cases_as_lawyer?: CaseLawyerOrderByRelationAggregateInput
-    cases_as_pleader?: CasePleadingOrderByRelationAggregateInput
-    cases_as_counselor?: CaseCounselingOrderByRelationAggregateInput
     cases_payment_received?: CasePaymentOrderByRelationAggregateInput
     cases_created?: CaseOrderByRelationAggregateInput
   }
@@ -31721,8 +27916,6 @@ export namespace Prisma {
     reset_tokens?: PasswordResetTokenListRelationFilter
     pages?: PageListRelationFilter
     cases_as_lawyer?: CaseLawyerListRelationFilter
-    cases_as_pleader?: CasePleadingListRelationFilter
-    cases_as_counselor?: CaseCounselingListRelationFilter
     cases_payment_received?: CasePaymentListRelationFilter
     cases_created?: CaseListRelationFilter
   }, "id" | "email" | "invitation_token">
@@ -31962,14 +28155,12 @@ export namespace Prisma {
     id?: StringFilter<"CourtLevel"> | string
     name?: StringFilter<"CourtLevel"> | string
     nepaliName?: StringNullableFilter<"CourtLevel"> | string | null
-    proceedings?: CourtProceedingListRelationFilter
   }
 
   export type CourtLevelOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
     nepaliName?: SortOrderInput | SortOrder
-    proceedings?: CourtProceedingOrderByRelationAggregateInput
   }
 
   export type CourtLevelWhereUniqueInput = Prisma.AtLeast<{
@@ -31979,7 +28170,6 @@ export namespace Prisma {
     OR?: CourtLevelWhereInput[]
     NOT?: CourtLevelWhereInput | CourtLevelWhereInput[]
     nepaliName?: StringNullableFilter<"CourtLevel"> | string | null
-    proceedings?: CourtProceedingListRelationFilter
   }, "id" | "name">
 
   export type CourtLevelOrderByWithAggregationInput = {
@@ -32098,7 +28288,8 @@ export namespace Prisma {
     natureId?: StringFilter<"Case"> | string
     registrationFee?: DecimalNullableFilter<"Case"> | Decimal | DecimalJsLike | number | string | null
     facts?: StringNullableFilter<"Case"> | string | null
-    relatedLaws?: StringNullableFilter<"Case"> | string | null
+    details?: JsonNullableFilter<"Case">
+    relatedLaw?: JsonNullableFilter<"Case">
     referredThrough?: StringNullableFilter<"Case"> | string | null
     noticeStatus?: StringNullableFilter<"Case"> | string | null
     fullJudgmentDate?: DateTimeNullableFilter<"Case"> | Date | string | null
@@ -32112,12 +28303,9 @@ export namespace Prisma {
     lawyers?: CaseLawyerListRelationFilter
     parties?: CasePartyListRelationFilter
     hearings?: CaseHearingListRelationFilter
-    pleadings?: CasePleadingListRelationFilter
-    proceedings?: CourtProceedingListRelationFilter
-    precedents?: CasePrecedentListRelationFilter
     payments?: CasePaymentListRelationFilter
-    counselings?: CaseCounselingListRelationFilter
     documents?: CaseDocumentListRelationFilter
+    judgements?: CaseJudgementListRelationFilter
   }
 
   export type CaseOrderByWithRelationInput = {
@@ -32125,7 +28313,8 @@ export namespace Prisma {
     natureId?: SortOrder
     registrationFee?: SortOrderInput | SortOrder
     facts?: SortOrderInput | SortOrder
-    relatedLaws?: SortOrderInput | SortOrder
+    details?: SortOrderInput | SortOrder
+    relatedLaw?: SortOrderInput | SortOrder
     referredThrough?: SortOrderInput | SortOrder
     noticeStatus?: SortOrderInput | SortOrder
     fullJudgmentDate?: SortOrderInput | SortOrder
@@ -32139,12 +28328,9 @@ export namespace Prisma {
     lawyers?: CaseLawyerOrderByRelationAggregateInput
     parties?: CasePartyOrderByRelationAggregateInput
     hearings?: CaseHearingOrderByRelationAggregateInput
-    pleadings?: CasePleadingOrderByRelationAggregateInput
-    proceedings?: CourtProceedingOrderByRelationAggregateInput
-    precedents?: CasePrecedentOrderByRelationAggregateInput
     payments?: CasePaymentOrderByRelationAggregateInput
-    counselings?: CaseCounselingOrderByRelationAggregateInput
     documents?: CaseDocumentOrderByRelationAggregateInput
+    judgements?: CaseJudgementOrderByRelationAggregateInput
   }
 
   export type CaseWhereUniqueInput = Prisma.AtLeast<{
@@ -32155,7 +28341,8 @@ export namespace Prisma {
     natureId?: StringFilter<"Case"> | string
     registrationFee?: DecimalNullableFilter<"Case"> | Decimal | DecimalJsLike | number | string | null
     facts?: StringNullableFilter<"Case"> | string | null
-    relatedLaws?: StringNullableFilter<"Case"> | string | null
+    details?: JsonNullableFilter<"Case">
+    relatedLaw?: JsonNullableFilter<"Case">
     referredThrough?: StringNullableFilter<"Case"> | string | null
     noticeStatus?: StringNullableFilter<"Case"> | string | null
     fullJudgmentDate?: DateTimeNullableFilter<"Case"> | Date | string | null
@@ -32169,12 +28356,9 @@ export namespace Prisma {
     lawyers?: CaseLawyerListRelationFilter
     parties?: CasePartyListRelationFilter
     hearings?: CaseHearingListRelationFilter
-    pleadings?: CasePleadingListRelationFilter
-    proceedings?: CourtProceedingListRelationFilter
-    precedents?: CasePrecedentListRelationFilter
     payments?: CasePaymentListRelationFilter
-    counselings?: CaseCounselingListRelationFilter
     documents?: CaseDocumentListRelationFilter
+    judgements?: CaseJudgementListRelationFilter
   }, "id">
 
   export type CaseOrderByWithAggregationInput = {
@@ -32182,7 +28366,8 @@ export namespace Prisma {
     natureId?: SortOrder
     registrationFee?: SortOrderInput | SortOrder
     facts?: SortOrderInput | SortOrder
-    relatedLaws?: SortOrderInput | SortOrder
+    details?: SortOrderInput | SortOrder
+    relatedLaw?: SortOrderInput | SortOrder
     referredThrough?: SortOrderInput | SortOrder
     noticeStatus?: SortOrderInput | SortOrder
     fullJudgmentDate?: SortOrderInput | SortOrder
@@ -32205,7 +28390,8 @@ export namespace Prisma {
     natureId?: StringWithAggregatesFilter<"Case"> | string
     registrationFee?: DecimalNullableWithAggregatesFilter<"Case"> | Decimal | DecimalJsLike | number | string | null
     facts?: StringNullableWithAggregatesFilter<"Case"> | string | null
-    relatedLaws?: StringNullableWithAggregatesFilter<"Case"> | string | null
+    details?: JsonNullableWithAggregatesFilter<"Case">
+    relatedLaw?: JsonNullableWithAggregatesFilter<"Case">
     referredThrough?: StringNullableWithAggregatesFilter<"Case"> | string | null
     noticeStatus?: StringNullableWithAggregatesFilter<"Case"> | string | null
     fullJudgmentDate?: DateTimeNullableWithAggregatesFilter<"Case"> | Date | string | null
@@ -32235,6 +28421,7 @@ export namespace Prisma {
     parent?: XOR<CaseCourtDetailNullableScalarRelationFilter, CaseCourtDetailWhereInput> | null
     children?: CaseCourtDetailListRelationFilter
     hearings?: CaseHearingListRelationFilter
+    judgements?: CaseJudgementListRelationFilter
   }
 
   export type CaseCourtDetailOrderByWithRelationInput = {
@@ -32254,6 +28441,7 @@ export namespace Prisma {
     parent?: CaseCourtDetailOrderByWithRelationInput
     children?: CaseCourtDetailOrderByRelationAggregateInput
     hearings?: CaseHearingOrderByRelationAggregateInput
+    judgements?: CaseJudgementOrderByRelationAggregateInput
   }
 
   export type CaseCourtDetailWhereUniqueInput = Prisma.AtLeast<{
@@ -32276,6 +28464,7 @@ export namespace Prisma {
     parent?: XOR<CaseCourtDetailNullableScalarRelationFilter, CaseCourtDetailWhereInput> | null
     children?: CaseCourtDetailListRelationFilter
     hearings?: CaseHearingListRelationFilter
+    judgements?: CaseJudgementListRelationFilter
   }, "id">
 
   export type CaseCourtDetailOrderByWithAggregationInput = {
@@ -32517,192 +28706,6 @@ export namespace Prisma {
     hearingOrder?: StringNullableWithAggregatesFilter<"CaseHearing"> | string | null
   }
 
-  export type CasePleadingWhereInput = {
-    AND?: CasePleadingWhereInput | CasePleadingWhereInput[]
-    OR?: CasePleadingWhereInput[]
-    NOT?: CasePleadingWhereInput | CasePleadingWhereInput[]
-    id?: StringFilter<"CasePleading"> | string
-    caseId?: StringFilter<"CasePleading"> | string
-    pleaderUserId?: StringNullableFilter<"CasePleading"> | string | null
-    pleadingDate?: DateTimeNullableFilter<"CasePleading"> | Date | string | null
-    pleadingNotes?: StringFilter<"CasePleading"> | string
-    case?: XOR<CaseScalarRelationFilter, CaseWhereInput>
-    pleader?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
-  }
-
-  export type CasePleadingOrderByWithRelationInput = {
-    id?: SortOrder
-    caseId?: SortOrder
-    pleaderUserId?: SortOrderInput | SortOrder
-    pleadingDate?: SortOrderInput | SortOrder
-    pleadingNotes?: SortOrder
-    case?: CaseOrderByWithRelationInput
-    pleader?: UserOrderByWithRelationInput
-  }
-
-  export type CasePleadingWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    AND?: CasePleadingWhereInput | CasePleadingWhereInput[]
-    OR?: CasePleadingWhereInput[]
-    NOT?: CasePleadingWhereInput | CasePleadingWhereInput[]
-    caseId?: StringFilter<"CasePleading"> | string
-    pleaderUserId?: StringNullableFilter<"CasePleading"> | string | null
-    pleadingDate?: DateTimeNullableFilter<"CasePleading"> | Date | string | null
-    pleadingNotes?: StringFilter<"CasePleading"> | string
-    case?: XOR<CaseScalarRelationFilter, CaseWhereInput>
-    pleader?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
-  }, "id">
-
-  export type CasePleadingOrderByWithAggregationInput = {
-    id?: SortOrder
-    caseId?: SortOrder
-    pleaderUserId?: SortOrderInput | SortOrder
-    pleadingDate?: SortOrderInput | SortOrder
-    pleadingNotes?: SortOrder
-    _count?: CasePleadingCountOrderByAggregateInput
-    _max?: CasePleadingMaxOrderByAggregateInput
-    _min?: CasePleadingMinOrderByAggregateInput
-  }
-
-  export type CasePleadingScalarWhereWithAggregatesInput = {
-    AND?: CasePleadingScalarWhereWithAggregatesInput | CasePleadingScalarWhereWithAggregatesInput[]
-    OR?: CasePleadingScalarWhereWithAggregatesInput[]
-    NOT?: CasePleadingScalarWhereWithAggregatesInput | CasePleadingScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"CasePleading"> | string
-    caseId?: StringWithAggregatesFilter<"CasePleading"> | string
-    pleaderUserId?: StringNullableWithAggregatesFilter<"CasePleading"> | string | null
-    pleadingDate?: DateTimeNullableWithAggregatesFilter<"CasePleading"> | Date | string | null
-    pleadingNotes?: StringWithAggregatesFilter<"CasePleading"> | string
-  }
-
-  export type CourtProceedingWhereInput = {
-    AND?: CourtProceedingWhereInput | CourtProceedingWhereInput[]
-    OR?: CourtProceedingWhereInput[]
-    NOT?: CourtProceedingWhereInput | CourtProceedingWhereInput[]
-    id?: StringFilter<"CourtProceeding"> | string
-    caseId?: StringFilter<"CourtProceeding"> | string
-    courtLevelId?: StringFilter<"CourtProceeding"> | string
-    courtName?: StringFilter<"CourtProceeding"> | string
-    judgeName?: StringNullableFilter<"CourtProceeding"> | string | null
-    chargeCounseling?: StringNullableFilter<"CourtProceeding"> | string | null
-    verdict?: StringNullableFilter<"CourtProceeding"> | string | null
-    case?: XOR<CaseScalarRelationFilter, CaseWhereInput>
-    courtLevel?: XOR<CourtLevelScalarRelationFilter, CourtLevelWhereInput>
-  }
-
-  export type CourtProceedingOrderByWithRelationInput = {
-    id?: SortOrder
-    caseId?: SortOrder
-    courtLevelId?: SortOrder
-    courtName?: SortOrder
-    judgeName?: SortOrderInput | SortOrder
-    chargeCounseling?: SortOrderInput | SortOrder
-    verdict?: SortOrderInput | SortOrder
-    case?: CaseOrderByWithRelationInput
-    courtLevel?: CourtLevelOrderByWithRelationInput
-  }
-
-  export type CourtProceedingWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    AND?: CourtProceedingWhereInput | CourtProceedingWhereInput[]
-    OR?: CourtProceedingWhereInput[]
-    NOT?: CourtProceedingWhereInput | CourtProceedingWhereInput[]
-    caseId?: StringFilter<"CourtProceeding"> | string
-    courtLevelId?: StringFilter<"CourtProceeding"> | string
-    courtName?: StringFilter<"CourtProceeding"> | string
-    judgeName?: StringNullableFilter<"CourtProceeding"> | string | null
-    chargeCounseling?: StringNullableFilter<"CourtProceeding"> | string | null
-    verdict?: StringNullableFilter<"CourtProceeding"> | string | null
-    case?: XOR<CaseScalarRelationFilter, CaseWhereInput>
-    courtLevel?: XOR<CourtLevelScalarRelationFilter, CourtLevelWhereInput>
-  }, "id">
-
-  export type CourtProceedingOrderByWithAggregationInput = {
-    id?: SortOrder
-    caseId?: SortOrder
-    courtLevelId?: SortOrder
-    courtName?: SortOrder
-    judgeName?: SortOrderInput | SortOrder
-    chargeCounseling?: SortOrderInput | SortOrder
-    verdict?: SortOrderInput | SortOrder
-    _count?: CourtProceedingCountOrderByAggregateInput
-    _max?: CourtProceedingMaxOrderByAggregateInput
-    _min?: CourtProceedingMinOrderByAggregateInput
-  }
-
-  export type CourtProceedingScalarWhereWithAggregatesInput = {
-    AND?: CourtProceedingScalarWhereWithAggregatesInput | CourtProceedingScalarWhereWithAggregatesInput[]
-    OR?: CourtProceedingScalarWhereWithAggregatesInput[]
-    NOT?: CourtProceedingScalarWhereWithAggregatesInput | CourtProceedingScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"CourtProceeding"> | string
-    caseId?: StringWithAggregatesFilter<"CourtProceeding"> | string
-    courtLevelId?: StringWithAggregatesFilter<"CourtProceeding"> | string
-    courtName?: StringWithAggregatesFilter<"CourtProceeding"> | string
-    judgeName?: StringNullableWithAggregatesFilter<"CourtProceeding"> | string | null
-    chargeCounseling?: StringNullableWithAggregatesFilter<"CourtProceeding"> | string | null
-    verdict?: StringNullableWithAggregatesFilter<"CourtProceeding"> | string | null
-  }
-
-  export type CasePrecedentWhereInput = {
-    AND?: CasePrecedentWhereInput | CasePrecedentWhereInput[]
-    OR?: CasePrecedentWhereInput[]
-    NOT?: CasePrecedentWhereInput | CasePrecedentWhereInput[]
-    id?: StringFilter<"CasePrecedent"> | string
-    caseId?: StringFilter<"CasePrecedent"> | string
-    decisionNumber?: StringNullableFilter<"CasePrecedent"> | string | null
-    plaintiff?: StringNullableFilter<"CasePrecedent"> | string | null
-    defendant?: StringNullableFilter<"CasePrecedent"> | string | null
-    citationNotes?: StringNullableFilter<"CasePrecedent"> | string | null
-    case?: XOR<CaseScalarRelationFilter, CaseWhereInput>
-  }
-
-  export type CasePrecedentOrderByWithRelationInput = {
-    id?: SortOrder
-    caseId?: SortOrder
-    decisionNumber?: SortOrderInput | SortOrder
-    plaintiff?: SortOrderInput | SortOrder
-    defendant?: SortOrderInput | SortOrder
-    citationNotes?: SortOrderInput | SortOrder
-    case?: CaseOrderByWithRelationInput
-  }
-
-  export type CasePrecedentWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    AND?: CasePrecedentWhereInput | CasePrecedentWhereInput[]
-    OR?: CasePrecedentWhereInput[]
-    NOT?: CasePrecedentWhereInput | CasePrecedentWhereInput[]
-    caseId?: StringFilter<"CasePrecedent"> | string
-    decisionNumber?: StringNullableFilter<"CasePrecedent"> | string | null
-    plaintiff?: StringNullableFilter<"CasePrecedent"> | string | null
-    defendant?: StringNullableFilter<"CasePrecedent"> | string | null
-    citationNotes?: StringNullableFilter<"CasePrecedent"> | string | null
-    case?: XOR<CaseScalarRelationFilter, CaseWhereInput>
-  }, "id">
-
-  export type CasePrecedentOrderByWithAggregationInput = {
-    id?: SortOrder
-    caseId?: SortOrder
-    decisionNumber?: SortOrderInput | SortOrder
-    plaintiff?: SortOrderInput | SortOrder
-    defendant?: SortOrderInput | SortOrder
-    citationNotes?: SortOrderInput | SortOrder
-    _count?: CasePrecedentCountOrderByAggregateInput
-    _max?: CasePrecedentMaxOrderByAggregateInput
-    _min?: CasePrecedentMinOrderByAggregateInput
-  }
-
-  export type CasePrecedentScalarWhereWithAggregatesInput = {
-    AND?: CasePrecedentScalarWhereWithAggregatesInput | CasePrecedentScalarWhereWithAggregatesInput[]
-    OR?: CasePrecedentScalarWhereWithAggregatesInput[]
-    NOT?: CasePrecedentScalarWhereWithAggregatesInput | CasePrecedentScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"CasePrecedent"> | string
-    caseId?: StringWithAggregatesFilter<"CasePrecedent"> | string
-    decisionNumber?: StringNullableWithAggregatesFilter<"CasePrecedent"> | string | null
-    plaintiff?: StringNullableWithAggregatesFilter<"CasePrecedent"> | string | null
-    defendant?: StringNullableWithAggregatesFilter<"CasePrecedent"> | string | null
-    citationNotes?: StringNullableWithAggregatesFilter<"CasePrecedent"> | string | null
-  }
-
   export type CasePaymentWhereInput = {
     AND?: CasePaymentWhereInput | CasePaymentWhereInput[]
     OR?: CasePaymentWhereInput[]
@@ -32788,69 +28791,6 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"CasePayment"> | Date | string
   }
 
-  export type CaseCounselingWhereInput = {
-    AND?: CaseCounselingWhereInput | CaseCounselingWhereInput[]
-    OR?: CaseCounselingWhereInput[]
-    NOT?: CaseCounselingWhereInput | CaseCounselingWhereInput[]
-    id?: StringFilter<"CaseCounseling"> | string
-    caseId?: StringFilter<"CaseCounseling"> | string
-    counselorUserId?: StringNullableFilter<"CaseCounseling"> | string | null
-    date?: DateTimeNullableFilter<"CaseCounseling"> | Date | string | null
-    notes?: StringFilter<"CaseCounseling"> | string
-    createdAt?: DateTimeFilter<"CaseCounseling"> | Date | string
-    case?: XOR<CaseScalarRelationFilter, CaseWhereInput>
-    counselor?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
-  }
-
-  export type CaseCounselingOrderByWithRelationInput = {
-    id?: SortOrder
-    caseId?: SortOrder
-    counselorUserId?: SortOrderInput | SortOrder
-    date?: SortOrderInput | SortOrder
-    notes?: SortOrder
-    createdAt?: SortOrder
-    case?: CaseOrderByWithRelationInput
-    counselor?: UserOrderByWithRelationInput
-  }
-
-  export type CaseCounselingWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    AND?: CaseCounselingWhereInput | CaseCounselingWhereInput[]
-    OR?: CaseCounselingWhereInput[]
-    NOT?: CaseCounselingWhereInput | CaseCounselingWhereInput[]
-    caseId?: StringFilter<"CaseCounseling"> | string
-    counselorUserId?: StringNullableFilter<"CaseCounseling"> | string | null
-    date?: DateTimeNullableFilter<"CaseCounseling"> | Date | string | null
-    notes?: StringFilter<"CaseCounseling"> | string
-    createdAt?: DateTimeFilter<"CaseCounseling"> | Date | string
-    case?: XOR<CaseScalarRelationFilter, CaseWhereInput>
-    counselor?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
-  }, "id">
-
-  export type CaseCounselingOrderByWithAggregationInput = {
-    id?: SortOrder
-    caseId?: SortOrder
-    counselorUserId?: SortOrderInput | SortOrder
-    date?: SortOrderInput | SortOrder
-    notes?: SortOrder
-    createdAt?: SortOrder
-    _count?: CaseCounselingCountOrderByAggregateInput
-    _max?: CaseCounselingMaxOrderByAggregateInput
-    _min?: CaseCounselingMinOrderByAggregateInput
-  }
-
-  export type CaseCounselingScalarWhereWithAggregatesInput = {
-    AND?: CaseCounselingScalarWhereWithAggregatesInput | CaseCounselingScalarWhereWithAggregatesInput[]
-    OR?: CaseCounselingScalarWhereWithAggregatesInput[]
-    NOT?: CaseCounselingScalarWhereWithAggregatesInput | CaseCounselingScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"CaseCounseling"> | string
-    caseId?: StringWithAggregatesFilter<"CaseCounseling"> | string
-    counselorUserId?: StringNullableWithAggregatesFilter<"CaseCounseling"> | string | null
-    date?: DateTimeNullableWithAggregatesFilter<"CaseCounseling"> | Date | string | null
-    notes?: StringWithAggregatesFilter<"CaseCounseling"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"CaseCounseling"> | Date | string
-  }
-
   export type CaseDocumentWhereInput = {
     AND?: CaseDocumentWhereInput | CaseDocumentWhereInput[]
     OR?: CaseDocumentWhereInput[]
@@ -32909,6 +28849,84 @@ export namespace Prisma {
     description?: StringNullableWithAggregatesFilter<"CaseDocument"> | string | null
     documentUrl?: StringWithAggregatesFilter<"CaseDocument"> | string
     createdAt?: DateTimeWithAggregatesFilter<"CaseDocument"> | Date | string
+  }
+
+  export type CaseJudgementWhereInput = {
+    AND?: CaseJudgementWhereInput | CaseJudgementWhereInput[]
+    OR?: CaseJudgementWhereInput[]
+    NOT?: CaseJudgementWhereInput | CaseJudgementWhereInput[]
+    id?: StringFilter<"CaseJudgement"> | string
+    caseId?: StringFilter<"CaseJudgement"> | string
+    caseCourtDetailId?: StringFilter<"CaseJudgement"> | string
+    type?: StringFilter<"CaseJudgement"> | string
+    date?: DateTimeNullableFilter<"CaseJudgement"> | Date | string | null
+    verifiedDate?: DateTimeNullableFilter<"CaseJudgement"> | Date | string | null
+    detail?: JsonNullableFilter<"CaseJudgement">
+    createdAt?: DateTimeFilter<"CaseJudgement"> | Date | string
+    updatedAt?: DateTimeFilter<"CaseJudgement"> | Date | string
+    case?: XOR<CaseScalarRelationFilter, CaseWhereInput>
+    caseCourtDetail?: XOR<CaseCourtDetailScalarRelationFilter, CaseCourtDetailWhereInput>
+  }
+
+  export type CaseJudgementOrderByWithRelationInput = {
+    id?: SortOrder
+    caseId?: SortOrder
+    caseCourtDetailId?: SortOrder
+    type?: SortOrder
+    date?: SortOrderInput | SortOrder
+    verifiedDate?: SortOrderInput | SortOrder
+    detail?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    case?: CaseOrderByWithRelationInput
+    caseCourtDetail?: CaseCourtDetailOrderByWithRelationInput
+  }
+
+  export type CaseJudgementWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: CaseJudgementWhereInput | CaseJudgementWhereInput[]
+    OR?: CaseJudgementWhereInput[]
+    NOT?: CaseJudgementWhereInput | CaseJudgementWhereInput[]
+    caseId?: StringFilter<"CaseJudgement"> | string
+    caseCourtDetailId?: StringFilter<"CaseJudgement"> | string
+    type?: StringFilter<"CaseJudgement"> | string
+    date?: DateTimeNullableFilter<"CaseJudgement"> | Date | string | null
+    verifiedDate?: DateTimeNullableFilter<"CaseJudgement"> | Date | string | null
+    detail?: JsonNullableFilter<"CaseJudgement">
+    createdAt?: DateTimeFilter<"CaseJudgement"> | Date | string
+    updatedAt?: DateTimeFilter<"CaseJudgement"> | Date | string
+    case?: XOR<CaseScalarRelationFilter, CaseWhereInput>
+    caseCourtDetail?: XOR<CaseCourtDetailScalarRelationFilter, CaseCourtDetailWhereInput>
+  }, "id">
+
+  export type CaseJudgementOrderByWithAggregationInput = {
+    id?: SortOrder
+    caseId?: SortOrder
+    caseCourtDetailId?: SortOrder
+    type?: SortOrder
+    date?: SortOrderInput | SortOrder
+    verifiedDate?: SortOrderInput | SortOrder
+    detail?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: CaseJudgementCountOrderByAggregateInput
+    _max?: CaseJudgementMaxOrderByAggregateInput
+    _min?: CaseJudgementMinOrderByAggregateInput
+  }
+
+  export type CaseJudgementScalarWhereWithAggregatesInput = {
+    AND?: CaseJudgementScalarWhereWithAggregatesInput | CaseJudgementScalarWhereWithAggregatesInput[]
+    OR?: CaseJudgementScalarWhereWithAggregatesInput[]
+    NOT?: CaseJudgementScalarWhereWithAggregatesInput | CaseJudgementScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"CaseJudgement"> | string
+    caseId?: StringWithAggregatesFilter<"CaseJudgement"> | string
+    caseCourtDetailId?: StringWithAggregatesFilter<"CaseJudgement"> | string
+    type?: StringWithAggregatesFilter<"CaseJudgement"> | string
+    date?: DateTimeNullableWithAggregatesFilter<"CaseJudgement"> | Date | string | null
+    verifiedDate?: DateTimeNullableWithAggregatesFilter<"CaseJudgement"> | Date | string | null
+    detail?: JsonNullableWithAggregatesFilter<"CaseJudgement">
+    createdAt?: DateTimeWithAggregatesFilter<"CaseJudgement"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"CaseJudgement"> | Date | string
   }
 
   export type NotificationWhereInput = {
@@ -33412,8 +29430,6 @@ export namespace Prisma {
     reset_tokens?: PasswordResetTokenCreateNestedManyWithoutUserInput
     pages?: PageCreateNestedManyWithoutAuthorInput
     cases_as_lawyer?: CaseLawyerCreateNestedManyWithoutUserInput
-    cases_as_pleader?: CasePleadingCreateNestedManyWithoutPleaderInput
-    cases_as_counselor?: CaseCounselingCreateNestedManyWithoutCounselorInput
     cases_payment_received?: CasePaymentCreateNestedManyWithoutReceivedByUserInput
     cases_created?: CaseCreateNestedManyWithoutCreatedByInput
   }
@@ -33438,8 +29454,6 @@ export namespace Prisma {
     reset_tokens?: PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
     pages?: PageUncheckedCreateNestedManyWithoutAuthorInput
     cases_as_lawyer?: CaseLawyerUncheckedCreateNestedManyWithoutUserInput
-    cases_as_pleader?: CasePleadingUncheckedCreateNestedManyWithoutPleaderInput
-    cases_as_counselor?: CaseCounselingUncheckedCreateNestedManyWithoutCounselorInput
     cases_payment_received?: CasePaymentUncheckedCreateNestedManyWithoutReceivedByUserInput
     cases_created?: CaseUncheckedCreateNestedManyWithoutCreatedByInput
   }
@@ -33464,8 +29478,6 @@ export namespace Prisma {
     reset_tokens?: PasswordResetTokenUpdateManyWithoutUserNestedInput
     pages?: PageUpdateManyWithoutAuthorNestedInput
     cases_as_lawyer?: CaseLawyerUpdateManyWithoutUserNestedInput
-    cases_as_pleader?: CasePleadingUpdateManyWithoutPleaderNestedInput
-    cases_as_counselor?: CaseCounselingUpdateManyWithoutCounselorNestedInput
     cases_payment_received?: CasePaymentUpdateManyWithoutReceivedByUserNestedInput
     cases_created?: CaseUpdateManyWithoutCreatedByNestedInput
   }
@@ -33490,8 +29502,6 @@ export namespace Prisma {
     reset_tokens?: PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
     pages?: PageUncheckedUpdateManyWithoutAuthorNestedInput
     cases_as_lawyer?: CaseLawyerUncheckedUpdateManyWithoutUserNestedInput
-    cases_as_pleader?: CasePleadingUncheckedUpdateManyWithoutPleaderNestedInput
-    cases_as_counselor?: CaseCounselingUncheckedUpdateManyWithoutCounselorNestedInput
     cases_payment_received?: CasePaymentUncheckedUpdateManyWithoutReceivedByUserNestedInput
     cases_created?: CaseUncheckedUpdateManyWithoutCreatedByNestedInput
   }
@@ -33748,28 +29758,24 @@ export namespace Prisma {
     id?: string
     name: string
     nepaliName?: string | null
-    proceedings?: CourtProceedingCreateNestedManyWithoutCourtLevelInput
   }
 
   export type CourtLevelUncheckedCreateInput = {
     id?: string
     name: string
     nepaliName?: string | null
-    proceedings?: CourtProceedingUncheckedCreateNestedManyWithoutCourtLevelInput
   }
 
   export type CourtLevelUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     nepaliName?: NullableStringFieldUpdateOperationsInput | string | null
-    proceedings?: CourtProceedingUpdateManyWithoutCourtLevelNestedInput
   }
 
   export type CourtLevelUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     nepaliName?: NullableStringFieldUpdateOperationsInput | string | null
-    proceedings?: CourtProceedingUncheckedUpdateManyWithoutCourtLevelNestedInput
   }
 
   export type CourtLevelCreateManyInput = {
@@ -33886,7 +29892,8 @@ export namespace Prisma {
     id?: string
     registrationFee?: Decimal | DecimalJsLike | number | string | null
     facts?: string | null
-    relatedLaws?: string | null
+    details?: NullableJsonNullValueInput | InputJsonValue
+    relatedLaw?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: string | null
     noticeStatus?: string | null
     fullJudgmentDate?: Date | string | null
@@ -33899,12 +29906,9 @@ export namespace Prisma {
     lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
     parties?: CasePartyCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingCreateNestedManyWithoutCaseInput
-    pleadings?: CasePleadingCreateNestedManyWithoutCaseInput
-    proceedings?: CourtProceedingCreateNestedManyWithoutCaseInput
-    precedents?: CasePrecedentCreateNestedManyWithoutCaseInput
     payments?: CasePaymentCreateNestedManyWithoutCaseInput
-    counselings?: CaseCounselingCreateNestedManyWithoutCaseInput
     documents?: CaseDocumentCreateNestedManyWithoutCaseInput
+    judgements?: CaseJudgementCreateNestedManyWithoutCaseInput
   }
 
   export type CaseUncheckedCreateInput = {
@@ -33912,7 +29916,8 @@ export namespace Prisma {
     natureId: string
     registrationFee?: Decimal | DecimalJsLike | number | string | null
     facts?: string | null
-    relatedLaws?: string | null
+    details?: NullableJsonNullValueInput | InputJsonValue
+    relatedLaw?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: string | null
     noticeStatus?: string | null
     fullJudgmentDate?: Date | string | null
@@ -33924,19 +29929,17 @@ export namespace Prisma {
     lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
     parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingUncheckedCreateNestedManyWithoutCaseInput
-    pleadings?: CasePleadingUncheckedCreateNestedManyWithoutCaseInput
-    proceedings?: CourtProceedingUncheckedCreateNestedManyWithoutCaseInput
-    precedents?: CasePrecedentUncheckedCreateNestedManyWithoutCaseInput
     payments?: CasePaymentUncheckedCreateNestedManyWithoutCaseInput
-    counselings?: CaseCounselingUncheckedCreateNestedManyWithoutCaseInput
     documents?: CaseDocumentUncheckedCreateNestedManyWithoutCaseInput
+    judgements?: CaseJudgementUncheckedCreateNestedManyWithoutCaseInput
   }
 
   export type CaseUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     facts?: NullableStringFieldUpdateOperationsInput | string | null
-    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    details?: NullableJsonNullValueInput | InputJsonValue
+    relatedLaw?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
     noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -33949,12 +29952,9 @@ export namespace Prisma {
     lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUpdateManyWithoutCaseNestedInput
-    pleadings?: CasePleadingUpdateManyWithoutCaseNestedInput
-    proceedings?: CourtProceedingUpdateManyWithoutCaseNestedInput
-    precedents?: CasePrecedentUpdateManyWithoutCaseNestedInput
     payments?: CasePaymentUpdateManyWithoutCaseNestedInput
-    counselings?: CaseCounselingUpdateManyWithoutCaseNestedInput
     documents?: CaseDocumentUpdateManyWithoutCaseNestedInput
+    judgements?: CaseJudgementUpdateManyWithoutCaseNestedInput
   }
 
   export type CaseUncheckedUpdateInput = {
@@ -33962,7 +29962,8 @@ export namespace Prisma {
     natureId?: StringFieldUpdateOperationsInput | string
     registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     facts?: NullableStringFieldUpdateOperationsInput | string | null
-    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    details?: NullableJsonNullValueInput | InputJsonValue
+    relatedLaw?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
     noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -33974,12 +29975,9 @@ export namespace Prisma {
     lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUncheckedUpdateManyWithoutCaseNestedInput
-    pleadings?: CasePleadingUncheckedUpdateManyWithoutCaseNestedInput
-    proceedings?: CourtProceedingUncheckedUpdateManyWithoutCaseNestedInput
-    precedents?: CasePrecedentUncheckedUpdateManyWithoutCaseNestedInput
     payments?: CasePaymentUncheckedUpdateManyWithoutCaseNestedInput
-    counselings?: CaseCounselingUncheckedUpdateManyWithoutCaseNestedInput
     documents?: CaseDocumentUncheckedUpdateManyWithoutCaseNestedInput
+    judgements?: CaseJudgementUncheckedUpdateManyWithoutCaseNestedInput
   }
 
   export type CaseCreateManyInput = {
@@ -33987,7 +29985,8 @@ export namespace Prisma {
     natureId: string
     registrationFee?: Decimal | DecimalJsLike | number | string | null
     facts?: string | null
-    relatedLaws?: string | null
+    details?: NullableJsonNullValueInput | InputJsonValue
+    relatedLaw?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: string | null
     noticeStatus?: string | null
     fullJudgmentDate?: Date | string | null
@@ -34001,7 +30000,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     facts?: NullableStringFieldUpdateOperationsInput | string | null
-    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    details?: NullableJsonNullValueInput | InputJsonValue
+    relatedLaw?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
     noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -34015,7 +30015,8 @@ export namespace Prisma {
     natureId?: StringFieldUpdateOperationsInput | string
     registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     facts?: NullableStringFieldUpdateOperationsInput | string | null
-    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    details?: NullableJsonNullValueInput | InputJsonValue
+    relatedLaw?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
     noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -34040,6 +30041,7 @@ export namespace Prisma {
     parent?: CaseCourtDetailCreateNestedOneWithoutChildrenInput
     children?: CaseCourtDetailCreateNestedManyWithoutParentInput
     hearings?: CaseHearingCreateNestedManyWithoutCaseCourtDetailInput
+    judgements?: CaseJudgementCreateNestedManyWithoutCaseCourtDetailInput
   }
 
   export type CaseCourtDetailUncheckedCreateInput = {
@@ -34057,6 +30059,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     children?: CaseCourtDetailUncheckedCreateNestedManyWithoutParentInput
     hearings?: CaseHearingUncheckedCreateNestedManyWithoutCaseCourtDetailInput
+    judgements?: CaseJudgementUncheckedCreateNestedManyWithoutCaseCourtDetailInput
   }
 
   export type CaseCourtDetailUpdateInput = {
@@ -34074,6 +30077,7 @@ export namespace Prisma {
     parent?: CaseCourtDetailUpdateOneWithoutChildrenNestedInput
     children?: CaseCourtDetailUpdateManyWithoutParentNestedInput
     hearings?: CaseHearingUpdateManyWithoutCaseCourtDetailNestedInput
+    judgements?: CaseJudgementUpdateManyWithoutCaseCourtDetailNestedInput
   }
 
   export type CaseCourtDetailUncheckedUpdateInput = {
@@ -34091,6 +30095,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     children?: CaseCourtDetailUncheckedUpdateManyWithoutParentNestedInput
     hearings?: CaseHearingUncheckedUpdateManyWithoutCaseCourtDetailNestedInput
+    judgements?: CaseJudgementUncheckedUpdateManyWithoutCaseCourtDetailNestedInput
   }
 
   export type CaseCourtDetailCreateManyInput = {
@@ -34329,190 +30334,6 @@ export namespace Prisma {
     hearingOrder?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type CasePleadingCreateInput = {
-    id?: string
-    pleadingDate?: Date | string | null
-    pleadingNotes: string
-    case: CaseCreateNestedOneWithoutPleadingsInput
-    pleader?: UserCreateNestedOneWithoutCases_as_pleaderInput
-  }
-
-  export type CasePleadingUncheckedCreateInput = {
-    id?: string
-    caseId: string
-    pleaderUserId?: string | null
-    pleadingDate?: Date | string | null
-    pleadingNotes: string
-  }
-
-  export type CasePleadingUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    pleadingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    pleadingNotes?: StringFieldUpdateOperationsInput | string
-    case?: CaseUpdateOneRequiredWithoutPleadingsNestedInput
-    pleader?: UserUpdateOneWithoutCases_as_pleaderNestedInput
-  }
-
-  export type CasePleadingUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    caseId?: StringFieldUpdateOperationsInput | string
-    pleaderUserId?: NullableStringFieldUpdateOperationsInput | string | null
-    pleadingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    pleadingNotes?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type CasePleadingCreateManyInput = {
-    id?: string
-    caseId: string
-    pleaderUserId?: string | null
-    pleadingDate?: Date | string | null
-    pleadingNotes: string
-  }
-
-  export type CasePleadingUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    pleadingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    pleadingNotes?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type CasePleadingUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    caseId?: StringFieldUpdateOperationsInput | string
-    pleaderUserId?: NullableStringFieldUpdateOperationsInput | string | null
-    pleadingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    pleadingNotes?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type CourtProceedingCreateInput = {
-    id?: string
-    courtName: string
-    judgeName?: string | null
-    chargeCounseling?: string | null
-    verdict?: string | null
-    case: CaseCreateNestedOneWithoutProceedingsInput
-    courtLevel: CourtLevelCreateNestedOneWithoutProceedingsInput
-  }
-
-  export type CourtProceedingUncheckedCreateInput = {
-    id?: string
-    caseId: string
-    courtLevelId: string
-    courtName: string
-    judgeName?: string | null
-    chargeCounseling?: string | null
-    verdict?: string | null
-  }
-
-  export type CourtProceedingUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    courtName?: StringFieldUpdateOperationsInput | string
-    judgeName?: NullableStringFieldUpdateOperationsInput | string | null
-    chargeCounseling?: NullableStringFieldUpdateOperationsInput | string | null
-    verdict?: NullableStringFieldUpdateOperationsInput | string | null
-    case?: CaseUpdateOneRequiredWithoutProceedingsNestedInput
-    courtLevel?: CourtLevelUpdateOneRequiredWithoutProceedingsNestedInput
-  }
-
-  export type CourtProceedingUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    caseId?: StringFieldUpdateOperationsInput | string
-    courtLevelId?: StringFieldUpdateOperationsInput | string
-    courtName?: StringFieldUpdateOperationsInput | string
-    judgeName?: NullableStringFieldUpdateOperationsInput | string | null
-    chargeCounseling?: NullableStringFieldUpdateOperationsInput | string | null
-    verdict?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type CourtProceedingCreateManyInput = {
-    id?: string
-    caseId: string
-    courtLevelId: string
-    courtName: string
-    judgeName?: string | null
-    chargeCounseling?: string | null
-    verdict?: string | null
-  }
-
-  export type CourtProceedingUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    courtName?: StringFieldUpdateOperationsInput | string
-    judgeName?: NullableStringFieldUpdateOperationsInput | string | null
-    chargeCounseling?: NullableStringFieldUpdateOperationsInput | string | null
-    verdict?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type CourtProceedingUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    caseId?: StringFieldUpdateOperationsInput | string
-    courtLevelId?: StringFieldUpdateOperationsInput | string
-    courtName?: StringFieldUpdateOperationsInput | string
-    judgeName?: NullableStringFieldUpdateOperationsInput | string | null
-    chargeCounseling?: NullableStringFieldUpdateOperationsInput | string | null
-    verdict?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type CasePrecedentCreateInput = {
-    id?: string
-    decisionNumber?: string | null
-    plaintiff?: string | null
-    defendant?: string | null
-    citationNotes?: string | null
-    case: CaseCreateNestedOneWithoutPrecedentsInput
-  }
-
-  export type CasePrecedentUncheckedCreateInput = {
-    id?: string
-    caseId: string
-    decisionNumber?: string | null
-    plaintiff?: string | null
-    defendant?: string | null
-    citationNotes?: string | null
-  }
-
-  export type CasePrecedentUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    decisionNumber?: NullableStringFieldUpdateOperationsInput | string | null
-    plaintiff?: NullableStringFieldUpdateOperationsInput | string | null
-    defendant?: NullableStringFieldUpdateOperationsInput | string | null
-    citationNotes?: NullableStringFieldUpdateOperationsInput | string | null
-    case?: CaseUpdateOneRequiredWithoutPrecedentsNestedInput
-  }
-
-  export type CasePrecedentUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    caseId?: StringFieldUpdateOperationsInput | string
-    decisionNumber?: NullableStringFieldUpdateOperationsInput | string | null
-    plaintiff?: NullableStringFieldUpdateOperationsInput | string | null
-    defendant?: NullableStringFieldUpdateOperationsInput | string | null
-    citationNotes?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type CasePrecedentCreateManyInput = {
-    id?: string
-    caseId: string
-    decisionNumber?: string | null
-    plaintiff?: string | null
-    defendant?: string | null
-    citationNotes?: string | null
-  }
-
-  export type CasePrecedentUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    decisionNumber?: NullableStringFieldUpdateOperationsInput | string | null
-    plaintiff?: NullableStringFieldUpdateOperationsInput | string | null
-    defendant?: NullableStringFieldUpdateOperationsInput | string | null
-    citationNotes?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type CasePrecedentUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    caseId?: StringFieldUpdateOperationsInput | string
-    decisionNumber?: NullableStringFieldUpdateOperationsInput | string | null
-    plaintiff?: NullableStringFieldUpdateOperationsInput | string | null
-    defendant?: NullableStringFieldUpdateOperationsInput | string | null
-    citationNotes?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
   export type CasePaymentCreateInput = {
     id?: string
     amount: Decimal | DecimalJsLike | number | string
@@ -34602,67 +30423,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type CaseCounselingCreateInput = {
-    id?: string
-    date?: Date | string | null
-    notes: string
-    createdAt?: Date | string
-    case: CaseCreateNestedOneWithoutCounselingsInput
-    counselor?: UserCreateNestedOneWithoutCases_as_counselorInput
-  }
-
-  export type CaseCounselingUncheckedCreateInput = {
-    id?: string
-    caseId: string
-    counselorUserId?: string | null
-    date?: Date | string | null
-    notes: string
-    createdAt?: Date | string
-  }
-
-  export type CaseCounselingUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    notes?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    case?: CaseUpdateOneRequiredWithoutCounselingsNestedInput
-    counselor?: UserUpdateOneWithoutCases_as_counselorNestedInput
-  }
-
-  export type CaseCounselingUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    caseId?: StringFieldUpdateOperationsInput | string
-    counselorUserId?: NullableStringFieldUpdateOperationsInput | string | null
-    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    notes?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type CaseCounselingCreateManyInput = {
-    id?: string
-    caseId: string
-    counselorUserId?: string | null
-    date?: Date | string | null
-    notes: string
-    createdAt?: Date | string
-  }
-
-  export type CaseCounselingUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    notes?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type CaseCounselingUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    caseId?: StringFieldUpdateOperationsInput | string
-    counselorUserId?: NullableStringFieldUpdateOperationsInput | string | null
-    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    notes?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
   export type CaseDocumentCreateInput = {
     id?: string
     fileName: string
@@ -34723,6 +30483,88 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     documentUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CaseJudgementCreateInput = {
+    id?: string
+    type: string
+    date?: Date | string | null
+    verifiedDate?: Date | string | null
+    detail?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    case: CaseCreateNestedOneWithoutJudgementsInput
+    caseCourtDetail: CaseCourtDetailCreateNestedOneWithoutJudgementsInput
+  }
+
+  export type CaseJudgementUncheckedCreateInput = {
+    id?: string
+    caseId: string
+    caseCourtDetailId: string
+    type: string
+    date?: Date | string | null
+    verifiedDate?: Date | string | null
+    detail?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CaseJudgementUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    detail?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    case?: CaseUpdateOneRequiredWithoutJudgementsNestedInput
+    caseCourtDetail?: CaseCourtDetailUpdateOneRequiredWithoutJudgementsNestedInput
+  }
+
+  export type CaseJudgementUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseId?: StringFieldUpdateOperationsInput | string
+    caseCourtDetailId?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    detail?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CaseJudgementCreateManyInput = {
+    id?: string
+    caseId: string
+    caseCourtDetailId: string
+    type: string
+    date?: Date | string | null
+    verifiedDate?: Date | string | null
+    detail?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CaseJudgementUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    detail?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CaseJudgementUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseId?: StringFieldUpdateOperationsInput | string
+    caseCourtDetailId?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    detail?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type NotificationCreateInput = {
@@ -35370,18 +31212,6 @@ export namespace Prisma {
     none?: CaseLawyerWhereInput
   }
 
-  export type CasePleadingListRelationFilter = {
-    every?: CasePleadingWhereInput
-    some?: CasePleadingWhereInput
-    none?: CasePleadingWhereInput
-  }
-
-  export type CaseCounselingListRelationFilter = {
-    every?: CaseCounselingWhereInput
-    some?: CaseCounselingWhereInput
-    none?: CaseCounselingWhereInput
-  }
-
   export type CasePaymentListRelationFilter = {
     every?: CasePaymentWhereInput
     some?: CasePaymentWhereInput
@@ -35416,14 +31246,6 @@ export namespace Prisma {
   }
 
   export type CaseLawyerOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type CasePleadingOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type CaseCounselingOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -35715,16 +31537,6 @@ export namespace Prisma {
     _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
-  export type CourtProceedingListRelationFilter = {
-    every?: CourtProceedingWhereInput
-    some?: CourtProceedingWhereInput
-    none?: CourtProceedingWhereInput
-  }
-
-  export type CourtProceedingOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
   export type CourtLevelCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
@@ -35822,16 +31634,16 @@ export namespace Prisma {
     none?: CaseHearingWhereInput
   }
 
-  export type CasePrecedentListRelationFilter = {
-    every?: CasePrecedentWhereInput
-    some?: CasePrecedentWhereInput
-    none?: CasePrecedentWhereInput
-  }
-
   export type CaseDocumentListRelationFilter = {
     every?: CaseDocumentWhereInput
     some?: CaseDocumentWhereInput
     none?: CaseDocumentWhereInput
+  }
+
+  export type CaseJudgementListRelationFilter = {
+    every?: CaseJudgementWhereInput
+    some?: CaseJudgementWhereInput
+    none?: CaseJudgementWhereInput
   }
 
   export type CaseCourtDetailOrderByRelationAggregateInput = {
@@ -35842,11 +31654,11 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
-  export type CasePrecedentOrderByRelationAggregateInput = {
+  export type CaseDocumentOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
-  export type CaseDocumentOrderByRelationAggregateInput = {
+  export type CaseJudgementOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -35855,7 +31667,8 @@ export namespace Prisma {
     natureId?: SortOrder
     registrationFee?: SortOrder
     facts?: SortOrder
-    relatedLaws?: SortOrder
+    details?: SortOrder
+    relatedLaw?: SortOrder
     referredThrough?: SortOrder
     noticeStatus?: SortOrder
     fullJudgmentDate?: SortOrder
@@ -35874,7 +31687,6 @@ export namespace Prisma {
     natureId?: SortOrder
     registrationFee?: SortOrder
     facts?: SortOrder
-    relatedLaws?: SortOrder
     referredThrough?: SortOrder
     noticeStatus?: SortOrder
     fullJudgmentDate?: SortOrder
@@ -35889,7 +31701,6 @@ export namespace Prisma {
     natureId?: SortOrder
     registrationFee?: SortOrder
     facts?: SortOrder
-    relatedLaws?: SortOrder
     referredThrough?: SortOrder
     noticeStatus?: SortOrder
     fullJudgmentDate?: SortOrder
@@ -36094,92 +31905,6 @@ export namespace Prisma {
     hearingOrder?: SortOrder
   }
 
-  export type CasePleadingCountOrderByAggregateInput = {
-    id?: SortOrder
-    caseId?: SortOrder
-    pleaderUserId?: SortOrder
-    pleadingDate?: SortOrder
-    pleadingNotes?: SortOrder
-  }
-
-  export type CasePleadingMaxOrderByAggregateInput = {
-    id?: SortOrder
-    caseId?: SortOrder
-    pleaderUserId?: SortOrder
-    pleadingDate?: SortOrder
-    pleadingNotes?: SortOrder
-  }
-
-  export type CasePleadingMinOrderByAggregateInput = {
-    id?: SortOrder
-    caseId?: SortOrder
-    pleaderUserId?: SortOrder
-    pleadingDate?: SortOrder
-    pleadingNotes?: SortOrder
-  }
-
-  export type CourtLevelScalarRelationFilter = {
-    is?: CourtLevelWhereInput
-    isNot?: CourtLevelWhereInput
-  }
-
-  export type CourtProceedingCountOrderByAggregateInput = {
-    id?: SortOrder
-    caseId?: SortOrder
-    courtLevelId?: SortOrder
-    courtName?: SortOrder
-    judgeName?: SortOrder
-    chargeCounseling?: SortOrder
-    verdict?: SortOrder
-  }
-
-  export type CourtProceedingMaxOrderByAggregateInput = {
-    id?: SortOrder
-    caseId?: SortOrder
-    courtLevelId?: SortOrder
-    courtName?: SortOrder
-    judgeName?: SortOrder
-    chargeCounseling?: SortOrder
-    verdict?: SortOrder
-  }
-
-  export type CourtProceedingMinOrderByAggregateInput = {
-    id?: SortOrder
-    caseId?: SortOrder
-    courtLevelId?: SortOrder
-    courtName?: SortOrder
-    judgeName?: SortOrder
-    chargeCounseling?: SortOrder
-    verdict?: SortOrder
-  }
-
-  export type CasePrecedentCountOrderByAggregateInput = {
-    id?: SortOrder
-    caseId?: SortOrder
-    decisionNumber?: SortOrder
-    plaintiff?: SortOrder
-    defendant?: SortOrder
-    citationNotes?: SortOrder
-  }
-
-  export type CasePrecedentMaxOrderByAggregateInput = {
-    id?: SortOrder
-    caseId?: SortOrder
-    decisionNumber?: SortOrder
-    plaintiff?: SortOrder
-    defendant?: SortOrder
-    citationNotes?: SortOrder
-  }
-
-  export type CasePrecedentMinOrderByAggregateInput = {
-    id?: SortOrder
-    caseId?: SortOrder
-    decisionNumber?: SortOrder
-    plaintiff?: SortOrder
-    defendant?: SortOrder
-    citationNotes?: SortOrder
-  }
-
   export type DecimalFilter<$PrismaModel = never> = {
     equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
@@ -36254,33 +31979,6 @@ export namespace Prisma {
     _max?: NestedDecimalFilter<$PrismaModel>
   }
 
-  export type CaseCounselingCountOrderByAggregateInput = {
-    id?: SortOrder
-    caseId?: SortOrder
-    counselorUserId?: SortOrder
-    date?: SortOrder
-    notes?: SortOrder
-    createdAt?: SortOrder
-  }
-
-  export type CaseCounselingMaxOrderByAggregateInput = {
-    id?: SortOrder
-    caseId?: SortOrder
-    counselorUserId?: SortOrder
-    date?: SortOrder
-    notes?: SortOrder
-    createdAt?: SortOrder
-  }
-
-  export type CaseCounselingMinOrderByAggregateInput = {
-    id?: SortOrder
-    caseId?: SortOrder
-    counselorUserId?: SortOrder
-    date?: SortOrder
-    notes?: SortOrder
-    createdAt?: SortOrder
-  }
-
   export type CaseDocumentCountOrderByAggregateInput = {
     id?: SortOrder
     caseId?: SortOrder
@@ -36306,6 +32004,45 @@ export namespace Prisma {
     description?: SortOrder
     documentUrl?: SortOrder
     createdAt?: SortOrder
+  }
+
+  export type CaseCourtDetailScalarRelationFilter = {
+    is?: CaseCourtDetailWhereInput
+    isNot?: CaseCourtDetailWhereInput
+  }
+
+  export type CaseJudgementCountOrderByAggregateInput = {
+    id?: SortOrder
+    caseId?: SortOrder
+    caseCourtDetailId?: SortOrder
+    type?: SortOrder
+    date?: SortOrder
+    verifiedDate?: SortOrder
+    detail?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CaseJudgementMaxOrderByAggregateInput = {
+    id?: SortOrder
+    caseId?: SortOrder
+    caseCourtDetailId?: SortOrder
+    type?: SortOrder
+    date?: SortOrder
+    verifiedDate?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CaseJudgementMinOrderByAggregateInput = {
+    id?: SortOrder
+    caseId?: SortOrder
+    caseCourtDetailId?: SortOrder
+    type?: SortOrder
+    date?: SortOrder
+    verifiedDate?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type NotificationCountOrderByAggregateInput = {
@@ -36645,20 +32382,6 @@ export namespace Prisma {
     connect?: CaseLawyerWhereUniqueInput | CaseLawyerWhereUniqueInput[]
   }
 
-  export type CasePleadingCreateNestedManyWithoutPleaderInput = {
-    create?: XOR<CasePleadingCreateWithoutPleaderInput, CasePleadingUncheckedCreateWithoutPleaderInput> | CasePleadingCreateWithoutPleaderInput[] | CasePleadingUncheckedCreateWithoutPleaderInput[]
-    connectOrCreate?: CasePleadingCreateOrConnectWithoutPleaderInput | CasePleadingCreateOrConnectWithoutPleaderInput[]
-    createMany?: CasePleadingCreateManyPleaderInputEnvelope
-    connect?: CasePleadingWhereUniqueInput | CasePleadingWhereUniqueInput[]
-  }
-
-  export type CaseCounselingCreateNestedManyWithoutCounselorInput = {
-    create?: XOR<CaseCounselingCreateWithoutCounselorInput, CaseCounselingUncheckedCreateWithoutCounselorInput> | CaseCounselingCreateWithoutCounselorInput[] | CaseCounselingUncheckedCreateWithoutCounselorInput[]
-    connectOrCreate?: CaseCounselingCreateOrConnectWithoutCounselorInput | CaseCounselingCreateOrConnectWithoutCounselorInput[]
-    createMany?: CaseCounselingCreateManyCounselorInputEnvelope
-    connect?: CaseCounselingWhereUniqueInput | CaseCounselingWhereUniqueInput[]
-  }
-
   export type CasePaymentCreateNestedManyWithoutReceivedByUserInput = {
     create?: XOR<CasePaymentCreateWithoutReceivedByUserInput, CasePaymentUncheckedCreateWithoutReceivedByUserInput> | CasePaymentCreateWithoutReceivedByUserInput[] | CasePaymentUncheckedCreateWithoutReceivedByUserInput[]
     connectOrCreate?: CasePaymentCreateOrConnectWithoutReceivedByUserInput | CasePaymentCreateOrConnectWithoutReceivedByUserInput[]
@@ -36706,20 +32429,6 @@ export namespace Prisma {
     connectOrCreate?: CaseLawyerCreateOrConnectWithoutUserInput | CaseLawyerCreateOrConnectWithoutUserInput[]
     createMany?: CaseLawyerCreateManyUserInputEnvelope
     connect?: CaseLawyerWhereUniqueInput | CaseLawyerWhereUniqueInput[]
-  }
-
-  export type CasePleadingUncheckedCreateNestedManyWithoutPleaderInput = {
-    create?: XOR<CasePleadingCreateWithoutPleaderInput, CasePleadingUncheckedCreateWithoutPleaderInput> | CasePleadingCreateWithoutPleaderInput[] | CasePleadingUncheckedCreateWithoutPleaderInput[]
-    connectOrCreate?: CasePleadingCreateOrConnectWithoutPleaderInput | CasePleadingCreateOrConnectWithoutPleaderInput[]
-    createMany?: CasePleadingCreateManyPleaderInputEnvelope
-    connect?: CasePleadingWhereUniqueInput | CasePleadingWhereUniqueInput[]
-  }
-
-  export type CaseCounselingUncheckedCreateNestedManyWithoutCounselorInput = {
-    create?: XOR<CaseCounselingCreateWithoutCounselorInput, CaseCounselingUncheckedCreateWithoutCounselorInput> | CaseCounselingCreateWithoutCounselorInput[] | CaseCounselingUncheckedCreateWithoutCounselorInput[]
-    connectOrCreate?: CaseCounselingCreateOrConnectWithoutCounselorInput | CaseCounselingCreateOrConnectWithoutCounselorInput[]
-    createMany?: CaseCounselingCreateManyCounselorInputEnvelope
-    connect?: CaseCounselingWhereUniqueInput | CaseCounselingWhereUniqueInput[]
   }
 
   export type CasePaymentUncheckedCreateNestedManyWithoutReceivedByUserInput = {
@@ -36842,34 +32551,6 @@ export namespace Prisma {
     deleteMany?: CaseLawyerScalarWhereInput | CaseLawyerScalarWhereInput[]
   }
 
-  export type CasePleadingUpdateManyWithoutPleaderNestedInput = {
-    create?: XOR<CasePleadingCreateWithoutPleaderInput, CasePleadingUncheckedCreateWithoutPleaderInput> | CasePleadingCreateWithoutPleaderInput[] | CasePleadingUncheckedCreateWithoutPleaderInput[]
-    connectOrCreate?: CasePleadingCreateOrConnectWithoutPleaderInput | CasePleadingCreateOrConnectWithoutPleaderInput[]
-    upsert?: CasePleadingUpsertWithWhereUniqueWithoutPleaderInput | CasePleadingUpsertWithWhereUniqueWithoutPleaderInput[]
-    createMany?: CasePleadingCreateManyPleaderInputEnvelope
-    set?: CasePleadingWhereUniqueInput | CasePleadingWhereUniqueInput[]
-    disconnect?: CasePleadingWhereUniqueInput | CasePleadingWhereUniqueInput[]
-    delete?: CasePleadingWhereUniqueInput | CasePleadingWhereUniqueInput[]
-    connect?: CasePleadingWhereUniqueInput | CasePleadingWhereUniqueInput[]
-    update?: CasePleadingUpdateWithWhereUniqueWithoutPleaderInput | CasePleadingUpdateWithWhereUniqueWithoutPleaderInput[]
-    updateMany?: CasePleadingUpdateManyWithWhereWithoutPleaderInput | CasePleadingUpdateManyWithWhereWithoutPleaderInput[]
-    deleteMany?: CasePleadingScalarWhereInput | CasePleadingScalarWhereInput[]
-  }
-
-  export type CaseCounselingUpdateManyWithoutCounselorNestedInput = {
-    create?: XOR<CaseCounselingCreateWithoutCounselorInput, CaseCounselingUncheckedCreateWithoutCounselorInput> | CaseCounselingCreateWithoutCounselorInput[] | CaseCounselingUncheckedCreateWithoutCounselorInput[]
-    connectOrCreate?: CaseCounselingCreateOrConnectWithoutCounselorInput | CaseCounselingCreateOrConnectWithoutCounselorInput[]
-    upsert?: CaseCounselingUpsertWithWhereUniqueWithoutCounselorInput | CaseCounselingUpsertWithWhereUniqueWithoutCounselorInput[]
-    createMany?: CaseCounselingCreateManyCounselorInputEnvelope
-    set?: CaseCounselingWhereUniqueInput | CaseCounselingWhereUniqueInput[]
-    disconnect?: CaseCounselingWhereUniqueInput | CaseCounselingWhereUniqueInput[]
-    delete?: CaseCounselingWhereUniqueInput | CaseCounselingWhereUniqueInput[]
-    connect?: CaseCounselingWhereUniqueInput | CaseCounselingWhereUniqueInput[]
-    update?: CaseCounselingUpdateWithWhereUniqueWithoutCounselorInput | CaseCounselingUpdateWithWhereUniqueWithoutCounselorInput[]
-    updateMany?: CaseCounselingUpdateManyWithWhereWithoutCounselorInput | CaseCounselingUpdateManyWithWhereWithoutCounselorInput[]
-    deleteMany?: CaseCounselingScalarWhereInput | CaseCounselingScalarWhereInput[]
-  }
-
   export type CasePaymentUpdateManyWithoutReceivedByUserNestedInput = {
     create?: XOR<CasePaymentCreateWithoutReceivedByUserInput, CasePaymentUncheckedCreateWithoutReceivedByUserInput> | CasePaymentCreateWithoutReceivedByUserInput[] | CasePaymentUncheckedCreateWithoutReceivedByUserInput[]
     connectOrCreate?: CasePaymentCreateOrConnectWithoutReceivedByUserInput | CasePaymentCreateOrConnectWithoutReceivedByUserInput[]
@@ -36966,34 +32647,6 @@ export namespace Prisma {
     update?: CaseLawyerUpdateWithWhereUniqueWithoutUserInput | CaseLawyerUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: CaseLawyerUpdateManyWithWhereWithoutUserInput | CaseLawyerUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: CaseLawyerScalarWhereInput | CaseLawyerScalarWhereInput[]
-  }
-
-  export type CasePleadingUncheckedUpdateManyWithoutPleaderNestedInput = {
-    create?: XOR<CasePleadingCreateWithoutPleaderInput, CasePleadingUncheckedCreateWithoutPleaderInput> | CasePleadingCreateWithoutPleaderInput[] | CasePleadingUncheckedCreateWithoutPleaderInput[]
-    connectOrCreate?: CasePleadingCreateOrConnectWithoutPleaderInput | CasePleadingCreateOrConnectWithoutPleaderInput[]
-    upsert?: CasePleadingUpsertWithWhereUniqueWithoutPleaderInput | CasePleadingUpsertWithWhereUniqueWithoutPleaderInput[]
-    createMany?: CasePleadingCreateManyPleaderInputEnvelope
-    set?: CasePleadingWhereUniqueInput | CasePleadingWhereUniqueInput[]
-    disconnect?: CasePleadingWhereUniqueInput | CasePleadingWhereUniqueInput[]
-    delete?: CasePleadingWhereUniqueInput | CasePleadingWhereUniqueInput[]
-    connect?: CasePleadingWhereUniqueInput | CasePleadingWhereUniqueInput[]
-    update?: CasePleadingUpdateWithWhereUniqueWithoutPleaderInput | CasePleadingUpdateWithWhereUniqueWithoutPleaderInput[]
-    updateMany?: CasePleadingUpdateManyWithWhereWithoutPleaderInput | CasePleadingUpdateManyWithWhereWithoutPleaderInput[]
-    deleteMany?: CasePleadingScalarWhereInput | CasePleadingScalarWhereInput[]
-  }
-
-  export type CaseCounselingUncheckedUpdateManyWithoutCounselorNestedInput = {
-    create?: XOR<CaseCounselingCreateWithoutCounselorInput, CaseCounselingUncheckedCreateWithoutCounselorInput> | CaseCounselingCreateWithoutCounselorInput[] | CaseCounselingUncheckedCreateWithoutCounselorInput[]
-    connectOrCreate?: CaseCounselingCreateOrConnectWithoutCounselorInput | CaseCounselingCreateOrConnectWithoutCounselorInput[]
-    upsert?: CaseCounselingUpsertWithWhereUniqueWithoutCounselorInput | CaseCounselingUpsertWithWhereUniqueWithoutCounselorInput[]
-    createMany?: CaseCounselingCreateManyCounselorInputEnvelope
-    set?: CaseCounselingWhereUniqueInput | CaseCounselingWhereUniqueInput[]
-    disconnect?: CaseCounselingWhereUniqueInput | CaseCounselingWhereUniqueInput[]
-    delete?: CaseCounselingWhereUniqueInput | CaseCounselingWhereUniqueInput[]
-    connect?: CaseCounselingWhereUniqueInput | CaseCounselingWhereUniqueInput[]
-    update?: CaseCounselingUpdateWithWhereUniqueWithoutCounselorInput | CaseCounselingUpdateWithWhereUniqueWithoutCounselorInput[]
-    updateMany?: CaseCounselingUpdateManyWithWhereWithoutCounselorInput | CaseCounselingUpdateManyWithWhereWithoutCounselorInput[]
-    deleteMany?: CaseCounselingScalarWhereInput | CaseCounselingScalarWhereInput[]
   }
 
   export type CasePaymentUncheckedUpdateManyWithoutReceivedByUserNestedInput = {
@@ -37186,48 +32839,6 @@ export namespace Prisma {
     deleteMany?: PageSeoScalarWhereInput | PageSeoScalarWhereInput[]
   }
 
-  export type CourtProceedingCreateNestedManyWithoutCourtLevelInput = {
-    create?: XOR<CourtProceedingCreateWithoutCourtLevelInput, CourtProceedingUncheckedCreateWithoutCourtLevelInput> | CourtProceedingCreateWithoutCourtLevelInput[] | CourtProceedingUncheckedCreateWithoutCourtLevelInput[]
-    connectOrCreate?: CourtProceedingCreateOrConnectWithoutCourtLevelInput | CourtProceedingCreateOrConnectWithoutCourtLevelInput[]
-    createMany?: CourtProceedingCreateManyCourtLevelInputEnvelope
-    connect?: CourtProceedingWhereUniqueInput | CourtProceedingWhereUniqueInput[]
-  }
-
-  export type CourtProceedingUncheckedCreateNestedManyWithoutCourtLevelInput = {
-    create?: XOR<CourtProceedingCreateWithoutCourtLevelInput, CourtProceedingUncheckedCreateWithoutCourtLevelInput> | CourtProceedingCreateWithoutCourtLevelInput[] | CourtProceedingUncheckedCreateWithoutCourtLevelInput[]
-    connectOrCreate?: CourtProceedingCreateOrConnectWithoutCourtLevelInput | CourtProceedingCreateOrConnectWithoutCourtLevelInput[]
-    createMany?: CourtProceedingCreateManyCourtLevelInputEnvelope
-    connect?: CourtProceedingWhereUniqueInput | CourtProceedingWhereUniqueInput[]
-  }
-
-  export type CourtProceedingUpdateManyWithoutCourtLevelNestedInput = {
-    create?: XOR<CourtProceedingCreateWithoutCourtLevelInput, CourtProceedingUncheckedCreateWithoutCourtLevelInput> | CourtProceedingCreateWithoutCourtLevelInput[] | CourtProceedingUncheckedCreateWithoutCourtLevelInput[]
-    connectOrCreate?: CourtProceedingCreateOrConnectWithoutCourtLevelInput | CourtProceedingCreateOrConnectWithoutCourtLevelInput[]
-    upsert?: CourtProceedingUpsertWithWhereUniqueWithoutCourtLevelInput | CourtProceedingUpsertWithWhereUniqueWithoutCourtLevelInput[]
-    createMany?: CourtProceedingCreateManyCourtLevelInputEnvelope
-    set?: CourtProceedingWhereUniqueInput | CourtProceedingWhereUniqueInput[]
-    disconnect?: CourtProceedingWhereUniqueInput | CourtProceedingWhereUniqueInput[]
-    delete?: CourtProceedingWhereUniqueInput | CourtProceedingWhereUniqueInput[]
-    connect?: CourtProceedingWhereUniqueInput | CourtProceedingWhereUniqueInput[]
-    update?: CourtProceedingUpdateWithWhereUniqueWithoutCourtLevelInput | CourtProceedingUpdateWithWhereUniqueWithoutCourtLevelInput[]
-    updateMany?: CourtProceedingUpdateManyWithWhereWithoutCourtLevelInput | CourtProceedingUpdateManyWithWhereWithoutCourtLevelInput[]
-    deleteMany?: CourtProceedingScalarWhereInput | CourtProceedingScalarWhereInput[]
-  }
-
-  export type CourtProceedingUncheckedUpdateManyWithoutCourtLevelNestedInput = {
-    create?: XOR<CourtProceedingCreateWithoutCourtLevelInput, CourtProceedingUncheckedCreateWithoutCourtLevelInput> | CourtProceedingCreateWithoutCourtLevelInput[] | CourtProceedingUncheckedCreateWithoutCourtLevelInput[]
-    connectOrCreate?: CourtProceedingCreateOrConnectWithoutCourtLevelInput | CourtProceedingCreateOrConnectWithoutCourtLevelInput[]
-    upsert?: CourtProceedingUpsertWithWhereUniqueWithoutCourtLevelInput | CourtProceedingUpsertWithWhereUniqueWithoutCourtLevelInput[]
-    createMany?: CourtProceedingCreateManyCourtLevelInputEnvelope
-    set?: CourtProceedingWhereUniqueInput | CourtProceedingWhereUniqueInput[]
-    disconnect?: CourtProceedingWhereUniqueInput | CourtProceedingWhereUniqueInput[]
-    delete?: CourtProceedingWhereUniqueInput | CourtProceedingWhereUniqueInput[]
-    connect?: CourtProceedingWhereUniqueInput | CourtProceedingWhereUniqueInput[]
-    update?: CourtProceedingUpdateWithWhereUniqueWithoutCourtLevelInput | CourtProceedingUpdateWithWhereUniqueWithoutCourtLevelInput[]
-    updateMany?: CourtProceedingUpdateManyWithWhereWithoutCourtLevelInput | CourtProceedingUpdateManyWithWhereWithoutCourtLevelInput[]
-    deleteMany?: CourtProceedingScalarWhereInput | CourtProceedingScalarWhereInput[]
-  }
-
   export type CaseCreateNestedManyWithoutNatureInput = {
     create?: XOR<CaseCreateWithoutNatureInput, CaseUncheckedCreateWithoutNatureInput> | CaseCreateWithoutNatureInput[] | CaseUncheckedCreateWithoutNatureInput[]
     connectOrCreate?: CaseCreateOrConnectWithoutNatureInput | CaseCreateOrConnectWithoutNatureInput[]
@@ -37352,27 +32963,6 @@ export namespace Prisma {
     connect?: CaseHearingWhereUniqueInput | CaseHearingWhereUniqueInput[]
   }
 
-  export type CasePleadingCreateNestedManyWithoutCaseInput = {
-    create?: XOR<CasePleadingCreateWithoutCaseInput, CasePleadingUncheckedCreateWithoutCaseInput> | CasePleadingCreateWithoutCaseInput[] | CasePleadingUncheckedCreateWithoutCaseInput[]
-    connectOrCreate?: CasePleadingCreateOrConnectWithoutCaseInput | CasePleadingCreateOrConnectWithoutCaseInput[]
-    createMany?: CasePleadingCreateManyCaseInputEnvelope
-    connect?: CasePleadingWhereUniqueInput | CasePleadingWhereUniqueInput[]
-  }
-
-  export type CourtProceedingCreateNestedManyWithoutCaseInput = {
-    create?: XOR<CourtProceedingCreateWithoutCaseInput, CourtProceedingUncheckedCreateWithoutCaseInput> | CourtProceedingCreateWithoutCaseInput[] | CourtProceedingUncheckedCreateWithoutCaseInput[]
-    connectOrCreate?: CourtProceedingCreateOrConnectWithoutCaseInput | CourtProceedingCreateOrConnectWithoutCaseInput[]
-    createMany?: CourtProceedingCreateManyCaseInputEnvelope
-    connect?: CourtProceedingWhereUniqueInput | CourtProceedingWhereUniqueInput[]
-  }
-
-  export type CasePrecedentCreateNestedManyWithoutCaseInput = {
-    create?: XOR<CasePrecedentCreateWithoutCaseInput, CasePrecedentUncheckedCreateWithoutCaseInput> | CasePrecedentCreateWithoutCaseInput[] | CasePrecedentUncheckedCreateWithoutCaseInput[]
-    connectOrCreate?: CasePrecedentCreateOrConnectWithoutCaseInput | CasePrecedentCreateOrConnectWithoutCaseInput[]
-    createMany?: CasePrecedentCreateManyCaseInputEnvelope
-    connect?: CasePrecedentWhereUniqueInput | CasePrecedentWhereUniqueInput[]
-  }
-
   export type CasePaymentCreateNestedManyWithoutCaseInput = {
     create?: XOR<CasePaymentCreateWithoutCaseInput, CasePaymentUncheckedCreateWithoutCaseInput> | CasePaymentCreateWithoutCaseInput[] | CasePaymentUncheckedCreateWithoutCaseInput[]
     connectOrCreate?: CasePaymentCreateOrConnectWithoutCaseInput | CasePaymentCreateOrConnectWithoutCaseInput[]
@@ -37380,18 +32970,18 @@ export namespace Prisma {
     connect?: CasePaymentWhereUniqueInput | CasePaymentWhereUniqueInput[]
   }
 
-  export type CaseCounselingCreateNestedManyWithoutCaseInput = {
-    create?: XOR<CaseCounselingCreateWithoutCaseInput, CaseCounselingUncheckedCreateWithoutCaseInput> | CaseCounselingCreateWithoutCaseInput[] | CaseCounselingUncheckedCreateWithoutCaseInput[]
-    connectOrCreate?: CaseCounselingCreateOrConnectWithoutCaseInput | CaseCounselingCreateOrConnectWithoutCaseInput[]
-    createMany?: CaseCounselingCreateManyCaseInputEnvelope
-    connect?: CaseCounselingWhereUniqueInput | CaseCounselingWhereUniqueInput[]
-  }
-
   export type CaseDocumentCreateNestedManyWithoutCaseInput = {
     create?: XOR<CaseDocumentCreateWithoutCaseInput, CaseDocumentUncheckedCreateWithoutCaseInput> | CaseDocumentCreateWithoutCaseInput[] | CaseDocumentUncheckedCreateWithoutCaseInput[]
     connectOrCreate?: CaseDocumentCreateOrConnectWithoutCaseInput | CaseDocumentCreateOrConnectWithoutCaseInput[]
     createMany?: CaseDocumentCreateManyCaseInputEnvelope
     connect?: CaseDocumentWhereUniqueInput | CaseDocumentWhereUniqueInput[]
+  }
+
+  export type CaseJudgementCreateNestedManyWithoutCaseInput = {
+    create?: XOR<CaseJudgementCreateWithoutCaseInput, CaseJudgementUncheckedCreateWithoutCaseInput> | CaseJudgementCreateWithoutCaseInput[] | CaseJudgementUncheckedCreateWithoutCaseInput[]
+    connectOrCreate?: CaseJudgementCreateOrConnectWithoutCaseInput | CaseJudgementCreateOrConnectWithoutCaseInput[]
+    createMany?: CaseJudgementCreateManyCaseInputEnvelope
+    connect?: CaseJudgementWhereUniqueInput | CaseJudgementWhereUniqueInput[]
   }
 
   export type CaseCourtDetailUncheckedCreateNestedManyWithoutCaseInput = {
@@ -37422,27 +33012,6 @@ export namespace Prisma {
     connect?: CaseHearingWhereUniqueInput | CaseHearingWhereUniqueInput[]
   }
 
-  export type CasePleadingUncheckedCreateNestedManyWithoutCaseInput = {
-    create?: XOR<CasePleadingCreateWithoutCaseInput, CasePleadingUncheckedCreateWithoutCaseInput> | CasePleadingCreateWithoutCaseInput[] | CasePleadingUncheckedCreateWithoutCaseInput[]
-    connectOrCreate?: CasePleadingCreateOrConnectWithoutCaseInput | CasePleadingCreateOrConnectWithoutCaseInput[]
-    createMany?: CasePleadingCreateManyCaseInputEnvelope
-    connect?: CasePleadingWhereUniqueInput | CasePleadingWhereUniqueInput[]
-  }
-
-  export type CourtProceedingUncheckedCreateNestedManyWithoutCaseInput = {
-    create?: XOR<CourtProceedingCreateWithoutCaseInput, CourtProceedingUncheckedCreateWithoutCaseInput> | CourtProceedingCreateWithoutCaseInput[] | CourtProceedingUncheckedCreateWithoutCaseInput[]
-    connectOrCreate?: CourtProceedingCreateOrConnectWithoutCaseInput | CourtProceedingCreateOrConnectWithoutCaseInput[]
-    createMany?: CourtProceedingCreateManyCaseInputEnvelope
-    connect?: CourtProceedingWhereUniqueInput | CourtProceedingWhereUniqueInput[]
-  }
-
-  export type CasePrecedentUncheckedCreateNestedManyWithoutCaseInput = {
-    create?: XOR<CasePrecedentCreateWithoutCaseInput, CasePrecedentUncheckedCreateWithoutCaseInput> | CasePrecedentCreateWithoutCaseInput[] | CasePrecedentUncheckedCreateWithoutCaseInput[]
-    connectOrCreate?: CasePrecedentCreateOrConnectWithoutCaseInput | CasePrecedentCreateOrConnectWithoutCaseInput[]
-    createMany?: CasePrecedentCreateManyCaseInputEnvelope
-    connect?: CasePrecedentWhereUniqueInput | CasePrecedentWhereUniqueInput[]
-  }
-
   export type CasePaymentUncheckedCreateNestedManyWithoutCaseInput = {
     create?: XOR<CasePaymentCreateWithoutCaseInput, CasePaymentUncheckedCreateWithoutCaseInput> | CasePaymentCreateWithoutCaseInput[] | CasePaymentUncheckedCreateWithoutCaseInput[]
     connectOrCreate?: CasePaymentCreateOrConnectWithoutCaseInput | CasePaymentCreateOrConnectWithoutCaseInput[]
@@ -37450,18 +33019,18 @@ export namespace Prisma {
     connect?: CasePaymentWhereUniqueInput | CasePaymentWhereUniqueInput[]
   }
 
-  export type CaseCounselingUncheckedCreateNestedManyWithoutCaseInput = {
-    create?: XOR<CaseCounselingCreateWithoutCaseInput, CaseCounselingUncheckedCreateWithoutCaseInput> | CaseCounselingCreateWithoutCaseInput[] | CaseCounselingUncheckedCreateWithoutCaseInput[]
-    connectOrCreate?: CaseCounselingCreateOrConnectWithoutCaseInput | CaseCounselingCreateOrConnectWithoutCaseInput[]
-    createMany?: CaseCounselingCreateManyCaseInputEnvelope
-    connect?: CaseCounselingWhereUniqueInput | CaseCounselingWhereUniqueInput[]
-  }
-
   export type CaseDocumentUncheckedCreateNestedManyWithoutCaseInput = {
     create?: XOR<CaseDocumentCreateWithoutCaseInput, CaseDocumentUncheckedCreateWithoutCaseInput> | CaseDocumentCreateWithoutCaseInput[] | CaseDocumentUncheckedCreateWithoutCaseInput[]
     connectOrCreate?: CaseDocumentCreateOrConnectWithoutCaseInput | CaseDocumentCreateOrConnectWithoutCaseInput[]
     createMany?: CaseDocumentCreateManyCaseInputEnvelope
     connect?: CaseDocumentWhereUniqueInput | CaseDocumentWhereUniqueInput[]
+  }
+
+  export type CaseJudgementUncheckedCreateNestedManyWithoutCaseInput = {
+    create?: XOR<CaseJudgementCreateWithoutCaseInput, CaseJudgementUncheckedCreateWithoutCaseInput> | CaseJudgementCreateWithoutCaseInput[] | CaseJudgementUncheckedCreateWithoutCaseInput[]
+    connectOrCreate?: CaseJudgementCreateOrConnectWithoutCaseInput | CaseJudgementCreateOrConnectWithoutCaseInput[]
+    createMany?: CaseJudgementCreateManyCaseInputEnvelope
+    connect?: CaseJudgementWhereUniqueInput | CaseJudgementWhereUniqueInput[]
   }
 
   export type NullableDecimalFieldUpdateOperationsInput = {
@@ -37546,48 +33115,6 @@ export namespace Prisma {
     deleteMany?: CaseHearingScalarWhereInput | CaseHearingScalarWhereInput[]
   }
 
-  export type CasePleadingUpdateManyWithoutCaseNestedInput = {
-    create?: XOR<CasePleadingCreateWithoutCaseInput, CasePleadingUncheckedCreateWithoutCaseInput> | CasePleadingCreateWithoutCaseInput[] | CasePleadingUncheckedCreateWithoutCaseInput[]
-    connectOrCreate?: CasePleadingCreateOrConnectWithoutCaseInput | CasePleadingCreateOrConnectWithoutCaseInput[]
-    upsert?: CasePleadingUpsertWithWhereUniqueWithoutCaseInput | CasePleadingUpsertWithWhereUniqueWithoutCaseInput[]
-    createMany?: CasePleadingCreateManyCaseInputEnvelope
-    set?: CasePleadingWhereUniqueInput | CasePleadingWhereUniqueInput[]
-    disconnect?: CasePleadingWhereUniqueInput | CasePleadingWhereUniqueInput[]
-    delete?: CasePleadingWhereUniqueInput | CasePleadingWhereUniqueInput[]
-    connect?: CasePleadingWhereUniqueInput | CasePleadingWhereUniqueInput[]
-    update?: CasePleadingUpdateWithWhereUniqueWithoutCaseInput | CasePleadingUpdateWithWhereUniqueWithoutCaseInput[]
-    updateMany?: CasePleadingUpdateManyWithWhereWithoutCaseInput | CasePleadingUpdateManyWithWhereWithoutCaseInput[]
-    deleteMany?: CasePleadingScalarWhereInput | CasePleadingScalarWhereInput[]
-  }
-
-  export type CourtProceedingUpdateManyWithoutCaseNestedInput = {
-    create?: XOR<CourtProceedingCreateWithoutCaseInput, CourtProceedingUncheckedCreateWithoutCaseInput> | CourtProceedingCreateWithoutCaseInput[] | CourtProceedingUncheckedCreateWithoutCaseInput[]
-    connectOrCreate?: CourtProceedingCreateOrConnectWithoutCaseInput | CourtProceedingCreateOrConnectWithoutCaseInput[]
-    upsert?: CourtProceedingUpsertWithWhereUniqueWithoutCaseInput | CourtProceedingUpsertWithWhereUniqueWithoutCaseInput[]
-    createMany?: CourtProceedingCreateManyCaseInputEnvelope
-    set?: CourtProceedingWhereUniqueInput | CourtProceedingWhereUniqueInput[]
-    disconnect?: CourtProceedingWhereUniqueInput | CourtProceedingWhereUniqueInput[]
-    delete?: CourtProceedingWhereUniqueInput | CourtProceedingWhereUniqueInput[]
-    connect?: CourtProceedingWhereUniqueInput | CourtProceedingWhereUniqueInput[]
-    update?: CourtProceedingUpdateWithWhereUniqueWithoutCaseInput | CourtProceedingUpdateWithWhereUniqueWithoutCaseInput[]
-    updateMany?: CourtProceedingUpdateManyWithWhereWithoutCaseInput | CourtProceedingUpdateManyWithWhereWithoutCaseInput[]
-    deleteMany?: CourtProceedingScalarWhereInput | CourtProceedingScalarWhereInput[]
-  }
-
-  export type CasePrecedentUpdateManyWithoutCaseNestedInput = {
-    create?: XOR<CasePrecedentCreateWithoutCaseInput, CasePrecedentUncheckedCreateWithoutCaseInput> | CasePrecedentCreateWithoutCaseInput[] | CasePrecedentUncheckedCreateWithoutCaseInput[]
-    connectOrCreate?: CasePrecedentCreateOrConnectWithoutCaseInput | CasePrecedentCreateOrConnectWithoutCaseInput[]
-    upsert?: CasePrecedentUpsertWithWhereUniqueWithoutCaseInput | CasePrecedentUpsertWithWhereUniqueWithoutCaseInput[]
-    createMany?: CasePrecedentCreateManyCaseInputEnvelope
-    set?: CasePrecedentWhereUniqueInput | CasePrecedentWhereUniqueInput[]
-    disconnect?: CasePrecedentWhereUniqueInput | CasePrecedentWhereUniqueInput[]
-    delete?: CasePrecedentWhereUniqueInput | CasePrecedentWhereUniqueInput[]
-    connect?: CasePrecedentWhereUniqueInput | CasePrecedentWhereUniqueInput[]
-    update?: CasePrecedentUpdateWithWhereUniqueWithoutCaseInput | CasePrecedentUpdateWithWhereUniqueWithoutCaseInput[]
-    updateMany?: CasePrecedentUpdateManyWithWhereWithoutCaseInput | CasePrecedentUpdateManyWithWhereWithoutCaseInput[]
-    deleteMany?: CasePrecedentScalarWhereInput | CasePrecedentScalarWhereInput[]
-  }
-
   export type CasePaymentUpdateManyWithoutCaseNestedInput = {
     create?: XOR<CasePaymentCreateWithoutCaseInput, CasePaymentUncheckedCreateWithoutCaseInput> | CasePaymentCreateWithoutCaseInput[] | CasePaymentUncheckedCreateWithoutCaseInput[]
     connectOrCreate?: CasePaymentCreateOrConnectWithoutCaseInput | CasePaymentCreateOrConnectWithoutCaseInput[]
@@ -37602,20 +33129,6 @@ export namespace Prisma {
     deleteMany?: CasePaymentScalarWhereInput | CasePaymentScalarWhereInput[]
   }
 
-  export type CaseCounselingUpdateManyWithoutCaseNestedInput = {
-    create?: XOR<CaseCounselingCreateWithoutCaseInput, CaseCounselingUncheckedCreateWithoutCaseInput> | CaseCounselingCreateWithoutCaseInput[] | CaseCounselingUncheckedCreateWithoutCaseInput[]
-    connectOrCreate?: CaseCounselingCreateOrConnectWithoutCaseInput | CaseCounselingCreateOrConnectWithoutCaseInput[]
-    upsert?: CaseCounselingUpsertWithWhereUniqueWithoutCaseInput | CaseCounselingUpsertWithWhereUniqueWithoutCaseInput[]
-    createMany?: CaseCounselingCreateManyCaseInputEnvelope
-    set?: CaseCounselingWhereUniqueInput | CaseCounselingWhereUniqueInput[]
-    disconnect?: CaseCounselingWhereUniqueInput | CaseCounselingWhereUniqueInput[]
-    delete?: CaseCounselingWhereUniqueInput | CaseCounselingWhereUniqueInput[]
-    connect?: CaseCounselingWhereUniqueInput | CaseCounselingWhereUniqueInput[]
-    update?: CaseCounselingUpdateWithWhereUniqueWithoutCaseInput | CaseCounselingUpdateWithWhereUniqueWithoutCaseInput[]
-    updateMany?: CaseCounselingUpdateManyWithWhereWithoutCaseInput | CaseCounselingUpdateManyWithWhereWithoutCaseInput[]
-    deleteMany?: CaseCounselingScalarWhereInput | CaseCounselingScalarWhereInput[]
-  }
-
   export type CaseDocumentUpdateManyWithoutCaseNestedInput = {
     create?: XOR<CaseDocumentCreateWithoutCaseInput, CaseDocumentUncheckedCreateWithoutCaseInput> | CaseDocumentCreateWithoutCaseInput[] | CaseDocumentUncheckedCreateWithoutCaseInput[]
     connectOrCreate?: CaseDocumentCreateOrConnectWithoutCaseInput | CaseDocumentCreateOrConnectWithoutCaseInput[]
@@ -37628,6 +33141,20 @@ export namespace Prisma {
     update?: CaseDocumentUpdateWithWhereUniqueWithoutCaseInput | CaseDocumentUpdateWithWhereUniqueWithoutCaseInput[]
     updateMany?: CaseDocumentUpdateManyWithWhereWithoutCaseInput | CaseDocumentUpdateManyWithWhereWithoutCaseInput[]
     deleteMany?: CaseDocumentScalarWhereInput | CaseDocumentScalarWhereInput[]
+  }
+
+  export type CaseJudgementUpdateManyWithoutCaseNestedInput = {
+    create?: XOR<CaseJudgementCreateWithoutCaseInput, CaseJudgementUncheckedCreateWithoutCaseInput> | CaseJudgementCreateWithoutCaseInput[] | CaseJudgementUncheckedCreateWithoutCaseInput[]
+    connectOrCreate?: CaseJudgementCreateOrConnectWithoutCaseInput | CaseJudgementCreateOrConnectWithoutCaseInput[]
+    upsert?: CaseJudgementUpsertWithWhereUniqueWithoutCaseInput | CaseJudgementUpsertWithWhereUniqueWithoutCaseInput[]
+    createMany?: CaseJudgementCreateManyCaseInputEnvelope
+    set?: CaseJudgementWhereUniqueInput | CaseJudgementWhereUniqueInput[]
+    disconnect?: CaseJudgementWhereUniqueInput | CaseJudgementWhereUniqueInput[]
+    delete?: CaseJudgementWhereUniqueInput | CaseJudgementWhereUniqueInput[]
+    connect?: CaseJudgementWhereUniqueInput | CaseJudgementWhereUniqueInput[]
+    update?: CaseJudgementUpdateWithWhereUniqueWithoutCaseInput | CaseJudgementUpdateWithWhereUniqueWithoutCaseInput[]
+    updateMany?: CaseJudgementUpdateManyWithWhereWithoutCaseInput | CaseJudgementUpdateManyWithWhereWithoutCaseInput[]
+    deleteMany?: CaseJudgementScalarWhereInput | CaseJudgementScalarWhereInput[]
   }
 
   export type CaseCourtDetailUncheckedUpdateManyWithoutCaseNestedInput = {
@@ -37686,48 +33213,6 @@ export namespace Prisma {
     deleteMany?: CaseHearingScalarWhereInput | CaseHearingScalarWhereInput[]
   }
 
-  export type CasePleadingUncheckedUpdateManyWithoutCaseNestedInput = {
-    create?: XOR<CasePleadingCreateWithoutCaseInput, CasePleadingUncheckedCreateWithoutCaseInput> | CasePleadingCreateWithoutCaseInput[] | CasePleadingUncheckedCreateWithoutCaseInput[]
-    connectOrCreate?: CasePleadingCreateOrConnectWithoutCaseInput | CasePleadingCreateOrConnectWithoutCaseInput[]
-    upsert?: CasePleadingUpsertWithWhereUniqueWithoutCaseInput | CasePleadingUpsertWithWhereUniqueWithoutCaseInput[]
-    createMany?: CasePleadingCreateManyCaseInputEnvelope
-    set?: CasePleadingWhereUniqueInput | CasePleadingWhereUniqueInput[]
-    disconnect?: CasePleadingWhereUniqueInput | CasePleadingWhereUniqueInput[]
-    delete?: CasePleadingWhereUniqueInput | CasePleadingWhereUniqueInput[]
-    connect?: CasePleadingWhereUniqueInput | CasePleadingWhereUniqueInput[]
-    update?: CasePleadingUpdateWithWhereUniqueWithoutCaseInput | CasePleadingUpdateWithWhereUniqueWithoutCaseInput[]
-    updateMany?: CasePleadingUpdateManyWithWhereWithoutCaseInput | CasePleadingUpdateManyWithWhereWithoutCaseInput[]
-    deleteMany?: CasePleadingScalarWhereInput | CasePleadingScalarWhereInput[]
-  }
-
-  export type CourtProceedingUncheckedUpdateManyWithoutCaseNestedInput = {
-    create?: XOR<CourtProceedingCreateWithoutCaseInput, CourtProceedingUncheckedCreateWithoutCaseInput> | CourtProceedingCreateWithoutCaseInput[] | CourtProceedingUncheckedCreateWithoutCaseInput[]
-    connectOrCreate?: CourtProceedingCreateOrConnectWithoutCaseInput | CourtProceedingCreateOrConnectWithoutCaseInput[]
-    upsert?: CourtProceedingUpsertWithWhereUniqueWithoutCaseInput | CourtProceedingUpsertWithWhereUniqueWithoutCaseInput[]
-    createMany?: CourtProceedingCreateManyCaseInputEnvelope
-    set?: CourtProceedingWhereUniqueInput | CourtProceedingWhereUniqueInput[]
-    disconnect?: CourtProceedingWhereUniqueInput | CourtProceedingWhereUniqueInput[]
-    delete?: CourtProceedingWhereUniqueInput | CourtProceedingWhereUniqueInput[]
-    connect?: CourtProceedingWhereUniqueInput | CourtProceedingWhereUniqueInput[]
-    update?: CourtProceedingUpdateWithWhereUniqueWithoutCaseInput | CourtProceedingUpdateWithWhereUniqueWithoutCaseInput[]
-    updateMany?: CourtProceedingUpdateManyWithWhereWithoutCaseInput | CourtProceedingUpdateManyWithWhereWithoutCaseInput[]
-    deleteMany?: CourtProceedingScalarWhereInput | CourtProceedingScalarWhereInput[]
-  }
-
-  export type CasePrecedentUncheckedUpdateManyWithoutCaseNestedInput = {
-    create?: XOR<CasePrecedentCreateWithoutCaseInput, CasePrecedentUncheckedCreateWithoutCaseInput> | CasePrecedentCreateWithoutCaseInput[] | CasePrecedentUncheckedCreateWithoutCaseInput[]
-    connectOrCreate?: CasePrecedentCreateOrConnectWithoutCaseInput | CasePrecedentCreateOrConnectWithoutCaseInput[]
-    upsert?: CasePrecedentUpsertWithWhereUniqueWithoutCaseInput | CasePrecedentUpsertWithWhereUniqueWithoutCaseInput[]
-    createMany?: CasePrecedentCreateManyCaseInputEnvelope
-    set?: CasePrecedentWhereUniqueInput | CasePrecedentWhereUniqueInput[]
-    disconnect?: CasePrecedentWhereUniqueInput | CasePrecedentWhereUniqueInput[]
-    delete?: CasePrecedentWhereUniqueInput | CasePrecedentWhereUniqueInput[]
-    connect?: CasePrecedentWhereUniqueInput | CasePrecedentWhereUniqueInput[]
-    update?: CasePrecedentUpdateWithWhereUniqueWithoutCaseInput | CasePrecedentUpdateWithWhereUniqueWithoutCaseInput[]
-    updateMany?: CasePrecedentUpdateManyWithWhereWithoutCaseInput | CasePrecedentUpdateManyWithWhereWithoutCaseInput[]
-    deleteMany?: CasePrecedentScalarWhereInput | CasePrecedentScalarWhereInput[]
-  }
-
   export type CasePaymentUncheckedUpdateManyWithoutCaseNestedInput = {
     create?: XOR<CasePaymentCreateWithoutCaseInput, CasePaymentUncheckedCreateWithoutCaseInput> | CasePaymentCreateWithoutCaseInput[] | CasePaymentUncheckedCreateWithoutCaseInput[]
     connectOrCreate?: CasePaymentCreateOrConnectWithoutCaseInput | CasePaymentCreateOrConnectWithoutCaseInput[]
@@ -37742,20 +33227,6 @@ export namespace Prisma {
     deleteMany?: CasePaymentScalarWhereInput | CasePaymentScalarWhereInput[]
   }
 
-  export type CaseCounselingUncheckedUpdateManyWithoutCaseNestedInput = {
-    create?: XOR<CaseCounselingCreateWithoutCaseInput, CaseCounselingUncheckedCreateWithoutCaseInput> | CaseCounselingCreateWithoutCaseInput[] | CaseCounselingUncheckedCreateWithoutCaseInput[]
-    connectOrCreate?: CaseCounselingCreateOrConnectWithoutCaseInput | CaseCounselingCreateOrConnectWithoutCaseInput[]
-    upsert?: CaseCounselingUpsertWithWhereUniqueWithoutCaseInput | CaseCounselingUpsertWithWhereUniqueWithoutCaseInput[]
-    createMany?: CaseCounselingCreateManyCaseInputEnvelope
-    set?: CaseCounselingWhereUniqueInput | CaseCounselingWhereUniqueInput[]
-    disconnect?: CaseCounselingWhereUniqueInput | CaseCounselingWhereUniqueInput[]
-    delete?: CaseCounselingWhereUniqueInput | CaseCounselingWhereUniqueInput[]
-    connect?: CaseCounselingWhereUniqueInput | CaseCounselingWhereUniqueInput[]
-    update?: CaseCounselingUpdateWithWhereUniqueWithoutCaseInput | CaseCounselingUpdateWithWhereUniqueWithoutCaseInput[]
-    updateMany?: CaseCounselingUpdateManyWithWhereWithoutCaseInput | CaseCounselingUpdateManyWithWhereWithoutCaseInput[]
-    deleteMany?: CaseCounselingScalarWhereInput | CaseCounselingScalarWhereInput[]
-  }
-
   export type CaseDocumentUncheckedUpdateManyWithoutCaseNestedInput = {
     create?: XOR<CaseDocumentCreateWithoutCaseInput, CaseDocumentUncheckedCreateWithoutCaseInput> | CaseDocumentCreateWithoutCaseInput[] | CaseDocumentUncheckedCreateWithoutCaseInput[]
     connectOrCreate?: CaseDocumentCreateOrConnectWithoutCaseInput | CaseDocumentCreateOrConnectWithoutCaseInput[]
@@ -37768,6 +33239,20 @@ export namespace Prisma {
     update?: CaseDocumentUpdateWithWhereUniqueWithoutCaseInput | CaseDocumentUpdateWithWhereUniqueWithoutCaseInput[]
     updateMany?: CaseDocumentUpdateManyWithWhereWithoutCaseInput | CaseDocumentUpdateManyWithWhereWithoutCaseInput[]
     deleteMany?: CaseDocumentScalarWhereInput | CaseDocumentScalarWhereInput[]
+  }
+
+  export type CaseJudgementUncheckedUpdateManyWithoutCaseNestedInput = {
+    create?: XOR<CaseJudgementCreateWithoutCaseInput, CaseJudgementUncheckedCreateWithoutCaseInput> | CaseJudgementCreateWithoutCaseInput[] | CaseJudgementUncheckedCreateWithoutCaseInput[]
+    connectOrCreate?: CaseJudgementCreateOrConnectWithoutCaseInput | CaseJudgementCreateOrConnectWithoutCaseInput[]
+    upsert?: CaseJudgementUpsertWithWhereUniqueWithoutCaseInput | CaseJudgementUpsertWithWhereUniqueWithoutCaseInput[]
+    createMany?: CaseJudgementCreateManyCaseInputEnvelope
+    set?: CaseJudgementWhereUniqueInput | CaseJudgementWhereUniqueInput[]
+    disconnect?: CaseJudgementWhereUniqueInput | CaseJudgementWhereUniqueInput[]
+    delete?: CaseJudgementWhereUniqueInput | CaseJudgementWhereUniqueInput[]
+    connect?: CaseJudgementWhereUniqueInput | CaseJudgementWhereUniqueInput[]
+    update?: CaseJudgementUpdateWithWhereUniqueWithoutCaseInput | CaseJudgementUpdateWithWhereUniqueWithoutCaseInput[]
+    updateMany?: CaseJudgementUpdateManyWithWhereWithoutCaseInput | CaseJudgementUpdateManyWithWhereWithoutCaseInput[]
+    deleteMany?: CaseJudgementScalarWhereInput | CaseJudgementScalarWhereInput[]
   }
 
   export type CaseCreateNestedOneWithoutCourtDetailsInput = {
@@ -37796,6 +33281,13 @@ export namespace Prisma {
     connect?: CaseHearingWhereUniqueInput | CaseHearingWhereUniqueInput[]
   }
 
+  export type CaseJudgementCreateNestedManyWithoutCaseCourtDetailInput = {
+    create?: XOR<CaseJudgementCreateWithoutCaseCourtDetailInput, CaseJudgementUncheckedCreateWithoutCaseCourtDetailInput> | CaseJudgementCreateWithoutCaseCourtDetailInput[] | CaseJudgementUncheckedCreateWithoutCaseCourtDetailInput[]
+    connectOrCreate?: CaseJudgementCreateOrConnectWithoutCaseCourtDetailInput | CaseJudgementCreateOrConnectWithoutCaseCourtDetailInput[]
+    createMany?: CaseJudgementCreateManyCaseCourtDetailInputEnvelope
+    connect?: CaseJudgementWhereUniqueInput | CaseJudgementWhereUniqueInput[]
+  }
+
   export type CaseCourtDetailUncheckedCreateNestedManyWithoutParentInput = {
     create?: XOR<CaseCourtDetailCreateWithoutParentInput, CaseCourtDetailUncheckedCreateWithoutParentInput> | CaseCourtDetailCreateWithoutParentInput[] | CaseCourtDetailUncheckedCreateWithoutParentInput[]
     connectOrCreate?: CaseCourtDetailCreateOrConnectWithoutParentInput | CaseCourtDetailCreateOrConnectWithoutParentInput[]
@@ -37808,6 +33300,13 @@ export namespace Prisma {
     connectOrCreate?: CaseHearingCreateOrConnectWithoutCaseCourtDetailInput | CaseHearingCreateOrConnectWithoutCaseCourtDetailInput[]
     createMany?: CaseHearingCreateManyCaseCourtDetailInputEnvelope
     connect?: CaseHearingWhereUniqueInput | CaseHearingWhereUniqueInput[]
+  }
+
+  export type CaseJudgementUncheckedCreateNestedManyWithoutCaseCourtDetailInput = {
+    create?: XOR<CaseJudgementCreateWithoutCaseCourtDetailInput, CaseJudgementUncheckedCreateWithoutCaseCourtDetailInput> | CaseJudgementCreateWithoutCaseCourtDetailInput[] | CaseJudgementUncheckedCreateWithoutCaseCourtDetailInput[]
+    connectOrCreate?: CaseJudgementCreateOrConnectWithoutCaseCourtDetailInput | CaseJudgementCreateOrConnectWithoutCaseCourtDetailInput[]
+    createMany?: CaseJudgementCreateManyCaseCourtDetailInputEnvelope
+    connect?: CaseJudgementWhereUniqueInput | CaseJudgementWhereUniqueInput[]
   }
 
   export type BoolFieldUpdateOperationsInput = {
@@ -37860,6 +33359,20 @@ export namespace Prisma {
     deleteMany?: CaseHearingScalarWhereInput | CaseHearingScalarWhereInput[]
   }
 
+  export type CaseJudgementUpdateManyWithoutCaseCourtDetailNestedInput = {
+    create?: XOR<CaseJudgementCreateWithoutCaseCourtDetailInput, CaseJudgementUncheckedCreateWithoutCaseCourtDetailInput> | CaseJudgementCreateWithoutCaseCourtDetailInput[] | CaseJudgementUncheckedCreateWithoutCaseCourtDetailInput[]
+    connectOrCreate?: CaseJudgementCreateOrConnectWithoutCaseCourtDetailInput | CaseJudgementCreateOrConnectWithoutCaseCourtDetailInput[]
+    upsert?: CaseJudgementUpsertWithWhereUniqueWithoutCaseCourtDetailInput | CaseJudgementUpsertWithWhereUniqueWithoutCaseCourtDetailInput[]
+    createMany?: CaseJudgementCreateManyCaseCourtDetailInputEnvelope
+    set?: CaseJudgementWhereUniqueInput | CaseJudgementWhereUniqueInput[]
+    disconnect?: CaseJudgementWhereUniqueInput | CaseJudgementWhereUniqueInput[]
+    delete?: CaseJudgementWhereUniqueInput | CaseJudgementWhereUniqueInput[]
+    connect?: CaseJudgementWhereUniqueInput | CaseJudgementWhereUniqueInput[]
+    update?: CaseJudgementUpdateWithWhereUniqueWithoutCaseCourtDetailInput | CaseJudgementUpdateWithWhereUniqueWithoutCaseCourtDetailInput[]
+    updateMany?: CaseJudgementUpdateManyWithWhereWithoutCaseCourtDetailInput | CaseJudgementUpdateManyWithWhereWithoutCaseCourtDetailInput[]
+    deleteMany?: CaseJudgementScalarWhereInput | CaseJudgementScalarWhereInput[]
+  }
+
   export type CaseCourtDetailUncheckedUpdateManyWithoutParentNestedInput = {
     create?: XOR<CaseCourtDetailCreateWithoutParentInput, CaseCourtDetailUncheckedCreateWithoutParentInput> | CaseCourtDetailCreateWithoutParentInput[] | CaseCourtDetailUncheckedCreateWithoutParentInput[]
     connectOrCreate?: CaseCourtDetailCreateOrConnectWithoutParentInput | CaseCourtDetailCreateOrConnectWithoutParentInput[]
@@ -37886,6 +33399,20 @@ export namespace Prisma {
     update?: CaseHearingUpdateWithWhereUniqueWithoutCaseCourtDetailInput | CaseHearingUpdateWithWhereUniqueWithoutCaseCourtDetailInput[]
     updateMany?: CaseHearingUpdateManyWithWhereWithoutCaseCourtDetailInput | CaseHearingUpdateManyWithWhereWithoutCaseCourtDetailInput[]
     deleteMany?: CaseHearingScalarWhereInput | CaseHearingScalarWhereInput[]
+  }
+
+  export type CaseJudgementUncheckedUpdateManyWithoutCaseCourtDetailNestedInput = {
+    create?: XOR<CaseJudgementCreateWithoutCaseCourtDetailInput, CaseJudgementUncheckedCreateWithoutCaseCourtDetailInput> | CaseJudgementCreateWithoutCaseCourtDetailInput[] | CaseJudgementUncheckedCreateWithoutCaseCourtDetailInput[]
+    connectOrCreate?: CaseJudgementCreateOrConnectWithoutCaseCourtDetailInput | CaseJudgementCreateOrConnectWithoutCaseCourtDetailInput[]
+    upsert?: CaseJudgementUpsertWithWhereUniqueWithoutCaseCourtDetailInput | CaseJudgementUpsertWithWhereUniqueWithoutCaseCourtDetailInput[]
+    createMany?: CaseJudgementCreateManyCaseCourtDetailInputEnvelope
+    set?: CaseJudgementWhereUniqueInput | CaseJudgementWhereUniqueInput[]
+    disconnect?: CaseJudgementWhereUniqueInput | CaseJudgementWhereUniqueInput[]
+    delete?: CaseJudgementWhereUniqueInput | CaseJudgementWhereUniqueInput[]
+    connect?: CaseJudgementWhereUniqueInput | CaseJudgementWhereUniqueInput[]
+    update?: CaseJudgementUpdateWithWhereUniqueWithoutCaseCourtDetailInput | CaseJudgementUpdateWithWhereUniqueWithoutCaseCourtDetailInput[]
+    updateMany?: CaseJudgementUpdateManyWithWhereWithoutCaseCourtDetailInput | CaseJudgementUpdateManyWithWhereWithoutCaseCourtDetailInput[]
+    deleteMany?: CaseJudgementScalarWhereInput | CaseJudgementScalarWhereInput[]
   }
 
   export type CaseCreateNestedOneWithoutLawyersInput = {
@@ -38032,78 +33559,6 @@ export namespace Prisma {
     update?: XOR<XOR<CaseCourtDetailUpdateToOneWithWhereWithoutHearingsInput, CaseCourtDetailUpdateWithoutHearingsInput>, CaseCourtDetailUncheckedUpdateWithoutHearingsInput>
   }
 
-  export type CaseCreateNestedOneWithoutPleadingsInput = {
-    create?: XOR<CaseCreateWithoutPleadingsInput, CaseUncheckedCreateWithoutPleadingsInput>
-    connectOrCreate?: CaseCreateOrConnectWithoutPleadingsInput
-    connect?: CaseWhereUniqueInput
-  }
-
-  export type UserCreateNestedOneWithoutCases_as_pleaderInput = {
-    create?: XOR<UserCreateWithoutCases_as_pleaderInput, UserUncheckedCreateWithoutCases_as_pleaderInput>
-    connectOrCreate?: UserCreateOrConnectWithoutCases_as_pleaderInput
-    connect?: UserWhereUniqueInput
-  }
-
-  export type CaseUpdateOneRequiredWithoutPleadingsNestedInput = {
-    create?: XOR<CaseCreateWithoutPleadingsInput, CaseUncheckedCreateWithoutPleadingsInput>
-    connectOrCreate?: CaseCreateOrConnectWithoutPleadingsInput
-    upsert?: CaseUpsertWithoutPleadingsInput
-    connect?: CaseWhereUniqueInput
-    update?: XOR<XOR<CaseUpdateToOneWithWhereWithoutPleadingsInput, CaseUpdateWithoutPleadingsInput>, CaseUncheckedUpdateWithoutPleadingsInput>
-  }
-
-  export type UserUpdateOneWithoutCases_as_pleaderNestedInput = {
-    create?: XOR<UserCreateWithoutCases_as_pleaderInput, UserUncheckedCreateWithoutCases_as_pleaderInput>
-    connectOrCreate?: UserCreateOrConnectWithoutCases_as_pleaderInput
-    upsert?: UserUpsertWithoutCases_as_pleaderInput
-    disconnect?: UserWhereInput | boolean
-    delete?: UserWhereInput | boolean
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCases_as_pleaderInput, UserUpdateWithoutCases_as_pleaderInput>, UserUncheckedUpdateWithoutCases_as_pleaderInput>
-  }
-
-  export type CaseCreateNestedOneWithoutProceedingsInput = {
-    create?: XOR<CaseCreateWithoutProceedingsInput, CaseUncheckedCreateWithoutProceedingsInput>
-    connectOrCreate?: CaseCreateOrConnectWithoutProceedingsInput
-    connect?: CaseWhereUniqueInput
-  }
-
-  export type CourtLevelCreateNestedOneWithoutProceedingsInput = {
-    create?: XOR<CourtLevelCreateWithoutProceedingsInput, CourtLevelUncheckedCreateWithoutProceedingsInput>
-    connectOrCreate?: CourtLevelCreateOrConnectWithoutProceedingsInput
-    connect?: CourtLevelWhereUniqueInput
-  }
-
-  export type CaseUpdateOneRequiredWithoutProceedingsNestedInput = {
-    create?: XOR<CaseCreateWithoutProceedingsInput, CaseUncheckedCreateWithoutProceedingsInput>
-    connectOrCreate?: CaseCreateOrConnectWithoutProceedingsInput
-    upsert?: CaseUpsertWithoutProceedingsInput
-    connect?: CaseWhereUniqueInput
-    update?: XOR<XOR<CaseUpdateToOneWithWhereWithoutProceedingsInput, CaseUpdateWithoutProceedingsInput>, CaseUncheckedUpdateWithoutProceedingsInput>
-  }
-
-  export type CourtLevelUpdateOneRequiredWithoutProceedingsNestedInput = {
-    create?: XOR<CourtLevelCreateWithoutProceedingsInput, CourtLevelUncheckedCreateWithoutProceedingsInput>
-    connectOrCreate?: CourtLevelCreateOrConnectWithoutProceedingsInput
-    upsert?: CourtLevelUpsertWithoutProceedingsInput
-    connect?: CourtLevelWhereUniqueInput
-    update?: XOR<XOR<CourtLevelUpdateToOneWithWhereWithoutProceedingsInput, CourtLevelUpdateWithoutProceedingsInput>, CourtLevelUncheckedUpdateWithoutProceedingsInput>
-  }
-
-  export type CaseCreateNestedOneWithoutPrecedentsInput = {
-    create?: XOR<CaseCreateWithoutPrecedentsInput, CaseUncheckedCreateWithoutPrecedentsInput>
-    connectOrCreate?: CaseCreateOrConnectWithoutPrecedentsInput
-    connect?: CaseWhereUniqueInput
-  }
-
-  export type CaseUpdateOneRequiredWithoutPrecedentsNestedInput = {
-    create?: XOR<CaseCreateWithoutPrecedentsInput, CaseUncheckedCreateWithoutPrecedentsInput>
-    connectOrCreate?: CaseCreateOrConnectWithoutPrecedentsInput
-    upsert?: CaseUpsertWithoutPrecedentsInput
-    connect?: CaseWhereUniqueInput
-    update?: XOR<XOR<CaseUpdateToOneWithWhereWithoutPrecedentsInput, CaseUpdateWithoutPrecedentsInput>, CaseUncheckedUpdateWithoutPrecedentsInput>
-  }
-
   export type CaseCreateNestedOneWithoutPaymentsInput = {
     create?: XOR<CaseCreateWithoutPaymentsInput, CaseUncheckedCreateWithoutPaymentsInput>
     connectOrCreate?: CaseCreateOrConnectWithoutPaymentsInput
@@ -38142,36 +33597,6 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCases_payment_receivedInput, UserUpdateWithoutCases_payment_receivedInput>, UserUncheckedUpdateWithoutCases_payment_receivedInput>
   }
 
-  export type CaseCreateNestedOneWithoutCounselingsInput = {
-    create?: XOR<CaseCreateWithoutCounselingsInput, CaseUncheckedCreateWithoutCounselingsInput>
-    connectOrCreate?: CaseCreateOrConnectWithoutCounselingsInput
-    connect?: CaseWhereUniqueInput
-  }
-
-  export type UserCreateNestedOneWithoutCases_as_counselorInput = {
-    create?: XOR<UserCreateWithoutCases_as_counselorInput, UserUncheckedCreateWithoutCases_as_counselorInput>
-    connectOrCreate?: UserCreateOrConnectWithoutCases_as_counselorInput
-    connect?: UserWhereUniqueInput
-  }
-
-  export type CaseUpdateOneRequiredWithoutCounselingsNestedInput = {
-    create?: XOR<CaseCreateWithoutCounselingsInput, CaseUncheckedCreateWithoutCounselingsInput>
-    connectOrCreate?: CaseCreateOrConnectWithoutCounselingsInput
-    upsert?: CaseUpsertWithoutCounselingsInput
-    connect?: CaseWhereUniqueInput
-    update?: XOR<XOR<CaseUpdateToOneWithWhereWithoutCounselingsInput, CaseUpdateWithoutCounselingsInput>, CaseUncheckedUpdateWithoutCounselingsInput>
-  }
-
-  export type UserUpdateOneWithoutCases_as_counselorNestedInput = {
-    create?: XOR<UserCreateWithoutCases_as_counselorInput, UserUncheckedCreateWithoutCases_as_counselorInput>
-    connectOrCreate?: UserCreateOrConnectWithoutCases_as_counselorInput
-    upsert?: UserUpsertWithoutCases_as_counselorInput
-    disconnect?: UserWhereInput | boolean
-    delete?: UserWhereInput | boolean
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCases_as_counselorInput, UserUpdateWithoutCases_as_counselorInput>, UserUncheckedUpdateWithoutCases_as_counselorInput>
-  }
-
   export type CaseCreateNestedOneWithoutDocumentsInput = {
     create?: XOR<CaseCreateWithoutDocumentsInput, CaseUncheckedCreateWithoutDocumentsInput>
     connectOrCreate?: CaseCreateOrConnectWithoutDocumentsInput
@@ -38184,6 +33609,34 @@ export namespace Prisma {
     upsert?: CaseUpsertWithoutDocumentsInput
     connect?: CaseWhereUniqueInput
     update?: XOR<XOR<CaseUpdateToOneWithWhereWithoutDocumentsInput, CaseUpdateWithoutDocumentsInput>, CaseUncheckedUpdateWithoutDocumentsInput>
+  }
+
+  export type CaseCreateNestedOneWithoutJudgementsInput = {
+    create?: XOR<CaseCreateWithoutJudgementsInput, CaseUncheckedCreateWithoutJudgementsInput>
+    connectOrCreate?: CaseCreateOrConnectWithoutJudgementsInput
+    connect?: CaseWhereUniqueInput
+  }
+
+  export type CaseCourtDetailCreateNestedOneWithoutJudgementsInput = {
+    create?: XOR<CaseCourtDetailCreateWithoutJudgementsInput, CaseCourtDetailUncheckedCreateWithoutJudgementsInput>
+    connectOrCreate?: CaseCourtDetailCreateOrConnectWithoutJudgementsInput
+    connect?: CaseCourtDetailWhereUniqueInput
+  }
+
+  export type CaseUpdateOneRequiredWithoutJudgementsNestedInput = {
+    create?: XOR<CaseCreateWithoutJudgementsInput, CaseUncheckedCreateWithoutJudgementsInput>
+    connectOrCreate?: CaseCreateOrConnectWithoutJudgementsInput
+    upsert?: CaseUpsertWithoutJudgementsInput
+    connect?: CaseWhereUniqueInput
+    update?: XOR<XOR<CaseUpdateToOneWithWhereWithoutJudgementsInput, CaseUpdateWithoutJudgementsInput>, CaseUncheckedUpdateWithoutJudgementsInput>
+  }
+
+  export type CaseCourtDetailUpdateOneRequiredWithoutJudgementsNestedInput = {
+    create?: XOR<CaseCourtDetailCreateWithoutJudgementsInput, CaseCourtDetailUncheckedCreateWithoutJudgementsInput>
+    connectOrCreate?: CaseCourtDetailCreateOrConnectWithoutJudgementsInput
+    upsert?: CaseCourtDetailUpsertWithoutJudgementsInput
+    connect?: CaseCourtDetailWhereUniqueInput
+    update?: XOR<XOR<CaseCourtDetailUpdateToOneWithWhereWithoutJudgementsInput, CaseCourtDetailUpdateWithoutJudgementsInput>, CaseCourtDetailUncheckedUpdateWithoutJudgementsInput>
   }
 
   export type UserCreateNestedOneWithoutNotificationsInput = {
@@ -38980,56 +34433,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type CasePleadingCreateWithoutPleaderInput = {
-    id?: string
-    pleadingDate?: Date | string | null
-    pleadingNotes: string
-    case: CaseCreateNestedOneWithoutPleadingsInput
-  }
-
-  export type CasePleadingUncheckedCreateWithoutPleaderInput = {
-    id?: string
-    caseId: string
-    pleadingDate?: Date | string | null
-    pleadingNotes: string
-  }
-
-  export type CasePleadingCreateOrConnectWithoutPleaderInput = {
-    where: CasePleadingWhereUniqueInput
-    create: XOR<CasePleadingCreateWithoutPleaderInput, CasePleadingUncheckedCreateWithoutPleaderInput>
-  }
-
-  export type CasePleadingCreateManyPleaderInputEnvelope = {
-    data: CasePleadingCreateManyPleaderInput | CasePleadingCreateManyPleaderInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type CaseCounselingCreateWithoutCounselorInput = {
-    id?: string
-    date?: Date | string | null
-    notes: string
-    createdAt?: Date | string
-    case: CaseCreateNestedOneWithoutCounselingsInput
-  }
-
-  export type CaseCounselingUncheckedCreateWithoutCounselorInput = {
-    id?: string
-    caseId: string
-    date?: Date | string | null
-    notes: string
-    createdAt?: Date | string
-  }
-
-  export type CaseCounselingCreateOrConnectWithoutCounselorInput = {
-    where: CaseCounselingWhereUniqueInput
-    create: XOR<CaseCounselingCreateWithoutCounselorInput, CaseCounselingUncheckedCreateWithoutCounselorInput>
-  }
-
-  export type CaseCounselingCreateManyCounselorInputEnvelope = {
-    data: CaseCounselingCreateManyCounselorInput | CaseCounselingCreateManyCounselorInput[]
-    skipDuplicates?: boolean
-  }
-
   export type CasePaymentCreateWithoutReceivedByUserInput = {
     id?: string
     amount: Decimal | DecimalJsLike | number | string
@@ -39068,7 +34471,8 @@ export namespace Prisma {
     id?: string
     registrationFee?: Decimal | DecimalJsLike | number | string | null
     facts?: string | null
-    relatedLaws?: string | null
+    details?: NullableJsonNullValueInput | InputJsonValue
+    relatedLaw?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: string | null
     noticeStatus?: string | null
     fullJudgmentDate?: Date | string | null
@@ -39080,12 +34484,9 @@ export namespace Prisma {
     lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
     parties?: CasePartyCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingCreateNestedManyWithoutCaseInput
-    pleadings?: CasePleadingCreateNestedManyWithoutCaseInput
-    proceedings?: CourtProceedingCreateNestedManyWithoutCaseInput
-    precedents?: CasePrecedentCreateNestedManyWithoutCaseInput
     payments?: CasePaymentCreateNestedManyWithoutCaseInput
-    counselings?: CaseCounselingCreateNestedManyWithoutCaseInput
     documents?: CaseDocumentCreateNestedManyWithoutCaseInput
+    judgements?: CaseJudgementCreateNestedManyWithoutCaseInput
   }
 
   export type CaseUncheckedCreateWithoutCreatedByInput = {
@@ -39093,7 +34494,8 @@ export namespace Prisma {
     natureId: string
     registrationFee?: Decimal | DecimalJsLike | number | string | null
     facts?: string | null
-    relatedLaws?: string | null
+    details?: NullableJsonNullValueInput | InputJsonValue
+    relatedLaw?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: string | null
     noticeStatus?: string | null
     fullJudgmentDate?: Date | string | null
@@ -39104,12 +34506,9 @@ export namespace Prisma {
     lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
     parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingUncheckedCreateNestedManyWithoutCaseInput
-    pleadings?: CasePleadingUncheckedCreateNestedManyWithoutCaseInput
-    proceedings?: CourtProceedingUncheckedCreateNestedManyWithoutCaseInput
-    precedents?: CasePrecedentUncheckedCreateNestedManyWithoutCaseInput
     payments?: CasePaymentUncheckedCreateNestedManyWithoutCaseInput
-    counselings?: CaseCounselingUncheckedCreateNestedManyWithoutCaseInput
     documents?: CaseDocumentUncheckedCreateNestedManyWithoutCaseInput
+    judgements?: CaseJudgementUncheckedCreateNestedManyWithoutCaseInput
   }
 
   export type CaseCreateOrConnectWithoutCreatedByInput = {
@@ -39338,61 +34737,6 @@ export namespace Prisma {
     isLead?: BoolFilter<"CaseLawyer"> | boolean
   }
 
-  export type CasePleadingUpsertWithWhereUniqueWithoutPleaderInput = {
-    where: CasePleadingWhereUniqueInput
-    update: XOR<CasePleadingUpdateWithoutPleaderInput, CasePleadingUncheckedUpdateWithoutPleaderInput>
-    create: XOR<CasePleadingCreateWithoutPleaderInput, CasePleadingUncheckedCreateWithoutPleaderInput>
-  }
-
-  export type CasePleadingUpdateWithWhereUniqueWithoutPleaderInput = {
-    where: CasePleadingWhereUniqueInput
-    data: XOR<CasePleadingUpdateWithoutPleaderInput, CasePleadingUncheckedUpdateWithoutPleaderInput>
-  }
-
-  export type CasePleadingUpdateManyWithWhereWithoutPleaderInput = {
-    where: CasePleadingScalarWhereInput
-    data: XOR<CasePleadingUpdateManyMutationInput, CasePleadingUncheckedUpdateManyWithoutPleaderInput>
-  }
-
-  export type CasePleadingScalarWhereInput = {
-    AND?: CasePleadingScalarWhereInput | CasePleadingScalarWhereInput[]
-    OR?: CasePleadingScalarWhereInput[]
-    NOT?: CasePleadingScalarWhereInput | CasePleadingScalarWhereInput[]
-    id?: StringFilter<"CasePleading"> | string
-    caseId?: StringFilter<"CasePleading"> | string
-    pleaderUserId?: StringNullableFilter<"CasePleading"> | string | null
-    pleadingDate?: DateTimeNullableFilter<"CasePleading"> | Date | string | null
-    pleadingNotes?: StringFilter<"CasePleading"> | string
-  }
-
-  export type CaseCounselingUpsertWithWhereUniqueWithoutCounselorInput = {
-    where: CaseCounselingWhereUniqueInput
-    update: XOR<CaseCounselingUpdateWithoutCounselorInput, CaseCounselingUncheckedUpdateWithoutCounselorInput>
-    create: XOR<CaseCounselingCreateWithoutCounselorInput, CaseCounselingUncheckedCreateWithoutCounselorInput>
-  }
-
-  export type CaseCounselingUpdateWithWhereUniqueWithoutCounselorInput = {
-    where: CaseCounselingWhereUniqueInput
-    data: XOR<CaseCounselingUpdateWithoutCounselorInput, CaseCounselingUncheckedUpdateWithoutCounselorInput>
-  }
-
-  export type CaseCounselingUpdateManyWithWhereWithoutCounselorInput = {
-    where: CaseCounselingScalarWhereInput
-    data: XOR<CaseCounselingUpdateManyMutationInput, CaseCounselingUncheckedUpdateManyWithoutCounselorInput>
-  }
-
-  export type CaseCounselingScalarWhereInput = {
-    AND?: CaseCounselingScalarWhereInput | CaseCounselingScalarWhereInput[]
-    OR?: CaseCounselingScalarWhereInput[]
-    NOT?: CaseCounselingScalarWhereInput | CaseCounselingScalarWhereInput[]
-    id?: StringFilter<"CaseCounseling"> | string
-    caseId?: StringFilter<"CaseCounseling"> | string
-    counselorUserId?: StringNullableFilter<"CaseCounseling"> | string | null
-    date?: DateTimeNullableFilter<"CaseCounseling"> | Date | string | null
-    notes?: StringFilter<"CaseCounseling"> | string
-    createdAt?: DateTimeFilter<"CaseCounseling"> | Date | string
-  }
-
   export type CasePaymentUpsertWithWhereUniqueWithoutReceivedByUserInput = {
     where: CasePaymentWhereUniqueInput
     update: XOR<CasePaymentUpdateWithoutReceivedByUserInput, CasePaymentUncheckedUpdateWithoutReceivedByUserInput>
@@ -39449,7 +34793,8 @@ export namespace Prisma {
     natureId?: StringFilter<"Case"> | string
     registrationFee?: DecimalNullableFilter<"Case"> | Decimal | DecimalJsLike | number | string | null
     facts?: StringNullableFilter<"Case"> | string | null
-    relatedLaws?: StringNullableFilter<"Case"> | string | null
+    details?: JsonNullableFilter<"Case">
+    relatedLaw?: JsonNullableFilter<"Case">
     referredThrough?: StringNullableFilter<"Case"> | string | null
     noticeStatus?: StringNullableFilter<"Case"> | string | null
     fullJudgmentDate?: DateTimeNullableFilter<"Case"> | Date | string | null
@@ -39478,8 +34823,6 @@ export namespace Prisma {
     reset_tokens?: PasswordResetTokenCreateNestedManyWithoutUserInput
     pages?: PageCreateNestedManyWithoutAuthorInput
     cases_as_lawyer?: CaseLawyerCreateNestedManyWithoutUserInput
-    cases_as_pleader?: CasePleadingCreateNestedManyWithoutPleaderInput
-    cases_as_counselor?: CaseCounselingCreateNestedManyWithoutCounselorInput
     cases_payment_received?: CasePaymentCreateNestedManyWithoutReceivedByUserInput
     cases_created?: CaseCreateNestedManyWithoutCreatedByInput
   }
@@ -39503,8 +34846,6 @@ export namespace Prisma {
     reset_tokens?: PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
     pages?: PageUncheckedCreateNestedManyWithoutAuthorInput
     cases_as_lawyer?: CaseLawyerUncheckedCreateNestedManyWithoutUserInput
-    cases_as_pleader?: CasePleadingUncheckedCreateNestedManyWithoutPleaderInput
-    cases_as_counselor?: CaseCounselingUncheckedCreateNestedManyWithoutCounselorInput
     cases_payment_received?: CasePaymentUncheckedCreateNestedManyWithoutReceivedByUserInput
     cases_created?: CaseUncheckedCreateNestedManyWithoutCreatedByInput
   }
@@ -39544,8 +34885,6 @@ export namespace Prisma {
     reset_tokens?: PasswordResetTokenUpdateManyWithoutUserNestedInput
     pages?: PageUpdateManyWithoutAuthorNestedInput
     cases_as_lawyer?: CaseLawyerUpdateManyWithoutUserNestedInput
-    cases_as_pleader?: CasePleadingUpdateManyWithoutPleaderNestedInput
-    cases_as_counselor?: CaseCounselingUpdateManyWithoutCounselorNestedInput
     cases_payment_received?: CasePaymentUpdateManyWithoutReceivedByUserNestedInput
     cases_created?: CaseUpdateManyWithoutCreatedByNestedInput
   }
@@ -39569,8 +34908,6 @@ export namespace Prisma {
     reset_tokens?: PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
     pages?: PageUncheckedUpdateManyWithoutAuthorNestedInput
     cases_as_lawyer?: CaseLawyerUncheckedUpdateManyWithoutUserNestedInput
-    cases_as_pleader?: CasePleadingUncheckedUpdateManyWithoutPleaderNestedInput
-    cases_as_counselor?: CaseCounselingUncheckedUpdateManyWithoutCounselorNestedInput
     cases_payment_received?: CasePaymentUncheckedUpdateManyWithoutReceivedByUserNestedInput
     cases_created?: CaseUncheckedUpdateManyWithoutCreatedByNestedInput
   }
@@ -39594,8 +34931,6 @@ export namespace Prisma {
     refresh_tokens?: RefreshTokenCreateNestedManyWithoutUserInput
     pages?: PageCreateNestedManyWithoutAuthorInput
     cases_as_lawyer?: CaseLawyerCreateNestedManyWithoutUserInput
-    cases_as_pleader?: CasePleadingCreateNestedManyWithoutPleaderInput
-    cases_as_counselor?: CaseCounselingCreateNestedManyWithoutCounselorInput
     cases_payment_received?: CasePaymentCreateNestedManyWithoutReceivedByUserInput
     cases_created?: CaseCreateNestedManyWithoutCreatedByInput
   }
@@ -39619,8 +34954,6 @@ export namespace Prisma {
     refresh_tokens?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
     pages?: PageUncheckedCreateNestedManyWithoutAuthorInput
     cases_as_lawyer?: CaseLawyerUncheckedCreateNestedManyWithoutUserInput
-    cases_as_pleader?: CasePleadingUncheckedCreateNestedManyWithoutPleaderInput
-    cases_as_counselor?: CaseCounselingUncheckedCreateNestedManyWithoutCounselorInput
     cases_payment_received?: CasePaymentUncheckedCreateNestedManyWithoutReceivedByUserInput
     cases_created?: CaseUncheckedCreateNestedManyWithoutCreatedByInput
   }
@@ -39660,8 +34993,6 @@ export namespace Prisma {
     refresh_tokens?: RefreshTokenUpdateManyWithoutUserNestedInput
     pages?: PageUpdateManyWithoutAuthorNestedInput
     cases_as_lawyer?: CaseLawyerUpdateManyWithoutUserNestedInput
-    cases_as_pleader?: CasePleadingUpdateManyWithoutPleaderNestedInput
-    cases_as_counselor?: CaseCounselingUpdateManyWithoutCounselorNestedInput
     cases_payment_received?: CasePaymentUpdateManyWithoutReceivedByUserNestedInput
     cases_created?: CaseUpdateManyWithoutCreatedByNestedInput
   }
@@ -39685,8 +35016,6 @@ export namespace Prisma {
     refresh_tokens?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
     pages?: PageUncheckedUpdateManyWithoutAuthorNestedInput
     cases_as_lawyer?: CaseLawyerUncheckedUpdateManyWithoutUserNestedInput
-    cases_as_pleader?: CasePleadingUncheckedUpdateManyWithoutPleaderNestedInput
-    cases_as_counselor?: CaseCounselingUncheckedUpdateManyWithoutCounselorNestedInput
     cases_payment_received?: CasePaymentUncheckedUpdateManyWithoutReceivedByUserNestedInput
     cases_created?: CaseUncheckedUpdateManyWithoutCreatedByNestedInput
   }
@@ -39710,8 +35039,6 @@ export namespace Prisma {
     reset_tokens?: PasswordResetTokenCreateNestedManyWithoutUserInput
     pages?: PageCreateNestedManyWithoutAuthorInput
     cases_as_lawyer?: CaseLawyerCreateNestedManyWithoutUserInput
-    cases_as_pleader?: CasePleadingCreateNestedManyWithoutPleaderInput
-    cases_as_counselor?: CaseCounselingCreateNestedManyWithoutCounselorInput
     cases_payment_received?: CasePaymentCreateNestedManyWithoutReceivedByUserInput
     cases_created?: CaseCreateNestedManyWithoutCreatedByInput
   }
@@ -39735,8 +35062,6 @@ export namespace Prisma {
     reset_tokens?: PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
     pages?: PageUncheckedCreateNestedManyWithoutAuthorInput
     cases_as_lawyer?: CaseLawyerUncheckedCreateNestedManyWithoutUserInput
-    cases_as_pleader?: CasePleadingUncheckedCreateNestedManyWithoutPleaderInput
-    cases_as_counselor?: CaseCounselingUncheckedCreateNestedManyWithoutCounselorInput
     cases_payment_received?: CasePaymentUncheckedCreateNestedManyWithoutReceivedByUserInput
     cases_created?: CaseUncheckedCreateNestedManyWithoutCreatedByInput
   }
@@ -39923,68 +35248,12 @@ export namespace Prisma {
     updated_at?: DateTimeFilter<"PageSeo"> | Date | string
   }
 
-  export type CourtProceedingCreateWithoutCourtLevelInput = {
-    id?: string
-    courtName: string
-    judgeName?: string | null
-    chargeCounseling?: string | null
-    verdict?: string | null
-    case: CaseCreateNestedOneWithoutProceedingsInput
-  }
-
-  export type CourtProceedingUncheckedCreateWithoutCourtLevelInput = {
-    id?: string
-    caseId: string
-    courtName: string
-    judgeName?: string | null
-    chargeCounseling?: string | null
-    verdict?: string | null
-  }
-
-  export type CourtProceedingCreateOrConnectWithoutCourtLevelInput = {
-    where: CourtProceedingWhereUniqueInput
-    create: XOR<CourtProceedingCreateWithoutCourtLevelInput, CourtProceedingUncheckedCreateWithoutCourtLevelInput>
-  }
-
-  export type CourtProceedingCreateManyCourtLevelInputEnvelope = {
-    data: CourtProceedingCreateManyCourtLevelInput | CourtProceedingCreateManyCourtLevelInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type CourtProceedingUpsertWithWhereUniqueWithoutCourtLevelInput = {
-    where: CourtProceedingWhereUniqueInput
-    update: XOR<CourtProceedingUpdateWithoutCourtLevelInput, CourtProceedingUncheckedUpdateWithoutCourtLevelInput>
-    create: XOR<CourtProceedingCreateWithoutCourtLevelInput, CourtProceedingUncheckedCreateWithoutCourtLevelInput>
-  }
-
-  export type CourtProceedingUpdateWithWhereUniqueWithoutCourtLevelInput = {
-    where: CourtProceedingWhereUniqueInput
-    data: XOR<CourtProceedingUpdateWithoutCourtLevelInput, CourtProceedingUncheckedUpdateWithoutCourtLevelInput>
-  }
-
-  export type CourtProceedingUpdateManyWithWhereWithoutCourtLevelInput = {
-    where: CourtProceedingScalarWhereInput
-    data: XOR<CourtProceedingUpdateManyMutationInput, CourtProceedingUncheckedUpdateManyWithoutCourtLevelInput>
-  }
-
-  export type CourtProceedingScalarWhereInput = {
-    AND?: CourtProceedingScalarWhereInput | CourtProceedingScalarWhereInput[]
-    OR?: CourtProceedingScalarWhereInput[]
-    NOT?: CourtProceedingScalarWhereInput | CourtProceedingScalarWhereInput[]
-    id?: StringFilter<"CourtProceeding"> | string
-    caseId?: StringFilter<"CourtProceeding"> | string
-    courtLevelId?: StringFilter<"CourtProceeding"> | string
-    courtName?: StringFilter<"CourtProceeding"> | string
-    judgeName?: StringNullableFilter<"CourtProceeding"> | string | null
-    chargeCounseling?: StringNullableFilter<"CourtProceeding"> | string | null
-    verdict?: StringNullableFilter<"CourtProceeding"> | string | null
-  }
-
   export type CaseCreateWithoutNatureInput = {
     id?: string
     registrationFee?: Decimal | DecimalJsLike | number | string | null
     facts?: string | null
-    relatedLaws?: string | null
+    details?: NullableJsonNullValueInput | InputJsonValue
+    relatedLaw?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: string | null
     noticeStatus?: string | null
     fullJudgmentDate?: Date | string | null
@@ -39996,19 +35265,17 @@ export namespace Prisma {
     lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
     parties?: CasePartyCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingCreateNestedManyWithoutCaseInput
-    pleadings?: CasePleadingCreateNestedManyWithoutCaseInput
-    proceedings?: CourtProceedingCreateNestedManyWithoutCaseInput
-    precedents?: CasePrecedentCreateNestedManyWithoutCaseInput
     payments?: CasePaymentCreateNestedManyWithoutCaseInput
-    counselings?: CaseCounselingCreateNestedManyWithoutCaseInput
     documents?: CaseDocumentCreateNestedManyWithoutCaseInput
+    judgements?: CaseJudgementCreateNestedManyWithoutCaseInput
   }
 
   export type CaseUncheckedCreateWithoutNatureInput = {
     id?: string
     registrationFee?: Decimal | DecimalJsLike | number | string | null
     facts?: string | null
-    relatedLaws?: string | null
+    details?: NullableJsonNullValueInput | InputJsonValue
+    relatedLaw?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: string | null
     noticeStatus?: string | null
     fullJudgmentDate?: Date | string | null
@@ -40020,12 +35287,9 @@ export namespace Prisma {
     lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
     parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingUncheckedCreateNestedManyWithoutCaseInput
-    pleadings?: CasePleadingUncheckedCreateNestedManyWithoutCaseInput
-    proceedings?: CourtProceedingUncheckedCreateNestedManyWithoutCaseInput
-    precedents?: CasePrecedentUncheckedCreateNestedManyWithoutCaseInput
     payments?: CasePaymentUncheckedCreateNestedManyWithoutCaseInput
-    counselings?: CaseCounselingUncheckedCreateNestedManyWithoutCaseInput
     documents?: CaseDocumentUncheckedCreateNestedManyWithoutCaseInput
+    judgements?: CaseJudgementUncheckedCreateNestedManyWithoutCaseInput
   }
 
   export type CaseCreateOrConnectWithoutNatureInput = {
@@ -40159,8 +35423,6 @@ export namespace Prisma {
     reset_tokens?: PasswordResetTokenCreateNestedManyWithoutUserInput
     pages?: PageCreateNestedManyWithoutAuthorInput
     cases_as_lawyer?: CaseLawyerCreateNestedManyWithoutUserInput
-    cases_as_pleader?: CasePleadingCreateNestedManyWithoutPleaderInput
-    cases_as_counselor?: CaseCounselingCreateNestedManyWithoutCounselorInput
     cases_payment_received?: CasePaymentCreateNestedManyWithoutReceivedByUserInput
   }
 
@@ -40184,8 +35446,6 @@ export namespace Prisma {
     reset_tokens?: PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
     pages?: PageUncheckedCreateNestedManyWithoutAuthorInput
     cases_as_lawyer?: CaseLawyerUncheckedCreateNestedManyWithoutUserInput
-    cases_as_pleader?: CasePleadingUncheckedCreateNestedManyWithoutPleaderInput
-    cases_as_counselor?: CaseCounselingUncheckedCreateNestedManyWithoutCounselorInput
     cases_payment_received?: CasePaymentUncheckedCreateNestedManyWithoutReceivedByUserInput
   }
 
@@ -40208,6 +35468,7 @@ export namespace Prisma {
     parent?: CaseCourtDetailCreateNestedOneWithoutChildrenInput
     children?: CaseCourtDetailCreateNestedManyWithoutParentInput
     hearings?: CaseHearingCreateNestedManyWithoutCaseCourtDetailInput
+    judgements?: CaseJudgementCreateNestedManyWithoutCaseCourtDetailInput
   }
 
   export type CaseCourtDetailUncheckedCreateWithoutCaseInput = {
@@ -40224,6 +35485,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     children?: CaseCourtDetailUncheckedCreateNestedManyWithoutParentInput
     hearings?: CaseHearingUncheckedCreateNestedManyWithoutCaseCourtDetailInput
+    judgements?: CaseJudgementUncheckedCreateNestedManyWithoutCaseCourtDetailInput
   }
 
   export type CaseCourtDetailCreateOrConnectWithoutCaseInput = {
@@ -40318,84 +35580,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type CasePleadingCreateWithoutCaseInput = {
-    id?: string
-    pleadingDate?: Date | string | null
-    pleadingNotes: string
-    pleader?: UserCreateNestedOneWithoutCases_as_pleaderInput
-  }
-
-  export type CasePleadingUncheckedCreateWithoutCaseInput = {
-    id?: string
-    pleaderUserId?: string | null
-    pleadingDate?: Date | string | null
-    pleadingNotes: string
-  }
-
-  export type CasePleadingCreateOrConnectWithoutCaseInput = {
-    where: CasePleadingWhereUniqueInput
-    create: XOR<CasePleadingCreateWithoutCaseInput, CasePleadingUncheckedCreateWithoutCaseInput>
-  }
-
-  export type CasePleadingCreateManyCaseInputEnvelope = {
-    data: CasePleadingCreateManyCaseInput | CasePleadingCreateManyCaseInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type CourtProceedingCreateWithoutCaseInput = {
-    id?: string
-    courtName: string
-    judgeName?: string | null
-    chargeCounseling?: string | null
-    verdict?: string | null
-    courtLevel: CourtLevelCreateNestedOneWithoutProceedingsInput
-  }
-
-  export type CourtProceedingUncheckedCreateWithoutCaseInput = {
-    id?: string
-    courtLevelId: string
-    courtName: string
-    judgeName?: string | null
-    chargeCounseling?: string | null
-    verdict?: string | null
-  }
-
-  export type CourtProceedingCreateOrConnectWithoutCaseInput = {
-    where: CourtProceedingWhereUniqueInput
-    create: XOR<CourtProceedingCreateWithoutCaseInput, CourtProceedingUncheckedCreateWithoutCaseInput>
-  }
-
-  export type CourtProceedingCreateManyCaseInputEnvelope = {
-    data: CourtProceedingCreateManyCaseInput | CourtProceedingCreateManyCaseInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type CasePrecedentCreateWithoutCaseInput = {
-    id?: string
-    decisionNumber?: string | null
-    plaintiff?: string | null
-    defendant?: string | null
-    citationNotes?: string | null
-  }
-
-  export type CasePrecedentUncheckedCreateWithoutCaseInput = {
-    id?: string
-    decisionNumber?: string | null
-    plaintiff?: string | null
-    defendant?: string | null
-    citationNotes?: string | null
-  }
-
-  export type CasePrecedentCreateOrConnectWithoutCaseInput = {
-    where: CasePrecedentWhereUniqueInput
-    create: XOR<CasePrecedentCreateWithoutCaseInput, CasePrecedentUncheckedCreateWithoutCaseInput>
-  }
-
-  export type CasePrecedentCreateManyCaseInputEnvelope = {
-    data: CasePrecedentCreateManyCaseInput | CasePrecedentCreateManyCaseInput[]
-    skipDuplicates?: boolean
-  }
-
   export type CasePaymentCreateWithoutCaseInput = {
     id?: string
     amount: Decimal | DecimalJsLike | number | string
@@ -40430,32 +35614,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type CaseCounselingCreateWithoutCaseInput = {
-    id?: string
-    date?: Date | string | null
-    notes: string
-    createdAt?: Date | string
-    counselor?: UserCreateNestedOneWithoutCases_as_counselorInput
-  }
-
-  export type CaseCounselingUncheckedCreateWithoutCaseInput = {
-    id?: string
-    counselorUserId?: string | null
-    date?: Date | string | null
-    notes: string
-    createdAt?: Date | string
-  }
-
-  export type CaseCounselingCreateOrConnectWithoutCaseInput = {
-    where: CaseCounselingWhereUniqueInput
-    create: XOR<CaseCounselingCreateWithoutCaseInput, CaseCounselingUncheckedCreateWithoutCaseInput>
-  }
-
-  export type CaseCounselingCreateManyCaseInputEnvelope = {
-    data: CaseCounselingCreateManyCaseInput | CaseCounselingCreateManyCaseInput[]
-    skipDuplicates?: boolean
-  }
-
   export type CaseDocumentCreateWithoutCaseInput = {
     id?: string
     fileName: string
@@ -40479,6 +35637,38 @@ export namespace Prisma {
 
   export type CaseDocumentCreateManyCaseInputEnvelope = {
     data: CaseDocumentCreateManyCaseInput | CaseDocumentCreateManyCaseInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CaseJudgementCreateWithoutCaseInput = {
+    id?: string
+    type: string
+    date?: Date | string | null
+    verifiedDate?: Date | string | null
+    detail?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    caseCourtDetail: CaseCourtDetailCreateNestedOneWithoutJudgementsInput
+  }
+
+  export type CaseJudgementUncheckedCreateWithoutCaseInput = {
+    id?: string
+    caseCourtDetailId: string
+    type: string
+    date?: Date | string | null
+    verifiedDate?: Date | string | null
+    detail?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CaseJudgementCreateOrConnectWithoutCaseInput = {
+    where: CaseJudgementWhereUniqueInput
+    create: XOR<CaseJudgementCreateWithoutCaseInput, CaseJudgementUncheckedCreateWithoutCaseInput>
+  }
+
+  export type CaseJudgementCreateManyCaseInputEnvelope = {
+    data: CaseJudgementCreateManyCaseInput | CaseJudgementCreateManyCaseInput[]
     skipDuplicates?: boolean
   }
 
@@ -40536,8 +35726,6 @@ export namespace Prisma {
     reset_tokens?: PasswordResetTokenUpdateManyWithoutUserNestedInput
     pages?: PageUpdateManyWithoutAuthorNestedInput
     cases_as_lawyer?: CaseLawyerUpdateManyWithoutUserNestedInput
-    cases_as_pleader?: CasePleadingUpdateManyWithoutPleaderNestedInput
-    cases_as_counselor?: CaseCounselingUpdateManyWithoutCounselorNestedInput
     cases_payment_received?: CasePaymentUpdateManyWithoutReceivedByUserNestedInput
   }
 
@@ -40561,8 +35749,6 @@ export namespace Prisma {
     reset_tokens?: PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
     pages?: PageUncheckedUpdateManyWithoutAuthorNestedInput
     cases_as_lawyer?: CaseLawyerUncheckedUpdateManyWithoutUserNestedInput
-    cases_as_pleader?: CasePleadingUncheckedUpdateManyWithoutPleaderNestedInput
-    cases_as_counselor?: CaseCounselingUncheckedUpdateManyWithoutCounselorNestedInput
     cases_payment_received?: CasePaymentUncheckedUpdateManyWithoutReceivedByUserNestedInput
   }
 
@@ -40660,66 +35846,6 @@ export namespace Prisma {
     hearingOrder?: StringNullableFilter<"CaseHearing"> | string | null
   }
 
-  export type CasePleadingUpsertWithWhereUniqueWithoutCaseInput = {
-    where: CasePleadingWhereUniqueInput
-    update: XOR<CasePleadingUpdateWithoutCaseInput, CasePleadingUncheckedUpdateWithoutCaseInput>
-    create: XOR<CasePleadingCreateWithoutCaseInput, CasePleadingUncheckedCreateWithoutCaseInput>
-  }
-
-  export type CasePleadingUpdateWithWhereUniqueWithoutCaseInput = {
-    where: CasePleadingWhereUniqueInput
-    data: XOR<CasePleadingUpdateWithoutCaseInput, CasePleadingUncheckedUpdateWithoutCaseInput>
-  }
-
-  export type CasePleadingUpdateManyWithWhereWithoutCaseInput = {
-    where: CasePleadingScalarWhereInput
-    data: XOR<CasePleadingUpdateManyMutationInput, CasePleadingUncheckedUpdateManyWithoutCaseInput>
-  }
-
-  export type CourtProceedingUpsertWithWhereUniqueWithoutCaseInput = {
-    where: CourtProceedingWhereUniqueInput
-    update: XOR<CourtProceedingUpdateWithoutCaseInput, CourtProceedingUncheckedUpdateWithoutCaseInput>
-    create: XOR<CourtProceedingCreateWithoutCaseInput, CourtProceedingUncheckedCreateWithoutCaseInput>
-  }
-
-  export type CourtProceedingUpdateWithWhereUniqueWithoutCaseInput = {
-    where: CourtProceedingWhereUniqueInput
-    data: XOR<CourtProceedingUpdateWithoutCaseInput, CourtProceedingUncheckedUpdateWithoutCaseInput>
-  }
-
-  export type CourtProceedingUpdateManyWithWhereWithoutCaseInput = {
-    where: CourtProceedingScalarWhereInput
-    data: XOR<CourtProceedingUpdateManyMutationInput, CourtProceedingUncheckedUpdateManyWithoutCaseInput>
-  }
-
-  export type CasePrecedentUpsertWithWhereUniqueWithoutCaseInput = {
-    where: CasePrecedentWhereUniqueInput
-    update: XOR<CasePrecedentUpdateWithoutCaseInput, CasePrecedentUncheckedUpdateWithoutCaseInput>
-    create: XOR<CasePrecedentCreateWithoutCaseInput, CasePrecedentUncheckedCreateWithoutCaseInput>
-  }
-
-  export type CasePrecedentUpdateWithWhereUniqueWithoutCaseInput = {
-    where: CasePrecedentWhereUniqueInput
-    data: XOR<CasePrecedentUpdateWithoutCaseInput, CasePrecedentUncheckedUpdateWithoutCaseInput>
-  }
-
-  export type CasePrecedentUpdateManyWithWhereWithoutCaseInput = {
-    where: CasePrecedentScalarWhereInput
-    data: XOR<CasePrecedentUpdateManyMutationInput, CasePrecedentUncheckedUpdateManyWithoutCaseInput>
-  }
-
-  export type CasePrecedentScalarWhereInput = {
-    AND?: CasePrecedentScalarWhereInput | CasePrecedentScalarWhereInput[]
-    OR?: CasePrecedentScalarWhereInput[]
-    NOT?: CasePrecedentScalarWhereInput | CasePrecedentScalarWhereInput[]
-    id?: StringFilter<"CasePrecedent"> | string
-    caseId?: StringFilter<"CasePrecedent"> | string
-    decisionNumber?: StringNullableFilter<"CasePrecedent"> | string | null
-    plaintiff?: StringNullableFilter<"CasePrecedent"> | string | null
-    defendant?: StringNullableFilter<"CasePrecedent"> | string | null
-    citationNotes?: StringNullableFilter<"CasePrecedent"> | string | null
-  }
-
   export type CasePaymentUpsertWithWhereUniqueWithoutCaseInput = {
     where: CasePaymentWhereUniqueInput
     update: XOR<CasePaymentUpdateWithoutCaseInput, CasePaymentUncheckedUpdateWithoutCaseInput>
@@ -40734,22 +35860,6 @@ export namespace Prisma {
   export type CasePaymentUpdateManyWithWhereWithoutCaseInput = {
     where: CasePaymentScalarWhereInput
     data: XOR<CasePaymentUpdateManyMutationInput, CasePaymentUncheckedUpdateManyWithoutCaseInput>
-  }
-
-  export type CaseCounselingUpsertWithWhereUniqueWithoutCaseInput = {
-    where: CaseCounselingWhereUniqueInput
-    update: XOR<CaseCounselingUpdateWithoutCaseInput, CaseCounselingUncheckedUpdateWithoutCaseInput>
-    create: XOR<CaseCounselingCreateWithoutCaseInput, CaseCounselingUncheckedCreateWithoutCaseInput>
-  }
-
-  export type CaseCounselingUpdateWithWhereUniqueWithoutCaseInput = {
-    where: CaseCounselingWhereUniqueInput
-    data: XOR<CaseCounselingUpdateWithoutCaseInput, CaseCounselingUncheckedUpdateWithoutCaseInput>
-  }
-
-  export type CaseCounselingUpdateManyWithWhereWithoutCaseInput = {
-    where: CaseCounselingScalarWhereInput
-    data: XOR<CaseCounselingUpdateManyMutationInput, CaseCounselingUncheckedUpdateManyWithoutCaseInput>
   }
 
   export type CaseDocumentUpsertWithWhereUniqueWithoutCaseInput = {
@@ -40780,11 +35890,43 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"CaseDocument"> | Date | string
   }
 
+  export type CaseJudgementUpsertWithWhereUniqueWithoutCaseInput = {
+    where: CaseJudgementWhereUniqueInput
+    update: XOR<CaseJudgementUpdateWithoutCaseInput, CaseJudgementUncheckedUpdateWithoutCaseInput>
+    create: XOR<CaseJudgementCreateWithoutCaseInput, CaseJudgementUncheckedCreateWithoutCaseInput>
+  }
+
+  export type CaseJudgementUpdateWithWhereUniqueWithoutCaseInput = {
+    where: CaseJudgementWhereUniqueInput
+    data: XOR<CaseJudgementUpdateWithoutCaseInput, CaseJudgementUncheckedUpdateWithoutCaseInput>
+  }
+
+  export type CaseJudgementUpdateManyWithWhereWithoutCaseInput = {
+    where: CaseJudgementScalarWhereInput
+    data: XOR<CaseJudgementUpdateManyMutationInput, CaseJudgementUncheckedUpdateManyWithoutCaseInput>
+  }
+
+  export type CaseJudgementScalarWhereInput = {
+    AND?: CaseJudgementScalarWhereInput | CaseJudgementScalarWhereInput[]
+    OR?: CaseJudgementScalarWhereInput[]
+    NOT?: CaseJudgementScalarWhereInput | CaseJudgementScalarWhereInput[]
+    id?: StringFilter<"CaseJudgement"> | string
+    caseId?: StringFilter<"CaseJudgement"> | string
+    caseCourtDetailId?: StringFilter<"CaseJudgement"> | string
+    type?: StringFilter<"CaseJudgement"> | string
+    date?: DateTimeNullableFilter<"CaseJudgement"> | Date | string | null
+    verifiedDate?: DateTimeNullableFilter<"CaseJudgement"> | Date | string | null
+    detail?: JsonNullableFilter<"CaseJudgement">
+    createdAt?: DateTimeFilter<"CaseJudgement"> | Date | string
+    updatedAt?: DateTimeFilter<"CaseJudgement"> | Date | string
+  }
+
   export type CaseCreateWithoutCourtDetailsInput = {
     id?: string
     registrationFee?: Decimal | DecimalJsLike | number | string | null
     facts?: string | null
-    relatedLaws?: string | null
+    details?: NullableJsonNullValueInput | InputJsonValue
+    relatedLaw?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: string | null
     noticeStatus?: string | null
     fullJudgmentDate?: Date | string | null
@@ -40796,12 +35938,9 @@ export namespace Prisma {
     lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
     parties?: CasePartyCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingCreateNestedManyWithoutCaseInput
-    pleadings?: CasePleadingCreateNestedManyWithoutCaseInput
-    proceedings?: CourtProceedingCreateNestedManyWithoutCaseInput
-    precedents?: CasePrecedentCreateNestedManyWithoutCaseInput
     payments?: CasePaymentCreateNestedManyWithoutCaseInput
-    counselings?: CaseCounselingCreateNestedManyWithoutCaseInput
     documents?: CaseDocumentCreateNestedManyWithoutCaseInput
+    judgements?: CaseJudgementCreateNestedManyWithoutCaseInput
   }
 
   export type CaseUncheckedCreateWithoutCourtDetailsInput = {
@@ -40809,7 +35948,8 @@ export namespace Prisma {
     natureId: string
     registrationFee?: Decimal | DecimalJsLike | number | string | null
     facts?: string | null
-    relatedLaws?: string | null
+    details?: NullableJsonNullValueInput | InputJsonValue
+    relatedLaw?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: string | null
     noticeStatus?: string | null
     fullJudgmentDate?: Date | string | null
@@ -40820,12 +35960,9 @@ export namespace Prisma {
     lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
     parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingUncheckedCreateNestedManyWithoutCaseInput
-    pleadings?: CasePleadingUncheckedCreateNestedManyWithoutCaseInput
-    proceedings?: CourtProceedingUncheckedCreateNestedManyWithoutCaseInput
-    precedents?: CasePrecedentUncheckedCreateNestedManyWithoutCaseInput
     payments?: CasePaymentUncheckedCreateNestedManyWithoutCaseInput
-    counselings?: CaseCounselingUncheckedCreateNestedManyWithoutCaseInput
     documents?: CaseDocumentUncheckedCreateNestedManyWithoutCaseInput
+    judgements?: CaseJudgementUncheckedCreateNestedManyWithoutCaseInput
   }
 
   export type CaseCreateOrConnectWithoutCourtDetailsInput = {
@@ -40847,6 +35984,7 @@ export namespace Prisma {
     case: CaseCreateNestedOneWithoutCourtDetailsInput
     parent?: CaseCourtDetailCreateNestedOneWithoutChildrenInput
     hearings?: CaseHearingCreateNestedManyWithoutCaseCourtDetailInput
+    judgements?: CaseJudgementCreateNestedManyWithoutCaseCourtDetailInput
   }
 
   export type CaseCourtDetailUncheckedCreateWithoutChildrenInput = {
@@ -40863,6 +36001,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     hearings?: CaseHearingUncheckedCreateNestedManyWithoutCaseCourtDetailInput
+    judgements?: CaseJudgementUncheckedCreateNestedManyWithoutCaseCourtDetailInput
   }
 
   export type CaseCourtDetailCreateOrConnectWithoutChildrenInput = {
@@ -40884,6 +36023,7 @@ export namespace Prisma {
     case: CaseCreateNestedOneWithoutCourtDetailsInput
     children?: CaseCourtDetailCreateNestedManyWithoutParentInput
     hearings?: CaseHearingCreateNestedManyWithoutCaseCourtDetailInput
+    judgements?: CaseJudgementCreateNestedManyWithoutCaseCourtDetailInput
   }
 
   export type CaseCourtDetailUncheckedCreateWithoutParentInput = {
@@ -40900,6 +36040,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     children?: CaseCourtDetailUncheckedCreateNestedManyWithoutParentInput
     hearings?: CaseHearingUncheckedCreateNestedManyWithoutCaseCourtDetailInput
+    judgements?: CaseJudgementUncheckedCreateNestedManyWithoutCaseCourtDetailInput
   }
 
   export type CaseCourtDetailCreateOrConnectWithoutParentInput = {
@@ -40938,6 +36079,38 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type CaseJudgementCreateWithoutCaseCourtDetailInput = {
+    id?: string
+    type: string
+    date?: Date | string | null
+    verifiedDate?: Date | string | null
+    detail?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    case: CaseCreateNestedOneWithoutJudgementsInput
+  }
+
+  export type CaseJudgementUncheckedCreateWithoutCaseCourtDetailInput = {
+    id?: string
+    caseId: string
+    type: string
+    date?: Date | string | null
+    verifiedDate?: Date | string | null
+    detail?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CaseJudgementCreateOrConnectWithoutCaseCourtDetailInput = {
+    where: CaseJudgementWhereUniqueInput
+    create: XOR<CaseJudgementCreateWithoutCaseCourtDetailInput, CaseJudgementUncheckedCreateWithoutCaseCourtDetailInput>
+  }
+
+  export type CaseJudgementCreateManyCaseCourtDetailInputEnvelope = {
+    data: CaseJudgementCreateManyCaseCourtDetailInput | CaseJudgementCreateManyCaseCourtDetailInput[]
+    skipDuplicates?: boolean
+  }
+
   export type CaseUpsertWithoutCourtDetailsInput = {
     update: XOR<CaseUpdateWithoutCourtDetailsInput, CaseUncheckedUpdateWithoutCourtDetailsInput>
     create: XOR<CaseCreateWithoutCourtDetailsInput, CaseUncheckedCreateWithoutCourtDetailsInput>
@@ -40953,7 +36126,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     facts?: NullableStringFieldUpdateOperationsInput | string | null
-    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    details?: NullableJsonNullValueInput | InputJsonValue
+    relatedLaw?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
     noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -40965,12 +36139,9 @@ export namespace Prisma {
     lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUpdateManyWithoutCaseNestedInput
-    pleadings?: CasePleadingUpdateManyWithoutCaseNestedInput
-    proceedings?: CourtProceedingUpdateManyWithoutCaseNestedInput
-    precedents?: CasePrecedentUpdateManyWithoutCaseNestedInput
     payments?: CasePaymentUpdateManyWithoutCaseNestedInput
-    counselings?: CaseCounselingUpdateManyWithoutCaseNestedInput
     documents?: CaseDocumentUpdateManyWithoutCaseNestedInput
+    judgements?: CaseJudgementUpdateManyWithoutCaseNestedInput
   }
 
   export type CaseUncheckedUpdateWithoutCourtDetailsInput = {
@@ -40978,7 +36149,8 @@ export namespace Prisma {
     natureId?: StringFieldUpdateOperationsInput | string
     registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     facts?: NullableStringFieldUpdateOperationsInput | string | null
-    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    details?: NullableJsonNullValueInput | InputJsonValue
+    relatedLaw?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
     noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -40989,12 +36161,9 @@ export namespace Prisma {
     lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUncheckedUpdateManyWithoutCaseNestedInput
-    pleadings?: CasePleadingUncheckedUpdateManyWithoutCaseNestedInput
-    proceedings?: CourtProceedingUncheckedUpdateManyWithoutCaseNestedInput
-    precedents?: CasePrecedentUncheckedUpdateManyWithoutCaseNestedInput
     payments?: CasePaymentUncheckedUpdateManyWithoutCaseNestedInput
-    counselings?: CaseCounselingUncheckedUpdateManyWithoutCaseNestedInput
     documents?: CaseDocumentUncheckedUpdateManyWithoutCaseNestedInput
+    judgements?: CaseJudgementUncheckedUpdateManyWithoutCaseNestedInput
   }
 
   export type CaseCourtDetailUpsertWithoutChildrenInput = {
@@ -41022,6 +36191,7 @@ export namespace Prisma {
     case?: CaseUpdateOneRequiredWithoutCourtDetailsNestedInput
     parent?: CaseCourtDetailUpdateOneWithoutChildrenNestedInput
     hearings?: CaseHearingUpdateManyWithoutCaseCourtDetailNestedInput
+    judgements?: CaseJudgementUpdateManyWithoutCaseCourtDetailNestedInput
   }
 
   export type CaseCourtDetailUncheckedUpdateWithoutChildrenInput = {
@@ -41038,6 +36208,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     hearings?: CaseHearingUncheckedUpdateManyWithoutCaseCourtDetailNestedInput
+    judgements?: CaseJudgementUncheckedUpdateManyWithoutCaseCourtDetailNestedInput
   }
 
   export type CaseCourtDetailUpsertWithWhereUniqueWithoutParentInput = {
@@ -41072,11 +36243,28 @@ export namespace Prisma {
     data: XOR<CaseHearingUpdateManyMutationInput, CaseHearingUncheckedUpdateManyWithoutCaseCourtDetailInput>
   }
 
+  export type CaseJudgementUpsertWithWhereUniqueWithoutCaseCourtDetailInput = {
+    where: CaseJudgementWhereUniqueInput
+    update: XOR<CaseJudgementUpdateWithoutCaseCourtDetailInput, CaseJudgementUncheckedUpdateWithoutCaseCourtDetailInput>
+    create: XOR<CaseJudgementCreateWithoutCaseCourtDetailInput, CaseJudgementUncheckedCreateWithoutCaseCourtDetailInput>
+  }
+
+  export type CaseJudgementUpdateWithWhereUniqueWithoutCaseCourtDetailInput = {
+    where: CaseJudgementWhereUniqueInput
+    data: XOR<CaseJudgementUpdateWithoutCaseCourtDetailInput, CaseJudgementUncheckedUpdateWithoutCaseCourtDetailInput>
+  }
+
+  export type CaseJudgementUpdateManyWithWhereWithoutCaseCourtDetailInput = {
+    where: CaseJudgementScalarWhereInput
+    data: XOR<CaseJudgementUpdateManyMutationInput, CaseJudgementUncheckedUpdateManyWithoutCaseCourtDetailInput>
+  }
+
   export type CaseCreateWithoutLawyersInput = {
     id?: string
     registrationFee?: Decimal | DecimalJsLike | number | string | null
     facts?: string | null
-    relatedLaws?: string | null
+    details?: NullableJsonNullValueInput | InputJsonValue
+    relatedLaw?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: string | null
     noticeStatus?: string | null
     fullJudgmentDate?: Date | string | null
@@ -41088,12 +36276,9 @@ export namespace Prisma {
     courtDetails?: CaseCourtDetailCreateNestedManyWithoutCaseInput
     parties?: CasePartyCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingCreateNestedManyWithoutCaseInput
-    pleadings?: CasePleadingCreateNestedManyWithoutCaseInput
-    proceedings?: CourtProceedingCreateNestedManyWithoutCaseInput
-    precedents?: CasePrecedentCreateNestedManyWithoutCaseInput
     payments?: CasePaymentCreateNestedManyWithoutCaseInput
-    counselings?: CaseCounselingCreateNestedManyWithoutCaseInput
     documents?: CaseDocumentCreateNestedManyWithoutCaseInput
+    judgements?: CaseJudgementCreateNestedManyWithoutCaseInput
   }
 
   export type CaseUncheckedCreateWithoutLawyersInput = {
@@ -41101,7 +36286,8 @@ export namespace Prisma {
     natureId: string
     registrationFee?: Decimal | DecimalJsLike | number | string | null
     facts?: string | null
-    relatedLaws?: string | null
+    details?: NullableJsonNullValueInput | InputJsonValue
+    relatedLaw?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: string | null
     noticeStatus?: string | null
     fullJudgmentDate?: Date | string | null
@@ -41112,12 +36298,9 @@ export namespace Prisma {
     courtDetails?: CaseCourtDetailUncheckedCreateNestedManyWithoutCaseInput
     parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingUncheckedCreateNestedManyWithoutCaseInput
-    pleadings?: CasePleadingUncheckedCreateNestedManyWithoutCaseInput
-    proceedings?: CourtProceedingUncheckedCreateNestedManyWithoutCaseInput
-    precedents?: CasePrecedentUncheckedCreateNestedManyWithoutCaseInput
     payments?: CasePaymentUncheckedCreateNestedManyWithoutCaseInput
-    counselings?: CaseCounselingUncheckedCreateNestedManyWithoutCaseInput
     documents?: CaseDocumentUncheckedCreateNestedManyWithoutCaseInput
+    judgements?: CaseJudgementUncheckedCreateNestedManyWithoutCaseInput
   }
 
   export type CaseCreateOrConnectWithoutLawyersInput = {
@@ -41144,8 +36327,6 @@ export namespace Prisma {
     refresh_tokens?: RefreshTokenCreateNestedManyWithoutUserInput
     reset_tokens?: PasswordResetTokenCreateNestedManyWithoutUserInput
     pages?: PageCreateNestedManyWithoutAuthorInput
-    cases_as_pleader?: CasePleadingCreateNestedManyWithoutPleaderInput
-    cases_as_counselor?: CaseCounselingCreateNestedManyWithoutCounselorInput
     cases_payment_received?: CasePaymentCreateNestedManyWithoutReceivedByUserInput
     cases_created?: CaseCreateNestedManyWithoutCreatedByInput
   }
@@ -41169,8 +36350,6 @@ export namespace Prisma {
     refresh_tokens?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
     reset_tokens?: PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
     pages?: PageUncheckedCreateNestedManyWithoutAuthorInput
-    cases_as_pleader?: CasePleadingUncheckedCreateNestedManyWithoutPleaderInput
-    cases_as_counselor?: CaseCounselingUncheckedCreateNestedManyWithoutCounselorInput
     cases_payment_received?: CasePaymentUncheckedCreateNestedManyWithoutReceivedByUserInput
     cases_created?: CaseUncheckedCreateNestedManyWithoutCreatedByInput
   }
@@ -41195,7 +36374,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     facts?: NullableStringFieldUpdateOperationsInput | string | null
-    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    details?: NullableJsonNullValueInput | InputJsonValue
+    relatedLaw?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
     noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -41207,12 +36387,9 @@ export namespace Prisma {
     courtDetails?: CaseCourtDetailUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUpdateManyWithoutCaseNestedInput
-    pleadings?: CasePleadingUpdateManyWithoutCaseNestedInput
-    proceedings?: CourtProceedingUpdateManyWithoutCaseNestedInput
-    precedents?: CasePrecedentUpdateManyWithoutCaseNestedInput
     payments?: CasePaymentUpdateManyWithoutCaseNestedInput
-    counselings?: CaseCounselingUpdateManyWithoutCaseNestedInput
     documents?: CaseDocumentUpdateManyWithoutCaseNestedInput
+    judgements?: CaseJudgementUpdateManyWithoutCaseNestedInput
   }
 
   export type CaseUncheckedUpdateWithoutLawyersInput = {
@@ -41220,7 +36397,8 @@ export namespace Prisma {
     natureId?: StringFieldUpdateOperationsInput | string
     registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     facts?: NullableStringFieldUpdateOperationsInput | string | null
-    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    details?: NullableJsonNullValueInput | InputJsonValue
+    relatedLaw?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
     noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -41231,12 +36409,9 @@ export namespace Prisma {
     courtDetails?: CaseCourtDetailUncheckedUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUncheckedUpdateManyWithoutCaseNestedInput
-    pleadings?: CasePleadingUncheckedUpdateManyWithoutCaseNestedInput
-    proceedings?: CourtProceedingUncheckedUpdateManyWithoutCaseNestedInput
-    precedents?: CasePrecedentUncheckedUpdateManyWithoutCaseNestedInput
     payments?: CasePaymentUncheckedUpdateManyWithoutCaseNestedInput
-    counselings?: CaseCounselingUncheckedUpdateManyWithoutCaseNestedInput
     documents?: CaseDocumentUncheckedUpdateManyWithoutCaseNestedInput
+    judgements?: CaseJudgementUncheckedUpdateManyWithoutCaseNestedInput
   }
 
   export type UserUpsertWithoutCases_as_lawyerInput = {
@@ -41269,8 +36444,6 @@ export namespace Prisma {
     refresh_tokens?: RefreshTokenUpdateManyWithoutUserNestedInput
     reset_tokens?: PasswordResetTokenUpdateManyWithoutUserNestedInput
     pages?: PageUpdateManyWithoutAuthorNestedInput
-    cases_as_pleader?: CasePleadingUpdateManyWithoutPleaderNestedInput
-    cases_as_counselor?: CaseCounselingUpdateManyWithoutCounselorNestedInput
     cases_payment_received?: CasePaymentUpdateManyWithoutReceivedByUserNestedInput
     cases_created?: CaseUpdateManyWithoutCreatedByNestedInput
   }
@@ -41294,8 +36467,6 @@ export namespace Prisma {
     refresh_tokens?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
     reset_tokens?: PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
     pages?: PageUncheckedUpdateManyWithoutAuthorNestedInput
-    cases_as_pleader?: CasePleadingUncheckedUpdateManyWithoutPleaderNestedInput
-    cases_as_counselor?: CaseCounselingUncheckedUpdateManyWithoutCounselorNestedInput
     cases_payment_received?: CasePaymentUncheckedUpdateManyWithoutReceivedByUserNestedInput
     cases_created?: CaseUncheckedUpdateManyWithoutCreatedByNestedInput
   }
@@ -41304,7 +36475,8 @@ export namespace Prisma {
     id?: string
     registrationFee?: Decimal | DecimalJsLike | number | string | null
     facts?: string | null
-    relatedLaws?: string | null
+    details?: NullableJsonNullValueInput | InputJsonValue
+    relatedLaw?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: string | null
     noticeStatus?: string | null
     fullJudgmentDate?: Date | string | null
@@ -41316,12 +36488,9 @@ export namespace Prisma {
     courtDetails?: CaseCourtDetailCreateNestedManyWithoutCaseInput
     lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingCreateNestedManyWithoutCaseInput
-    pleadings?: CasePleadingCreateNestedManyWithoutCaseInput
-    proceedings?: CourtProceedingCreateNestedManyWithoutCaseInput
-    precedents?: CasePrecedentCreateNestedManyWithoutCaseInput
     payments?: CasePaymentCreateNestedManyWithoutCaseInput
-    counselings?: CaseCounselingCreateNestedManyWithoutCaseInput
     documents?: CaseDocumentCreateNestedManyWithoutCaseInput
+    judgements?: CaseJudgementCreateNestedManyWithoutCaseInput
   }
 
   export type CaseUncheckedCreateWithoutPartiesInput = {
@@ -41329,7 +36498,8 @@ export namespace Prisma {
     natureId: string
     registrationFee?: Decimal | DecimalJsLike | number | string | null
     facts?: string | null
-    relatedLaws?: string | null
+    details?: NullableJsonNullValueInput | InputJsonValue
+    relatedLaw?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: string | null
     noticeStatus?: string | null
     fullJudgmentDate?: Date | string | null
@@ -41340,12 +36510,9 @@ export namespace Prisma {
     courtDetails?: CaseCourtDetailUncheckedCreateNestedManyWithoutCaseInput
     lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingUncheckedCreateNestedManyWithoutCaseInput
-    pleadings?: CasePleadingUncheckedCreateNestedManyWithoutCaseInput
-    proceedings?: CourtProceedingUncheckedCreateNestedManyWithoutCaseInput
-    precedents?: CasePrecedentUncheckedCreateNestedManyWithoutCaseInput
     payments?: CasePaymentUncheckedCreateNestedManyWithoutCaseInput
-    counselings?: CaseCounselingUncheckedCreateNestedManyWithoutCaseInput
     documents?: CaseDocumentUncheckedCreateNestedManyWithoutCaseInput
+    judgements?: CaseJudgementUncheckedCreateNestedManyWithoutCaseInput
   }
 
   export type CaseCreateOrConnectWithoutPartiesInput = {
@@ -41452,7 +36619,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     facts?: NullableStringFieldUpdateOperationsInput | string | null
-    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    details?: NullableJsonNullValueInput | InputJsonValue
+    relatedLaw?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
     noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -41464,12 +36632,9 @@ export namespace Prisma {
     courtDetails?: CaseCourtDetailUpdateManyWithoutCaseNestedInput
     lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUpdateManyWithoutCaseNestedInput
-    pleadings?: CasePleadingUpdateManyWithoutCaseNestedInput
-    proceedings?: CourtProceedingUpdateManyWithoutCaseNestedInput
-    precedents?: CasePrecedentUpdateManyWithoutCaseNestedInput
     payments?: CasePaymentUpdateManyWithoutCaseNestedInput
-    counselings?: CaseCounselingUpdateManyWithoutCaseNestedInput
     documents?: CaseDocumentUpdateManyWithoutCaseNestedInput
+    judgements?: CaseJudgementUpdateManyWithoutCaseNestedInput
   }
 
   export type CaseUncheckedUpdateWithoutPartiesInput = {
@@ -41477,7 +36642,8 @@ export namespace Prisma {
     natureId?: StringFieldUpdateOperationsInput | string
     registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     facts?: NullableStringFieldUpdateOperationsInput | string | null
-    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    details?: NullableJsonNullValueInput | InputJsonValue
+    relatedLaw?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
     noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -41488,12 +36654,9 @@ export namespace Prisma {
     courtDetails?: CaseCourtDetailUncheckedUpdateManyWithoutCaseNestedInput
     lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUncheckedUpdateManyWithoutCaseNestedInput
-    pleadings?: CasePleadingUncheckedUpdateManyWithoutCaseNestedInput
-    proceedings?: CourtProceedingUncheckedUpdateManyWithoutCaseNestedInput
-    precedents?: CasePrecedentUncheckedUpdateManyWithoutCaseNestedInput
     payments?: CasePaymentUncheckedUpdateManyWithoutCaseNestedInput
-    counselings?: CaseCounselingUncheckedUpdateManyWithoutCaseNestedInput
     documents?: CaseDocumentUncheckedUpdateManyWithoutCaseNestedInput
+    judgements?: CaseJudgementUncheckedUpdateManyWithoutCaseNestedInput
   }
 
   export type PartyRoleUpsertWithoutPartiesInput = {
@@ -41576,7 +36739,8 @@ export namespace Prisma {
     id?: string
     registrationFee?: Decimal | DecimalJsLike | number | string | null
     facts?: string | null
-    relatedLaws?: string | null
+    details?: NullableJsonNullValueInput | InputJsonValue
+    relatedLaw?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: string | null
     noticeStatus?: string | null
     fullJudgmentDate?: Date | string | null
@@ -41588,12 +36752,9 @@ export namespace Prisma {
     courtDetails?: CaseCourtDetailCreateNestedManyWithoutCaseInput
     lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
     parties?: CasePartyCreateNestedManyWithoutCaseInput
-    pleadings?: CasePleadingCreateNestedManyWithoutCaseInput
-    proceedings?: CourtProceedingCreateNestedManyWithoutCaseInput
-    precedents?: CasePrecedentCreateNestedManyWithoutCaseInput
     payments?: CasePaymentCreateNestedManyWithoutCaseInput
-    counselings?: CaseCounselingCreateNestedManyWithoutCaseInput
     documents?: CaseDocumentCreateNestedManyWithoutCaseInput
+    judgements?: CaseJudgementCreateNestedManyWithoutCaseInput
   }
 
   export type CaseUncheckedCreateWithoutHearingsInput = {
@@ -41601,7 +36762,8 @@ export namespace Prisma {
     natureId: string
     registrationFee?: Decimal | DecimalJsLike | number | string | null
     facts?: string | null
-    relatedLaws?: string | null
+    details?: NullableJsonNullValueInput | InputJsonValue
+    relatedLaw?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: string | null
     noticeStatus?: string | null
     fullJudgmentDate?: Date | string | null
@@ -41612,12 +36774,9 @@ export namespace Prisma {
     courtDetails?: CaseCourtDetailUncheckedCreateNestedManyWithoutCaseInput
     lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
     parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
-    pleadings?: CasePleadingUncheckedCreateNestedManyWithoutCaseInput
-    proceedings?: CourtProceedingUncheckedCreateNestedManyWithoutCaseInput
-    precedents?: CasePrecedentUncheckedCreateNestedManyWithoutCaseInput
     payments?: CasePaymentUncheckedCreateNestedManyWithoutCaseInput
-    counselings?: CaseCounselingUncheckedCreateNestedManyWithoutCaseInput
     documents?: CaseDocumentUncheckedCreateNestedManyWithoutCaseInput
+    judgements?: CaseJudgementUncheckedCreateNestedManyWithoutCaseInput
   }
 
   export type CaseCreateOrConnectWithoutHearingsInput = {
@@ -41639,6 +36798,7 @@ export namespace Prisma {
     case: CaseCreateNestedOneWithoutCourtDetailsInput
     parent?: CaseCourtDetailCreateNestedOneWithoutChildrenInput
     children?: CaseCourtDetailCreateNestedManyWithoutParentInput
+    judgements?: CaseJudgementCreateNestedManyWithoutCaseCourtDetailInput
   }
 
   export type CaseCourtDetailUncheckedCreateWithoutHearingsInput = {
@@ -41655,6 +36815,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     children?: CaseCourtDetailUncheckedCreateNestedManyWithoutParentInput
+    judgements?: CaseJudgementUncheckedCreateNestedManyWithoutCaseCourtDetailInput
   }
 
   export type CaseCourtDetailCreateOrConnectWithoutHearingsInput = {
@@ -41677,7 +36838,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     facts?: NullableStringFieldUpdateOperationsInput | string | null
-    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    details?: NullableJsonNullValueInput | InputJsonValue
+    relatedLaw?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
     noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -41689,12 +36851,9 @@ export namespace Prisma {
     courtDetails?: CaseCourtDetailUpdateManyWithoutCaseNestedInput
     lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUpdateManyWithoutCaseNestedInput
-    pleadings?: CasePleadingUpdateManyWithoutCaseNestedInput
-    proceedings?: CourtProceedingUpdateManyWithoutCaseNestedInput
-    precedents?: CasePrecedentUpdateManyWithoutCaseNestedInput
     payments?: CasePaymentUpdateManyWithoutCaseNestedInput
-    counselings?: CaseCounselingUpdateManyWithoutCaseNestedInput
     documents?: CaseDocumentUpdateManyWithoutCaseNestedInput
+    judgements?: CaseJudgementUpdateManyWithoutCaseNestedInput
   }
 
   export type CaseUncheckedUpdateWithoutHearingsInput = {
@@ -41702,7 +36861,8 @@ export namespace Prisma {
     natureId?: StringFieldUpdateOperationsInput | string
     registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     facts?: NullableStringFieldUpdateOperationsInput | string | null
-    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    details?: NullableJsonNullValueInput | InputJsonValue
+    relatedLaw?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
     noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -41713,12 +36873,9 @@ export namespace Prisma {
     courtDetails?: CaseCourtDetailUncheckedUpdateManyWithoutCaseNestedInput
     lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
-    pleadings?: CasePleadingUncheckedUpdateManyWithoutCaseNestedInput
-    proceedings?: CourtProceedingUncheckedUpdateManyWithoutCaseNestedInput
-    precedents?: CasePrecedentUncheckedUpdateManyWithoutCaseNestedInput
     payments?: CasePaymentUncheckedUpdateManyWithoutCaseNestedInput
-    counselings?: CaseCounselingUncheckedUpdateManyWithoutCaseNestedInput
     documents?: CaseDocumentUncheckedUpdateManyWithoutCaseNestedInput
+    judgements?: CaseJudgementUncheckedUpdateManyWithoutCaseNestedInput
   }
 
   export type CaseCourtDetailUpsertWithoutHearingsInput = {
@@ -41746,6 +36903,7 @@ export namespace Prisma {
     case?: CaseUpdateOneRequiredWithoutCourtDetailsNestedInput
     parent?: CaseCourtDetailUpdateOneWithoutChildrenNestedInput
     children?: CaseCourtDetailUpdateManyWithoutParentNestedInput
+    judgements?: CaseJudgementUpdateManyWithoutCaseCourtDetailNestedInput
   }
 
   export type CaseCourtDetailUncheckedUpdateWithoutHearingsInput = {
@@ -41762,505 +36920,15 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     children?: CaseCourtDetailUncheckedUpdateManyWithoutParentNestedInput
-  }
-
-  export type CaseCreateWithoutPleadingsInput = {
-    id?: string
-    registrationFee?: Decimal | DecimalJsLike | number | string | null
-    facts?: string | null
-    relatedLaws?: string | null
-    referredThrough?: string | null
-    noticeStatus?: string | null
-    fullJudgmentDate?: Date | string | null
-    judgmentVerifyDate?: Date | string | null
-    status?: string
-    createdAt?: Date | string
-    nature: CaseNatureCreateNestedOneWithoutCasesInput
-    createdBy?: UserCreateNestedOneWithoutCases_createdInput
-    courtDetails?: CaseCourtDetailCreateNestedManyWithoutCaseInput
-    lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
-    parties?: CasePartyCreateNestedManyWithoutCaseInput
-    hearings?: CaseHearingCreateNestedManyWithoutCaseInput
-    proceedings?: CourtProceedingCreateNestedManyWithoutCaseInput
-    precedents?: CasePrecedentCreateNestedManyWithoutCaseInput
-    payments?: CasePaymentCreateNestedManyWithoutCaseInput
-    counselings?: CaseCounselingCreateNestedManyWithoutCaseInput
-    documents?: CaseDocumentCreateNestedManyWithoutCaseInput
-  }
-
-  export type CaseUncheckedCreateWithoutPleadingsInput = {
-    id?: string
-    natureId: string
-    registrationFee?: Decimal | DecimalJsLike | number | string | null
-    facts?: string | null
-    relatedLaws?: string | null
-    referredThrough?: string | null
-    noticeStatus?: string | null
-    fullJudgmentDate?: Date | string | null
-    judgmentVerifyDate?: Date | string | null
-    status?: string
-    createdById?: string | null
-    createdAt?: Date | string
-    courtDetails?: CaseCourtDetailUncheckedCreateNestedManyWithoutCaseInput
-    lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
-    parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
-    hearings?: CaseHearingUncheckedCreateNestedManyWithoutCaseInput
-    proceedings?: CourtProceedingUncheckedCreateNestedManyWithoutCaseInput
-    precedents?: CasePrecedentUncheckedCreateNestedManyWithoutCaseInput
-    payments?: CasePaymentUncheckedCreateNestedManyWithoutCaseInput
-    counselings?: CaseCounselingUncheckedCreateNestedManyWithoutCaseInput
-    documents?: CaseDocumentUncheckedCreateNestedManyWithoutCaseInput
-  }
-
-  export type CaseCreateOrConnectWithoutPleadingsInput = {
-    where: CaseWhereUniqueInput
-    create: XOR<CaseCreateWithoutPleadingsInput, CaseUncheckedCreateWithoutPleadingsInput>
-  }
-
-  export type UserCreateWithoutCases_as_pleaderInput = {
-    id?: string
-    email: string
-    first_name: string
-    last_name: string
-    password?: string | null
-    status?: string
-    invitation_token?: string | null
-    invitation_expires_at?: Date | string | null
-    created_at?: Date | string
-    updated_at?: Date | string
-    deleted_at?: Date | string | null
-    detail?: NullableJsonNullValueInput | InputJsonValue
-    avatar?: ResourceCreateNestedOneWithoutUsersInput
-    role?: RoleCreateNestedOneWithoutUsersInput
-    notifications?: NotificationCreateNestedManyWithoutUserInput
-    refresh_tokens?: RefreshTokenCreateNestedManyWithoutUserInput
-    reset_tokens?: PasswordResetTokenCreateNestedManyWithoutUserInput
-    pages?: PageCreateNestedManyWithoutAuthorInput
-    cases_as_lawyer?: CaseLawyerCreateNestedManyWithoutUserInput
-    cases_as_counselor?: CaseCounselingCreateNestedManyWithoutCounselorInput
-    cases_payment_received?: CasePaymentCreateNestedManyWithoutReceivedByUserInput
-    cases_created?: CaseCreateNestedManyWithoutCreatedByInput
-  }
-
-  export type UserUncheckedCreateWithoutCases_as_pleaderInput = {
-    id?: string
-    email: string
-    first_name: string
-    last_name: string
-    password?: string | null
-    status?: string
-    invitation_token?: string | null
-    invitation_expires_at?: Date | string | null
-    created_at?: Date | string
-    updated_at?: Date | string
-    deleted_at?: Date | string | null
-    detail?: NullableJsonNullValueInput | InputJsonValue
-    avatar_id?: string | null
-    role_id?: string | null
-    notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
-    refresh_tokens?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
-    reset_tokens?: PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
-    pages?: PageUncheckedCreateNestedManyWithoutAuthorInput
-    cases_as_lawyer?: CaseLawyerUncheckedCreateNestedManyWithoutUserInput
-    cases_as_counselor?: CaseCounselingUncheckedCreateNestedManyWithoutCounselorInput
-    cases_payment_received?: CasePaymentUncheckedCreateNestedManyWithoutReceivedByUserInput
-    cases_created?: CaseUncheckedCreateNestedManyWithoutCreatedByInput
-  }
-
-  export type UserCreateOrConnectWithoutCases_as_pleaderInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutCases_as_pleaderInput, UserUncheckedCreateWithoutCases_as_pleaderInput>
-  }
-
-  export type CaseUpsertWithoutPleadingsInput = {
-    update: XOR<CaseUpdateWithoutPleadingsInput, CaseUncheckedUpdateWithoutPleadingsInput>
-    create: XOR<CaseCreateWithoutPleadingsInput, CaseUncheckedCreateWithoutPleadingsInput>
-    where?: CaseWhereInput
-  }
-
-  export type CaseUpdateToOneWithWhereWithoutPleadingsInput = {
-    where?: CaseWhereInput
-    data: XOR<CaseUpdateWithoutPleadingsInput, CaseUncheckedUpdateWithoutPleadingsInput>
-  }
-
-  export type CaseUpdateWithoutPleadingsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    facts?: NullableStringFieldUpdateOperationsInput | string | null
-    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
-    referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
-    noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
-    fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    nature?: CaseNatureUpdateOneRequiredWithoutCasesNestedInput
-    createdBy?: UserUpdateOneWithoutCases_createdNestedInput
-    courtDetails?: CaseCourtDetailUpdateManyWithoutCaseNestedInput
-    lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
-    parties?: CasePartyUpdateManyWithoutCaseNestedInput
-    hearings?: CaseHearingUpdateManyWithoutCaseNestedInput
-    proceedings?: CourtProceedingUpdateManyWithoutCaseNestedInput
-    precedents?: CasePrecedentUpdateManyWithoutCaseNestedInput
-    payments?: CasePaymentUpdateManyWithoutCaseNestedInput
-    counselings?: CaseCounselingUpdateManyWithoutCaseNestedInput
-    documents?: CaseDocumentUpdateManyWithoutCaseNestedInput
-  }
-
-  export type CaseUncheckedUpdateWithoutPleadingsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    natureId?: StringFieldUpdateOperationsInput | string
-    registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    facts?: NullableStringFieldUpdateOperationsInput | string | null
-    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
-    referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
-    noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
-    fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: StringFieldUpdateOperationsInput | string
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    courtDetails?: CaseCourtDetailUncheckedUpdateManyWithoutCaseNestedInput
-    lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
-    parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
-    hearings?: CaseHearingUncheckedUpdateManyWithoutCaseNestedInput
-    proceedings?: CourtProceedingUncheckedUpdateManyWithoutCaseNestedInput
-    precedents?: CasePrecedentUncheckedUpdateManyWithoutCaseNestedInput
-    payments?: CasePaymentUncheckedUpdateManyWithoutCaseNestedInput
-    counselings?: CaseCounselingUncheckedUpdateManyWithoutCaseNestedInput
-    documents?: CaseDocumentUncheckedUpdateManyWithoutCaseNestedInput
-  }
-
-  export type UserUpsertWithoutCases_as_pleaderInput = {
-    update: XOR<UserUpdateWithoutCases_as_pleaderInput, UserUncheckedUpdateWithoutCases_as_pleaderInput>
-    create: XOR<UserCreateWithoutCases_as_pleaderInput, UserUncheckedCreateWithoutCases_as_pleaderInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutCases_as_pleaderInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutCases_as_pleaderInput, UserUncheckedUpdateWithoutCases_as_pleaderInput>
-  }
-
-  export type UserUpdateWithoutCases_as_pleaderInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    first_name?: StringFieldUpdateOperationsInput | string
-    last_name?: StringFieldUpdateOperationsInput | string
-    password?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: StringFieldUpdateOperationsInput | string
-    invitation_token?: NullableStringFieldUpdateOperationsInput | string | null
-    invitation_expires_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    detail?: NullableJsonNullValueInput | InputJsonValue
-    avatar?: ResourceUpdateOneWithoutUsersNestedInput
-    role?: RoleUpdateOneWithoutUsersNestedInput
-    notifications?: NotificationUpdateManyWithoutUserNestedInput
-    refresh_tokens?: RefreshTokenUpdateManyWithoutUserNestedInput
-    reset_tokens?: PasswordResetTokenUpdateManyWithoutUserNestedInput
-    pages?: PageUpdateManyWithoutAuthorNestedInput
-    cases_as_lawyer?: CaseLawyerUpdateManyWithoutUserNestedInput
-    cases_as_counselor?: CaseCounselingUpdateManyWithoutCounselorNestedInput
-    cases_payment_received?: CasePaymentUpdateManyWithoutReceivedByUserNestedInput
-    cases_created?: CaseUpdateManyWithoutCreatedByNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutCases_as_pleaderInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    first_name?: StringFieldUpdateOperationsInput | string
-    last_name?: StringFieldUpdateOperationsInput | string
-    password?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: StringFieldUpdateOperationsInput | string
-    invitation_token?: NullableStringFieldUpdateOperationsInput | string | null
-    invitation_expires_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    detail?: NullableJsonNullValueInput | InputJsonValue
-    avatar_id?: NullableStringFieldUpdateOperationsInput | string | null
-    role_id?: NullableStringFieldUpdateOperationsInput | string | null
-    notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
-    refresh_tokens?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
-    reset_tokens?: PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
-    pages?: PageUncheckedUpdateManyWithoutAuthorNestedInput
-    cases_as_lawyer?: CaseLawyerUncheckedUpdateManyWithoutUserNestedInput
-    cases_as_counselor?: CaseCounselingUncheckedUpdateManyWithoutCounselorNestedInput
-    cases_payment_received?: CasePaymentUncheckedUpdateManyWithoutReceivedByUserNestedInput
-    cases_created?: CaseUncheckedUpdateManyWithoutCreatedByNestedInput
-  }
-
-  export type CaseCreateWithoutProceedingsInput = {
-    id?: string
-    registrationFee?: Decimal | DecimalJsLike | number | string | null
-    facts?: string | null
-    relatedLaws?: string | null
-    referredThrough?: string | null
-    noticeStatus?: string | null
-    fullJudgmentDate?: Date | string | null
-    judgmentVerifyDate?: Date | string | null
-    status?: string
-    createdAt?: Date | string
-    nature: CaseNatureCreateNestedOneWithoutCasesInput
-    createdBy?: UserCreateNestedOneWithoutCases_createdInput
-    courtDetails?: CaseCourtDetailCreateNestedManyWithoutCaseInput
-    lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
-    parties?: CasePartyCreateNestedManyWithoutCaseInput
-    hearings?: CaseHearingCreateNestedManyWithoutCaseInput
-    pleadings?: CasePleadingCreateNestedManyWithoutCaseInput
-    precedents?: CasePrecedentCreateNestedManyWithoutCaseInput
-    payments?: CasePaymentCreateNestedManyWithoutCaseInput
-    counselings?: CaseCounselingCreateNestedManyWithoutCaseInput
-    documents?: CaseDocumentCreateNestedManyWithoutCaseInput
-  }
-
-  export type CaseUncheckedCreateWithoutProceedingsInput = {
-    id?: string
-    natureId: string
-    registrationFee?: Decimal | DecimalJsLike | number | string | null
-    facts?: string | null
-    relatedLaws?: string | null
-    referredThrough?: string | null
-    noticeStatus?: string | null
-    fullJudgmentDate?: Date | string | null
-    judgmentVerifyDate?: Date | string | null
-    status?: string
-    createdById?: string | null
-    createdAt?: Date | string
-    courtDetails?: CaseCourtDetailUncheckedCreateNestedManyWithoutCaseInput
-    lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
-    parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
-    hearings?: CaseHearingUncheckedCreateNestedManyWithoutCaseInput
-    pleadings?: CasePleadingUncheckedCreateNestedManyWithoutCaseInput
-    precedents?: CasePrecedentUncheckedCreateNestedManyWithoutCaseInput
-    payments?: CasePaymentUncheckedCreateNestedManyWithoutCaseInput
-    counselings?: CaseCounselingUncheckedCreateNestedManyWithoutCaseInput
-    documents?: CaseDocumentUncheckedCreateNestedManyWithoutCaseInput
-  }
-
-  export type CaseCreateOrConnectWithoutProceedingsInput = {
-    where: CaseWhereUniqueInput
-    create: XOR<CaseCreateWithoutProceedingsInput, CaseUncheckedCreateWithoutProceedingsInput>
-  }
-
-  export type CourtLevelCreateWithoutProceedingsInput = {
-    id?: string
-    name: string
-    nepaliName?: string | null
-  }
-
-  export type CourtLevelUncheckedCreateWithoutProceedingsInput = {
-    id?: string
-    name: string
-    nepaliName?: string | null
-  }
-
-  export type CourtLevelCreateOrConnectWithoutProceedingsInput = {
-    where: CourtLevelWhereUniqueInput
-    create: XOR<CourtLevelCreateWithoutProceedingsInput, CourtLevelUncheckedCreateWithoutProceedingsInput>
-  }
-
-  export type CaseUpsertWithoutProceedingsInput = {
-    update: XOR<CaseUpdateWithoutProceedingsInput, CaseUncheckedUpdateWithoutProceedingsInput>
-    create: XOR<CaseCreateWithoutProceedingsInput, CaseUncheckedCreateWithoutProceedingsInput>
-    where?: CaseWhereInput
-  }
-
-  export type CaseUpdateToOneWithWhereWithoutProceedingsInput = {
-    where?: CaseWhereInput
-    data: XOR<CaseUpdateWithoutProceedingsInput, CaseUncheckedUpdateWithoutProceedingsInput>
-  }
-
-  export type CaseUpdateWithoutProceedingsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    facts?: NullableStringFieldUpdateOperationsInput | string | null
-    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
-    referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
-    noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
-    fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    nature?: CaseNatureUpdateOneRequiredWithoutCasesNestedInput
-    createdBy?: UserUpdateOneWithoutCases_createdNestedInput
-    courtDetails?: CaseCourtDetailUpdateManyWithoutCaseNestedInput
-    lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
-    parties?: CasePartyUpdateManyWithoutCaseNestedInput
-    hearings?: CaseHearingUpdateManyWithoutCaseNestedInput
-    pleadings?: CasePleadingUpdateManyWithoutCaseNestedInput
-    precedents?: CasePrecedentUpdateManyWithoutCaseNestedInput
-    payments?: CasePaymentUpdateManyWithoutCaseNestedInput
-    counselings?: CaseCounselingUpdateManyWithoutCaseNestedInput
-    documents?: CaseDocumentUpdateManyWithoutCaseNestedInput
-  }
-
-  export type CaseUncheckedUpdateWithoutProceedingsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    natureId?: StringFieldUpdateOperationsInput | string
-    registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    facts?: NullableStringFieldUpdateOperationsInput | string | null
-    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
-    referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
-    noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
-    fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: StringFieldUpdateOperationsInput | string
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    courtDetails?: CaseCourtDetailUncheckedUpdateManyWithoutCaseNestedInput
-    lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
-    parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
-    hearings?: CaseHearingUncheckedUpdateManyWithoutCaseNestedInput
-    pleadings?: CasePleadingUncheckedUpdateManyWithoutCaseNestedInput
-    precedents?: CasePrecedentUncheckedUpdateManyWithoutCaseNestedInput
-    payments?: CasePaymentUncheckedUpdateManyWithoutCaseNestedInput
-    counselings?: CaseCounselingUncheckedUpdateManyWithoutCaseNestedInput
-    documents?: CaseDocumentUncheckedUpdateManyWithoutCaseNestedInput
-  }
-
-  export type CourtLevelUpsertWithoutProceedingsInput = {
-    update: XOR<CourtLevelUpdateWithoutProceedingsInput, CourtLevelUncheckedUpdateWithoutProceedingsInput>
-    create: XOR<CourtLevelCreateWithoutProceedingsInput, CourtLevelUncheckedCreateWithoutProceedingsInput>
-    where?: CourtLevelWhereInput
-  }
-
-  export type CourtLevelUpdateToOneWithWhereWithoutProceedingsInput = {
-    where?: CourtLevelWhereInput
-    data: XOR<CourtLevelUpdateWithoutProceedingsInput, CourtLevelUncheckedUpdateWithoutProceedingsInput>
-  }
-
-  export type CourtLevelUpdateWithoutProceedingsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    nepaliName?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type CourtLevelUncheckedUpdateWithoutProceedingsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    nepaliName?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type CaseCreateWithoutPrecedentsInput = {
-    id?: string
-    registrationFee?: Decimal | DecimalJsLike | number | string | null
-    facts?: string | null
-    relatedLaws?: string | null
-    referredThrough?: string | null
-    noticeStatus?: string | null
-    fullJudgmentDate?: Date | string | null
-    judgmentVerifyDate?: Date | string | null
-    status?: string
-    createdAt?: Date | string
-    nature: CaseNatureCreateNestedOneWithoutCasesInput
-    createdBy?: UserCreateNestedOneWithoutCases_createdInput
-    courtDetails?: CaseCourtDetailCreateNestedManyWithoutCaseInput
-    lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
-    parties?: CasePartyCreateNestedManyWithoutCaseInput
-    hearings?: CaseHearingCreateNestedManyWithoutCaseInput
-    pleadings?: CasePleadingCreateNestedManyWithoutCaseInput
-    proceedings?: CourtProceedingCreateNestedManyWithoutCaseInput
-    payments?: CasePaymentCreateNestedManyWithoutCaseInput
-    counselings?: CaseCounselingCreateNestedManyWithoutCaseInput
-    documents?: CaseDocumentCreateNestedManyWithoutCaseInput
-  }
-
-  export type CaseUncheckedCreateWithoutPrecedentsInput = {
-    id?: string
-    natureId: string
-    registrationFee?: Decimal | DecimalJsLike | number | string | null
-    facts?: string | null
-    relatedLaws?: string | null
-    referredThrough?: string | null
-    noticeStatus?: string | null
-    fullJudgmentDate?: Date | string | null
-    judgmentVerifyDate?: Date | string | null
-    status?: string
-    createdById?: string | null
-    createdAt?: Date | string
-    courtDetails?: CaseCourtDetailUncheckedCreateNestedManyWithoutCaseInput
-    lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
-    parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
-    hearings?: CaseHearingUncheckedCreateNestedManyWithoutCaseInput
-    pleadings?: CasePleadingUncheckedCreateNestedManyWithoutCaseInput
-    proceedings?: CourtProceedingUncheckedCreateNestedManyWithoutCaseInput
-    payments?: CasePaymentUncheckedCreateNestedManyWithoutCaseInput
-    counselings?: CaseCounselingUncheckedCreateNestedManyWithoutCaseInput
-    documents?: CaseDocumentUncheckedCreateNestedManyWithoutCaseInput
-  }
-
-  export type CaseCreateOrConnectWithoutPrecedentsInput = {
-    where: CaseWhereUniqueInput
-    create: XOR<CaseCreateWithoutPrecedentsInput, CaseUncheckedCreateWithoutPrecedentsInput>
-  }
-
-  export type CaseUpsertWithoutPrecedentsInput = {
-    update: XOR<CaseUpdateWithoutPrecedentsInput, CaseUncheckedUpdateWithoutPrecedentsInput>
-    create: XOR<CaseCreateWithoutPrecedentsInput, CaseUncheckedCreateWithoutPrecedentsInput>
-    where?: CaseWhereInput
-  }
-
-  export type CaseUpdateToOneWithWhereWithoutPrecedentsInput = {
-    where?: CaseWhereInput
-    data: XOR<CaseUpdateWithoutPrecedentsInput, CaseUncheckedUpdateWithoutPrecedentsInput>
-  }
-
-  export type CaseUpdateWithoutPrecedentsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    facts?: NullableStringFieldUpdateOperationsInput | string | null
-    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
-    referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
-    noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
-    fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    nature?: CaseNatureUpdateOneRequiredWithoutCasesNestedInput
-    createdBy?: UserUpdateOneWithoutCases_createdNestedInput
-    courtDetails?: CaseCourtDetailUpdateManyWithoutCaseNestedInput
-    lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
-    parties?: CasePartyUpdateManyWithoutCaseNestedInput
-    hearings?: CaseHearingUpdateManyWithoutCaseNestedInput
-    pleadings?: CasePleadingUpdateManyWithoutCaseNestedInput
-    proceedings?: CourtProceedingUpdateManyWithoutCaseNestedInput
-    payments?: CasePaymentUpdateManyWithoutCaseNestedInput
-    counselings?: CaseCounselingUpdateManyWithoutCaseNestedInput
-    documents?: CaseDocumentUpdateManyWithoutCaseNestedInput
-  }
-
-  export type CaseUncheckedUpdateWithoutPrecedentsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    natureId?: StringFieldUpdateOperationsInput | string
-    registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    facts?: NullableStringFieldUpdateOperationsInput | string | null
-    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
-    referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
-    noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
-    fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: StringFieldUpdateOperationsInput | string
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    courtDetails?: CaseCourtDetailUncheckedUpdateManyWithoutCaseNestedInput
-    lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
-    parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
-    hearings?: CaseHearingUncheckedUpdateManyWithoutCaseNestedInput
-    pleadings?: CasePleadingUncheckedUpdateManyWithoutCaseNestedInput
-    proceedings?: CourtProceedingUncheckedUpdateManyWithoutCaseNestedInput
-    payments?: CasePaymentUncheckedUpdateManyWithoutCaseNestedInput
-    counselings?: CaseCounselingUncheckedUpdateManyWithoutCaseNestedInput
-    documents?: CaseDocumentUncheckedUpdateManyWithoutCaseNestedInput
+    judgements?: CaseJudgementUncheckedUpdateManyWithoutCaseCourtDetailNestedInput
   }
 
   export type CaseCreateWithoutPaymentsInput = {
     id?: string
     registrationFee?: Decimal | DecimalJsLike | number | string | null
     facts?: string | null
-    relatedLaws?: string | null
+    details?: NullableJsonNullValueInput | InputJsonValue
+    relatedLaw?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: string | null
     noticeStatus?: string | null
     fullJudgmentDate?: Date | string | null
@@ -42273,11 +36941,8 @@ export namespace Prisma {
     lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
     parties?: CasePartyCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingCreateNestedManyWithoutCaseInput
-    pleadings?: CasePleadingCreateNestedManyWithoutCaseInput
-    proceedings?: CourtProceedingCreateNestedManyWithoutCaseInput
-    precedents?: CasePrecedentCreateNestedManyWithoutCaseInput
-    counselings?: CaseCounselingCreateNestedManyWithoutCaseInput
     documents?: CaseDocumentCreateNestedManyWithoutCaseInput
+    judgements?: CaseJudgementCreateNestedManyWithoutCaseInput
   }
 
   export type CaseUncheckedCreateWithoutPaymentsInput = {
@@ -42285,7 +36950,8 @@ export namespace Prisma {
     natureId: string
     registrationFee?: Decimal | DecimalJsLike | number | string | null
     facts?: string | null
-    relatedLaws?: string | null
+    details?: NullableJsonNullValueInput | InputJsonValue
+    relatedLaw?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: string | null
     noticeStatus?: string | null
     fullJudgmentDate?: Date | string | null
@@ -42297,11 +36963,8 @@ export namespace Prisma {
     lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
     parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingUncheckedCreateNestedManyWithoutCaseInput
-    pleadings?: CasePleadingUncheckedCreateNestedManyWithoutCaseInput
-    proceedings?: CourtProceedingUncheckedCreateNestedManyWithoutCaseInput
-    precedents?: CasePrecedentUncheckedCreateNestedManyWithoutCaseInput
-    counselings?: CaseCounselingUncheckedCreateNestedManyWithoutCaseInput
     documents?: CaseDocumentUncheckedCreateNestedManyWithoutCaseInput
+    judgements?: CaseJudgementUncheckedCreateNestedManyWithoutCaseInput
   }
 
   export type CaseCreateOrConnectWithoutPaymentsInput = {
@@ -42329,8 +36992,6 @@ export namespace Prisma {
     reset_tokens?: PasswordResetTokenCreateNestedManyWithoutUserInput
     pages?: PageCreateNestedManyWithoutAuthorInput
     cases_as_lawyer?: CaseLawyerCreateNestedManyWithoutUserInput
-    cases_as_pleader?: CasePleadingCreateNestedManyWithoutPleaderInput
-    cases_as_counselor?: CaseCounselingCreateNestedManyWithoutCounselorInput
     cases_created?: CaseCreateNestedManyWithoutCreatedByInput
   }
 
@@ -42354,8 +37015,6 @@ export namespace Prisma {
     reset_tokens?: PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
     pages?: PageUncheckedCreateNestedManyWithoutAuthorInput
     cases_as_lawyer?: CaseLawyerUncheckedCreateNestedManyWithoutUserInput
-    cases_as_pleader?: CasePleadingUncheckedCreateNestedManyWithoutPleaderInput
-    cases_as_counselor?: CaseCounselingUncheckedCreateNestedManyWithoutCounselorInput
     cases_created?: CaseUncheckedCreateNestedManyWithoutCreatedByInput
   }
 
@@ -42379,7 +37038,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     facts?: NullableStringFieldUpdateOperationsInput | string | null
-    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    details?: NullableJsonNullValueInput | InputJsonValue
+    relatedLaw?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
     noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -42392,11 +37052,8 @@ export namespace Prisma {
     lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUpdateManyWithoutCaseNestedInput
-    pleadings?: CasePleadingUpdateManyWithoutCaseNestedInput
-    proceedings?: CourtProceedingUpdateManyWithoutCaseNestedInput
-    precedents?: CasePrecedentUpdateManyWithoutCaseNestedInput
-    counselings?: CaseCounselingUpdateManyWithoutCaseNestedInput
     documents?: CaseDocumentUpdateManyWithoutCaseNestedInput
+    judgements?: CaseJudgementUpdateManyWithoutCaseNestedInput
   }
 
   export type CaseUncheckedUpdateWithoutPaymentsInput = {
@@ -42404,7 +37061,8 @@ export namespace Prisma {
     natureId?: StringFieldUpdateOperationsInput | string
     registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     facts?: NullableStringFieldUpdateOperationsInput | string | null
-    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    details?: NullableJsonNullValueInput | InputJsonValue
+    relatedLaw?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
     noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -42416,11 +37074,8 @@ export namespace Prisma {
     lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUncheckedUpdateManyWithoutCaseNestedInput
-    pleadings?: CasePleadingUncheckedUpdateManyWithoutCaseNestedInput
-    proceedings?: CourtProceedingUncheckedUpdateManyWithoutCaseNestedInput
-    precedents?: CasePrecedentUncheckedUpdateManyWithoutCaseNestedInput
-    counselings?: CaseCounselingUncheckedUpdateManyWithoutCaseNestedInput
     documents?: CaseDocumentUncheckedUpdateManyWithoutCaseNestedInput
+    judgements?: CaseJudgementUncheckedUpdateManyWithoutCaseNestedInput
   }
 
   export type UserUpsertWithoutCases_payment_receivedInput = {
@@ -42454,8 +37109,6 @@ export namespace Prisma {
     reset_tokens?: PasswordResetTokenUpdateManyWithoutUserNestedInput
     pages?: PageUpdateManyWithoutAuthorNestedInput
     cases_as_lawyer?: CaseLawyerUpdateManyWithoutUserNestedInput
-    cases_as_pleader?: CasePleadingUpdateManyWithoutPleaderNestedInput
-    cases_as_counselor?: CaseCounselingUpdateManyWithoutCounselorNestedInput
     cases_created?: CaseUpdateManyWithoutCreatedByNestedInput
   }
 
@@ -42479,236 +37132,6 @@ export namespace Prisma {
     reset_tokens?: PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
     pages?: PageUncheckedUpdateManyWithoutAuthorNestedInput
     cases_as_lawyer?: CaseLawyerUncheckedUpdateManyWithoutUserNestedInput
-    cases_as_pleader?: CasePleadingUncheckedUpdateManyWithoutPleaderNestedInput
-    cases_as_counselor?: CaseCounselingUncheckedUpdateManyWithoutCounselorNestedInput
-    cases_created?: CaseUncheckedUpdateManyWithoutCreatedByNestedInput
-  }
-
-  export type CaseCreateWithoutCounselingsInput = {
-    id?: string
-    registrationFee?: Decimal | DecimalJsLike | number | string | null
-    facts?: string | null
-    relatedLaws?: string | null
-    referredThrough?: string | null
-    noticeStatus?: string | null
-    fullJudgmentDate?: Date | string | null
-    judgmentVerifyDate?: Date | string | null
-    status?: string
-    createdAt?: Date | string
-    nature: CaseNatureCreateNestedOneWithoutCasesInput
-    createdBy?: UserCreateNestedOneWithoutCases_createdInput
-    courtDetails?: CaseCourtDetailCreateNestedManyWithoutCaseInput
-    lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
-    parties?: CasePartyCreateNestedManyWithoutCaseInput
-    hearings?: CaseHearingCreateNestedManyWithoutCaseInput
-    pleadings?: CasePleadingCreateNestedManyWithoutCaseInput
-    proceedings?: CourtProceedingCreateNestedManyWithoutCaseInput
-    precedents?: CasePrecedentCreateNestedManyWithoutCaseInput
-    payments?: CasePaymentCreateNestedManyWithoutCaseInput
-    documents?: CaseDocumentCreateNestedManyWithoutCaseInput
-  }
-
-  export type CaseUncheckedCreateWithoutCounselingsInput = {
-    id?: string
-    natureId: string
-    registrationFee?: Decimal | DecimalJsLike | number | string | null
-    facts?: string | null
-    relatedLaws?: string | null
-    referredThrough?: string | null
-    noticeStatus?: string | null
-    fullJudgmentDate?: Date | string | null
-    judgmentVerifyDate?: Date | string | null
-    status?: string
-    createdById?: string | null
-    createdAt?: Date | string
-    courtDetails?: CaseCourtDetailUncheckedCreateNestedManyWithoutCaseInput
-    lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
-    parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
-    hearings?: CaseHearingUncheckedCreateNestedManyWithoutCaseInput
-    pleadings?: CasePleadingUncheckedCreateNestedManyWithoutCaseInput
-    proceedings?: CourtProceedingUncheckedCreateNestedManyWithoutCaseInput
-    precedents?: CasePrecedentUncheckedCreateNestedManyWithoutCaseInput
-    payments?: CasePaymentUncheckedCreateNestedManyWithoutCaseInput
-    documents?: CaseDocumentUncheckedCreateNestedManyWithoutCaseInput
-  }
-
-  export type CaseCreateOrConnectWithoutCounselingsInput = {
-    where: CaseWhereUniqueInput
-    create: XOR<CaseCreateWithoutCounselingsInput, CaseUncheckedCreateWithoutCounselingsInput>
-  }
-
-  export type UserCreateWithoutCases_as_counselorInput = {
-    id?: string
-    email: string
-    first_name: string
-    last_name: string
-    password?: string | null
-    status?: string
-    invitation_token?: string | null
-    invitation_expires_at?: Date | string | null
-    created_at?: Date | string
-    updated_at?: Date | string
-    deleted_at?: Date | string | null
-    detail?: NullableJsonNullValueInput | InputJsonValue
-    avatar?: ResourceCreateNestedOneWithoutUsersInput
-    role?: RoleCreateNestedOneWithoutUsersInput
-    notifications?: NotificationCreateNestedManyWithoutUserInput
-    refresh_tokens?: RefreshTokenCreateNestedManyWithoutUserInput
-    reset_tokens?: PasswordResetTokenCreateNestedManyWithoutUserInput
-    pages?: PageCreateNestedManyWithoutAuthorInput
-    cases_as_lawyer?: CaseLawyerCreateNestedManyWithoutUserInput
-    cases_as_pleader?: CasePleadingCreateNestedManyWithoutPleaderInput
-    cases_payment_received?: CasePaymentCreateNestedManyWithoutReceivedByUserInput
-    cases_created?: CaseCreateNestedManyWithoutCreatedByInput
-  }
-
-  export type UserUncheckedCreateWithoutCases_as_counselorInput = {
-    id?: string
-    email: string
-    first_name: string
-    last_name: string
-    password?: string | null
-    status?: string
-    invitation_token?: string | null
-    invitation_expires_at?: Date | string | null
-    created_at?: Date | string
-    updated_at?: Date | string
-    deleted_at?: Date | string | null
-    detail?: NullableJsonNullValueInput | InputJsonValue
-    avatar_id?: string | null
-    role_id?: string | null
-    notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
-    refresh_tokens?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
-    reset_tokens?: PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
-    pages?: PageUncheckedCreateNestedManyWithoutAuthorInput
-    cases_as_lawyer?: CaseLawyerUncheckedCreateNestedManyWithoutUserInput
-    cases_as_pleader?: CasePleadingUncheckedCreateNestedManyWithoutPleaderInput
-    cases_payment_received?: CasePaymentUncheckedCreateNestedManyWithoutReceivedByUserInput
-    cases_created?: CaseUncheckedCreateNestedManyWithoutCreatedByInput
-  }
-
-  export type UserCreateOrConnectWithoutCases_as_counselorInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutCases_as_counselorInput, UserUncheckedCreateWithoutCases_as_counselorInput>
-  }
-
-  export type CaseUpsertWithoutCounselingsInput = {
-    update: XOR<CaseUpdateWithoutCounselingsInput, CaseUncheckedUpdateWithoutCounselingsInput>
-    create: XOR<CaseCreateWithoutCounselingsInput, CaseUncheckedCreateWithoutCounselingsInput>
-    where?: CaseWhereInput
-  }
-
-  export type CaseUpdateToOneWithWhereWithoutCounselingsInput = {
-    where?: CaseWhereInput
-    data: XOR<CaseUpdateWithoutCounselingsInput, CaseUncheckedUpdateWithoutCounselingsInput>
-  }
-
-  export type CaseUpdateWithoutCounselingsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    facts?: NullableStringFieldUpdateOperationsInput | string | null
-    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
-    referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
-    noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
-    fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    nature?: CaseNatureUpdateOneRequiredWithoutCasesNestedInput
-    createdBy?: UserUpdateOneWithoutCases_createdNestedInput
-    courtDetails?: CaseCourtDetailUpdateManyWithoutCaseNestedInput
-    lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
-    parties?: CasePartyUpdateManyWithoutCaseNestedInput
-    hearings?: CaseHearingUpdateManyWithoutCaseNestedInput
-    pleadings?: CasePleadingUpdateManyWithoutCaseNestedInput
-    proceedings?: CourtProceedingUpdateManyWithoutCaseNestedInput
-    precedents?: CasePrecedentUpdateManyWithoutCaseNestedInput
-    payments?: CasePaymentUpdateManyWithoutCaseNestedInput
-    documents?: CaseDocumentUpdateManyWithoutCaseNestedInput
-  }
-
-  export type CaseUncheckedUpdateWithoutCounselingsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    natureId?: StringFieldUpdateOperationsInput | string
-    registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    facts?: NullableStringFieldUpdateOperationsInput | string | null
-    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
-    referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
-    noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
-    fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: StringFieldUpdateOperationsInput | string
-    createdById?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    courtDetails?: CaseCourtDetailUncheckedUpdateManyWithoutCaseNestedInput
-    lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
-    parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
-    hearings?: CaseHearingUncheckedUpdateManyWithoutCaseNestedInput
-    pleadings?: CasePleadingUncheckedUpdateManyWithoutCaseNestedInput
-    proceedings?: CourtProceedingUncheckedUpdateManyWithoutCaseNestedInput
-    precedents?: CasePrecedentUncheckedUpdateManyWithoutCaseNestedInput
-    payments?: CasePaymentUncheckedUpdateManyWithoutCaseNestedInput
-    documents?: CaseDocumentUncheckedUpdateManyWithoutCaseNestedInput
-  }
-
-  export type UserUpsertWithoutCases_as_counselorInput = {
-    update: XOR<UserUpdateWithoutCases_as_counselorInput, UserUncheckedUpdateWithoutCases_as_counselorInput>
-    create: XOR<UserCreateWithoutCases_as_counselorInput, UserUncheckedCreateWithoutCases_as_counselorInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutCases_as_counselorInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutCases_as_counselorInput, UserUncheckedUpdateWithoutCases_as_counselorInput>
-  }
-
-  export type UserUpdateWithoutCases_as_counselorInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    first_name?: StringFieldUpdateOperationsInput | string
-    last_name?: StringFieldUpdateOperationsInput | string
-    password?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: StringFieldUpdateOperationsInput | string
-    invitation_token?: NullableStringFieldUpdateOperationsInput | string | null
-    invitation_expires_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    detail?: NullableJsonNullValueInput | InputJsonValue
-    avatar?: ResourceUpdateOneWithoutUsersNestedInput
-    role?: RoleUpdateOneWithoutUsersNestedInput
-    notifications?: NotificationUpdateManyWithoutUserNestedInput
-    refresh_tokens?: RefreshTokenUpdateManyWithoutUserNestedInput
-    reset_tokens?: PasswordResetTokenUpdateManyWithoutUserNestedInput
-    pages?: PageUpdateManyWithoutAuthorNestedInput
-    cases_as_lawyer?: CaseLawyerUpdateManyWithoutUserNestedInput
-    cases_as_pleader?: CasePleadingUpdateManyWithoutPleaderNestedInput
-    cases_payment_received?: CasePaymentUpdateManyWithoutReceivedByUserNestedInput
-    cases_created?: CaseUpdateManyWithoutCreatedByNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutCases_as_counselorInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    first_name?: StringFieldUpdateOperationsInput | string
-    last_name?: StringFieldUpdateOperationsInput | string
-    password?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: StringFieldUpdateOperationsInput | string
-    invitation_token?: NullableStringFieldUpdateOperationsInput | string | null
-    invitation_expires_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    detail?: NullableJsonNullValueInput | InputJsonValue
-    avatar_id?: NullableStringFieldUpdateOperationsInput | string | null
-    role_id?: NullableStringFieldUpdateOperationsInput | string | null
-    notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
-    refresh_tokens?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
-    reset_tokens?: PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
-    pages?: PageUncheckedUpdateManyWithoutAuthorNestedInput
-    cases_as_lawyer?: CaseLawyerUncheckedUpdateManyWithoutUserNestedInput
-    cases_as_pleader?: CasePleadingUncheckedUpdateManyWithoutPleaderNestedInput
-    cases_payment_received?: CasePaymentUncheckedUpdateManyWithoutReceivedByUserNestedInput
     cases_created?: CaseUncheckedUpdateManyWithoutCreatedByNestedInput
   }
 
@@ -42716,7 +37139,8 @@ export namespace Prisma {
     id?: string
     registrationFee?: Decimal | DecimalJsLike | number | string | null
     facts?: string | null
-    relatedLaws?: string | null
+    details?: NullableJsonNullValueInput | InputJsonValue
+    relatedLaw?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: string | null
     noticeStatus?: string | null
     fullJudgmentDate?: Date | string | null
@@ -42729,11 +37153,8 @@ export namespace Prisma {
     lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
     parties?: CasePartyCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingCreateNestedManyWithoutCaseInput
-    pleadings?: CasePleadingCreateNestedManyWithoutCaseInput
-    proceedings?: CourtProceedingCreateNestedManyWithoutCaseInput
-    precedents?: CasePrecedentCreateNestedManyWithoutCaseInput
     payments?: CasePaymentCreateNestedManyWithoutCaseInput
-    counselings?: CaseCounselingCreateNestedManyWithoutCaseInput
+    judgements?: CaseJudgementCreateNestedManyWithoutCaseInput
   }
 
   export type CaseUncheckedCreateWithoutDocumentsInput = {
@@ -42741,7 +37162,8 @@ export namespace Prisma {
     natureId: string
     registrationFee?: Decimal | DecimalJsLike | number | string | null
     facts?: string | null
-    relatedLaws?: string | null
+    details?: NullableJsonNullValueInput | InputJsonValue
+    relatedLaw?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: string | null
     noticeStatus?: string | null
     fullJudgmentDate?: Date | string | null
@@ -42753,11 +37175,8 @@ export namespace Prisma {
     lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
     parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingUncheckedCreateNestedManyWithoutCaseInput
-    pleadings?: CasePleadingUncheckedCreateNestedManyWithoutCaseInput
-    proceedings?: CourtProceedingUncheckedCreateNestedManyWithoutCaseInput
-    precedents?: CasePrecedentUncheckedCreateNestedManyWithoutCaseInput
     payments?: CasePaymentUncheckedCreateNestedManyWithoutCaseInput
-    counselings?: CaseCounselingUncheckedCreateNestedManyWithoutCaseInput
+    judgements?: CaseJudgementUncheckedCreateNestedManyWithoutCaseInput
   }
 
   export type CaseCreateOrConnectWithoutDocumentsInput = {
@@ -42780,7 +37199,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     facts?: NullableStringFieldUpdateOperationsInput | string | null
-    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    details?: NullableJsonNullValueInput | InputJsonValue
+    relatedLaw?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
     noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -42793,11 +37213,8 @@ export namespace Prisma {
     lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUpdateManyWithoutCaseNestedInput
-    pleadings?: CasePleadingUpdateManyWithoutCaseNestedInput
-    proceedings?: CourtProceedingUpdateManyWithoutCaseNestedInput
-    precedents?: CasePrecedentUpdateManyWithoutCaseNestedInput
     payments?: CasePaymentUpdateManyWithoutCaseNestedInput
-    counselings?: CaseCounselingUpdateManyWithoutCaseNestedInput
+    judgements?: CaseJudgementUpdateManyWithoutCaseNestedInput
   }
 
   export type CaseUncheckedUpdateWithoutDocumentsInput = {
@@ -42805,7 +37222,8 @@ export namespace Prisma {
     natureId?: StringFieldUpdateOperationsInput | string
     registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     facts?: NullableStringFieldUpdateOperationsInput | string | null
-    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    details?: NullableJsonNullValueInput | InputJsonValue
+    relatedLaw?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
     noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -42817,11 +37235,196 @@ export namespace Prisma {
     lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUncheckedUpdateManyWithoutCaseNestedInput
-    pleadings?: CasePleadingUncheckedUpdateManyWithoutCaseNestedInput
-    proceedings?: CourtProceedingUncheckedUpdateManyWithoutCaseNestedInput
-    precedents?: CasePrecedentUncheckedUpdateManyWithoutCaseNestedInput
     payments?: CasePaymentUncheckedUpdateManyWithoutCaseNestedInput
-    counselings?: CaseCounselingUncheckedUpdateManyWithoutCaseNestedInput
+    judgements?: CaseJudgementUncheckedUpdateManyWithoutCaseNestedInput
+  }
+
+  export type CaseCreateWithoutJudgementsInput = {
+    id?: string
+    registrationFee?: Decimal | DecimalJsLike | number | string | null
+    facts?: string | null
+    details?: NullableJsonNullValueInput | InputJsonValue
+    relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    referredThrough?: string | null
+    noticeStatus?: string | null
+    fullJudgmentDate?: Date | string | null
+    judgmentVerifyDate?: Date | string | null
+    status?: string
+    createdAt?: Date | string
+    nature: CaseNatureCreateNestedOneWithoutCasesInput
+    createdBy?: UserCreateNestedOneWithoutCases_createdInput
+    courtDetails?: CaseCourtDetailCreateNestedManyWithoutCaseInput
+    lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
+    parties?: CasePartyCreateNestedManyWithoutCaseInput
+    hearings?: CaseHearingCreateNestedManyWithoutCaseInput
+    payments?: CasePaymentCreateNestedManyWithoutCaseInput
+    documents?: CaseDocumentCreateNestedManyWithoutCaseInput
+  }
+
+  export type CaseUncheckedCreateWithoutJudgementsInput = {
+    id?: string
+    natureId: string
+    registrationFee?: Decimal | DecimalJsLike | number | string | null
+    facts?: string | null
+    details?: NullableJsonNullValueInput | InputJsonValue
+    relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    referredThrough?: string | null
+    noticeStatus?: string | null
+    fullJudgmentDate?: Date | string | null
+    judgmentVerifyDate?: Date | string | null
+    status?: string
+    createdById?: string | null
+    createdAt?: Date | string
+    courtDetails?: CaseCourtDetailUncheckedCreateNestedManyWithoutCaseInput
+    lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
+    parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
+    hearings?: CaseHearingUncheckedCreateNestedManyWithoutCaseInput
+    payments?: CasePaymentUncheckedCreateNestedManyWithoutCaseInput
+    documents?: CaseDocumentUncheckedCreateNestedManyWithoutCaseInput
+  }
+
+  export type CaseCreateOrConnectWithoutJudgementsInput = {
+    where: CaseWhereUniqueInput
+    create: XOR<CaseCreateWithoutJudgementsInput, CaseUncheckedCreateWithoutJudgementsInput>
+  }
+
+  export type CaseCourtDetailCreateWithoutJudgementsInput = {
+    id?: string
+    caseName: string
+    caseNumber: string
+    registrationDate?: Date | string | null
+    judgeName?: string | null
+    courtType?: string | null
+    sectionCourtRoom?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    case: CaseCreateNestedOneWithoutCourtDetailsInput
+    parent?: CaseCourtDetailCreateNestedOneWithoutChildrenInput
+    children?: CaseCourtDetailCreateNestedManyWithoutParentInput
+    hearings?: CaseHearingCreateNestedManyWithoutCaseCourtDetailInput
+  }
+
+  export type CaseCourtDetailUncheckedCreateWithoutJudgementsInput = {
+    id?: string
+    caseId: string
+    caseName: string
+    caseNumber: string
+    registrationDate?: Date | string | null
+    judgeName?: string | null
+    courtType?: string | null
+    sectionCourtRoom?: string | null
+    parentId?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    children?: CaseCourtDetailUncheckedCreateNestedManyWithoutParentInput
+    hearings?: CaseHearingUncheckedCreateNestedManyWithoutCaseCourtDetailInput
+  }
+
+  export type CaseCourtDetailCreateOrConnectWithoutJudgementsInput = {
+    where: CaseCourtDetailWhereUniqueInput
+    create: XOR<CaseCourtDetailCreateWithoutJudgementsInput, CaseCourtDetailUncheckedCreateWithoutJudgementsInput>
+  }
+
+  export type CaseUpsertWithoutJudgementsInput = {
+    update: XOR<CaseUpdateWithoutJudgementsInput, CaseUncheckedUpdateWithoutJudgementsInput>
+    create: XOR<CaseCreateWithoutJudgementsInput, CaseUncheckedCreateWithoutJudgementsInput>
+    where?: CaseWhereInput
+  }
+
+  export type CaseUpdateToOneWithWhereWithoutJudgementsInput = {
+    where?: CaseWhereInput
+    data: XOR<CaseUpdateWithoutJudgementsInput, CaseUncheckedUpdateWithoutJudgementsInput>
+  }
+
+  export type CaseUpdateWithoutJudgementsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    facts?: NullableStringFieldUpdateOperationsInput | string | null
+    details?: NullableJsonNullValueInput | InputJsonValue
+    relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
+    noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    nature?: CaseNatureUpdateOneRequiredWithoutCasesNestedInput
+    createdBy?: UserUpdateOneWithoutCases_createdNestedInput
+    courtDetails?: CaseCourtDetailUpdateManyWithoutCaseNestedInput
+    lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
+    parties?: CasePartyUpdateManyWithoutCaseNestedInput
+    hearings?: CaseHearingUpdateManyWithoutCaseNestedInput
+    payments?: CasePaymentUpdateManyWithoutCaseNestedInput
+    documents?: CaseDocumentUpdateManyWithoutCaseNestedInput
+  }
+
+  export type CaseUncheckedUpdateWithoutJudgementsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    natureId?: StringFieldUpdateOperationsInput | string
+    registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    facts?: NullableStringFieldUpdateOperationsInput | string | null
+    details?: NullableJsonNullValueInput | InputJsonValue
+    relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
+    noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    courtDetails?: CaseCourtDetailUncheckedUpdateManyWithoutCaseNestedInput
+    lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
+    parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
+    hearings?: CaseHearingUncheckedUpdateManyWithoutCaseNestedInput
+    payments?: CasePaymentUncheckedUpdateManyWithoutCaseNestedInput
+    documents?: CaseDocumentUncheckedUpdateManyWithoutCaseNestedInput
+  }
+
+  export type CaseCourtDetailUpsertWithoutJudgementsInput = {
+    update: XOR<CaseCourtDetailUpdateWithoutJudgementsInput, CaseCourtDetailUncheckedUpdateWithoutJudgementsInput>
+    create: XOR<CaseCourtDetailCreateWithoutJudgementsInput, CaseCourtDetailUncheckedCreateWithoutJudgementsInput>
+    where?: CaseCourtDetailWhereInput
+  }
+
+  export type CaseCourtDetailUpdateToOneWithWhereWithoutJudgementsInput = {
+    where?: CaseCourtDetailWhereInput
+    data: XOR<CaseCourtDetailUpdateWithoutJudgementsInput, CaseCourtDetailUncheckedUpdateWithoutJudgementsInput>
+  }
+
+  export type CaseCourtDetailUpdateWithoutJudgementsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseName?: StringFieldUpdateOperationsInput | string
+    caseNumber?: StringFieldUpdateOperationsInput | string
+    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    judgeName?: NullableStringFieldUpdateOperationsInput | string | null
+    courtType?: NullableStringFieldUpdateOperationsInput | string | null
+    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    case?: CaseUpdateOneRequiredWithoutCourtDetailsNestedInput
+    parent?: CaseCourtDetailUpdateOneWithoutChildrenNestedInput
+    children?: CaseCourtDetailUpdateManyWithoutParentNestedInput
+    hearings?: CaseHearingUpdateManyWithoutCaseCourtDetailNestedInput
+  }
+
+  export type CaseCourtDetailUncheckedUpdateWithoutJudgementsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseId?: StringFieldUpdateOperationsInput | string
+    caseName?: StringFieldUpdateOperationsInput | string
+    caseNumber?: StringFieldUpdateOperationsInput | string
+    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    judgeName?: NullableStringFieldUpdateOperationsInput | string | null
+    courtType?: NullableStringFieldUpdateOperationsInput | string | null
+    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
+    parentId?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    children?: CaseCourtDetailUncheckedUpdateManyWithoutParentNestedInput
+    hearings?: CaseHearingUncheckedUpdateManyWithoutCaseCourtDetailNestedInput
   }
 
   export type UserCreateWithoutNotificationsInput = {
@@ -42843,8 +37446,6 @@ export namespace Prisma {
     reset_tokens?: PasswordResetTokenCreateNestedManyWithoutUserInput
     pages?: PageCreateNestedManyWithoutAuthorInput
     cases_as_lawyer?: CaseLawyerCreateNestedManyWithoutUserInput
-    cases_as_pleader?: CasePleadingCreateNestedManyWithoutPleaderInput
-    cases_as_counselor?: CaseCounselingCreateNestedManyWithoutCounselorInput
     cases_payment_received?: CasePaymentCreateNestedManyWithoutReceivedByUserInput
     cases_created?: CaseCreateNestedManyWithoutCreatedByInput
   }
@@ -42868,8 +37469,6 @@ export namespace Prisma {
     reset_tokens?: PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
     pages?: PageUncheckedCreateNestedManyWithoutAuthorInput
     cases_as_lawyer?: CaseLawyerUncheckedCreateNestedManyWithoutUserInput
-    cases_as_pleader?: CasePleadingUncheckedCreateNestedManyWithoutPleaderInput
-    cases_as_counselor?: CaseCounselingUncheckedCreateNestedManyWithoutCounselorInput
     cases_payment_received?: CasePaymentUncheckedCreateNestedManyWithoutReceivedByUserInput
     cases_created?: CaseUncheckedCreateNestedManyWithoutCreatedByInput
   }
@@ -42909,8 +37508,6 @@ export namespace Prisma {
     reset_tokens?: PasswordResetTokenUpdateManyWithoutUserNestedInput
     pages?: PageUpdateManyWithoutAuthorNestedInput
     cases_as_lawyer?: CaseLawyerUpdateManyWithoutUserNestedInput
-    cases_as_pleader?: CasePleadingUpdateManyWithoutPleaderNestedInput
-    cases_as_counselor?: CaseCounselingUpdateManyWithoutCounselorNestedInput
     cases_payment_received?: CasePaymentUpdateManyWithoutReceivedByUserNestedInput
     cases_created?: CaseUpdateManyWithoutCreatedByNestedInput
   }
@@ -42934,8 +37531,6 @@ export namespace Prisma {
     reset_tokens?: PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
     pages?: PageUncheckedUpdateManyWithoutAuthorNestedInput
     cases_as_lawyer?: CaseLawyerUncheckedUpdateManyWithoutUserNestedInput
-    cases_as_pleader?: CasePleadingUncheckedUpdateManyWithoutPleaderNestedInput
-    cases_as_counselor?: CaseCounselingUncheckedUpdateManyWithoutCounselorNestedInput
     cases_payment_received?: CasePaymentUncheckedUpdateManyWithoutReceivedByUserNestedInput
     cases_created?: CaseUncheckedUpdateManyWithoutCreatedByNestedInput
   }
@@ -43170,8 +37765,6 @@ export namespace Prisma {
     refresh_tokens?: RefreshTokenCreateNestedManyWithoutUserInput
     reset_tokens?: PasswordResetTokenCreateNestedManyWithoutUserInput
     cases_as_lawyer?: CaseLawyerCreateNestedManyWithoutUserInput
-    cases_as_pleader?: CasePleadingCreateNestedManyWithoutPleaderInput
-    cases_as_counselor?: CaseCounselingCreateNestedManyWithoutCounselorInput
     cases_payment_received?: CasePaymentCreateNestedManyWithoutReceivedByUserInput
     cases_created?: CaseCreateNestedManyWithoutCreatedByInput
   }
@@ -43195,8 +37788,6 @@ export namespace Prisma {
     refresh_tokens?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
     reset_tokens?: PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
     cases_as_lawyer?: CaseLawyerUncheckedCreateNestedManyWithoutUserInput
-    cases_as_pleader?: CasePleadingUncheckedCreateNestedManyWithoutPleaderInput
-    cases_as_counselor?: CaseCounselingUncheckedCreateNestedManyWithoutCounselorInput
     cases_payment_received?: CasePaymentUncheckedCreateNestedManyWithoutReceivedByUserInput
     cases_created?: CaseUncheckedCreateNestedManyWithoutCreatedByInput
   }
@@ -43423,8 +38014,6 @@ export namespace Prisma {
     refresh_tokens?: RefreshTokenUpdateManyWithoutUserNestedInput
     reset_tokens?: PasswordResetTokenUpdateManyWithoutUserNestedInput
     cases_as_lawyer?: CaseLawyerUpdateManyWithoutUserNestedInput
-    cases_as_pleader?: CasePleadingUpdateManyWithoutPleaderNestedInput
-    cases_as_counselor?: CaseCounselingUpdateManyWithoutCounselorNestedInput
     cases_payment_received?: CasePaymentUpdateManyWithoutReceivedByUserNestedInput
     cases_created?: CaseUpdateManyWithoutCreatedByNestedInput
   }
@@ -43448,8 +38037,6 @@ export namespace Prisma {
     refresh_tokens?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
     reset_tokens?: PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
     cases_as_lawyer?: CaseLawyerUncheckedUpdateManyWithoutUserNestedInput
-    cases_as_pleader?: CasePleadingUncheckedUpdateManyWithoutPleaderNestedInput
-    cases_as_counselor?: CaseCounselingUncheckedUpdateManyWithoutCounselorNestedInput
     cases_payment_received?: CasePaymentUncheckedUpdateManyWithoutReceivedByUserNestedInput
     cases_created?: CaseUncheckedUpdateManyWithoutCreatedByNestedInput
   }
@@ -43791,8 +38378,6 @@ export namespace Prisma {
     reset_tokens?: PasswordResetTokenCreateNestedManyWithoutUserInput
     pages?: PageCreateNestedManyWithoutAuthorInput
     cases_as_lawyer?: CaseLawyerCreateNestedManyWithoutUserInput
-    cases_as_pleader?: CasePleadingCreateNestedManyWithoutPleaderInput
-    cases_as_counselor?: CaseCounselingCreateNestedManyWithoutCounselorInput
     cases_payment_received?: CasePaymentCreateNestedManyWithoutReceivedByUserInput
     cases_created?: CaseCreateNestedManyWithoutCreatedByInput
   }
@@ -43816,8 +38401,6 @@ export namespace Prisma {
     reset_tokens?: PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
     pages?: PageUncheckedCreateNestedManyWithoutAuthorInput
     cases_as_lawyer?: CaseLawyerUncheckedCreateNestedManyWithoutUserInput
-    cases_as_pleader?: CasePleadingUncheckedCreateNestedManyWithoutPleaderInput
-    cases_as_counselor?: CaseCounselingUncheckedCreateNestedManyWithoutCounselorInput
     cases_payment_received?: CasePaymentUncheckedCreateNestedManyWithoutReceivedByUserInput
     cases_created?: CaseUncheckedCreateNestedManyWithoutCreatedByInput
   }
@@ -43894,21 +38477,6 @@ export namespace Prisma {
     isLead?: boolean
   }
 
-  export type CasePleadingCreateManyPleaderInput = {
-    id?: string
-    caseId: string
-    pleadingDate?: Date | string | null
-    pleadingNotes: string
-  }
-
-  export type CaseCounselingCreateManyCounselorInput = {
-    id?: string
-    caseId: string
-    date?: Date | string | null
-    notes: string
-    createdAt?: Date | string
-  }
-
   export type CasePaymentCreateManyReceivedByUserInput = {
     id?: string
     caseId: string
@@ -43926,7 +38494,8 @@ export namespace Prisma {
     natureId: string
     registrationFee?: Decimal | DecimalJsLike | number | string | null
     facts?: string | null
-    relatedLaws?: string | null
+    details?: NullableJsonNullValueInput | InputJsonValue
+    relatedLaw?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: string | null
     noticeStatus?: string | null
     fullJudgmentDate?: Date | string | null
@@ -44079,51 +38648,6 @@ export namespace Prisma {
     isLead?: BoolFieldUpdateOperationsInput | boolean
   }
 
-  export type CasePleadingUpdateWithoutPleaderInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    pleadingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    pleadingNotes?: StringFieldUpdateOperationsInput | string
-    case?: CaseUpdateOneRequiredWithoutPleadingsNestedInput
-  }
-
-  export type CasePleadingUncheckedUpdateWithoutPleaderInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    caseId?: StringFieldUpdateOperationsInput | string
-    pleadingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    pleadingNotes?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type CasePleadingUncheckedUpdateManyWithoutPleaderInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    caseId?: StringFieldUpdateOperationsInput | string
-    pleadingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    pleadingNotes?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type CaseCounselingUpdateWithoutCounselorInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    notes?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    case?: CaseUpdateOneRequiredWithoutCounselingsNestedInput
-  }
-
-  export type CaseCounselingUncheckedUpdateWithoutCounselorInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    caseId?: StringFieldUpdateOperationsInput | string
-    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    notes?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type CaseCounselingUncheckedUpdateManyWithoutCounselorInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    caseId?: StringFieldUpdateOperationsInput | string
-    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    notes?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
   export type CasePaymentUpdateWithoutReceivedByUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
@@ -44164,7 +38688,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     facts?: NullableStringFieldUpdateOperationsInput | string | null
-    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    details?: NullableJsonNullValueInput | InputJsonValue
+    relatedLaw?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
     noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -44176,12 +38701,9 @@ export namespace Prisma {
     lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUpdateManyWithoutCaseNestedInput
-    pleadings?: CasePleadingUpdateManyWithoutCaseNestedInput
-    proceedings?: CourtProceedingUpdateManyWithoutCaseNestedInput
-    precedents?: CasePrecedentUpdateManyWithoutCaseNestedInput
     payments?: CasePaymentUpdateManyWithoutCaseNestedInput
-    counselings?: CaseCounselingUpdateManyWithoutCaseNestedInput
     documents?: CaseDocumentUpdateManyWithoutCaseNestedInput
+    judgements?: CaseJudgementUpdateManyWithoutCaseNestedInput
   }
 
   export type CaseUncheckedUpdateWithoutCreatedByInput = {
@@ -44189,7 +38711,8 @@ export namespace Prisma {
     natureId?: StringFieldUpdateOperationsInput | string
     registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     facts?: NullableStringFieldUpdateOperationsInput | string | null
-    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    details?: NullableJsonNullValueInput | InputJsonValue
+    relatedLaw?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
     noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -44200,12 +38723,9 @@ export namespace Prisma {
     lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUncheckedUpdateManyWithoutCaseNestedInput
-    pleadings?: CasePleadingUncheckedUpdateManyWithoutCaseNestedInput
-    proceedings?: CourtProceedingUncheckedUpdateManyWithoutCaseNestedInput
-    precedents?: CasePrecedentUncheckedUpdateManyWithoutCaseNestedInput
     payments?: CasePaymentUncheckedUpdateManyWithoutCaseNestedInput
-    counselings?: CaseCounselingUncheckedUpdateManyWithoutCaseNestedInput
     documents?: CaseDocumentUncheckedUpdateManyWithoutCaseNestedInput
+    judgements?: CaseJudgementUncheckedUpdateManyWithoutCaseNestedInput
   }
 
   export type CaseUncheckedUpdateManyWithoutCreatedByInput = {
@@ -44213,7 +38733,8 @@ export namespace Prisma {
     natureId?: StringFieldUpdateOperationsInput | string
     registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     facts?: NullableStringFieldUpdateOperationsInput | string | null
-    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    details?: NullableJsonNullValueInput | InputJsonValue
+    relatedLaw?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
     noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -44287,8 +38808,6 @@ export namespace Prisma {
     reset_tokens?: PasswordResetTokenUpdateManyWithoutUserNestedInput
     pages?: PageUpdateManyWithoutAuthorNestedInput
     cases_as_lawyer?: CaseLawyerUpdateManyWithoutUserNestedInput
-    cases_as_pleader?: CasePleadingUpdateManyWithoutPleaderNestedInput
-    cases_as_counselor?: CaseCounselingUpdateManyWithoutCounselorNestedInput
     cases_payment_received?: CasePaymentUpdateManyWithoutReceivedByUserNestedInput
     cases_created?: CaseUpdateManyWithoutCreatedByNestedInput
   }
@@ -44312,8 +38831,6 @@ export namespace Prisma {
     reset_tokens?: PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
     pages?: PageUncheckedUpdateManyWithoutAuthorNestedInput
     cases_as_lawyer?: CaseLawyerUncheckedUpdateManyWithoutUserNestedInput
-    cases_as_pleader?: CasePleadingUncheckedUpdateManyWithoutPleaderNestedInput
-    cases_as_counselor?: CaseCounselingUncheckedUpdateManyWithoutCounselorNestedInput
     cases_payment_received?: CasePaymentUncheckedUpdateManyWithoutReceivedByUserNestedInput
     cases_created?: CaseUncheckedUpdateManyWithoutCreatedByNestedInput
   }
@@ -44430,47 +38947,12 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type CourtProceedingCreateManyCourtLevelInput = {
-    id?: string
-    caseId: string
-    courtName: string
-    judgeName?: string | null
-    chargeCounseling?: string | null
-    verdict?: string | null
-  }
-
-  export type CourtProceedingUpdateWithoutCourtLevelInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    courtName?: StringFieldUpdateOperationsInput | string
-    judgeName?: NullableStringFieldUpdateOperationsInput | string | null
-    chargeCounseling?: NullableStringFieldUpdateOperationsInput | string | null
-    verdict?: NullableStringFieldUpdateOperationsInput | string | null
-    case?: CaseUpdateOneRequiredWithoutProceedingsNestedInput
-  }
-
-  export type CourtProceedingUncheckedUpdateWithoutCourtLevelInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    caseId?: StringFieldUpdateOperationsInput | string
-    courtName?: StringFieldUpdateOperationsInput | string
-    judgeName?: NullableStringFieldUpdateOperationsInput | string | null
-    chargeCounseling?: NullableStringFieldUpdateOperationsInput | string | null
-    verdict?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type CourtProceedingUncheckedUpdateManyWithoutCourtLevelInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    caseId?: StringFieldUpdateOperationsInput | string
-    courtName?: StringFieldUpdateOperationsInput | string
-    judgeName?: NullableStringFieldUpdateOperationsInput | string | null
-    chargeCounseling?: NullableStringFieldUpdateOperationsInput | string | null
-    verdict?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
   export type CaseCreateManyNatureInput = {
     id?: string
     registrationFee?: Decimal | DecimalJsLike | number | string | null
     facts?: string | null
-    relatedLaws?: string | null
+    details?: NullableJsonNullValueInput | InputJsonValue
+    relatedLaw?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: string | null
     noticeStatus?: string | null
     fullJudgmentDate?: Date | string | null
@@ -44484,7 +38966,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     facts?: NullableStringFieldUpdateOperationsInput | string | null
-    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    details?: NullableJsonNullValueInput | InputJsonValue
+    relatedLaw?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
     noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -44496,19 +38979,17 @@ export namespace Prisma {
     lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUpdateManyWithoutCaseNestedInput
-    pleadings?: CasePleadingUpdateManyWithoutCaseNestedInput
-    proceedings?: CourtProceedingUpdateManyWithoutCaseNestedInput
-    precedents?: CasePrecedentUpdateManyWithoutCaseNestedInput
     payments?: CasePaymentUpdateManyWithoutCaseNestedInput
-    counselings?: CaseCounselingUpdateManyWithoutCaseNestedInput
     documents?: CaseDocumentUpdateManyWithoutCaseNestedInput
+    judgements?: CaseJudgementUpdateManyWithoutCaseNestedInput
   }
 
   export type CaseUncheckedUpdateWithoutNatureInput = {
     id?: StringFieldUpdateOperationsInput | string
     registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     facts?: NullableStringFieldUpdateOperationsInput | string | null
-    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    details?: NullableJsonNullValueInput | InputJsonValue
+    relatedLaw?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
     noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -44520,19 +39001,17 @@ export namespace Prisma {
     lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUncheckedUpdateManyWithoutCaseNestedInput
-    pleadings?: CasePleadingUncheckedUpdateManyWithoutCaseNestedInput
-    proceedings?: CourtProceedingUncheckedUpdateManyWithoutCaseNestedInput
-    precedents?: CasePrecedentUncheckedUpdateManyWithoutCaseNestedInput
     payments?: CasePaymentUncheckedUpdateManyWithoutCaseNestedInput
-    counselings?: CaseCounselingUncheckedUpdateManyWithoutCaseNestedInput
     documents?: CaseDocumentUncheckedUpdateManyWithoutCaseNestedInput
+    judgements?: CaseJudgementUncheckedUpdateManyWithoutCaseNestedInput
   }
 
   export type CaseUncheckedUpdateManyWithoutNatureInput = {
     id?: StringFieldUpdateOperationsInput | string
     registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     facts?: NullableStringFieldUpdateOperationsInput | string | null
-    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    details?: NullableJsonNullValueInput | InputJsonValue
+    relatedLaw?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
     noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -44631,30 +39110,6 @@ export namespace Prisma {
     hearingOrder?: string | null
   }
 
-  export type CasePleadingCreateManyCaseInput = {
-    id?: string
-    pleaderUserId?: string | null
-    pleadingDate?: Date | string | null
-    pleadingNotes: string
-  }
-
-  export type CourtProceedingCreateManyCaseInput = {
-    id?: string
-    courtLevelId: string
-    courtName: string
-    judgeName?: string | null
-    chargeCounseling?: string | null
-    verdict?: string | null
-  }
-
-  export type CasePrecedentCreateManyCaseInput = {
-    id?: string
-    decisionNumber?: string | null
-    plaintiff?: string | null
-    defendant?: string | null
-    citationNotes?: string | null
-  }
-
   export type CasePaymentCreateManyCaseInput = {
     id?: string
     amount: Decimal | DecimalJsLike | number | string
@@ -44667,20 +39122,23 @@ export namespace Prisma {
     createdAt?: Date | string
   }
 
-  export type CaseCounselingCreateManyCaseInput = {
-    id?: string
-    counselorUserId?: string | null
-    date?: Date | string | null
-    notes: string
-    createdAt?: Date | string
-  }
-
   export type CaseDocumentCreateManyCaseInput = {
     id?: string
     fileName: string
     description?: string | null
     documentUrl: string
     createdAt?: Date | string
+  }
+
+  export type CaseJudgementCreateManyCaseInput = {
+    id?: string
+    caseCourtDetailId: string
+    type: string
+    date?: Date | string | null
+    verifiedDate?: Date | string | null
+    detail?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type CaseCourtDetailUpdateWithoutCaseInput = {
@@ -44697,6 +39155,7 @@ export namespace Prisma {
     parent?: CaseCourtDetailUpdateOneWithoutChildrenNestedInput
     children?: CaseCourtDetailUpdateManyWithoutParentNestedInput
     hearings?: CaseHearingUpdateManyWithoutCaseCourtDetailNestedInput
+    judgements?: CaseJudgementUpdateManyWithoutCaseCourtDetailNestedInput
   }
 
   export type CaseCourtDetailUncheckedUpdateWithoutCaseInput = {
@@ -44713,6 +39172,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     children?: CaseCourtDetailUncheckedUpdateManyWithoutParentNestedInput
     hearings?: CaseHearingUncheckedUpdateManyWithoutCaseCourtDetailNestedInput
+    judgements?: CaseJudgementUncheckedUpdateManyWithoutCaseCourtDetailNestedInput
   }
 
   export type CaseCourtDetailUncheckedUpdateManyWithoutCaseInput = {
@@ -44806,78 +39266,6 @@ export namespace Prisma {
     hearingOrder?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type CasePleadingUpdateWithoutCaseInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    pleadingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    pleadingNotes?: StringFieldUpdateOperationsInput | string
-    pleader?: UserUpdateOneWithoutCases_as_pleaderNestedInput
-  }
-
-  export type CasePleadingUncheckedUpdateWithoutCaseInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    pleaderUserId?: NullableStringFieldUpdateOperationsInput | string | null
-    pleadingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    pleadingNotes?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type CasePleadingUncheckedUpdateManyWithoutCaseInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    pleaderUserId?: NullableStringFieldUpdateOperationsInput | string | null
-    pleadingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    pleadingNotes?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type CourtProceedingUpdateWithoutCaseInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    courtName?: StringFieldUpdateOperationsInput | string
-    judgeName?: NullableStringFieldUpdateOperationsInput | string | null
-    chargeCounseling?: NullableStringFieldUpdateOperationsInput | string | null
-    verdict?: NullableStringFieldUpdateOperationsInput | string | null
-    courtLevel?: CourtLevelUpdateOneRequiredWithoutProceedingsNestedInput
-  }
-
-  export type CourtProceedingUncheckedUpdateWithoutCaseInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    courtLevelId?: StringFieldUpdateOperationsInput | string
-    courtName?: StringFieldUpdateOperationsInput | string
-    judgeName?: NullableStringFieldUpdateOperationsInput | string | null
-    chargeCounseling?: NullableStringFieldUpdateOperationsInput | string | null
-    verdict?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type CourtProceedingUncheckedUpdateManyWithoutCaseInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    courtLevelId?: StringFieldUpdateOperationsInput | string
-    courtName?: StringFieldUpdateOperationsInput | string
-    judgeName?: NullableStringFieldUpdateOperationsInput | string | null
-    chargeCounseling?: NullableStringFieldUpdateOperationsInput | string | null
-    verdict?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type CasePrecedentUpdateWithoutCaseInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    decisionNumber?: NullableStringFieldUpdateOperationsInput | string | null
-    plaintiff?: NullableStringFieldUpdateOperationsInput | string | null
-    defendant?: NullableStringFieldUpdateOperationsInput | string | null
-    citationNotes?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type CasePrecedentUncheckedUpdateWithoutCaseInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    decisionNumber?: NullableStringFieldUpdateOperationsInput | string | null
-    plaintiff?: NullableStringFieldUpdateOperationsInput | string | null
-    defendant?: NullableStringFieldUpdateOperationsInput | string | null
-    citationNotes?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type CasePrecedentUncheckedUpdateManyWithoutCaseInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    decisionNumber?: NullableStringFieldUpdateOperationsInput | string | null
-    plaintiff?: NullableStringFieldUpdateOperationsInput | string | null
-    defendant?: NullableStringFieldUpdateOperationsInput | string | null
-    citationNotes?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
   export type CasePaymentUpdateWithoutCaseInput = {
     id?: StringFieldUpdateOperationsInput | string
     amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
@@ -44914,30 +39302,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type CaseCounselingUpdateWithoutCaseInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    notes?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    counselor?: UserUpdateOneWithoutCases_as_counselorNestedInput
-  }
-
-  export type CaseCounselingUncheckedUpdateWithoutCaseInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    counselorUserId?: NullableStringFieldUpdateOperationsInput | string | null
-    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    notes?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type CaseCounselingUncheckedUpdateManyWithoutCaseInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    counselorUserId?: NullableStringFieldUpdateOperationsInput | string | null
-    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    notes?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
   export type CaseDocumentUpdateWithoutCaseInput = {
     id?: StringFieldUpdateOperationsInput | string
     fileName?: StringFieldUpdateOperationsInput | string
@@ -44962,6 +39326,39 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type CaseJudgementUpdateWithoutCaseInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    detail?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    caseCourtDetail?: CaseCourtDetailUpdateOneRequiredWithoutJudgementsNestedInput
+  }
+
+  export type CaseJudgementUncheckedUpdateWithoutCaseInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseCourtDetailId?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    detail?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CaseJudgementUncheckedUpdateManyWithoutCaseInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseCourtDetailId?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    detail?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type CaseCourtDetailCreateManyParentInput = {
     id?: string
     caseId: string
@@ -44984,6 +39381,17 @@ export namespace Prisma {
     hearingOrder?: string | null
   }
 
+  export type CaseJudgementCreateManyCaseCourtDetailInput = {
+    id?: string
+    caseId: string
+    type: string
+    date?: Date | string | null
+    verifiedDate?: Date | string | null
+    detail?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type CaseCourtDetailUpdateWithoutParentInput = {
     id?: StringFieldUpdateOperationsInput | string
     caseName?: StringFieldUpdateOperationsInput | string
@@ -44998,6 +39406,7 @@ export namespace Prisma {
     case?: CaseUpdateOneRequiredWithoutCourtDetailsNestedInput
     children?: CaseCourtDetailUpdateManyWithoutParentNestedInput
     hearings?: CaseHearingUpdateManyWithoutCaseCourtDetailNestedInput
+    judgements?: CaseJudgementUpdateManyWithoutCaseCourtDetailNestedInput
   }
 
   export type CaseCourtDetailUncheckedUpdateWithoutParentInput = {
@@ -45014,6 +39423,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     children?: CaseCourtDetailUncheckedUpdateManyWithoutParentNestedInput
     hearings?: CaseHearingUncheckedUpdateManyWithoutCaseCourtDetailNestedInput
+    judgements?: CaseJudgementUncheckedUpdateManyWithoutCaseCourtDetailNestedInput
   }
 
   export type CaseCourtDetailUncheckedUpdateManyWithoutParentInput = {
@@ -45052,6 +39462,39 @@ export namespace Prisma {
     nextHearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hearingOrder?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CaseJudgementUpdateWithoutCaseCourtDetailInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    detail?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    case?: CaseUpdateOneRequiredWithoutJudgementsNestedInput
+  }
+
+  export type CaseJudgementUncheckedUpdateWithoutCaseCourtDetailInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseId?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    detail?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CaseJudgementUncheckedUpdateManyWithoutCaseCourtDetailInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseId?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    detail?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CasePartyCreateManyParentInput = {
@@ -45279,8 +39722,6 @@ export namespace Prisma {
     reset_tokens?: PasswordResetTokenUpdateManyWithoutUserNestedInput
     pages?: PageUpdateManyWithoutAuthorNestedInput
     cases_as_lawyer?: CaseLawyerUpdateManyWithoutUserNestedInput
-    cases_as_pleader?: CasePleadingUpdateManyWithoutPleaderNestedInput
-    cases_as_counselor?: CaseCounselingUpdateManyWithoutCounselorNestedInput
     cases_payment_received?: CasePaymentUpdateManyWithoutReceivedByUserNestedInput
     cases_created?: CaseUpdateManyWithoutCreatedByNestedInput
   }
@@ -45304,8 +39745,6 @@ export namespace Prisma {
     reset_tokens?: PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
     pages?: PageUncheckedUpdateManyWithoutAuthorNestedInput
     cases_as_lawyer?: CaseLawyerUncheckedUpdateManyWithoutUserNestedInput
-    cases_as_pleader?: CasePleadingUncheckedUpdateManyWithoutPleaderNestedInput
-    cases_as_counselor?: CaseCounselingUncheckedUpdateManyWithoutCounselorNestedInput
     cases_payment_received?: CasePaymentUncheckedUpdateManyWithoutReceivedByUserNestedInput
     cases_created?: CaseUncheckedUpdateManyWithoutCreatedByNestedInput
   }

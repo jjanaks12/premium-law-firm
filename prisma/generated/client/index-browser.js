@@ -187,7 +187,8 @@ exports.Prisma.CaseScalarFieldEnum = {
   natureId: 'natureId',
   registrationFee: 'registrationFee',
   facts: 'facts',
-  relatedLaws: 'relatedLaws',
+  details: 'details',
+  relatedLaw: 'relatedLaw',
   referredThrough: 'referredThrough',
   noticeStatus: 'noticeStatus',
   fullJudgmentDate: 'fullJudgmentDate',
@@ -240,33 +241,6 @@ exports.Prisma.CaseHearingScalarFieldEnum = {
   hearingOrder: 'hearingOrder'
 };
 
-exports.Prisma.CasePleadingScalarFieldEnum = {
-  id: 'id',
-  caseId: 'caseId',
-  pleaderUserId: 'pleaderUserId',
-  pleadingDate: 'pleadingDate',
-  pleadingNotes: 'pleadingNotes'
-};
-
-exports.Prisma.CourtProceedingScalarFieldEnum = {
-  id: 'id',
-  caseId: 'caseId',
-  courtLevelId: 'courtLevelId',
-  courtName: 'courtName',
-  judgeName: 'judgeName',
-  chargeCounseling: 'chargeCounseling',
-  verdict: 'verdict'
-};
-
-exports.Prisma.CasePrecedentScalarFieldEnum = {
-  id: 'id',
-  caseId: 'caseId',
-  decisionNumber: 'decisionNumber',
-  plaintiff: 'plaintiff',
-  defendant: 'defendant',
-  citationNotes: 'citationNotes'
-};
-
 exports.Prisma.CasePaymentScalarFieldEnum = {
   id: 'id',
   caseId: 'caseId',
@@ -280,15 +254,6 @@ exports.Prisma.CasePaymentScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
-exports.Prisma.CaseCounselingScalarFieldEnum = {
-  id: 'id',
-  caseId: 'caseId',
-  counselorUserId: 'counselorUserId',
-  date: 'date',
-  notes: 'notes',
-  createdAt: 'createdAt'
-};
-
 exports.Prisma.CaseDocumentScalarFieldEnum = {
   id: 'id',
   caseId: 'caseId',
@@ -296,6 +261,18 @@ exports.Prisma.CaseDocumentScalarFieldEnum = {
   description: 'description',
   documentUrl: 'documentUrl',
   createdAt: 'createdAt'
+};
+
+exports.Prisma.CaseJudgementScalarFieldEnum = {
+  id: 'id',
+  caseId: 'caseId',
+  caseCourtDetailId: 'caseCourtDetailId',
+  type: 'type',
+  date: 'date',
+  verifiedDate: 'verifiedDate',
+  detail: 'detail',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.NotificationScalarFieldEnum = {
@@ -416,12 +393,9 @@ exports.Prisma.ModelName = {
   CaseLawyer: 'CaseLawyer',
   CaseParty: 'CaseParty',
   CaseHearing: 'CaseHearing',
-  CasePleading: 'CasePleading',
-  CourtProceeding: 'CourtProceeding',
-  CasePrecedent: 'CasePrecedent',
   CasePayment: 'CasePayment',
-  CaseCounseling: 'CaseCounseling',
   CaseDocument: 'CaseDocument',
+  CaseJudgement: 'CaseJudgement',
   Notification: 'Notification',
   PageType: 'PageType',
   Page: 'Page',
