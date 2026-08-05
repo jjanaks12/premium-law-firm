@@ -101,6 +101,7 @@ export default function CaseForm({
 
     fetchNatures();
     fetchPartyRoles();
+    fetchLawyers();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -153,6 +154,7 @@ export default function CaseForm({
       {
         caseNumber: activeCourtDetail?.caseNumber || "",
         caseName: activeCourtDetail?.caseName || "",
+        courtName: activeCourtDetail?.courtName || "",
         sectionCourtRoom: activeCourtDetail?.sectionCourtRoom || "",
         registrationDate: activeCourtDetail?.registrationDate
           ? dayjs(activeCourtDetail.registrationDate).format("YYYY-MM-DD")
@@ -160,6 +162,7 @@ export default function CaseForm({
       },
     ],
     facts: caseData?.facts || "",
+    relatedPrecedents: caseData?.relatedPrecedents || [],
     status: caseData?.status || "Draft",
     lawyers: caseData?.lawyers?.length
       ? caseData.lawyers.map((l: any) => ({
@@ -324,6 +327,23 @@ export default function CaseForm({
                 />
               </div>
               <div className="space-y-2">
+                <Label htmlFor="courtName">{t("courtName")}</Label>
+                <Field name="courtDetails[0].courtName">
+                  {({ field }: FieldProps) => (
+                    <Input
+                      {...field}
+                      id="courtName"
+                      placeholder="e.g. Supreme Court"
+                    />
+                  )}
+                </Field>
+                <ErrorMessage
+                  name="courtDetails[0].courtName"
+                  component="div"
+                  className="text-sm text-destructive"
+                />
+              </div>
+              <div className="space-y-2">
                 <Label htmlFor="sectionCourtRoom">{t("formFaat")}</Label>
                 <Field name="courtDetails[0].sectionCourtRoom">
                   {({ field }: FieldProps) => (
@@ -398,7 +418,7 @@ export default function CaseForm({
               {({ insert, remove, push, form }) => {
                 const renderParty = (party: any, index: number) => (
                   <div
-                    key={index}
+                    key={party.id || `party-${index}`}
                     className="space-y-4 border p-4 rounded-md bg-background relative h-full flex flex-col justify-start"
                   >
                     <div className="flex justify-end items-center">
@@ -764,14 +784,13 @@ export default function CaseForm({
                           </Button>
                         </div>
                         <div className="space-y-4 flex flex-col">
-                          {form.values.parties
-                            .filter((party: any) => {
-                              if (party)
-                                return party.roleId === getParty("वादी")?.id;
-
-                              return false;
-                            })
-                            .map((party: any, index: number) => renderParty(party, index))}
+                          {form.values.parties &&
+                            form.values.parties.map((party: any, index: number) => {
+                              if (party && party.roleId === getParty("वादी")?.id) {
+                                return renderParty(party, index);
+                              }
+                              return null;
+                            })}
                         </div>
                       </div>
 
@@ -958,6 +977,109 @@ export default function CaseForm({
                     onClick={() => push({ userId: "", isLead: false })}
                   >
                     <PlusIcon className="mr-2 h-4 w-4" /> {t("addLawyerBtn")}
+                  </Button>
+                </div>
+              )}
+            </FieldArray>
+          </div>
+
+          <div className="space-y-4 border rounded-md p-4 bg-muted/20">
+            <div className="flex items-center justify-between">
+              <h3 className="text-lg font-medium">Related Precedents (Najir)</h3>
+            </div>
+            <FieldArray name="relatedPrecedents">
+              {({ remove, push, form }) => (
+                <div className="space-y-4">
+                  {form.values.relatedPrecedents &&
+                    form.values.relatedPrecedents.length > 0 &&
+                    form.values.relatedPrecedents.map((precedent: any, index: number) => (
+                      <div
+                        key={index}
+                        className="space-y-4 border p-4 rounded-md bg-background relative"
+                      >
+                        <div className="flex justify-between items-center">
+                          <Button
+                            type="button"
+                            variant="ghost"
+                            size="icon"
+                            className="text-destructive h-8 w-8"
+                            onClick={() => remove(index)}
+                          >
+                            <Trash2Icon className="h-4 w-4" />
+                          </Button>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-start">
+                          <div className="space-y-2">
+                            <Label>
+                              Decision Number <span className="text-destructive">*</span>
+                            </Label>
+                            <Field name={`relatedPrecedents.${index}.decisionNumber`}>
+                              {({ field }: FieldProps) => (
+                                <Input {...field} placeholder="e.g. 10234" />
+                              )}
+                            </Field>
+                            <ErrorMessage
+                              name={`relatedPrecedents.${index}.decisionNumber`}
+                              component="div"
+                              className="text-sm text-destructive"
+                            />
+                          </div>
+                          <div className="space-y-2">
+                            <Label>
+                              Parties <span className="text-destructive">*</span>
+                            </Label>
+                            <Field name={`relatedPrecedents.${index}.parties`}>
+                              {({ field }: FieldProps) => (
+                                <Input {...field} placeholder="e.g. Ram vs Shyam" />
+                              )}
+                            </Field>
+                            <ErrorMessage
+                              name={`relatedPrecedents.${index}.parties`}
+                              component="div"
+                              className="text-sm text-destructive"
+                            />
+                          </div>
+                          <div className="space-y-2">
+                            <Label>
+                              Year
+                            </Label>
+                            <Field name={`relatedPrecedents.${index}.year`}>
+                              {({ field }: FieldProps) => (
+                                <Input {...field} placeholder="e.g. 2080" />
+                              )}
+                            </Field>
+                            <ErrorMessage
+                              name={`relatedPrecedents.${index}.year`}
+                              component="div"
+                              className="text-sm text-destructive"
+                            />
+                          </div>
+                          <div className="space-y-2">
+                            <Label>
+                              Sequence No
+                            </Label>
+                            <Field name={`relatedPrecedents.${index}.sequenceNo`}>
+                              {({ field }: FieldProps) => (
+                                <Input {...field} placeholder="e.g. 1" />
+                              )}
+                            </Field>
+                            <ErrorMessage
+                              name={`relatedPrecedents.${index}.sequenceNo`}
+                              component="div"
+                              className="text-sm text-destructive"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="sm"
+                    className="mt-2"
+                    onClick={() => push({ decisionNumber: "", parties: "", year: "", sequenceNo: "" })}
+                  >
+                    <PlusIcon className="mr-2 h-4 w-4" /> Add Precedent
                   </Button>
                 </div>
               )}

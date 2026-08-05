@@ -9,6 +9,7 @@ export const caseValidationSchema = yup.object({
       caseName: yup.string().trim().required("Case Name is required"),
       caseNumber: yup.string().trim(),
       registrationDate: yup.date().nullable(),
+      courtName: yup.string().nullable(),
       sectionCourtRoom: yup.string().nullable(),
     })
   ).min(1, "At least one court detail is required"),
@@ -34,6 +35,14 @@ export const caseValidationSchema = yup.object({
     yup.object({
       userId: yup.string().required("User ID is required"),
       isLead: yup.boolean().optional(),
+    })
+  ).nullable(),
+  relatedPrecedents: yup.array().of(
+    yup.object({
+      decisionNumber: yup.string().required("Decision number is required"),
+      parties: yup.string().required("Parties name is required"),
+      year: yup.string().optional(),
+      sequenceNo: yup.string().optional(),
     })
   ).nullable(),
 });

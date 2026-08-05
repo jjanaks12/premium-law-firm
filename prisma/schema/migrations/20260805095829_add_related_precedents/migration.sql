@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE "pages" ADD COLUMN     "detail" JSONB DEFAULT '{}',
+ALTER COLUMN "content" DROP DEFAULT,
+ALTER COLUMN "content" SET DATA TYPE TEXT;

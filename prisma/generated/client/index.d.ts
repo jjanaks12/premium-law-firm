@@ -11044,6 +11044,7 @@ export namespace Prisma {
     facts: number
     details: number
     relatedLaw: number
+    relatedPrecedents: number
     referredThrough: number
     noticeStatus: number
     fullJudgmentDate: number
@@ -11098,6 +11099,7 @@ export namespace Prisma {
     facts?: true
     details?: true
     relatedLaw?: true
+    relatedPrecedents?: true
     referredThrough?: true
     noticeStatus?: true
     fullJudgmentDate?: true
@@ -11201,6 +11203,7 @@ export namespace Prisma {
     facts: string | null
     details: JsonValue | null
     relatedLaw: JsonValue | null
+    relatedPrecedents: JsonValue | null
     referredThrough: string | null
     noticeStatus: string | null
     fullJudgmentDate: Date | null
@@ -11236,6 +11239,7 @@ export namespace Prisma {
     facts?: boolean
     details?: boolean
     relatedLaw?: boolean
+    relatedPrecedents?: boolean
     referredThrough?: boolean
     noticeStatus?: boolean
     fullJudgmentDate?: boolean
@@ -11262,6 +11266,7 @@ export namespace Prisma {
     facts?: boolean
     details?: boolean
     relatedLaw?: boolean
+    relatedPrecedents?: boolean
     referredThrough?: boolean
     noticeStatus?: boolean
     fullJudgmentDate?: boolean
@@ -11280,6 +11285,7 @@ export namespace Prisma {
     facts?: boolean
     details?: boolean
     relatedLaw?: boolean
+    relatedPrecedents?: boolean
     referredThrough?: boolean
     noticeStatus?: boolean
     fullJudgmentDate?: boolean
@@ -11298,6 +11304,7 @@ export namespace Prisma {
     facts?: boolean
     details?: boolean
     relatedLaw?: boolean
+    relatedPrecedents?: boolean
     referredThrough?: boolean
     noticeStatus?: boolean
     fullJudgmentDate?: boolean
@@ -11307,7 +11314,7 @@ export namespace Prisma {
     createdAt?: boolean
   }
 
-  export type CaseOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "natureId" | "registrationFee" | "facts" | "details" | "relatedLaw" | "referredThrough" | "noticeStatus" | "fullJudgmentDate" | "judgmentVerifyDate" | "status" | "createdById" | "createdAt", ExtArgs["result"]["case"]>
+  export type CaseOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "natureId" | "registrationFee" | "facts" | "details" | "relatedLaw" | "relatedPrecedents" | "referredThrough" | "noticeStatus" | "fullJudgmentDate" | "judgmentVerifyDate" | "status" | "createdById" | "createdAt", ExtArgs["result"]["case"]>
   export type CaseInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     nature?: boolean | CaseNatureDefaultArgs<ExtArgs>
     createdBy?: boolean | Case$createdByArgs<ExtArgs>
@@ -11349,6 +11356,7 @@ export namespace Prisma {
       facts: string | null
       details: Prisma.JsonValue | null
       relatedLaw: Prisma.JsonValue | null
+      relatedPrecedents: Prisma.JsonValue | null
       referredThrough: string | null
       noticeStatus: string | null
       fullJudgmentDate: Date | null
@@ -11794,6 +11802,7 @@ export namespace Prisma {
     readonly facts: FieldRef<"Case", 'String'>
     readonly details: FieldRef<"Case", 'Json'>
     readonly relatedLaw: FieldRef<"Case", 'Json'>
+    readonly relatedPrecedents: FieldRef<"Case", 'Json'>
     readonly referredThrough: FieldRef<"Case", 'String'>
     readonly noticeStatus: FieldRef<"Case", 'String'>
     readonly fullJudgmentDate: FieldRef<"Case", 'DateTime'>
@@ -27513,6 +27522,7 @@ export namespace Prisma {
     facts: 'facts',
     details: 'details',
     relatedLaw: 'relatedLaw',
+    relatedPrecedents: 'relatedPrecedents',
     referredThrough: 'referredThrough',
     noticeStatus: 'noticeStatus',
     fullJudgmentDate: 'fullJudgmentDate',
@@ -28311,6 +28321,7 @@ export namespace Prisma {
     facts?: StringNullableFilter<"Case"> | string | null
     details?: JsonNullableFilter<"Case">
     relatedLaw?: JsonNullableFilter<"Case">
+    relatedPrecedents?: JsonNullableFilter<"Case">
     referredThrough?: StringNullableFilter<"Case"> | string | null
     noticeStatus?: StringNullableFilter<"Case"> | string | null
     fullJudgmentDate?: DateTimeNullableFilter<"Case"> | Date | string | null
@@ -28336,6 +28347,7 @@ export namespace Prisma {
     facts?: SortOrderInput | SortOrder
     details?: SortOrderInput | SortOrder
     relatedLaw?: SortOrderInput | SortOrder
+    relatedPrecedents?: SortOrderInput | SortOrder
     referredThrough?: SortOrderInput | SortOrder
     noticeStatus?: SortOrderInput | SortOrder
     fullJudgmentDate?: SortOrderInput | SortOrder
@@ -28364,6 +28376,7 @@ export namespace Prisma {
     facts?: StringNullableFilter<"Case"> | string | null
     details?: JsonNullableFilter<"Case">
     relatedLaw?: JsonNullableFilter<"Case">
+    relatedPrecedents?: JsonNullableFilter<"Case">
     referredThrough?: StringNullableFilter<"Case"> | string | null
     noticeStatus?: StringNullableFilter<"Case"> | string | null
     fullJudgmentDate?: DateTimeNullableFilter<"Case"> | Date | string | null
@@ -28389,6 +28402,7 @@ export namespace Prisma {
     facts?: SortOrderInput | SortOrder
     details?: SortOrderInput | SortOrder
     relatedLaw?: SortOrderInput | SortOrder
+    relatedPrecedents?: SortOrderInput | SortOrder
     referredThrough?: SortOrderInput | SortOrder
     noticeStatus?: SortOrderInput | SortOrder
     fullJudgmentDate?: SortOrderInput | SortOrder
@@ -28413,6 +28427,7 @@ export namespace Prisma {
     facts?: StringNullableWithAggregatesFilter<"Case"> | string | null
     details?: JsonNullableWithAggregatesFilter<"Case">
     relatedLaw?: JsonNullableWithAggregatesFilter<"Case">
+    relatedPrecedents?: JsonNullableWithAggregatesFilter<"Case">
     referredThrough?: StringNullableWithAggregatesFilter<"Case"> | string | null
     noticeStatus?: StringNullableWithAggregatesFilter<"Case"> | string | null
     fullJudgmentDate?: DateTimeNullableWithAggregatesFilter<"Case"> | Date | string | null
@@ -29925,6 +29940,7 @@ export namespace Prisma {
     facts?: string | null
     details?: NullableJsonNullValueInput | InputJsonValue
     relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    relatedPrecedents?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: string | null
     noticeStatus?: string | null
     fullJudgmentDate?: Date | string | null
@@ -29949,6 +29965,7 @@ export namespace Prisma {
     facts?: string | null
     details?: NullableJsonNullValueInput | InputJsonValue
     relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    relatedPrecedents?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: string | null
     noticeStatus?: string | null
     fullJudgmentDate?: Date | string | null
@@ -29971,6 +29988,7 @@ export namespace Prisma {
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     details?: NullableJsonNullValueInput | InputJsonValue
     relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    relatedPrecedents?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
     noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -29995,6 +30013,7 @@ export namespace Prisma {
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     details?: NullableJsonNullValueInput | InputJsonValue
     relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    relatedPrecedents?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
     noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -30018,6 +30037,7 @@ export namespace Prisma {
     facts?: string | null
     details?: NullableJsonNullValueInput | InputJsonValue
     relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    relatedPrecedents?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: string | null
     noticeStatus?: string | null
     fullJudgmentDate?: Date | string | null
@@ -30033,6 +30053,7 @@ export namespace Prisma {
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     details?: NullableJsonNullValueInput | InputJsonValue
     relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    relatedPrecedents?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
     noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -30048,6 +30069,7 @@ export namespace Prisma {
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     details?: NullableJsonNullValueInput | InputJsonValue
     relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    relatedPrecedents?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
     noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -31714,6 +31736,7 @@ export namespace Prisma {
     facts?: SortOrder
     details?: SortOrder
     relatedLaw?: SortOrder
+    relatedPrecedents?: SortOrder
     referredThrough?: SortOrder
     noticeStatus?: SortOrder
     fullJudgmentDate?: SortOrder
@@ -34454,6 +34477,7 @@ export namespace Prisma {
     facts?: string | null
     details?: NullableJsonNullValueInput | InputJsonValue
     relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    relatedPrecedents?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: string | null
     noticeStatus?: string | null
     fullJudgmentDate?: Date | string | null
@@ -34477,6 +34501,7 @@ export namespace Prisma {
     facts?: string | null
     details?: NullableJsonNullValueInput | InputJsonValue
     relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    relatedPrecedents?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: string | null
     noticeStatus?: string | null
     fullJudgmentDate?: Date | string | null
@@ -34777,6 +34802,7 @@ export namespace Prisma {
     facts?: StringNullableFilter<"Case"> | string | null
     details?: JsonNullableFilter<"Case">
     relatedLaw?: JsonNullableFilter<"Case">
+    relatedPrecedents?: JsonNullableFilter<"Case">
     referredThrough?: StringNullableFilter<"Case"> | string | null
     noticeStatus?: StringNullableFilter<"Case"> | string | null
     fullJudgmentDate?: DateTimeNullableFilter<"Case"> | Date | string | null
@@ -35238,6 +35264,7 @@ export namespace Prisma {
     facts?: string | null
     details?: NullableJsonNullValueInput | InputJsonValue
     relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    relatedPrecedents?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: string | null
     noticeStatus?: string | null
     fullJudgmentDate?: Date | string | null
@@ -35260,6 +35287,7 @@ export namespace Prisma {
     facts?: string | null
     details?: NullableJsonNullValueInput | InputJsonValue
     relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    relatedPrecedents?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: string | null
     noticeStatus?: string | null
     fullJudgmentDate?: Date | string | null
@@ -35914,6 +35942,7 @@ export namespace Prisma {
     facts?: string | null
     details?: NullableJsonNullValueInput | InputJsonValue
     relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    relatedPrecedents?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: string | null
     noticeStatus?: string | null
     fullJudgmentDate?: Date | string | null
@@ -35937,6 +35966,7 @@ export namespace Prisma {
     facts?: string | null
     details?: NullableJsonNullValueInput | InputJsonValue
     relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    relatedPrecedents?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: string | null
     noticeStatus?: string | null
     fullJudgmentDate?: Date | string | null
@@ -36119,6 +36149,7 @@ export namespace Prisma {
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     details?: NullableJsonNullValueInput | InputJsonValue
     relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    relatedPrecedents?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
     noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -36142,6 +36173,7 @@ export namespace Prisma {
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     details?: NullableJsonNullValueInput | InputJsonValue
     relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    relatedPrecedents?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
     noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -36258,6 +36290,7 @@ export namespace Prisma {
     facts?: string | null
     details?: NullableJsonNullValueInput | InputJsonValue
     relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    relatedPrecedents?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: string | null
     noticeStatus?: string | null
     fullJudgmentDate?: Date | string | null
@@ -36281,6 +36314,7 @@ export namespace Prisma {
     facts?: string | null
     details?: NullableJsonNullValueInput | InputJsonValue
     relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    relatedPrecedents?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: string | null
     noticeStatus?: string | null
     fullJudgmentDate?: Date | string | null
@@ -36369,6 +36403,7 @@ export namespace Prisma {
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     details?: NullableJsonNullValueInput | InputJsonValue
     relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    relatedPrecedents?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
     noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -36392,6 +36427,7 @@ export namespace Prisma {
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     details?: NullableJsonNullValueInput | InputJsonValue
     relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    relatedPrecedents?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
     noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -36470,6 +36506,7 @@ export namespace Prisma {
     facts?: string | null
     details?: NullableJsonNullValueInput | InputJsonValue
     relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    relatedPrecedents?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: string | null
     noticeStatus?: string | null
     fullJudgmentDate?: Date | string | null
@@ -36493,6 +36530,7 @@ export namespace Prisma {
     facts?: string | null
     details?: NullableJsonNullValueInput | InputJsonValue
     relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    relatedPrecedents?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: string | null
     noticeStatus?: string | null
     fullJudgmentDate?: Date | string | null
@@ -36614,6 +36652,7 @@ export namespace Prisma {
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     details?: NullableJsonNullValueInput | InputJsonValue
     relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    relatedPrecedents?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
     noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -36637,6 +36676,7 @@ export namespace Prisma {
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     details?: NullableJsonNullValueInput | InputJsonValue
     relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    relatedPrecedents?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
     noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -36734,6 +36774,7 @@ export namespace Prisma {
     facts?: string | null
     details?: NullableJsonNullValueInput | InputJsonValue
     relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    relatedPrecedents?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: string | null
     noticeStatus?: string | null
     fullJudgmentDate?: Date | string | null
@@ -36757,6 +36798,7 @@ export namespace Prisma {
     facts?: string | null
     details?: NullableJsonNullValueInput | InputJsonValue
     relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    relatedPrecedents?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: string | null
     noticeStatus?: string | null
     fullJudgmentDate?: Date | string | null
@@ -36835,6 +36877,7 @@ export namespace Prisma {
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     details?: NullableJsonNullValueInput | InputJsonValue
     relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    relatedPrecedents?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
     noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -36858,6 +36901,7 @@ export namespace Prisma {
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     details?: NullableJsonNullValueInput | InputJsonValue
     relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    relatedPrecedents?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
     noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -36926,6 +36970,7 @@ export namespace Prisma {
     facts?: string | null
     details?: NullableJsonNullValueInput | InputJsonValue
     relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    relatedPrecedents?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: string | null
     noticeStatus?: string | null
     fullJudgmentDate?: Date | string | null
@@ -36949,6 +36994,7 @@ export namespace Prisma {
     facts?: string | null
     details?: NullableJsonNullValueInput | InputJsonValue
     relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    relatedPrecedents?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: string | null
     noticeStatus?: string | null
     fullJudgmentDate?: Date | string | null
@@ -37037,6 +37083,7 @@ export namespace Prisma {
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     details?: NullableJsonNullValueInput | InputJsonValue
     relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    relatedPrecedents?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
     noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -37060,6 +37107,7 @@ export namespace Prisma {
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     details?: NullableJsonNullValueInput | InputJsonValue
     relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    relatedPrecedents?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
     noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -37138,6 +37186,7 @@ export namespace Prisma {
     facts?: string | null
     details?: NullableJsonNullValueInput | InputJsonValue
     relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    relatedPrecedents?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: string | null
     noticeStatus?: string | null
     fullJudgmentDate?: Date | string | null
@@ -37161,6 +37210,7 @@ export namespace Prisma {
     facts?: string | null
     details?: NullableJsonNullValueInput | InputJsonValue
     relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    relatedPrecedents?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: string | null
     noticeStatus?: string | null
     fullJudgmentDate?: Date | string | null
@@ -37198,6 +37248,7 @@ export namespace Prisma {
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     details?: NullableJsonNullValueInput | InputJsonValue
     relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    relatedPrecedents?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
     noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -37221,6 +37272,7 @@ export namespace Prisma {
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     details?: NullableJsonNullValueInput | InputJsonValue
     relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    relatedPrecedents?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
     noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -37242,6 +37294,7 @@ export namespace Prisma {
     facts?: string | null
     details?: NullableJsonNullValueInput | InputJsonValue
     relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    relatedPrecedents?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: string | null
     noticeStatus?: string | null
     fullJudgmentDate?: Date | string | null
@@ -37265,6 +37318,7 @@ export namespace Prisma {
     facts?: string | null
     details?: NullableJsonNullValueInput | InputJsonValue
     relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    relatedPrecedents?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: string | null
     noticeStatus?: string | null
     fullJudgmentDate?: Date | string | null
@@ -37343,6 +37397,7 @@ export namespace Prisma {
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     details?: NullableJsonNullValueInput | InputJsonValue
     relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    relatedPrecedents?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
     noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -37366,6 +37421,7 @@ export namespace Prisma {
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     details?: NullableJsonNullValueInput | InputJsonValue
     relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    relatedPrecedents?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
     noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -38514,6 +38570,7 @@ export namespace Prisma {
     facts?: string | null
     details?: NullableJsonNullValueInput | InputJsonValue
     relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    relatedPrecedents?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: string | null
     noticeStatus?: string | null
     fullJudgmentDate?: Date | string | null
@@ -38711,6 +38768,7 @@ export namespace Prisma {
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     details?: NullableJsonNullValueInput | InputJsonValue
     relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    relatedPrecedents?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
     noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -38734,6 +38792,7 @@ export namespace Prisma {
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     details?: NullableJsonNullValueInput | InputJsonValue
     relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    relatedPrecedents?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
     noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -38756,6 +38815,7 @@ export namespace Prisma {
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     details?: NullableJsonNullValueInput | InputJsonValue
     relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    relatedPrecedents?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
     noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -38978,6 +39038,7 @@ export namespace Prisma {
     facts?: string | null
     details?: NullableJsonNullValueInput | InputJsonValue
     relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    relatedPrecedents?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: string | null
     noticeStatus?: string | null
     fullJudgmentDate?: Date | string | null
@@ -38993,6 +39054,7 @@ export namespace Prisma {
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     details?: NullableJsonNullValueInput | InputJsonValue
     relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    relatedPrecedents?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
     noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -39015,6 +39077,7 @@ export namespace Prisma {
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     details?: NullableJsonNullValueInput | InputJsonValue
     relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    relatedPrecedents?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
     noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -39037,6 +39100,7 @@ export namespace Prisma {
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     details?: NullableJsonNullValueInput | InputJsonValue
     relatedLaw?: NullableJsonNullValueInput | InputJsonValue
+    relatedPrecedents?: NullableJsonNullValueInput | InputJsonValue
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
     noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
     fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null

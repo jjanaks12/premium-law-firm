@@ -189,6 +189,7 @@ exports.Prisma.CaseScalarFieldEnum = {
   facts: 'facts',
   details: 'details',
   relatedLaw: 'relatedLaw',
+  relatedPrecedents: 'relatedPrecedents',
   referredThrough: 'referredThrough',
   noticeStatus: 'noticeStatus',
   fullJudgmentDate: 'fullJudgmentDate',

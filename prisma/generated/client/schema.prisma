@@ -118,6 +118,7 @@ model Case {
   facts              String?    @db.Text
   details            Json?
   relatedLaw         Json?
+  relatedPrecedents  Json?
   referredThrough    String?
   noticeStatus       String?
   fullJudgmentDate   DateTime?
