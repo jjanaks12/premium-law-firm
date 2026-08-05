@@ -219,28 +219,6 @@ export const removeHearing = async (req: Request, res: Response, next: NextFunct
   } catch (error) { next(error); }
 };
 
-// PLEADINGS
-export const addPleading = async (req: Request, res: Response, next: NextFunction) => {
-  try {
-    const { id } = req.params;
-    const { pleaderUserId, pleadingDate, pleadingNotes } = req.body;
-    const pleading = await prisma.casePleading.create({
-      data: {
-        caseId: id as string,
-        pleaderUserId,
-        pleadingDate: pleadingDate ? new Date(pleadingDate) : null,
-        pleadingNotes
-      }
-    });
-    res.status(201).json({ data: pleading });
-  } catch (error) { next(error); }
-};
-export const removePleading = async (req: Request, res: Response, next: NextFunction) => {
-  try {
-    await prisma.casePleading.delete({ where: { id: req.params.subId as string } });
-    res.json({ message: "Pleading removed" });
-  } catch (error) { next(error); }
-};
 
 // PROCEEDINGS
 export const addProceeding = async (req: Request, res: Response, next: NextFunction) => {

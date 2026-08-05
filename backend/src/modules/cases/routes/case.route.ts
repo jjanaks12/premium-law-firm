@@ -62,8 +62,7 @@ router.delete("/:id/lawyers/:subId", relationsController.removeLawyer);
 router.post("/:id/hearings", relationsController.addHearing);
 router.delete("/:id/hearings/:subId", relationsController.removeHearing);
 
-router.post("/:id/pleadings", relationsController.addPleading);
-router.delete("/:id/pleadings/:subId", relationsController.removePleading);
+
 
 router.post("/:id/proceedings", relationsController.addProceeding);
 router.delete("/:id/proceedings/:subId", relationsController.removeProceeding);
