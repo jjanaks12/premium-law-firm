@@ -32,8 +32,8 @@ export const index = async (req: Request, res: Response, next: NextFunction) => 
       const searchStr = search as string;
       filter.AND.push({
         OR: [
-          { caseNumber: { contains: searchStr, mode: "insensitive" } },
-          { caseName: { contains: searchStr, mode: "insensitive" } },
+          { courtDetails: { some: { caseNumber: { contains: searchStr, mode: "insensitive" }, isActive: true } } },
+          { courtDetails: { some: { caseName: { contains: searchStr, mode: "insensitive" }, isActive: true } } },
         ]
       });
     }
@@ -56,6 +56,7 @@ export const index = async (req: Request, res: Response, next: NextFunction) => 
       where: filter,
       include: {
         nature: true,
+        courtDetails: { where: { isActive: true } },
         parties: {
           include: {
             role: true,
@@ -87,6 +88,7 @@ export const show = async (req: Request, res: Response, next: NextFunction) => {
       where: { id: id as string },
       include: {
         nature: true,
+        courtDetails: true,
         parties: {
           where: { parentId: null },
           include: {
@@ -99,7 +101,9 @@ export const show = async (req: Request, res: Response, next: NextFunction) => {
             user: true,
           }
         },
-        hearings: true,
+        hearings: {
+          include: { caseCourtDetail: true }
+        },
         pleadings: {
           include: { pleader: true },
         },
@@ -107,9 +111,8 @@ export const show = async (req: Request, res: Response, next: NextFunction) => {
           include: { courtLevel: true },
         },
         precedents: true,
-        payments: true,
-        counselings: {
-          include: { counselor: true },
+        payments: {
+          include: { receivedByUser: true }
         },
         documents: true,
       },
@@ -129,28 +132,29 @@ export const show = async (req: Request, res: Response, next: NextFunction) => {
 export const store = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const {
-      caseNumber,
-      caseName,
       natureId,
-      registrationDate,
-      registrationFee,
-      sectionCourtRoom,
       facts,
       relatedLaws,
       referredThrough,
       noticeStatus,
       parties,
       lawyers,
-      status
+      status,
+      courtDetails
     } = req.body;
 
     // Check if case with same number exists
-    const existingCase = await prisma.case.findUnique({
-      where: { caseNumber },
-    });
+    if (courtDetails && courtDetails.length > 0) {
+      const caseNumber = courtDetails[0].caseNumber;
+      if (caseNumber) {
+        const existingCaseDetail = await prisma.caseCourtDetail.findFirst({
+          where: { caseNumber },
+        });
 
-    if (existingCase) {
-      throw createHttpError(409, "A case with this Case Number already exists");
+        if (existingCaseDetail) {
+          throw createHttpError(409, "A case with this Case Number already exists");
+        }
+      }
     }
 
     const warisRole = await prisma.partyRole.findUnique({
@@ -164,17 +168,23 @@ export const store = async (req: Request, res: Response, next: NextFunction) => 
       data: {
         id: newCaseId,
         createdById: req.auth_user?.id,
-        caseNumber,
-        caseName,
         natureId,
-        registrationDate: registrationDate ? new Date(registrationDate) : null,
-        registrationFee,
-        sectionCourtRoom,
         facts,
         relatedLaws,
         referredThrough,
         noticeStatus,
         status: status || "Draft",
+        courtDetails: courtDetails && courtDetails.length > 0 ? {
+          create: courtDetails.map((cd: any) => ({
+            caseName: cd.caseName,
+            caseNumber: cd.caseNumber || "",
+            registrationDate: cd.registrationDate ? new Date(cd.registrationDate) : null,
+            sectionCourtRoom: cd.sectionCourtRoom,
+            judgeName: cd.judgeName,
+            courtType: cd.courtType,
+            isActive: true,
+          }))
+        } : undefined,
         parties: parties && parties.length > 0 ? {
           create: parties.map((party: any) => ({
             partyName: party.partyName,
@@ -208,6 +218,7 @@ export const store = async (req: Request, res: Response, next: NextFunction) => 
       },
       include: {
         nature: true,
+        courtDetails: true,
         parties: true,
         lawyers: true,
       }
@@ -224,12 +235,7 @@ export const update = async (req: Request, res: Response, next: NextFunction) =>
   try {
     const { id } = req.params;
     const {
-      caseNumber,
-      caseName,
       natureId,
-      registrationDate,
-      registrationFee,
-      sectionCourtRoom,
       facts,
       relatedLaws,
       referredThrough,
@@ -238,7 +244,8 @@ export const update = async (req: Request, res: Response, next: NextFunction) =>
       judgmentVerifyDate,
       status,
       parties,
-      lawyers
+      lawyers,
+      courtDetails
     } = req.body;
 
     const caseData = await prisma.case.findUnique({
@@ -249,13 +256,19 @@ export const update = async (req: Request, res: Response, next: NextFunction) =>
       throw createHttpError(404, "Case not found");
     }
 
-    if (caseNumber && caseNumber !== caseData.caseNumber) {
-      const existingCase = await prisma.case.findUnique({
-        where: { caseNumber },
-      });
-
-      if (existingCase) {
-        throw createHttpError(409, "A case with this Case Number already exists");
+    // For now we'll just handle updating court details completely 
+    // or adding a new active court detail.
+    if (courtDetails && courtDetails.length > 0) {
+      for (const cd of courtDetails) {
+        if (cd.caseNumber) {
+          const existingDetail = await prisma.caseCourtDetail.findFirst({
+            where: { caseNumber: cd.caseNumber },
+          });
+          // Check if it belongs to another case
+          if (existingDetail && existingDetail.caseId !== (id as string)) {
+            throw createHttpError(409, `A case with Case Number ${cd.caseNumber} already exists`);
+          }
+        }
       }
     }
 
@@ -267,12 +280,7 @@ export const update = async (req: Request, res: Response, next: NextFunction) =>
     const updatedCase = await prisma.case.update({
       where: { id: id as string },
       data: {
-        caseNumber,
-        caseName,
         natureId: natureId ? natureId : undefined,
-        registrationDate: registrationDate ? new Date(registrationDate) : undefined,
-        registrationFee,
-        sectionCourtRoom,
         facts,
         relatedLaws,
         referredThrough,
@@ -315,6 +323,39 @@ export const update = async (req: Request, res: Response, next: NextFunction) =>
       },
     });
 
+    if (courtDetails && Array.isArray(courtDetails)) {
+      for (const cd of courtDetails) {
+        if (cd.id) {
+          await prisma.caseCourtDetail.update({
+            where: { id: cd.id },
+            data: {
+              caseName: cd.caseName,
+              caseNumber: cd.caseNumber || "",
+              registrationDate: cd.registrationDate ? new Date(cd.registrationDate) : null,
+              sectionCourtRoom: cd.sectionCourtRoom,
+              judgeName: cd.judgeName,
+              courtType: cd.courtType,
+              isActive: cd.isActive !== undefined ? cd.isActive : true,
+            }
+          });
+        } else {
+          await prisma.caseCourtDetail.create({
+            data: {
+              caseId: id as string,
+              caseName: cd.caseName,
+              caseNumber: cd.caseNumber || "",
+              registrationDate: cd.registrationDate ? new Date(cd.registrationDate) : null,
+              sectionCourtRoom: cd.sectionCourtRoom,
+              judgeName: cd.judgeName,
+              courtType: cd.courtType,
+              parentId: cd.parentId || null,
+              isActive: cd.isActive !== undefined ? cd.isActive : true,
+            }
+          });
+        }
+      }
+    }
+
     res.json({ message: "Case updated successfully", data: updatedCase });
   } catch (error) {
     next(error);
@@ -339,6 +380,52 @@ export const destroy = async (req: Request, res: Response, next: NextFunction) =
     });
 
     res.json({ message: "Case deleted successfully" });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const migrateCase = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { parent_id, room_no, judge_name, court_level } = req.body;
+
+    if (!parent_id) {
+      throw createHttpError(400, "parent_id is required");
+    }
+
+    const parentDetail = await prisma.caseCourtDetail.findUnique({
+      where: { id: parent_id },
+    });
+
+    if (!parentDetail) {
+      throw createHttpError(404, "Parent court detail not found");
+    }
+
+    // Perform in a transaction to ensure data integrity
+    const newDetail = await prisma.$transaction(async (tx) => {
+      // Deactivate parent
+      await tx.caseCourtDetail.update({
+        where: { id: parent_id },
+        data: { isActive: false },
+      });
+
+      // Create new detail
+      return await tx.caseCourtDetail.create({
+        data: {
+          caseId: parentDetail.caseId,
+          caseName: parentDetail.caseName,
+          caseNumber: parentDetail.caseNumber,
+          registrationDate: parentDetail.registrationDate,
+          parentId: parent_id,
+          isActive: true,
+          judgeName: judge_name,
+          courtType: court_level,
+          sectionCourtRoom: room_no,
+        },
+      });
+    });
+
+    res.status(201).json({ message: "Case migrated successfully", data: newDetail });
   } catch (error) {
     next(error);
   }

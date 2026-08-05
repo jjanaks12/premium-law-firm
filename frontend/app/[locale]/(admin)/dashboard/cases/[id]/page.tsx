@@ -8,10 +8,10 @@ import { ChevronLeft, Loader2 } from "lucide-react";
 import { useAxios } from "@/lib/services/axios.service";
 import { useTranslations } from "next-intl";
 import OverviewTab from "./components/OverviewTab";
+import CourtDetailsTab from "./components/CourtDetailsTab";
 import PartiesTab from "./components/PartiesTab";
 import HearingsTab from "./components/HearingsTab";
 import ProceedingsTab from "./components/ProceedingsTab";
-import CounselingsTab from "./components/CounselingsTab";
 import PleadingsTab from "./components/PleadingsTab";
 import PrecedentsTab from "./components/PrecedentsTab";
 import PaymentsTab from "./components/PaymentsTab";
@@ -55,6 +55,8 @@ export default function CaseDetailPage() {
     return <div className="p-6">{t("CaseDetailPage.caseNotFound")}</div>;
   }
 
+  const activeDetail = caseData?.courtDetails?.find((d: any) => d.isActive) || caseData?.courtDetails?.[0];
+
   return (
     <div className="flex flex-col h-full bg-background p-6 space-y-6 overflow-y-auto">
       <div className="flex items-center space-x-4">
@@ -63,9 +65,9 @@ export default function CaseDetailPage() {
         </Button>
         <div className="grow">
           <h1 className="text-2xl font-bold tracking-tight">
-            {t("CaseDetailPage.caseTitle", { caseNumber: caseData.caseNumber })}
+            {t("CaseDetailPage.caseTitle", { caseNumber: activeDetail?.caseNumber || "N/A" })}
           </h1>
-          <p className="text-muted-foreground">{caseData.caseName}</p>
+          <p className="text-muted-foreground">{activeDetail?.caseName || "N/A"}</p>
         </div>
         <div className="shrink-0">
           <Link href={`/dashboard/cases/${id}/edit`}>
@@ -79,6 +81,9 @@ export default function CaseDetailPage() {
           <TabsTrigger value="overview">
             {t("CaseDetailPage.overview")}
           </TabsTrigger>
+          <TabsTrigger value="courtDetails">
+            {t("CaseDetailPage.courtDetails")}
+          </TabsTrigger>
           <TabsTrigger value="parties">
             {t("CaseDetailPage.parties")}
           </TabsTrigger>
@@ -87,9 +92,6 @@ export default function CaseDetailPage() {
           </TabsTrigger>
           <TabsTrigger value="proceedings">
             {t("CaseDetailPage.proceedings")}
-          </TabsTrigger>
-          <TabsTrigger value="counselings">
-            {t("CaseDetailPage.counselings")}
           </TabsTrigger>
           <TabsTrigger value="pleadings">
             {t("CaseDetailPage.pleadings")}
@@ -108,6 +110,9 @@ export default function CaseDetailPage() {
         <TabsContent value="overview">
           <OverviewTab caseData={caseData} refresh={fetchCase} />
         </TabsContent>
+        <TabsContent value="courtDetails">
+          <CourtDetailsTab caseData={caseData} refresh={fetchCase} />
+        </TabsContent>
         <TabsContent value="parties">
           <PartiesTab caseData={caseData} refresh={fetchCase} />
         </TabsContent>
@@ -116,9 +121,6 @@ export default function CaseDetailPage() {
         </TabsContent>
         <TabsContent value="proceedings">
           <ProceedingsTab caseData={caseData} refresh={fetchCase} />
-        </TabsContent>
-        <TabsContent value="counselings">
-          <CounselingsTab caseData={caseData} refresh={fetchCase} />
         </TabsContent>
         <TabsContent value="pleadings">
           <PleadingsTab caseData={caseData} refresh={fetchCase} />

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import { useParams, useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 import { useAxios } from "@/lib/services/axios.service";
 import CaseForm from "../../CaseForm";
 import { Button } from "@/components/ui/button";
@@ -62,7 +62,12 @@ export default function EditCasePage() {
         </div>
       </div>
       <div className="bg-card border rounded-lg p-6">
-        <CaseForm isEditing={true} caseData={caseData} onSuccess={handleSuccess} onClose={handleClose} />
+        <CaseForm
+          isEditing={true}
+          caseData={caseData}
+          onSuccess={handleSuccess}
+          onClose={handleClose}
+        />
       </div>
     </div>
   );

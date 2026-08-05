@@ -54,6 +54,11 @@ export type PartyRole = $Result.DefaultSelection<Prisma.$PartyRolePayload>
  */
 export type Case = $Result.DefaultSelection<Prisma.$CasePayload>
 /**
+ * Model CaseCourtDetail
+ * 
+ */
+export type CaseCourtDetail = $Result.DefaultSelection<Prisma.$CaseCourtDetailPayload>
+/**
  * Model CaseLawyer
  * 
  */
@@ -329,6 +334,16 @@ export class PrismaClient<
     * ```
     */
   get case(): Prisma.CaseDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.caseCourtDetail`: Exposes CRUD operations for the **CaseCourtDetail** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CaseCourtDetails
+    * const caseCourtDetails = await prisma.caseCourtDetail.findMany()
+    * ```
+    */
+  get caseCourtDetail(): Prisma.CaseCourtDetailDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.caseLawyer`: Exposes CRUD operations for the **CaseLawyer** model.
@@ -934,6 +949,7 @@ export namespace Prisma {
     CaseNature: 'CaseNature',
     PartyRole: 'PartyRole',
     Case: 'Case',
+    CaseCourtDetail: 'CaseCourtDetail',
     CaseLawyer: 'CaseLawyer',
     CaseParty: 'CaseParty',
     CaseHearing: 'CaseHearing',
@@ -964,7 +980,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "refreshToken" | "passwordResetToken" | "resource" | "courtLevel" | "caseNature" | "partyRole" | "case" | "caseLawyer" | "caseParty" | "caseHearing" | "casePleading" | "courtProceeding" | "casePrecedent" | "casePayment" | "caseCounseling" | "caseDocument" | "notification" | "pageType" | "page" | "pageSeo" | "pageSchema" | "role"
+      modelProps: "user" | "refreshToken" | "passwordResetToken" | "resource" | "courtLevel" | "caseNature" | "partyRole" | "case" | "caseCourtDetail" | "caseLawyer" | "caseParty" | "caseHearing" | "casePleading" | "courtProceeding" | "casePrecedent" | "casePayment" | "caseCounseling" | "caseDocument" | "notification" | "pageType" | "page" | "pageSeo" | "pageSchema" | "role"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1557,6 +1573,80 @@ export namespace Prisma {
           count: {
             args: Prisma.CaseCountArgs<ExtArgs>
             result: $Utils.Optional<CaseCountAggregateOutputType> | number
+          }
+        }
+      }
+      CaseCourtDetail: {
+        payload: Prisma.$CaseCourtDetailPayload<ExtArgs>
+        fields: Prisma.CaseCourtDetailFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CaseCourtDetailFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseCourtDetailPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CaseCourtDetailFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseCourtDetailPayload>
+          }
+          findFirst: {
+            args: Prisma.CaseCourtDetailFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseCourtDetailPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CaseCourtDetailFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseCourtDetailPayload>
+          }
+          findMany: {
+            args: Prisma.CaseCourtDetailFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseCourtDetailPayload>[]
+          }
+          create: {
+            args: Prisma.CaseCourtDetailCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseCourtDetailPayload>
+          }
+          createMany: {
+            args: Prisma.CaseCourtDetailCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CaseCourtDetailCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseCourtDetailPayload>[]
+          }
+          delete: {
+            args: Prisma.CaseCourtDetailDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseCourtDetailPayload>
+          }
+          update: {
+            args: Prisma.CaseCourtDetailUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseCourtDetailPayload>
+          }
+          deleteMany: {
+            args: Prisma.CaseCourtDetailDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CaseCourtDetailUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CaseCourtDetailUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseCourtDetailPayload>[]
+          }
+          upsert: {
+            args: Prisma.CaseCourtDetailUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaseCourtDetailPayload>
+          }
+          aggregate: {
+            args: Prisma.CaseCourtDetailAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCaseCourtDetail>
+          }
+          groupBy: {
+            args: Prisma.CaseCourtDetailGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CaseCourtDetailGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CaseCourtDetailCountArgs<ExtArgs>
+            result: $Utils.Optional<CaseCourtDetailCountAggregateOutputType> | number
           }
         }
       }
@@ -2801,6 +2891,7 @@ export namespace Prisma {
     caseNature?: CaseNatureOmit
     partyRole?: PartyRoleOmit
     case?: CaseOmit
+    caseCourtDetail?: CaseCourtDetailOmit
     caseLawyer?: CaseLawyerOmit
     caseParty?: CasePartyOmit
     caseHearing?: CaseHearingOmit
@@ -2903,6 +2994,7 @@ export namespace Prisma {
     cases_as_lawyer: number
     cases_as_pleader: number
     cases_as_counselor: number
+    cases_payment_received: number
     cases_created: number
   }
 
@@ -2914,6 +3006,7 @@ export namespace Prisma {
     cases_as_lawyer?: boolean | UserCountOutputTypeCountCases_as_lawyerArgs
     cases_as_pleader?: boolean | UserCountOutputTypeCountCases_as_pleaderArgs
     cases_as_counselor?: boolean | UserCountOutputTypeCountCases_as_counselorArgs
+    cases_payment_received?: boolean | UserCountOutputTypeCountCases_payment_receivedArgs
     cases_created?: boolean | UserCountOutputTypeCountCases_createdArgs
   }
 
@@ -2975,6 +3068,13 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountCases_as_counselorArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CaseCounselingWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountCases_payment_receivedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CasePaymentWhereInput
   }
 
   /**
@@ -3132,6 +3232,7 @@ export namespace Prisma {
    */
 
   export type CaseCountOutputType = {
+    courtDetails: number
     lawyers: number
     parties: number
     hearings: number
@@ -3144,6 +3245,7 @@ export namespace Prisma {
   }
 
   export type CaseCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    courtDetails?: boolean | CaseCountOutputTypeCountCourtDetailsArgs
     lawyers?: boolean | CaseCountOutputTypeCountLawyersArgs
     parties?: boolean | CaseCountOutputTypeCountPartiesArgs
     hearings?: boolean | CaseCountOutputTypeCountHearingsArgs
@@ -3164,6 +3266,13 @@ export namespace Prisma {
      * Select specific fields to fetch from the CaseCountOutputType
      */
     select?: CaseCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * CaseCountOutputType without action
+   */
+  export type CaseCountOutputTypeCountCourtDetailsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CaseCourtDetailWhereInput
   }
 
   /**
@@ -3227,6 +3336,46 @@ export namespace Prisma {
    */
   export type CaseCountOutputTypeCountDocumentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CaseDocumentWhereInput
+  }
+
+
+  /**
+   * Count Type CaseCourtDetailCountOutputType
+   */
+
+  export type CaseCourtDetailCountOutputType = {
+    children: number
+    hearings: number
+  }
+
+  export type CaseCourtDetailCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    children?: boolean | CaseCourtDetailCountOutputTypeCountChildrenArgs
+    hearings?: boolean | CaseCourtDetailCountOutputTypeCountHearingsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * CaseCourtDetailCountOutputType without action
+   */
+  export type CaseCourtDetailCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseCourtDetailCountOutputType
+     */
+    select?: CaseCourtDetailCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * CaseCourtDetailCountOutputType without action
+   */
+  export type CaseCourtDetailCountOutputTypeCountChildrenArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CaseCourtDetailWhereInput
+  }
+
+  /**
+   * CaseCourtDetailCountOutputType without action
+   */
+  export type CaseCourtDetailCountOutputTypeCountHearingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CaseHearingWhereInput
   }
 
 
@@ -3599,6 +3748,7 @@ export namespace Prisma {
     cases_as_lawyer?: boolean | User$cases_as_lawyerArgs<ExtArgs>
     cases_as_pleader?: boolean | User$cases_as_pleaderArgs<ExtArgs>
     cases_as_counselor?: boolean | User$cases_as_counselorArgs<ExtArgs>
+    cases_payment_received?: boolean | User$cases_payment_receivedArgs<ExtArgs>
     cases_created?: boolean | User$cases_createdArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
@@ -3669,6 +3819,7 @@ export namespace Prisma {
     cases_as_lawyer?: boolean | User$cases_as_lawyerArgs<ExtArgs>
     cases_as_pleader?: boolean | User$cases_as_pleaderArgs<ExtArgs>
     cases_as_counselor?: boolean | User$cases_as_counselorArgs<ExtArgs>
+    cases_payment_received?: boolean | User$cases_payment_receivedArgs<ExtArgs>
     cases_created?: boolean | User$cases_createdArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -3693,6 +3844,7 @@ export namespace Prisma {
       cases_as_lawyer: Prisma.$CaseLawyerPayload<ExtArgs>[]
       cases_as_pleader: Prisma.$CasePleadingPayload<ExtArgs>[]
       cases_as_counselor: Prisma.$CaseCounselingPayload<ExtArgs>[]
+      cases_payment_received: Prisma.$CasePaymentPayload<ExtArgs>[]
       cases_created: Prisma.$CasePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -4113,6 +4265,7 @@ export namespace Prisma {
     cases_as_lawyer<T extends User$cases_as_lawyerArgs<ExtArgs> = {}>(args?: Subset<T, User$cases_as_lawyerArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseLawyerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     cases_as_pleader<T extends User$cases_as_pleaderArgs<ExtArgs> = {}>(args?: Subset<T, User$cases_as_pleaderArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CasePleadingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     cases_as_counselor<T extends User$cases_as_counselorArgs<ExtArgs> = {}>(args?: Subset<T, User$cases_as_counselorArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseCounselingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    cases_payment_received<T extends User$cases_payment_receivedArgs<ExtArgs> = {}>(args?: Subset<T, User$cases_payment_receivedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CasePaymentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     cases_created<T extends User$cases_createdArgs<ExtArgs> = {}>(args?: Subset<T, User$cases_createdArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CasePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -4761,6 +4914,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: CaseCounselingScalarFieldEnum | CaseCounselingScalarFieldEnum[]
+  }
+
+  /**
+   * User.cases_payment_received
+   */
+  export type User$cases_payment_receivedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CasePayment
+     */
+    select?: CasePaymentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CasePayment
+     */
+    omit?: CasePaymentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CasePaymentInclude<ExtArgs> | null
+    where?: CasePaymentWhereInput
+    orderBy?: CasePaymentOrderByWithRelationInput | CasePaymentOrderByWithRelationInput[]
+    cursor?: CasePaymentWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CasePaymentScalarFieldEnum | CasePaymentScalarFieldEnum[]
   }
 
   /**
@@ -11305,12 +11482,8 @@ export namespace Prisma {
 
   export type CaseMinAggregateOutputType = {
     id: string | null
-    caseNumber: string | null
-    caseName: string | null
     natureId: string | null
-    registrationDate: Date | null
     registrationFee: Decimal | null
-    sectionCourtRoom: string | null
     facts: string | null
     relatedLaws: string | null
     referredThrough: string | null
@@ -11324,12 +11497,8 @@ export namespace Prisma {
 
   export type CaseMaxAggregateOutputType = {
     id: string | null
-    caseNumber: string | null
-    caseName: string | null
     natureId: string | null
-    registrationDate: Date | null
     registrationFee: Decimal | null
-    sectionCourtRoom: string | null
     facts: string | null
     relatedLaws: string | null
     referredThrough: string | null
@@ -11343,12 +11512,8 @@ export namespace Prisma {
 
   export type CaseCountAggregateOutputType = {
     id: number
-    caseNumber: number
-    caseName: number
     natureId: number
-    registrationDate: number
     registrationFee: number
-    sectionCourtRoom: number
     facts: number
     relatedLaws: number
     referredThrough: number
@@ -11372,12 +11537,8 @@ export namespace Prisma {
 
   export type CaseMinAggregateInputType = {
     id?: true
-    caseNumber?: true
-    caseName?: true
     natureId?: true
-    registrationDate?: true
     registrationFee?: true
-    sectionCourtRoom?: true
     facts?: true
     relatedLaws?: true
     referredThrough?: true
@@ -11391,12 +11552,8 @@ export namespace Prisma {
 
   export type CaseMaxAggregateInputType = {
     id?: true
-    caseNumber?: true
-    caseName?: true
     natureId?: true
-    registrationDate?: true
     registrationFee?: true
-    sectionCourtRoom?: true
     facts?: true
     relatedLaws?: true
     referredThrough?: true
@@ -11410,12 +11567,8 @@ export namespace Prisma {
 
   export type CaseCountAggregateInputType = {
     id?: true
-    caseNumber?: true
-    caseName?: true
     natureId?: true
-    registrationDate?: true
     registrationFee?: true
-    sectionCourtRoom?: true
     facts?: true
     relatedLaws?: true
     referredThrough?: true
@@ -11516,12 +11669,8 @@ export namespace Prisma {
 
   export type CaseGroupByOutputType = {
     id: string
-    caseNumber: string
-    caseName: string
     natureId: string
-    registrationDate: Date | null
     registrationFee: Decimal | null
-    sectionCourtRoom: string | null
     facts: string | null
     relatedLaws: string | null
     referredThrough: string | null
@@ -11554,12 +11703,8 @@ export namespace Prisma {
 
   export type CaseSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    caseNumber?: boolean
-    caseName?: boolean
     natureId?: boolean
-    registrationDate?: boolean
     registrationFee?: boolean
-    sectionCourtRoom?: boolean
     facts?: boolean
     relatedLaws?: boolean
     referredThrough?: boolean
@@ -11571,6 +11716,7 @@ export namespace Prisma {
     createdAt?: boolean
     nature?: boolean | CaseNatureDefaultArgs<ExtArgs>
     createdBy?: boolean | Case$createdByArgs<ExtArgs>
+    courtDetails?: boolean | Case$courtDetailsArgs<ExtArgs>
     lawyers?: boolean | Case$lawyersArgs<ExtArgs>
     parties?: boolean | Case$partiesArgs<ExtArgs>
     hearings?: boolean | Case$hearingsArgs<ExtArgs>
@@ -11585,12 +11731,8 @@ export namespace Prisma {
 
   export type CaseSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    caseNumber?: boolean
-    caseName?: boolean
     natureId?: boolean
-    registrationDate?: boolean
     registrationFee?: boolean
-    sectionCourtRoom?: boolean
     facts?: boolean
     relatedLaws?: boolean
     referredThrough?: boolean
@@ -11606,12 +11748,8 @@ export namespace Prisma {
 
   export type CaseSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    caseNumber?: boolean
-    caseName?: boolean
     natureId?: boolean
-    registrationDate?: boolean
     registrationFee?: boolean
-    sectionCourtRoom?: boolean
     facts?: boolean
     relatedLaws?: boolean
     referredThrough?: boolean
@@ -11627,12 +11765,8 @@ export namespace Prisma {
 
   export type CaseSelectScalar = {
     id?: boolean
-    caseNumber?: boolean
-    caseName?: boolean
     natureId?: boolean
-    registrationDate?: boolean
     registrationFee?: boolean
-    sectionCourtRoom?: boolean
     facts?: boolean
     relatedLaws?: boolean
     referredThrough?: boolean
@@ -11644,10 +11778,11 @@ export namespace Prisma {
     createdAt?: boolean
   }
 
-  export type CaseOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "caseNumber" | "caseName" | "natureId" | "registrationDate" | "registrationFee" | "sectionCourtRoom" | "facts" | "relatedLaws" | "referredThrough" | "noticeStatus" | "fullJudgmentDate" | "judgmentVerifyDate" | "status" | "createdById" | "createdAt", ExtArgs["result"]["case"]>
+  export type CaseOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "natureId" | "registrationFee" | "facts" | "relatedLaws" | "referredThrough" | "noticeStatus" | "fullJudgmentDate" | "judgmentVerifyDate" | "status" | "createdById" | "createdAt", ExtArgs["result"]["case"]>
   export type CaseInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     nature?: boolean | CaseNatureDefaultArgs<ExtArgs>
     createdBy?: boolean | Case$createdByArgs<ExtArgs>
+    courtDetails?: boolean | Case$courtDetailsArgs<ExtArgs>
     lawyers?: boolean | Case$lawyersArgs<ExtArgs>
     parties?: boolean | Case$partiesArgs<ExtArgs>
     hearings?: boolean | Case$hearingsArgs<ExtArgs>
@@ -11673,6 +11808,7 @@ export namespace Prisma {
     objects: {
       nature: Prisma.$CaseNaturePayload<ExtArgs>
       createdBy: Prisma.$UserPayload<ExtArgs> | null
+      courtDetails: Prisma.$CaseCourtDetailPayload<ExtArgs>[]
       lawyers: Prisma.$CaseLawyerPayload<ExtArgs>[]
       parties: Prisma.$CasePartyPayload<ExtArgs>[]
       hearings: Prisma.$CaseHearingPayload<ExtArgs>[]
@@ -11685,12 +11821,8 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      caseNumber: string
-      caseName: string
       natureId: string
-      registrationDate: Date | null
       registrationFee: Prisma.Decimal | null
-      sectionCourtRoom: string | null
       facts: string | null
       relatedLaws: string | null
       referredThrough: string | null
@@ -12096,6 +12228,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     nature<T extends CaseNatureDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CaseNatureDefaultArgs<ExtArgs>>): Prisma__CaseNatureClient<$Result.GetResult<Prisma.$CaseNaturePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     createdBy<T extends Case$createdByArgs<ExtArgs> = {}>(args?: Subset<T, Case$createdByArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    courtDetails<T extends Case$courtDetailsArgs<ExtArgs> = {}>(args?: Subset<T, Case$courtDetailsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseCourtDetailPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     lawyers<T extends Case$lawyersArgs<ExtArgs> = {}>(args?: Subset<T, Case$lawyersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseLawyerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     parties<T extends Case$partiesArgs<ExtArgs> = {}>(args?: Subset<T, Case$partiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CasePartyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     hearings<T extends Case$hearingsArgs<ExtArgs> = {}>(args?: Subset<T, Case$hearingsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseHearingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -12135,12 +12268,8 @@ export namespace Prisma {
    */
   interface CaseFieldRefs {
     readonly id: FieldRef<"Case", 'String'>
-    readonly caseNumber: FieldRef<"Case", 'String'>
-    readonly caseName: FieldRef<"Case", 'String'>
     readonly natureId: FieldRef<"Case", 'String'>
-    readonly registrationDate: FieldRef<"Case", 'DateTime'>
     readonly registrationFee: FieldRef<"Case", 'Decimal'>
-    readonly sectionCourtRoom: FieldRef<"Case", 'String'>
     readonly facts: FieldRef<"Case", 'String'>
     readonly relatedLaws: FieldRef<"Case", 'String'>
     readonly referredThrough: FieldRef<"Case", 'String'>
@@ -12570,6 +12699,30 @@ export namespace Prisma {
   }
 
   /**
+   * Case.courtDetails
+   */
+  export type Case$courtDetailsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseCourtDetail
+     */
+    select?: CaseCourtDetailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseCourtDetail
+     */
+    omit?: CaseCourtDetailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseCourtDetailInclude<ExtArgs> | null
+    where?: CaseCourtDetailWhereInput
+    orderBy?: CaseCourtDetailOrderByWithRelationInput | CaseCourtDetailOrderByWithRelationInput[]
+    cursor?: CaseCourtDetailWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CaseCourtDetailScalarFieldEnum | CaseCourtDetailScalarFieldEnum[]
+  }
+
+  /**
    * Case.lawyers
    */
   export type Case$lawyersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -12801,6 +12954,1245 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: CaseInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model CaseCourtDetail
+   */
+
+  export type AggregateCaseCourtDetail = {
+    _count: CaseCourtDetailCountAggregateOutputType | null
+    _min: CaseCourtDetailMinAggregateOutputType | null
+    _max: CaseCourtDetailMaxAggregateOutputType | null
+  }
+
+  export type CaseCourtDetailMinAggregateOutputType = {
+    id: string | null
+    caseId: string | null
+    caseName: string | null
+    caseNumber: string | null
+    registrationDate: Date | null
+    judgeName: string | null
+    courtType: string | null
+    sectionCourtRoom: string | null
+    parentId: string | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type CaseCourtDetailMaxAggregateOutputType = {
+    id: string | null
+    caseId: string | null
+    caseName: string | null
+    caseNumber: string | null
+    registrationDate: Date | null
+    judgeName: string | null
+    courtType: string | null
+    sectionCourtRoom: string | null
+    parentId: string | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type CaseCourtDetailCountAggregateOutputType = {
+    id: number
+    caseId: number
+    caseName: number
+    caseNumber: number
+    registrationDate: number
+    judgeName: number
+    courtType: number
+    sectionCourtRoom: number
+    parentId: number
+    isActive: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type CaseCourtDetailMinAggregateInputType = {
+    id?: true
+    caseId?: true
+    caseName?: true
+    caseNumber?: true
+    registrationDate?: true
+    judgeName?: true
+    courtType?: true
+    sectionCourtRoom?: true
+    parentId?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type CaseCourtDetailMaxAggregateInputType = {
+    id?: true
+    caseId?: true
+    caseName?: true
+    caseNumber?: true
+    registrationDate?: true
+    judgeName?: true
+    courtType?: true
+    sectionCourtRoom?: true
+    parentId?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type CaseCourtDetailCountAggregateInputType = {
+    id?: true
+    caseId?: true
+    caseName?: true
+    caseNumber?: true
+    registrationDate?: true
+    judgeName?: true
+    courtType?: true
+    sectionCourtRoom?: true
+    parentId?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type CaseCourtDetailAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CaseCourtDetail to aggregate.
+     */
+    where?: CaseCourtDetailWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CaseCourtDetails to fetch.
+     */
+    orderBy?: CaseCourtDetailOrderByWithRelationInput | CaseCourtDetailOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CaseCourtDetailWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CaseCourtDetails from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CaseCourtDetails.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CaseCourtDetails
+    **/
+    _count?: true | CaseCourtDetailCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CaseCourtDetailMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CaseCourtDetailMaxAggregateInputType
+  }
+
+  export type GetCaseCourtDetailAggregateType<T extends CaseCourtDetailAggregateArgs> = {
+        [P in keyof T & keyof AggregateCaseCourtDetail]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCaseCourtDetail[P]>
+      : GetScalarType<T[P], AggregateCaseCourtDetail[P]>
+  }
+
+
+
+
+  export type CaseCourtDetailGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CaseCourtDetailWhereInput
+    orderBy?: CaseCourtDetailOrderByWithAggregationInput | CaseCourtDetailOrderByWithAggregationInput[]
+    by: CaseCourtDetailScalarFieldEnum[] | CaseCourtDetailScalarFieldEnum
+    having?: CaseCourtDetailScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CaseCourtDetailCountAggregateInputType | true
+    _min?: CaseCourtDetailMinAggregateInputType
+    _max?: CaseCourtDetailMaxAggregateInputType
+  }
+
+  export type CaseCourtDetailGroupByOutputType = {
+    id: string
+    caseId: string
+    caseName: string
+    caseNumber: string
+    registrationDate: Date | null
+    judgeName: string | null
+    courtType: string | null
+    sectionCourtRoom: string | null
+    parentId: string | null
+    isActive: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: CaseCourtDetailCountAggregateOutputType | null
+    _min: CaseCourtDetailMinAggregateOutputType | null
+    _max: CaseCourtDetailMaxAggregateOutputType | null
+  }
+
+  type GetCaseCourtDetailGroupByPayload<T extends CaseCourtDetailGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CaseCourtDetailGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CaseCourtDetailGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CaseCourtDetailGroupByOutputType[P]>
+            : GetScalarType<T[P], CaseCourtDetailGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CaseCourtDetailSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    caseId?: boolean
+    caseName?: boolean
+    caseNumber?: boolean
+    registrationDate?: boolean
+    judgeName?: boolean
+    courtType?: boolean
+    sectionCourtRoom?: boolean
+    parentId?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+    parent?: boolean | CaseCourtDetail$parentArgs<ExtArgs>
+    children?: boolean | CaseCourtDetail$childrenArgs<ExtArgs>
+    hearings?: boolean | CaseCourtDetail$hearingsArgs<ExtArgs>
+    _count?: boolean | CaseCourtDetailCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["caseCourtDetail"]>
+
+  export type CaseCourtDetailSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    caseId?: boolean
+    caseName?: boolean
+    caseNumber?: boolean
+    registrationDate?: boolean
+    judgeName?: boolean
+    courtType?: boolean
+    sectionCourtRoom?: boolean
+    parentId?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+    parent?: boolean | CaseCourtDetail$parentArgs<ExtArgs>
+  }, ExtArgs["result"]["caseCourtDetail"]>
+
+  export type CaseCourtDetailSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    caseId?: boolean
+    caseName?: boolean
+    caseNumber?: boolean
+    registrationDate?: boolean
+    judgeName?: boolean
+    courtType?: boolean
+    sectionCourtRoom?: boolean
+    parentId?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+    parent?: boolean | CaseCourtDetail$parentArgs<ExtArgs>
+  }, ExtArgs["result"]["caseCourtDetail"]>
+
+  export type CaseCourtDetailSelectScalar = {
+    id?: boolean
+    caseId?: boolean
+    caseName?: boolean
+    caseNumber?: boolean
+    registrationDate?: boolean
+    judgeName?: boolean
+    courtType?: boolean
+    sectionCourtRoom?: boolean
+    parentId?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type CaseCourtDetailOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "caseId" | "caseName" | "caseNumber" | "registrationDate" | "judgeName" | "courtType" | "sectionCourtRoom" | "parentId" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["caseCourtDetail"]>
+  export type CaseCourtDetailInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+    parent?: boolean | CaseCourtDetail$parentArgs<ExtArgs>
+    children?: boolean | CaseCourtDetail$childrenArgs<ExtArgs>
+    hearings?: boolean | CaseCourtDetail$hearingsArgs<ExtArgs>
+    _count?: boolean | CaseCourtDetailCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type CaseCourtDetailIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+    parent?: boolean | CaseCourtDetail$parentArgs<ExtArgs>
+  }
+  export type CaseCourtDetailIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    case?: boolean | CaseDefaultArgs<ExtArgs>
+    parent?: boolean | CaseCourtDetail$parentArgs<ExtArgs>
+  }
+
+  export type $CaseCourtDetailPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CaseCourtDetail"
+    objects: {
+      case: Prisma.$CasePayload<ExtArgs>
+      parent: Prisma.$CaseCourtDetailPayload<ExtArgs> | null
+      children: Prisma.$CaseCourtDetailPayload<ExtArgs>[]
+      hearings: Prisma.$CaseHearingPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      caseId: string
+      caseName: string
+      caseNumber: string
+      registrationDate: Date | null
+      judgeName: string | null
+      courtType: string | null
+      sectionCourtRoom: string | null
+      parentId: string | null
+      isActive: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["caseCourtDetail"]>
+    composites: {}
+  }
+
+  type CaseCourtDetailGetPayload<S extends boolean | null | undefined | CaseCourtDetailDefaultArgs> = $Result.GetResult<Prisma.$CaseCourtDetailPayload, S>
+
+  type CaseCourtDetailCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CaseCourtDetailFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CaseCourtDetailCountAggregateInputType | true
+    }
+
+  export interface CaseCourtDetailDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CaseCourtDetail'], meta: { name: 'CaseCourtDetail' } }
+    /**
+     * Find zero or one CaseCourtDetail that matches the filter.
+     * @param {CaseCourtDetailFindUniqueArgs} args - Arguments to find a CaseCourtDetail
+     * @example
+     * // Get one CaseCourtDetail
+     * const caseCourtDetail = await prisma.caseCourtDetail.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CaseCourtDetailFindUniqueArgs>(args: SelectSubset<T, CaseCourtDetailFindUniqueArgs<ExtArgs>>): Prisma__CaseCourtDetailClient<$Result.GetResult<Prisma.$CaseCourtDetailPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one CaseCourtDetail that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CaseCourtDetailFindUniqueOrThrowArgs} args - Arguments to find a CaseCourtDetail
+     * @example
+     * // Get one CaseCourtDetail
+     * const caseCourtDetail = await prisma.caseCourtDetail.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CaseCourtDetailFindUniqueOrThrowArgs>(args: SelectSubset<T, CaseCourtDetailFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CaseCourtDetailClient<$Result.GetResult<Prisma.$CaseCourtDetailPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CaseCourtDetail that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseCourtDetailFindFirstArgs} args - Arguments to find a CaseCourtDetail
+     * @example
+     * // Get one CaseCourtDetail
+     * const caseCourtDetail = await prisma.caseCourtDetail.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CaseCourtDetailFindFirstArgs>(args?: SelectSubset<T, CaseCourtDetailFindFirstArgs<ExtArgs>>): Prisma__CaseCourtDetailClient<$Result.GetResult<Prisma.$CaseCourtDetailPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CaseCourtDetail that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseCourtDetailFindFirstOrThrowArgs} args - Arguments to find a CaseCourtDetail
+     * @example
+     * // Get one CaseCourtDetail
+     * const caseCourtDetail = await prisma.caseCourtDetail.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CaseCourtDetailFindFirstOrThrowArgs>(args?: SelectSubset<T, CaseCourtDetailFindFirstOrThrowArgs<ExtArgs>>): Prisma__CaseCourtDetailClient<$Result.GetResult<Prisma.$CaseCourtDetailPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CaseCourtDetails that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseCourtDetailFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CaseCourtDetails
+     * const caseCourtDetails = await prisma.caseCourtDetail.findMany()
+     * 
+     * // Get first 10 CaseCourtDetails
+     * const caseCourtDetails = await prisma.caseCourtDetail.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const caseCourtDetailWithIdOnly = await prisma.caseCourtDetail.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CaseCourtDetailFindManyArgs>(args?: SelectSubset<T, CaseCourtDetailFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseCourtDetailPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a CaseCourtDetail.
+     * @param {CaseCourtDetailCreateArgs} args - Arguments to create a CaseCourtDetail.
+     * @example
+     * // Create one CaseCourtDetail
+     * const CaseCourtDetail = await prisma.caseCourtDetail.create({
+     *   data: {
+     *     // ... data to create a CaseCourtDetail
+     *   }
+     * })
+     * 
+     */
+    create<T extends CaseCourtDetailCreateArgs>(args: SelectSubset<T, CaseCourtDetailCreateArgs<ExtArgs>>): Prisma__CaseCourtDetailClient<$Result.GetResult<Prisma.$CaseCourtDetailPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many CaseCourtDetails.
+     * @param {CaseCourtDetailCreateManyArgs} args - Arguments to create many CaseCourtDetails.
+     * @example
+     * // Create many CaseCourtDetails
+     * const caseCourtDetail = await prisma.caseCourtDetail.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CaseCourtDetailCreateManyArgs>(args?: SelectSubset<T, CaseCourtDetailCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many CaseCourtDetails and returns the data saved in the database.
+     * @param {CaseCourtDetailCreateManyAndReturnArgs} args - Arguments to create many CaseCourtDetails.
+     * @example
+     * // Create many CaseCourtDetails
+     * const caseCourtDetail = await prisma.caseCourtDetail.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many CaseCourtDetails and only return the `id`
+     * const caseCourtDetailWithIdOnly = await prisma.caseCourtDetail.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CaseCourtDetailCreateManyAndReturnArgs>(args?: SelectSubset<T, CaseCourtDetailCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseCourtDetailPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a CaseCourtDetail.
+     * @param {CaseCourtDetailDeleteArgs} args - Arguments to delete one CaseCourtDetail.
+     * @example
+     * // Delete one CaseCourtDetail
+     * const CaseCourtDetail = await prisma.caseCourtDetail.delete({
+     *   where: {
+     *     // ... filter to delete one CaseCourtDetail
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CaseCourtDetailDeleteArgs>(args: SelectSubset<T, CaseCourtDetailDeleteArgs<ExtArgs>>): Prisma__CaseCourtDetailClient<$Result.GetResult<Prisma.$CaseCourtDetailPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one CaseCourtDetail.
+     * @param {CaseCourtDetailUpdateArgs} args - Arguments to update one CaseCourtDetail.
+     * @example
+     * // Update one CaseCourtDetail
+     * const caseCourtDetail = await prisma.caseCourtDetail.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CaseCourtDetailUpdateArgs>(args: SelectSubset<T, CaseCourtDetailUpdateArgs<ExtArgs>>): Prisma__CaseCourtDetailClient<$Result.GetResult<Prisma.$CaseCourtDetailPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more CaseCourtDetails.
+     * @param {CaseCourtDetailDeleteManyArgs} args - Arguments to filter CaseCourtDetails to delete.
+     * @example
+     * // Delete a few CaseCourtDetails
+     * const { count } = await prisma.caseCourtDetail.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CaseCourtDetailDeleteManyArgs>(args?: SelectSubset<T, CaseCourtDetailDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CaseCourtDetails.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseCourtDetailUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CaseCourtDetails
+     * const caseCourtDetail = await prisma.caseCourtDetail.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CaseCourtDetailUpdateManyArgs>(args: SelectSubset<T, CaseCourtDetailUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CaseCourtDetails and returns the data updated in the database.
+     * @param {CaseCourtDetailUpdateManyAndReturnArgs} args - Arguments to update many CaseCourtDetails.
+     * @example
+     * // Update many CaseCourtDetails
+     * const caseCourtDetail = await prisma.caseCourtDetail.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more CaseCourtDetails and only return the `id`
+     * const caseCourtDetailWithIdOnly = await prisma.caseCourtDetail.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CaseCourtDetailUpdateManyAndReturnArgs>(args: SelectSubset<T, CaseCourtDetailUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseCourtDetailPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one CaseCourtDetail.
+     * @param {CaseCourtDetailUpsertArgs} args - Arguments to update or create a CaseCourtDetail.
+     * @example
+     * // Update or create a CaseCourtDetail
+     * const caseCourtDetail = await prisma.caseCourtDetail.upsert({
+     *   create: {
+     *     // ... data to create a CaseCourtDetail
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CaseCourtDetail we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CaseCourtDetailUpsertArgs>(args: SelectSubset<T, CaseCourtDetailUpsertArgs<ExtArgs>>): Prisma__CaseCourtDetailClient<$Result.GetResult<Prisma.$CaseCourtDetailPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of CaseCourtDetails.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseCourtDetailCountArgs} args - Arguments to filter CaseCourtDetails to count.
+     * @example
+     * // Count the number of CaseCourtDetails
+     * const count = await prisma.caseCourtDetail.count({
+     *   where: {
+     *     // ... the filter for the CaseCourtDetails we want to count
+     *   }
+     * })
+    **/
+    count<T extends CaseCourtDetailCountArgs>(
+      args?: Subset<T, CaseCourtDetailCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CaseCourtDetailCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CaseCourtDetail.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseCourtDetailAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CaseCourtDetailAggregateArgs>(args: Subset<T, CaseCourtDetailAggregateArgs>): Prisma.PrismaPromise<GetCaseCourtDetailAggregateType<T>>
+
+    /**
+     * Group by CaseCourtDetail.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaseCourtDetailGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CaseCourtDetailGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CaseCourtDetailGroupByArgs['orderBy'] }
+        : { orderBy?: CaseCourtDetailGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CaseCourtDetailGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCaseCourtDetailGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CaseCourtDetail model
+   */
+  readonly fields: CaseCourtDetailFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CaseCourtDetail.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CaseCourtDetailClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    case<T extends CaseDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CaseDefaultArgs<ExtArgs>>): Prisma__CaseClient<$Result.GetResult<Prisma.$CasePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    parent<T extends CaseCourtDetail$parentArgs<ExtArgs> = {}>(args?: Subset<T, CaseCourtDetail$parentArgs<ExtArgs>>): Prisma__CaseCourtDetailClient<$Result.GetResult<Prisma.$CaseCourtDetailPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    children<T extends CaseCourtDetail$childrenArgs<ExtArgs> = {}>(args?: Subset<T, CaseCourtDetail$childrenArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseCourtDetailPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    hearings<T extends CaseCourtDetail$hearingsArgs<ExtArgs> = {}>(args?: Subset<T, CaseCourtDetail$hearingsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaseHearingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CaseCourtDetail model
+   */
+  interface CaseCourtDetailFieldRefs {
+    readonly id: FieldRef<"CaseCourtDetail", 'String'>
+    readonly caseId: FieldRef<"CaseCourtDetail", 'String'>
+    readonly caseName: FieldRef<"CaseCourtDetail", 'String'>
+    readonly caseNumber: FieldRef<"CaseCourtDetail", 'String'>
+    readonly registrationDate: FieldRef<"CaseCourtDetail", 'DateTime'>
+    readonly judgeName: FieldRef<"CaseCourtDetail", 'String'>
+    readonly courtType: FieldRef<"CaseCourtDetail", 'String'>
+    readonly sectionCourtRoom: FieldRef<"CaseCourtDetail", 'String'>
+    readonly parentId: FieldRef<"CaseCourtDetail", 'String'>
+    readonly isActive: FieldRef<"CaseCourtDetail", 'Boolean'>
+    readonly createdAt: FieldRef<"CaseCourtDetail", 'DateTime'>
+    readonly updatedAt: FieldRef<"CaseCourtDetail", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CaseCourtDetail findUnique
+   */
+  export type CaseCourtDetailFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseCourtDetail
+     */
+    select?: CaseCourtDetailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseCourtDetail
+     */
+    omit?: CaseCourtDetailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseCourtDetailInclude<ExtArgs> | null
+    /**
+     * Filter, which CaseCourtDetail to fetch.
+     */
+    where: CaseCourtDetailWhereUniqueInput
+  }
+
+  /**
+   * CaseCourtDetail findUniqueOrThrow
+   */
+  export type CaseCourtDetailFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseCourtDetail
+     */
+    select?: CaseCourtDetailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseCourtDetail
+     */
+    omit?: CaseCourtDetailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseCourtDetailInclude<ExtArgs> | null
+    /**
+     * Filter, which CaseCourtDetail to fetch.
+     */
+    where: CaseCourtDetailWhereUniqueInput
+  }
+
+  /**
+   * CaseCourtDetail findFirst
+   */
+  export type CaseCourtDetailFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseCourtDetail
+     */
+    select?: CaseCourtDetailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseCourtDetail
+     */
+    omit?: CaseCourtDetailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseCourtDetailInclude<ExtArgs> | null
+    /**
+     * Filter, which CaseCourtDetail to fetch.
+     */
+    where?: CaseCourtDetailWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CaseCourtDetails to fetch.
+     */
+    orderBy?: CaseCourtDetailOrderByWithRelationInput | CaseCourtDetailOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CaseCourtDetails.
+     */
+    cursor?: CaseCourtDetailWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CaseCourtDetails from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CaseCourtDetails.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CaseCourtDetails.
+     */
+    distinct?: CaseCourtDetailScalarFieldEnum | CaseCourtDetailScalarFieldEnum[]
+  }
+
+  /**
+   * CaseCourtDetail findFirstOrThrow
+   */
+  export type CaseCourtDetailFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseCourtDetail
+     */
+    select?: CaseCourtDetailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseCourtDetail
+     */
+    omit?: CaseCourtDetailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseCourtDetailInclude<ExtArgs> | null
+    /**
+     * Filter, which CaseCourtDetail to fetch.
+     */
+    where?: CaseCourtDetailWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CaseCourtDetails to fetch.
+     */
+    orderBy?: CaseCourtDetailOrderByWithRelationInput | CaseCourtDetailOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CaseCourtDetails.
+     */
+    cursor?: CaseCourtDetailWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CaseCourtDetails from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CaseCourtDetails.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CaseCourtDetails.
+     */
+    distinct?: CaseCourtDetailScalarFieldEnum | CaseCourtDetailScalarFieldEnum[]
+  }
+
+  /**
+   * CaseCourtDetail findMany
+   */
+  export type CaseCourtDetailFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseCourtDetail
+     */
+    select?: CaseCourtDetailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseCourtDetail
+     */
+    omit?: CaseCourtDetailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseCourtDetailInclude<ExtArgs> | null
+    /**
+     * Filter, which CaseCourtDetails to fetch.
+     */
+    where?: CaseCourtDetailWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CaseCourtDetails to fetch.
+     */
+    orderBy?: CaseCourtDetailOrderByWithRelationInput | CaseCourtDetailOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CaseCourtDetails.
+     */
+    cursor?: CaseCourtDetailWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CaseCourtDetails from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CaseCourtDetails.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CaseCourtDetails.
+     */
+    distinct?: CaseCourtDetailScalarFieldEnum | CaseCourtDetailScalarFieldEnum[]
+  }
+
+  /**
+   * CaseCourtDetail create
+   */
+  export type CaseCourtDetailCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseCourtDetail
+     */
+    select?: CaseCourtDetailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseCourtDetail
+     */
+    omit?: CaseCourtDetailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseCourtDetailInclude<ExtArgs> | null
+    /**
+     * The data needed to create a CaseCourtDetail.
+     */
+    data: XOR<CaseCourtDetailCreateInput, CaseCourtDetailUncheckedCreateInput>
+  }
+
+  /**
+   * CaseCourtDetail createMany
+   */
+  export type CaseCourtDetailCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CaseCourtDetails.
+     */
+    data: CaseCourtDetailCreateManyInput | CaseCourtDetailCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CaseCourtDetail createManyAndReturn
+   */
+  export type CaseCourtDetailCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseCourtDetail
+     */
+    select?: CaseCourtDetailSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseCourtDetail
+     */
+    omit?: CaseCourtDetailOmit<ExtArgs> | null
+    /**
+     * The data used to create many CaseCourtDetails.
+     */
+    data: CaseCourtDetailCreateManyInput | CaseCourtDetailCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseCourtDetailIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CaseCourtDetail update
+   */
+  export type CaseCourtDetailUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseCourtDetail
+     */
+    select?: CaseCourtDetailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseCourtDetail
+     */
+    omit?: CaseCourtDetailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseCourtDetailInclude<ExtArgs> | null
+    /**
+     * The data needed to update a CaseCourtDetail.
+     */
+    data: XOR<CaseCourtDetailUpdateInput, CaseCourtDetailUncheckedUpdateInput>
+    /**
+     * Choose, which CaseCourtDetail to update.
+     */
+    where: CaseCourtDetailWhereUniqueInput
+  }
+
+  /**
+   * CaseCourtDetail updateMany
+   */
+  export type CaseCourtDetailUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CaseCourtDetails.
+     */
+    data: XOR<CaseCourtDetailUpdateManyMutationInput, CaseCourtDetailUncheckedUpdateManyInput>
+    /**
+     * Filter which CaseCourtDetails to update
+     */
+    where?: CaseCourtDetailWhereInput
+    /**
+     * Limit how many CaseCourtDetails to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CaseCourtDetail updateManyAndReturn
+   */
+  export type CaseCourtDetailUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseCourtDetail
+     */
+    select?: CaseCourtDetailSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseCourtDetail
+     */
+    omit?: CaseCourtDetailOmit<ExtArgs> | null
+    /**
+     * The data used to update CaseCourtDetails.
+     */
+    data: XOR<CaseCourtDetailUpdateManyMutationInput, CaseCourtDetailUncheckedUpdateManyInput>
+    /**
+     * Filter which CaseCourtDetails to update
+     */
+    where?: CaseCourtDetailWhereInput
+    /**
+     * Limit how many CaseCourtDetails to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseCourtDetailIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CaseCourtDetail upsert
+   */
+  export type CaseCourtDetailUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseCourtDetail
+     */
+    select?: CaseCourtDetailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseCourtDetail
+     */
+    omit?: CaseCourtDetailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseCourtDetailInclude<ExtArgs> | null
+    /**
+     * The filter to search for the CaseCourtDetail to update in case it exists.
+     */
+    where: CaseCourtDetailWhereUniqueInput
+    /**
+     * In case the CaseCourtDetail found by the `where` argument doesn't exist, create a new CaseCourtDetail with this data.
+     */
+    create: XOR<CaseCourtDetailCreateInput, CaseCourtDetailUncheckedCreateInput>
+    /**
+     * In case the CaseCourtDetail was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CaseCourtDetailUpdateInput, CaseCourtDetailUncheckedUpdateInput>
+  }
+
+  /**
+   * CaseCourtDetail delete
+   */
+  export type CaseCourtDetailDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseCourtDetail
+     */
+    select?: CaseCourtDetailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseCourtDetail
+     */
+    omit?: CaseCourtDetailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseCourtDetailInclude<ExtArgs> | null
+    /**
+     * Filter which CaseCourtDetail to delete.
+     */
+    where: CaseCourtDetailWhereUniqueInput
+  }
+
+  /**
+   * CaseCourtDetail deleteMany
+   */
+  export type CaseCourtDetailDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CaseCourtDetails to delete
+     */
+    where?: CaseCourtDetailWhereInput
+    /**
+     * Limit how many CaseCourtDetails to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CaseCourtDetail.parent
+   */
+  export type CaseCourtDetail$parentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseCourtDetail
+     */
+    select?: CaseCourtDetailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseCourtDetail
+     */
+    omit?: CaseCourtDetailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseCourtDetailInclude<ExtArgs> | null
+    where?: CaseCourtDetailWhereInput
+  }
+
+  /**
+   * CaseCourtDetail.children
+   */
+  export type CaseCourtDetail$childrenArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseCourtDetail
+     */
+    select?: CaseCourtDetailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseCourtDetail
+     */
+    omit?: CaseCourtDetailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseCourtDetailInclude<ExtArgs> | null
+    where?: CaseCourtDetailWhereInput
+    orderBy?: CaseCourtDetailOrderByWithRelationInput | CaseCourtDetailOrderByWithRelationInput[]
+    cursor?: CaseCourtDetailWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CaseCourtDetailScalarFieldEnum | CaseCourtDetailScalarFieldEnum[]
+  }
+
+  /**
+   * CaseCourtDetail.hearings
+   */
+  export type CaseCourtDetail$hearingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseHearing
+     */
+    select?: CaseHearingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseHearing
+     */
+    omit?: CaseHearingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseHearingInclude<ExtArgs> | null
+    where?: CaseHearingWhereInput
+    orderBy?: CaseHearingOrderByWithRelationInput | CaseHearingOrderByWithRelationInput[]
+    cursor?: CaseHearingWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CaseHearingScalarFieldEnum | CaseHearingScalarFieldEnum[]
+  }
+
+  /**
+   * CaseCourtDetail without action
+   */
+  export type CaseCourtDetailDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseCourtDetail
+     */
+    select?: CaseCourtDetailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseCourtDetail
+     */
+    omit?: CaseCourtDetailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseCourtDetailInclude<ExtArgs> | null
   }
 
 
@@ -15089,28 +16481,28 @@ export namespace Prisma {
   export type CaseHearingMinAggregateOutputType = {
     id: string | null
     caseId: string | null
+    caseCourtDetailId: string | null
     nextHearingDate: Date | null
     hearingDate: Date | null
     hearingOrder: string | null
-    judgeName: string | null
   }
 
   export type CaseHearingMaxAggregateOutputType = {
     id: string | null
     caseId: string | null
+    caseCourtDetailId: string | null
     nextHearingDate: Date | null
     hearingDate: Date | null
     hearingOrder: string | null
-    judgeName: string | null
   }
 
   export type CaseHearingCountAggregateOutputType = {
     id: number
     caseId: number
+    caseCourtDetailId: number
     nextHearingDate: number
     hearingDate: number
     hearingOrder: number
-    judgeName: number
     _all: number
   }
 
@@ -15118,28 +16510,28 @@ export namespace Prisma {
   export type CaseHearingMinAggregateInputType = {
     id?: true
     caseId?: true
+    caseCourtDetailId?: true
     nextHearingDate?: true
     hearingDate?: true
     hearingOrder?: true
-    judgeName?: true
   }
 
   export type CaseHearingMaxAggregateInputType = {
     id?: true
     caseId?: true
+    caseCourtDetailId?: true
     nextHearingDate?: true
     hearingDate?: true
     hearingOrder?: true
-    judgeName?: true
   }
 
   export type CaseHearingCountAggregateInputType = {
     id?: true
     caseId?: true
+    caseCourtDetailId?: true
     nextHearingDate?: true
     hearingDate?: true
     hearingOrder?: true
-    judgeName?: true
     _all?: true
   }
 
@@ -15218,10 +16610,10 @@ export namespace Prisma {
   export type CaseHearingGroupByOutputType = {
     id: string
     caseId: string
+    caseCourtDetailId: string | null
     nextHearingDate: Date | null
     hearingDate: Date | null
     hearingOrder: string | null
-    judgeName: string | null
     _count: CaseHearingCountAggregateOutputType | null
     _min: CaseHearingMinAggregateOutputType | null
     _max: CaseHearingMaxAggregateOutputType | null
@@ -15244,65 +16636,72 @@ export namespace Prisma {
   export type CaseHearingSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     caseId?: boolean
+    caseCourtDetailId?: boolean
     nextHearingDate?: boolean
     hearingDate?: boolean
     hearingOrder?: boolean
-    judgeName?: boolean
     case?: boolean | CaseDefaultArgs<ExtArgs>
+    caseCourtDetail?: boolean | CaseHearing$caseCourtDetailArgs<ExtArgs>
   }, ExtArgs["result"]["caseHearing"]>
 
   export type CaseHearingSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     caseId?: boolean
+    caseCourtDetailId?: boolean
     nextHearingDate?: boolean
     hearingDate?: boolean
     hearingOrder?: boolean
-    judgeName?: boolean
     case?: boolean | CaseDefaultArgs<ExtArgs>
+    caseCourtDetail?: boolean | CaseHearing$caseCourtDetailArgs<ExtArgs>
   }, ExtArgs["result"]["caseHearing"]>
 
   export type CaseHearingSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     caseId?: boolean
+    caseCourtDetailId?: boolean
     nextHearingDate?: boolean
     hearingDate?: boolean
     hearingOrder?: boolean
-    judgeName?: boolean
     case?: boolean | CaseDefaultArgs<ExtArgs>
+    caseCourtDetail?: boolean | CaseHearing$caseCourtDetailArgs<ExtArgs>
   }, ExtArgs["result"]["caseHearing"]>
 
   export type CaseHearingSelectScalar = {
     id?: boolean
     caseId?: boolean
+    caseCourtDetailId?: boolean
     nextHearingDate?: boolean
     hearingDate?: boolean
     hearingOrder?: boolean
-    judgeName?: boolean
   }
 
-  export type CaseHearingOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "caseId" | "nextHearingDate" | "hearingDate" | "hearingOrder" | "judgeName", ExtArgs["result"]["caseHearing"]>
+  export type CaseHearingOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "caseId" | "caseCourtDetailId" | "nextHearingDate" | "hearingDate" | "hearingOrder", ExtArgs["result"]["caseHearing"]>
   export type CaseHearingInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     case?: boolean | CaseDefaultArgs<ExtArgs>
+    caseCourtDetail?: boolean | CaseHearing$caseCourtDetailArgs<ExtArgs>
   }
   export type CaseHearingIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     case?: boolean | CaseDefaultArgs<ExtArgs>
+    caseCourtDetail?: boolean | CaseHearing$caseCourtDetailArgs<ExtArgs>
   }
   export type CaseHearingIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     case?: boolean | CaseDefaultArgs<ExtArgs>
+    caseCourtDetail?: boolean | CaseHearing$caseCourtDetailArgs<ExtArgs>
   }
 
   export type $CaseHearingPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "CaseHearing"
     objects: {
       case: Prisma.$CasePayload<ExtArgs>
+      caseCourtDetail: Prisma.$CaseCourtDetailPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       caseId: string
+      caseCourtDetailId: string | null
       nextHearingDate: Date | null
       hearingDate: Date | null
       hearingOrder: string | null
-      judgeName: string | null
     }, ExtArgs["result"]["caseHearing"]>
     composites: {}
   }
@@ -15698,6 +17097,7 @@ export namespace Prisma {
   export interface Prisma__CaseHearingClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     case<T extends CaseDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CaseDefaultArgs<ExtArgs>>): Prisma__CaseClient<$Result.GetResult<Prisma.$CasePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    caseCourtDetail<T extends CaseHearing$caseCourtDetailArgs<ExtArgs> = {}>(args?: Subset<T, CaseHearing$caseCourtDetailArgs<ExtArgs>>): Prisma__CaseCourtDetailClient<$Result.GetResult<Prisma.$CaseCourtDetailPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -15729,10 +17129,10 @@ export namespace Prisma {
   interface CaseHearingFieldRefs {
     readonly id: FieldRef<"CaseHearing", 'String'>
     readonly caseId: FieldRef<"CaseHearing", 'String'>
+    readonly caseCourtDetailId: FieldRef<"CaseHearing", 'String'>
     readonly nextHearingDate: FieldRef<"CaseHearing", 'DateTime'>
     readonly hearingDate: FieldRef<"CaseHearing", 'DateTime'>
     readonly hearingOrder: FieldRef<"CaseHearing", 'String'>
-    readonly judgeName: FieldRef<"CaseHearing", 'String'>
   }
     
 
@@ -16131,6 +17531,25 @@ export namespace Prisma {
      * Limit how many CaseHearings to delete.
      */
     limit?: number
+  }
+
+  /**
+   * CaseHearing.caseCourtDetail
+   */
+  export type CaseHearing$caseCourtDetailArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaseCourtDetail
+     */
+    select?: CaseCourtDetailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CaseCourtDetail
+     */
+    omit?: CaseCourtDetailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaseCourtDetailInclude<ExtArgs> | null
+    where?: CaseCourtDetailWhereInput
   }
 
   /**
@@ -19443,6 +20862,8 @@ export namespace Prisma {
     method: string | null
     referenceNo: string | null
     notes: string | null
+    receivedByUserId: string | null
+    receivedBy: string | null
     createdAt: Date | null
   }
 
@@ -19454,6 +20875,8 @@ export namespace Prisma {
     method: string | null
     referenceNo: string | null
     notes: string | null
+    receivedByUserId: string | null
+    receivedBy: string | null
     createdAt: Date | null
   }
 
@@ -19465,6 +20888,8 @@ export namespace Prisma {
     method: number
     referenceNo: number
     notes: number
+    receivedByUserId: number
+    receivedBy: number
     createdAt: number
     _all: number
   }
@@ -19486,6 +20911,8 @@ export namespace Prisma {
     method?: true
     referenceNo?: true
     notes?: true
+    receivedByUserId?: true
+    receivedBy?: true
     createdAt?: true
   }
 
@@ -19497,6 +20924,8 @@ export namespace Prisma {
     method?: true
     referenceNo?: true
     notes?: true
+    receivedByUserId?: true
+    receivedBy?: true
     createdAt?: true
   }
 
@@ -19508,6 +20937,8 @@ export namespace Prisma {
     method?: true
     referenceNo?: true
     notes?: true
+    receivedByUserId?: true
+    receivedBy?: true
     createdAt?: true
     _all?: true
   }
@@ -19606,6 +21037,8 @@ export namespace Prisma {
     method: string | null
     referenceNo: string | null
     notes: string | null
+    receivedByUserId: string | null
+    receivedBy: string | null
     createdAt: Date
     _count: CasePaymentCountAggregateOutputType | null
     _avg: CasePaymentAvgAggregateOutputType | null
@@ -19636,8 +21069,11 @@ export namespace Prisma {
     method?: boolean
     referenceNo?: boolean
     notes?: boolean
+    receivedByUserId?: boolean
+    receivedBy?: boolean
     createdAt?: boolean
     case?: boolean | CaseDefaultArgs<ExtArgs>
+    receivedByUser?: boolean | CasePayment$receivedByUserArgs<ExtArgs>
   }, ExtArgs["result"]["casePayment"]>
 
   export type CasePaymentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -19648,8 +21084,11 @@ export namespace Prisma {
     method?: boolean
     referenceNo?: boolean
     notes?: boolean
+    receivedByUserId?: boolean
+    receivedBy?: boolean
     createdAt?: boolean
     case?: boolean | CaseDefaultArgs<ExtArgs>
+    receivedByUser?: boolean | CasePayment$receivedByUserArgs<ExtArgs>
   }, ExtArgs["result"]["casePayment"]>
 
   export type CasePaymentSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -19660,8 +21099,11 @@ export namespace Prisma {
     method?: boolean
     referenceNo?: boolean
     notes?: boolean
+    receivedByUserId?: boolean
+    receivedBy?: boolean
     createdAt?: boolean
     case?: boolean | CaseDefaultArgs<ExtArgs>
+    receivedByUser?: boolean | CasePayment$receivedByUserArgs<ExtArgs>
   }, ExtArgs["result"]["casePayment"]>
 
   export type CasePaymentSelectScalar = {
@@ -19672,24 +21114,30 @@ export namespace Prisma {
     method?: boolean
     referenceNo?: boolean
     notes?: boolean
+    receivedByUserId?: boolean
+    receivedBy?: boolean
     createdAt?: boolean
   }
 
-  export type CasePaymentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "caseId" | "amount" | "paymentDate" | "method" | "referenceNo" | "notes" | "createdAt", ExtArgs["result"]["casePayment"]>
+  export type CasePaymentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "caseId" | "amount" | "paymentDate" | "method" | "referenceNo" | "notes" | "receivedByUserId" | "receivedBy" | "createdAt", ExtArgs["result"]["casePayment"]>
   export type CasePaymentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     case?: boolean | CaseDefaultArgs<ExtArgs>
+    receivedByUser?: boolean | CasePayment$receivedByUserArgs<ExtArgs>
   }
   export type CasePaymentIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     case?: boolean | CaseDefaultArgs<ExtArgs>
+    receivedByUser?: boolean | CasePayment$receivedByUserArgs<ExtArgs>
   }
   export type CasePaymentIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     case?: boolean | CaseDefaultArgs<ExtArgs>
+    receivedByUser?: boolean | CasePayment$receivedByUserArgs<ExtArgs>
   }
 
   export type $CasePaymentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "CasePayment"
     objects: {
       case: Prisma.$CasePayload<ExtArgs>
+      receivedByUser: Prisma.$UserPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -19699,6 +21147,8 @@ export namespace Prisma {
       method: string | null
       referenceNo: string | null
       notes: string | null
+      receivedByUserId: string | null
+      receivedBy: string | null
       createdAt: Date
     }, ExtArgs["result"]["casePayment"]>
     composites: {}
@@ -20095,6 +21545,7 @@ export namespace Prisma {
   export interface Prisma__CasePaymentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     case<T extends CaseDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CaseDefaultArgs<ExtArgs>>): Prisma__CaseClient<$Result.GetResult<Prisma.$CasePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    receivedByUser<T extends CasePayment$receivedByUserArgs<ExtArgs> = {}>(args?: Subset<T, CasePayment$receivedByUserArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -20131,6 +21582,8 @@ export namespace Prisma {
     readonly method: FieldRef<"CasePayment", 'String'>
     readonly referenceNo: FieldRef<"CasePayment", 'String'>
     readonly notes: FieldRef<"CasePayment", 'String'>
+    readonly receivedByUserId: FieldRef<"CasePayment", 'String'>
+    readonly receivedBy: FieldRef<"CasePayment", 'String'>
     readonly createdAt: FieldRef<"CasePayment", 'DateTime'>
   }
     
@@ -20530,6 +21983,25 @@ export namespace Prisma {
      * Limit how many CasePayments to delete.
      */
     limit?: number
+  }
+
+  /**
+   * CasePayment.receivedByUser
+   */
+  export type CasePayment$receivedByUserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
   }
 
   /**
@@ -29779,12 +31251,8 @@ export namespace Prisma {
 
   export const CaseScalarFieldEnum: {
     id: 'id',
-    caseNumber: 'caseNumber',
-    caseName: 'caseName',
     natureId: 'natureId',
-    registrationDate: 'registrationDate',
     registrationFee: 'registrationFee',
-    sectionCourtRoom: 'sectionCourtRoom',
     facts: 'facts',
     relatedLaws: 'relatedLaws',
     referredThrough: 'referredThrough',
@@ -29797,6 +31265,24 @@ export namespace Prisma {
   };
 
   export type CaseScalarFieldEnum = (typeof CaseScalarFieldEnum)[keyof typeof CaseScalarFieldEnum]
+
+
+  export const CaseCourtDetailScalarFieldEnum: {
+    id: 'id',
+    caseId: 'caseId',
+    caseName: 'caseName',
+    caseNumber: 'caseNumber',
+    registrationDate: 'registrationDate',
+    judgeName: 'judgeName',
+    courtType: 'courtType',
+    sectionCourtRoom: 'sectionCourtRoom',
+    parentId: 'parentId',
+    isActive: 'isActive',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type CaseCourtDetailScalarFieldEnum = (typeof CaseCourtDetailScalarFieldEnum)[keyof typeof CaseCourtDetailScalarFieldEnum]
 
 
   export const CaseLawyerScalarFieldEnum: {
@@ -29827,10 +31313,10 @@ export namespace Prisma {
   export const CaseHearingScalarFieldEnum: {
     id: 'id',
     caseId: 'caseId',
+    caseCourtDetailId: 'caseCourtDetailId',
     nextHearingDate: 'nextHearingDate',
     hearingDate: 'hearingDate',
-    hearingOrder: 'hearingOrder',
-    judgeName: 'judgeName'
+    hearingOrder: 'hearingOrder'
   };
 
   export type CaseHearingScalarFieldEnum = (typeof CaseHearingScalarFieldEnum)[keyof typeof CaseHearingScalarFieldEnum]
@@ -29880,6 +31366,8 @@ export namespace Prisma {
     method: 'method',
     referenceNo: 'referenceNo',
     notes: 'notes',
+    receivedByUserId: 'receivedByUserId',
+    receivedBy: 'receivedBy',
     createdAt: 'createdAt'
   };
 
@@ -30176,6 +31664,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerListRelationFilter
     cases_as_pleader?: CasePleadingListRelationFilter
     cases_as_counselor?: CaseCounselingListRelationFilter
+    cases_payment_received?: CasePaymentListRelationFilter
     cases_created?: CaseListRelationFilter
   }
 
@@ -30203,6 +31692,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerOrderByRelationAggregateInput
     cases_as_pleader?: CasePleadingOrderByRelationAggregateInput
     cases_as_counselor?: CaseCounselingOrderByRelationAggregateInput
+    cases_payment_received?: CasePaymentOrderByRelationAggregateInput
     cases_created?: CaseOrderByRelationAggregateInput
   }
 
@@ -30233,6 +31723,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerListRelationFilter
     cases_as_pleader?: CasePleadingListRelationFilter
     cases_as_counselor?: CaseCounselingListRelationFilter
+    cases_payment_received?: CasePaymentListRelationFilter
     cases_created?: CaseListRelationFilter
   }, "id" | "email" | "invitation_token">
 
@@ -30604,12 +32095,8 @@ export namespace Prisma {
     OR?: CaseWhereInput[]
     NOT?: CaseWhereInput | CaseWhereInput[]
     id?: StringFilter<"Case"> | string
-    caseNumber?: StringFilter<"Case"> | string
-    caseName?: StringFilter<"Case"> | string
     natureId?: StringFilter<"Case"> | string
-    registrationDate?: DateTimeNullableFilter<"Case"> | Date | string | null
     registrationFee?: DecimalNullableFilter<"Case"> | Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: StringNullableFilter<"Case"> | string | null
     facts?: StringNullableFilter<"Case"> | string | null
     relatedLaws?: StringNullableFilter<"Case"> | string | null
     referredThrough?: StringNullableFilter<"Case"> | string | null
@@ -30621,6 +32108,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Case"> | Date | string
     nature?: XOR<CaseNatureScalarRelationFilter, CaseNatureWhereInput>
     createdBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    courtDetails?: CaseCourtDetailListRelationFilter
     lawyers?: CaseLawyerListRelationFilter
     parties?: CasePartyListRelationFilter
     hearings?: CaseHearingListRelationFilter
@@ -30634,12 +32122,8 @@ export namespace Prisma {
 
   export type CaseOrderByWithRelationInput = {
     id?: SortOrder
-    caseNumber?: SortOrder
-    caseName?: SortOrder
     natureId?: SortOrder
-    registrationDate?: SortOrderInput | SortOrder
     registrationFee?: SortOrderInput | SortOrder
-    sectionCourtRoom?: SortOrderInput | SortOrder
     facts?: SortOrderInput | SortOrder
     relatedLaws?: SortOrderInput | SortOrder
     referredThrough?: SortOrderInput | SortOrder
@@ -30651,6 +32135,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     nature?: CaseNatureOrderByWithRelationInput
     createdBy?: UserOrderByWithRelationInput
+    courtDetails?: CaseCourtDetailOrderByRelationAggregateInput
     lawyers?: CaseLawyerOrderByRelationAggregateInput
     parties?: CasePartyOrderByRelationAggregateInput
     hearings?: CaseHearingOrderByRelationAggregateInput
@@ -30664,15 +32149,11 @@ export namespace Prisma {
 
   export type CaseWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    caseNumber?: string
     AND?: CaseWhereInput | CaseWhereInput[]
     OR?: CaseWhereInput[]
     NOT?: CaseWhereInput | CaseWhereInput[]
-    caseName?: StringFilter<"Case"> | string
     natureId?: StringFilter<"Case"> | string
-    registrationDate?: DateTimeNullableFilter<"Case"> | Date | string | null
     registrationFee?: DecimalNullableFilter<"Case"> | Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: StringNullableFilter<"Case"> | string | null
     facts?: StringNullableFilter<"Case"> | string | null
     relatedLaws?: StringNullableFilter<"Case"> | string | null
     referredThrough?: StringNullableFilter<"Case"> | string | null
@@ -30684,6 +32165,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Case"> | Date | string
     nature?: XOR<CaseNatureScalarRelationFilter, CaseNatureWhereInput>
     createdBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    courtDetails?: CaseCourtDetailListRelationFilter
     lawyers?: CaseLawyerListRelationFilter
     parties?: CasePartyListRelationFilter
     hearings?: CaseHearingListRelationFilter
@@ -30693,16 +32175,12 @@ export namespace Prisma {
     payments?: CasePaymentListRelationFilter
     counselings?: CaseCounselingListRelationFilter
     documents?: CaseDocumentListRelationFilter
-  }, "id" | "caseNumber">
+  }, "id">
 
   export type CaseOrderByWithAggregationInput = {
     id?: SortOrder
-    caseNumber?: SortOrder
-    caseName?: SortOrder
     natureId?: SortOrder
-    registrationDate?: SortOrderInput | SortOrder
     registrationFee?: SortOrderInput | SortOrder
-    sectionCourtRoom?: SortOrderInput | SortOrder
     facts?: SortOrderInput | SortOrder
     relatedLaws?: SortOrderInput | SortOrder
     referredThrough?: SortOrderInput | SortOrder
@@ -30724,12 +32202,8 @@ export namespace Prisma {
     OR?: CaseScalarWhereWithAggregatesInput[]
     NOT?: CaseScalarWhereWithAggregatesInput | CaseScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Case"> | string
-    caseNumber?: StringWithAggregatesFilter<"Case"> | string
-    caseName?: StringWithAggregatesFilter<"Case"> | string
     natureId?: StringWithAggregatesFilter<"Case"> | string
-    registrationDate?: DateTimeNullableWithAggregatesFilter<"Case"> | Date | string | null
     registrationFee?: DecimalNullableWithAggregatesFilter<"Case"> | Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: StringNullableWithAggregatesFilter<"Case"> | string | null
     facts?: StringNullableWithAggregatesFilter<"Case"> | string | null
     relatedLaws?: StringNullableWithAggregatesFilter<"Case"> | string | null
     referredThrough?: StringNullableWithAggregatesFilter<"Case"> | string | null
@@ -30739,6 +32213,105 @@ export namespace Prisma {
     status?: StringWithAggregatesFilter<"Case"> | string
     createdById?: StringNullableWithAggregatesFilter<"Case"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Case"> | Date | string
+  }
+
+  export type CaseCourtDetailWhereInput = {
+    AND?: CaseCourtDetailWhereInput | CaseCourtDetailWhereInput[]
+    OR?: CaseCourtDetailWhereInput[]
+    NOT?: CaseCourtDetailWhereInput | CaseCourtDetailWhereInput[]
+    id?: StringFilter<"CaseCourtDetail"> | string
+    caseId?: StringFilter<"CaseCourtDetail"> | string
+    caseName?: StringFilter<"CaseCourtDetail"> | string
+    caseNumber?: StringFilter<"CaseCourtDetail"> | string
+    registrationDate?: DateTimeNullableFilter<"CaseCourtDetail"> | Date | string | null
+    judgeName?: StringNullableFilter<"CaseCourtDetail"> | string | null
+    courtType?: StringNullableFilter<"CaseCourtDetail"> | string | null
+    sectionCourtRoom?: StringNullableFilter<"CaseCourtDetail"> | string | null
+    parentId?: StringNullableFilter<"CaseCourtDetail"> | string | null
+    isActive?: BoolFilter<"CaseCourtDetail"> | boolean
+    createdAt?: DateTimeFilter<"CaseCourtDetail"> | Date | string
+    updatedAt?: DateTimeFilter<"CaseCourtDetail"> | Date | string
+    case?: XOR<CaseScalarRelationFilter, CaseWhereInput>
+    parent?: XOR<CaseCourtDetailNullableScalarRelationFilter, CaseCourtDetailWhereInput> | null
+    children?: CaseCourtDetailListRelationFilter
+    hearings?: CaseHearingListRelationFilter
+  }
+
+  export type CaseCourtDetailOrderByWithRelationInput = {
+    id?: SortOrder
+    caseId?: SortOrder
+    caseName?: SortOrder
+    caseNumber?: SortOrder
+    registrationDate?: SortOrderInput | SortOrder
+    judgeName?: SortOrderInput | SortOrder
+    courtType?: SortOrderInput | SortOrder
+    sectionCourtRoom?: SortOrderInput | SortOrder
+    parentId?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    case?: CaseOrderByWithRelationInput
+    parent?: CaseCourtDetailOrderByWithRelationInput
+    children?: CaseCourtDetailOrderByRelationAggregateInput
+    hearings?: CaseHearingOrderByRelationAggregateInput
+  }
+
+  export type CaseCourtDetailWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: CaseCourtDetailWhereInput | CaseCourtDetailWhereInput[]
+    OR?: CaseCourtDetailWhereInput[]
+    NOT?: CaseCourtDetailWhereInput | CaseCourtDetailWhereInput[]
+    caseId?: StringFilter<"CaseCourtDetail"> | string
+    caseName?: StringFilter<"CaseCourtDetail"> | string
+    caseNumber?: StringFilter<"CaseCourtDetail"> | string
+    registrationDate?: DateTimeNullableFilter<"CaseCourtDetail"> | Date | string | null
+    judgeName?: StringNullableFilter<"CaseCourtDetail"> | string | null
+    courtType?: StringNullableFilter<"CaseCourtDetail"> | string | null
+    sectionCourtRoom?: StringNullableFilter<"CaseCourtDetail"> | string | null
+    parentId?: StringNullableFilter<"CaseCourtDetail"> | string | null
+    isActive?: BoolFilter<"CaseCourtDetail"> | boolean
+    createdAt?: DateTimeFilter<"CaseCourtDetail"> | Date | string
+    updatedAt?: DateTimeFilter<"CaseCourtDetail"> | Date | string
+    case?: XOR<CaseScalarRelationFilter, CaseWhereInput>
+    parent?: XOR<CaseCourtDetailNullableScalarRelationFilter, CaseCourtDetailWhereInput> | null
+    children?: CaseCourtDetailListRelationFilter
+    hearings?: CaseHearingListRelationFilter
+  }, "id">
+
+  export type CaseCourtDetailOrderByWithAggregationInput = {
+    id?: SortOrder
+    caseId?: SortOrder
+    caseName?: SortOrder
+    caseNumber?: SortOrder
+    registrationDate?: SortOrderInput | SortOrder
+    judgeName?: SortOrderInput | SortOrder
+    courtType?: SortOrderInput | SortOrder
+    sectionCourtRoom?: SortOrderInput | SortOrder
+    parentId?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: CaseCourtDetailCountOrderByAggregateInput
+    _max?: CaseCourtDetailMaxOrderByAggregateInput
+    _min?: CaseCourtDetailMinOrderByAggregateInput
+  }
+
+  export type CaseCourtDetailScalarWhereWithAggregatesInput = {
+    AND?: CaseCourtDetailScalarWhereWithAggregatesInput | CaseCourtDetailScalarWhereWithAggregatesInput[]
+    OR?: CaseCourtDetailScalarWhereWithAggregatesInput[]
+    NOT?: CaseCourtDetailScalarWhereWithAggregatesInput | CaseCourtDetailScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"CaseCourtDetail"> | string
+    caseId?: StringWithAggregatesFilter<"CaseCourtDetail"> | string
+    caseName?: StringWithAggregatesFilter<"CaseCourtDetail"> | string
+    caseNumber?: StringWithAggregatesFilter<"CaseCourtDetail"> | string
+    registrationDate?: DateTimeNullableWithAggregatesFilter<"CaseCourtDetail"> | Date | string | null
+    judgeName?: StringNullableWithAggregatesFilter<"CaseCourtDetail"> | string | null
+    courtType?: StringNullableWithAggregatesFilter<"CaseCourtDetail"> | string | null
+    sectionCourtRoom?: StringNullableWithAggregatesFilter<"CaseCourtDetail"> | string | null
+    parentId?: StringNullableWithAggregatesFilter<"CaseCourtDetail"> | string | null
+    isActive?: BoolWithAggregatesFilter<"CaseCourtDetail"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"CaseCourtDetail"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"CaseCourtDetail"> | Date | string
   }
 
   export type CaseLawyerWhereInput = {
@@ -30887,21 +32460,23 @@ export namespace Prisma {
     NOT?: CaseHearingWhereInput | CaseHearingWhereInput[]
     id?: StringFilter<"CaseHearing"> | string
     caseId?: StringFilter<"CaseHearing"> | string
+    caseCourtDetailId?: StringNullableFilter<"CaseHearing"> | string | null
     nextHearingDate?: DateTimeNullableFilter<"CaseHearing"> | Date | string | null
     hearingDate?: DateTimeNullableFilter<"CaseHearing"> | Date | string | null
     hearingOrder?: StringNullableFilter<"CaseHearing"> | string | null
-    judgeName?: StringNullableFilter<"CaseHearing"> | string | null
     case?: XOR<CaseScalarRelationFilter, CaseWhereInput>
+    caseCourtDetail?: XOR<CaseCourtDetailNullableScalarRelationFilter, CaseCourtDetailWhereInput> | null
   }
 
   export type CaseHearingOrderByWithRelationInput = {
     id?: SortOrder
     caseId?: SortOrder
+    caseCourtDetailId?: SortOrderInput | SortOrder
     nextHearingDate?: SortOrderInput | SortOrder
     hearingDate?: SortOrderInput | SortOrder
     hearingOrder?: SortOrderInput | SortOrder
-    judgeName?: SortOrderInput | SortOrder
     case?: CaseOrderByWithRelationInput
+    caseCourtDetail?: CaseCourtDetailOrderByWithRelationInput
   }
 
   export type CaseHearingWhereUniqueInput = Prisma.AtLeast<{
@@ -30910,20 +32485,21 @@ export namespace Prisma {
     OR?: CaseHearingWhereInput[]
     NOT?: CaseHearingWhereInput | CaseHearingWhereInput[]
     caseId?: StringFilter<"CaseHearing"> | string
+    caseCourtDetailId?: StringNullableFilter<"CaseHearing"> | string | null
     nextHearingDate?: DateTimeNullableFilter<"CaseHearing"> | Date | string | null
     hearingDate?: DateTimeNullableFilter<"CaseHearing"> | Date | string | null
     hearingOrder?: StringNullableFilter<"CaseHearing"> | string | null
-    judgeName?: StringNullableFilter<"CaseHearing"> | string | null
     case?: XOR<CaseScalarRelationFilter, CaseWhereInput>
+    caseCourtDetail?: XOR<CaseCourtDetailNullableScalarRelationFilter, CaseCourtDetailWhereInput> | null
   }, "id">
 
   export type CaseHearingOrderByWithAggregationInput = {
     id?: SortOrder
     caseId?: SortOrder
+    caseCourtDetailId?: SortOrderInput | SortOrder
     nextHearingDate?: SortOrderInput | SortOrder
     hearingDate?: SortOrderInput | SortOrder
     hearingOrder?: SortOrderInput | SortOrder
-    judgeName?: SortOrderInput | SortOrder
     _count?: CaseHearingCountOrderByAggregateInput
     _max?: CaseHearingMaxOrderByAggregateInput
     _min?: CaseHearingMinOrderByAggregateInput
@@ -30935,10 +32511,10 @@ export namespace Prisma {
     NOT?: CaseHearingScalarWhereWithAggregatesInput | CaseHearingScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"CaseHearing"> | string
     caseId?: StringWithAggregatesFilter<"CaseHearing"> | string
+    caseCourtDetailId?: StringNullableWithAggregatesFilter<"CaseHearing"> | string | null
     nextHearingDate?: DateTimeNullableWithAggregatesFilter<"CaseHearing"> | Date | string | null
     hearingDate?: DateTimeNullableWithAggregatesFilter<"CaseHearing"> | Date | string | null
     hearingOrder?: StringNullableWithAggregatesFilter<"CaseHearing"> | string | null
-    judgeName?: StringNullableWithAggregatesFilter<"CaseHearing"> | string | null
   }
 
   export type CasePleadingWhereInput = {
@@ -31138,8 +32714,11 @@ export namespace Prisma {
     method?: StringNullableFilter<"CasePayment"> | string | null
     referenceNo?: StringNullableFilter<"CasePayment"> | string | null
     notes?: StringNullableFilter<"CasePayment"> | string | null
+    receivedByUserId?: StringNullableFilter<"CasePayment"> | string | null
+    receivedBy?: StringNullableFilter<"CasePayment"> | string | null
     createdAt?: DateTimeFilter<"CasePayment"> | Date | string
     case?: XOR<CaseScalarRelationFilter, CaseWhereInput>
+    receivedByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }
 
   export type CasePaymentOrderByWithRelationInput = {
@@ -31150,8 +32729,11 @@ export namespace Prisma {
     method?: SortOrderInput | SortOrder
     referenceNo?: SortOrderInput | SortOrder
     notes?: SortOrderInput | SortOrder
+    receivedByUserId?: SortOrderInput | SortOrder
+    receivedBy?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     case?: CaseOrderByWithRelationInput
+    receivedByUser?: UserOrderByWithRelationInput
   }
 
   export type CasePaymentWhereUniqueInput = Prisma.AtLeast<{
@@ -31165,8 +32747,11 @@ export namespace Prisma {
     method?: StringNullableFilter<"CasePayment"> | string | null
     referenceNo?: StringNullableFilter<"CasePayment"> | string | null
     notes?: StringNullableFilter<"CasePayment"> | string | null
+    receivedByUserId?: StringNullableFilter<"CasePayment"> | string | null
+    receivedBy?: StringNullableFilter<"CasePayment"> | string | null
     createdAt?: DateTimeFilter<"CasePayment"> | Date | string
     case?: XOR<CaseScalarRelationFilter, CaseWhereInput>
+    receivedByUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }, "id">
 
   export type CasePaymentOrderByWithAggregationInput = {
@@ -31177,6 +32762,8 @@ export namespace Prisma {
     method?: SortOrderInput | SortOrder
     referenceNo?: SortOrderInput | SortOrder
     notes?: SortOrderInput | SortOrder
+    receivedByUserId?: SortOrderInput | SortOrder
+    receivedBy?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     _count?: CasePaymentCountOrderByAggregateInput
     _avg?: CasePaymentAvgOrderByAggregateInput
@@ -31196,6 +32783,8 @@ export namespace Prisma {
     method?: StringNullableWithAggregatesFilter<"CasePayment"> | string | null
     referenceNo?: StringNullableWithAggregatesFilter<"CasePayment"> | string | null
     notes?: StringNullableWithAggregatesFilter<"CasePayment"> | string | null
+    receivedByUserId?: StringNullableWithAggregatesFilter<"CasePayment"> | string | null
+    receivedBy?: StringNullableWithAggregatesFilter<"CasePayment"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"CasePayment"> | Date | string
   }
 
@@ -31825,6 +33414,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerCreateNestedManyWithoutUserInput
     cases_as_pleader?: CasePleadingCreateNestedManyWithoutPleaderInput
     cases_as_counselor?: CaseCounselingCreateNestedManyWithoutCounselorInput
+    cases_payment_received?: CasePaymentCreateNestedManyWithoutReceivedByUserInput
     cases_created?: CaseCreateNestedManyWithoutCreatedByInput
   }
 
@@ -31850,6 +33440,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerUncheckedCreateNestedManyWithoutUserInput
     cases_as_pleader?: CasePleadingUncheckedCreateNestedManyWithoutPleaderInput
     cases_as_counselor?: CaseCounselingUncheckedCreateNestedManyWithoutCounselorInput
+    cases_payment_received?: CasePaymentUncheckedCreateNestedManyWithoutReceivedByUserInput
     cases_created?: CaseUncheckedCreateNestedManyWithoutCreatedByInput
   }
 
@@ -31875,6 +33466,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerUpdateManyWithoutUserNestedInput
     cases_as_pleader?: CasePleadingUpdateManyWithoutPleaderNestedInput
     cases_as_counselor?: CaseCounselingUpdateManyWithoutCounselorNestedInput
+    cases_payment_received?: CasePaymentUpdateManyWithoutReceivedByUserNestedInput
     cases_created?: CaseUpdateManyWithoutCreatedByNestedInput
   }
 
@@ -31900,6 +33492,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerUncheckedUpdateManyWithoutUserNestedInput
     cases_as_pleader?: CasePleadingUncheckedUpdateManyWithoutPleaderNestedInput
     cases_as_counselor?: CaseCounselingUncheckedUpdateManyWithoutCounselorNestedInput
+    cases_payment_received?: CasePaymentUncheckedUpdateManyWithoutReceivedByUserNestedInput
     cases_created?: CaseUncheckedUpdateManyWithoutCreatedByNestedInput
   }
 
@@ -32291,11 +33884,7 @@ export namespace Prisma {
 
   export type CaseCreateInput = {
     id?: string
-    caseNumber: string
-    caseName: string
-    registrationDate?: Date | string | null
     registrationFee?: Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: string | null
     facts?: string | null
     relatedLaws?: string | null
     referredThrough?: string | null
@@ -32306,6 +33895,7 @@ export namespace Prisma {
     createdAt?: Date | string
     nature: CaseNatureCreateNestedOneWithoutCasesInput
     createdBy?: UserCreateNestedOneWithoutCases_createdInput
+    courtDetails?: CaseCourtDetailCreateNestedManyWithoutCaseInput
     lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
     parties?: CasePartyCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingCreateNestedManyWithoutCaseInput
@@ -32319,12 +33909,8 @@ export namespace Prisma {
 
   export type CaseUncheckedCreateInput = {
     id?: string
-    caseNumber: string
-    caseName: string
     natureId: string
-    registrationDate?: Date | string | null
     registrationFee?: Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: string | null
     facts?: string | null
     relatedLaws?: string | null
     referredThrough?: string | null
@@ -32334,6 +33920,7 @@ export namespace Prisma {
     status?: string
     createdById?: string | null
     createdAt?: Date | string
+    courtDetails?: CaseCourtDetailUncheckedCreateNestedManyWithoutCaseInput
     lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
     parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingUncheckedCreateNestedManyWithoutCaseInput
@@ -32347,11 +33934,7 @@ export namespace Prisma {
 
   export type CaseUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    caseNumber?: StringFieldUpdateOperationsInput | string
-    caseName?: StringFieldUpdateOperationsInput | string
-    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
@@ -32362,6 +33945,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     nature?: CaseNatureUpdateOneRequiredWithoutCasesNestedInput
     createdBy?: UserUpdateOneWithoutCases_createdNestedInput
+    courtDetails?: CaseCourtDetailUpdateManyWithoutCaseNestedInput
     lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUpdateManyWithoutCaseNestedInput
@@ -32375,12 +33959,8 @@ export namespace Prisma {
 
   export type CaseUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    caseNumber?: StringFieldUpdateOperationsInput | string
-    caseName?: StringFieldUpdateOperationsInput | string
     natureId?: StringFieldUpdateOperationsInput | string
-    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
@@ -32390,6 +33970,7 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    courtDetails?: CaseCourtDetailUncheckedUpdateManyWithoutCaseNestedInput
     lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUncheckedUpdateManyWithoutCaseNestedInput
@@ -32403,12 +33984,8 @@ export namespace Prisma {
 
   export type CaseCreateManyInput = {
     id?: string
-    caseNumber: string
-    caseName: string
     natureId: string
-    registrationDate?: Date | string | null
     registrationFee?: Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: string | null
     facts?: string | null
     relatedLaws?: string | null
     referredThrough?: string | null
@@ -32422,11 +33999,7 @@ export namespace Prisma {
 
   export type CaseUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    caseNumber?: StringFieldUpdateOperationsInput | string
-    caseName?: StringFieldUpdateOperationsInput | string
-    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
@@ -32439,12 +34012,8 @@ export namespace Prisma {
 
   export type CaseUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    caseNumber?: StringFieldUpdateOperationsInput | string
-    caseName?: StringFieldUpdateOperationsInput | string
     natureId?: StringFieldUpdateOperationsInput | string
-    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
@@ -32454,6 +34023,117 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CaseCourtDetailCreateInput = {
+    id?: string
+    caseName: string
+    caseNumber: string
+    registrationDate?: Date | string | null
+    judgeName?: string | null
+    courtType?: string | null
+    sectionCourtRoom?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    case: CaseCreateNestedOneWithoutCourtDetailsInput
+    parent?: CaseCourtDetailCreateNestedOneWithoutChildrenInput
+    children?: CaseCourtDetailCreateNestedManyWithoutParentInput
+    hearings?: CaseHearingCreateNestedManyWithoutCaseCourtDetailInput
+  }
+
+  export type CaseCourtDetailUncheckedCreateInput = {
+    id?: string
+    caseId: string
+    caseName: string
+    caseNumber: string
+    registrationDate?: Date | string | null
+    judgeName?: string | null
+    courtType?: string | null
+    sectionCourtRoom?: string | null
+    parentId?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    children?: CaseCourtDetailUncheckedCreateNestedManyWithoutParentInput
+    hearings?: CaseHearingUncheckedCreateNestedManyWithoutCaseCourtDetailInput
+  }
+
+  export type CaseCourtDetailUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseName?: StringFieldUpdateOperationsInput | string
+    caseNumber?: StringFieldUpdateOperationsInput | string
+    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    judgeName?: NullableStringFieldUpdateOperationsInput | string | null
+    courtType?: NullableStringFieldUpdateOperationsInput | string | null
+    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    case?: CaseUpdateOneRequiredWithoutCourtDetailsNestedInput
+    parent?: CaseCourtDetailUpdateOneWithoutChildrenNestedInput
+    children?: CaseCourtDetailUpdateManyWithoutParentNestedInput
+    hearings?: CaseHearingUpdateManyWithoutCaseCourtDetailNestedInput
+  }
+
+  export type CaseCourtDetailUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseId?: StringFieldUpdateOperationsInput | string
+    caseName?: StringFieldUpdateOperationsInput | string
+    caseNumber?: StringFieldUpdateOperationsInput | string
+    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    judgeName?: NullableStringFieldUpdateOperationsInput | string | null
+    courtType?: NullableStringFieldUpdateOperationsInput | string | null
+    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
+    parentId?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    children?: CaseCourtDetailUncheckedUpdateManyWithoutParentNestedInput
+    hearings?: CaseHearingUncheckedUpdateManyWithoutCaseCourtDetailNestedInput
+  }
+
+  export type CaseCourtDetailCreateManyInput = {
+    id?: string
+    caseId: string
+    caseName: string
+    caseNumber: string
+    registrationDate?: Date | string | null
+    judgeName?: string | null
+    courtType?: string | null
+    sectionCourtRoom?: string | null
+    parentId?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CaseCourtDetailUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseName?: StringFieldUpdateOperationsInput | string
+    caseNumber?: StringFieldUpdateOperationsInput | string
+    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    judgeName?: NullableStringFieldUpdateOperationsInput | string | null
+    courtType?: NullableStringFieldUpdateOperationsInput | string | null
+    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CaseCourtDetailUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseId?: StringFieldUpdateOperationsInput | string
+    caseName?: StringFieldUpdateOperationsInput | string
+    caseNumber?: StringFieldUpdateOperationsInput | string
+    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    judgeName?: NullableStringFieldUpdateOperationsInput | string | null
+    courtType?: NullableStringFieldUpdateOperationsInput | string | null
+    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
+    parentId?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CaseLawyerCreateInput = {
@@ -32593,17 +34273,17 @@ export namespace Prisma {
     nextHearingDate?: Date | string | null
     hearingDate?: Date | string | null
     hearingOrder?: string | null
-    judgeName?: string | null
     case: CaseCreateNestedOneWithoutHearingsInput
+    caseCourtDetail?: CaseCourtDetailCreateNestedOneWithoutHearingsInput
   }
 
   export type CaseHearingUncheckedCreateInput = {
     id?: string
     caseId: string
+    caseCourtDetailId?: string | null
     nextHearingDate?: Date | string | null
     hearingDate?: Date | string | null
     hearingOrder?: string | null
-    judgeName?: string | null
   }
 
   export type CaseHearingUpdateInput = {
@@ -32611,26 +34291,26 @@ export namespace Prisma {
     nextHearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hearingOrder?: NullableStringFieldUpdateOperationsInput | string | null
-    judgeName?: NullableStringFieldUpdateOperationsInput | string | null
     case?: CaseUpdateOneRequiredWithoutHearingsNestedInput
+    caseCourtDetail?: CaseCourtDetailUpdateOneWithoutHearingsNestedInput
   }
 
   export type CaseHearingUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     caseId?: StringFieldUpdateOperationsInput | string
+    caseCourtDetailId?: NullableStringFieldUpdateOperationsInput | string | null
     nextHearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hearingOrder?: NullableStringFieldUpdateOperationsInput | string | null
-    judgeName?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CaseHearingCreateManyInput = {
     id?: string
     caseId: string
+    caseCourtDetailId?: string | null
     nextHearingDate?: Date | string | null
     hearingDate?: Date | string | null
     hearingOrder?: string | null
-    judgeName?: string | null
   }
 
   export type CaseHearingUpdateManyMutationInput = {
@@ -32638,16 +34318,15 @@ export namespace Prisma {
     nextHearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hearingOrder?: NullableStringFieldUpdateOperationsInput | string | null
-    judgeName?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CaseHearingUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     caseId?: StringFieldUpdateOperationsInput | string
+    caseCourtDetailId?: NullableStringFieldUpdateOperationsInput | string | null
     nextHearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hearingOrder?: NullableStringFieldUpdateOperationsInput | string | null
-    judgeName?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CasePleadingCreateInput = {
@@ -32841,8 +34520,10 @@ export namespace Prisma {
     method?: string | null
     referenceNo?: string | null
     notes?: string | null
+    receivedBy?: string | null
     createdAt?: Date | string
     case: CaseCreateNestedOneWithoutPaymentsInput
+    receivedByUser?: UserCreateNestedOneWithoutCases_payment_receivedInput
   }
 
   export type CasePaymentUncheckedCreateInput = {
@@ -32853,6 +34534,8 @@ export namespace Prisma {
     method?: string | null
     referenceNo?: string | null
     notes?: string | null
+    receivedByUserId?: string | null
+    receivedBy?: string | null
     createdAt?: Date | string
   }
 
@@ -32863,8 +34546,10 @@ export namespace Prisma {
     method?: NullableStringFieldUpdateOperationsInput | string | null
     referenceNo?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
+    receivedBy?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     case?: CaseUpdateOneRequiredWithoutPaymentsNestedInput
+    receivedByUser?: UserUpdateOneWithoutCases_payment_receivedNestedInput
   }
 
   export type CasePaymentUncheckedUpdateInput = {
@@ -32875,6 +34560,8 @@ export namespace Prisma {
     method?: NullableStringFieldUpdateOperationsInput | string | null
     referenceNo?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
+    receivedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
+    receivedBy?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -32886,6 +34573,8 @@ export namespace Prisma {
     method?: string | null
     referenceNo?: string | null
     notes?: string | null
+    receivedByUserId?: string | null
+    receivedBy?: string | null
     createdAt?: Date | string
   }
 
@@ -32896,6 +34585,7 @@ export namespace Prisma {
     method?: NullableStringFieldUpdateOperationsInput | string | null
     referenceNo?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
+    receivedBy?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -32907,6 +34597,8 @@ export namespace Prisma {
     method?: NullableStringFieldUpdateOperationsInput | string | null
     referenceNo?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
+    receivedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
+    receivedBy?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -33690,6 +35382,12 @@ export namespace Prisma {
     none?: CaseCounselingWhereInput
   }
 
+  export type CasePaymentListRelationFilter = {
+    every?: CasePaymentWhereInput
+    some?: CasePaymentWhereInput
+    none?: CasePaymentWhereInput
+  }
+
   export type CaseListRelationFilter = {
     every?: CaseWhereInput
     some?: CaseWhereInput
@@ -33726,6 +35424,10 @@ export namespace Prisma {
   }
 
   export type CaseCounselingOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type CasePaymentOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -34108,6 +35810,12 @@ export namespace Prisma {
     isNot?: UserWhereInput | null
   }
 
+  export type CaseCourtDetailListRelationFilter = {
+    every?: CaseCourtDetailWhereInput
+    some?: CaseCourtDetailWhereInput
+    none?: CaseCourtDetailWhereInput
+  }
+
   export type CaseHearingListRelationFilter = {
     every?: CaseHearingWhereInput
     some?: CaseHearingWhereInput
@@ -34120,16 +35828,14 @@ export namespace Prisma {
     none?: CasePrecedentWhereInput
   }
 
-  export type CasePaymentListRelationFilter = {
-    every?: CasePaymentWhereInput
-    some?: CasePaymentWhereInput
-    none?: CasePaymentWhereInput
-  }
-
   export type CaseDocumentListRelationFilter = {
     every?: CaseDocumentWhereInput
     some?: CaseDocumentWhereInput
     none?: CaseDocumentWhereInput
+  }
+
+  export type CaseCourtDetailOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type CaseHearingOrderByRelationAggregateInput = {
@@ -34140,22 +35846,14 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
-  export type CasePaymentOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
   export type CaseDocumentOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
   export type CaseCountOrderByAggregateInput = {
     id?: SortOrder
-    caseNumber?: SortOrder
-    caseName?: SortOrder
     natureId?: SortOrder
-    registrationDate?: SortOrder
     registrationFee?: SortOrder
-    sectionCourtRoom?: SortOrder
     facts?: SortOrder
     relatedLaws?: SortOrder
     referredThrough?: SortOrder
@@ -34173,12 +35871,8 @@ export namespace Prisma {
 
   export type CaseMaxOrderByAggregateInput = {
     id?: SortOrder
-    caseNumber?: SortOrder
-    caseName?: SortOrder
     natureId?: SortOrder
-    registrationDate?: SortOrder
     registrationFee?: SortOrder
-    sectionCourtRoom?: SortOrder
     facts?: SortOrder
     relatedLaws?: SortOrder
     referredThrough?: SortOrder
@@ -34192,12 +35886,8 @@ export namespace Prisma {
 
   export type CaseMinOrderByAggregateInput = {
     id?: SortOrder
-    caseNumber?: SortOrder
-    caseName?: SortOrder
     natureId?: SortOrder
-    registrationDate?: SortOrder
     registrationFee?: SortOrder
-    sectionCourtRoom?: SortOrder
     facts?: SortOrder
     relatedLaws?: SortOrder
     referredThrough?: SortOrder
@@ -34239,6 +35929,64 @@ export namespace Prisma {
     isNot?: CaseWhereInput
   }
 
+  export type CaseCourtDetailNullableScalarRelationFilter = {
+    is?: CaseCourtDetailWhereInput | null
+    isNot?: CaseCourtDetailWhereInput | null
+  }
+
+  export type CaseCourtDetailCountOrderByAggregateInput = {
+    id?: SortOrder
+    caseId?: SortOrder
+    caseName?: SortOrder
+    caseNumber?: SortOrder
+    registrationDate?: SortOrder
+    judgeName?: SortOrder
+    courtType?: SortOrder
+    sectionCourtRoom?: SortOrder
+    parentId?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CaseCourtDetailMaxOrderByAggregateInput = {
+    id?: SortOrder
+    caseId?: SortOrder
+    caseName?: SortOrder
+    caseNumber?: SortOrder
+    registrationDate?: SortOrder
+    judgeName?: SortOrder
+    courtType?: SortOrder
+    sectionCourtRoom?: SortOrder
+    parentId?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CaseCourtDetailMinOrderByAggregateInput = {
+    id?: SortOrder
+    caseId?: SortOrder
+    caseName?: SortOrder
+    caseNumber?: SortOrder
+    registrationDate?: SortOrder
+    judgeName?: SortOrder
+    courtType?: SortOrder
+    sectionCourtRoom?: SortOrder
+    parentId?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
   export type CaseLawyerCaseIdUserIdCompoundUniqueInput = {
     caseId: string
     userId: string
@@ -34260,14 +36008,6 @@ export namespace Prisma {
     caseId?: SortOrder
     userId?: SortOrder
     isLead?: SortOrder
-  }
-
-  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type PartyRoleScalarRelationFilter = {
@@ -34330,28 +36070,28 @@ export namespace Prisma {
   export type CaseHearingCountOrderByAggregateInput = {
     id?: SortOrder
     caseId?: SortOrder
+    caseCourtDetailId?: SortOrder
     nextHearingDate?: SortOrder
     hearingDate?: SortOrder
     hearingOrder?: SortOrder
-    judgeName?: SortOrder
   }
 
   export type CaseHearingMaxOrderByAggregateInput = {
     id?: SortOrder
     caseId?: SortOrder
+    caseCourtDetailId?: SortOrder
     nextHearingDate?: SortOrder
     hearingDate?: SortOrder
     hearingOrder?: SortOrder
-    judgeName?: SortOrder
   }
 
   export type CaseHearingMinOrderByAggregateInput = {
     id?: SortOrder
     caseId?: SortOrder
+    caseCourtDetailId?: SortOrder
     nextHearingDate?: SortOrder
     hearingDate?: SortOrder
     hearingOrder?: SortOrder
-    judgeName?: SortOrder
   }
 
   export type CasePleadingCountOrderByAggregateInput = {
@@ -34459,6 +36199,8 @@ export namespace Prisma {
     method?: SortOrder
     referenceNo?: SortOrder
     notes?: SortOrder
+    receivedByUserId?: SortOrder
+    receivedBy?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -34474,6 +36216,8 @@ export namespace Prisma {
     method?: SortOrder
     referenceNo?: SortOrder
     notes?: SortOrder
+    receivedByUserId?: SortOrder
+    receivedBy?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -34485,6 +36229,8 @@ export namespace Prisma {
     method?: SortOrder
     referenceNo?: SortOrder
     notes?: SortOrder
+    receivedByUserId?: SortOrder
+    receivedBy?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -34913,6 +36659,13 @@ export namespace Prisma {
     connect?: CaseCounselingWhereUniqueInput | CaseCounselingWhereUniqueInput[]
   }
 
+  export type CasePaymentCreateNestedManyWithoutReceivedByUserInput = {
+    create?: XOR<CasePaymentCreateWithoutReceivedByUserInput, CasePaymentUncheckedCreateWithoutReceivedByUserInput> | CasePaymentCreateWithoutReceivedByUserInput[] | CasePaymentUncheckedCreateWithoutReceivedByUserInput[]
+    connectOrCreate?: CasePaymentCreateOrConnectWithoutReceivedByUserInput | CasePaymentCreateOrConnectWithoutReceivedByUserInput[]
+    createMany?: CasePaymentCreateManyReceivedByUserInputEnvelope
+    connect?: CasePaymentWhereUniqueInput | CasePaymentWhereUniqueInput[]
+  }
+
   export type CaseCreateNestedManyWithoutCreatedByInput = {
     create?: XOR<CaseCreateWithoutCreatedByInput, CaseUncheckedCreateWithoutCreatedByInput> | CaseCreateWithoutCreatedByInput[] | CaseUncheckedCreateWithoutCreatedByInput[]
     connectOrCreate?: CaseCreateOrConnectWithoutCreatedByInput | CaseCreateOrConnectWithoutCreatedByInput[]
@@ -34967,6 +36720,13 @@ export namespace Prisma {
     connectOrCreate?: CaseCounselingCreateOrConnectWithoutCounselorInput | CaseCounselingCreateOrConnectWithoutCounselorInput[]
     createMany?: CaseCounselingCreateManyCounselorInputEnvelope
     connect?: CaseCounselingWhereUniqueInput | CaseCounselingWhereUniqueInput[]
+  }
+
+  export type CasePaymentUncheckedCreateNestedManyWithoutReceivedByUserInput = {
+    create?: XOR<CasePaymentCreateWithoutReceivedByUserInput, CasePaymentUncheckedCreateWithoutReceivedByUserInput> | CasePaymentCreateWithoutReceivedByUserInput[] | CasePaymentUncheckedCreateWithoutReceivedByUserInput[]
+    connectOrCreate?: CasePaymentCreateOrConnectWithoutReceivedByUserInput | CasePaymentCreateOrConnectWithoutReceivedByUserInput[]
+    createMany?: CasePaymentCreateManyReceivedByUserInputEnvelope
+    connect?: CasePaymentWhereUniqueInput | CasePaymentWhereUniqueInput[]
   }
 
   export type CaseUncheckedCreateNestedManyWithoutCreatedByInput = {
@@ -35110,6 +36870,20 @@ export namespace Prisma {
     deleteMany?: CaseCounselingScalarWhereInput | CaseCounselingScalarWhereInput[]
   }
 
+  export type CasePaymentUpdateManyWithoutReceivedByUserNestedInput = {
+    create?: XOR<CasePaymentCreateWithoutReceivedByUserInput, CasePaymentUncheckedCreateWithoutReceivedByUserInput> | CasePaymentCreateWithoutReceivedByUserInput[] | CasePaymentUncheckedCreateWithoutReceivedByUserInput[]
+    connectOrCreate?: CasePaymentCreateOrConnectWithoutReceivedByUserInput | CasePaymentCreateOrConnectWithoutReceivedByUserInput[]
+    upsert?: CasePaymentUpsertWithWhereUniqueWithoutReceivedByUserInput | CasePaymentUpsertWithWhereUniqueWithoutReceivedByUserInput[]
+    createMany?: CasePaymentCreateManyReceivedByUserInputEnvelope
+    set?: CasePaymentWhereUniqueInput | CasePaymentWhereUniqueInput[]
+    disconnect?: CasePaymentWhereUniqueInput | CasePaymentWhereUniqueInput[]
+    delete?: CasePaymentWhereUniqueInput | CasePaymentWhereUniqueInput[]
+    connect?: CasePaymentWhereUniqueInput | CasePaymentWhereUniqueInput[]
+    update?: CasePaymentUpdateWithWhereUniqueWithoutReceivedByUserInput | CasePaymentUpdateWithWhereUniqueWithoutReceivedByUserInput[]
+    updateMany?: CasePaymentUpdateManyWithWhereWithoutReceivedByUserInput | CasePaymentUpdateManyWithWhereWithoutReceivedByUserInput[]
+    deleteMany?: CasePaymentScalarWhereInput | CasePaymentScalarWhereInput[]
+  }
+
   export type CaseUpdateManyWithoutCreatedByNestedInput = {
     create?: XOR<CaseCreateWithoutCreatedByInput, CaseUncheckedCreateWithoutCreatedByInput> | CaseCreateWithoutCreatedByInput[] | CaseUncheckedCreateWithoutCreatedByInput[]
     connectOrCreate?: CaseCreateOrConnectWithoutCreatedByInput | CaseCreateOrConnectWithoutCreatedByInput[]
@@ -35220,6 +36994,20 @@ export namespace Prisma {
     update?: CaseCounselingUpdateWithWhereUniqueWithoutCounselorInput | CaseCounselingUpdateWithWhereUniqueWithoutCounselorInput[]
     updateMany?: CaseCounselingUpdateManyWithWhereWithoutCounselorInput | CaseCounselingUpdateManyWithWhereWithoutCounselorInput[]
     deleteMany?: CaseCounselingScalarWhereInput | CaseCounselingScalarWhereInput[]
+  }
+
+  export type CasePaymentUncheckedUpdateManyWithoutReceivedByUserNestedInput = {
+    create?: XOR<CasePaymentCreateWithoutReceivedByUserInput, CasePaymentUncheckedCreateWithoutReceivedByUserInput> | CasePaymentCreateWithoutReceivedByUserInput[] | CasePaymentUncheckedCreateWithoutReceivedByUserInput[]
+    connectOrCreate?: CasePaymentCreateOrConnectWithoutReceivedByUserInput | CasePaymentCreateOrConnectWithoutReceivedByUserInput[]
+    upsert?: CasePaymentUpsertWithWhereUniqueWithoutReceivedByUserInput | CasePaymentUpsertWithWhereUniqueWithoutReceivedByUserInput[]
+    createMany?: CasePaymentCreateManyReceivedByUserInputEnvelope
+    set?: CasePaymentWhereUniqueInput | CasePaymentWhereUniqueInput[]
+    disconnect?: CasePaymentWhereUniqueInput | CasePaymentWhereUniqueInput[]
+    delete?: CasePaymentWhereUniqueInput | CasePaymentWhereUniqueInput[]
+    connect?: CasePaymentWhereUniqueInput | CasePaymentWhereUniqueInput[]
+    update?: CasePaymentUpdateWithWhereUniqueWithoutReceivedByUserInput | CasePaymentUpdateWithWhereUniqueWithoutReceivedByUserInput[]
+    updateMany?: CasePaymentUpdateManyWithWhereWithoutReceivedByUserInput | CasePaymentUpdateManyWithWhereWithoutReceivedByUserInput[]
+    deleteMany?: CasePaymentScalarWhereInput | CasePaymentScalarWhereInput[]
   }
 
   export type CaseUncheckedUpdateManyWithoutCreatedByNestedInput = {
@@ -35536,6 +37324,13 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
+  export type CaseCourtDetailCreateNestedManyWithoutCaseInput = {
+    create?: XOR<CaseCourtDetailCreateWithoutCaseInput, CaseCourtDetailUncheckedCreateWithoutCaseInput> | CaseCourtDetailCreateWithoutCaseInput[] | CaseCourtDetailUncheckedCreateWithoutCaseInput[]
+    connectOrCreate?: CaseCourtDetailCreateOrConnectWithoutCaseInput | CaseCourtDetailCreateOrConnectWithoutCaseInput[]
+    createMany?: CaseCourtDetailCreateManyCaseInputEnvelope
+    connect?: CaseCourtDetailWhereUniqueInput | CaseCourtDetailWhereUniqueInput[]
+  }
+
   export type CaseLawyerCreateNestedManyWithoutCaseInput = {
     create?: XOR<CaseLawyerCreateWithoutCaseInput, CaseLawyerUncheckedCreateWithoutCaseInput> | CaseLawyerCreateWithoutCaseInput[] | CaseLawyerUncheckedCreateWithoutCaseInput[]
     connectOrCreate?: CaseLawyerCreateOrConnectWithoutCaseInput | CaseLawyerCreateOrConnectWithoutCaseInput[]
@@ -35597,6 +37392,13 @@ export namespace Prisma {
     connectOrCreate?: CaseDocumentCreateOrConnectWithoutCaseInput | CaseDocumentCreateOrConnectWithoutCaseInput[]
     createMany?: CaseDocumentCreateManyCaseInputEnvelope
     connect?: CaseDocumentWhereUniqueInput | CaseDocumentWhereUniqueInput[]
+  }
+
+  export type CaseCourtDetailUncheckedCreateNestedManyWithoutCaseInput = {
+    create?: XOR<CaseCourtDetailCreateWithoutCaseInput, CaseCourtDetailUncheckedCreateWithoutCaseInput> | CaseCourtDetailCreateWithoutCaseInput[] | CaseCourtDetailUncheckedCreateWithoutCaseInput[]
+    connectOrCreate?: CaseCourtDetailCreateOrConnectWithoutCaseInput | CaseCourtDetailCreateOrConnectWithoutCaseInput[]
+    createMany?: CaseCourtDetailCreateManyCaseInputEnvelope
+    connect?: CaseCourtDetailWhereUniqueInput | CaseCourtDetailWhereUniqueInput[]
   }
 
   export type CaseLawyerUncheckedCreateNestedManyWithoutCaseInput = {
@@ -35686,6 +37488,20 @@ export namespace Prisma {
     delete?: UserWhereInput | boolean
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCases_createdInput, UserUpdateWithoutCases_createdInput>, UserUncheckedUpdateWithoutCases_createdInput>
+  }
+
+  export type CaseCourtDetailUpdateManyWithoutCaseNestedInput = {
+    create?: XOR<CaseCourtDetailCreateWithoutCaseInput, CaseCourtDetailUncheckedCreateWithoutCaseInput> | CaseCourtDetailCreateWithoutCaseInput[] | CaseCourtDetailUncheckedCreateWithoutCaseInput[]
+    connectOrCreate?: CaseCourtDetailCreateOrConnectWithoutCaseInput | CaseCourtDetailCreateOrConnectWithoutCaseInput[]
+    upsert?: CaseCourtDetailUpsertWithWhereUniqueWithoutCaseInput | CaseCourtDetailUpsertWithWhereUniqueWithoutCaseInput[]
+    createMany?: CaseCourtDetailCreateManyCaseInputEnvelope
+    set?: CaseCourtDetailWhereUniqueInput | CaseCourtDetailWhereUniqueInput[]
+    disconnect?: CaseCourtDetailWhereUniqueInput | CaseCourtDetailWhereUniqueInput[]
+    delete?: CaseCourtDetailWhereUniqueInput | CaseCourtDetailWhereUniqueInput[]
+    connect?: CaseCourtDetailWhereUniqueInput | CaseCourtDetailWhereUniqueInput[]
+    update?: CaseCourtDetailUpdateWithWhereUniqueWithoutCaseInput | CaseCourtDetailUpdateWithWhereUniqueWithoutCaseInput[]
+    updateMany?: CaseCourtDetailUpdateManyWithWhereWithoutCaseInput | CaseCourtDetailUpdateManyWithWhereWithoutCaseInput[]
+    deleteMany?: CaseCourtDetailScalarWhereInput | CaseCourtDetailScalarWhereInput[]
   }
 
   export type CaseLawyerUpdateManyWithoutCaseNestedInput = {
@@ -35814,6 +37630,20 @@ export namespace Prisma {
     deleteMany?: CaseDocumentScalarWhereInput | CaseDocumentScalarWhereInput[]
   }
 
+  export type CaseCourtDetailUncheckedUpdateManyWithoutCaseNestedInput = {
+    create?: XOR<CaseCourtDetailCreateWithoutCaseInput, CaseCourtDetailUncheckedCreateWithoutCaseInput> | CaseCourtDetailCreateWithoutCaseInput[] | CaseCourtDetailUncheckedCreateWithoutCaseInput[]
+    connectOrCreate?: CaseCourtDetailCreateOrConnectWithoutCaseInput | CaseCourtDetailCreateOrConnectWithoutCaseInput[]
+    upsert?: CaseCourtDetailUpsertWithWhereUniqueWithoutCaseInput | CaseCourtDetailUpsertWithWhereUniqueWithoutCaseInput[]
+    createMany?: CaseCourtDetailCreateManyCaseInputEnvelope
+    set?: CaseCourtDetailWhereUniqueInput | CaseCourtDetailWhereUniqueInput[]
+    disconnect?: CaseCourtDetailWhereUniqueInput | CaseCourtDetailWhereUniqueInput[]
+    delete?: CaseCourtDetailWhereUniqueInput | CaseCourtDetailWhereUniqueInput[]
+    connect?: CaseCourtDetailWhereUniqueInput | CaseCourtDetailWhereUniqueInput[]
+    update?: CaseCourtDetailUpdateWithWhereUniqueWithoutCaseInput | CaseCourtDetailUpdateWithWhereUniqueWithoutCaseInput[]
+    updateMany?: CaseCourtDetailUpdateManyWithWhereWithoutCaseInput | CaseCourtDetailUpdateManyWithWhereWithoutCaseInput[]
+    deleteMany?: CaseCourtDetailScalarWhereInput | CaseCourtDetailScalarWhereInput[]
+  }
+
   export type CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput = {
     create?: XOR<CaseLawyerCreateWithoutCaseInput, CaseLawyerUncheckedCreateWithoutCaseInput> | CaseLawyerCreateWithoutCaseInput[] | CaseLawyerUncheckedCreateWithoutCaseInput[]
     connectOrCreate?: CaseLawyerCreateOrConnectWithoutCaseInput | CaseLawyerCreateOrConnectWithoutCaseInput[]
@@ -35940,6 +37770,124 @@ export namespace Prisma {
     deleteMany?: CaseDocumentScalarWhereInput | CaseDocumentScalarWhereInput[]
   }
 
+  export type CaseCreateNestedOneWithoutCourtDetailsInput = {
+    create?: XOR<CaseCreateWithoutCourtDetailsInput, CaseUncheckedCreateWithoutCourtDetailsInput>
+    connectOrCreate?: CaseCreateOrConnectWithoutCourtDetailsInput
+    connect?: CaseWhereUniqueInput
+  }
+
+  export type CaseCourtDetailCreateNestedOneWithoutChildrenInput = {
+    create?: XOR<CaseCourtDetailCreateWithoutChildrenInput, CaseCourtDetailUncheckedCreateWithoutChildrenInput>
+    connectOrCreate?: CaseCourtDetailCreateOrConnectWithoutChildrenInput
+    connect?: CaseCourtDetailWhereUniqueInput
+  }
+
+  export type CaseCourtDetailCreateNestedManyWithoutParentInput = {
+    create?: XOR<CaseCourtDetailCreateWithoutParentInput, CaseCourtDetailUncheckedCreateWithoutParentInput> | CaseCourtDetailCreateWithoutParentInput[] | CaseCourtDetailUncheckedCreateWithoutParentInput[]
+    connectOrCreate?: CaseCourtDetailCreateOrConnectWithoutParentInput | CaseCourtDetailCreateOrConnectWithoutParentInput[]
+    createMany?: CaseCourtDetailCreateManyParentInputEnvelope
+    connect?: CaseCourtDetailWhereUniqueInput | CaseCourtDetailWhereUniqueInput[]
+  }
+
+  export type CaseHearingCreateNestedManyWithoutCaseCourtDetailInput = {
+    create?: XOR<CaseHearingCreateWithoutCaseCourtDetailInput, CaseHearingUncheckedCreateWithoutCaseCourtDetailInput> | CaseHearingCreateWithoutCaseCourtDetailInput[] | CaseHearingUncheckedCreateWithoutCaseCourtDetailInput[]
+    connectOrCreate?: CaseHearingCreateOrConnectWithoutCaseCourtDetailInput | CaseHearingCreateOrConnectWithoutCaseCourtDetailInput[]
+    createMany?: CaseHearingCreateManyCaseCourtDetailInputEnvelope
+    connect?: CaseHearingWhereUniqueInput | CaseHearingWhereUniqueInput[]
+  }
+
+  export type CaseCourtDetailUncheckedCreateNestedManyWithoutParentInput = {
+    create?: XOR<CaseCourtDetailCreateWithoutParentInput, CaseCourtDetailUncheckedCreateWithoutParentInput> | CaseCourtDetailCreateWithoutParentInput[] | CaseCourtDetailUncheckedCreateWithoutParentInput[]
+    connectOrCreate?: CaseCourtDetailCreateOrConnectWithoutParentInput | CaseCourtDetailCreateOrConnectWithoutParentInput[]
+    createMany?: CaseCourtDetailCreateManyParentInputEnvelope
+    connect?: CaseCourtDetailWhereUniqueInput | CaseCourtDetailWhereUniqueInput[]
+  }
+
+  export type CaseHearingUncheckedCreateNestedManyWithoutCaseCourtDetailInput = {
+    create?: XOR<CaseHearingCreateWithoutCaseCourtDetailInput, CaseHearingUncheckedCreateWithoutCaseCourtDetailInput> | CaseHearingCreateWithoutCaseCourtDetailInput[] | CaseHearingUncheckedCreateWithoutCaseCourtDetailInput[]
+    connectOrCreate?: CaseHearingCreateOrConnectWithoutCaseCourtDetailInput | CaseHearingCreateOrConnectWithoutCaseCourtDetailInput[]
+    createMany?: CaseHearingCreateManyCaseCourtDetailInputEnvelope
+    connect?: CaseHearingWhereUniqueInput | CaseHearingWhereUniqueInput[]
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
+  export type CaseUpdateOneRequiredWithoutCourtDetailsNestedInput = {
+    create?: XOR<CaseCreateWithoutCourtDetailsInput, CaseUncheckedCreateWithoutCourtDetailsInput>
+    connectOrCreate?: CaseCreateOrConnectWithoutCourtDetailsInput
+    upsert?: CaseUpsertWithoutCourtDetailsInput
+    connect?: CaseWhereUniqueInput
+    update?: XOR<XOR<CaseUpdateToOneWithWhereWithoutCourtDetailsInput, CaseUpdateWithoutCourtDetailsInput>, CaseUncheckedUpdateWithoutCourtDetailsInput>
+  }
+
+  export type CaseCourtDetailUpdateOneWithoutChildrenNestedInput = {
+    create?: XOR<CaseCourtDetailCreateWithoutChildrenInput, CaseCourtDetailUncheckedCreateWithoutChildrenInput>
+    connectOrCreate?: CaseCourtDetailCreateOrConnectWithoutChildrenInput
+    upsert?: CaseCourtDetailUpsertWithoutChildrenInput
+    disconnect?: CaseCourtDetailWhereInput | boolean
+    delete?: CaseCourtDetailWhereInput | boolean
+    connect?: CaseCourtDetailWhereUniqueInput
+    update?: XOR<XOR<CaseCourtDetailUpdateToOneWithWhereWithoutChildrenInput, CaseCourtDetailUpdateWithoutChildrenInput>, CaseCourtDetailUncheckedUpdateWithoutChildrenInput>
+  }
+
+  export type CaseCourtDetailUpdateManyWithoutParentNestedInput = {
+    create?: XOR<CaseCourtDetailCreateWithoutParentInput, CaseCourtDetailUncheckedCreateWithoutParentInput> | CaseCourtDetailCreateWithoutParentInput[] | CaseCourtDetailUncheckedCreateWithoutParentInput[]
+    connectOrCreate?: CaseCourtDetailCreateOrConnectWithoutParentInput | CaseCourtDetailCreateOrConnectWithoutParentInput[]
+    upsert?: CaseCourtDetailUpsertWithWhereUniqueWithoutParentInput | CaseCourtDetailUpsertWithWhereUniqueWithoutParentInput[]
+    createMany?: CaseCourtDetailCreateManyParentInputEnvelope
+    set?: CaseCourtDetailWhereUniqueInput | CaseCourtDetailWhereUniqueInput[]
+    disconnect?: CaseCourtDetailWhereUniqueInput | CaseCourtDetailWhereUniqueInput[]
+    delete?: CaseCourtDetailWhereUniqueInput | CaseCourtDetailWhereUniqueInput[]
+    connect?: CaseCourtDetailWhereUniqueInput | CaseCourtDetailWhereUniqueInput[]
+    update?: CaseCourtDetailUpdateWithWhereUniqueWithoutParentInput | CaseCourtDetailUpdateWithWhereUniqueWithoutParentInput[]
+    updateMany?: CaseCourtDetailUpdateManyWithWhereWithoutParentInput | CaseCourtDetailUpdateManyWithWhereWithoutParentInput[]
+    deleteMany?: CaseCourtDetailScalarWhereInput | CaseCourtDetailScalarWhereInput[]
+  }
+
+  export type CaseHearingUpdateManyWithoutCaseCourtDetailNestedInput = {
+    create?: XOR<CaseHearingCreateWithoutCaseCourtDetailInput, CaseHearingUncheckedCreateWithoutCaseCourtDetailInput> | CaseHearingCreateWithoutCaseCourtDetailInput[] | CaseHearingUncheckedCreateWithoutCaseCourtDetailInput[]
+    connectOrCreate?: CaseHearingCreateOrConnectWithoutCaseCourtDetailInput | CaseHearingCreateOrConnectWithoutCaseCourtDetailInput[]
+    upsert?: CaseHearingUpsertWithWhereUniqueWithoutCaseCourtDetailInput | CaseHearingUpsertWithWhereUniqueWithoutCaseCourtDetailInput[]
+    createMany?: CaseHearingCreateManyCaseCourtDetailInputEnvelope
+    set?: CaseHearingWhereUniqueInput | CaseHearingWhereUniqueInput[]
+    disconnect?: CaseHearingWhereUniqueInput | CaseHearingWhereUniqueInput[]
+    delete?: CaseHearingWhereUniqueInput | CaseHearingWhereUniqueInput[]
+    connect?: CaseHearingWhereUniqueInput | CaseHearingWhereUniqueInput[]
+    update?: CaseHearingUpdateWithWhereUniqueWithoutCaseCourtDetailInput | CaseHearingUpdateWithWhereUniqueWithoutCaseCourtDetailInput[]
+    updateMany?: CaseHearingUpdateManyWithWhereWithoutCaseCourtDetailInput | CaseHearingUpdateManyWithWhereWithoutCaseCourtDetailInput[]
+    deleteMany?: CaseHearingScalarWhereInput | CaseHearingScalarWhereInput[]
+  }
+
+  export type CaseCourtDetailUncheckedUpdateManyWithoutParentNestedInput = {
+    create?: XOR<CaseCourtDetailCreateWithoutParentInput, CaseCourtDetailUncheckedCreateWithoutParentInput> | CaseCourtDetailCreateWithoutParentInput[] | CaseCourtDetailUncheckedCreateWithoutParentInput[]
+    connectOrCreate?: CaseCourtDetailCreateOrConnectWithoutParentInput | CaseCourtDetailCreateOrConnectWithoutParentInput[]
+    upsert?: CaseCourtDetailUpsertWithWhereUniqueWithoutParentInput | CaseCourtDetailUpsertWithWhereUniqueWithoutParentInput[]
+    createMany?: CaseCourtDetailCreateManyParentInputEnvelope
+    set?: CaseCourtDetailWhereUniqueInput | CaseCourtDetailWhereUniqueInput[]
+    disconnect?: CaseCourtDetailWhereUniqueInput | CaseCourtDetailWhereUniqueInput[]
+    delete?: CaseCourtDetailWhereUniqueInput | CaseCourtDetailWhereUniqueInput[]
+    connect?: CaseCourtDetailWhereUniqueInput | CaseCourtDetailWhereUniqueInput[]
+    update?: CaseCourtDetailUpdateWithWhereUniqueWithoutParentInput | CaseCourtDetailUpdateWithWhereUniqueWithoutParentInput[]
+    updateMany?: CaseCourtDetailUpdateManyWithWhereWithoutParentInput | CaseCourtDetailUpdateManyWithWhereWithoutParentInput[]
+    deleteMany?: CaseCourtDetailScalarWhereInput | CaseCourtDetailScalarWhereInput[]
+  }
+
+  export type CaseHearingUncheckedUpdateManyWithoutCaseCourtDetailNestedInput = {
+    create?: XOR<CaseHearingCreateWithoutCaseCourtDetailInput, CaseHearingUncheckedCreateWithoutCaseCourtDetailInput> | CaseHearingCreateWithoutCaseCourtDetailInput[] | CaseHearingUncheckedCreateWithoutCaseCourtDetailInput[]
+    connectOrCreate?: CaseHearingCreateOrConnectWithoutCaseCourtDetailInput | CaseHearingCreateOrConnectWithoutCaseCourtDetailInput[]
+    upsert?: CaseHearingUpsertWithWhereUniqueWithoutCaseCourtDetailInput | CaseHearingUpsertWithWhereUniqueWithoutCaseCourtDetailInput[]
+    createMany?: CaseHearingCreateManyCaseCourtDetailInputEnvelope
+    set?: CaseHearingWhereUniqueInput | CaseHearingWhereUniqueInput[]
+    disconnect?: CaseHearingWhereUniqueInput | CaseHearingWhereUniqueInput[]
+    delete?: CaseHearingWhereUniqueInput | CaseHearingWhereUniqueInput[]
+    connect?: CaseHearingWhereUniqueInput | CaseHearingWhereUniqueInput[]
+    update?: CaseHearingUpdateWithWhereUniqueWithoutCaseCourtDetailInput | CaseHearingUpdateWithWhereUniqueWithoutCaseCourtDetailInput[]
+    updateMany?: CaseHearingUpdateManyWithWhereWithoutCaseCourtDetailInput | CaseHearingUpdateManyWithWhereWithoutCaseCourtDetailInput[]
+    deleteMany?: CaseHearingScalarWhereInput | CaseHearingScalarWhereInput[]
+  }
+
   export type CaseCreateNestedOneWithoutLawyersInput = {
     create?: XOR<CaseCreateWithoutLawyersInput, CaseUncheckedCreateWithoutLawyersInput>
     connectOrCreate?: CaseCreateOrConnectWithoutLawyersInput
@@ -35950,10 +37898,6 @@ export namespace Prisma {
     create?: XOR<UserCreateWithoutCases_as_lawyerInput, UserUncheckedCreateWithoutCases_as_lawyerInput>
     connectOrCreate?: UserCreateOrConnectWithoutCases_as_lawyerInput
     connect?: UserWhereUniqueInput
-  }
-
-  export type BoolFieldUpdateOperationsInput = {
-    set?: boolean
   }
 
   export type CaseUpdateOneRequiredWithoutLawyersNestedInput = {
@@ -36064,12 +38008,28 @@ export namespace Prisma {
     connect?: CaseWhereUniqueInput
   }
 
+  export type CaseCourtDetailCreateNestedOneWithoutHearingsInput = {
+    create?: XOR<CaseCourtDetailCreateWithoutHearingsInput, CaseCourtDetailUncheckedCreateWithoutHearingsInput>
+    connectOrCreate?: CaseCourtDetailCreateOrConnectWithoutHearingsInput
+    connect?: CaseCourtDetailWhereUniqueInput
+  }
+
   export type CaseUpdateOneRequiredWithoutHearingsNestedInput = {
     create?: XOR<CaseCreateWithoutHearingsInput, CaseUncheckedCreateWithoutHearingsInput>
     connectOrCreate?: CaseCreateOrConnectWithoutHearingsInput
     upsert?: CaseUpsertWithoutHearingsInput
     connect?: CaseWhereUniqueInput
     update?: XOR<XOR<CaseUpdateToOneWithWhereWithoutHearingsInput, CaseUpdateWithoutHearingsInput>, CaseUncheckedUpdateWithoutHearingsInput>
+  }
+
+  export type CaseCourtDetailUpdateOneWithoutHearingsNestedInput = {
+    create?: XOR<CaseCourtDetailCreateWithoutHearingsInput, CaseCourtDetailUncheckedCreateWithoutHearingsInput>
+    connectOrCreate?: CaseCourtDetailCreateOrConnectWithoutHearingsInput
+    upsert?: CaseCourtDetailUpsertWithoutHearingsInput
+    disconnect?: CaseCourtDetailWhereInput | boolean
+    delete?: CaseCourtDetailWhereInput | boolean
+    connect?: CaseCourtDetailWhereUniqueInput
+    update?: XOR<XOR<CaseCourtDetailUpdateToOneWithWhereWithoutHearingsInput, CaseCourtDetailUpdateWithoutHearingsInput>, CaseCourtDetailUncheckedUpdateWithoutHearingsInput>
   }
 
   export type CaseCreateNestedOneWithoutPleadingsInput = {
@@ -36150,6 +38110,12 @@ export namespace Prisma {
     connect?: CaseWhereUniqueInput
   }
 
+  export type UserCreateNestedOneWithoutCases_payment_receivedInput = {
+    create?: XOR<UserCreateWithoutCases_payment_receivedInput, UserUncheckedCreateWithoutCases_payment_receivedInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCases_payment_receivedInput
+    connect?: UserWhereUniqueInput
+  }
+
   export type DecimalFieldUpdateOperationsInput = {
     set?: Decimal | DecimalJsLike | number | string
     increment?: Decimal | DecimalJsLike | number | string
@@ -36164,6 +38130,16 @@ export namespace Prisma {
     upsert?: CaseUpsertWithoutPaymentsInput
     connect?: CaseWhereUniqueInput
     update?: XOR<XOR<CaseUpdateToOneWithWhereWithoutPaymentsInput, CaseUpdateWithoutPaymentsInput>, CaseUncheckedUpdateWithoutPaymentsInput>
+  }
+
+  export type UserUpdateOneWithoutCases_payment_receivedNestedInput = {
+    create?: XOR<UserCreateWithoutCases_payment_receivedInput, UserUncheckedCreateWithoutCases_payment_receivedInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCases_payment_receivedInput
+    upsert?: UserUpsertWithoutCases_payment_receivedInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCases_payment_receivedInput, UserUpdateWithoutCases_payment_receivedInput>, UserUncheckedUpdateWithoutCases_payment_receivedInput>
   }
 
   export type CaseCreateNestedOneWithoutCounselingsInput = {
@@ -37054,13 +39030,43 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type CasePaymentCreateWithoutReceivedByUserInput = {
+    id?: string
+    amount: Decimal | DecimalJsLike | number | string
+    paymentDate?: Date | string | null
+    method?: string | null
+    referenceNo?: string | null
+    notes?: string | null
+    receivedBy?: string | null
+    createdAt?: Date | string
+    case: CaseCreateNestedOneWithoutPaymentsInput
+  }
+
+  export type CasePaymentUncheckedCreateWithoutReceivedByUserInput = {
+    id?: string
+    caseId: string
+    amount: Decimal | DecimalJsLike | number | string
+    paymentDate?: Date | string | null
+    method?: string | null
+    referenceNo?: string | null
+    notes?: string | null
+    receivedBy?: string | null
+    createdAt?: Date | string
+  }
+
+  export type CasePaymentCreateOrConnectWithoutReceivedByUserInput = {
+    where: CasePaymentWhereUniqueInput
+    create: XOR<CasePaymentCreateWithoutReceivedByUserInput, CasePaymentUncheckedCreateWithoutReceivedByUserInput>
+  }
+
+  export type CasePaymentCreateManyReceivedByUserInputEnvelope = {
+    data: CasePaymentCreateManyReceivedByUserInput | CasePaymentCreateManyReceivedByUserInput[]
+    skipDuplicates?: boolean
+  }
+
   export type CaseCreateWithoutCreatedByInput = {
     id?: string
-    caseNumber: string
-    caseName: string
-    registrationDate?: Date | string | null
     registrationFee?: Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: string | null
     facts?: string | null
     relatedLaws?: string | null
     referredThrough?: string | null
@@ -37070,6 +39076,7 @@ export namespace Prisma {
     status?: string
     createdAt?: Date | string
     nature: CaseNatureCreateNestedOneWithoutCasesInput
+    courtDetails?: CaseCourtDetailCreateNestedManyWithoutCaseInput
     lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
     parties?: CasePartyCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingCreateNestedManyWithoutCaseInput
@@ -37083,12 +39090,8 @@ export namespace Prisma {
 
   export type CaseUncheckedCreateWithoutCreatedByInput = {
     id?: string
-    caseNumber: string
-    caseName: string
     natureId: string
-    registrationDate?: Date | string | null
     registrationFee?: Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: string | null
     facts?: string | null
     relatedLaws?: string | null
     referredThrough?: string | null
@@ -37097,6 +39100,7 @@ export namespace Prisma {
     judgmentVerifyDate?: Date | string | null
     status?: string
     createdAt?: Date | string
+    courtDetails?: CaseCourtDetailUncheckedCreateNestedManyWithoutCaseInput
     lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
     parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingUncheckedCreateNestedManyWithoutCaseInput
@@ -37389,6 +39393,38 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"CaseCounseling"> | Date | string
   }
 
+  export type CasePaymentUpsertWithWhereUniqueWithoutReceivedByUserInput = {
+    where: CasePaymentWhereUniqueInput
+    update: XOR<CasePaymentUpdateWithoutReceivedByUserInput, CasePaymentUncheckedUpdateWithoutReceivedByUserInput>
+    create: XOR<CasePaymentCreateWithoutReceivedByUserInput, CasePaymentUncheckedCreateWithoutReceivedByUserInput>
+  }
+
+  export type CasePaymentUpdateWithWhereUniqueWithoutReceivedByUserInput = {
+    where: CasePaymentWhereUniqueInput
+    data: XOR<CasePaymentUpdateWithoutReceivedByUserInput, CasePaymentUncheckedUpdateWithoutReceivedByUserInput>
+  }
+
+  export type CasePaymentUpdateManyWithWhereWithoutReceivedByUserInput = {
+    where: CasePaymentScalarWhereInput
+    data: XOR<CasePaymentUpdateManyMutationInput, CasePaymentUncheckedUpdateManyWithoutReceivedByUserInput>
+  }
+
+  export type CasePaymentScalarWhereInput = {
+    AND?: CasePaymentScalarWhereInput | CasePaymentScalarWhereInput[]
+    OR?: CasePaymentScalarWhereInput[]
+    NOT?: CasePaymentScalarWhereInput | CasePaymentScalarWhereInput[]
+    id?: StringFilter<"CasePayment"> | string
+    caseId?: StringFilter<"CasePayment"> | string
+    amount?: DecimalFilter<"CasePayment"> | Decimal | DecimalJsLike | number | string
+    paymentDate?: DateTimeNullableFilter<"CasePayment"> | Date | string | null
+    method?: StringNullableFilter<"CasePayment"> | string | null
+    referenceNo?: StringNullableFilter<"CasePayment"> | string | null
+    notes?: StringNullableFilter<"CasePayment"> | string | null
+    receivedByUserId?: StringNullableFilter<"CasePayment"> | string | null
+    receivedBy?: StringNullableFilter<"CasePayment"> | string | null
+    createdAt?: DateTimeFilter<"CasePayment"> | Date | string
+  }
+
   export type CaseUpsertWithWhereUniqueWithoutCreatedByInput = {
     where: CaseWhereUniqueInput
     update: XOR<CaseUpdateWithoutCreatedByInput, CaseUncheckedUpdateWithoutCreatedByInput>
@@ -37410,12 +39446,8 @@ export namespace Prisma {
     OR?: CaseScalarWhereInput[]
     NOT?: CaseScalarWhereInput | CaseScalarWhereInput[]
     id?: StringFilter<"Case"> | string
-    caseNumber?: StringFilter<"Case"> | string
-    caseName?: StringFilter<"Case"> | string
     natureId?: StringFilter<"Case"> | string
-    registrationDate?: DateTimeNullableFilter<"Case"> | Date | string | null
     registrationFee?: DecimalNullableFilter<"Case"> | Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: StringNullableFilter<"Case"> | string | null
     facts?: StringNullableFilter<"Case"> | string | null
     relatedLaws?: StringNullableFilter<"Case"> | string | null
     referredThrough?: StringNullableFilter<"Case"> | string | null
@@ -37448,6 +39480,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerCreateNestedManyWithoutUserInput
     cases_as_pleader?: CasePleadingCreateNestedManyWithoutPleaderInput
     cases_as_counselor?: CaseCounselingCreateNestedManyWithoutCounselorInput
+    cases_payment_received?: CasePaymentCreateNestedManyWithoutReceivedByUserInput
     cases_created?: CaseCreateNestedManyWithoutCreatedByInput
   }
 
@@ -37472,6 +39505,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerUncheckedCreateNestedManyWithoutUserInput
     cases_as_pleader?: CasePleadingUncheckedCreateNestedManyWithoutPleaderInput
     cases_as_counselor?: CaseCounselingUncheckedCreateNestedManyWithoutCounselorInput
+    cases_payment_received?: CasePaymentUncheckedCreateNestedManyWithoutReceivedByUserInput
     cases_created?: CaseUncheckedCreateNestedManyWithoutCreatedByInput
   }
 
@@ -37512,6 +39546,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerUpdateManyWithoutUserNestedInput
     cases_as_pleader?: CasePleadingUpdateManyWithoutPleaderNestedInput
     cases_as_counselor?: CaseCounselingUpdateManyWithoutCounselorNestedInput
+    cases_payment_received?: CasePaymentUpdateManyWithoutReceivedByUserNestedInput
     cases_created?: CaseUpdateManyWithoutCreatedByNestedInput
   }
 
@@ -37536,6 +39571,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerUncheckedUpdateManyWithoutUserNestedInput
     cases_as_pleader?: CasePleadingUncheckedUpdateManyWithoutPleaderNestedInput
     cases_as_counselor?: CaseCounselingUncheckedUpdateManyWithoutCounselorNestedInput
+    cases_payment_received?: CasePaymentUncheckedUpdateManyWithoutReceivedByUserNestedInput
     cases_created?: CaseUncheckedUpdateManyWithoutCreatedByNestedInput
   }
 
@@ -37560,6 +39596,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerCreateNestedManyWithoutUserInput
     cases_as_pleader?: CasePleadingCreateNestedManyWithoutPleaderInput
     cases_as_counselor?: CaseCounselingCreateNestedManyWithoutCounselorInput
+    cases_payment_received?: CasePaymentCreateNestedManyWithoutReceivedByUserInput
     cases_created?: CaseCreateNestedManyWithoutCreatedByInput
   }
 
@@ -37584,6 +39621,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerUncheckedCreateNestedManyWithoutUserInput
     cases_as_pleader?: CasePleadingUncheckedCreateNestedManyWithoutPleaderInput
     cases_as_counselor?: CaseCounselingUncheckedCreateNestedManyWithoutCounselorInput
+    cases_payment_received?: CasePaymentUncheckedCreateNestedManyWithoutReceivedByUserInput
     cases_created?: CaseUncheckedCreateNestedManyWithoutCreatedByInput
   }
 
@@ -37624,6 +39662,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerUpdateManyWithoutUserNestedInput
     cases_as_pleader?: CasePleadingUpdateManyWithoutPleaderNestedInput
     cases_as_counselor?: CaseCounselingUpdateManyWithoutCounselorNestedInput
+    cases_payment_received?: CasePaymentUpdateManyWithoutReceivedByUserNestedInput
     cases_created?: CaseUpdateManyWithoutCreatedByNestedInput
   }
 
@@ -37648,6 +39687,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerUncheckedUpdateManyWithoutUserNestedInput
     cases_as_pleader?: CasePleadingUncheckedUpdateManyWithoutPleaderNestedInput
     cases_as_counselor?: CaseCounselingUncheckedUpdateManyWithoutCounselorNestedInput
+    cases_payment_received?: CasePaymentUncheckedUpdateManyWithoutReceivedByUserNestedInput
     cases_created?: CaseUncheckedUpdateManyWithoutCreatedByNestedInput
   }
 
@@ -37672,6 +39712,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerCreateNestedManyWithoutUserInput
     cases_as_pleader?: CasePleadingCreateNestedManyWithoutPleaderInput
     cases_as_counselor?: CaseCounselingCreateNestedManyWithoutCounselorInput
+    cases_payment_received?: CasePaymentCreateNestedManyWithoutReceivedByUserInput
     cases_created?: CaseCreateNestedManyWithoutCreatedByInput
   }
 
@@ -37696,6 +39737,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerUncheckedCreateNestedManyWithoutUserInput
     cases_as_pleader?: CasePleadingUncheckedCreateNestedManyWithoutPleaderInput
     cases_as_counselor?: CaseCounselingUncheckedCreateNestedManyWithoutCounselorInput
+    cases_payment_received?: CasePaymentUncheckedCreateNestedManyWithoutReceivedByUserInput
     cases_created?: CaseUncheckedCreateNestedManyWithoutCreatedByInput
   }
 
@@ -37940,11 +39982,7 @@ export namespace Prisma {
 
   export type CaseCreateWithoutNatureInput = {
     id?: string
-    caseNumber: string
-    caseName: string
-    registrationDate?: Date | string | null
     registrationFee?: Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: string | null
     facts?: string | null
     relatedLaws?: string | null
     referredThrough?: string | null
@@ -37954,6 +39992,7 @@ export namespace Prisma {
     status?: string
     createdAt?: Date | string
     createdBy?: UserCreateNestedOneWithoutCases_createdInput
+    courtDetails?: CaseCourtDetailCreateNestedManyWithoutCaseInput
     lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
     parties?: CasePartyCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingCreateNestedManyWithoutCaseInput
@@ -37967,11 +40006,7 @@ export namespace Prisma {
 
   export type CaseUncheckedCreateWithoutNatureInput = {
     id?: string
-    caseNumber: string
-    caseName: string
-    registrationDate?: Date | string | null
     registrationFee?: Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: string | null
     facts?: string | null
     relatedLaws?: string | null
     referredThrough?: string | null
@@ -37981,6 +40016,7 @@ export namespace Prisma {
     status?: string
     createdById?: string | null
     createdAt?: Date | string
+    courtDetails?: CaseCourtDetailUncheckedCreateNestedManyWithoutCaseInput
     lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
     parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingUncheckedCreateNestedManyWithoutCaseInput
@@ -38125,6 +40161,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerCreateNestedManyWithoutUserInput
     cases_as_pleader?: CasePleadingCreateNestedManyWithoutPleaderInput
     cases_as_counselor?: CaseCounselingCreateNestedManyWithoutCounselorInput
+    cases_payment_received?: CasePaymentCreateNestedManyWithoutReceivedByUserInput
   }
 
   export type UserUncheckedCreateWithoutCases_createdInput = {
@@ -38149,11 +40186,54 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerUncheckedCreateNestedManyWithoutUserInput
     cases_as_pleader?: CasePleadingUncheckedCreateNestedManyWithoutPleaderInput
     cases_as_counselor?: CaseCounselingUncheckedCreateNestedManyWithoutCounselorInput
+    cases_payment_received?: CasePaymentUncheckedCreateNestedManyWithoutReceivedByUserInput
   }
 
   export type UserCreateOrConnectWithoutCases_createdInput = {
     where: UserWhereUniqueInput
     create: XOR<UserCreateWithoutCases_createdInput, UserUncheckedCreateWithoutCases_createdInput>
+  }
+
+  export type CaseCourtDetailCreateWithoutCaseInput = {
+    id?: string
+    caseName: string
+    caseNumber: string
+    registrationDate?: Date | string | null
+    judgeName?: string | null
+    courtType?: string | null
+    sectionCourtRoom?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    parent?: CaseCourtDetailCreateNestedOneWithoutChildrenInput
+    children?: CaseCourtDetailCreateNestedManyWithoutParentInput
+    hearings?: CaseHearingCreateNestedManyWithoutCaseCourtDetailInput
+  }
+
+  export type CaseCourtDetailUncheckedCreateWithoutCaseInput = {
+    id?: string
+    caseName: string
+    caseNumber: string
+    registrationDate?: Date | string | null
+    judgeName?: string | null
+    courtType?: string | null
+    sectionCourtRoom?: string | null
+    parentId?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    children?: CaseCourtDetailUncheckedCreateNestedManyWithoutParentInput
+    hearings?: CaseHearingUncheckedCreateNestedManyWithoutCaseCourtDetailInput
+  }
+
+  export type CaseCourtDetailCreateOrConnectWithoutCaseInput = {
+    where: CaseCourtDetailWhereUniqueInput
+    create: XOR<CaseCourtDetailCreateWithoutCaseInput, CaseCourtDetailUncheckedCreateWithoutCaseInput>
+  }
+
+  export type CaseCourtDetailCreateManyCaseInputEnvelope = {
+    data: CaseCourtDetailCreateManyCaseInput | CaseCourtDetailCreateManyCaseInput[]
+    skipDuplicates?: boolean
   }
 
   export type CaseLawyerCreateWithoutCaseInput = {
@@ -38217,15 +40297,15 @@ export namespace Prisma {
     nextHearingDate?: Date | string | null
     hearingDate?: Date | string | null
     hearingOrder?: string | null
-    judgeName?: string | null
+    caseCourtDetail?: CaseCourtDetailCreateNestedOneWithoutHearingsInput
   }
 
   export type CaseHearingUncheckedCreateWithoutCaseInput = {
     id?: string
+    caseCourtDetailId?: string | null
     nextHearingDate?: Date | string | null
     hearingDate?: Date | string | null
     hearingOrder?: string | null
-    judgeName?: string | null
   }
 
   export type CaseHearingCreateOrConnectWithoutCaseInput = {
@@ -38323,7 +40403,9 @@ export namespace Prisma {
     method?: string | null
     referenceNo?: string | null
     notes?: string | null
+    receivedBy?: string | null
     createdAt?: Date | string
+    receivedByUser?: UserCreateNestedOneWithoutCases_payment_receivedInput
   }
 
   export type CasePaymentUncheckedCreateWithoutCaseInput = {
@@ -38333,6 +40415,8 @@ export namespace Prisma {
     method?: string | null
     referenceNo?: string | null
     notes?: string | null
+    receivedByUserId?: string | null
+    receivedBy?: string | null
     createdAt?: Date | string
   }
 
@@ -38454,6 +40538,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerUpdateManyWithoutUserNestedInput
     cases_as_pleader?: CasePleadingUpdateManyWithoutPleaderNestedInput
     cases_as_counselor?: CaseCounselingUpdateManyWithoutCounselorNestedInput
+    cases_payment_received?: CasePaymentUpdateManyWithoutReceivedByUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCases_createdInput = {
@@ -38478,6 +40563,41 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerUncheckedUpdateManyWithoutUserNestedInput
     cases_as_pleader?: CasePleadingUncheckedUpdateManyWithoutPleaderNestedInput
     cases_as_counselor?: CaseCounselingUncheckedUpdateManyWithoutCounselorNestedInput
+    cases_payment_received?: CasePaymentUncheckedUpdateManyWithoutReceivedByUserNestedInput
+  }
+
+  export type CaseCourtDetailUpsertWithWhereUniqueWithoutCaseInput = {
+    where: CaseCourtDetailWhereUniqueInput
+    update: XOR<CaseCourtDetailUpdateWithoutCaseInput, CaseCourtDetailUncheckedUpdateWithoutCaseInput>
+    create: XOR<CaseCourtDetailCreateWithoutCaseInput, CaseCourtDetailUncheckedCreateWithoutCaseInput>
+  }
+
+  export type CaseCourtDetailUpdateWithWhereUniqueWithoutCaseInput = {
+    where: CaseCourtDetailWhereUniqueInput
+    data: XOR<CaseCourtDetailUpdateWithoutCaseInput, CaseCourtDetailUncheckedUpdateWithoutCaseInput>
+  }
+
+  export type CaseCourtDetailUpdateManyWithWhereWithoutCaseInput = {
+    where: CaseCourtDetailScalarWhereInput
+    data: XOR<CaseCourtDetailUpdateManyMutationInput, CaseCourtDetailUncheckedUpdateManyWithoutCaseInput>
+  }
+
+  export type CaseCourtDetailScalarWhereInput = {
+    AND?: CaseCourtDetailScalarWhereInput | CaseCourtDetailScalarWhereInput[]
+    OR?: CaseCourtDetailScalarWhereInput[]
+    NOT?: CaseCourtDetailScalarWhereInput | CaseCourtDetailScalarWhereInput[]
+    id?: StringFilter<"CaseCourtDetail"> | string
+    caseId?: StringFilter<"CaseCourtDetail"> | string
+    caseName?: StringFilter<"CaseCourtDetail"> | string
+    caseNumber?: StringFilter<"CaseCourtDetail"> | string
+    registrationDate?: DateTimeNullableFilter<"CaseCourtDetail"> | Date | string | null
+    judgeName?: StringNullableFilter<"CaseCourtDetail"> | string | null
+    courtType?: StringNullableFilter<"CaseCourtDetail"> | string | null
+    sectionCourtRoom?: StringNullableFilter<"CaseCourtDetail"> | string | null
+    parentId?: StringNullableFilter<"CaseCourtDetail"> | string | null
+    isActive?: BoolFilter<"CaseCourtDetail"> | boolean
+    createdAt?: DateTimeFilter<"CaseCourtDetail"> | Date | string
+    updatedAt?: DateTimeFilter<"CaseCourtDetail"> | Date | string
   }
 
   export type CaseLawyerUpsertWithWhereUniqueWithoutCaseInput = {
@@ -38534,10 +40654,10 @@ export namespace Prisma {
     NOT?: CaseHearingScalarWhereInput | CaseHearingScalarWhereInput[]
     id?: StringFilter<"CaseHearing"> | string
     caseId?: StringFilter<"CaseHearing"> | string
+    caseCourtDetailId?: StringNullableFilter<"CaseHearing"> | string | null
     nextHearingDate?: DateTimeNullableFilter<"CaseHearing"> | Date | string | null
     hearingDate?: DateTimeNullableFilter<"CaseHearing"> | Date | string | null
     hearingOrder?: StringNullableFilter<"CaseHearing"> | string | null
-    judgeName?: StringNullableFilter<"CaseHearing"> | string | null
   }
 
   export type CasePleadingUpsertWithWhereUniqueWithoutCaseInput = {
@@ -38616,20 +40736,6 @@ export namespace Prisma {
     data: XOR<CasePaymentUpdateManyMutationInput, CasePaymentUncheckedUpdateManyWithoutCaseInput>
   }
 
-  export type CasePaymentScalarWhereInput = {
-    AND?: CasePaymentScalarWhereInput | CasePaymentScalarWhereInput[]
-    OR?: CasePaymentScalarWhereInput[]
-    NOT?: CasePaymentScalarWhereInput | CasePaymentScalarWhereInput[]
-    id?: StringFilter<"CasePayment"> | string
-    caseId?: StringFilter<"CasePayment"> | string
-    amount?: DecimalFilter<"CasePayment"> | Decimal | DecimalJsLike | number | string
-    paymentDate?: DateTimeNullableFilter<"CasePayment"> | Date | string | null
-    method?: StringNullableFilter<"CasePayment"> | string | null
-    referenceNo?: StringNullableFilter<"CasePayment"> | string | null
-    notes?: StringNullableFilter<"CasePayment"> | string | null
-    createdAt?: DateTimeFilter<"CasePayment"> | Date | string
-  }
-
   export type CaseCounselingUpsertWithWhereUniqueWithoutCaseInput = {
     where: CaseCounselingWhereUniqueInput
     update: XOR<CaseCounselingUpdateWithoutCaseInput, CaseCounselingUncheckedUpdateWithoutCaseInput>
@@ -38674,13 +40780,9 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"CaseDocument"> | Date | string
   }
 
-  export type CaseCreateWithoutLawyersInput = {
+  export type CaseCreateWithoutCourtDetailsInput = {
     id?: string
-    caseNumber: string
-    caseName: string
-    registrationDate?: Date | string | null
     registrationFee?: Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: string | null
     facts?: string | null
     relatedLaws?: string | null
     referredThrough?: string | null
@@ -38691,6 +40793,299 @@ export namespace Prisma {
     createdAt?: Date | string
     nature: CaseNatureCreateNestedOneWithoutCasesInput
     createdBy?: UserCreateNestedOneWithoutCases_createdInput
+    lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
+    parties?: CasePartyCreateNestedManyWithoutCaseInput
+    hearings?: CaseHearingCreateNestedManyWithoutCaseInput
+    pleadings?: CasePleadingCreateNestedManyWithoutCaseInput
+    proceedings?: CourtProceedingCreateNestedManyWithoutCaseInput
+    precedents?: CasePrecedentCreateNestedManyWithoutCaseInput
+    payments?: CasePaymentCreateNestedManyWithoutCaseInput
+    counselings?: CaseCounselingCreateNestedManyWithoutCaseInput
+    documents?: CaseDocumentCreateNestedManyWithoutCaseInput
+  }
+
+  export type CaseUncheckedCreateWithoutCourtDetailsInput = {
+    id?: string
+    natureId: string
+    registrationFee?: Decimal | DecimalJsLike | number | string | null
+    facts?: string | null
+    relatedLaws?: string | null
+    referredThrough?: string | null
+    noticeStatus?: string | null
+    fullJudgmentDate?: Date | string | null
+    judgmentVerifyDate?: Date | string | null
+    status?: string
+    createdById?: string | null
+    createdAt?: Date | string
+    lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
+    parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
+    hearings?: CaseHearingUncheckedCreateNestedManyWithoutCaseInput
+    pleadings?: CasePleadingUncheckedCreateNestedManyWithoutCaseInput
+    proceedings?: CourtProceedingUncheckedCreateNestedManyWithoutCaseInput
+    precedents?: CasePrecedentUncheckedCreateNestedManyWithoutCaseInput
+    payments?: CasePaymentUncheckedCreateNestedManyWithoutCaseInput
+    counselings?: CaseCounselingUncheckedCreateNestedManyWithoutCaseInput
+    documents?: CaseDocumentUncheckedCreateNestedManyWithoutCaseInput
+  }
+
+  export type CaseCreateOrConnectWithoutCourtDetailsInput = {
+    where: CaseWhereUniqueInput
+    create: XOR<CaseCreateWithoutCourtDetailsInput, CaseUncheckedCreateWithoutCourtDetailsInput>
+  }
+
+  export type CaseCourtDetailCreateWithoutChildrenInput = {
+    id?: string
+    caseName: string
+    caseNumber: string
+    registrationDate?: Date | string | null
+    judgeName?: string | null
+    courtType?: string | null
+    sectionCourtRoom?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    case: CaseCreateNestedOneWithoutCourtDetailsInput
+    parent?: CaseCourtDetailCreateNestedOneWithoutChildrenInput
+    hearings?: CaseHearingCreateNestedManyWithoutCaseCourtDetailInput
+  }
+
+  export type CaseCourtDetailUncheckedCreateWithoutChildrenInput = {
+    id?: string
+    caseId: string
+    caseName: string
+    caseNumber: string
+    registrationDate?: Date | string | null
+    judgeName?: string | null
+    courtType?: string | null
+    sectionCourtRoom?: string | null
+    parentId?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    hearings?: CaseHearingUncheckedCreateNestedManyWithoutCaseCourtDetailInput
+  }
+
+  export type CaseCourtDetailCreateOrConnectWithoutChildrenInput = {
+    where: CaseCourtDetailWhereUniqueInput
+    create: XOR<CaseCourtDetailCreateWithoutChildrenInput, CaseCourtDetailUncheckedCreateWithoutChildrenInput>
+  }
+
+  export type CaseCourtDetailCreateWithoutParentInput = {
+    id?: string
+    caseName: string
+    caseNumber: string
+    registrationDate?: Date | string | null
+    judgeName?: string | null
+    courtType?: string | null
+    sectionCourtRoom?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    case: CaseCreateNestedOneWithoutCourtDetailsInput
+    children?: CaseCourtDetailCreateNestedManyWithoutParentInput
+    hearings?: CaseHearingCreateNestedManyWithoutCaseCourtDetailInput
+  }
+
+  export type CaseCourtDetailUncheckedCreateWithoutParentInput = {
+    id?: string
+    caseId: string
+    caseName: string
+    caseNumber: string
+    registrationDate?: Date | string | null
+    judgeName?: string | null
+    courtType?: string | null
+    sectionCourtRoom?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    children?: CaseCourtDetailUncheckedCreateNestedManyWithoutParentInput
+    hearings?: CaseHearingUncheckedCreateNestedManyWithoutCaseCourtDetailInput
+  }
+
+  export type CaseCourtDetailCreateOrConnectWithoutParentInput = {
+    where: CaseCourtDetailWhereUniqueInput
+    create: XOR<CaseCourtDetailCreateWithoutParentInput, CaseCourtDetailUncheckedCreateWithoutParentInput>
+  }
+
+  export type CaseCourtDetailCreateManyParentInputEnvelope = {
+    data: CaseCourtDetailCreateManyParentInput | CaseCourtDetailCreateManyParentInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CaseHearingCreateWithoutCaseCourtDetailInput = {
+    id?: string
+    nextHearingDate?: Date | string | null
+    hearingDate?: Date | string | null
+    hearingOrder?: string | null
+    case: CaseCreateNestedOneWithoutHearingsInput
+  }
+
+  export type CaseHearingUncheckedCreateWithoutCaseCourtDetailInput = {
+    id?: string
+    caseId: string
+    nextHearingDate?: Date | string | null
+    hearingDate?: Date | string | null
+    hearingOrder?: string | null
+  }
+
+  export type CaseHearingCreateOrConnectWithoutCaseCourtDetailInput = {
+    where: CaseHearingWhereUniqueInput
+    create: XOR<CaseHearingCreateWithoutCaseCourtDetailInput, CaseHearingUncheckedCreateWithoutCaseCourtDetailInput>
+  }
+
+  export type CaseHearingCreateManyCaseCourtDetailInputEnvelope = {
+    data: CaseHearingCreateManyCaseCourtDetailInput | CaseHearingCreateManyCaseCourtDetailInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CaseUpsertWithoutCourtDetailsInput = {
+    update: XOR<CaseUpdateWithoutCourtDetailsInput, CaseUncheckedUpdateWithoutCourtDetailsInput>
+    create: XOR<CaseCreateWithoutCourtDetailsInput, CaseUncheckedCreateWithoutCourtDetailsInput>
+    where?: CaseWhereInput
+  }
+
+  export type CaseUpdateToOneWithWhereWithoutCourtDetailsInput = {
+    where?: CaseWhereInput
+    data: XOR<CaseUpdateWithoutCourtDetailsInput, CaseUncheckedUpdateWithoutCourtDetailsInput>
+  }
+
+  export type CaseUpdateWithoutCourtDetailsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    facts?: NullableStringFieldUpdateOperationsInput | string | null
+    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
+    noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    nature?: CaseNatureUpdateOneRequiredWithoutCasesNestedInput
+    createdBy?: UserUpdateOneWithoutCases_createdNestedInput
+    lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
+    parties?: CasePartyUpdateManyWithoutCaseNestedInput
+    hearings?: CaseHearingUpdateManyWithoutCaseNestedInput
+    pleadings?: CasePleadingUpdateManyWithoutCaseNestedInput
+    proceedings?: CourtProceedingUpdateManyWithoutCaseNestedInput
+    precedents?: CasePrecedentUpdateManyWithoutCaseNestedInput
+    payments?: CasePaymentUpdateManyWithoutCaseNestedInput
+    counselings?: CaseCounselingUpdateManyWithoutCaseNestedInput
+    documents?: CaseDocumentUpdateManyWithoutCaseNestedInput
+  }
+
+  export type CaseUncheckedUpdateWithoutCourtDetailsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    natureId?: StringFieldUpdateOperationsInput | string
+    registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    facts?: NullableStringFieldUpdateOperationsInput | string | null
+    relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
+    referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
+    noticeStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    fullJudgmentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
+    parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
+    hearings?: CaseHearingUncheckedUpdateManyWithoutCaseNestedInput
+    pleadings?: CasePleadingUncheckedUpdateManyWithoutCaseNestedInput
+    proceedings?: CourtProceedingUncheckedUpdateManyWithoutCaseNestedInput
+    precedents?: CasePrecedentUncheckedUpdateManyWithoutCaseNestedInput
+    payments?: CasePaymentUncheckedUpdateManyWithoutCaseNestedInput
+    counselings?: CaseCounselingUncheckedUpdateManyWithoutCaseNestedInput
+    documents?: CaseDocumentUncheckedUpdateManyWithoutCaseNestedInput
+  }
+
+  export type CaseCourtDetailUpsertWithoutChildrenInput = {
+    update: XOR<CaseCourtDetailUpdateWithoutChildrenInput, CaseCourtDetailUncheckedUpdateWithoutChildrenInput>
+    create: XOR<CaseCourtDetailCreateWithoutChildrenInput, CaseCourtDetailUncheckedCreateWithoutChildrenInput>
+    where?: CaseCourtDetailWhereInput
+  }
+
+  export type CaseCourtDetailUpdateToOneWithWhereWithoutChildrenInput = {
+    where?: CaseCourtDetailWhereInput
+    data: XOR<CaseCourtDetailUpdateWithoutChildrenInput, CaseCourtDetailUncheckedUpdateWithoutChildrenInput>
+  }
+
+  export type CaseCourtDetailUpdateWithoutChildrenInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseName?: StringFieldUpdateOperationsInput | string
+    caseNumber?: StringFieldUpdateOperationsInput | string
+    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    judgeName?: NullableStringFieldUpdateOperationsInput | string | null
+    courtType?: NullableStringFieldUpdateOperationsInput | string | null
+    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    case?: CaseUpdateOneRequiredWithoutCourtDetailsNestedInput
+    parent?: CaseCourtDetailUpdateOneWithoutChildrenNestedInput
+    hearings?: CaseHearingUpdateManyWithoutCaseCourtDetailNestedInput
+  }
+
+  export type CaseCourtDetailUncheckedUpdateWithoutChildrenInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseId?: StringFieldUpdateOperationsInput | string
+    caseName?: StringFieldUpdateOperationsInput | string
+    caseNumber?: StringFieldUpdateOperationsInput | string
+    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    judgeName?: NullableStringFieldUpdateOperationsInput | string | null
+    courtType?: NullableStringFieldUpdateOperationsInput | string | null
+    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
+    parentId?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    hearings?: CaseHearingUncheckedUpdateManyWithoutCaseCourtDetailNestedInput
+  }
+
+  export type CaseCourtDetailUpsertWithWhereUniqueWithoutParentInput = {
+    where: CaseCourtDetailWhereUniqueInput
+    update: XOR<CaseCourtDetailUpdateWithoutParentInput, CaseCourtDetailUncheckedUpdateWithoutParentInput>
+    create: XOR<CaseCourtDetailCreateWithoutParentInput, CaseCourtDetailUncheckedCreateWithoutParentInput>
+  }
+
+  export type CaseCourtDetailUpdateWithWhereUniqueWithoutParentInput = {
+    where: CaseCourtDetailWhereUniqueInput
+    data: XOR<CaseCourtDetailUpdateWithoutParentInput, CaseCourtDetailUncheckedUpdateWithoutParentInput>
+  }
+
+  export type CaseCourtDetailUpdateManyWithWhereWithoutParentInput = {
+    where: CaseCourtDetailScalarWhereInput
+    data: XOR<CaseCourtDetailUpdateManyMutationInput, CaseCourtDetailUncheckedUpdateManyWithoutParentInput>
+  }
+
+  export type CaseHearingUpsertWithWhereUniqueWithoutCaseCourtDetailInput = {
+    where: CaseHearingWhereUniqueInput
+    update: XOR<CaseHearingUpdateWithoutCaseCourtDetailInput, CaseHearingUncheckedUpdateWithoutCaseCourtDetailInput>
+    create: XOR<CaseHearingCreateWithoutCaseCourtDetailInput, CaseHearingUncheckedCreateWithoutCaseCourtDetailInput>
+  }
+
+  export type CaseHearingUpdateWithWhereUniqueWithoutCaseCourtDetailInput = {
+    where: CaseHearingWhereUniqueInput
+    data: XOR<CaseHearingUpdateWithoutCaseCourtDetailInput, CaseHearingUncheckedUpdateWithoutCaseCourtDetailInput>
+  }
+
+  export type CaseHearingUpdateManyWithWhereWithoutCaseCourtDetailInput = {
+    where: CaseHearingScalarWhereInput
+    data: XOR<CaseHearingUpdateManyMutationInput, CaseHearingUncheckedUpdateManyWithoutCaseCourtDetailInput>
+  }
+
+  export type CaseCreateWithoutLawyersInput = {
+    id?: string
+    registrationFee?: Decimal | DecimalJsLike | number | string | null
+    facts?: string | null
+    relatedLaws?: string | null
+    referredThrough?: string | null
+    noticeStatus?: string | null
+    fullJudgmentDate?: Date | string | null
+    judgmentVerifyDate?: Date | string | null
+    status?: string
+    createdAt?: Date | string
+    nature: CaseNatureCreateNestedOneWithoutCasesInput
+    createdBy?: UserCreateNestedOneWithoutCases_createdInput
+    courtDetails?: CaseCourtDetailCreateNestedManyWithoutCaseInput
     parties?: CasePartyCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingCreateNestedManyWithoutCaseInput
     pleadings?: CasePleadingCreateNestedManyWithoutCaseInput
@@ -38703,12 +41098,8 @@ export namespace Prisma {
 
   export type CaseUncheckedCreateWithoutLawyersInput = {
     id?: string
-    caseNumber: string
-    caseName: string
     natureId: string
-    registrationDate?: Date | string | null
     registrationFee?: Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: string | null
     facts?: string | null
     relatedLaws?: string | null
     referredThrough?: string | null
@@ -38718,6 +41109,7 @@ export namespace Prisma {
     status?: string
     createdById?: string | null
     createdAt?: Date | string
+    courtDetails?: CaseCourtDetailUncheckedCreateNestedManyWithoutCaseInput
     parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingUncheckedCreateNestedManyWithoutCaseInput
     pleadings?: CasePleadingUncheckedCreateNestedManyWithoutCaseInput
@@ -38754,6 +41146,7 @@ export namespace Prisma {
     pages?: PageCreateNestedManyWithoutAuthorInput
     cases_as_pleader?: CasePleadingCreateNestedManyWithoutPleaderInput
     cases_as_counselor?: CaseCounselingCreateNestedManyWithoutCounselorInput
+    cases_payment_received?: CasePaymentCreateNestedManyWithoutReceivedByUserInput
     cases_created?: CaseCreateNestedManyWithoutCreatedByInput
   }
 
@@ -38778,6 +41171,7 @@ export namespace Prisma {
     pages?: PageUncheckedCreateNestedManyWithoutAuthorInput
     cases_as_pleader?: CasePleadingUncheckedCreateNestedManyWithoutPleaderInput
     cases_as_counselor?: CaseCounselingUncheckedCreateNestedManyWithoutCounselorInput
+    cases_payment_received?: CasePaymentUncheckedCreateNestedManyWithoutReceivedByUserInput
     cases_created?: CaseUncheckedCreateNestedManyWithoutCreatedByInput
   }
 
@@ -38799,11 +41193,7 @@ export namespace Prisma {
 
   export type CaseUpdateWithoutLawyersInput = {
     id?: StringFieldUpdateOperationsInput | string
-    caseNumber?: StringFieldUpdateOperationsInput | string
-    caseName?: StringFieldUpdateOperationsInput | string
-    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
@@ -38814,6 +41204,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     nature?: CaseNatureUpdateOneRequiredWithoutCasesNestedInput
     createdBy?: UserUpdateOneWithoutCases_createdNestedInput
+    courtDetails?: CaseCourtDetailUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUpdateManyWithoutCaseNestedInput
     pleadings?: CasePleadingUpdateManyWithoutCaseNestedInput
@@ -38826,12 +41217,8 @@ export namespace Prisma {
 
   export type CaseUncheckedUpdateWithoutLawyersInput = {
     id?: StringFieldUpdateOperationsInput | string
-    caseNumber?: StringFieldUpdateOperationsInput | string
-    caseName?: StringFieldUpdateOperationsInput | string
     natureId?: StringFieldUpdateOperationsInput | string
-    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
@@ -38841,6 +41228,7 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    courtDetails?: CaseCourtDetailUncheckedUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUncheckedUpdateManyWithoutCaseNestedInput
     pleadings?: CasePleadingUncheckedUpdateManyWithoutCaseNestedInput
@@ -38883,6 +41271,7 @@ export namespace Prisma {
     pages?: PageUpdateManyWithoutAuthorNestedInput
     cases_as_pleader?: CasePleadingUpdateManyWithoutPleaderNestedInput
     cases_as_counselor?: CaseCounselingUpdateManyWithoutCounselorNestedInput
+    cases_payment_received?: CasePaymentUpdateManyWithoutReceivedByUserNestedInput
     cases_created?: CaseUpdateManyWithoutCreatedByNestedInput
   }
 
@@ -38907,16 +41296,13 @@ export namespace Prisma {
     pages?: PageUncheckedUpdateManyWithoutAuthorNestedInput
     cases_as_pleader?: CasePleadingUncheckedUpdateManyWithoutPleaderNestedInput
     cases_as_counselor?: CaseCounselingUncheckedUpdateManyWithoutCounselorNestedInput
+    cases_payment_received?: CasePaymentUncheckedUpdateManyWithoutReceivedByUserNestedInput
     cases_created?: CaseUncheckedUpdateManyWithoutCreatedByNestedInput
   }
 
   export type CaseCreateWithoutPartiesInput = {
     id?: string
-    caseNumber: string
-    caseName: string
-    registrationDate?: Date | string | null
     registrationFee?: Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: string | null
     facts?: string | null
     relatedLaws?: string | null
     referredThrough?: string | null
@@ -38927,6 +41313,7 @@ export namespace Prisma {
     createdAt?: Date | string
     nature: CaseNatureCreateNestedOneWithoutCasesInput
     createdBy?: UserCreateNestedOneWithoutCases_createdInput
+    courtDetails?: CaseCourtDetailCreateNestedManyWithoutCaseInput
     lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingCreateNestedManyWithoutCaseInput
     pleadings?: CasePleadingCreateNestedManyWithoutCaseInput
@@ -38939,12 +41326,8 @@ export namespace Prisma {
 
   export type CaseUncheckedCreateWithoutPartiesInput = {
     id?: string
-    caseNumber: string
-    caseName: string
     natureId: string
-    registrationDate?: Date | string | null
     registrationFee?: Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: string | null
     facts?: string | null
     relatedLaws?: string | null
     referredThrough?: string | null
@@ -38954,6 +41337,7 @@ export namespace Prisma {
     status?: string
     createdById?: string | null
     createdAt?: Date | string
+    courtDetails?: CaseCourtDetailUncheckedCreateNestedManyWithoutCaseInput
     lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingUncheckedCreateNestedManyWithoutCaseInput
     pleadings?: CasePleadingUncheckedCreateNestedManyWithoutCaseInput
@@ -39066,11 +41450,7 @@ export namespace Prisma {
 
   export type CaseUpdateWithoutPartiesInput = {
     id?: StringFieldUpdateOperationsInput | string
-    caseNumber?: StringFieldUpdateOperationsInput | string
-    caseName?: StringFieldUpdateOperationsInput | string
-    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
@@ -39081,6 +41461,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     nature?: CaseNatureUpdateOneRequiredWithoutCasesNestedInput
     createdBy?: UserUpdateOneWithoutCases_createdNestedInput
+    courtDetails?: CaseCourtDetailUpdateManyWithoutCaseNestedInput
     lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUpdateManyWithoutCaseNestedInput
     pleadings?: CasePleadingUpdateManyWithoutCaseNestedInput
@@ -39093,12 +41474,8 @@ export namespace Prisma {
 
   export type CaseUncheckedUpdateWithoutPartiesInput = {
     id?: StringFieldUpdateOperationsInput | string
-    caseNumber?: StringFieldUpdateOperationsInput | string
-    caseName?: StringFieldUpdateOperationsInput | string
     natureId?: StringFieldUpdateOperationsInput | string
-    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
@@ -39108,6 +41485,7 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    courtDetails?: CaseCourtDetailUncheckedUpdateManyWithoutCaseNestedInput
     lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUncheckedUpdateManyWithoutCaseNestedInput
     pleadings?: CasePleadingUncheckedUpdateManyWithoutCaseNestedInput
@@ -39196,11 +41574,7 @@ export namespace Prisma {
 
   export type CaseCreateWithoutHearingsInput = {
     id?: string
-    caseNumber: string
-    caseName: string
-    registrationDate?: Date | string | null
     registrationFee?: Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: string | null
     facts?: string | null
     relatedLaws?: string | null
     referredThrough?: string | null
@@ -39211,6 +41585,7 @@ export namespace Prisma {
     createdAt?: Date | string
     nature: CaseNatureCreateNestedOneWithoutCasesInput
     createdBy?: UserCreateNestedOneWithoutCases_createdInput
+    courtDetails?: CaseCourtDetailCreateNestedManyWithoutCaseInput
     lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
     parties?: CasePartyCreateNestedManyWithoutCaseInput
     pleadings?: CasePleadingCreateNestedManyWithoutCaseInput
@@ -39223,12 +41598,8 @@ export namespace Prisma {
 
   export type CaseUncheckedCreateWithoutHearingsInput = {
     id?: string
-    caseNumber: string
-    caseName: string
     natureId: string
-    registrationDate?: Date | string | null
     registrationFee?: Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: string | null
     facts?: string | null
     relatedLaws?: string | null
     referredThrough?: string | null
@@ -39238,6 +41609,7 @@ export namespace Prisma {
     status?: string
     createdById?: string | null
     createdAt?: Date | string
+    courtDetails?: CaseCourtDetailUncheckedCreateNestedManyWithoutCaseInput
     lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
     parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
     pleadings?: CasePleadingUncheckedCreateNestedManyWithoutCaseInput
@@ -39253,6 +41625,43 @@ export namespace Prisma {
     create: XOR<CaseCreateWithoutHearingsInput, CaseUncheckedCreateWithoutHearingsInput>
   }
 
+  export type CaseCourtDetailCreateWithoutHearingsInput = {
+    id?: string
+    caseName: string
+    caseNumber: string
+    registrationDate?: Date | string | null
+    judgeName?: string | null
+    courtType?: string | null
+    sectionCourtRoom?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    case: CaseCreateNestedOneWithoutCourtDetailsInput
+    parent?: CaseCourtDetailCreateNestedOneWithoutChildrenInput
+    children?: CaseCourtDetailCreateNestedManyWithoutParentInput
+  }
+
+  export type CaseCourtDetailUncheckedCreateWithoutHearingsInput = {
+    id?: string
+    caseId: string
+    caseName: string
+    caseNumber: string
+    registrationDate?: Date | string | null
+    judgeName?: string | null
+    courtType?: string | null
+    sectionCourtRoom?: string | null
+    parentId?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    children?: CaseCourtDetailUncheckedCreateNestedManyWithoutParentInput
+  }
+
+  export type CaseCourtDetailCreateOrConnectWithoutHearingsInput = {
+    where: CaseCourtDetailWhereUniqueInput
+    create: XOR<CaseCourtDetailCreateWithoutHearingsInput, CaseCourtDetailUncheckedCreateWithoutHearingsInput>
+  }
+
   export type CaseUpsertWithoutHearingsInput = {
     update: XOR<CaseUpdateWithoutHearingsInput, CaseUncheckedUpdateWithoutHearingsInput>
     create: XOR<CaseCreateWithoutHearingsInput, CaseUncheckedCreateWithoutHearingsInput>
@@ -39266,11 +41675,7 @@ export namespace Prisma {
 
   export type CaseUpdateWithoutHearingsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    caseNumber?: StringFieldUpdateOperationsInput | string
-    caseName?: StringFieldUpdateOperationsInput | string
-    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
@@ -39281,6 +41686,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     nature?: CaseNatureUpdateOneRequiredWithoutCasesNestedInput
     createdBy?: UserUpdateOneWithoutCases_createdNestedInput
+    courtDetails?: CaseCourtDetailUpdateManyWithoutCaseNestedInput
     lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUpdateManyWithoutCaseNestedInput
     pleadings?: CasePleadingUpdateManyWithoutCaseNestedInput
@@ -39293,12 +41699,8 @@ export namespace Prisma {
 
   export type CaseUncheckedUpdateWithoutHearingsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    caseNumber?: StringFieldUpdateOperationsInput | string
-    caseName?: StringFieldUpdateOperationsInput | string
     natureId?: StringFieldUpdateOperationsInput | string
-    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
@@ -39308,6 +41710,7 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    courtDetails?: CaseCourtDetailUncheckedUpdateManyWithoutCaseNestedInput
     lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
     pleadings?: CasePleadingUncheckedUpdateManyWithoutCaseNestedInput
@@ -39318,13 +41721,52 @@ export namespace Prisma {
     documents?: CaseDocumentUncheckedUpdateManyWithoutCaseNestedInput
   }
 
+  export type CaseCourtDetailUpsertWithoutHearingsInput = {
+    update: XOR<CaseCourtDetailUpdateWithoutHearingsInput, CaseCourtDetailUncheckedUpdateWithoutHearingsInput>
+    create: XOR<CaseCourtDetailCreateWithoutHearingsInput, CaseCourtDetailUncheckedCreateWithoutHearingsInput>
+    where?: CaseCourtDetailWhereInput
+  }
+
+  export type CaseCourtDetailUpdateToOneWithWhereWithoutHearingsInput = {
+    where?: CaseCourtDetailWhereInput
+    data: XOR<CaseCourtDetailUpdateWithoutHearingsInput, CaseCourtDetailUncheckedUpdateWithoutHearingsInput>
+  }
+
+  export type CaseCourtDetailUpdateWithoutHearingsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseName?: StringFieldUpdateOperationsInput | string
+    caseNumber?: StringFieldUpdateOperationsInput | string
+    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    judgeName?: NullableStringFieldUpdateOperationsInput | string | null
+    courtType?: NullableStringFieldUpdateOperationsInput | string | null
+    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    case?: CaseUpdateOneRequiredWithoutCourtDetailsNestedInput
+    parent?: CaseCourtDetailUpdateOneWithoutChildrenNestedInput
+    children?: CaseCourtDetailUpdateManyWithoutParentNestedInput
+  }
+
+  export type CaseCourtDetailUncheckedUpdateWithoutHearingsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseId?: StringFieldUpdateOperationsInput | string
+    caseName?: StringFieldUpdateOperationsInput | string
+    caseNumber?: StringFieldUpdateOperationsInput | string
+    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    judgeName?: NullableStringFieldUpdateOperationsInput | string | null
+    courtType?: NullableStringFieldUpdateOperationsInput | string | null
+    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
+    parentId?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    children?: CaseCourtDetailUncheckedUpdateManyWithoutParentNestedInput
+  }
+
   export type CaseCreateWithoutPleadingsInput = {
     id?: string
-    caseNumber: string
-    caseName: string
-    registrationDate?: Date | string | null
     registrationFee?: Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: string | null
     facts?: string | null
     relatedLaws?: string | null
     referredThrough?: string | null
@@ -39335,6 +41777,7 @@ export namespace Prisma {
     createdAt?: Date | string
     nature: CaseNatureCreateNestedOneWithoutCasesInput
     createdBy?: UserCreateNestedOneWithoutCases_createdInput
+    courtDetails?: CaseCourtDetailCreateNestedManyWithoutCaseInput
     lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
     parties?: CasePartyCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingCreateNestedManyWithoutCaseInput
@@ -39347,12 +41790,8 @@ export namespace Prisma {
 
   export type CaseUncheckedCreateWithoutPleadingsInput = {
     id?: string
-    caseNumber: string
-    caseName: string
     natureId: string
-    registrationDate?: Date | string | null
     registrationFee?: Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: string | null
     facts?: string | null
     relatedLaws?: string | null
     referredThrough?: string | null
@@ -39362,6 +41801,7 @@ export namespace Prisma {
     status?: string
     createdById?: string | null
     createdAt?: Date | string
+    courtDetails?: CaseCourtDetailUncheckedCreateNestedManyWithoutCaseInput
     lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
     parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingUncheckedCreateNestedManyWithoutCaseInput
@@ -39398,6 +41838,7 @@ export namespace Prisma {
     pages?: PageCreateNestedManyWithoutAuthorInput
     cases_as_lawyer?: CaseLawyerCreateNestedManyWithoutUserInput
     cases_as_counselor?: CaseCounselingCreateNestedManyWithoutCounselorInput
+    cases_payment_received?: CasePaymentCreateNestedManyWithoutReceivedByUserInput
     cases_created?: CaseCreateNestedManyWithoutCreatedByInput
   }
 
@@ -39422,6 +41863,7 @@ export namespace Prisma {
     pages?: PageUncheckedCreateNestedManyWithoutAuthorInput
     cases_as_lawyer?: CaseLawyerUncheckedCreateNestedManyWithoutUserInput
     cases_as_counselor?: CaseCounselingUncheckedCreateNestedManyWithoutCounselorInput
+    cases_payment_received?: CasePaymentUncheckedCreateNestedManyWithoutReceivedByUserInput
     cases_created?: CaseUncheckedCreateNestedManyWithoutCreatedByInput
   }
 
@@ -39443,11 +41885,7 @@ export namespace Prisma {
 
   export type CaseUpdateWithoutPleadingsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    caseNumber?: StringFieldUpdateOperationsInput | string
-    caseName?: StringFieldUpdateOperationsInput | string
-    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
@@ -39458,6 +41896,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     nature?: CaseNatureUpdateOneRequiredWithoutCasesNestedInput
     createdBy?: UserUpdateOneWithoutCases_createdNestedInput
+    courtDetails?: CaseCourtDetailUpdateManyWithoutCaseNestedInput
     lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUpdateManyWithoutCaseNestedInput
@@ -39470,12 +41909,8 @@ export namespace Prisma {
 
   export type CaseUncheckedUpdateWithoutPleadingsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    caseNumber?: StringFieldUpdateOperationsInput | string
-    caseName?: StringFieldUpdateOperationsInput | string
     natureId?: StringFieldUpdateOperationsInput | string
-    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
@@ -39485,6 +41920,7 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    courtDetails?: CaseCourtDetailUncheckedUpdateManyWithoutCaseNestedInput
     lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUncheckedUpdateManyWithoutCaseNestedInput
@@ -39527,6 +41963,7 @@ export namespace Prisma {
     pages?: PageUpdateManyWithoutAuthorNestedInput
     cases_as_lawyer?: CaseLawyerUpdateManyWithoutUserNestedInput
     cases_as_counselor?: CaseCounselingUpdateManyWithoutCounselorNestedInput
+    cases_payment_received?: CasePaymentUpdateManyWithoutReceivedByUserNestedInput
     cases_created?: CaseUpdateManyWithoutCreatedByNestedInput
   }
 
@@ -39551,16 +41988,13 @@ export namespace Prisma {
     pages?: PageUncheckedUpdateManyWithoutAuthorNestedInput
     cases_as_lawyer?: CaseLawyerUncheckedUpdateManyWithoutUserNestedInput
     cases_as_counselor?: CaseCounselingUncheckedUpdateManyWithoutCounselorNestedInput
+    cases_payment_received?: CasePaymentUncheckedUpdateManyWithoutReceivedByUserNestedInput
     cases_created?: CaseUncheckedUpdateManyWithoutCreatedByNestedInput
   }
 
   export type CaseCreateWithoutProceedingsInput = {
     id?: string
-    caseNumber: string
-    caseName: string
-    registrationDate?: Date | string | null
     registrationFee?: Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: string | null
     facts?: string | null
     relatedLaws?: string | null
     referredThrough?: string | null
@@ -39571,6 +42005,7 @@ export namespace Prisma {
     createdAt?: Date | string
     nature: CaseNatureCreateNestedOneWithoutCasesInput
     createdBy?: UserCreateNestedOneWithoutCases_createdInput
+    courtDetails?: CaseCourtDetailCreateNestedManyWithoutCaseInput
     lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
     parties?: CasePartyCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingCreateNestedManyWithoutCaseInput
@@ -39583,12 +42018,8 @@ export namespace Prisma {
 
   export type CaseUncheckedCreateWithoutProceedingsInput = {
     id?: string
-    caseNumber: string
-    caseName: string
     natureId: string
-    registrationDate?: Date | string | null
     registrationFee?: Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: string | null
     facts?: string | null
     relatedLaws?: string | null
     referredThrough?: string | null
@@ -39598,6 +42029,7 @@ export namespace Prisma {
     status?: string
     createdById?: string | null
     createdAt?: Date | string
+    courtDetails?: CaseCourtDetailUncheckedCreateNestedManyWithoutCaseInput
     lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
     parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingUncheckedCreateNestedManyWithoutCaseInput
@@ -39643,11 +42075,7 @@ export namespace Prisma {
 
   export type CaseUpdateWithoutProceedingsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    caseNumber?: StringFieldUpdateOperationsInput | string
-    caseName?: StringFieldUpdateOperationsInput | string
-    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
@@ -39658,6 +42086,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     nature?: CaseNatureUpdateOneRequiredWithoutCasesNestedInput
     createdBy?: UserUpdateOneWithoutCases_createdNestedInput
+    courtDetails?: CaseCourtDetailUpdateManyWithoutCaseNestedInput
     lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUpdateManyWithoutCaseNestedInput
@@ -39670,12 +42099,8 @@ export namespace Prisma {
 
   export type CaseUncheckedUpdateWithoutProceedingsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    caseNumber?: StringFieldUpdateOperationsInput | string
-    caseName?: StringFieldUpdateOperationsInput | string
     natureId?: StringFieldUpdateOperationsInput | string
-    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
@@ -39685,6 +42110,7 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    courtDetails?: CaseCourtDetailUncheckedUpdateManyWithoutCaseNestedInput
     lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUncheckedUpdateManyWithoutCaseNestedInput
@@ -39720,11 +42146,7 @@ export namespace Prisma {
 
   export type CaseCreateWithoutPrecedentsInput = {
     id?: string
-    caseNumber: string
-    caseName: string
-    registrationDate?: Date | string | null
     registrationFee?: Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: string | null
     facts?: string | null
     relatedLaws?: string | null
     referredThrough?: string | null
@@ -39735,6 +42157,7 @@ export namespace Prisma {
     createdAt?: Date | string
     nature: CaseNatureCreateNestedOneWithoutCasesInput
     createdBy?: UserCreateNestedOneWithoutCases_createdInput
+    courtDetails?: CaseCourtDetailCreateNestedManyWithoutCaseInput
     lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
     parties?: CasePartyCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingCreateNestedManyWithoutCaseInput
@@ -39747,12 +42170,8 @@ export namespace Prisma {
 
   export type CaseUncheckedCreateWithoutPrecedentsInput = {
     id?: string
-    caseNumber: string
-    caseName: string
     natureId: string
-    registrationDate?: Date | string | null
     registrationFee?: Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: string | null
     facts?: string | null
     relatedLaws?: string | null
     referredThrough?: string | null
@@ -39762,6 +42181,7 @@ export namespace Prisma {
     status?: string
     createdById?: string | null
     createdAt?: Date | string
+    courtDetails?: CaseCourtDetailUncheckedCreateNestedManyWithoutCaseInput
     lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
     parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingUncheckedCreateNestedManyWithoutCaseInput
@@ -39790,11 +42210,7 @@ export namespace Prisma {
 
   export type CaseUpdateWithoutPrecedentsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    caseNumber?: StringFieldUpdateOperationsInput | string
-    caseName?: StringFieldUpdateOperationsInput | string
-    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
@@ -39805,6 +42221,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     nature?: CaseNatureUpdateOneRequiredWithoutCasesNestedInput
     createdBy?: UserUpdateOneWithoutCases_createdNestedInput
+    courtDetails?: CaseCourtDetailUpdateManyWithoutCaseNestedInput
     lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUpdateManyWithoutCaseNestedInput
@@ -39817,12 +42234,8 @@ export namespace Prisma {
 
   export type CaseUncheckedUpdateWithoutPrecedentsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    caseNumber?: StringFieldUpdateOperationsInput | string
-    caseName?: StringFieldUpdateOperationsInput | string
     natureId?: StringFieldUpdateOperationsInput | string
-    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
@@ -39832,6 +42245,7 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    courtDetails?: CaseCourtDetailUncheckedUpdateManyWithoutCaseNestedInput
     lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUncheckedUpdateManyWithoutCaseNestedInput
@@ -39844,11 +42258,7 @@ export namespace Prisma {
 
   export type CaseCreateWithoutPaymentsInput = {
     id?: string
-    caseNumber: string
-    caseName: string
-    registrationDate?: Date | string | null
     registrationFee?: Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: string | null
     facts?: string | null
     relatedLaws?: string | null
     referredThrough?: string | null
@@ -39859,6 +42269,7 @@ export namespace Prisma {
     createdAt?: Date | string
     nature: CaseNatureCreateNestedOneWithoutCasesInput
     createdBy?: UserCreateNestedOneWithoutCases_createdInput
+    courtDetails?: CaseCourtDetailCreateNestedManyWithoutCaseInput
     lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
     parties?: CasePartyCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingCreateNestedManyWithoutCaseInput
@@ -39871,12 +42282,8 @@ export namespace Prisma {
 
   export type CaseUncheckedCreateWithoutPaymentsInput = {
     id?: string
-    caseNumber: string
-    caseName: string
     natureId: string
-    registrationDate?: Date | string | null
     registrationFee?: Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: string | null
     facts?: string | null
     relatedLaws?: string | null
     referredThrough?: string | null
@@ -39886,6 +42293,7 @@ export namespace Prisma {
     status?: string
     createdById?: string | null
     createdAt?: Date | string
+    courtDetails?: CaseCourtDetailUncheckedCreateNestedManyWithoutCaseInput
     lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
     parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingUncheckedCreateNestedManyWithoutCaseInput
@@ -39901,6 +42309,61 @@ export namespace Prisma {
     create: XOR<CaseCreateWithoutPaymentsInput, CaseUncheckedCreateWithoutPaymentsInput>
   }
 
+  export type UserCreateWithoutCases_payment_receivedInput = {
+    id?: string
+    email: string
+    first_name: string
+    last_name: string
+    password?: string | null
+    status?: string
+    invitation_token?: string | null
+    invitation_expires_at?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    detail?: NullableJsonNullValueInput | InputJsonValue
+    avatar?: ResourceCreateNestedOneWithoutUsersInput
+    role?: RoleCreateNestedOneWithoutUsersInput
+    notifications?: NotificationCreateNestedManyWithoutUserInput
+    refresh_tokens?: RefreshTokenCreateNestedManyWithoutUserInput
+    reset_tokens?: PasswordResetTokenCreateNestedManyWithoutUserInput
+    pages?: PageCreateNestedManyWithoutAuthorInput
+    cases_as_lawyer?: CaseLawyerCreateNestedManyWithoutUserInput
+    cases_as_pleader?: CasePleadingCreateNestedManyWithoutPleaderInput
+    cases_as_counselor?: CaseCounselingCreateNestedManyWithoutCounselorInput
+    cases_created?: CaseCreateNestedManyWithoutCreatedByInput
+  }
+
+  export type UserUncheckedCreateWithoutCases_payment_receivedInput = {
+    id?: string
+    email: string
+    first_name: string
+    last_name: string
+    password?: string | null
+    status?: string
+    invitation_token?: string | null
+    invitation_expires_at?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    detail?: NullableJsonNullValueInput | InputJsonValue
+    avatar_id?: string | null
+    role_id?: string | null
+    notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
+    refresh_tokens?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
+    reset_tokens?: PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
+    pages?: PageUncheckedCreateNestedManyWithoutAuthorInput
+    cases_as_lawyer?: CaseLawyerUncheckedCreateNestedManyWithoutUserInput
+    cases_as_pleader?: CasePleadingUncheckedCreateNestedManyWithoutPleaderInput
+    cases_as_counselor?: CaseCounselingUncheckedCreateNestedManyWithoutCounselorInput
+    cases_created?: CaseUncheckedCreateNestedManyWithoutCreatedByInput
+  }
+
+  export type UserCreateOrConnectWithoutCases_payment_receivedInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutCases_payment_receivedInput, UserUncheckedCreateWithoutCases_payment_receivedInput>
+  }
+
   export type CaseUpsertWithoutPaymentsInput = {
     update: XOR<CaseUpdateWithoutPaymentsInput, CaseUncheckedUpdateWithoutPaymentsInput>
     create: XOR<CaseCreateWithoutPaymentsInput, CaseUncheckedCreateWithoutPaymentsInput>
@@ -39914,11 +42377,7 @@ export namespace Prisma {
 
   export type CaseUpdateWithoutPaymentsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    caseNumber?: StringFieldUpdateOperationsInput | string
-    caseName?: StringFieldUpdateOperationsInput | string
-    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
@@ -39929,6 +42388,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     nature?: CaseNatureUpdateOneRequiredWithoutCasesNestedInput
     createdBy?: UserUpdateOneWithoutCases_createdNestedInput
+    courtDetails?: CaseCourtDetailUpdateManyWithoutCaseNestedInput
     lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUpdateManyWithoutCaseNestedInput
@@ -39941,12 +42401,8 @@ export namespace Prisma {
 
   export type CaseUncheckedUpdateWithoutPaymentsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    caseNumber?: StringFieldUpdateOperationsInput | string
-    caseName?: StringFieldUpdateOperationsInput | string
     natureId?: StringFieldUpdateOperationsInput | string
-    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
@@ -39956,6 +42412,7 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    courtDetails?: CaseCourtDetailUncheckedUpdateManyWithoutCaseNestedInput
     lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUncheckedUpdateManyWithoutCaseNestedInput
@@ -39966,13 +42423,70 @@ export namespace Prisma {
     documents?: CaseDocumentUncheckedUpdateManyWithoutCaseNestedInput
   }
 
+  export type UserUpsertWithoutCases_payment_receivedInput = {
+    update: XOR<UserUpdateWithoutCases_payment_receivedInput, UserUncheckedUpdateWithoutCases_payment_receivedInput>
+    create: XOR<UserCreateWithoutCases_payment_receivedInput, UserUncheckedCreateWithoutCases_payment_receivedInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutCases_payment_receivedInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutCases_payment_receivedInput, UserUncheckedUpdateWithoutCases_payment_receivedInput>
+  }
+
+  export type UserUpdateWithoutCases_payment_receivedInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    first_name?: StringFieldUpdateOperationsInput | string
+    last_name?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    invitation_token?: NullableStringFieldUpdateOperationsInput | string | null
+    invitation_expires_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    detail?: NullableJsonNullValueInput | InputJsonValue
+    avatar?: ResourceUpdateOneWithoutUsersNestedInput
+    role?: RoleUpdateOneWithoutUsersNestedInput
+    notifications?: NotificationUpdateManyWithoutUserNestedInput
+    refresh_tokens?: RefreshTokenUpdateManyWithoutUserNestedInput
+    reset_tokens?: PasswordResetTokenUpdateManyWithoutUserNestedInput
+    pages?: PageUpdateManyWithoutAuthorNestedInput
+    cases_as_lawyer?: CaseLawyerUpdateManyWithoutUserNestedInput
+    cases_as_pleader?: CasePleadingUpdateManyWithoutPleaderNestedInput
+    cases_as_counselor?: CaseCounselingUpdateManyWithoutCounselorNestedInput
+    cases_created?: CaseUpdateManyWithoutCreatedByNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutCases_payment_receivedInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    first_name?: StringFieldUpdateOperationsInput | string
+    last_name?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    invitation_token?: NullableStringFieldUpdateOperationsInput | string | null
+    invitation_expires_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    detail?: NullableJsonNullValueInput | InputJsonValue
+    avatar_id?: NullableStringFieldUpdateOperationsInput | string | null
+    role_id?: NullableStringFieldUpdateOperationsInput | string | null
+    notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+    refresh_tokens?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
+    reset_tokens?: PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
+    pages?: PageUncheckedUpdateManyWithoutAuthorNestedInput
+    cases_as_lawyer?: CaseLawyerUncheckedUpdateManyWithoutUserNestedInput
+    cases_as_pleader?: CasePleadingUncheckedUpdateManyWithoutPleaderNestedInput
+    cases_as_counselor?: CaseCounselingUncheckedUpdateManyWithoutCounselorNestedInput
+    cases_created?: CaseUncheckedUpdateManyWithoutCreatedByNestedInput
+  }
+
   export type CaseCreateWithoutCounselingsInput = {
     id?: string
-    caseNumber: string
-    caseName: string
-    registrationDate?: Date | string | null
     registrationFee?: Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: string | null
     facts?: string | null
     relatedLaws?: string | null
     referredThrough?: string | null
@@ -39983,6 +42497,7 @@ export namespace Prisma {
     createdAt?: Date | string
     nature: CaseNatureCreateNestedOneWithoutCasesInput
     createdBy?: UserCreateNestedOneWithoutCases_createdInput
+    courtDetails?: CaseCourtDetailCreateNestedManyWithoutCaseInput
     lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
     parties?: CasePartyCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingCreateNestedManyWithoutCaseInput
@@ -39995,12 +42510,8 @@ export namespace Prisma {
 
   export type CaseUncheckedCreateWithoutCounselingsInput = {
     id?: string
-    caseNumber: string
-    caseName: string
     natureId: string
-    registrationDate?: Date | string | null
     registrationFee?: Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: string | null
     facts?: string | null
     relatedLaws?: string | null
     referredThrough?: string | null
@@ -40010,6 +42521,7 @@ export namespace Prisma {
     status?: string
     createdById?: string | null
     createdAt?: Date | string
+    courtDetails?: CaseCourtDetailUncheckedCreateNestedManyWithoutCaseInput
     lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
     parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingUncheckedCreateNestedManyWithoutCaseInput
@@ -40046,6 +42558,7 @@ export namespace Prisma {
     pages?: PageCreateNestedManyWithoutAuthorInput
     cases_as_lawyer?: CaseLawyerCreateNestedManyWithoutUserInput
     cases_as_pleader?: CasePleadingCreateNestedManyWithoutPleaderInput
+    cases_payment_received?: CasePaymentCreateNestedManyWithoutReceivedByUserInput
     cases_created?: CaseCreateNestedManyWithoutCreatedByInput
   }
 
@@ -40070,6 +42583,7 @@ export namespace Prisma {
     pages?: PageUncheckedCreateNestedManyWithoutAuthorInput
     cases_as_lawyer?: CaseLawyerUncheckedCreateNestedManyWithoutUserInput
     cases_as_pleader?: CasePleadingUncheckedCreateNestedManyWithoutPleaderInput
+    cases_payment_received?: CasePaymentUncheckedCreateNestedManyWithoutReceivedByUserInput
     cases_created?: CaseUncheckedCreateNestedManyWithoutCreatedByInput
   }
 
@@ -40091,11 +42605,7 @@ export namespace Prisma {
 
   export type CaseUpdateWithoutCounselingsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    caseNumber?: StringFieldUpdateOperationsInput | string
-    caseName?: StringFieldUpdateOperationsInput | string
-    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
@@ -40106,6 +42616,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     nature?: CaseNatureUpdateOneRequiredWithoutCasesNestedInput
     createdBy?: UserUpdateOneWithoutCases_createdNestedInput
+    courtDetails?: CaseCourtDetailUpdateManyWithoutCaseNestedInput
     lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUpdateManyWithoutCaseNestedInput
@@ -40118,12 +42629,8 @@ export namespace Prisma {
 
   export type CaseUncheckedUpdateWithoutCounselingsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    caseNumber?: StringFieldUpdateOperationsInput | string
-    caseName?: StringFieldUpdateOperationsInput | string
     natureId?: StringFieldUpdateOperationsInput | string
-    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
@@ -40133,6 +42640,7 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    courtDetails?: CaseCourtDetailUncheckedUpdateManyWithoutCaseNestedInput
     lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUncheckedUpdateManyWithoutCaseNestedInput
@@ -40175,6 +42683,7 @@ export namespace Prisma {
     pages?: PageUpdateManyWithoutAuthorNestedInput
     cases_as_lawyer?: CaseLawyerUpdateManyWithoutUserNestedInput
     cases_as_pleader?: CasePleadingUpdateManyWithoutPleaderNestedInput
+    cases_payment_received?: CasePaymentUpdateManyWithoutReceivedByUserNestedInput
     cases_created?: CaseUpdateManyWithoutCreatedByNestedInput
   }
 
@@ -40199,16 +42708,13 @@ export namespace Prisma {
     pages?: PageUncheckedUpdateManyWithoutAuthorNestedInput
     cases_as_lawyer?: CaseLawyerUncheckedUpdateManyWithoutUserNestedInput
     cases_as_pleader?: CasePleadingUncheckedUpdateManyWithoutPleaderNestedInput
+    cases_payment_received?: CasePaymentUncheckedUpdateManyWithoutReceivedByUserNestedInput
     cases_created?: CaseUncheckedUpdateManyWithoutCreatedByNestedInput
   }
 
   export type CaseCreateWithoutDocumentsInput = {
     id?: string
-    caseNumber: string
-    caseName: string
-    registrationDate?: Date | string | null
     registrationFee?: Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: string | null
     facts?: string | null
     relatedLaws?: string | null
     referredThrough?: string | null
@@ -40219,6 +42725,7 @@ export namespace Prisma {
     createdAt?: Date | string
     nature: CaseNatureCreateNestedOneWithoutCasesInput
     createdBy?: UserCreateNestedOneWithoutCases_createdInput
+    courtDetails?: CaseCourtDetailCreateNestedManyWithoutCaseInput
     lawyers?: CaseLawyerCreateNestedManyWithoutCaseInput
     parties?: CasePartyCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingCreateNestedManyWithoutCaseInput
@@ -40231,12 +42738,8 @@ export namespace Prisma {
 
   export type CaseUncheckedCreateWithoutDocumentsInput = {
     id?: string
-    caseNumber: string
-    caseName: string
     natureId: string
-    registrationDate?: Date | string | null
     registrationFee?: Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: string | null
     facts?: string | null
     relatedLaws?: string | null
     referredThrough?: string | null
@@ -40246,6 +42749,7 @@ export namespace Prisma {
     status?: string
     createdById?: string | null
     createdAt?: Date | string
+    courtDetails?: CaseCourtDetailUncheckedCreateNestedManyWithoutCaseInput
     lawyers?: CaseLawyerUncheckedCreateNestedManyWithoutCaseInput
     parties?: CasePartyUncheckedCreateNestedManyWithoutCaseInput
     hearings?: CaseHearingUncheckedCreateNestedManyWithoutCaseInput
@@ -40274,11 +42778,7 @@ export namespace Prisma {
 
   export type CaseUpdateWithoutDocumentsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    caseNumber?: StringFieldUpdateOperationsInput | string
-    caseName?: StringFieldUpdateOperationsInput | string
-    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
@@ -40289,6 +42789,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     nature?: CaseNatureUpdateOneRequiredWithoutCasesNestedInput
     createdBy?: UserUpdateOneWithoutCases_createdNestedInput
+    courtDetails?: CaseCourtDetailUpdateManyWithoutCaseNestedInput
     lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUpdateManyWithoutCaseNestedInput
@@ -40301,12 +42802,8 @@ export namespace Prisma {
 
   export type CaseUncheckedUpdateWithoutDocumentsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    caseNumber?: StringFieldUpdateOperationsInput | string
-    caseName?: StringFieldUpdateOperationsInput | string
     natureId?: StringFieldUpdateOperationsInput | string
-    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
@@ -40316,6 +42813,7 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    courtDetails?: CaseCourtDetailUncheckedUpdateManyWithoutCaseNestedInput
     lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUncheckedUpdateManyWithoutCaseNestedInput
@@ -40347,6 +42845,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerCreateNestedManyWithoutUserInput
     cases_as_pleader?: CasePleadingCreateNestedManyWithoutPleaderInput
     cases_as_counselor?: CaseCounselingCreateNestedManyWithoutCounselorInput
+    cases_payment_received?: CasePaymentCreateNestedManyWithoutReceivedByUserInput
     cases_created?: CaseCreateNestedManyWithoutCreatedByInput
   }
 
@@ -40371,6 +42870,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerUncheckedCreateNestedManyWithoutUserInput
     cases_as_pleader?: CasePleadingUncheckedCreateNestedManyWithoutPleaderInput
     cases_as_counselor?: CaseCounselingUncheckedCreateNestedManyWithoutCounselorInput
+    cases_payment_received?: CasePaymentUncheckedCreateNestedManyWithoutReceivedByUserInput
     cases_created?: CaseUncheckedCreateNestedManyWithoutCreatedByInput
   }
 
@@ -40411,6 +42911,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerUpdateManyWithoutUserNestedInput
     cases_as_pleader?: CasePleadingUpdateManyWithoutPleaderNestedInput
     cases_as_counselor?: CaseCounselingUpdateManyWithoutCounselorNestedInput
+    cases_payment_received?: CasePaymentUpdateManyWithoutReceivedByUserNestedInput
     cases_created?: CaseUpdateManyWithoutCreatedByNestedInput
   }
 
@@ -40435,6 +42936,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerUncheckedUpdateManyWithoutUserNestedInput
     cases_as_pleader?: CasePleadingUncheckedUpdateManyWithoutPleaderNestedInput
     cases_as_counselor?: CaseCounselingUncheckedUpdateManyWithoutCounselorNestedInput
+    cases_payment_received?: CasePaymentUncheckedUpdateManyWithoutReceivedByUserNestedInput
     cases_created?: CaseUncheckedUpdateManyWithoutCreatedByNestedInput
   }
 
@@ -40670,6 +43172,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerCreateNestedManyWithoutUserInput
     cases_as_pleader?: CasePleadingCreateNestedManyWithoutPleaderInput
     cases_as_counselor?: CaseCounselingCreateNestedManyWithoutCounselorInput
+    cases_payment_received?: CasePaymentCreateNestedManyWithoutReceivedByUserInput
     cases_created?: CaseCreateNestedManyWithoutCreatedByInput
   }
 
@@ -40694,6 +43197,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerUncheckedCreateNestedManyWithoutUserInput
     cases_as_pleader?: CasePleadingUncheckedCreateNestedManyWithoutPleaderInput
     cases_as_counselor?: CaseCounselingUncheckedCreateNestedManyWithoutCounselorInput
+    cases_payment_received?: CasePaymentUncheckedCreateNestedManyWithoutReceivedByUserInput
     cases_created?: CaseUncheckedCreateNestedManyWithoutCreatedByInput
   }
 
@@ -40921,6 +43425,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerUpdateManyWithoutUserNestedInput
     cases_as_pleader?: CasePleadingUpdateManyWithoutPleaderNestedInput
     cases_as_counselor?: CaseCounselingUpdateManyWithoutCounselorNestedInput
+    cases_payment_received?: CasePaymentUpdateManyWithoutReceivedByUserNestedInput
     cases_created?: CaseUpdateManyWithoutCreatedByNestedInput
   }
 
@@ -40945,6 +43450,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerUncheckedUpdateManyWithoutUserNestedInput
     cases_as_pleader?: CasePleadingUncheckedUpdateManyWithoutPleaderNestedInput
     cases_as_counselor?: CaseCounselingUncheckedUpdateManyWithoutCounselorNestedInput
+    cases_payment_received?: CasePaymentUncheckedUpdateManyWithoutReceivedByUserNestedInput
     cases_created?: CaseUncheckedUpdateManyWithoutCreatedByNestedInput
   }
 
@@ -41287,6 +43793,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerCreateNestedManyWithoutUserInput
     cases_as_pleader?: CasePleadingCreateNestedManyWithoutPleaderInput
     cases_as_counselor?: CaseCounselingCreateNestedManyWithoutCounselorInput
+    cases_payment_received?: CasePaymentCreateNestedManyWithoutReceivedByUserInput
     cases_created?: CaseCreateNestedManyWithoutCreatedByInput
   }
 
@@ -41311,6 +43818,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerUncheckedCreateNestedManyWithoutUserInput
     cases_as_pleader?: CasePleadingUncheckedCreateNestedManyWithoutPleaderInput
     cases_as_counselor?: CaseCounselingUncheckedCreateNestedManyWithoutCounselorInput
+    cases_payment_received?: CasePaymentUncheckedCreateNestedManyWithoutReceivedByUserInput
     cases_created?: CaseUncheckedCreateNestedManyWithoutCreatedByInput
   }
 
@@ -41401,14 +43909,22 @@ export namespace Prisma {
     createdAt?: Date | string
   }
 
+  export type CasePaymentCreateManyReceivedByUserInput = {
+    id?: string
+    caseId: string
+    amount: Decimal | DecimalJsLike | number | string
+    paymentDate?: Date | string | null
+    method?: string | null
+    referenceNo?: string | null
+    notes?: string | null
+    receivedBy?: string | null
+    createdAt?: Date | string
+  }
+
   export type CaseCreateManyCreatedByInput = {
     id?: string
-    caseNumber: string
-    caseName: string
     natureId: string
-    registrationDate?: Date | string | null
     registrationFee?: Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: string | null
     facts?: string | null
     relatedLaws?: string | null
     referredThrough?: string | null
@@ -41608,13 +44124,45 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type CasePaymentUpdateWithoutReceivedByUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    paymentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    method?: NullableStringFieldUpdateOperationsInput | string | null
+    referenceNo?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    receivedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    case?: CaseUpdateOneRequiredWithoutPaymentsNestedInput
+  }
+
+  export type CasePaymentUncheckedUpdateWithoutReceivedByUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseId?: StringFieldUpdateOperationsInput | string
+    amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    paymentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    method?: NullableStringFieldUpdateOperationsInput | string | null
+    referenceNo?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    receivedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CasePaymentUncheckedUpdateManyWithoutReceivedByUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseId?: StringFieldUpdateOperationsInput | string
+    amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    paymentDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    method?: NullableStringFieldUpdateOperationsInput | string | null
+    referenceNo?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    receivedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type CaseUpdateWithoutCreatedByInput = {
     id?: StringFieldUpdateOperationsInput | string
-    caseNumber?: StringFieldUpdateOperationsInput | string
-    caseName?: StringFieldUpdateOperationsInput | string
-    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
@@ -41624,6 +44172,7 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     nature?: CaseNatureUpdateOneRequiredWithoutCasesNestedInput
+    courtDetails?: CaseCourtDetailUpdateManyWithoutCaseNestedInput
     lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUpdateManyWithoutCaseNestedInput
@@ -41637,12 +44186,8 @@ export namespace Prisma {
 
   export type CaseUncheckedUpdateWithoutCreatedByInput = {
     id?: StringFieldUpdateOperationsInput | string
-    caseNumber?: StringFieldUpdateOperationsInput | string
-    caseName?: StringFieldUpdateOperationsInput | string
     natureId?: StringFieldUpdateOperationsInput | string
-    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
@@ -41651,6 +44196,7 @@ export namespace Prisma {
     judgmentVerifyDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    courtDetails?: CaseCourtDetailUncheckedUpdateManyWithoutCaseNestedInput
     lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUncheckedUpdateManyWithoutCaseNestedInput
@@ -41664,12 +44210,8 @@ export namespace Prisma {
 
   export type CaseUncheckedUpdateManyWithoutCreatedByInput = {
     id?: StringFieldUpdateOperationsInput | string
-    caseNumber?: StringFieldUpdateOperationsInput | string
-    caseName?: StringFieldUpdateOperationsInput | string
     natureId?: StringFieldUpdateOperationsInput | string
-    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
@@ -41747,6 +44289,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerUpdateManyWithoutUserNestedInput
     cases_as_pleader?: CasePleadingUpdateManyWithoutPleaderNestedInput
     cases_as_counselor?: CaseCounselingUpdateManyWithoutCounselorNestedInput
+    cases_payment_received?: CasePaymentUpdateManyWithoutReceivedByUserNestedInput
     cases_created?: CaseUpdateManyWithoutCreatedByNestedInput
   }
 
@@ -41771,6 +44314,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerUncheckedUpdateManyWithoutUserNestedInput
     cases_as_pleader?: CasePleadingUncheckedUpdateManyWithoutPleaderNestedInput
     cases_as_counselor?: CaseCounselingUncheckedUpdateManyWithoutCounselorNestedInput
+    cases_payment_received?: CasePaymentUncheckedUpdateManyWithoutReceivedByUserNestedInput
     cases_created?: CaseUncheckedUpdateManyWithoutCreatedByNestedInput
   }
 
@@ -41924,11 +44468,7 @@ export namespace Prisma {
 
   export type CaseCreateManyNatureInput = {
     id?: string
-    caseNumber: string
-    caseName: string
-    registrationDate?: Date | string | null
     registrationFee?: Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: string | null
     facts?: string | null
     relatedLaws?: string | null
     referredThrough?: string | null
@@ -41942,11 +44482,7 @@ export namespace Prisma {
 
   export type CaseUpdateWithoutNatureInput = {
     id?: StringFieldUpdateOperationsInput | string
-    caseNumber?: StringFieldUpdateOperationsInput | string
-    caseName?: StringFieldUpdateOperationsInput | string
-    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
@@ -41956,6 +44492,7 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdBy?: UserUpdateOneWithoutCases_createdNestedInput
+    courtDetails?: CaseCourtDetailUpdateManyWithoutCaseNestedInput
     lawyers?: CaseLawyerUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUpdateManyWithoutCaseNestedInput
@@ -41969,11 +44506,7 @@ export namespace Prisma {
 
   export type CaseUncheckedUpdateWithoutNatureInput = {
     id?: StringFieldUpdateOperationsInput | string
-    caseNumber?: StringFieldUpdateOperationsInput | string
-    caseName?: StringFieldUpdateOperationsInput | string
-    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
@@ -41983,6 +44516,7 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     createdById?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    courtDetails?: CaseCourtDetailUncheckedUpdateManyWithoutCaseNestedInput
     lawyers?: CaseLawyerUncheckedUpdateManyWithoutCaseNestedInput
     parties?: CasePartyUncheckedUpdateManyWithoutCaseNestedInput
     hearings?: CaseHearingUncheckedUpdateManyWithoutCaseNestedInput
@@ -41996,11 +44530,7 @@ export namespace Prisma {
 
   export type CaseUncheckedUpdateManyWithoutNatureInput = {
     id?: StringFieldUpdateOperationsInput | string
-    caseNumber?: StringFieldUpdateOperationsInput | string
-    caseName?: StringFieldUpdateOperationsInput | string
-    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     registrationFee?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
     facts?: NullableStringFieldUpdateOperationsInput | string | null
     relatedLaws?: NullableStringFieldUpdateOperationsInput | string | null
     referredThrough?: NullableStringFieldUpdateOperationsInput | string | null
@@ -42062,6 +44592,20 @@ export namespace Prisma {
     parentId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
+  export type CaseCourtDetailCreateManyCaseInput = {
+    id?: string
+    caseName: string
+    caseNumber: string
+    registrationDate?: Date | string | null
+    judgeName?: string | null
+    courtType?: string | null
+    sectionCourtRoom?: string | null
+    parentId?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type CaseLawyerCreateManyCaseInput = {
     userId: string
     isLead?: boolean
@@ -42081,10 +44625,10 @@ export namespace Prisma {
 
   export type CaseHearingCreateManyCaseInput = {
     id?: string
+    caseCourtDetailId?: string | null
     nextHearingDate?: Date | string | null
     hearingDate?: Date | string | null
     hearingOrder?: string | null
-    judgeName?: string | null
   }
 
   export type CasePleadingCreateManyCaseInput = {
@@ -42118,6 +44662,8 @@ export namespace Prisma {
     method?: string | null
     referenceNo?: string | null
     notes?: string | null
+    receivedByUserId?: string | null
+    receivedBy?: string | null
     createdAt?: Date | string
   }
 
@@ -42135,6 +44681,52 @@ export namespace Prisma {
     description?: string | null
     documentUrl: string
     createdAt?: Date | string
+  }
+
+  export type CaseCourtDetailUpdateWithoutCaseInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseName?: StringFieldUpdateOperationsInput | string
+    caseNumber?: StringFieldUpdateOperationsInput | string
+    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    judgeName?: NullableStringFieldUpdateOperationsInput | string | null
+    courtType?: NullableStringFieldUpdateOperationsInput | string | null
+    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    parent?: CaseCourtDetailUpdateOneWithoutChildrenNestedInput
+    children?: CaseCourtDetailUpdateManyWithoutParentNestedInput
+    hearings?: CaseHearingUpdateManyWithoutCaseCourtDetailNestedInput
+  }
+
+  export type CaseCourtDetailUncheckedUpdateWithoutCaseInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseName?: StringFieldUpdateOperationsInput | string
+    caseNumber?: StringFieldUpdateOperationsInput | string
+    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    judgeName?: NullableStringFieldUpdateOperationsInput | string | null
+    courtType?: NullableStringFieldUpdateOperationsInput | string | null
+    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
+    parentId?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    children?: CaseCourtDetailUncheckedUpdateManyWithoutParentNestedInput
+    hearings?: CaseHearingUncheckedUpdateManyWithoutCaseCourtDetailNestedInput
+  }
+
+  export type CaseCourtDetailUncheckedUpdateManyWithoutCaseInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseName?: StringFieldUpdateOperationsInput | string
+    caseNumber?: StringFieldUpdateOperationsInput | string
+    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    judgeName?: NullableStringFieldUpdateOperationsInput | string | null
+    courtType?: NullableStringFieldUpdateOperationsInput | string | null
+    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
+    parentId?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CaseLawyerUpdateWithoutCaseInput = {
@@ -42195,23 +44787,23 @@ export namespace Prisma {
     nextHearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hearingOrder?: NullableStringFieldUpdateOperationsInput | string | null
-    judgeName?: NullableStringFieldUpdateOperationsInput | string | null
+    caseCourtDetail?: CaseCourtDetailUpdateOneWithoutHearingsNestedInput
   }
 
   export type CaseHearingUncheckedUpdateWithoutCaseInput = {
     id?: StringFieldUpdateOperationsInput | string
+    caseCourtDetailId?: NullableStringFieldUpdateOperationsInput | string | null
     nextHearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hearingOrder?: NullableStringFieldUpdateOperationsInput | string | null
-    judgeName?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CaseHearingUncheckedUpdateManyWithoutCaseInput = {
     id?: StringFieldUpdateOperationsInput | string
+    caseCourtDetailId?: NullableStringFieldUpdateOperationsInput | string | null
     nextHearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hearingOrder?: NullableStringFieldUpdateOperationsInput | string | null
-    judgeName?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CasePleadingUpdateWithoutCaseInput = {
@@ -42293,7 +44885,9 @@ export namespace Prisma {
     method?: NullableStringFieldUpdateOperationsInput | string | null
     referenceNo?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
+    receivedBy?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    receivedByUser?: UserUpdateOneWithoutCases_payment_receivedNestedInput
   }
 
   export type CasePaymentUncheckedUpdateWithoutCaseInput = {
@@ -42303,6 +44897,8 @@ export namespace Prisma {
     method?: NullableStringFieldUpdateOperationsInput | string | null
     referenceNo?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
+    receivedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
+    receivedBy?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -42313,6 +44909,8 @@ export namespace Prisma {
     method?: NullableStringFieldUpdateOperationsInput | string | null
     referenceNo?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
+    receivedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
+    receivedBy?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -42362,6 +44960,98 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     documentUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CaseCourtDetailCreateManyParentInput = {
+    id?: string
+    caseId: string
+    caseName: string
+    caseNumber: string
+    registrationDate?: Date | string | null
+    judgeName?: string | null
+    courtType?: string | null
+    sectionCourtRoom?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CaseHearingCreateManyCaseCourtDetailInput = {
+    id?: string
+    caseId: string
+    nextHearingDate?: Date | string | null
+    hearingDate?: Date | string | null
+    hearingOrder?: string | null
+  }
+
+  export type CaseCourtDetailUpdateWithoutParentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseName?: StringFieldUpdateOperationsInput | string
+    caseNumber?: StringFieldUpdateOperationsInput | string
+    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    judgeName?: NullableStringFieldUpdateOperationsInput | string | null
+    courtType?: NullableStringFieldUpdateOperationsInput | string | null
+    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    case?: CaseUpdateOneRequiredWithoutCourtDetailsNestedInput
+    children?: CaseCourtDetailUpdateManyWithoutParentNestedInput
+    hearings?: CaseHearingUpdateManyWithoutCaseCourtDetailNestedInput
+  }
+
+  export type CaseCourtDetailUncheckedUpdateWithoutParentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseId?: StringFieldUpdateOperationsInput | string
+    caseName?: StringFieldUpdateOperationsInput | string
+    caseNumber?: StringFieldUpdateOperationsInput | string
+    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    judgeName?: NullableStringFieldUpdateOperationsInput | string | null
+    courtType?: NullableStringFieldUpdateOperationsInput | string | null
+    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    children?: CaseCourtDetailUncheckedUpdateManyWithoutParentNestedInput
+    hearings?: CaseHearingUncheckedUpdateManyWithoutCaseCourtDetailNestedInput
+  }
+
+  export type CaseCourtDetailUncheckedUpdateManyWithoutParentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseId?: StringFieldUpdateOperationsInput | string
+    caseName?: StringFieldUpdateOperationsInput | string
+    caseNumber?: StringFieldUpdateOperationsInput | string
+    registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    judgeName?: NullableStringFieldUpdateOperationsInput | string | null
+    courtType?: NullableStringFieldUpdateOperationsInput | string | null
+    sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CaseHearingUpdateWithoutCaseCourtDetailInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nextHearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hearingOrder?: NullableStringFieldUpdateOperationsInput | string | null
+    case?: CaseUpdateOneRequiredWithoutHearingsNestedInput
+  }
+
+  export type CaseHearingUncheckedUpdateWithoutCaseCourtDetailInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseId?: StringFieldUpdateOperationsInput | string
+    nextHearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hearingOrder?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CaseHearingUncheckedUpdateManyWithoutCaseCourtDetailInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    caseId?: StringFieldUpdateOperationsInput | string
+    nextHearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    hearingOrder?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CasePartyCreateManyParentInput = {
@@ -42591,6 +45281,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerUpdateManyWithoutUserNestedInput
     cases_as_pleader?: CasePleadingUpdateManyWithoutPleaderNestedInput
     cases_as_counselor?: CaseCounselingUpdateManyWithoutCounselorNestedInput
+    cases_payment_received?: CasePaymentUpdateManyWithoutReceivedByUserNestedInput
     cases_created?: CaseUpdateManyWithoutCreatedByNestedInput
   }
 
@@ -42615,6 +45306,7 @@ export namespace Prisma {
     cases_as_lawyer?: CaseLawyerUncheckedUpdateManyWithoutUserNestedInput
     cases_as_pleader?: CasePleadingUncheckedUpdateManyWithoutPleaderNestedInput
     cases_as_counselor?: CaseCounselingUncheckedUpdateManyWithoutCounselorNestedInput
+    cases_payment_received?: CasePaymentUncheckedUpdateManyWithoutReceivedByUserNestedInput
     cases_created?: CaseUncheckedUpdateManyWithoutCreatedByNestedInput
   }
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { PlusIcon, Trash2Icon } from "lucide-react";
@@ -47,7 +47,21 @@ export default function PaymentsTab({
   const [paymentDate, setPaymentDate] = useState("");
   const [method, setMethod] = useState("");
   const [referenceNo, setReferenceNo] = useState("");
+  const [receivedBy, setReceivedBy] = useState("");
+  const [receivedByUserId, setReceivedByUserId] = useState("none");
   const [notes, setNotes] = useState("");
+  const [users, setUsers] = useState<any[]>([]);
+
+  useEffect(() => {
+    if (open && users.length === 0) {
+      axios
+        .get("/users?status=active")
+        .then((res) => {
+          setUsers(res.data.data || []);
+        })
+        .catch(console.error);
+    }
+  }, [open, users.length, axios]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -58,6 +72,9 @@ export default function PaymentsTab({
         paymentDate: paymentDate || undefined,
         method,
         referenceNo,
+        receivedBy,
+        receivedByUserId:
+          receivedByUserId !== "none" ? receivedByUserId : undefined,
         notes,
       });
       toast.add({ title: "Payment added" });
@@ -67,6 +84,8 @@ export default function PaymentsTab({
       setPaymentDate("");
       setMethod("");
       setReferenceNo("");
+      setReceivedBy("");
+      setReceivedByUserId("none");
       setNotes("");
     } catch (error: any) {
       toast.add({
@@ -143,6 +162,16 @@ export default function PaymentsTab({
                       Ref No:{" "}
                     </span>
                     <span>{p.referenceNo || "N/A"}</span>
+                  </div>
+                  <div>
+                    <span className="text-sm text-muted-foreground">
+                      Received By:{" "}
+                    </span>
+                    <span>
+                      {p.receivedByUser
+                        ? `${p.receivedByUser.first_name} ${p.receivedByUser.last_name}`
+                        : p.receivedBy || "N/A"}
+                    </span>
                   </div>
                   {p.notes && (
                     <div className="col-span-2 mt-2">
@@ -222,6 +251,45 @@ export default function PaymentsTab({
                 />
               </div>
             </div>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label>Received By (Internal User)</Label>
+                <Select
+                  value={receivedByUserId}
+                  onValueChange={(val) => setReceivedByUserId(val as string)}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select internal user">
+                      {receivedByUserId !== "none"
+                        ? (() => {
+                            const u = users.find((x) => x.id === receivedByUserId);
+                            return u
+                              ? `${u.first_name} ${u.last_name}`
+                              : "Select internal user";
+                          })()
+                        : undefined}
+                    </SelectValue>
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="none">None (External)</SelectItem>
+                    {users.map((u) => (
+                      <SelectItem key={u.id} value={u.id}>
+                        {u.first_name} {u.last_name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="space-y-2">
+                <Label>Or Received By (External Name)</Label>
+                <Input
+                  value={receivedBy}
+                  onChange={(e) => setReceivedBy(e.target.value)}
+                  placeholder="e.g. John Doe"
+                  disabled={receivedByUserId !== "none"}
+                />
+              </div>
+            </div>
             <div className="space-y-2">
               <Label>Notes</Label>
               <Textarea
@@ -247,12 +315,16 @@ export default function PaymentsTab({
         </DialogContent>
       </Dialog>
 
-      <AlertDialog open={!!deleteId} onOpenChange={(open) => !open && setDeleteId(null)}>
+      <AlertDialog
+        open={!!deleteId}
+        onOpenChange={(open) => !open && setDeleteId(null)}
+      >
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
             <AlertDialogDescription>
-              This action cannot be undone. This will permanently delete the payment.
+              This action cannot be undone. This will permanently delete the
+              payment.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import {
   Formik,
   Form,
@@ -30,7 +30,7 @@ import {
 } from "@/components/ui/select";
 import { DatePicker } from "@/components/ui/date-picker";
 import { Checkbox } from "@/components/ui/checkbox";
-
+import { CaseMigrationModal } from "./CaseMigrationModal";
 interface CaseFormProps {
   caseData?: CaseData;
   onSuccess: () => void;
@@ -100,7 +100,6 @@ export default function CaseForm({
 
     fetchNatures();
     fetchPartyRoles();
-    fetchLawyers();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -142,15 +141,23 @@ export default function CaseForm({
     }
   };
 
+  const activeCourtDetail =
+    caseData?.courtDetails?.find((d: any) => d.isActive) ||
+    caseData?.courtDetails?.[0];
+
   const initialValues = {
-    caseNumber: caseData?.caseNumber || "",
-    caseName: caseData?.caseName || "",
     natureId: caseData?.natureId || "",
-    sectionCourtRoom: caseData?.sectionCourtRoom || "",
-    registrationDate: caseData?.registrationDate
-      ? dayjs(caseData.registrationDate).format("YYYY-MM-DD")
-      : "",
     referredThrough: caseData?.referredThrough || "",
+    courtDetails: [
+      {
+        caseNumber: activeCourtDetail?.caseNumber || "",
+        caseName: activeCourtDetail?.caseName || "",
+        sectionCourtRoom: activeCourtDetail?.sectionCourtRoom || "",
+        registrationDate: activeCourtDetail?.registrationDate
+          ? dayjs(activeCourtDetail.registrationDate).format("YYYY-MM-DD")
+          : "",
+      },
+    ],
     facts: caseData?.facts || "",
     status: caseData?.status || "Draft",
     lawyers: caseData?.lawyers?.length
@@ -189,13 +196,19 @@ export default function CaseForm({
           <div className="space-y-4 border rounded-md p-4 bg-muted/20">
             <div className="flex items-center justify-between">
               <h3 className="text-lg font-medium">{t("courtDetails")}</h3>
+              {isEditing && activeCourtDetail?.id && (
+                <CaseMigrationModal
+                  parentId={activeCourtDetail.id}
+                  onSuccess={onSuccess}
+                />
+              )}
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="caseName">
                   {t("formName")} <span className="text-destructive">*</span>
                 </Label>
-                <Field name="caseName">
+                <Field name="courtDetails[0].caseName">
                   {({ field }: FieldProps) => (
                     <Input
                       {...field}
@@ -205,7 +218,7 @@ export default function CaseForm({
                   )}
                 </Field>
                 <ErrorMessage
-                  name="caseName"
+                  name="courtDetails[0].caseName"
                   component="div"
                   className="text-sm text-destructive"
                 />
@@ -214,7 +227,7 @@ export default function CaseForm({
                 <Label htmlFor="caseNumber">
                   {t("formNumber")} <span className="text-destructive">*</span>
                 </Label>
-                <Field name="caseNumber">
+                <Field name="courtDetails[0].caseNumber">
                   {({ field }: FieldProps) => (
                     <Input
                       {...field}
@@ -224,14 +237,14 @@ export default function CaseForm({
                   )}
                 </Field>
                 <ErrorMessage
-                  name="caseNumber"
+                  name="courtDetails[0].caseNumber"
                   component="div"
                   className="text-sm text-destructive"
                 />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="registrationDate">{t("formRegDate")}</Label>
-                <Field name="registrationDate">
+                <Field name="courtDetails[0].registrationDate">
                   {({ field, form }: FieldProps) => (
                     <DatePicker
                       id="registrationDate"
@@ -246,7 +259,7 @@ export default function CaseForm({
                   )}
                 </Field>
                 <ErrorMessage
-                  name="registrationDate"
+                  name="courtDetails[0].registrationDate"
                   component="div"
                   className="text-sm text-destructive"
                 />
@@ -305,7 +318,7 @@ export default function CaseForm({
               </div>
               <div className="space-y-2">
                 <Label htmlFor="sectionCourtRoom">{t("formFaat")}</Label>
-                <Field name="sectionCourtRoom">
+                <Field name="courtDetails[0].sectionCourtRoom">
                   {({ field }: FieldProps) => (
                     <Input
                       {...field}
@@ -315,7 +328,7 @@ export default function CaseForm({
                   )}
                 </Field>
                 <ErrorMessage
-                  name="sectionCourtRoom"
+                  name="courtDetails[0].sectionCourtRoom"
                   component="div"
                   className="text-sm text-destructive"
                 />
@@ -408,7 +421,10 @@ export default function CaseForm({
                             </Label>
                             <Field name={`parties.${index}.partyName`}>
                               {({ field }: FieldProps) => (
-                                <Input {...field} placeholder={t("formPartyName")} />
+                                <Input
+                                  {...field}
+                                  placeholder={t("formPartyName")}
+                                />
                               )}
                             </Field>
                             <ErrorMessage
@@ -419,7 +435,8 @@ export default function CaseForm({
                           </div>
                           <div className="space-y-2">
                             <Label>
-                              {t("formRole")} <span className="text-destructive">*</span>
+                              {t("formRole")}{" "}
+                              <span className="text-destructive">*</span>
                             </Label>
                             <Field name={`parties.${index}.roleId`}>
                               {({ field, form }: FieldProps) => (
@@ -433,9 +450,12 @@ export default function CaseForm({
                                     disabled={loadingRoles}
                                     className="w-full"
                                   >
-                                    <SelectValue placeholder={t("formSelectRole")}>
+                                    <SelectValue
+                                      placeholder={t("formSelectRole")}
+                                    >
                                       {(() => {
-                                        if (!field.value) return t("formSelectRole");
+                                        if (!field.value)
+                                          return t("formSelectRole");
                                         const r = partyRoles.find(
                                           (x) => x.id === field.value,
                                         );
@@ -487,7 +507,10 @@ export default function CaseForm({
                             <Label>{t("formContactNo")}</Label>
                             <Field name={`parties.${index}.contactNo`}>
                               {({ field }: FieldProps) => (
-                                <Input {...field} placeholder={t("formContactNo")} />
+                                <Input
+                                  {...field}
+                                  placeholder={t("formContactNo")}
+                                />
                               )}
                             </Field>
                             <ErrorMessage
@@ -573,7 +596,10 @@ export default function CaseForm({
                                     name={`parties.${index}.waris.partyName`}
                                   >
                                     {({ field }: FieldProps) => (
-                                      <Input {...field} placeholder={t("formWarisName")} />
+                                      <Input
+                                        {...field}
+                                        placeholder={t("formWarisName")}
+                                      />
                                     )}
                                   </Field>
                                   <ErrorMessage
@@ -583,9 +609,7 @@ export default function CaseForm({
                                   />
                                 </div>
                                 <div className="space-y-2">
-                                  <Label>
-                                    {t("formWarisCitizenship")}
-                                  </Label>
+                                  <Label>{t("formWarisCitizenship")}</Label>
                                   <Field
                                     name={`parties.${index}.waris.citizenshipNo`}
                                   >
@@ -598,9 +622,7 @@ export default function CaseForm({
                                   </Field>
                                 </div>
                                 <div className="space-y-2">
-                                  <Label>
-                                    {t("formWarisContact")}
-                                  </Label>
+                                  <Label>{t("formWarisContact")}</Label>
                                   <Field
                                     name={`parties.${index}.waris.contactNo`}
                                   >
@@ -622,7 +644,9 @@ export default function CaseForm({
                                     {({ field }: FieldProps) => (
                                       <Input
                                         {...field}
-                                        placeholder={t("formWarisPermanentAddress")}
+                                        placeholder={t(
+                                          "formWarisPermanentAddress",
+                                        )}
                                       />
                                     )}
                                   </Field>
@@ -637,7 +661,9 @@ export default function CaseForm({
                                     {({ field }: FieldProps) => (
                                       <Input
                                         {...field}
-                                        placeholder={t("formWarisTemporaryAddress")}
+                                        placeholder={t(
+                                          "formWarisTemporaryAddress",
+                                        )}
                                       />
                                     )}
                                   </Field>

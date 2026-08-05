@@ -29,7 +29,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { useAxios } from "@/lib/services/axios.service";
 import { toast } from "@/components/ui/toast";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 export default function OverviewTab({
   caseData,
@@ -46,6 +46,7 @@ export default function OverviewTab({
   const [userId, setUserId] = useState("");
   const [isLead, setIsLead] = useState(false);
   const [deleteId, setDeleteId] = useState<string | null>(null);
+  const locale = useLocale();
 
   useEffect(() => {
     if (open && users.length === 0) {
@@ -53,13 +54,13 @@ export default function OverviewTab({
         .get("/users")
         .then((res) => {
           const lawyersOnly = res.data.data.filter(
-            (u: any) => u.role?.name?.toLowerCase() === "lawyer"
+            (u: any) => u.role?.name?.toLowerCase() === "lawyer",
           );
           setUsers(lawyersOnly);
         })
         .catch(console.error);
     }
-  }, [open, users.length, axios]);
+  }, [open, users.length]);
 
   const handleAssign = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -96,6 +97,10 @@ export default function OverviewTab({
     }
   };
 
+  const activeDetail =
+    caseData?.courtDetails?.find((d: any) => d.isActive) ||
+    caseData?.courtDetails?.[0];
+
   return (
     <div className="space-y-4">
       <Card>
@@ -105,13 +110,13 @@ export default function OverviewTab({
         <CardContent className="grid grid-cols-2 gap-4">
           <div>
             <p className="text-sm text-muted-foreground">{t("caseNumber")}</p>
-            <p className="font-medium">{caseData.caseNumber}</p>
+            <p className="font-medium">{activeDetail?.caseNumber || t("na")}</p>
           </div>
           <div>
             <p className="text-sm text-muted-foreground">{t("regDate")}</p>
             <p className="font-medium">
-              {caseData.registrationDate
-                ? new Date(caseData.registrationDate).toLocaleDateString()
+              {activeDetail?.registrationDate
+                ? new Date(activeDetail.registrationDate).toLocaleDateString()
                 : t("na")}
             </p>
           </div>
@@ -121,11 +126,17 @@ export default function OverviewTab({
           </div>
           <div>
             <p className="text-sm text-muted-foreground">{t("nature")}</p>
-            <p className="font-medium">{caseData.nature?.name || t("na")}</p>
+            <p className="font-medium">
+              {locale == "np"
+                ? caseData.nature?.nepaliName
+                : caseData.nature?.englishName || t("na")}
+            </p>
           </div>
           <div>
             <p className="text-sm text-muted-foreground">{t("faat")}</p>
-            <p className="font-medium">{caseData.sectionCourtRoom || t("na")}</p>
+            <p className="font-medium">
+              {activeDetail?.sectionCourtRoom || t("na")}
+            </p>
           </div>
         </CardContent>
       </Card>
@@ -185,7 +196,16 @@ export default function OverviewTab({
                 onValueChange={(a) => setUserId(a as string)}
               >
                 <SelectTrigger>
-                  <SelectValue placeholder={t("selectLawyer")} />
+                  <SelectValue placeholder={t("selectLawyer")}>
+                    {userId
+                      ? (() => {
+                          const u = users.find((x) => x.id === userId);
+                          return u
+                            ? `${u.first_name} ${u.last_name}`
+                            : t("selectLawyer");
+                        })()
+                      : undefined}
+                  </SelectValue>
                 </SelectTrigger>
                 <SelectContent>
                   {users.map((u) => (

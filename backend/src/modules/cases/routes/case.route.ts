@@ -38,6 +38,7 @@ router.use(verifyAccessToken);
 
 router.get("/", caseController.index);
 router.post("/", caseController.store);
+router.post("/migration", caseController.migrateCase);
 router.get("/meta/party-roles", relationsController.getPartyRoles);
 router.post("/meta/party-roles", relationsController.addPartyRole);
 router.put("/meta/party-roles/:id", relationsController.updatePartyRole);
@@ -72,9 +73,6 @@ router.delete("/:id/precedents/:subId", relationsController.removePrecedent);
 
 router.post("/:id/payments", relationsController.addPayment);
 router.delete("/:id/payments/:subId", relationsController.removePayment);
-
-router.post("/:id/counselings", relationsController.addCounseling);
-router.delete("/:id/counselings/:subId", relationsController.removeCounseling);
 
 router.post("/:id/documents", upload.single("file"), relationsController.addDocument);
 router.delete("/:id/documents/:subId", relationsController.removeDocument);

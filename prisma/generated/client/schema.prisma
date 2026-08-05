@@ -15,18 +15,19 @@ model User {
   deleted_at            DateTime?
   detail                Json?     @default("{}")
 
-  avatar_id          String?
-  avatar             Resource?            @relation("user_avatar", fields: [avatar_id], references: [id])
-  role_id            String?
-  role               Role?                @relation(fields: [role_id], references: [id])
-  notifications      Notification[]
-  refresh_tokens     RefreshToken[]
-  reset_tokens       PasswordResetToken[]
-  pages              Page[]               @relation("page_author")
-  cases_as_lawyer    CaseLawyer[]
-  cases_as_pleader   CasePleading[]
-  cases_as_counselor CaseCounseling[]
-  cases_created      Case[]               @relation("CaseCreatedBy")
+  avatar_id              String?
+  avatar                 Resource?            @relation("user_avatar", fields: [avatar_id], references: [id])
+  role_id                String?
+  role                   Role?                @relation(fields: [role_id], references: [id])
+  notifications          Notification[]
+  refresh_tokens         RefreshToken[]
+  reset_tokens           PasswordResetToken[]
+  pages                  Page[]               @relation("page_author")
+  cases_as_lawyer        CaseLawyer[]
+  cases_as_pleader       CasePleading[]
+  cases_as_counselor     CaseCounseling[]
+  cases_payment_received CasePayment[]
+  cases_created          Case[]               @relation("CaseCreatedBy")
 
   @@map("users")
 }
@@ -114,13 +115,9 @@ model PartyRole {
 
 model Case {
   id                 String     @id @default(uuid())
-  caseNumber         String     @unique
-  caseName           String
   natureId           String
   nature             CaseNature @relation(fields: [natureId], references: [id])
-  registrationDate   DateTime?
   registrationFee    Decimal?
-  sectionCourtRoom   String?
   facts              String?    @db.Text
   relatedLaws        String?    @db.Text
   referredThrough    String?
@@ -133,19 +130,42 @@ model Case {
   createdBy   User?   @relation("CaseCreatedBy", fields: [createdById], references: [id])
 
   // Relations
-  lawyers     CaseLawyer[] // Joined to User via CaseLawyer
-  parties     CaseParty[]
-  hearings    CaseHearing[]
-  pleadings   CasePleading[]
-  proceedings CourtProceeding[]
-  precedents  CasePrecedent[]
-  payments    CasePayment[]
-  counselings CaseCounseling[]
-  documents   CaseDocument[]
+  courtDetails CaseCourtDetail[]
+  lawyers      CaseLawyer[] // Joined to User via CaseLawyer
+  parties      CaseParty[]
+  hearings     CaseHearing[]
+  pleadings    CasePleading[]
+  proceedings  CourtProceeding[]
+  precedents   CasePrecedent[]
+  payments     CasePayment[]
+  counselings  CaseCounseling[]
+  documents    CaseDocument[]
 
   createdAt DateTime @default(now())
 
   @@map("cases")
+}
+
+model CaseCourtDetail {
+  id               String            @id @default(uuid())
+  caseId           String
+  case             Case              @relation(fields: [caseId], references: [id], onDelete: Cascade)
+  caseName         String
+  caseNumber       String
+  registrationDate DateTime?
+  judgeName        String?
+  courtType        String?
+  sectionCourtRoom String?
+  parentId         String?
+  parent           CaseCourtDetail?  @relation("CourtDetailHistory", fields: [parentId], references: [id], onDelete: SetNull)
+  children         CaseCourtDetail[] @relation("CourtDetailHistory")
+  isActive         Boolean           @default(true)
+  hearings         CaseHearing[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("case_court_details")
 }
 
 model CaseLawyer {
@@ -179,13 +199,14 @@ model CaseParty {
 }
 
 model CaseHearing {
-  id              String    @id @default(uuid())
-  caseId          String
-  case            Case      @relation(fields: [caseId], references: [id], onDelete: Cascade)
-  nextHearingDate DateTime?
-  hearingDate     DateTime?
-  hearingOrder    String?   @db.Text
-  judgeName       String?
+  id                String           @id @default(uuid())
+  caseId            String
+  case              Case             @relation(fields: [caseId], references: [id], onDelete: Cascade)
+  caseCourtDetailId String?
+  caseCourtDetail   CaseCourtDetail? @relation(fields: [caseCourtDetailId], references: [id], onDelete: SetNull)
+  nextHearingDate   DateTime?
+  hearingDate       DateTime?
+  hearingOrder      String?          @db.Text
 
   @@map("case_hearings")
 }
@@ -229,14 +250,17 @@ model CasePrecedent {
 }
 
 model CasePayment {
-  id          String    @id @default(uuid())
-  caseId      String
-  case        Case      @relation(fields: [caseId], references: [id], onDelete: Cascade)
-  amount      Decimal
-  paymentDate DateTime?
-  method      String?
-  referenceNo String?
-  notes       String?   @db.Text
+  id               String    @id @default(uuid())
+  caseId           String
+  case             Case      @relation(fields: [caseId], references: [id], onDelete: Cascade)
+  amount           Decimal
+  paymentDate      DateTime?
+  method           String?
+  referenceNo      String?
+  notes            String?   @db.Text
+  receivedByUserId String?
+  receivedByUser   User?     @relation(fields: [receivedByUserId], references: [id], onDelete: SetNull)
+  receivedBy       String?
 
   createdAt DateTime @default(now())
 

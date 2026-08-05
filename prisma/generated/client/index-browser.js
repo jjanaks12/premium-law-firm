@@ -184,12 +184,8 @@ exports.Prisma.PartyRoleScalarFieldEnum = {
 
 exports.Prisma.CaseScalarFieldEnum = {
   id: 'id',
-  caseNumber: 'caseNumber',
-  caseName: 'caseName',
   natureId: 'natureId',
-  registrationDate: 'registrationDate',
   registrationFee: 'registrationFee',
-  sectionCourtRoom: 'sectionCourtRoom',
   facts: 'facts',
   relatedLaws: 'relatedLaws',
   referredThrough: 'referredThrough',
@@ -199,6 +195,21 @@ exports.Prisma.CaseScalarFieldEnum = {
   status: 'status',
   createdById: 'createdById',
   createdAt: 'createdAt'
+};
+
+exports.Prisma.CaseCourtDetailScalarFieldEnum = {
+  id: 'id',
+  caseId: 'caseId',
+  caseName: 'caseName',
+  caseNumber: 'caseNumber',
+  registrationDate: 'registrationDate',
+  judgeName: 'judgeName',
+  courtType: 'courtType',
+  sectionCourtRoom: 'sectionCourtRoom',
+  parentId: 'parentId',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.CaseLawyerScalarFieldEnum = {
@@ -223,10 +234,10 @@ exports.Prisma.CasePartyScalarFieldEnum = {
 exports.Prisma.CaseHearingScalarFieldEnum = {
   id: 'id',
   caseId: 'caseId',
+  caseCourtDetailId: 'caseCourtDetailId',
   nextHearingDate: 'nextHearingDate',
   hearingDate: 'hearingDate',
-  hearingOrder: 'hearingOrder',
-  judgeName: 'judgeName'
+  hearingOrder: 'hearingOrder'
 };
 
 exports.Prisma.CasePleadingScalarFieldEnum = {
@@ -264,6 +275,8 @@ exports.Prisma.CasePaymentScalarFieldEnum = {
   method: 'method',
   referenceNo: 'referenceNo',
   notes: 'notes',
+  receivedByUserId: 'receivedByUserId',
+  receivedBy: 'receivedBy',
   createdAt: 'createdAt'
 };
 
@@ -399,6 +412,7 @@ exports.Prisma.ModelName = {
   CaseNature: 'CaseNature',
   PartyRole: 'PartyRole',
   Case: 'Case',
+  CaseCourtDetail: 'CaseCourtDetail',
   CaseLawyer: 'CaseLawyer',
   CaseParty: 'CaseParty',
   CaseHearing: 'CaseHearing',

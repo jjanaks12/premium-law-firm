@@ -216,12 +216,14 @@ export default function CasesPage() {
                   </TableCell>
                 </TableRow>
               ) : (
-                cases.map((c) => (
+                cases.map((c) => {
+                  const activeDetail = c.courtDetails?.find((d: any) => d.isActive) || c.courtDetails?.[0];
+                  return (
                   <TableRow key={c.id}>
                     <TableCell className="font-medium">
-                      {c.caseNumber}
+                      {activeDetail?.caseNumber || "N/A"}
                     </TableCell>
-                    <TableCell>{c.caseName}</TableCell>
+                    <TableCell>{activeDetail?.caseName || "N/A"}</TableCell>
                     <TableCell>
                       {c.nature ? c.nature.name : c.natureId}
                     </TableCell>
@@ -239,8 +241,8 @@ export default function CasesPage() {
                       </span>
                     </TableCell>
                     <TableCell>
-                      {c.registrationDate
-                        ? dayjs(c.registrationDate).format("MMM DD, YYYY")
+                      {activeDetail?.registrationDate
+                        ? dayjs(activeDetail.registrationDate).format("MMM DD, YYYY")
                         : "N/A"}
                     </TableCell>
                     <TableCell className="text-right">
@@ -276,7 +278,8 @@ export default function CasesPage() {
                       </div>
                     </TableCell>
                   </TableRow>
-                ))
+                  );
+                })
               )}
             </TableBody>
           </Table>

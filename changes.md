@@ -23,13 +23,13 @@
 - type
 - faat(room no.)
 
-### payment
+[X] ### payment
 - notes
 - amount
 - received by
 - date
 
-### Tarik
+[X] ### Tarik
 1. Array
     1. date
     2. comment
@@ -41,7 +41,7 @@
     1. ninaye no
     2. badi / prati badi name
 
-### Pesi
+[#] ### Pesi
 1. Array
     1. date
     2. type - sthagit, aadesh, herna namilne, next pesi(date)
@@ -62,7 +62,7 @@
 
 ### counselling (not needed)
 
-### payment
+[X] ### payment
 
 
 ## Role

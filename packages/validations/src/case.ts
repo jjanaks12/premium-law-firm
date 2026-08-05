@@ -1,13 +1,17 @@
 import * as yup from 'yup';
 
 export const caseValidationSchema = yup.object({
-  caseNumber: yup.string().trim(),
-  caseName: yup.string().trim().required("Case Name is required"),
   natureId: yup.string().required("Nature ID is required"),
-  registrationDate: yup.date().nullable(),
   facts: yup.string().nullable(),
   status: yup.string().required("Status is required"),
-  sectionCourtRoom: yup.string().nullable(),
+  courtDetails: yup.array().of(
+    yup.object({
+      caseName: yup.string().trim().required("Case Name is required"),
+      caseNumber: yup.string().trim(),
+      registrationDate: yup.date().nullable(),
+      sectionCourtRoom: yup.string().nullable(),
+    })
+  ).min(1, "At least one court detail is required"),
   parties: yup.array().of(
     yup.object({
       partyName: yup.string().required("Party Name is required"),

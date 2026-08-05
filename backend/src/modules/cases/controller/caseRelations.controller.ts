@@ -165,13 +165,19 @@ export const addLawyer = async (req: Request, res: Response, next: NextFunction)
     
     // Notify the user about the case assignment
     const user = await prisma.user.findUnique({ where: { id: userId } });
-    const caseData = await prisma.case.findUnique({ where: { id: id as string } });
+    const caseData = await prisma.case.findUnique({ 
+      where: { id: id as string },
+      include: { courtDetails: { where: { isActive: true } } }
+    });
 
     if (user && caseData) {
+      const activeDetail = caseData.courtDetails?.find((d: any) => d.isActive) || caseData.courtDetails?.[0];
+      const caseNum = activeDetail?.caseNumber || "N/A";
+      const caseNm = activeDetail?.caseName || "N/A";
       await queueEmail({
         to: user.email,
-        subject: `Assigned to Case: ${caseData.caseNumber}`,
-        text: `Hello ${user.first_name},\n\nYou have been assigned as a ${isLead ? 'Lead Lawyer' : 'Lawyer'} for the case "${caseData.caseName}" (${caseData.caseNumber}).\n\nPlease log in to view the case details.`,
+        subject: `Assigned to Case: ${caseNum}`,
+        text: `Hello ${user.first_name},\n\nYou have been assigned as a ${isLead ? 'Lead Lawyer' : 'Lawyer'} for the case "${caseNm}" (${caseNum}).\n\nPlease log in to view the case details.`,
         userId: user.id
       });
     }
@@ -193,14 +199,14 @@ export const removeLawyer = async (req: Request, res: Response, next: NextFuncti
 export const addHearing = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { id } = req.params;
-    const { hearingDate, nextHearingDate, hearingOrder, judgeName } = req.body;
+    const { hearingDate, nextHearingDate, hearingOrder, caseCourtDetailId } = req.body;
     const hearing = await prisma.caseHearing.create({
       data: {
         caseId: id as string,
         hearingDate: hearingDate ? new Date(hearingDate) : null,
         nextHearingDate: nextHearingDate ? new Date(nextHearingDate) : null,
         hearingOrder,
-        judgeName
+        caseCourtDetailId
       }
     });
     res.status(201).json({ data: hearing });
@@ -276,7 +282,7 @@ export const removePrecedent = async (req: Request, res: Response, next: NextFun
 export const addPayment = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { id } = req.params;
-    const { amount, paymentDate, method, referenceNo, notes } = req.body;
+    const { amount, paymentDate, method, referenceNo, receivedBy, receivedByUserId, notes } = req.body;
     const payment = await prisma.casePayment.create({
       data: {
         caseId: id as string,
@@ -284,6 +290,8 @@ export const addPayment = async (req: Request, res: Response, next: NextFunction
         paymentDate: paymentDate ? new Date(paymentDate) : null,
         method,
         referenceNo,
+        receivedBy,
+        receivedByUserId,
         notes
       }
     });
@@ -297,28 +305,7 @@ export const removePayment = async (req: Request, res: Response, next: NextFunct
   } catch (error) { next(error); }
 };
 
-// COUNSELINGS
-export const addCounseling = async (req: Request, res: Response, next: NextFunction) => {
-  try {
-    const { id } = req.params;
-    const { counselorUserId, date, notes } = req.body;
-    const counseling = await prisma.caseCounseling.create({
-      data: {
-        caseId: id as string,
-        counselorUserId,
-        date: date ? new Date(date) : null,
-        notes
-      }
-    });
-    res.status(201).json({ data: counseling });
-  } catch (error) { next(error); }
-};
-export const removeCounseling = async (req: Request, res: Response, next: NextFunction) => {
-  try {
-    await prisma.caseCounseling.delete({ where: { id: req.params.subId as string } });
-    res.json({ message: "Counseling removed" });
-  } catch (error) { next(error); }
-};
+
 
 // DOCUMENTS
 export const addDocument = async (req: Request, res: Response, next: NextFunction) => {
