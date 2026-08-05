@@ -220,23 +220,7 @@ export const removeHearing = async (req: Request, res: Response, next: NextFunct
 };
 
 
-// PROCEEDINGS
-export const addProceeding = async (req: Request, res: Response, next: NextFunction) => {
-  try {
-    const { id } = req.params;
-    const { courtLevelId, courtName, judgeName, chargeCounseling, verdict } = req.body;
-    const proceeding = await prisma.courtProceeding.create({
-      data: { caseId: id as string, courtLevelId, courtName, judgeName, chargeCounseling, verdict }
-    });
-    res.status(201).json({ data: proceeding });
-  } catch (error) { next(error); }
-};
-export const removeProceeding = async (req: Request, res: Response, next: NextFunction) => {
-  try {
-    await prisma.courtProceeding.delete({ where: { id: req.params.subId as string } });
-    res.json({ message: "Proceeding removed" });
-  } catch (error) { next(error); }
-};
+
 
 
 // PAYMENTS

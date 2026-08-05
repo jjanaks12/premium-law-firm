@@ -2,7 +2,6 @@ model CourtLevel {
   id          String            @id @default(uuid())
   name        String            @unique
   nepaliName  String?
-  proceedings CourtProceeding[]
 
   @@map("court_levels")
 }
@@ -48,7 +47,6 @@ model Case {
   lawyers                CaseLawyer[]           // Joined to User via CaseLawyer
   parties                CaseParty[]
   hearings               CaseHearing[]
-  proceedings            CourtProceeding[]
   payments               CasePayment[]
   documents              CaseDocument[]
 
@@ -120,20 +118,6 @@ model CaseHearing {
   hearingOrder      String?           @db.Text
 
   @@map("case_hearings")
-}
-
-model CourtProceeding {
-  id               String     @id @default(uuid())
-  caseId           String
-  case             Case       @relation(fields: [caseId], references: [id], onDelete: Cascade)
-  courtLevelId     String
-  courtLevel       CourtLevel @relation(fields: [courtLevelId], references: [id])
-  courtName        String
-  judgeName        String?
-  chargeCounseling String?    @db.Text
-  verdict          String?    @db.Text
-
-  @@map("court_proceedings")
 }
 
 model CasePayment {

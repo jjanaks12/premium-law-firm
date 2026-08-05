@@ -105,9 +105,7 @@ export const show = async (req: Request, res: Response, next: NextFunction) => {
           include: { caseCourtDetail: true }
         },
 
-        proceedings: {
-          include: { courtLevel: true },
-        },
+
         payments: {
           include: { receivedByUser: true }
         },
