@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Loader2Icon } from "lucide-react";
 import MediaLibraryDialog from "@/components/MediaLibraryDialog";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import RichTextEditor from "@/components/RichTextEditor";
 import { useTranslations } from "next-intl";
 
 interface PageType {
@@ -68,7 +68,7 @@ export default function PageForm({
   const [slug, setSlug] = useState(initialData?.slug ?? "");
   const [title, setTitle] = useState(initialData?.title ?? "");
   const [excerpt, setExcerpt] = useState(initialData?.excerpt ?? "");
-  const [locale, setLocale] = useState(initialData?.locale ?? "en");
+  const [locale, setLocale] = useState(initialData?.locale ?? "np");
   const [pageTypeId, setPageTypeId] = useState(
     initialData?.page_type?.id ?? "",
   );
@@ -78,6 +78,8 @@ export default function PageForm({
     url: string;
   } | null>(initialData?.thumbnail ?? null);
   const [content, setContent] = useState(initialData?.content ?? "");
+  const [status, setStatus] = useState(initialData?.status ?? "draft");
+  const [videoUrl, setVideoUrl] = useState(initialData?.detail?.videoUrl ?? "");
 
   // --- SEO fields ---
   const [metaTitle, setMetaTitle] = useState(
@@ -110,6 +112,22 @@ export default function PageForm({
       : "",
   );
 
+  const [pagesList, setPagesList] = useState<{ id: string; title: string }[]>([]);
+
+  useEffect(() => {
+    const fetchPages = async () => {
+      try {
+        const { data } = await axios.get("/pages");
+        if (data.success) {
+          setPagesList(data.data);
+        }
+      } catch (err) {
+        console.error("Failed to fetch pages", err);
+      }
+    };
+    fetchPages();
+  }, [axios]);
+
   // Auto-generate slug from title (create mode only)
   useEffect(() => {
     if (!isEditing && title) {
@@ -136,6 +154,8 @@ export default function PageForm({
         parent_id: parentId || null,
         thumbnail_id: thumbnail?.id ?? null,
         content: content || "",
+        status,
+        detail: videoUrl ? { videoUrl } : {},
       };
 
       let pageId = initialData?.id;
@@ -196,32 +216,68 @@ export default function PageForm({
     "rounded-lg border border-input bg-background px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring w-full";
 
   return (
-    <div className="space-y-4">
-      <Tabs defaultValue="content">
-        <TabsList className="mb-4 w-full">
-          <TabsTrigger value="content" className="flex-1">
-            {t("tabs.content")}
-          </TabsTrigger>
-          <TabsTrigger value="seo" className="flex-1">
-            {t("tabs.seo")}
-          </TabsTrigger>
-          <TabsTrigger value="schema" className="flex-1">
-            {t("tabs.schema")}
-          </TabsTrigger>
-        </TabsList>
+    <div className="space-y-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {/* Left Column */}
+        <div className="lg:col-span-2 space-y-6">
+          <div className="space-y-1.5">
+            <Label>
+              {t("title")} <span className="text-destructive">*</span>
+            </Label>
+            <Input
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              placeholder={t("pageTitlePlaceholder")}
+              className="rounded-lg"
+            />
+          </div>
 
-        {/* Content Tab */}
-        <TabsContent value="content" className="space-y-4 mt-0">
-          <div className="grid grid-cols-2 gap-4">
+          <div className="space-y-1.5">
+            <Label>{t("excerpt")}</Label>
+            <Textarea
+              value={excerpt}
+              onChange={(e) => setExcerpt(e.target.value)}
+              placeholder={t("excerptPlaceholder")}
+              rows={2}
+              className="rounded-lg resize-none"
+            />
+          </div>
+
+          <div className="space-y-1.5">
+            <Label>{t("content")}</Label>
+            <RichTextEditor
+              value={content}
+              onChange={(value) => setContent(value)}
+            />
+            <p className="text-xs text-muted-foreground">{t("contentHint")}</p>
+          </div>
+
+          <div className="space-y-1.5">
+            <Label>Video URL</Label>
+            <Input
+              value={videoUrl}
+              onChange={(e) => setVideoUrl(e.target.value)}
+              placeholder="https://youtube.com/..."
+              className="rounded-lg"
+            />
+            <p className="text-xs text-muted-foreground">
+              Optionally embed a video for this page (e.g., YouTube URL).
+            </p>
+          </div>
+        </div>
+
+        {/* Right Column */}
+        <div className="space-y-6">
+          <div className="border border-border rounded-lg p-5 space-y-5 bg-muted/10">
             <div className="space-y-1.5">
-              <Label>{t("locale")}</Label>
+              <Label>Status</Label>
               <select
-                value={locale}
-                onChange={(e) => setLocale(e.target.value)}
+                value={status}
+                onChange={(e) => setStatus(e.target.value)}
                 className={inputClass}
               >
-                <option value="en">{t("english")}</option>
-                <option value="ne">{t("nepali")}</option>
+                <option value="draft">Draft</option>
+                <option value="published">Published</option>
               </select>
             </div>
             <div className="space-y-1.5">
@@ -239,228 +295,242 @@ export default function PageForm({
                 ))}
               </select>
             </div>
-          </div>
-
-          <div className="space-y-1.5">
-            <Label>
-              {t("title")} <span className="text-destructive">*</span>
-            </Label>
-            <Input
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              placeholder={t("pageTitlePlaceholder")}
-              className="rounded-lg"
-            />
-          </div>
-
-          <div className="space-y-1.5">
-            <Label>
-              {t("slug")} <span className="text-destructive">*</span>
-            </Label>
-            <div className="flex items-center gap-2">
-              <span className="text-sm text-muted-foreground font-mono">/</span>
-              <Input
-                value={slug}
-                onChange={(e) => setSlug(e.target.value)}
-                placeholder={t("slugPlaceholder")}
-                className="rounded-lg font-mono text-sm"
-              />
-            </div>
-          </div>
-
-          <div className="space-y-1.5">
-            <Label>{t("excerpt")}</Label>
-            <Textarea
-              value={excerpt}
-              onChange={(e) => setExcerpt(e.target.value)}
-              placeholder={t("excerptPlaceholder")}
-              rows={2}
-              className="rounded-lg resize-none"
-            />
-          </div>
-
-          <div className="space-y-1.5">
-            <Label>{t("content")}</Label>
-            <Textarea
-              value={content}
-              onChange={(e) => setContent(e.target.value)}
-              placeholder=""
-              rows={6}
-              className="rounded-lg font-mono text-xs resize-y"
-            />
-            <p className="text-xs text-muted-foreground">
-              {t("contentHint")}
-            </p>
-          </div>
-
-          <div className="space-y-1.5">
-            <Label>{t("thumbnail")}</Label>
-            <div className="flex items-center gap-3">
-              {thumbnail ? (
-                <div className="relative group w-20 h-20 rounded-lg overflow-hidden border border-border shrink-0">
-                  <img
-                    src={thumbnail.url}
-                    alt="Thumbnail"
-                    className="w-full h-full object-cover"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setThumbnail(null)}
-                    className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity text-white text-xs flex items-center justify-center"
-                  >
-                    {t("remove")}
-                  </button>
-                </div>
-              ) : (
-                <div className="w-20 h-20 rounded-lg border border-dashed border-border bg-muted/30 flex items-center justify-center text-xs text-muted-foreground shrink-0">
-                  {t("noImage")}
-                </div>
-              )}
-              <Button
-                type="button"
-                variant="outline"
-                onClick={() => setMediaOpen(true)}
+            <div className="space-y-1.5">
+              <Label>{t("parentPageId")}</Label>
+              <select
+                value={parentId}
+                onChange={(e) => setParentId(e.target.value)}
+                className={inputClass}
               >
-                {thumbnail ? t("changeImage") : t("selectMedia")}
-              </Button>
+                <option value="">{t("leaveBlankForRoot")}</option>
+                {pagesList.map((p) => (
+                  <option key={p.id} value={p.id}>
+                    {p.title}
+                  </option>
+                ))}
+              </select>
+              <p className="text-xs text-muted-foreground">
+                {t("parentPageIdHint")}
+              </p>
             </div>
-          </div>
 
-          <div className="space-y-1.5">
-            <Label>{t("parentPageId")}</Label>
-            <Input
-              value={parentId}
-              onChange={(e) => setParentId(e.target.value)}
-              placeholder={t("leaveBlankForRoot")}
-              className="rounded-lg font-mono text-sm"
-            />
-            <p className="text-xs text-muted-foreground">
-              {t("parentPageIdHint")}
-            </p>
-          </div>
-        </TabsContent>
-
-        {/* SEO Tab */}
-        <TabsContent value="seo" className="space-y-4 mt-0">
-          <div className="space-y-1.5">
-            <Label>{t("metaTitle")}</Label>
-            <Input
-              value={metaTitle}
-              onChange={(e) => setMetaTitle(e.target.value)}
-              placeholder=""
-              className="rounded-lg"
-            />
-            <p className="text-xs text-muted-foreground">
-              Recommended: 50–60 characters
-            </p>
-          </div>
-          <div className="space-y-1.5">
-            <Label>{t("metaDescription")}</Label>
-            <Textarea
-              value={metaDescription}
-              onChange={(e) => setMetaDescription(e.target.value)}
-              placeholder=""
-              rows={3}
-              className="rounded-lg resize-none"
-            />
-            <p className="text-xs text-muted-foreground">
-              Recommended: 120–160 characters
-            </p>
-          </div>
-          <div className="space-y-1.5">
-            <Label>{t("metaKeywords")}</Label>
-            <Input
-              value={metaKeywords}
-              onChange={(e) => setMetaKeywords(e.target.value)}
-              placeholder=""
-              className="rounded-lg"
-            />
-          </div>
-          <div className="grid grid-cols-2 gap-4">
             <div className="space-y-1.5">
-              <Label>{t("ogTitle")}</Label>
-              <Input
-                value={ogTitle}
-                onChange={(e) => setOgTitle(e.target.value)}
-                placeholder=""
-                className="rounded-lg"
-              />
+              <Label>
+                {t("slug")} <span className="text-destructive">*</span>
+              </Label>
+              <div className="flex items-center gap-2">
+                <span className="text-sm text-muted-foreground font-mono">
+                  /
+                </span>
+                <Input
+                  value={slug}
+                  onChange={(e) => setSlug(e.target.value)}
+                  placeholder={t("slugPlaceholder")}
+                  className="rounded-lg font-mono text-sm"
+                />
+              </div>
             </div>
-            <div className="space-y-1.5">
-              <Label>{t("canonicalUrl")}</Label>
-              <Input
-                value={canonicalUrl}
-                onChange={(e) => setCanonicalUrl(e.target.value)}
-                placeholder=""
-                className="rounded-lg"
-              />
-            </div>
-          </div>
-          <div className="space-y-1.5">
-            <Label>{t("ogDescription")}</Label>
-            <Textarea
-              value={ogDescription}
-              onChange={(e) => setOgDescription(e.target.value)}
-              placeholder=""
-              rows={2}
-              className="rounded-lg resize-none"
-            />
-          </div>
-          <div className="space-y-1.5">
-            <Label>{t("robots")}</Label>
-            <select
-              value={robots}
-              onChange={(e) => setRobots(e.target.value)}
-              className={inputClass}
-            >
-              <option value="index,follow">{t("indexFollow")}</option>
-              <option value="noindex,follow">{t("noindexFollow")}</option>
-              <option value="index,nofollow">{t("indexNofollow")}</option>
-              <option value="noindex,nofollow">{t("noindexNofollow")}</option>
-            </select>
-          </div>
-        </TabsContent>
 
-        {/* Schema.org Tab */}
-        <TabsContent value="schema" className="space-y-4 mt-0">
-          <div className="space-y-1.5">
-            <Label>{t("schemaType")}</Label>
-            <select
-              value={schemaType}
-              onChange={(e) => setSchemaType(e.target.value)}
-              className={inputClass}
-            >
-              <option value="">{t("none")}</option>
-              <option value="WebPage">WebPage</option>
-              <option value="AboutPage">AboutPage</option>
-              <option value="ContactPage">ContactPage</option>
-              <option value="FAQPage">FAQPage</option>
-              <option value="LegalService">LegalService</option>
-              <option value="Service">Service</option>
-              <option value="Article">Article</option>
-              <option value="BreadcrumbList">BreadcrumbList</option>
-            </select>
+            <div className="space-y-1.5">
+              <Label>{t("thumbnail")}</Label>
+              <div className="flex flex-col gap-3">
+                {thumbnail ? (
+                  <div className="relative group w-full aspect-video rounded-lg overflow-hidden border border-border">
+                    <img
+                      src={thumbnail.url}
+                      alt="Thumbnail"
+                      className="w-full h-full object-cover"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setThumbnail(null)}
+                      className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity text-white text-xs flex items-center justify-center"
+                    >
+                      {t("remove")}
+                    </button>
+                  </div>
+                ) : (
+                  <div className="w-full aspect-video rounded-lg border border-dashed border-border bg-muted/30 flex items-center justify-center text-xs text-muted-foreground">
+                    {t("noImage")}
+                  </div>
+                )}
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => setMediaOpen(true)}
+                  className="w-full"
+                >
+                  {thumbnail ? t("changeImage") : t("selectMedia")}
+                </Button>
+              </div>
+            </div>
           </div>
-          <div className="space-y-1.5">
-            <Label>{t("schemaPayload")}</Label>
-            <Textarea
-              value={schemaData}
-              onChange={(e) => setSchemaData(e.target.value)}
-              rows={10}
-              className="rounded-lg font-mono text-xs resize-y"
-              placeholder={`{\n  "@context": "https://schema.org",\n  "@type": "LegalService",\n  "name": "Premium Law Firm"\n}`}
-            />
-            <p className="text-xs text-muted-foreground">
-              This JSON-LD will be injected as{" "}
-              <code className="bg-muted px-1 rounded text-xs">
-                {'<script type="application/ld+json">'}
-              </code>{" "}
-              in the page's{" "}
-              <code className="bg-muted px-1 rounded text-xs">{"<head>"}</code>.
-            </p>
-          </div>
-        </TabsContent>
-      </Tabs>
+
+          {/* Expandable SEO */}
+          <details className="group border border-border rounded-lg overflow-hidden">
+            <summary className="flex items-center justify-between px-4 py-3 bg-muted/30 cursor-pointer font-medium hover:bg-muted/50 transition-colors">
+              {t("tabs.seo")}
+              <span className="transition group-open:rotate-180">
+                <svg
+                  fill="none"
+                  height="20"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1.5"
+                  viewBox="0 0 24 24"
+                  width="20"
+                >
+                  <path d="M6 9l6 6 6-6"></path>
+                </svg>
+              </span>
+            </summary>
+            <div className="p-4 space-y-4 border-t border-border bg-background">
+              <div className="space-y-1.5">
+                <Label>{t("metaTitle")}</Label>
+                <Input
+                  value={metaTitle}
+                  onChange={(e) => setMetaTitle(e.target.value)}
+                  placeholder=""
+                  className="rounded-lg"
+                />
+                <p className="text-xs text-muted-foreground">
+                  Recommended: 50–60 characters
+                </p>
+              </div>
+              <div className="space-y-1.5">
+                <Label>{t("metaDescription")}</Label>
+                <Textarea
+                  value={metaDescription}
+                  onChange={(e) => setMetaDescription(e.target.value)}
+                  placeholder=""
+                  rows={3}
+                  className="rounded-lg resize-none"
+                />
+                <p className="text-xs text-muted-foreground">
+                  Recommended: 120–160 characters
+                </p>
+              </div>
+              <div className="space-y-1.5">
+                <Label>{t("metaKeywords")}</Label>
+                <Input
+                  value={metaKeywords}
+                  onChange={(e) => setMetaKeywords(e.target.value)}
+                  placeholder=""
+                  className="rounded-lg"
+                />
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-1.5">
+                  <Label>{t("ogTitle")}</Label>
+                  <Input
+                    value={ogTitle}
+                    onChange={(e) => setOgTitle(e.target.value)}
+                    placeholder=""
+                    className="rounded-lg"
+                  />
+                </div>
+                <div className="space-y-1.5">
+                  <Label>{t("canonicalUrl")}</Label>
+                  <Input
+                    value={canonicalUrl}
+                    onChange={(e) => setCanonicalUrl(e.target.value)}
+                    placeholder=""
+                    className="rounded-lg"
+                  />
+                </div>
+              </div>
+              <div className="space-y-1.5">
+                <Label>{t("ogDescription")}</Label>
+                <Textarea
+                  value={ogDescription}
+                  onChange={(e) => setOgDescription(e.target.value)}
+                  placeholder=""
+                  rows={2}
+                  className="rounded-lg resize-none"
+                />
+              </div>
+              <div className="space-y-1.5">
+                <Label>{t("robots")}</Label>
+                <select
+                  value={robots}
+                  onChange={(e) => setRobots(e.target.value)}
+                  className={inputClass}
+                >
+                  <option value="index,follow">{t("indexFollow")}</option>
+                  <option value="noindex,follow">{t("noindexFollow")}</option>
+                  <option value="index,nofollow">{t("indexNofollow")}</option>
+                  <option value="noindex,nofollow">
+                    {t("noindexNofollow")}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </details>
+
+          {/* Expandable Schema.org */}
+          <details className="group border border-border rounded-lg overflow-hidden">
+            <summary className="flex items-center justify-between px-4 py-3 bg-muted/30 cursor-pointer font-medium hover:bg-muted/50 transition-colors">
+              {t("tabs.schema")}
+              <span className="transition group-open:rotate-180">
+                <svg
+                  fill="none"
+                  height="20"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1.5"
+                  viewBox="0 0 24 24"
+                  width="20"
+                >
+                  <path d="M6 9l6 6 6-6"></path>
+                </svg>
+              </span>
+            </summary>
+            <div className="p-4 space-y-4 border-t border-border bg-background">
+              <div className="space-y-1.5">
+                <Label>{t("schemaType")}</Label>
+                <select
+                  value={schemaType}
+                  onChange={(e) => setSchemaType(e.target.value)}
+                  className={inputClass}
+                >
+                  <option value="">{t("none")}</option>
+                  <option value="WebPage">WebPage</option>
+                  <option value="AboutPage">AboutPage</option>
+                  <option value="ContactPage">ContactPage</option>
+                  <option value="FAQPage">FAQPage</option>
+                  <option value="LegalService">LegalService</option>
+                  <option value="Service">Service</option>
+                  <option value="Article">Article</option>
+                  <option value="BreadcrumbList">BreadcrumbList</option>
+                </select>
+              </div>
+              <div className="space-y-1.5">
+                <Label>{t("schemaPayload")}</Label>
+                <Textarea
+                  value={schemaData}
+                  onChange={(e) => setSchemaData(e.target.value)}
+                  rows={10}
+                  className="rounded-lg font-mono text-xs resize-y"
+                  placeholder={`{\n  "@context": "https://schema.org",\n  "@type": "LegalService",\n  "name": "Premium Law Firm"\n}`}
+                />
+                <p className="text-xs text-muted-foreground">
+                  This JSON-LD will be injected as{" "}
+                  <code className="bg-muted px-1 rounded text-xs">
+                    {'<script type="application/ld+json">'}
+                  </code>{" "}
+                  in the page's{" "}
+                  <code className="bg-muted px-1 rounded text-xs">
+                    {"<head>"}
+                  </code>
+                  .
+                </p>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
 
       {/* Actions */}
       <div className="flex justify-end gap-3 pt-2 border-t border-border">
