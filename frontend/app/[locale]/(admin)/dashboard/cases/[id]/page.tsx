@@ -13,7 +13,6 @@ import PartiesTab from "./components/PartiesTab";
 import HearingsTab from "./components/HearingsTab";
 import ProceedingsTab from "./components/ProceedingsTab";
 import PleadingsTab from "./components/PleadingsTab";
-import PrecedentsTab from "./components/PrecedentsTab";
 import PaymentsTab from "./components/PaymentsTab";
 import DocumentsTab from "./components/DocumentsTab";
 import { Link } from "@/src/i18n/routing";
@@ -96,9 +95,6 @@ export default function CaseDetailPage() {
           <TabsTrigger value="pleadings">
             {t("CaseDetailPage.pleadings")}
           </TabsTrigger>
-          <TabsTrigger value="precedents">
-            {t("CaseDetailPage.precedents")}
-          </TabsTrigger>
           <TabsTrigger value="payments">
             {t("CaseDetailPage.payments")}
           </TabsTrigger>
@@ -124,9 +120,6 @@ export default function CaseDetailPage() {
         </TabsContent>
         <TabsContent value="pleadings">
           <PleadingsTab caseData={caseData} refresh={fetchCase} />
-        </TabsContent>
-        <TabsContent value="precedents">
-          <PrecedentsTab caseData={caseData} refresh={fetchCase} />
         </TabsContent>
         <TabsContent value="payments">
           <PaymentsTab caseData={caseData} refresh={fetchCase} />

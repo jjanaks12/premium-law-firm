@@ -260,23 +260,6 @@ export const removeProceeding = async (req: Request, res: Response, next: NextFu
   } catch (error) { next(error); }
 };
 
-// PRECEDENTS
-export const addPrecedent = async (req: Request, res: Response, next: NextFunction) => {
-  try {
-    const { id } = req.params;
-    const { decisionNumber, plaintiff, defendant, citationNotes } = req.body;
-    const precedent = await prisma.casePrecedent.create({
-      data: { caseId: id as string, decisionNumber, plaintiff, defendant, citationNotes }
-    });
-    res.status(201).json({ data: precedent });
-  } catch (error) { next(error); }
-};
-export const removePrecedent = async (req: Request, res: Response, next: NextFunction) => {
-  try {
-    await prisma.casePrecedent.delete({ where: { id: req.params.subId as string } });
-    res.json({ message: "Precedent removed" });
-  } catch (error) { next(error); }
-};
 
 // PAYMENTS
 export const addPayment = async (req: Request, res: Response, next: NextFunction) => {

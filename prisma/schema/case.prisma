@@ -50,7 +50,6 @@ model Case {
   hearings               CaseHearing[]
   pleadings              CasePleading[]
   proceedings            CourtProceeding[]
-  precedents             CasePrecedent[]
   payments               CasePayment[]
   documents              CaseDocument[]
 
@@ -148,18 +147,6 @@ model CourtProceeding {
   verdict          String?    @db.Text
 
   @@map("court_proceedings")
-}
-
-model CasePrecedent {
-  id             String  @id @default(uuid())
-  caseId         String
-  case           Case    @relation(fields: [caseId], references: [id], onDelete: Cascade)
-  decisionNumber String?
-  plaintiff      String?
-  defendant      String?
-  citationNotes  String? @db.Text
-
-  @@map("case_precedents")
 }
 
 model CasePayment {

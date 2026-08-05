@@ -110,7 +110,6 @@ export const show = async (req: Request, res: Response, next: NextFunction) => {
         proceedings: {
           include: { courtLevel: true },
         },
-        precedents: true,
         payments: {
           include: { receivedByUser: true }
         },

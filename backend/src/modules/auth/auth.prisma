@@ -24,7 +24,6 @@ model User {
   reset_tokens   PasswordResetToken[]
   pages          Page[] @relation("page_author")
   cases_as_lawyer CaseLawyer[]
-  cases_as_pleader CasePleading[]
   cases_payment_received CasePayment[]
   cases_created      Case[] @relation("CaseCreatedBy")
 
