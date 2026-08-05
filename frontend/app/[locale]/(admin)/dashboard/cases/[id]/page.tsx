@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useParams, useRouter } from "next/navigation";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, Loader2 } from "lucide-react";
@@ -41,6 +41,13 @@ export default function CaseDetailPage() {
   useEffect(() => {
     if (id) fetchCase();
   }, [id]);
+
+  const searchParams = useSearchParams();
+  const currentTab = searchParams.get("tab") || "overview";
+
+  const handleTabChange = (value: string) => {
+    router.push(`?tab=${value}`, { scroll: false });
+  };
 
   if (loading) {
     return (
@@ -94,7 +101,7 @@ export default function CaseDetailPage() {
         </div>
       </div>
 
-      <Tabs defaultValue="overview" className="w-full">
+      <Tabs defaultValue={currentTab} value={currentTab} onValueChange={handleTabChange} className="w-full">
         <TabsList className="mb-4 flex-wrap w-full justify-start h-auto gap-2">
           <TabsTrigger value="overview">
             {t("CaseDetailPage.overview")}

@@ -49,10 +49,8 @@ export default function LoginForm({ className }: { className?: string }) {
         
         const finalUrl = redirectUrl && redirectUrl.startsWith("/") ? redirectUrl : "/dashboard";
         
-        // Use window.location.href for a clean state reload, 
-        // avoiding stale layout states and router cache issues.
-        const currentLocale = window.location.pathname.split('/')[1] || 'np';
-        window.location.href = `/${currentLocale}${finalUrl}`;
+        router.push(finalUrl);
+        router.refresh();
       }
     } catch (error: any) {
       setErrorMsg(typeof error === "string" ? error : error.message);

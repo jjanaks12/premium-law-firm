@@ -430,3 +430,49 @@ export const migrateCase = async (req: Request, res: Response, next: NextFunctio
     next(error);
   }
 };
+
+export const getDashboardStats = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const totalClients = await prisma.caseParty.count();
+    const activeCases = await prisma.case.count({ where: { status: 'Active' } });
+    const payments = await prisma.casePayment.aggregate({
+      _sum: { amount: true },
+    });
+    
+    const revenue = payments._sum.amount ? Number(payments._sum.amount) : 0;
+
+    const upcomingHearings = await prisma.caseHearing.findMany({
+      where: {
+        nextHearingDate: {
+          gte: new Date(new Date().setHours(0, 0, 0, 0))
+        }
+      },
+      include: {
+        case: {
+          include: {
+            courtDetails: {
+              where: { isActive: true },
+              take: 1,
+            }
+          }
+        }
+      },
+      orderBy: {
+        nextHearingDate: 'asc'
+      },
+      take: 10
+    });
+
+    res.json({
+      success: true,
+      data: {
+        totalClients,
+        activeCases,
+        revenue,
+        upcomingHearings,
+      },
+    });
+  } catch (error) {
+    next(error);
+  }
+};

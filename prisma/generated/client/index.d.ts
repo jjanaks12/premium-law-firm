@@ -12425,6 +12425,7 @@ export namespace Prisma {
     registrationDate: Date | null
     judgeName: string | null
     courtType: string | null
+    courtName: string | null
     sectionCourtRoom: string | null
     parentId: string | null
     isActive: boolean | null
@@ -12440,6 +12441,7 @@ export namespace Prisma {
     registrationDate: Date | null
     judgeName: string | null
     courtType: string | null
+    courtName: string | null
     sectionCourtRoom: string | null
     parentId: string | null
     isActive: boolean | null
@@ -12455,6 +12457,7 @@ export namespace Prisma {
     registrationDate: number
     judgeName: number
     courtType: number
+    courtName: number
     sectionCourtRoom: number
     parentId: number
     isActive: number
@@ -12472,6 +12475,7 @@ export namespace Prisma {
     registrationDate?: true
     judgeName?: true
     courtType?: true
+    courtName?: true
     sectionCourtRoom?: true
     parentId?: true
     isActive?: true
@@ -12487,6 +12491,7 @@ export namespace Prisma {
     registrationDate?: true
     judgeName?: true
     courtType?: true
+    courtName?: true
     sectionCourtRoom?: true
     parentId?: true
     isActive?: true
@@ -12502,6 +12507,7 @@ export namespace Prisma {
     registrationDate?: true
     judgeName?: true
     courtType?: true
+    courtName?: true
     sectionCourtRoom?: true
     parentId?: true
     isActive?: true
@@ -12590,6 +12596,7 @@ export namespace Prisma {
     registrationDate: Date | null
     judgeName: string | null
     courtType: string | null
+    courtName: string | null
     sectionCourtRoom: string | null
     parentId: string | null
     isActive: boolean
@@ -12622,6 +12629,7 @@ export namespace Prisma {
     registrationDate?: boolean
     judgeName?: boolean
     courtType?: boolean
+    courtName?: boolean
     sectionCourtRoom?: boolean
     parentId?: boolean
     isActive?: boolean
@@ -12643,6 +12651,7 @@ export namespace Prisma {
     registrationDate?: boolean
     judgeName?: boolean
     courtType?: boolean
+    courtName?: boolean
     sectionCourtRoom?: boolean
     parentId?: boolean
     isActive?: boolean
@@ -12660,6 +12669,7 @@ export namespace Prisma {
     registrationDate?: boolean
     judgeName?: boolean
     courtType?: boolean
+    courtName?: boolean
     sectionCourtRoom?: boolean
     parentId?: boolean
     isActive?: boolean
@@ -12677,6 +12687,7 @@ export namespace Prisma {
     registrationDate?: boolean
     judgeName?: boolean
     courtType?: boolean
+    courtName?: boolean
     sectionCourtRoom?: boolean
     parentId?: boolean
     isActive?: boolean
@@ -12684,7 +12695,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type CaseCourtDetailOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "caseId" | "caseName" | "caseNumber" | "registrationDate" | "judgeName" | "courtType" | "sectionCourtRoom" | "parentId" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["caseCourtDetail"]>
+  export type CaseCourtDetailOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "caseId" | "caseName" | "caseNumber" | "registrationDate" | "judgeName" | "courtType" | "courtName" | "sectionCourtRoom" | "parentId" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["caseCourtDetail"]>
   export type CaseCourtDetailInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     case?: boolean | CaseDefaultArgs<ExtArgs>
     parent?: boolean | CaseCourtDetail$parentArgs<ExtArgs>
@@ -12719,6 +12730,7 @@ export namespace Prisma {
       registrationDate: Date | null
       judgeName: string | null
       courtType: string | null
+      courtName: string | null
       sectionCourtRoom: string | null
       parentId: string | null
       isActive: boolean
@@ -13159,6 +13171,7 @@ export namespace Prisma {
     readonly registrationDate: FieldRef<"CaseCourtDetail", 'DateTime'>
     readonly judgeName: FieldRef<"CaseCourtDetail", 'String'>
     readonly courtType: FieldRef<"CaseCourtDetail", 'String'>
+    readonly courtName: FieldRef<"CaseCourtDetail", 'String'>
     readonly sectionCourtRoom: FieldRef<"CaseCourtDetail", 'String'>
     readonly parentId: FieldRef<"CaseCourtDetail", 'String'>
     readonly isActive: FieldRef<"CaseCourtDetail", 'Boolean'>
@@ -22682,6 +22695,7 @@ export namespace Prisma {
     id: string | null
     slug: string | null
     title: string | null
+    content: string | null
     excerpt: string | null
     status: string | null
     locale: string | null
@@ -22698,6 +22712,7 @@ export namespace Prisma {
     id: string | null
     slug: string | null
     title: string | null
+    content: string | null
     excerpt: string | null
     status: string | null
     locale: string | null
@@ -22715,6 +22730,7 @@ export namespace Prisma {
     slug: number
     title: number
     content: number
+    detail: number
     excerpt: number
     status: number
     locale: number
@@ -22733,6 +22749,7 @@ export namespace Prisma {
     id?: true
     slug?: true
     title?: true
+    content?: true
     excerpt?: true
     status?: true
     locale?: true
@@ -22749,6 +22766,7 @@ export namespace Prisma {
     id?: true
     slug?: true
     title?: true
+    content?: true
     excerpt?: true
     status?: true
     locale?: true
@@ -22766,6 +22784,7 @@ export namespace Prisma {
     slug?: true
     title?: true
     content?: true
+    detail?: true
     excerpt?: true
     status?: true
     locale?: true
@@ -22855,7 +22874,8 @@ export namespace Prisma {
     id: string
     slug: string
     title: string
-    content: JsonValue
+    content: string
+    detail: JsonValue | null
     excerpt: string | null
     status: string
     locale: string
@@ -22890,6 +22910,7 @@ export namespace Prisma {
     slug?: boolean
     title?: boolean
     content?: boolean
+    detail?: boolean
     excerpt?: boolean
     status?: boolean
     locale?: boolean
@@ -22915,6 +22936,7 @@ export namespace Prisma {
     slug?: boolean
     title?: boolean
     content?: boolean
+    detail?: boolean
     excerpt?: boolean
     status?: boolean
     locale?: boolean
@@ -22936,6 +22958,7 @@ export namespace Prisma {
     slug?: boolean
     title?: boolean
     content?: boolean
+    detail?: boolean
     excerpt?: boolean
     status?: boolean
     locale?: boolean
@@ -22957,6 +22980,7 @@ export namespace Prisma {
     slug?: boolean
     title?: boolean
     content?: boolean
+    detail?: boolean
     excerpt?: boolean
     status?: boolean
     locale?: boolean
@@ -22969,7 +22993,7 @@ export namespace Prisma {
     deleted_at?: boolean
   }
 
-  export type PageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "slug" | "title" | "content" | "excerpt" | "status" | "locale" | "parent_id" | "page_type_id" | "thumbnail_id" | "author_id" | "created_at" | "updated_at" | "deleted_at", ExtArgs["result"]["page"]>
+  export type PageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "slug" | "title" | "content" | "detail" | "excerpt" | "status" | "locale" | "parent_id" | "page_type_id" | "thumbnail_id" | "author_id" | "created_at" | "updated_at" | "deleted_at", ExtArgs["result"]["page"]>
   export type PageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     parent?: boolean | Page$parentArgs<ExtArgs>
     children?: boolean | Page$childrenArgs<ExtArgs>
@@ -23008,7 +23032,8 @@ export namespace Prisma {
       id: string
       slug: string
       title: string
-      content: Prisma.JsonValue
+      content: string
+      detail: Prisma.JsonValue | null
       excerpt: string | null
       status: string
       locale: string
@@ -23452,7 +23477,8 @@ export namespace Prisma {
     readonly id: FieldRef<"Page", 'String'>
     readonly slug: FieldRef<"Page", 'String'>
     readonly title: FieldRef<"Page", 'String'>
-    readonly content: FieldRef<"Page", 'Json'>
+    readonly content: FieldRef<"Page", 'String'>
+    readonly detail: FieldRef<"Page", 'Json'>
     readonly excerpt: FieldRef<"Page", 'String'>
     readonly status: FieldRef<"Page", 'String'>
     readonly locale: FieldRef<"Page", 'String'>
@@ -27507,6 +27533,7 @@ export namespace Prisma {
     registrationDate: 'registrationDate',
     judgeName: 'judgeName',
     courtType: 'courtType',
+    courtName: 'courtName',
     sectionCourtRoom: 'sectionCourtRoom',
     parentId: 'parentId',
     isActive: 'isActive',
@@ -27630,6 +27657,7 @@ export namespace Prisma {
     slug: 'slug',
     title: 'title',
     content: 'content',
+    detail: 'detail',
     excerpt: 'excerpt',
     status: 'status',
     locale: 'locale',
@@ -27703,13 +27731,6 @@ export namespace Prisma {
   };
 
   export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
-
-
-  export const JsonNullValueInput: {
-    JsonNull: typeof JsonNull
-  };
-
-  export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
 
 
   export const QueryMode: {
@@ -28412,6 +28433,7 @@ export namespace Prisma {
     registrationDate?: DateTimeNullableFilter<"CaseCourtDetail"> | Date | string | null
     judgeName?: StringNullableFilter<"CaseCourtDetail"> | string | null
     courtType?: StringNullableFilter<"CaseCourtDetail"> | string | null
+    courtName?: StringNullableFilter<"CaseCourtDetail"> | string | null
     sectionCourtRoom?: StringNullableFilter<"CaseCourtDetail"> | string | null
     parentId?: StringNullableFilter<"CaseCourtDetail"> | string | null
     isActive?: BoolFilter<"CaseCourtDetail"> | boolean
@@ -28432,6 +28454,7 @@ export namespace Prisma {
     registrationDate?: SortOrderInput | SortOrder
     judgeName?: SortOrderInput | SortOrder
     courtType?: SortOrderInput | SortOrder
+    courtName?: SortOrderInput | SortOrder
     sectionCourtRoom?: SortOrderInput | SortOrder
     parentId?: SortOrderInput | SortOrder
     isActive?: SortOrder
@@ -28455,6 +28478,7 @@ export namespace Prisma {
     registrationDate?: DateTimeNullableFilter<"CaseCourtDetail"> | Date | string | null
     judgeName?: StringNullableFilter<"CaseCourtDetail"> | string | null
     courtType?: StringNullableFilter<"CaseCourtDetail"> | string | null
+    courtName?: StringNullableFilter<"CaseCourtDetail"> | string | null
     sectionCourtRoom?: StringNullableFilter<"CaseCourtDetail"> | string | null
     parentId?: StringNullableFilter<"CaseCourtDetail"> | string | null
     isActive?: BoolFilter<"CaseCourtDetail"> | boolean
@@ -28475,6 +28499,7 @@ export namespace Prisma {
     registrationDate?: SortOrderInput | SortOrder
     judgeName?: SortOrderInput | SortOrder
     courtType?: SortOrderInput | SortOrder
+    courtName?: SortOrderInput | SortOrder
     sectionCourtRoom?: SortOrderInput | SortOrder
     parentId?: SortOrderInput | SortOrder
     isActive?: SortOrder
@@ -28496,6 +28521,7 @@ export namespace Prisma {
     registrationDate?: DateTimeNullableWithAggregatesFilter<"CaseCourtDetail"> | Date | string | null
     judgeName?: StringNullableWithAggregatesFilter<"CaseCourtDetail"> | string | null
     courtType?: StringNullableWithAggregatesFilter<"CaseCourtDetail"> | string | null
+    courtName?: StringNullableWithAggregatesFilter<"CaseCourtDetail"> | string | null
     sectionCourtRoom?: StringNullableWithAggregatesFilter<"CaseCourtDetail"> | string | null
     parentId?: StringNullableWithAggregatesFilter<"CaseCourtDetail"> | string | null
     isActive?: BoolWithAggregatesFilter<"CaseCourtDetail"> | boolean
@@ -29076,7 +29102,8 @@ export namespace Prisma {
     id?: StringFilter<"Page"> | string
     slug?: StringFilter<"Page"> | string
     title?: StringFilter<"Page"> | string
-    content?: JsonFilter<"Page">
+    content?: StringFilter<"Page"> | string
+    detail?: JsonNullableFilter<"Page">
     excerpt?: StringNullableFilter<"Page"> | string | null
     status?: StringFilter<"Page"> | string
     locale?: StringFilter<"Page"> | string
@@ -29101,6 +29128,7 @@ export namespace Prisma {
     slug?: SortOrder
     title?: SortOrder
     content?: SortOrder
+    detail?: SortOrderInput | SortOrder
     excerpt?: SortOrderInput | SortOrder
     status?: SortOrder
     locale?: SortOrder
@@ -29127,7 +29155,8 @@ export namespace Prisma {
     OR?: PageWhereInput[]
     NOT?: PageWhereInput | PageWhereInput[]
     title?: StringFilter<"Page"> | string
-    content?: JsonFilter<"Page">
+    content?: StringFilter<"Page"> | string
+    detail?: JsonNullableFilter<"Page">
     excerpt?: StringNullableFilter<"Page"> | string | null
     status?: StringFilter<"Page"> | string
     locale?: StringFilter<"Page"> | string
@@ -29152,6 +29181,7 @@ export namespace Prisma {
     slug?: SortOrder
     title?: SortOrder
     content?: SortOrder
+    detail?: SortOrderInput | SortOrder
     excerpt?: SortOrderInput | SortOrder
     status?: SortOrder
     locale?: SortOrder
@@ -29174,7 +29204,8 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Page"> | string
     slug?: StringWithAggregatesFilter<"Page"> | string
     title?: StringWithAggregatesFilter<"Page"> | string
-    content?: JsonWithAggregatesFilter<"Page">
+    content?: StringWithAggregatesFilter<"Page"> | string
+    detail?: JsonNullableWithAggregatesFilter<"Page">
     excerpt?: StringNullableWithAggregatesFilter<"Page"> | string | null
     status?: StringWithAggregatesFilter<"Page"> | string
     locale?: StringWithAggregatesFilter<"Page"> | string
@@ -30033,6 +30064,7 @@ export namespace Prisma {
     registrationDate?: Date | string | null
     judgeName?: string | null
     courtType?: string | null
+    courtName?: string | null
     sectionCourtRoom?: string | null
     isActive?: boolean
     createdAt?: Date | string
@@ -30052,6 +30084,7 @@ export namespace Prisma {
     registrationDate?: Date | string | null
     judgeName?: string | null
     courtType?: string | null
+    courtName?: string | null
     sectionCourtRoom?: string | null
     parentId?: string | null
     isActive?: boolean
@@ -30069,6 +30102,7 @@ export namespace Prisma {
     registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgeName?: NullableStringFieldUpdateOperationsInput | string | null
     courtType?: NullableStringFieldUpdateOperationsInput | string | null
+    courtName?: NullableStringFieldUpdateOperationsInput | string | null
     sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -30088,6 +30122,7 @@ export namespace Prisma {
     registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgeName?: NullableStringFieldUpdateOperationsInput | string | null
     courtType?: NullableStringFieldUpdateOperationsInput | string | null
+    courtName?: NullableStringFieldUpdateOperationsInput | string | null
     sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
     parentId?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -30106,6 +30141,7 @@ export namespace Prisma {
     registrationDate?: Date | string | null
     judgeName?: string | null
     courtType?: string | null
+    courtName?: string | null
     sectionCourtRoom?: string | null
     parentId?: string | null
     isActive?: boolean
@@ -30120,6 +30156,7 @@ export namespace Prisma {
     registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgeName?: NullableStringFieldUpdateOperationsInput | string | null
     courtType?: NullableStringFieldUpdateOperationsInput | string | null
+    courtName?: NullableStringFieldUpdateOperationsInput | string | null
     sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -30134,6 +30171,7 @@ export namespace Prisma {
     registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgeName?: NullableStringFieldUpdateOperationsInput | string | null
     courtType?: NullableStringFieldUpdateOperationsInput | string | null
+    courtName?: NullableStringFieldUpdateOperationsInput | string | null
     sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
     parentId?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -30728,7 +30766,8 @@ export namespace Prisma {
     id?: string
     slug: string
     title: string
-    content?: JsonNullValueInput | InputJsonValue
+    content: string
+    detail?: NullableJsonNullValueInput | InputJsonValue
     excerpt?: string | null
     status?: string
     locale?: string
@@ -30748,7 +30787,8 @@ export namespace Prisma {
     id?: string
     slug: string
     title: string
-    content?: JsonNullValueInput | InputJsonValue
+    content: string
+    detail?: NullableJsonNullValueInput | InputJsonValue
     excerpt?: string | null
     status?: string
     locale?: string
@@ -30768,7 +30808,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    content?: JsonNullValueInput | InputJsonValue
+    content?: StringFieldUpdateOperationsInput | string
+    detail?: NullableJsonNullValueInput | InputJsonValue
     excerpt?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     locale?: StringFieldUpdateOperationsInput | string
@@ -30788,7 +30829,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    content?: JsonNullValueInput | InputJsonValue
+    content?: StringFieldUpdateOperationsInput | string
+    detail?: NullableJsonNullValueInput | InputJsonValue
     excerpt?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     locale?: StringFieldUpdateOperationsInput | string
@@ -30808,7 +30850,8 @@ export namespace Prisma {
     id?: string
     slug: string
     title: string
-    content?: JsonNullValueInput | InputJsonValue
+    content: string
+    detail?: NullableJsonNullValueInput | InputJsonValue
     excerpt?: string | null
     status?: string
     locale?: string
@@ -30825,7 +30868,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    content?: JsonNullValueInput | InputJsonValue
+    content?: StringFieldUpdateOperationsInput | string
+    detail?: NullableJsonNullValueInput | InputJsonValue
     excerpt?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     locale?: StringFieldUpdateOperationsInput | string
@@ -30838,7 +30882,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    content?: JsonNullValueInput | InputJsonValue
+    content?: StringFieldUpdateOperationsInput | string
+    detail?: NullableJsonNullValueInput | InputJsonValue
     excerpt?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     locale?: StringFieldUpdateOperationsInput | string
@@ -31753,6 +31798,7 @@ export namespace Prisma {
     registrationDate?: SortOrder
     judgeName?: SortOrder
     courtType?: SortOrder
+    courtName?: SortOrder
     sectionCourtRoom?: SortOrder
     parentId?: SortOrder
     isActive?: SortOrder
@@ -31768,6 +31814,7 @@ export namespace Prisma {
     registrationDate?: SortOrder
     judgeName?: SortOrder
     courtType?: SortOrder
+    courtName?: SortOrder
     sectionCourtRoom?: SortOrder
     parentId?: SortOrder
     isActive?: SortOrder
@@ -31783,6 +31830,7 @@ export namespace Prisma {
     registrationDate?: SortOrder
     judgeName?: SortOrder
     courtType?: SortOrder
+    courtName?: SortOrder
     sectionCourtRoom?: SortOrder
     parentId?: SortOrder
     isActive?: SortOrder
@@ -32110,29 +32158,6 @@ export namespace Prisma {
     updated_at?: SortOrder
     deleted_at?: SortOrder
   }
-  export type JsonFilter<$PrismaModel = never> =
-    | PatchUndefined<
-        Either<Required<JsonFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<JsonFilterBase<$PrismaModel>>, 'path'>>
-
-  export type JsonFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string[]
-    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-  }
 
   export type PageNullableScalarRelationFilter = {
     is?: PageWhereInput | null
@@ -32159,6 +32184,7 @@ export namespace Prisma {
     slug?: SortOrder
     title?: SortOrder
     content?: SortOrder
+    detail?: SortOrder
     excerpt?: SortOrder
     status?: SortOrder
     locale?: SortOrder
@@ -32175,6 +32201,7 @@ export namespace Prisma {
     id?: SortOrder
     slug?: SortOrder
     title?: SortOrder
+    content?: SortOrder
     excerpt?: SortOrder
     status?: SortOrder
     locale?: SortOrder
@@ -32191,6 +32218,7 @@ export namespace Prisma {
     id?: SortOrder
     slug?: SortOrder
     title?: SortOrder
+    content?: SortOrder
     excerpt?: SortOrder
     status?: SortOrder
     locale?: SortOrder
@@ -32201,32 +32229,6 @@ export namespace Prisma {
     created_at?: SortOrder
     updated_at?: SortOrder
     deleted_at?: SortOrder
-  }
-  export type JsonWithAggregatesFilter<$PrismaModel = never> =
-    | PatchUndefined<
-        Either<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonWithAggregatesFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
-
-  export type JsonWithAggregatesFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string[]
-    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedJsonFilter<$PrismaModel>
-    _max?: NestedJsonFilter<$PrismaModel>
   }
 
   export type PageScalarRelationFilter = {
@@ -34203,29 +34205,6 @@ export namespace Prisma {
     _min?: NestedDecimalFilter<$PrismaModel>
     _max?: NestedDecimalFilter<$PrismaModel>
   }
-  export type NestedJsonFilter<$PrismaModel = never> =
-    | PatchUndefined<
-        Either<Required<NestedJsonFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>,
-        Required<NestedJsonFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>
-
-  export type NestedJsonFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string[]
-    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-  }
 
   export type ResourceCreateWithoutUsersInput = {
     id?: string
@@ -34369,7 +34348,8 @@ export namespace Prisma {
     id?: string
     slug: string
     title: string
-    content?: JsonNullValueInput | InputJsonValue
+    content: string
+    detail?: NullableJsonNullValueInput | InputJsonValue
     excerpt?: string | null
     status?: string
     locale?: string
@@ -34388,7 +34368,8 @@ export namespace Prisma {
     id?: string
     slug: string
     title: string
-    content?: JsonNullValueInput | InputJsonValue
+    content: string
+    detail?: NullableJsonNullValueInput | InputJsonValue
     excerpt?: string | null
     status?: string
     locale?: string
@@ -34699,7 +34680,8 @@ export namespace Prisma {
     id?: StringFilter<"Page"> | string
     slug?: StringFilter<"Page"> | string
     title?: StringFilter<"Page"> | string
-    content?: JsonFilter<"Page">
+    content?: StringFilter<"Page"> | string
+    detail?: JsonNullableFilter<"Page">
     excerpt?: StringNullableFilter<"Page"> | string | null
     status?: StringFilter<"Page"> | string
     locale?: StringFilter<"Page"> | string
@@ -35080,7 +35062,8 @@ export namespace Prisma {
     id?: string
     slug: string
     title: string
-    content?: JsonNullValueInput | InputJsonValue
+    content: string
+    detail?: NullableJsonNullValueInput | InputJsonValue
     excerpt?: string | null
     status?: string
     locale?: string
@@ -35099,7 +35082,8 @@ export namespace Prisma {
     id?: string
     slug: string
     title: string
-    content?: JsonNullValueInput | InputJsonValue
+    content: string
+    detail?: NullableJsonNullValueInput | InputJsonValue
     excerpt?: string | null
     status?: string
     locale?: string
@@ -35461,6 +35445,7 @@ export namespace Prisma {
     registrationDate?: Date | string | null
     judgeName?: string | null
     courtType?: string | null
+    courtName?: string | null
     sectionCourtRoom?: string | null
     isActive?: boolean
     createdAt?: Date | string
@@ -35478,6 +35463,7 @@ export namespace Prisma {
     registrationDate?: Date | string | null
     judgeName?: string | null
     courtType?: string | null
+    courtName?: string | null
     sectionCourtRoom?: string | null
     parentId?: string | null
     isActive?: boolean
@@ -35779,6 +35765,7 @@ export namespace Prisma {
     registrationDate?: DateTimeNullableFilter<"CaseCourtDetail"> | Date | string | null
     judgeName?: StringNullableFilter<"CaseCourtDetail"> | string | null
     courtType?: StringNullableFilter<"CaseCourtDetail"> | string | null
+    courtName?: StringNullableFilter<"CaseCourtDetail"> | string | null
     sectionCourtRoom?: StringNullableFilter<"CaseCourtDetail"> | string | null
     parentId?: StringNullableFilter<"CaseCourtDetail"> | string | null
     isActive?: BoolFilter<"CaseCourtDetail"> | boolean
@@ -35977,6 +35964,7 @@ export namespace Prisma {
     registrationDate?: Date | string | null
     judgeName?: string | null
     courtType?: string | null
+    courtName?: string | null
     sectionCourtRoom?: string | null
     isActive?: boolean
     createdAt?: Date | string
@@ -35995,6 +35983,7 @@ export namespace Prisma {
     registrationDate?: Date | string | null
     judgeName?: string | null
     courtType?: string | null
+    courtName?: string | null
     sectionCourtRoom?: string | null
     parentId?: string | null
     isActive?: boolean
@@ -36016,6 +36005,7 @@ export namespace Prisma {
     registrationDate?: Date | string | null
     judgeName?: string | null
     courtType?: string | null
+    courtName?: string | null
     sectionCourtRoom?: string | null
     isActive?: boolean
     createdAt?: Date | string
@@ -36034,6 +36024,7 @@ export namespace Prisma {
     registrationDate?: Date | string | null
     judgeName?: string | null
     courtType?: string | null
+    courtName?: string | null
     sectionCourtRoom?: string | null
     isActive?: boolean
     createdAt?: Date | string
@@ -36184,6 +36175,7 @@ export namespace Prisma {
     registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgeName?: NullableStringFieldUpdateOperationsInput | string | null
     courtType?: NullableStringFieldUpdateOperationsInput | string | null
+    courtName?: NullableStringFieldUpdateOperationsInput | string | null
     sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -36202,6 +36194,7 @@ export namespace Prisma {
     registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgeName?: NullableStringFieldUpdateOperationsInput | string | null
     courtType?: NullableStringFieldUpdateOperationsInput | string | null
+    courtName?: NullableStringFieldUpdateOperationsInput | string | null
     sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
     parentId?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -36791,6 +36784,7 @@ export namespace Prisma {
     registrationDate?: Date | string | null
     judgeName?: string | null
     courtType?: string | null
+    courtName?: string | null
     sectionCourtRoom?: string | null
     isActive?: boolean
     createdAt?: Date | string
@@ -36809,6 +36803,7 @@ export namespace Prisma {
     registrationDate?: Date | string | null
     judgeName?: string | null
     courtType?: string | null
+    courtName?: string | null
     sectionCourtRoom?: string | null
     parentId?: string | null
     isActive?: boolean
@@ -36896,6 +36891,7 @@ export namespace Prisma {
     registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgeName?: NullableStringFieldUpdateOperationsInput | string | null
     courtType?: NullableStringFieldUpdateOperationsInput | string | null
+    courtName?: NullableStringFieldUpdateOperationsInput | string | null
     sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -36914,6 +36910,7 @@ export namespace Prisma {
     registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgeName?: NullableStringFieldUpdateOperationsInput | string | null
     courtType?: NullableStringFieldUpdateOperationsInput | string | null
+    courtName?: NullableStringFieldUpdateOperationsInput | string | null
     sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
     parentId?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -37295,6 +37292,7 @@ export namespace Prisma {
     registrationDate?: Date | string | null
     judgeName?: string | null
     courtType?: string | null
+    courtName?: string | null
     sectionCourtRoom?: string | null
     isActive?: boolean
     createdAt?: Date | string
@@ -37313,6 +37311,7 @@ export namespace Prisma {
     registrationDate?: Date | string | null
     judgeName?: string | null
     courtType?: string | null
+    courtName?: string | null
     sectionCourtRoom?: string | null
     parentId?: string | null
     isActive?: boolean
@@ -37400,6 +37399,7 @@ export namespace Prisma {
     registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgeName?: NullableStringFieldUpdateOperationsInput | string | null
     courtType?: NullableStringFieldUpdateOperationsInput | string | null
+    courtName?: NullableStringFieldUpdateOperationsInput | string | null
     sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -37418,6 +37418,7 @@ export namespace Prisma {
     registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgeName?: NullableStringFieldUpdateOperationsInput | string | null
     courtType?: NullableStringFieldUpdateOperationsInput | string | null
+    courtName?: NullableStringFieldUpdateOperationsInput | string | null
     sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
     parentId?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -37539,7 +37540,8 @@ export namespace Prisma {
     id?: string
     slug: string
     title: string
-    content?: JsonNullValueInput | InputJsonValue
+    content: string
+    detail?: NullableJsonNullValueInput | InputJsonValue
     excerpt?: string | null
     status?: string
     locale?: string
@@ -37558,7 +37560,8 @@ export namespace Prisma {
     id?: string
     slug: string
     title: string
-    content?: JsonNullValueInput | InputJsonValue
+    content: string
+    detail?: NullableJsonNullValueInput | InputJsonValue
     excerpt?: string | null
     status?: string
     locale?: string
@@ -37603,7 +37606,8 @@ export namespace Prisma {
     id?: string
     slug: string
     title: string
-    content?: JsonNullValueInput | InputJsonValue
+    content: string
+    detail?: NullableJsonNullValueInput | InputJsonValue
     excerpt?: string | null
     status?: string
     locale?: string
@@ -37622,7 +37626,8 @@ export namespace Prisma {
     id?: string
     slug: string
     title: string
-    content?: JsonNullValueInput | InputJsonValue
+    content: string
+    detail?: NullableJsonNullValueInput | InputJsonValue
     excerpt?: string | null
     status?: string
     locale?: string
@@ -37646,7 +37651,8 @@ export namespace Prisma {
     id?: string
     slug: string
     title: string
-    content?: JsonNullValueInput | InputJsonValue
+    content: string
+    detail?: NullableJsonNullValueInput | InputJsonValue
     excerpt?: string | null
     status?: string
     locale?: string
@@ -37665,7 +37671,8 @@ export namespace Prisma {
     id?: string
     slug: string
     title: string
-    content?: JsonNullValueInput | InputJsonValue
+    content: string
+    detail?: NullableJsonNullValueInput | InputJsonValue
     excerpt?: string | null
     status?: string
     locale?: string
@@ -37866,7 +37873,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    content?: JsonNullValueInput | InputJsonValue
+    content?: StringFieldUpdateOperationsInput | string
+    detail?: NullableJsonNullValueInput | InputJsonValue
     excerpt?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     locale?: StringFieldUpdateOperationsInput | string
@@ -37885,7 +37893,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    content?: JsonNullValueInput | InputJsonValue
+    content?: StringFieldUpdateOperationsInput | string
+    detail?: NullableJsonNullValueInput | InputJsonValue
     excerpt?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     locale?: StringFieldUpdateOperationsInput | string
@@ -38111,7 +38120,8 @@ export namespace Prisma {
     id?: string
     slug: string
     title: string
-    content?: JsonNullValueInput | InputJsonValue
+    content: string
+    detail?: NullableJsonNullValueInput | InputJsonValue
     excerpt?: string | null
     status?: string
     locale?: string
@@ -38130,7 +38140,8 @@ export namespace Prisma {
     id?: string
     slug: string
     title: string
-    content?: JsonNullValueInput | InputJsonValue
+    content: string
+    detail?: NullableJsonNullValueInput | InputJsonValue
     excerpt?: string | null
     status?: string
     locale?: string
@@ -38196,7 +38207,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    content?: JsonNullValueInput | InputJsonValue
+    content?: StringFieldUpdateOperationsInput | string
+    detail?: NullableJsonNullValueInput | InputJsonValue
     excerpt?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     locale?: StringFieldUpdateOperationsInput | string
@@ -38215,7 +38227,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    content?: JsonNullValueInput | InputJsonValue
+    content?: StringFieldUpdateOperationsInput | string
+    detail?: NullableJsonNullValueInput | InputJsonValue
     excerpt?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     locale?: StringFieldUpdateOperationsInput | string
@@ -38271,7 +38284,8 @@ export namespace Prisma {
     id?: string
     slug: string
     title: string
-    content?: JsonNullValueInput | InputJsonValue
+    content: string
+    detail?: NullableJsonNullValueInput | InputJsonValue
     excerpt?: string | null
     status?: string
     locale?: string
@@ -38290,7 +38304,8 @@ export namespace Prisma {
     id?: string
     slug: string
     title: string
-    content?: JsonNullValueInput | InputJsonValue
+    content: string
+    detail?: NullableJsonNullValueInput | InputJsonValue
     excerpt?: string | null
     status?: string
     locale?: string
@@ -38325,7 +38340,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    content?: JsonNullValueInput | InputJsonValue
+    content?: StringFieldUpdateOperationsInput | string
+    detail?: NullableJsonNullValueInput | InputJsonValue
     excerpt?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     locale?: StringFieldUpdateOperationsInput | string
@@ -38344,7 +38360,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    content?: JsonNullValueInput | InputJsonValue
+    content?: StringFieldUpdateOperationsInput | string
+    detail?: NullableJsonNullValueInput | InputJsonValue
     excerpt?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     locale?: StringFieldUpdateOperationsInput | string
@@ -38460,7 +38477,8 @@ export namespace Prisma {
     id?: string
     slug: string
     title: string
-    content?: JsonNullValueInput | InputJsonValue
+    content: string
+    detail?: NullableJsonNullValueInput | InputJsonValue
     excerpt?: string | null
     status?: string
     locale?: string
@@ -38583,7 +38601,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    content?: JsonNullValueInput | InputJsonValue
+    content?: StringFieldUpdateOperationsInput | string
+    detail?: NullableJsonNullValueInput | InputJsonValue
     excerpt?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     locale?: StringFieldUpdateOperationsInput | string
@@ -38602,7 +38621,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    content?: JsonNullValueInput | InputJsonValue
+    content?: StringFieldUpdateOperationsInput | string
+    detail?: NullableJsonNullValueInput | InputJsonValue
     excerpt?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     locale?: StringFieldUpdateOperationsInput | string
@@ -38621,7 +38641,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    content?: JsonNullValueInput | InputJsonValue
+    content?: StringFieldUpdateOperationsInput | string
+    detail?: NullableJsonNullValueInput | InputJsonValue
     excerpt?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     locale?: StringFieldUpdateOperationsInput | string
@@ -38763,7 +38784,8 @@ export namespace Prisma {
     id?: string
     slug: string
     title: string
-    content?: JsonNullValueInput | InputJsonValue
+    content: string
+    detail?: NullableJsonNullValueInput | InputJsonValue
     excerpt?: string | null
     status?: string
     locale?: string
@@ -38855,7 +38877,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    content?: JsonNullValueInput | InputJsonValue
+    content?: StringFieldUpdateOperationsInput | string
+    detail?: NullableJsonNullValueInput | InputJsonValue
     excerpt?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     locale?: StringFieldUpdateOperationsInput | string
@@ -38874,7 +38897,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    content?: JsonNullValueInput | InputJsonValue
+    content?: StringFieldUpdateOperationsInput | string
+    detail?: NullableJsonNullValueInput | InputJsonValue
     excerpt?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     locale?: StringFieldUpdateOperationsInput | string
@@ -38893,7 +38917,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    content?: JsonNullValueInput | InputJsonValue
+    content?: StringFieldUpdateOperationsInput | string
+    detail?: NullableJsonNullValueInput | InputJsonValue
     excerpt?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     locale?: StringFieldUpdateOperationsInput | string
@@ -39078,6 +39103,7 @@ export namespace Prisma {
     registrationDate?: Date | string | null
     judgeName?: string | null
     courtType?: string | null
+    courtName?: string | null
     sectionCourtRoom?: string | null
     parentId?: string | null
     isActive?: boolean
@@ -39148,6 +39174,7 @@ export namespace Prisma {
     registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgeName?: NullableStringFieldUpdateOperationsInput | string | null
     courtType?: NullableStringFieldUpdateOperationsInput | string | null
+    courtName?: NullableStringFieldUpdateOperationsInput | string | null
     sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -39165,6 +39192,7 @@ export namespace Prisma {
     registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgeName?: NullableStringFieldUpdateOperationsInput | string | null
     courtType?: NullableStringFieldUpdateOperationsInput | string | null
+    courtName?: NullableStringFieldUpdateOperationsInput | string | null
     sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
     parentId?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -39182,6 +39210,7 @@ export namespace Prisma {
     registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgeName?: NullableStringFieldUpdateOperationsInput | string | null
     courtType?: NullableStringFieldUpdateOperationsInput | string | null
+    courtName?: NullableStringFieldUpdateOperationsInput | string | null
     sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
     parentId?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -39367,6 +39396,7 @@ export namespace Prisma {
     registrationDate?: Date | string | null
     judgeName?: string | null
     courtType?: string | null
+    courtName?: string | null
     sectionCourtRoom?: string | null
     isActive?: boolean
     createdAt?: Date | string
@@ -39399,6 +39429,7 @@ export namespace Prisma {
     registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgeName?: NullableStringFieldUpdateOperationsInput | string | null
     courtType?: NullableStringFieldUpdateOperationsInput | string | null
+    courtName?: NullableStringFieldUpdateOperationsInput | string | null
     sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -39417,6 +39448,7 @@ export namespace Prisma {
     registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgeName?: NullableStringFieldUpdateOperationsInput | string | null
     courtType?: NullableStringFieldUpdateOperationsInput | string | null
+    courtName?: NullableStringFieldUpdateOperationsInput | string | null
     sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -39434,6 +39466,7 @@ export namespace Prisma {
     registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     judgeName?: NullableStringFieldUpdateOperationsInput | string | null
     courtType?: NullableStringFieldUpdateOperationsInput | string | null
+    courtName?: NullableStringFieldUpdateOperationsInput | string | null
     sectionCourtRoom?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -39551,7 +39584,8 @@ export namespace Prisma {
     id?: string
     slug: string
     title: string
-    content?: JsonNullValueInput | InputJsonValue
+    content: string
+    detail?: NullableJsonNullValueInput | InputJsonValue
     excerpt?: string | null
     status?: string
     locale?: string
@@ -39567,7 +39601,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    content?: JsonNullValueInput | InputJsonValue
+    content?: StringFieldUpdateOperationsInput | string
+    detail?: NullableJsonNullValueInput | InputJsonValue
     excerpt?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     locale?: StringFieldUpdateOperationsInput | string
@@ -39586,7 +39621,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    content?: JsonNullValueInput | InputJsonValue
+    content?: StringFieldUpdateOperationsInput | string
+    detail?: NullableJsonNullValueInput | InputJsonValue
     excerpt?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     locale?: StringFieldUpdateOperationsInput | string
@@ -39605,7 +39641,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    content?: JsonNullValueInput | InputJsonValue
+    content?: StringFieldUpdateOperationsInput | string
+    detail?: NullableJsonNullValueInput | InputJsonValue
     excerpt?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     locale?: StringFieldUpdateOperationsInput | string
@@ -39621,7 +39658,8 @@ export namespace Prisma {
     id?: string
     slug: string
     title: string
-    content?: JsonNullValueInput | InputJsonValue
+    content: string
+    detail?: NullableJsonNullValueInput | InputJsonValue
     excerpt?: string | null
     status?: string
     locale?: string
@@ -39637,7 +39675,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    content?: JsonNullValueInput | InputJsonValue
+    content?: StringFieldUpdateOperationsInput | string
+    detail?: NullableJsonNullValueInput | InputJsonValue
     excerpt?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     locale?: StringFieldUpdateOperationsInput | string
@@ -39656,7 +39695,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    content?: JsonNullValueInput | InputJsonValue
+    content?: StringFieldUpdateOperationsInput | string
+    detail?: NullableJsonNullValueInput | InputJsonValue
     excerpt?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     locale?: StringFieldUpdateOperationsInput | string
@@ -39675,7 +39715,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    content?: JsonNullValueInput | InputJsonValue
+    content?: StringFieldUpdateOperationsInput | string
+    detail?: NullableJsonNullValueInput | InputJsonValue
     excerpt?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     locale?: StringFieldUpdateOperationsInput | string

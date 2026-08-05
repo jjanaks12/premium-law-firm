@@ -18,7 +18,7 @@ import { useAxios } from "@/lib/services/axios.service";
 import { toast } from "@/components/ui/toast";
 import { useTranslations, useLocale } from "next-intl";
 import dayjs from "dayjs";
-import { CaseData } from "@app/types";
+import { CaseData, PartyRole } from "@app/types";
 import { CaseNatureData } from "../case-natures/page";
 import { caseValidationSchema } from "@app/validations";
 import {
@@ -31,6 +31,7 @@ import {
 import { DatePicker } from "@/components/ui/date-picker";
 import { Checkbox } from "@/components/ui/checkbox";
 import { CaseMigrationModal } from "./CaseMigrationModal";
+
 interface CaseFormProps {
   caseData?: CaseData;
   onSuccess: () => void;
@@ -50,7 +51,7 @@ export default function CaseForm({
 
   const [natures, setNatures] = useState<CaseNatureData[]>([]);
   const [loadingNatures, setLoadingNatures] = useState(true);
-  const [partyRoles, setPartyRoles] = useState<any[]>([]);
+  const [partyRoles, setPartyRoles] = useState<PartyRole[]>([]);
   const [loadingRoles, setLoadingRoles] = useState(true);
   const [lawyerUsers, setLawyerUsers] = useState<any[]>([]);
   const [loadingLawyers, setLoadingLawyers] = useState(true);
@@ -182,6 +183,12 @@ export default function CaseForm({
             waris: null,
           },
         ],
+  };
+
+  const getParty = (partyName: string) => {
+    return partyRoles?.find(
+      (role: any) => role.name === partyName || role.nepaliName === partyName,
+    );
   };
 
   return (
@@ -388,313 +395,449 @@ export default function CaseForm({
               <h3 className="text-lg font-medium">{t("formPartiesTitle")}</h3>
             </div>
             <FieldArray name="parties">
-              {({ insert, remove, push, form }) => (
-                <div className="space-y-4">
-                  {form.values.parties &&
-                    form.values.parties.length > 0 &&
-                    form.values.parties.map((party: any, index: number) => (
-                      <div
-                        key={index}
-                        className="space-y-4 border p-4 rounded-md bg-background relative"
+              {({ insert, remove, push, form }) => {
+                const renderParty = (party: any, index: number) => (
+                  <div
+                    key={index}
+                    className="space-y-4 border p-4 rounded-md bg-background relative h-full flex flex-col justify-start"
+                  >
+                    <div className="flex justify-end items-center">
+                      <Button
+                        type="button"
+                        variant="ghost"
+                        size="icon"
+                        className="text-destructive h-8 w-8"
+                        onClick={() => remove(index)}
                       >
-                        <div className="flex justify-between items-center">
-                          <h4 className="font-medium text-sm">
-                            {t("formPartyTitle")} {index + 1}
-                          </h4>
-                          {form.values.parties.length > 1 && (
-                            <Button
-                              type="button"
-                              variant="ghost"
-                              size="icon"
-                              className="text-destructive h-8 w-8"
-                              onClick={() => remove(index)}
+                        <Trash2Icon className="h-4 w-4" />
+                      </Button>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-start">
+                      <div className="space-y-2">
+                        <Label>
+                          {t("formPartyName")}{" "}
+                          <span className="text-destructive">*</span>
+                        </Label>
+                        <Field name={`parties.${index}.partyName`}>
+                          {({ field }: FieldProps) => (
+                            <Input
+                              {...field}
+                              placeholder={t("formPartyName")}
+                            />
+                          )}
+                        </Field>
+                        <ErrorMessage
+                          name={`parties.${index}.partyName`}
+                          component="div"
+                          className="text-sm text-destructive"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label>
+                          {t("formRole")}{" "}
+                          <span className="text-destructive">*</span>
+                        </Label>
+                        <Field name={`parties.${index}.roleId`}>
+                          {({ field, form }: FieldProps) => (
+                            <Select
+                              onValueChange={(val) =>
+                                form.setFieldValue(field.name, val)
+                              }
+                              value={field.value?.toString() || null}
                             >
-                              <Trash2Icon className="h-4 w-4" />
-                            </Button>
+                              <SelectTrigger
+                                disabled={loadingRoles}
+                                className="w-full"
+                              >
+                                <SelectValue placeholder={t("formSelectRole")}>
+                                  {(() => {
+                                    if (!field.value)
+                                      return t("formSelectRole");
+                                    const r = partyRoles.find(
+                                      (x) => x.id === field.value,
+                                    );
+                                    if (!r) return t("formSelectRole");
+                                    return locale === "np" && r.nepaliName
+                                      ? r.nepaliName
+                                      : r.name;
+                                  })()}
+                                </SelectValue>
+                              </SelectTrigger>
+                              <SelectContent>
+                                {partyRoles.map((role) => (
+                                  <SelectItem
+                                    key={role.id}
+                                    value={role.id.toString()}
+                                  >
+                                    {locale === "np" && role.nepaliName
+                                      ? role.nepaliName
+                                      : role.name}
+                                  </SelectItem>
+                                ))}
+                              </SelectContent>
+                            </Select>
                           )}
-                        </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-start">
-                          <div className="space-y-2">
-                            <Label>
-                              {t("formPartyName")}{" "}
-                              <span className="text-destructive">*</span>
-                            </Label>
-                            <Field name={`parties.${index}.partyName`}>
-                              {({ field }: FieldProps) => (
-                                <Input
-                                  {...field}
-                                  placeholder={t("formPartyName")}
-                                />
-                              )}
-                            </Field>
-                            <ErrorMessage
-                              name={`parties.${index}.partyName`}
-                              component="div"
-                              className="text-sm text-destructive"
+                        </Field>
+                        <ErrorMessage
+                          name={`parties.${index}.roleId`}
+                          component="div"
+                          className="text-sm text-destructive"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label>{t("formCitizenshipNo")}</Label>
+                        <Field name={`parties.${index}.citizenshipNo`}>
+                          {({ field }: FieldProps) => (
+                            <Input
+                              {...field}
+                              placeholder={t("formCitizenshipNo")}
                             />
-                          </div>
-                          <div className="space-y-2">
-                            <Label>
-                              {t("formRole")}{" "}
-                              <span className="text-destructive">*</span>
-                            </Label>
-                            <Field name={`parties.${index}.roleId`}>
-                              {({ field, form }: FieldProps) => (
-                                <Select
-                                  onValueChange={(val) =>
-                                    form.setFieldValue(field.name, val)
-                                  }
-                                  value={field.value?.toString() || null}
-                                >
-                                  <SelectTrigger
-                                    disabled={loadingRoles}
-                                    className="w-full"
-                                  >
-                                    <SelectValue
-                                      placeholder={t("formSelectRole")}
-                                    >
-                                      {(() => {
-                                        if (!field.value)
-                                          return t("formSelectRole");
-                                        const r = partyRoles.find(
-                                          (x) => x.id === field.value,
-                                        );
-                                        if (!r) return t("formSelectRole");
-                                        return locale === "np" && r.nepaliName
-                                          ? r.nepaliName
-                                          : r.name;
-                                      })()}
-                                    </SelectValue>
-                                  </SelectTrigger>
-                                  <SelectContent>
-                                    {partyRoles.map((role) => (
-                                      <SelectItem
-                                        key={role.id}
-                                        value={role.id.toString()}
-                                      >
-                                        {locale === "np" && role.nepaliName
-                                          ? role.nepaliName
-                                          : role.name}
-                                      </SelectItem>
-                                    ))}
-                                  </SelectContent>
-                                </Select>
-                              )}
-                            </Field>
-                            <ErrorMessage
-                              name={`parties.${index}.roleId`}
-                              component="div"
-                              className="text-sm text-destructive"
+                          )}
+                        </Field>
+                        <ErrorMessage
+                          name={`parties.${index}.citizenshipNo`}
+                          component="div"
+                          className="text-sm text-destructive"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label>{t("formContactNo")}</Label>
+                        <Field name={`parties.${index}.contactNo`}>
+                          {({ field }: FieldProps) => (
+                            <Input
+                              {...field}
+                              placeholder={t("formContactNo")}
                             />
-                          </div>
-                          <div className="space-y-2">
-                            <Label>{t("formCitizenshipNo")}</Label>
-                            <Field name={`parties.${index}.citizenshipNo`}>
-                              {({ field }: FieldProps) => (
-                                <Input
-                                  {...field}
-                                  placeholder={t("formCitizenshipNo")}
-                                />
-                              )}
-                            </Field>
-                            <ErrorMessage
-                              name={`parties.${index}.citizenshipNo`}
-                              component="div"
-                              className="text-sm text-destructive"
+                          )}
+                        </Field>
+                        <ErrorMessage
+                          name={`parties.${index}.contactNo`}
+                          component="div"
+                          className="text-sm text-destructive"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label>{t("formPermanentAddress")}</Label>
+                        <Field name={`parties.${index}.permanentAddress`}>
+                          {({ field }: FieldProps) => (
+                            <Input
+                              {...field}
+                              placeholder={t("formPermanentAddress")}
                             />
-                          </div>
-                          <div className="space-y-2">
-                            <Label>{t("formContactNo")}</Label>
-                            <Field name={`parties.${index}.contactNo`}>
-                              {({ field }: FieldProps) => (
-                                <Input
-                                  {...field}
-                                  placeholder={t("formContactNo")}
-                                />
-                              )}
-                            </Field>
-                            <ErrorMessage
-                              name={`parties.${index}.contactNo`}
-                              component="div"
-                              className="text-sm text-destructive"
+                          )}
+                        </Field>
+                        <ErrorMessage
+                          name={`parties.${index}.permanentAddress`}
+                          component="div"
+                          className="text-sm text-destructive"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label>{t("formTemporaryAddress")}</Label>
+                        <Field name={`parties.${index}.temporaryAddress`}>
+                          {({ field }: FieldProps) => (
+                            <Input
+                              {...field}
+                              placeholder={t("formTemporaryAddress")}
                             />
-                          </div>
-                          <div className="space-y-2">
-                            <Label>{t("formPermanentAddress")}</Label>
-                            <Field name={`parties.${index}.permanentAddress`}>
-                              {({ field }: FieldProps) => (
-                                <Input
-                                  {...field}
-                                  placeholder={t("formPermanentAddress")}
-                                />
-                              )}
-                            </Field>
-                            <ErrorMessage
-                              name={`parties.${index}.permanentAddress`}
-                              component="div"
-                              className="text-sm text-destructive"
-                            />
-                          </div>
-                          <div className="space-y-2">
-                            <Label>{t("formTemporaryAddress")}</Label>
-                            <Field name={`parties.${index}.temporaryAddress`}>
-                              {({ field }: FieldProps) => (
-                                <Input
-                                  {...field}
-                                  placeholder={t("formTemporaryAddress")}
-                                />
-                              )}
-                            </Field>
-                            <ErrorMessage
-                              name={`parties.${index}.temporaryAddress`}
-                              component="div"
-                              className="text-sm text-destructive"
-                            />
-                          </div>
-                        </div>
+                          )}
+                        </Field>
+                        <ErrorMessage
+                          name={`parties.${index}.temporaryAddress`}
+                          component="div"
+                          className="text-sm text-destructive"
+                        />
+                      </div>
+                    </div>
 
-                        {/* Waris Section */}
-                        <div className="space-y-4 pt-4 border-t mt-4">
-                          <div className="flex items-center gap-2">
-                            <Checkbox
-                              id={`parties.${index}.hasWaris`}
-                              checked={!!form.values.parties[index].waris}
-                              onCheckedChange={(checked) => {
-                                if (checked) {
-                                  form.setFieldValue(`parties.${index}.waris`, {
-                                    partyName: "",
-                                    citizenshipNo: "",
-                                    permanentAddress: "",
-                                    temporaryAddress: "",
-                                    contactNo: "",
-                                  });
-                                } else {
-                                  form.setFieldValue(
-                                    `parties.${index}.waris`,
-                                    null,
-                                  );
-                                }
-                              }}
-                            />
-                            <Label htmlFor={`parties.${index}.hasWaris`}>
-                              {t("formHasWaris")}
-                            </Label>
-                          </div>
+                    {/* Waris Section */}
+                    <div className="space-y-4 pt-4 border-t mt-4">
+                      <div className="flex items-center gap-2">
+                        <Checkbox
+                          id={`parties.${index}.hasWaris`}
+                          checked={!!form.values.parties[index].waris}
+                          onCheckedChange={(checked) => {
+                            if (checked) {
+                              form.setFieldValue(`parties.${index}.waris`, {
+                                partyName: "",
+                                citizenshipNo: "",
+                                permanentAddress: "",
+                                temporaryAddress: "",
+                                contactNo: "",
+                              });
+                            } else {
+                              form.setFieldValue(
+                                `parties.${index}.waris`,
+                                null,
+                              );
+                            }
+                          }}
+                        />
+                        <Label htmlFor={`parties.${index}.hasWaris`}>
+                          {t("formHasWaris")}
+                        </Label>
+                      </div>
 
-                          {form.values.parties[index].waris && (
-                            <div className="pl-6 border-l-2 border-primary/20 space-y-4">
-                              <h5 className="text-sm font-semibold">
-                                {t("formHasWaris")}
-                              </h5>
-                              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div className="space-y-2">
-                                  <Label>
-                                    {t("formWarisName")}{" "}
-                                    <span className="text-destructive">*</span>
-                                  </Label>
-                                  <Field
-                                    name={`parties.${index}.waris.partyName`}
-                                  >
-                                    {({ field }: FieldProps) => (
-                                      <Input
-                                        {...field}
-                                        placeholder={t("formWarisName")}
-                                      />
-                                    )}
-                                  </Field>
-                                  <ErrorMessage
-                                    name={`parties.${index}.waris.partyName`}
-                                    component="div"
-                                    className="text-sm text-destructive"
+                      {form.values.parties[index].waris && (
+                        <div className="pl-6 border-l-2 border-primary/20 space-y-4">
+                          <h5 className="text-sm font-semibold">
+                            {t("formHasWaris")}
+                          </h5>
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div className="space-y-2">
+                              <Label>
+                                {t("formWarisName")}{" "}
+                                <span className="text-destructive">*</span>
+                              </Label>
+                              <Field name={`parties.${index}.waris.partyName`}>
+                                {({ field }: FieldProps) => (
+                                  <Input
+                                    {...field}
+                                    placeholder={t("formWarisName")}
                                   />
-                                </div>
-                                <div className="space-y-2">
-                                  <Label>{t("formWarisCitizenship")}</Label>
-                                  <Field
-                                    name={`parties.${index}.waris.citizenshipNo`}
-                                  >
-                                    {({ field }: FieldProps) => (
-                                      <Input
-                                        {...field}
-                                        placeholder={t("formWarisCitizenship")}
-                                      />
-                                    )}
-                                  </Field>
-                                </div>
-                                <div className="space-y-2">
-                                  <Label>{t("formWarisContact")}</Label>
-                                  <Field
-                                    name={`parties.${index}.waris.contactNo`}
-                                  >
-                                    {({ field }: FieldProps) => (
-                                      <Input
-                                        {...field}
-                                        placeholder={t("formWarisContact")}
-                                      />
-                                    )}
-                                  </Field>
-                                </div>
-                                <div className="space-y-2">
-                                  <Label>
-                                    {t("formWarisPermanentAddress")}
-                                  </Label>
-                                  <Field
-                                    name={`parties.${index}.waris.permanentAddress`}
-                                  >
-                                    {({ field }: FieldProps) => (
-                                      <Input
-                                        {...field}
-                                        placeholder={t(
-                                          "formWarisPermanentAddress",
-                                        )}
-                                      />
-                                    )}
-                                  </Field>
-                                </div>
-                                <div className="space-y-2">
-                                  <Label>
-                                    {t("formWarisTemporaryAddress")}
-                                  </Label>
-                                  <Field
-                                    name={`parties.${index}.waris.temporaryAddress`}
-                                  >
-                                    {({ field }: FieldProps) => (
-                                      <Input
-                                        {...field}
-                                        placeholder={t(
-                                          "formWarisTemporaryAddress",
-                                        )}
-                                      />
-                                    )}
-                                  </Field>
-                                </div>
-                              </div>
+                                )}
+                              </Field>
+                              <ErrorMessage
+                                name={`parties.${index}.waris.partyName`}
+                                component="div"
+                                className="text-sm text-destructive"
+                              />
                             </div>
-                          )}
+                            <div className="space-y-2">
+                              <Label>{t("formWarisCitizenship")}</Label>
+                              <Field
+                                name={`parties.${index}.waris.citizenshipNo`}
+                              >
+                                {({ field }: FieldProps) => (
+                                  <Input
+                                    {...field}
+                                    placeholder={t("formWarisCitizenship")}
+                                  />
+                                )}
+                              </Field>
+                            </div>
+                            <div className="space-y-2">
+                              <Label>{t("formWarisContact")}</Label>
+                              <Field name={`parties.${index}.waris.contactNo`}>
+                                {({ field }: FieldProps) => (
+                                  <Input
+                                    {...field}
+                                    placeholder={t("formWarisContact")}
+                                  />
+                                )}
+                              </Field>
+                            </div>
+                            <div className="space-y-2">
+                              <Label>{t("formWarisPermanentAddress")}</Label>
+                              <Field
+                                name={`parties.${index}.waris.permanentAddress`}
+                              >
+                                {({ field }: FieldProps) => (
+                                  <Input
+                                    {...field}
+                                    placeholder={t("formWarisPermanentAddress")}
+                                  />
+                                )}
+                              </Field>
+                            </div>
+                            <div className="space-y-2">
+                              <Label>{t("formWarisTemporaryAddress")}</Label>
+                              <Field
+                                name={`parties.${index}.waris.temporaryAddress`}
+                              >
+                                {({ field }: FieldProps) => (
+                                  <Input
+                                    {...field}
+                                    placeholder={t("formWarisTemporaryAddress")}
+                                  />
+                                )}
+                              </Field>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                );
+
+                const renderPratibaadi = () => {
+                  return (
+                    form.values.parties &&
+                    form.values.parties.map((party: any, index: number) => {
+                      const role = partyRoles.find(
+                        (r: any) => r.id === party.roleId,
+                      );
+                      if (
+                        role &&
+                        (role.name === "प्रतिवादी" ||
+                          role.name === "Pratibadi" ||
+                          role.name === "Defendant")
+                      ) {
+                        return renderParty(party, index);
+                      }
+                      return null;
+                    })
+                  );
+                };
+
+                const renderOthers = () => {
+                  const hasOthers =
+                    form.values.parties &&
+                    form.values.parties.filter((party: any) => {
+                      const role = partyRoles.find(
+                        (r: any) => r.id === party.roleId,
+                      );
+                      return (
+                        !role ||
+                        (role.name !== "वादी" &&
+                          role.name !== "Baadi" &&
+                          role.name !== "Plaintiff" &&
+                          role.name !== "प्रतिवादी" &&
+                          role.name !== "Pratibadi" &&
+                          role.name !== "Defendant")
+                      );
+                    }).length > 0;
+
+                  if (!hasOthers) return null;
+
+                  return (
+                    <div className="space-y-4 pt-6 border-t col-span-full">
+                      <h4 className="font-semibold text-lg">
+                        {t("formOtherPartiesTitle")}
+                      </h4>
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                        {form.values.parties.map(
+                          (party: any, index: number) => {
+                            const role = partyRoles.find(
+                              (r: any) => r.id === party.roleId,
+                            );
+                            if (
+                              !role ||
+                              (role.name !== "वादी" &&
+                                role.name !== "Baadi" &&
+                                role.name !== "Plaintiff" &&
+                                role.name !== "प्रतिवादी" &&
+                                role.name !== "Pratibadi" &&
+                                role.name !== "Defendant")
+                            ) {
+                              return renderParty(party, index);
+                            }
+                            return null;
+                          },
+                        )}
+                      </div>
+                    </div>
+                  );
+                };
+
+                return (
+                  <div className="space-y-6">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
+                      {/* Baadi Column */}
+                      <div className="space-y-4">
+                        <div className="flex justify-between items-center border-b pb-2">
+                          <h4 className="font-semibold text-lg">
+                            {t("formBaadiTitle")}
+                          </h4>
+                          <Button
+                            type="button"
+                            variant="outline"
+                            size="sm"
+                            onClick={() =>
+                              push({
+                                partyName: "",
+                                roleId:
+                                  getParty("वादी")?.id ||
+                                  getParty("Plaintiff")?.id ||
+                                  partyRoles[0]?.id ||
+                                  "",
+                                citizenshipNo: "",
+                                permanentAddress: "",
+                                temporaryAddress: "",
+                                contactNo: "",
+                                waris: null,
+                              })
+                            }
+                          >
+                            <PlusIcon className="mr-2 h-4 w-4" />{" "}
+                            {t("addBaadiBtn")}
+                          </Button>
+                        </div>
+                        <div className="space-y-4 flex flex-col">
+                          {form.values.parties
+                            .filter((party: any) => {
+                              if (party)
+                                return party.roleId === getParty("वादी")?.id;
+
+                              return false;
+                            })
+                            .map((party: any, index: number) => renderParty(party, index))}
                         </div>
                       </div>
-                    ))}
-                  <Button
-                    type="button"
-                    variant="outline"
-                    size="sm"
-                    className="mt-2"
-                    onClick={() =>
-                      push({
-                        partyName: "",
-                        roleId: "",
-                        citizenshipNo: "",
-                        permanentAddress: "",
-                        temporaryAddress: "",
-                        contactNo: "",
-                        waris: null,
-                      })
-                    }
-                  >
-                    <PlusIcon className="mr-2 h-4 w-4" /> {t("addPartyBtn")}
-                  </Button>
-                </div>
-              )}
+
+                      {/* Pratibaadi Column */}
+                      <div className="space-y-4">
+                        <div className="flex justify-between items-center border-b pb-2">
+                          <h4 className="font-semibold text-lg">
+                            {t("formPratibaadiTitle")}
+                          </h4>
+                          <Button
+                            type="button"
+                            variant="outline"
+                            size="sm"
+                            onClick={() =>
+                              push({
+                                partyName: "",
+                                roleId:
+                                  getParty("प्रतिवादी")?.id ||
+                                  getParty("Pratibadi")?.id ||
+                                  partyRoles[1]?.id ||
+                                  "",
+                                citizenshipNo: "",
+                                permanentAddress: "",
+                                temporaryAddress: "",
+                                contactNo: "",
+                                waris: null,
+                              })
+                            }
+                          >
+                            <PlusIcon className="mr-2 h-4 w-4" />{" "}
+                            {t("addPratibaadiBtn")}
+                          </Button>
+                        </div>
+                        <div className="space-y-4 flex flex-col">
+                          {renderPratibaadi()}
+                        </div>
+                      </div>
+
+                      {/* Other Parties */}
+                      {renderOthers()}
+                    </div>
+
+                    <div className="flex justify-end pt-4 border-t">
+                      <Button
+                        type="button"
+                        variant="outline"
+                        size="sm"
+                        onClick={() =>
+                          push({
+                            partyName: "",
+                            roleId: "",
+                            citizenshipNo: "",
+                            permanentAddress: "",
+                            temporaryAddress: "",
+                            contactNo: "",
+                            waris: null,
+                          })
+                        }
+                      >
+                        <PlusIcon className="mr-2 h-4 w-4" />{" "}
+                        {t("addOtherPartyBtn")}
+                      </Button>
+                    </div>
+                  </div>
+                );
+              }}
             </FieldArray>
           </div>
 

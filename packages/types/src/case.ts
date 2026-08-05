@@ -20,3 +20,9 @@ export interface CaseCourtDetailData {
   parentId?: string | null;
   isActive?: boolean;
 }
+
+export interface PartyRole {
+  id: string;
+  name: string;
+  nepaliName: string | null;
+}

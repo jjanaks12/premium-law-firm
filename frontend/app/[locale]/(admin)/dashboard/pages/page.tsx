@@ -54,7 +54,8 @@ interface PageRecord {
   seo: { meta_title: string | null; meta_description: string | null } | null;
   created_at: string;
   updated_at: string;
-  content?: any;
+  content?: string;
+  detail?: any;
   schema?: any;
 }
 

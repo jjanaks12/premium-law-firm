@@ -20,7 +20,8 @@ model Page {
   id           String   @id @default(uuid())
   slug         String   @unique
   title        String
-  content      Json     @default("{}")
+  content      String   @db.Text
+  detail       Json?    @default("{}")
   excerpt      String?
   status       String   @default("draft")
   locale       String   @default("en")

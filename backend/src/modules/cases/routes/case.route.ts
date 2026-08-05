@@ -37,6 +37,7 @@ const router = Router();
 router.use(verifyAccessToken);
 
 router.get("/", caseController.index);
+router.get("/dashboard/stats", caseController.getDashboardStats);
 router.post("/", caseController.store);
 router.post("/migration", caseController.migrateCase);
 router.get("/meta/party-roles", relationsController.getPartyRoles);

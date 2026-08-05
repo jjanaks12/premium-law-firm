@@ -206,6 +206,7 @@ exports.Prisma.CaseCourtDetailScalarFieldEnum = {
   registrationDate: 'registrationDate',
   judgeName: 'judgeName',
   courtType: 'courtType',
+  courtName: 'courtName',
   sectionCourtRoom: 'sectionCourtRoom',
   parentId: 'parentId',
   isActive: 'isActive',
@@ -302,6 +303,7 @@ exports.Prisma.PageScalarFieldEnum = {
   slug: 'slug',
   title: 'title',
   content: 'content',
+  detail: 'detail',
   excerpt: 'excerpt',
   status: 'status',
   locale: 'locale',
@@ -356,10 +358,6 @@ exports.Prisma.SortOrder = {
 
 exports.Prisma.NullableJsonNullValueInput = {
   DbNull: Prisma.DbNull,
-  JsonNull: Prisma.JsonNull
-};
-
-exports.Prisma.JsonNullValueInput = {
   JsonNull: Prisma.JsonNull
 };
 

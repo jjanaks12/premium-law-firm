@@ -39,7 +39,8 @@ export const createPageSchema = yup.object({
     .required('Slug is required')
     .matches(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, 'Slug must be lowercase with hyphens only'),
   title: yup.string().required('Title is required'),
-  content: yup.mixed().optional(),
+  content: yup.string().optional(),
+  detail: yup.mixed().nullable().optional(),
   excerpt: yup.string().nullable().optional(),
   status: yup.string().oneOf(['draft', 'published']).default('draft'),
   locale: yup.string().oneOf(['en', 'ne']).default('en'),
@@ -53,7 +54,8 @@ export const updatePageSchema = yup.object({
     .matches(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, 'Slug must be lowercase with hyphens only')
     .optional(),
   title: yup.string().optional(),
-  content: yup.mixed().optional(),
+  content: yup.string().optional(),
+  detail: yup.mixed().nullable().optional(),
   excerpt: yup.string().nullable().optional(),
   locale: yup.string().oneOf(['en', 'ne']).optional(),
   parent_id: yup.string().nullable().optional(),

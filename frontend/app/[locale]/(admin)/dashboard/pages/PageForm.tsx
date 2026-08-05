@@ -10,6 +10,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Loader2Icon } from "lucide-react";
 import MediaLibraryDialog from "@/components/MediaLibraryDialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useTranslations } from "next-intl";
 
 interface PageType {
   id: string;
@@ -20,7 +21,8 @@ interface Page {
   id: string;
   slug: string;
   title: string;
-  content: any;
+  content: string;
+  detail?: any;
   excerpt: string | null;
   status: string;
   locale: string;
@@ -57,6 +59,7 @@ export default function PageForm({
   onSuccess,
   onCancel,
 }: Props) {
+  const t = useTranslations("PageForm");
   const { axios } = useAxios();
   const [loading, setLoading] = useState(false);
   const [mediaOpen, setMediaOpen] = useState(false);
@@ -74,11 +77,7 @@ export default function PageForm({
     id: string;
     url: string;
   } | null>(initialData?.thumbnail ?? null);
-  const [content, setContent] = useState(
-    typeof initialData?.content === "object" && initialData.content !== null
-      ? JSON.stringify(initialData.content, null, 2)
-      : "",
-  );
+  const [content, setContent] = useState(initialData?.content ?? "");
 
   // --- SEO fields ---
   const [metaTitle, setMetaTitle] = useState(
@@ -136,13 +135,7 @@ export default function PageForm({
         page_type_id: pageTypeId || null,
         parent_id: parentId || null,
         thumbnail_id: thumbnail?.id ?? null,
-        content: (() => {
-          try {
-            return content ? JSON.parse(content) : {};
-          } catch {
-            return {};
-          }
-        })(),
+        content: content || "",
       };
 
       let pageId = initialData?.id;
@@ -182,16 +175,16 @@ export default function PageForm({
       }
 
       toast.add({
-        title: "Success",
-        description: isEditing ? "Page updated" : "Page created",
+        title: t("success"),
+        description: isEditing ? t("pageUpdated") : t("pageCreated"),
         type: "success",
       });
       onSuccess();
     } catch (err: any) {
       toast.add({
-        title: "Error",
+        title: t("error"),
         description:
-          err.response?.data?.message || err.message || "Operation failed",
+          err.response?.data?.message || err.message || t("operationFailed"),
         type: "error",
       });
     } finally {
@@ -207,13 +200,13 @@ export default function PageForm({
       <Tabs defaultValue="content">
         <TabsList className="mb-4 w-full">
           <TabsTrigger value="content" className="flex-1">
-            Content
+            {t("tabs.content")}
           </TabsTrigger>
           <TabsTrigger value="seo" className="flex-1">
-            SEO
+            {t("tabs.seo")}
           </TabsTrigger>
           <TabsTrigger value="schema" className="flex-1">
-            Schema.org
+            {t("tabs.schema")}
           </TabsTrigger>
         </TabsList>
 
@@ -221,24 +214,24 @@ export default function PageForm({
         <TabsContent value="content" className="space-y-4 mt-0">
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-1.5">
-              <Label>Locale</Label>
+              <Label>{t("locale")}</Label>
               <select
                 value={locale}
                 onChange={(e) => setLocale(e.target.value)}
                 className={inputClass}
               >
-                <option value="en">English (EN)</option>
-                <option value="ne">Nepali (NE)</option>
+                <option value="en">{t("english")}</option>
+                <option value="ne">{t("nepali")}</option>
               </select>
             </div>
             <div className="space-y-1.5">
-              <Label>Page Type</Label>
+              <Label>{t("pageType")}</Label>
               <select
                 value={pageTypeId}
                 onChange={(e) => setPageTypeId(e.target.value)}
                 className={inputClass}
               >
-                <option value="">— None —</option>
+                <option value="">{t("none")}</option>
                 {pageTypes.map((pt) => (
                   <option key={pt.id} value={pt.id}>
                     {pt.name}
@@ -250,59 +243,58 @@ export default function PageForm({
 
           <div className="space-y-1.5">
             <Label>
-              Title <span className="text-destructive">*</span>
+              {t("title")} <span className="text-destructive">*</span>
             </Label>
             <Input
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              placeholder="Page title"
+              placeholder={t("pageTitlePlaceholder")}
               className="rounded-lg"
             />
           </div>
 
           <div className="space-y-1.5">
             <Label>
-              Slug <span className="text-destructive">*</span>
+              {t("slug")} <span className="text-destructive">*</span>
             </Label>
             <div className="flex items-center gap-2">
               <span className="text-sm text-muted-foreground font-mono">/</span>
               <Input
                 value={slug}
                 onChange={(e) => setSlug(e.target.value)}
-                placeholder="url-friendly-slug"
+                placeholder={t("slugPlaceholder")}
                 className="rounded-lg font-mono text-sm"
               />
             </div>
           </div>
 
           <div className="space-y-1.5">
-            <Label>Excerpt / Short Description</Label>
+            <Label>{t("excerpt")}</Label>
             <Textarea
               value={excerpt}
               onChange={(e) => setExcerpt(e.target.value)}
-              placeholder="Short summary of this page…"
+              placeholder={t("excerptPlaceholder")}
               rows={2}
               className="rounded-lg resize-none"
             />
           </div>
 
           <div className="space-y-1.5">
-            <Label>Content (JSON)</Label>
+            <Label>{t("content")}</Label>
             <Textarea
               value={content}
               onChange={(e) => setContent(e.target.value)}
-              placeholder={`{ "blocks": [] }`}
+              placeholder=""
               rows={6}
               className="rounded-lg font-mono text-xs resize-y"
             />
             <p className="text-xs text-muted-foreground">
-              Rich content as JSON. A block-editor UI will be added in a future
-              update.
+              {t("contentHint")}
             </p>
           </div>
 
           <div className="space-y-1.5">
-            <Label>Thumbnail Image</Label>
+            <Label>{t("thumbnail")}</Label>
             <div className="flex items-center gap-3">
               {thumbnail ? (
                 <div className="relative group w-20 h-20 rounded-lg overflow-hidden border border-border shrink-0">
@@ -316,12 +308,12 @@ export default function PageForm({
                     onClick={() => setThumbnail(null)}
                     className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity text-white text-xs flex items-center justify-center"
                   >
-                    Remove
+                    {t("remove")}
                   </button>
                 </div>
               ) : (
                 <div className="w-20 h-20 rounded-lg border border-dashed border-border bg-muted/30 flex items-center justify-center text-xs text-muted-foreground shrink-0">
-                  No image
+                  {t("noImage")}
                 </div>
               )}
               <Button
@@ -329,22 +321,21 @@ export default function PageForm({
                 variant="outline"
                 onClick={() => setMediaOpen(true)}
               >
-                {thumbnail ? "Change Image" : "Select from Media Library"}
+                {thumbnail ? t("changeImage") : t("selectMedia")}
               </Button>
             </div>
           </div>
 
           <div className="space-y-1.5">
-            <Label>Parent Page ID (for locale variants / hierarchy)</Label>
+            <Label>{t("parentPageId")}</Label>
             <Input
               value={parentId}
               onChange={(e) => setParentId(e.target.value)}
-              placeholder="Leave blank for root pages"
+              placeholder={t("leaveBlankForRoot")}
               className="rounded-lg font-mono text-sm"
             />
             <p className="text-xs text-muted-foreground">
-              Set this to another page's ID to link as a translation or child
-              page.
+              {t("parentPageIdHint")}
             </p>
           </div>
         </TabsContent>
@@ -352,11 +343,11 @@ export default function PageForm({
         {/* SEO Tab */}
         <TabsContent value="seo" className="space-y-4 mt-0">
           <div className="space-y-1.5">
-            <Label>Meta Title</Label>
+            <Label>{t("metaTitle")}</Label>
             <Input
               value={metaTitle}
               onChange={(e) => setMetaTitle(e.target.value)}
-              placeholder="Overrides page title in <title> tag"
+              placeholder=""
               className="rounded-lg"
             />
             <p className="text-xs text-muted-foreground">
@@ -364,11 +355,11 @@ export default function PageForm({
             </p>
           </div>
           <div className="space-y-1.5">
-            <Label>Meta Description</Label>
+            <Label>{t("metaDescription")}</Label>
             <Textarea
               value={metaDescription}
               onChange={(e) => setMetaDescription(e.target.value)}
-              placeholder="Brief description for search engines…"
+              placeholder=""
               rows={3}
               className="rounded-lg resize-none"
             />
@@ -377,55 +368,55 @@ export default function PageForm({
             </p>
           </div>
           <div className="space-y-1.5">
-            <Label>Meta Keywords</Label>
+            <Label>{t("metaKeywords")}</Label>
             <Input
               value={metaKeywords}
               onChange={(e) => setMetaKeywords(e.target.value)}
-              placeholder="law firm, attorney, Nepal (comma-separated)"
+              placeholder=""
               className="rounded-lg"
             />
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-1.5">
-              <Label>OG Title</Label>
+              <Label>{t("ogTitle")}</Label>
               <Input
                 value={ogTitle}
                 onChange={(e) => setOgTitle(e.target.value)}
-                placeholder="Open Graph title"
+                placeholder=""
                 className="rounded-lg"
               />
             </div>
             <div className="space-y-1.5">
-              <Label>Canonical URL</Label>
+              <Label>{t("canonicalUrl")}</Label>
               <Input
                 value={canonicalUrl}
                 onChange={(e) => setCanonicalUrl(e.target.value)}
-                placeholder="https://example.com/page"
+                placeholder=""
                 className="rounded-lg"
               />
             </div>
           </div>
           <div className="space-y-1.5">
-            <Label>OG Description</Label>
+            <Label>{t("ogDescription")}</Label>
             <Textarea
               value={ogDescription}
               onChange={(e) => setOgDescription(e.target.value)}
-              placeholder="Open Graph description for social sharing"
+              placeholder=""
               rows={2}
               className="rounded-lg resize-none"
             />
           </div>
           <div className="space-y-1.5">
-            <Label>Robots</Label>
+            <Label>{t("robots")}</Label>
             <select
               value={robots}
               onChange={(e) => setRobots(e.target.value)}
               className={inputClass}
             >
-              <option value="index,follow">index, follow (default)</option>
-              <option value="noindex,follow">noindex, follow</option>
-              <option value="index,nofollow">index, nofollow</option>
-              <option value="noindex,nofollow">noindex, nofollow</option>
+              <option value="index,follow">{t("indexFollow")}</option>
+              <option value="noindex,follow">{t("noindexFollow")}</option>
+              <option value="index,nofollow">{t("indexNofollow")}</option>
+              <option value="noindex,nofollow">{t("noindexNofollow")}</option>
             </select>
           </div>
         </TabsContent>
@@ -433,13 +424,13 @@ export default function PageForm({
         {/* Schema.org Tab */}
         <TabsContent value="schema" className="space-y-4 mt-0">
           <div className="space-y-1.5">
-            <Label>Schema Type</Label>
+            <Label>{t("schemaType")}</Label>
             <select
               value={schemaType}
               onChange={(e) => setSchemaType(e.target.value)}
               className={inputClass}
             >
-              <option value="">— None —</option>
+              <option value="">{t("none")}</option>
               <option value="WebPage">WebPage</option>
               <option value="AboutPage">AboutPage</option>
               <option value="ContactPage">ContactPage</option>
@@ -451,7 +442,7 @@ export default function PageForm({
             </select>
           </div>
           <div className="space-y-1.5">
-            <Label>Schema JSON-LD Payload</Label>
+            <Label>{t("schemaPayload")}</Label>
             <Textarea
               value={schemaData}
               onChange={(e) => setSchemaData(e.target.value)}
@@ -479,11 +470,11 @@ export default function PageForm({
           onClick={onCancel}
           disabled={loading}
         >
-          Cancel
+          {t("cancel")}
         </Button>
         <Button type="button" onClick={handleSubmit} disabled={loading}>
           {loading && <Loader2Icon className="mr-2 h-4 w-4 animate-spin" />}
-          {isEditing ? "Save Changes" : "Create Page"}
+          {isEditing ? t("saveChanges") : t("createPage")}
         </Button>
       </div>
 

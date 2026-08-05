@@ -100,7 +100,8 @@ export const store = async (req: Request, res: Response, next: NextFunction) => 
       data: {
         slug: data.slug,
         title: data.title,
-        content: (data.content as Prisma.InputJsonValue) ?? {},
+        content: data.content ?? "",
+        detail: (data.detail as Prisma.InputJsonValue) ?? {},
         excerpt: data.excerpt ?? null,
         status: data.status ?? "draft",
         locale: data.locale ?? "en",
@@ -138,7 +139,8 @@ export const update = async (req: Request, res: Response, next: NextFunction) =>
       data: {
         ...(data.slug && { slug: data.slug }),
         ...(data.title && { title: data.title }),
-        ...(data.content !== undefined && { content: data.content as Prisma.InputJsonValue }),
+        ...(data.content !== undefined && { content: data.content }),
+        ...(data.detail !== undefined && { detail: data.detail as Prisma.InputJsonValue }),
         ...(data.excerpt !== undefined && { excerpt: data.excerpt }),
         ...(data.locale && { locale: data.locale }),
         ...(data.parent_id !== undefined && { parent_id: data.parent_id }),
