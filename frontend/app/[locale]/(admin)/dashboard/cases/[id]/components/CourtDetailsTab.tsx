@@ -57,6 +57,7 @@ export default function CourtDetailsTab({
   const [sectionCourtRoom, setSectionCourtRoom] = useState("");
   const [judgeName, setJudgeName] = useState("");
   const [courtType, setCourtType] = useState("");
+  const [courtName, setCourtName] = useState("");
   const [registrationDate, setRegistrationDate] = useState<Date | undefined>(
     undefined,
   );
@@ -73,6 +74,7 @@ export default function CourtDetailsTab({
     setSectionCourtRoom(detail.sectionCourtRoom || "");
     setJudgeName(detail.judgeName || "");
     setCourtType(detail.courtType || "");
+    setCourtName(detail.courtName || "");
     setRegistrationDate(
       detail.registrationDate ? new Date(detail.registrationDate) : undefined,
     );
@@ -87,6 +89,7 @@ export default function CourtDetailsTab({
     setSectionCourtRoom("");
     setJudgeName("");
     setCourtType("");
+    setCourtName("");
     setRegistrationDate(new Date());
     setOpen(true);
   };
@@ -110,6 +113,7 @@ export default function CourtDetailsTab({
               sectionCourtRoom,
               judgeName,
               courtType,
+              courtName,
               registrationDate: registrationDate
                 ? dayjs(registrationDate).format("YYYY-MM-DD")
                 : null,
@@ -127,6 +131,7 @@ export default function CourtDetailsTab({
           sectionCourtRoom,
           judgeName,
           courtType,
+          courtName,
           registrationDate: registrationDate
             ? dayjs(registrationDate).format("YYYY-MM-DD")
             : null,
@@ -180,7 +185,7 @@ export default function CourtDetailsTab({
             <CardHeader className="flex flex-row items-center justify-between pb-2">
               <CardTitle className="text-lg flex items-center">
                 {detail.caseName}
-                {detail.isActive && (
+                {detail.isActive && caseData.status !== "Closed" && (
                   <Badge className="ml-2">{t("active")}</Badge>
                 )}
               </CardTitle>
@@ -223,8 +228,18 @@ export default function CourtDetailsTab({
                     {t("courtType")}
                   </p>
                   <p className="mt-1">
-                    {detail.courtType ? (t(detail.courtType) !== detail.courtType ? t(detail.courtType) : detail.courtType) : t("na")}
+                    {detail.courtType
+                      ? t(detail.courtType) !== detail.courtType
+                        ? t(detail.courtType)
+                        : detail.courtType
+                      : t("na")}
                   </p>
+                </div>
+                <div>
+                  <p className="text-sm font-medium text-muted-foreground">
+                    {t("courtName")}
+                  </p>
+                  <p className="mt-1">{detail.courtName || t("na")}</p>
                 </div>
                 <div>
                   <p className="text-sm font-medium text-muted-foreground">
@@ -305,6 +320,13 @@ export default function CourtDetailsTab({
                   ))}
                 </SelectContent>
               </Select>
+            </div>
+            <div className="space-y-2">
+              <Label>{t("courtName")}</Label>
+              <Input
+                value={courtName}
+                onChange={(e) => setCourtName(e.target.value)}
+              />
             </div>
             <div className="space-y-2 flex flex-col">
               <Label>{t("formRegDate")}</Label>

@@ -66,6 +66,7 @@ model CaseCourtDetail {
   registrationDate DateTime?
   judgeName        String?
   courtType        String?
+  courtName        String?
   sectionCourtRoom String?
   parentId         String?
   parent           CaseCourtDetail?  @relation("CourtDetailHistory", fields: [parentId], references: [id], onDelete: SetNull)

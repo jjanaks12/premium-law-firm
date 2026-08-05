@@ -153,7 +153,7 @@ export default function JudgementsTab({
                               <p>{d.detailText}</p>
                               {d.document && (
                                 <a
-                                  href={d.document}
+                                  href={d.document.startsWith('http') ? d.document : `${process.env.NEXT_PUBLIC_API_URL || ''}${d.document.startsWith('/') ? '' : '/'}${d.document}`}
                                   target="_blank"
                                   rel="noreferrer"
                                   className="text-blue-500 hover:underline"
@@ -270,6 +270,11 @@ export default function JudgementsTab({
                               const { data } = await axios.post(
                                 "/resources/upload",
                                 formData,
+                                {
+                                  headers: {
+                                    "Content-Type": "multipart/form-data",
+                                  },
+                                }
                               );
                               updateDetail(idx, "document", data.data.url);
                               toast.add({

@@ -340,7 +340,8 @@
     "loading": "मुद्दाहरू लोड हुँदैछ...",
     "confirmDeleteTitle": "के तपाईं पक्का हुनुहुन्छ?",
     "confirmDeleteDesc": "यो कार्यले मुद्दा र यससँग सम्बन्धित रेकर्डहरू स्थायी रूपमा मेटाउनेछ।",
-    "confirmDeleteBtn": "मुद्दा मेटाउनुहोस्"
+    "confirmDeleteBtn": "मुद्दा मेटाउनुहोस्",
+    "courtName": "अदालतको नाम"
   },
   "CaseNaturesPage": {
     "title": "मुद्दाका प्रकृतिहरू",

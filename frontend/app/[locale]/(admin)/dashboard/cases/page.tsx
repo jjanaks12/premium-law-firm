@@ -13,7 +13,7 @@ import {
   EyeIcon,
 } from "lucide-react";
 import { useRouter } from "@/src/i18n/routing";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import {
   Table,
   TableBody,
@@ -48,6 +48,7 @@ export default function CasesPage() {
   const { axios } = useAxios();
   const t = useTranslations("CasesPage");
   const router = useRouter();
+  const locale = useLocale();
 
   const [cases, setCases] = useState<CaseData[]>([]);
   const [loading, setLoading] = useState(true);
@@ -217,67 +218,75 @@ export default function CasesPage() {
                 </TableRow>
               ) : (
                 cases.map((c) => {
-                  const activeDetail = c.courtDetails?.find((d: any) => d.isActive) || c.courtDetails?.[0];
+                  const activeDetail =
+                    c.courtDetails?.find((d: any) => d.isActive) ||
+                    c.courtDetails?.[0];
                   return (
-                  <TableRow key={c.id}>
-                    <TableCell className="font-medium">
-                      {activeDetail?.caseNumber || "N/A"}
-                    </TableCell>
-                    <TableCell>{activeDetail?.caseName || "N/A"}</TableCell>
-                    <TableCell>
-                      {c.nature ? c.nature.name : c.natureId}
-                    </TableCell>
-                    <TableCell>
-                      <span
-                        className={`px-2 py-1 rounded-full text-xs font-medium ${
-                          c.status === "Active"
-                            ? "bg-green-100 text-green-800"
-                            : c.status === "Closed"
-                              ? "bg-gray-100 text-gray-800"
-                              : "bg-yellow-100 text-yellow-800"
-                        }`}
-                      >
-                        {c.status || "Draft"}
-                      </span>
-                    </TableCell>
-                    <TableCell>
-                      {activeDetail?.registrationDate
-                        ? dayjs(activeDetail.registrationDate).format("MMM DD, YYYY")
-                        : "N/A"}
-                    </TableCell>
-                    <TableCell className="text-right">
-                      <div className="flex justify-end gap-2">
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          onClick={() =>
-                            router.push(`/dashboard/cases/${c.id}`)
-                          }
-                          title="View Details"
-                          permission="cases.read"
+                    <TableRow key={c.id}>
+                      <TableCell className="font-medium">
+                        {activeDetail?.caseNumber || "N/A"}
+                      </TableCell>
+                      <TableCell>{activeDetail?.caseName || "N/A"}</TableCell>
+                      <TableCell>
+                        {c.nature
+                          ? locale == "en"
+                            ? c.nature.name
+                            : c.nature.nepaliName
+                          : c.natureId}
+                      </TableCell>
+                      <TableCell>
+                        <span
+                          className={`px-2 py-1 rounded-full text-xs font-medium ${
+                            c.status === "Active"
+                              ? "bg-green-100 text-green-800"
+                              : c.status === "Closed"
+                                ? "bg-gray-100 text-gray-800"
+                                : "bg-yellow-100 text-yellow-800"
+                          }`}
                         >
-                          <EyeIcon className="h-4 w-4" />
-                        </Button>
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          onClick={() => handleEditClick(c)}
-                          permission="cases.update"
-                        >
-                          <Edit2Icon className="h-4 w-4" />
-                        </Button>
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          className="text-destructive hover:text-destructive hover:bg-destructive/10"
-                          onClick={() => handleDeleteClick(c.id)}
-                          permission="cases.delete"
-                        >
-                          <Trash2Icon className="h-4 w-4" />
-                        </Button>
-                      </div>
-                    </TableCell>
-                  </TableRow>
+                          {c.status || "Draft"}
+                        </span>
+                      </TableCell>
+                      <TableCell>
+                        {activeDetail?.registrationDate
+                          ? dayjs(activeDetail.registrationDate).format(
+                              "MMM DD, YYYY",
+                            )
+                          : "N/A"}
+                      </TableCell>
+                      <TableCell className="text-right">
+                        <div className="flex justify-end gap-2">
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            onClick={() =>
+                              router.push(`/dashboard/cases/${c.id}`)
+                            }
+                            title="View Details"
+                            permission="cases.read"
+                          >
+                            <EyeIcon className="h-4 w-4" />
+                          </Button>
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            onClick={() => handleEditClick(c)}
+                            permission="cases.update"
+                          >
+                            <Edit2Icon className="h-4 w-4" />
+                          </Button>
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            className="text-destructive hover:text-destructive hover:bg-destructive/10"
+                            onClick={() => handleDeleteClick(c.id)}
+                            permission="cases.delete"
+                          >
+                            <Trash2Icon className="h-4 w-4" />
+                          </Button>
+                        </div>
+                      </TableCell>
+                    </TableRow>
                   );
                 })
               )}
