@@ -1,5 +1,5 @@
 import { User, Role } from "@prisma/client";
-import { BellIcon, BookOpenIcon, FolderCogIcon, FolderOpenIcon, FingerprintIcon, LayoutDashboardIcon, ListTreeIcon, SettingsIcon, UserCogIcon, UserKeyIcon, UsersIcon, BriefcaseIcon } from "lucide-react";
+import { BellIcon, BookOpenIcon, FolderCogIcon, FolderOpenIcon, FingerprintIcon, LayoutDashboardIcon, ListTreeIcon, SettingsIcon, UserCogIcon, UserKeyIcon, UsersIcon, BriefcaseIcon, PlusIcon } from "lucide-react";
 import { can } from "@/lib/services/authorization.service";
 import { useTranslations } from "next-intl";
 
@@ -13,6 +13,7 @@ interface Menu {
     icon?: React.ElementType | null
     href: string
     resource: string
+    permission?: string
     role?: string
     submenu?: Menu[]
 }
@@ -62,6 +63,12 @@ const adminMenu: Menu[] = [
             href: '/dashboard/pages/types',
             resource: 'pages',
             icon: FolderCogIcon,
+        }, {
+            label: 'addPages',
+            href: '/dashboard/pages/create',
+            permission: "create",
+            resource: 'pages',
+            icon: PlusIcon
         }]
     },
     {
@@ -89,6 +96,12 @@ const adminMenu: Menu[] = [
             href: '/dashboard/court-levels',
             resource: 'court-levels',
             icon: BookOpenIcon,
+        }, {
+            label: 'addCase',
+            href: '/dashboard/cases/create',
+            resource: 'cases',
+            icon: PlusIcon,
+            permission: 'create'
         }]
     },
     {
@@ -123,7 +136,8 @@ export const useNavLink = (user?: UserWithRole | null): { menus: Menu[] } => {
         const filterMenus = (menuList: Menu[]): Menu[] => {
             return menuList
                 .map(menu => {
-                    const hasAccess = menu.resource === '*' || can(menu.resource, user.role)
+                    const permissionToCheck = menu.permission ? `${menu.resource}:${menu.permission}` : `${menu.resource}:list`;
+                    const hasAccess = menu.resource === '*' || can(permissionToCheck, user.role)
                     if (!hasAccess) return null
 
                     const translatedMenu = { ...menu, label: t(menu.label as any) }
