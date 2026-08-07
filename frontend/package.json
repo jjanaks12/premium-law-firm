@@ -12,6 +12,7 @@
     "@app/types": "*",
     "@app/validations": "*",
     "@base-ui/react": "^1.6.0",
+    "@parcel/watcher": "^2.6.0",
     "@tailwindcss/typography": "^0.5.20",
     "@tiptap/extension-image": "^3.29.2",
     "@tiptap/extension-link": "^3.29.2",

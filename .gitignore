@@ -8,3 +8,5 @@ backend/uploads
 
 prisma/schema/*.prisma
 prisma/generated/*
+
+package-lock.json
