@@ -24,6 +24,7 @@
     "db:reset": "node scripts/collect-schemas.mjs && prisma migrate reset --force",
     "db:seed": "prisma db seed",
     "db:studio": "prisma studio",
-    "build:packages": "npm run build --workspaces --if-present"
+    "build:packages": "npm run build --workspaces --if-present",
+    "postinstall": "npm run db:generate"
   }
 }
