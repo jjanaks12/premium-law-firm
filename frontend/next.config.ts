@@ -7,7 +7,10 @@ const withNextIntl = createNextIntlPlugin();
 const nextConfig: NextConfig = {
   /* config options here */
   output: "standalone",
-  transpilePackages: ["@app/validations", "@app/types"]
+  transpilePackages: ["@app/validations", "@app/types"],
+  turbopack: {
+    root: path.join(__dirname, '..'),
+  }
 };
 
 export default withNextIntl(nextConfig);
