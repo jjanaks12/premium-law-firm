@@ -20,6 +20,7 @@
   "scripts": {
     "db:generate": "node scripts/collect-schemas.mjs && prisma generate",
     "db:migrate": "node scripts/collect-schemas.mjs && prisma migrate dev",
+    "db:deploy": "node scripts/collect-schemas.mjs && prisma migrate deploy",
     "db:reset": "node scripts/collect-schemas.mjs && prisma migrate reset --force",
     "db:seed": "prisma db seed",
     "db:studio": "prisma studio"
