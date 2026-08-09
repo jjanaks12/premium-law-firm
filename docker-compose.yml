@@ -44,6 +44,9 @@ services:
       - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/premium_law_firm?schema=public
       - REDIS_URL=redis://redis:6379
       - SEED_DB=true
+    volumes:
+      - ./backend/uploads:/app/backend/uploads
+      - ./backend/logs:/app/backend/logs
     depends_on:
       postgres:
         condition: service_healthy
