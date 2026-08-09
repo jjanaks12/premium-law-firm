@@ -11,6 +11,7 @@
   "dependencies": {
     "@app/types": "*",
     "@app/validations": "*",
+    "@prisma/generated": "file:../prisma/generated/client",
     "@base-ui/react": "^1.6.0",
     "@parcel/watcher": "^2.6.0",
     "@tailwindcss/typography": "^0.5.20",

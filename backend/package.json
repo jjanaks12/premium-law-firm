@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node dist/src/index.js",
-    "build": "npm run --workspace=@app/validations build && tsc && tsc-alias -f",
+    "build": "npm run --workspace=@app/types build && npm run --workspace=@app/validations build && tsc && tsc-alias -f",
     "dev": "nodemon --exec tsx --tsconfig tsconfig.json src/index.ts"
   },
   "keywords": [],

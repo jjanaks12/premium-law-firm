@@ -1,4 +1,4 @@
-import { Role } from "@prisma/client";
+import { Role } from "@prisma/generated";
 
 export const can = (permission: string, role?: Role | null) => {
     if (!role) return false;

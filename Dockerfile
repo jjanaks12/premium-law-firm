@@ -4,8 +4,10 @@ WORKDIR /app
 
 # Copy root and workspace package files
 COPY package.json package-lock.json ./
+COPY frontend/package.json ./frontend/
 COPY backend/package.json ./backend/
 COPY packages/validations/package.json ./packages/validations/
+COPY packages/types/package.json ./packages/types/
 COPY prisma ./prisma
 
 # Install dependencies (including devDependencies for building/running tsx)
@@ -17,8 +19,11 @@ WORKDIR /app
 ENV NODE_ENV=production
 
 # Copy node_modules and project source files
-COPY --from=deps /app/node_modules ./node_modules
 COPY . .
+COPY --from=deps /app/node_modules ./node_modules
+COPY --from=deps /app/backend/node_module[s] ./backend/node_modules/
+COPY --from=deps /app/packages/validations/node_module[s] ./packages/validations/node_modules/
+COPY --from=deps /app/packages/types/node_module[s] ./packages/types/node_modules/
 
 # Collect schemas and generate Prisma client
 RUN npm run db:generate

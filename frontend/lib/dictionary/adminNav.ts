@@ -1,4 +1,4 @@
-import { User, Role } from "@prisma/client";
+import { User, Role } from "@prisma/generated";
 import { BellIcon, BookOpenIcon, FolderCogIcon, FolderOpenIcon, FingerprintIcon, LayoutDashboardIcon, ListTreeIcon, SettingsIcon, UserCogIcon, UserKeyIcon, UsersIcon, BriefcaseIcon, PlusIcon } from "lucide-react";
 import { can } from "@/lib/services/authorization.service";
 import { useTranslations } from "next-intl";

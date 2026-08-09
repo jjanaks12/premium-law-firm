@@ -15,7 +15,7 @@
   "devDependencies": {
     "prisma": "^7.9.0",
     "tsx": "^4.23.1",
-    "typescript": "^7.0.2"
+    "typescript": "^5.5.4"
   },
   "scripts": {
     "db:generate": "node scripts/collect-schemas.mjs && prisma generate",
@@ -25,6 +25,6 @@
     "db:seed": "prisma db seed",
     "db:studio": "prisma studio",
     "build:packages": "npm run build --workspaces --if-present",
-    "postinstall": "npm run db:generate"
+    "postinstall": "node scripts/collect-schemas.mjs && prisma generate || true"
   }
 }
