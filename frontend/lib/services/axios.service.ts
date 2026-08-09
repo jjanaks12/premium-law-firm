@@ -1,12 +1,18 @@
-import axios from 'axios'
+import axios, { AxiosInstance } from 'axios'
 import { useRouter } from '@/src/i18n/routing'
 import { useLocale } from 'next-intl'
 import { toast } from '@/components/ui/toast'
 
+let axiosInstance: AxiosInstance
+
 export const useAxios = () => {
     const router = useRouter()
     const locale = useLocale()
-    const axiosInstance = axios.create({
+
+    if (axiosInstance)
+        return { axios: axiosInstance }
+
+    axiosInstance = axios.create({
         baseURL: process.env.NEXT_PUBLIC_API_URL,
         headers: {
             'Content-Type': 'application/json',
