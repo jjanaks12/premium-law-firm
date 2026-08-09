@@ -28,6 +28,10 @@ COPY --from=deps /app/packages/types/node_module[s] ./packages/types/node_module
 # Collect schemas and generate Prisma client
 RUN npm run db:generate
 
+# Build workspace packages (types, validations)
+RUN npm run build --workspace=@app/types
+RUN npm run build --workspace=@app/validations
+
 EXPOSE 4000
 
 # Run the backend using tsx to support TypeScript workspace resolution in production
