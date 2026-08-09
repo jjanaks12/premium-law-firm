@@ -1,5 +1,5 @@
 # ─── Stage 1: Install dependencies ──────────────────────────────────────────
-FROM node:20-alpine AS deps
+FROM node:22-alpine AS deps
 WORKDIR /app
 
 # Copy root and workspace package files
@@ -14,7 +14,7 @@ COPY prisma ./prisma
 RUN npm ci
 
 # ─── Stage 2: Production Runner ──────────────────────────────────────────────
-FROM node:20-alpine AS runner
+FROM node:22-alpine AS runner
 WORKDIR /app
 ENV NODE_ENV=production
 
