@@ -495,7 +495,28 @@
     "settings": "सेटिङहरू",
     "profile": "प्रोफाइल",
     "notification": "सूचना",
-    "changePassword": "पासवर्ड परिवर्तन गर्नुहोस्"
+    "changePassword": "पासवर्ड परिवर्तन गर्नुहोस्",
+    "systemLogs": "प्रणाली लगहरू"
+  },
+  "LogsPage": {
+    "title": "प्रणाली लगहरू",
+    "fetchError": "लगहरू प्राप्त गर्न विफल भयो",
+    "loading": "लोड हुँदैछ...",
+    "loadContentError": "लग सामग्री लोड गर्न विफल भयो",
+    "fetchDetailError": "लग विवरण प्राप्त गर्न विफल भयो",
+    "confirmDelete": "के तपाईं पक्का यो लग फाइल मेटाउन चाहनुहुन्छ?",
+    "deleteSuccess": "लग फाइल मेटाइयो",
+    "deleteError": "लग मेटाउन विफल भयो",
+    "noLogs": "कुनै लग फेला परेन",
+    "logDetails": "लग विवरण: {log}",
+    "selectLog": "लग फाइल चयन गर्नुहोस्",
+    "fileEmpty": "फाइल खाली छ",
+    "clickLog": "सामग्री हेर्न बायाँको लग फाइलमा क्लिक गर्नुहोस्",
+    "filterByLevel": "स्तर अनुसार फिल्टर गर्नुहोस्",
+    "allLevels": "सबै स्तरहरू",
+    "filterByStatus": "स्थिति अनुसार फिल्टर गर्नुहोस्",
+    "allStatusCodes": "सबै स्थिति कोडहरू",
+    "noLogsMatch": "हालको फिल्टरहरूसँग मिल्ने कुनै लगहरू छैनन्"
   },
   "CaseFileTab": {
     "successMsg": "मिसिल सफलतापूर्वक अपडेट गरियो",

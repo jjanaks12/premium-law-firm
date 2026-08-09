@@ -5,6 +5,7 @@ import cors from 'cors';
 import '@/modules/notifications/notification.worker';
 import router from '@/routes';
 import { errorHandler, notFound } from '@/middlewares/errorHandler';
+import { requestLogger } from '@/middlewares/requestLogger';
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.use(cors({
 }));
 app.use(json());
 app.use(urlencoded({ extended: false }));
+app.use(requestLogger);
 app.use('/api/v1/uploads', express.static('uploads'));
 app.use('/uploads', express.static('uploads'));
 

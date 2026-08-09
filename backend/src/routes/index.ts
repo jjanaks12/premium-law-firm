@@ -8,6 +8,7 @@ import resourceRoutes from '@/modules/resources/routes/resource.route';
 import pageRoutes from '@/modules/pages/routes/page.route';
 import caseRoutes from '@/modules/cases/routes/case.route';
 import caseNatureRoutes from '@/modules/cases/routes/caseNature.route';
+import logsRoutes from '@/modules/logs/logs.route';
 // Register all modules with their associated metadata, resources, and exact action abilities
 moduleRegistry.register('/auth', authRoutes, {
   name: 'Auth',
@@ -63,6 +64,13 @@ moduleRegistry.register('/case-natures', caseNatureRoutes, {
   description: 'Handles case natures listing, creation, updating, and deletion',
   resources: ['case-natures'],
   actions: ["create", "read", "update", "delete", "list"],
+});
+
+moduleRegistry.register('/logs', logsRoutes, {
+  name: 'System Logs',
+  description: 'Handles system access and error logs, reading and listing raw text files',
+  resources: ['logs'],
+  actions: ["read", "delete", "list"],
 });
 
 const route = Router();

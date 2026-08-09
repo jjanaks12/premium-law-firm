@@ -1,5 +1,5 @@
 import { User, Role } from "@prisma/generated";
-import { BellIcon, BookOpenIcon, FolderCogIcon, FolderOpenIcon, FingerprintIcon, LayoutDashboardIcon, ListTreeIcon, SettingsIcon, UserCogIcon, UserKeyIcon, UsersIcon, BriefcaseIcon, PlusIcon } from "lucide-react";
+import { BellIcon, BookOpenIcon, FolderCogIcon, FolderOpenIcon, FingerprintIcon, LayoutDashboardIcon, ListTreeIcon, SettingsIcon, UserCogIcon, UserKeyIcon, UsersIcon, BriefcaseIcon, PlusIcon, ActivityIcon } from "lucide-react";
 import { can } from "@/lib/services/authorization.service";
 import { useTranslations } from "next-intl";
 
@@ -103,6 +103,13 @@ const adminMenu: Menu[] = [
             icon: PlusIcon,
             permission: 'create'
         }]
+    },
+    {
+        label: 'systemLogs',
+        icon: ActivityIcon,
+        href: '/dashboard/logs',
+        resource: 'logs',
+        permission: 'list'
     },
     {
         label: 'settings',
