@@ -2,6 +2,7 @@ model CourtLevel {
   id          String            @id @default(uuid())
   name        String            @unique
   nepaliName  String?
+  caseCourtDetails CaseCourtDetail[]
 
   @@map("court_levels")
 }
@@ -66,6 +67,8 @@ model CaseCourtDetail {
   caseNumber       String
   registrationDate DateTime?
   judgeName        String?
+  courtLevelId     String?
+  courtLevel       CourtLevel?       @relation(fields: [courtLevelId], references: [id], onDelete: SetNull)
   courtType        String?
   courtName        String?
   sectionCourtRoom String?

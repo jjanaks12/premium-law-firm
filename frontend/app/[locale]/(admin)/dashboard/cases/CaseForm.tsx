@@ -53,6 +53,8 @@ export default function CaseForm({
   const [loadingNatures, setLoadingNatures] = useState(true);
   const [partyRoles, setPartyRoles] = useState<PartyRole[]>([]);
   const [loadingRoles, setLoadingRoles] = useState(true);
+  const [courtLevels, setCourtLevels] = useState<any[]>([]);
+  const [loadingCourtLevels, setLoadingCourtLevels] = useState(true);
   const [lawyerUsers, setLawyerUsers] = useState<any[]>([]);
   const [loadingLawyers, setLoadingLawyers] = useState(true);
 
@@ -99,8 +101,22 @@ export default function CaseForm({
       }
     };
 
+    const fetchCourtLevels = async () => {
+      try {
+        const { data } = await axios.get("/cases/meta/court-levels");
+        if (data.data) {
+          setCourtLevels(data.data);
+        }
+      } catch (err) {
+        console.error("Failed to fetch court levels:", err);
+      } finally {
+        setLoadingCourtLevels(false);
+      }
+    };
+
     fetchNatures();
     fetchPartyRoles();
+    fetchCourtLevels();
     fetchLawyers();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -154,6 +170,7 @@ export default function CaseForm({
       {
         caseNumber: activeCourtDetail?.caseNumber || "",
         caseName: activeCourtDetail?.caseName || "",
+        courtLevelId: activeCourtDetail?.courtLevelId || "",
         courtName: activeCourtDetail?.courtName || "",
         sectionCourtRoom: activeCourtDetail?.sectionCourtRoom || "",
         registrationDate: activeCourtDetail?.registrationDate
@@ -322,6 +339,58 @@ export default function CaseForm({
                 </Field>
                 <ErrorMessage
                   name="natureId"
+                  component="div"
+                  className="text-sm text-destructive"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="courtLevelId">
+                  {t("courtLevel")}
+                </Label>
+                <Field name="courtDetails[0].courtLevelId">
+                  {({ field, form }: FieldProps) => (
+                    <Select
+                      onValueChange={(value) =>
+                        form.setFieldValue(field.name, value)
+                      }
+                      value={field.value?.toString() || null}
+                    >
+                      <SelectTrigger
+                        id="courtLevelId"
+                        disabled={loadingCourtLevels}
+                        className="w-full"
+                      >
+                        <SelectValue placeholder={t("selectCourtLevel")}>
+                          {(() => {
+                            if (!field.value) return t("selectCourtLevel");
+                            const cl = courtLevels.find(
+                              (x) =>
+                                x.id.toString() === field.value?.toString(),
+                            );
+                            if (!cl) return t("selectCourtLevel");
+                            return locale === "np" && cl.nepaliName
+                              ? cl.nepaliName
+                              : cl.name;
+                          })()}
+                        </SelectValue>
+                      </SelectTrigger>
+                      <SelectContent>
+                        {courtLevels.map((cl) => (
+                          <SelectItem
+                            key={cl.id}
+                            value={cl.id.toString()}
+                          >
+                            {locale === "np" && cl.nepaliName
+                              ? cl.nepaliName
+                              : cl.name}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  )}
+                </Field>
+                <ErrorMessage
+                  name="courtDetails[0].courtLevelId"
                   component="div"
                   className="text-sm text-destructive"
                 />
