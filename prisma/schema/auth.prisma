@@ -57,6 +57,7 @@ model Resource {
   url        String
   type       String
   name       String?
+  description String? @db.Text
   size       Int?
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt

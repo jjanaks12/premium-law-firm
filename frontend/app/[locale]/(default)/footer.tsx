@@ -28,7 +28,9 @@ export default function Footer() {
         </div>
 
         <div>
-          <h4 className="font-serif text-cream text-lg">{t("Footer.quickLinks")}</h4>
+          <h4 className="font-serif text-cream text-lg">
+            {t("Footer.quickLinks")}
+          </h4>
           <ul className="mt-5 space-y-3 text-sm">
             {[
               { label: t("Nav.practiceAreas"), href: "#" },
@@ -38,7 +40,10 @@ export default function Footer() {
               { label: t("Nav.insights"), href: "#" },
             ].map((l) => (
               <li key={l.label}>
-                <Link href={l.href} className="hover:text-gold transition-colors">
+                <Link
+                  href={l.href}
+                  className="hover:text-gold transition-colors"
+                >
                   {l.label}
                 </Link>
               </li>
@@ -47,7 +52,9 @@ export default function Footer() {
         </div>
 
         <div>
-          <h4 className="font-serif text-cream text-lg">{t("Footer.contactHeading")}</h4>
+          <h4 className="font-serif text-cream text-lg">
+            {t("Footer.contactHeading")}
+          </h4>
           <ul className="mt-5 space-y-4 text-sm">
             <li className="flex gap-3">
               <MapPin className="h-4 w-4 text-gold shrink-0 mt-0.5" />
@@ -63,13 +70,15 @@ export default function Footer() {
             </li>
             <li className="flex gap-3">
               <Mail className="h-4 w-4 text-gold shrink-0 mt-0.5" />
-              <span>chambers@premiumlaw.com.np</span>
+              <span>premiumlaw2022@gmail.com</span>
             </li>
           </ul>
         </div>
 
         <div>
-          <h4 className="font-serif text-cream text-lg">{t("Footer.officeHours")}</h4>
+          <h4 className="font-serif text-cream text-lg">
+            {t("Footer.officeHours")}
+          </h4>
           <ul className="mt-5 space-y-3 text-sm">
             <li className="flex gap-3">
               <Clock className="h-4 w-4 text-gold shrink-0 mt-0.5" />
@@ -89,9 +98,7 @@ export default function Footer() {
 
       <div className="border-t border-cream/10">
         <div className="container-x py-6 flex flex-col md:flex-row gap-4 md:items-center md:justify-between text-xs text-cream/50">
-          <div>
-            {t("Footer.copyright", { year: new Date().getFullYear() })}
-          </div>
+          <div>{t("Footer.copyright", { year: new Date().getFullYear() })}</div>
           <div className="flex flex-wrap gap-6">
             <Link href="#" className="hover:text-gold">
               {t("Footer.privacyPolicy")}

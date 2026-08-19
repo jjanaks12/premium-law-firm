@@ -142,6 +142,7 @@ export const update = async (req: Request, res: Response, next: NextFunction) =>
         ...(data.content !== undefined && { content: data.content }),
         ...(data.detail !== undefined && { detail: data.detail as Prisma.InputJsonValue }),
         ...(data.excerpt !== undefined && { excerpt: data.excerpt }),
+        ...(data.status && { status: data.status }),
         ...(data.locale && { locale: data.locale }),
         ...(data.parent_id !== undefined && { parent_id: data.parent_id }),
         ...(data.page_type_id !== undefined && { page_type_id: data.page_type_id }),
@@ -255,18 +256,70 @@ export const destroy = async (req: Request, res: Response, next: NextFunction) =
 
 export const getInsights = async (req: Request, res: Response, next: NextFunction) => {
   try {
+    const { take, search, page = 1, limit = 9 } = req.query;
+    
+    const isPaginated = !take;
+    const takeNum = take ? parseInt(take as string, 10) : parseInt(limit as string, 10);
+    const pageNum = parseInt(page as string, 10);
+    const skip = (pageNum - 1) * takeNum;
+    
+    const whereClause: Prisma.PageWhereInput = {
+      status: "published",
+      ...(search ? {
+        OR: [
+          { title: { contains: search as string, mode: "insensitive" } },
+          { excerpt: { contains: search as string, mode: "insensitive" } }
+        ]
+      } : {})
+    };
+
     const pages = await prisma.page.findMany({
-      where: {
-        status: "published"
-      },
+      where: whereClause,
       include: {
         page_type: true,
         thumbnail: true,
       },
-      take: 3,
+      take: takeNum,
+      skip: isPaginated ? skip : undefined,
       orderBy: { created_at: 'desc' }
     });
+
+    if (isPaginated) {
+      const total = await prisma.page.count({ where: whereClause });
+      return res.json({ 
+        success: true, 
+        data: pages,
+        meta: {
+          total,
+          page: pageNum,
+          limit: takeNum,
+          totalPages: Math.ceil(total / takeNum)
+        }
+      });
+    }
+
     res.json({ success: true, data: pages });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const getInsightBySlug = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const slug = req.params.slug as string;
+    const page = await prisma.page.findFirst({
+      where: { slug, status: "published", deleted_at: null },
+      include: {
+        page_type: true,
+        thumbnail: true,
+        author: { omit: { password: true } },
+        seo: true,
+      },
+    });
+
+    if (!page) throw createHttpError.NotFound("Insight not found");
+
+    res.json({ success: true, data: page });
   } catch (error) {
     next(error);
   }

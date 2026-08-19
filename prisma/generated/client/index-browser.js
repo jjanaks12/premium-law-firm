@@ -158,6 +158,7 @@ exports.Prisma.ResourceScalarFieldEnum = {
   url: 'url',
   type: 'type',
   name: 'name',
+  description: 'description',
   size: 'size',
   created_at: 'created_at',
   updated_at: 'updated_at',

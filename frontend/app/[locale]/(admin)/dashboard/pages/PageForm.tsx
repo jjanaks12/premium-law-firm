@@ -11,6 +11,7 @@ import { Loader2Icon } from "lucide-react";
 import MediaLibraryDialog from "@/components/MediaLibraryDialog";
 import RichTextEditor from "@/components/RichTextEditor";
 import { useTranslations } from "next-intl";
+import { getFileUrl } from "@/lib/utils";
 
 interface PageType {
   id: string;
@@ -112,7 +113,9 @@ export default function PageForm({
       : "",
   );
 
-  const [pagesList, setPagesList] = useState<{ id: string; title: string }[]>([]);
+  const [pagesList, setPagesList] = useState<{ id: string; title: string }[]>(
+    [],
+  );
 
   useEffect(() => {
     const fetchPages = async () => {
@@ -337,31 +340,34 @@ export default function PageForm({
                 {thumbnail ? (
                   <div className="relative group w-full aspect-video rounded-lg overflow-hidden border border-border">
                     <img
-                      src={thumbnail.url}
+                      src={getFileUrl(thumbnail.url)}
                       alt="Thumbnail"
                       className="w-full h-full object-cover"
                     />
-                    <button
-                      type="button"
-                      onClick={() => setThumbnail(null)}
-                      className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity text-white text-xs flex items-center justify-center"
-                    >
-                      {t("remove")}
-                    </button>
                   </div>
                 ) : (
                   <div className="w-full aspect-video rounded-lg border border-dashed border-border bg-muted/30 flex items-center justify-center text-xs text-muted-foreground">
                     {t("noImage")}
                   </div>
                 )}
-                <Button
-                  type="button"
-                  variant="outline"
-                  onClick={() => setMediaOpen(true)}
-                  className="w-full"
-                >
-                  {thumbnail ? t("changeImage") : t("selectMedia")}
-                </Button>
+                <div className="flex gap-2">
+                  <Button
+                    type="button"
+                    onClick={() => setThumbnail(null)}
+                    variant="destructive"
+                    className="grow-0"
+                  >
+                    {t("remove")}
+                  </Button>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={() => setMediaOpen(true)}
+                    className="grow"
+                  >
+                    {thumbnail ? t("changeImage") : t("selectMedia")}
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
@@ -551,21 +557,9 @@ export default function PageForm({
       <MediaLibraryDialog
         isOpen={mediaOpen}
         onClose={() => setMediaOpen(false)}
-        getFileUrl={(url) => {
-          if (url.startsWith("http")) return url;
-          const host = (process.env.NEXT_PUBLIC_API_URL ?? "").replace(
-            "/api/v1",
-            "",
-          );
-          return `${host}${url}`;
-        }}
+        getFileUrl={getFileUrl}
         onSelect={(url, id) => {
-          const host = (process.env.NEXT_PUBLIC_API_URL ?? "").replace(
-            "/api/v1",
-            "",
-          );
-          const fullUrl = url.startsWith("http") ? url : `${host}${url}`;
-          setThumbnail({ id, url: fullUrl });
+          setThumbnail({ id, url });
           setMediaOpen(false);
         }}
       />

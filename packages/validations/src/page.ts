@@ -58,6 +58,7 @@ export const updatePageSchema = yup.object({
   content: yup.string().optional(),
   detail: yup.mixed().nullable().optional(),
   excerpt: yup.string().nullable().optional(),
+  status: yup.string().oneOf(['draft', 'published']).optional(),
   locale: yup.string().oneOf(['en', 'np']).optional(),
   parent_id: yup.string().nullable().optional(),
   page_type_id: yup.string().nullable().optional(),

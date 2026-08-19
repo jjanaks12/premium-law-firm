@@ -53,14 +53,15 @@ model PasswordResetToken {
 }
 
 model Resource {
-  id         String    @id @default(uuid())
-  url        String
-  type       String
-  name       String?
-  size       Int?
-  created_at DateTime  @default(now())
-  updated_at DateTime  @updatedAt
-  deleted_at DateTime?
+  id          String    @id @default(uuid())
+  url         String
+  type        String
+  name        String?
+  description String?   @db.Text
+  size        Int?
+  created_at  DateTime  @default(now())
+  updated_at  DateTime  @updatedAt
+  deleted_at  DateTime?
 
   users              User[]    @relation("user_avatar")
   page_thumbnails    Page[]    @relation("page_thumbnail")

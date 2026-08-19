@@ -8,7 +8,7 @@ export const useNavLink = () => {
             { key: t("aboutUs"), href: "#" },
             { key: t("practiceAreas"), href: "#" },
             { key: t("attorneys"), href: "/team" },
-            { key: t("insights"), href: "#" },
+            { key: t("insights"), href: "/insight" },
             { key: t("contact"), href: "/contact" },
         ]
     }

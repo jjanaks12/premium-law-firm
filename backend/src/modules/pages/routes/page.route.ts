@@ -14,6 +14,7 @@ route.delete("/page-types/:id", [verifyAccessToken, can("pages", "delete")], Pag
 
 // --- Page routes ---
 route.get("/public/insights", PageController.getInsights);
+route.get("/public/insights/:slug", PageController.getInsightBySlug);
 route.get("/", [verifyAccessToken, can("pages", "list")], PageController.index);
 route.post("/", [verifyAccessToken, can("pages", "create")], PageController.store);
 

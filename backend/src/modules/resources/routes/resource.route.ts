@@ -36,6 +36,7 @@ const route = Router();
 route.get("/", [verifyAccessToken, can("resources", "list")], resourceController.index);
 route.post("/upload", [verifyAccessToken, upload.single("file")], resourceController.uploadResource);
 route.get("/:id", [verifyAccessToken], resourceController.show);
+route.put("/:id", [verifyAccessToken, upload.single("file")], resourceController.update);
 route.delete("/:id", [verifyAccessToken, can("resources", "delete")], resourceController.destroy);
 
 export default route;

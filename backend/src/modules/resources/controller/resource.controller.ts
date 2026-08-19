@@ -65,12 +65,15 @@ export const uploadResource = async (req: Request, res: Response, next: NextFunc
       return next(createHttpError(400, "No file uploaded"));
     }
 
+    const { name, description } = req.body;
+
     const url = `/uploads/${req.file.filename}`;
     const resource = await prisma.resource.create({
       data: {
         url,
         type: req.file.mimetype,
-        name: req.file.originalname,
+        name: name || req.file.originalname,
+        description: description || null,
         size: req.file.size,
       },
     });
@@ -91,6 +94,50 @@ export const show = async (req: Request, res: Response, next: NextFunction) => {
     if (!resource) {
       return next(createHttpError(404, "Resource not found"));
     }
+
+    res.status(200).json({ success: true, data: formatResourceUrl(req, resource) });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const update = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const id = req.params.id as string;
+    const { name, description } = req.body;
+
+    const existingResource = await prisma.resource.findUnique({
+      where: { id },
+    });
+
+    if (!existingResource) {
+      return next(createHttpError(404, "Resource not found"));
+    }
+
+    const updateData: any = {};
+    if (name !== undefined) updateData.name = name;
+    if (description !== undefined) updateData.description = description;
+
+    if (req.file) {
+      // delete old file
+      const relativePath = existingResource.url.replace(/^\//, "");
+      const absolutePath = path.join(process.cwd(), relativePath);
+      try {
+        await fs.unlink(absolutePath);
+      } catch (fsErr) {
+        console.warn(`Could not delete old file from disk: ${absolutePath}`, fsErr);
+      }
+
+      updateData.url = `/uploads/${req.file.filename}`;
+      updateData.type = req.file.mimetype;
+      updateData.size = req.file.size;
+      if (!name) updateData.name = req.file.originalname;
+    }
+
+    const resource = await prisma.resource.update({
+      where: { id },
+      data: updateData,
+    });
 
     res.status(200).json({ success: true, data: formatResourceUrl(req, resource) });
   } catch (error) {
