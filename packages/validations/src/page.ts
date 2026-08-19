@@ -8,6 +8,7 @@ export const createPageTypeSchema = yup.object({
     .required('Slug is required')
     .matches(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, 'Slug must be lowercase with hyphens only'),
   description: yup.string().nullable().optional(),
+  parent_id: yup.string().nullable().optional(),
 });
 
 export const updatePageTypeSchema = createPageTypeSchema;
@@ -43,7 +44,7 @@ export const createPageSchema = yup.object({
   detail: yup.mixed().nullable().optional(),
   excerpt: yup.string().nullable().optional(),
   status: yup.string().oneOf(['draft', 'published']).default('draft'),
-  locale: yup.string().oneOf(['en', 'ne']).default('en'),
+  locale: yup.string().oneOf(['en', 'np']).default('en'),
   parent_id: yup.string().nullable().optional(),
   page_type_id: yup.string().nullable().optional(),
   thumbnail_id: yup.string().nullable().optional(),
@@ -57,7 +58,7 @@ export const updatePageSchema = yup.object({
   content: yup.string().optional(),
   detail: yup.mixed().nullable().optional(),
   excerpt: yup.string().nullable().optional(),
-  locale: yup.string().oneOf(['en', 'ne']).optional(),
+  locale: yup.string().oneOf(['en', 'np']).optional(),
   parent_id: yup.string().nullable().optional(),
   page_type_id: yup.string().nullable().optional(),
   thumbnail_id: yup.string().nullable().optional(),

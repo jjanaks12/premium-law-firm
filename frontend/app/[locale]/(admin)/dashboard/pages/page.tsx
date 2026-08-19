@@ -47,7 +47,7 @@ interface PageRecord {
   title: string;
   excerpt: string | null;
   status: "draft" | "published";
-  locale: "en" | "ne";
+  locale: "en" | "np";
   parent_id: string | null;
   page_type: PageType | null;
   thumbnail: { url: string } | null;
@@ -66,7 +66,7 @@ const STATUS_CLASSES = {
 
 const LOCALE_CLASSES = {
   en: "bg-blue-500/10 border-blue-500/30 text-blue-600",
-  ne: "bg-violet-500/10 border-violet-500/30 text-violet-600",
+  np: "bg-violet-500/10 border-violet-500/30 text-violet-600",
 };
 
 export default function PagesPage() {
@@ -230,7 +230,7 @@ export default function PagesPage() {
           >
             <option value="">All Locales</option>
             <option value="en">English</option>
-            <option value="ne">Nepali</option>
+            <option value="np">Nepali</option>
           </select>
           <select
             value={typeFilter}
@@ -306,7 +306,7 @@ export default function PagesPage() {
                       className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold border ${LOCALE_CLASSES[page.locale]}`}
                     >
                       <GlobeIcon className="h-3 w-3" />
-                      {page.locale === "en" ? "EN" : "NE"}
+                      {page.locale === "en" ? "EN" : "NP"}
                     </span>
                   </TableCell>
                   <TableCell className="py-4 px-6">

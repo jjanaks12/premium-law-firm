@@ -7,6 +7,10 @@ model PageType {
   slug        String   @unique
   description String?
 
+  parent_id   String?
+  parent      PageType?  @relation("PageTypeChildren", fields: [parent_id], references: [id])
+  children    PageType[] @relation("PageTypeChildren")
+
   pages      Page[]
 
   created_at DateTime  @default(now())

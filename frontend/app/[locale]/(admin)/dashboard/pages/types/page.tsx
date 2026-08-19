@@ -8,6 +8,13 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
   FolderCogIcon,
   PlusIcon,
   Edit2Icon,
@@ -40,10 +47,12 @@ interface PageType {
   name: string;
   slug: string;
   description: string | null;
+  parent_id?: string | null;
+  parent?: PageType | null;
   created_at: string;
 }
 
-const emptyForm = { name: "", slug: "", description: "" };
+const emptyForm = { name: "", slug: "", description: "", parent_id: "" };
 
 export default function PageTypesPage() {
   const { axios } = useAxios();
@@ -103,15 +112,19 @@ export default function PageTypesPage() {
     }
     setSaving(true);
     try {
+      const payload = {
+        ...form,
+        parent_id: form.parent_id || null,
+      };
       if (editingId) {
-        await axios.put(`/pages/page-types/${editingId}`, form);
+        await axios.put(`/pages/page-types/${editingId}`, payload);
         toast.add({
           title: "Updated",
           description: "Page type updated",
           type: "success",
         });
       } else {
-        await axios.post("/pages/page-types", form);
+        await axios.post("/pages/page-types", payload);
         toast.add({
           title: "Created",
           description: "Page type created",
@@ -139,6 +152,7 @@ export default function PageTypesPage() {
       name: pt.name,
       slug: pt.slug,
       description: pt.description ?? "",
+      parent_id: pt.parent_id ?? "",
     });
   };
 
@@ -225,6 +239,26 @@ export default function PageTypesPage() {
             />
           </div>
 
+          <div className="space-y-1.5">
+            <Label>Parent Type</Label>
+            <Select
+              value={form.parent_id || "none"}
+              onValueChange={(val) => setForm({ ...form, parent_id: val === "none" || val === null ? "" : val })}
+            >
+              <SelectTrigger className="w-full">
+                <SelectValue placeholder="None" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="none">None</SelectItem>
+                {pageTypes.filter((pt) => pt.id !== editingId).map((pt) => (
+                  <SelectItem key={pt.id} value={pt.id}>
+                    {pt.name}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+
           <div className="flex gap-2">
             <Button
               onClick={handleSave}
@@ -281,6 +315,9 @@ export default function PageTypesPage() {
                   <TableHead className="py-4 px-6 font-semibold">
                     Description
                   </TableHead>
+                  <TableHead className="py-4 px-6 font-semibold">
+                    Parent
+                  </TableHead>
                   <TableHead className="py-4 px-6 font-semibold text-right">
                     Actions
                   </TableHead>
@@ -301,6 +338,11 @@ export default function PageTypesPage() {
                     <TableCell className="py-4 px-6 text-muted-foreground max-w-50">
                       <span className="line-clamp-1">
                         {pt.description ?? "—"}
+                      </span>
+                    </TableCell>
+                    <TableCell className="py-4 px-6 text-muted-foreground max-w-50">
+                      <span className="line-clamp-1">
+                        {pt.parent?.name ?? "—"}
                       </span>
                     </TableCell>
                     <TableCell className="py-4 px-6 text-right">

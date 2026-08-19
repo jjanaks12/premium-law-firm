@@ -8,6 +8,7 @@ export const index = async (req: Request, res: Response, next: NextFunction) => 
     const pageTypes = await prisma.pageType.findMany({
       where: { deleted_at: null },
       orderBy: { name: "asc" },
+      include: { parent: true },
     });
     res.json({ success: true, data: pageTypes });
   } catch (error) {

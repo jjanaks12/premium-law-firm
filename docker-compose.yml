@@ -7,8 +7,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: premium_law_firm
-    ports:
-      - "5432:5432"
+
     volumes:
       - pgdata:/var/lib/postgresql/data
     healthcheck:
@@ -20,8 +19,7 @@ services:
   redis:
     image: redis:7-alpine
     restart: unless-stopped
-    ports:
-      - "6379:6379"
+
     volumes:
       - redisdata:/data
     healthcheck:
@@ -35,8 +33,7 @@ services:
       context: .
       dockerfile: Dockerfile
     restart: unless-stopped
-    ports:
-      - "4000:4000"
+
     env_file:
       - backend/.env
     environment:
@@ -68,8 +65,7 @@ services:
       context: .
       dockerfile: frontend/Dockerfile
     restart: unless-stopped
-    ports:
-      - "3000:3000"
+
     env_file:
       - frontend/.env
     environment:

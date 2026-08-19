@@ -252,3 +252,22 @@ export const destroy = async (req: Request, res: Response, next: NextFunction) =
     next(error);
   }
 };
+
+export const getInsights = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const pages = await prisma.page.findMany({
+      where: {
+        status: "published"
+      },
+      include: {
+        page_type: true,
+        thumbnail: true,
+      },
+      take: 3,
+      orderBy: { created_at: 'desc' }
+    });
+    res.json({ success: true, data: pages });
+  } catch (error) {
+    next(error);
+  }
+};

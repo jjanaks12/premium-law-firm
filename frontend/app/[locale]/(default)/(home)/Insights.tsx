@@ -1,35 +1,29 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { ArrowRightIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
-
-const posts = [
-  {
-    img: "/images/blog-1.jpg",
-    tag: "Legal Updates",
-    date: "Shrawan 2083",
-    title: "What the New Muluki Civil Code Amendments Mean for Contracts",
-    excerpt:
-      "Recent revisions quietly reshape how commercial agreements are interpreted in Nepali courts. A practitioner's read.",
-  },
-  {
-    img: "/images/blog-2.jpg",
-    tag: "Corporate Law",
-    date: "Ashadh 2083",
-    title: "Foreign Investment in Nepal: Reading the FITTA Rules Rewrite",
-    excerpt:
-      "The updated FITTA framework changes the calculus for inbound investors. Where the friction is — and isn't.",
-  },
-  {
-    img: "/images/blog-3.jpg",
-    tag: "Practice Notes",
-    date: "Jestha 2083",
-    title: "Drafting for the Dispute You Hope Never Comes",
-    excerpt:
-      "The clauses most likely to be tested in Nepali litigation — and the small drafting habits that avoid costly ambiguity.",
-  },
-];
+import { useAxios } from "@/lib/services/axios.service";
 
 export default function Insights() {
   const t = useTranslations("Insights");
+  const { axios } = useAxios();
+  const [posts, setPosts] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchInsights = async () => {
+      try {
+        const res = await axios.get('/pages/public/insights');
+        if (res.data?.data) {
+          setPosts(res.data.data);
+        }
+      } catch (err) {
+        console.error("Failed to fetch insights:", err);
+      }
+    };
+    fetchInsights();
+  }, [axios]);
+
   return (
     <section id="insights" className="py-24 md:py-32">
       <div className="container-x">
@@ -50,11 +44,11 @@ export default function Insights() {
         </div>
 
         <div className="mt-16 grid md:grid-cols-3 gap-10">
-          {posts.map((p) => (
-            <article key={p.title} className="group cursor-pointer">
+          {posts.map((p: any) => (
+            <article key={p.id} className="group cursor-pointer">
               <div className="overflow-hidden aspect-4/3 bg-muted">
                 <img
-                  src={p.img}
+                  src={p.thumbnail?.url || "/images/blog-1.jpg"}
                   alt={p.title}
                   loading="lazy"
                   width={1024}
@@ -64,15 +58,17 @@ export default function Insights() {
               </div>
               <div className="pt-6">
                 <div className="flex items-center gap-3 text-xs tracking-[0.18em] uppercase">
-                  <span className="text-gold">{p.tag}</span>
+                  <span className="text-gold">{p.page_type?.name || "Insights"}</span>
                   <span className="h-1 w-1 bg-muted-foreground/50 rounded-full" />
-                  <span className="text-muted-foreground">{p.date}</span>
+                  <span className="text-muted-foreground">
+                    {new Date(p.created_at).toLocaleDateString("en-US", { month: "short", year: "numeric" })}
+                  </span>
                 </div>
                 <h3 className="mt-4 font-serif text-2xl leading-snug text-navy-deep group-hover:text-navy transition-colors">
                   {p.title}
                 </h3>
-                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-                  {p.excerpt}
+                <p className="mt-3 text-sm text-muted-foreground leading-relaxed line-clamp-2">
+                  {p.excerpt || "Read more about this article."}
                 </p>
                 <div className="mt-5 inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-navy group-hover:text-gold transition-colors">
                   {t("readMore")} <ArrowRightIcon className="h-3 w-3" />

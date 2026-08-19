@@ -3106,10 +3106,12 @@ export namespace Prisma {
    */
 
   export type PageTypeCountOutputType = {
+    children: number
     pages: number
   }
 
   export type PageTypeCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    children?: boolean | PageTypeCountOutputTypeCountChildrenArgs
     pages?: boolean | PageTypeCountOutputTypeCountPagesArgs
   }
 
@@ -3122,6 +3124,13 @@ export namespace Prisma {
      * Select specific fields to fetch from the PageTypeCountOutputType
      */
     select?: PageTypeCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * PageTypeCountOutputType without action
+   */
+  export type PageTypeCountOutputTypeCountChildrenArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PageTypeWhereInput
   }
 
   /**
@@ -21750,6 +21759,7 @@ export namespace Prisma {
     name: string | null
     slug: string | null
     description: string | null
+    parent_id: string | null
     created_at: Date | null
     updated_at: Date | null
     deleted_at: Date | null
@@ -21760,6 +21770,7 @@ export namespace Prisma {
     name: string | null
     slug: string | null
     description: string | null
+    parent_id: string | null
     created_at: Date | null
     updated_at: Date | null
     deleted_at: Date | null
@@ -21770,6 +21781,7 @@ export namespace Prisma {
     name: number
     slug: number
     description: number
+    parent_id: number
     created_at: number
     updated_at: number
     deleted_at: number
@@ -21782,6 +21794,7 @@ export namespace Prisma {
     name?: true
     slug?: true
     description?: true
+    parent_id?: true
     created_at?: true
     updated_at?: true
     deleted_at?: true
@@ -21792,6 +21805,7 @@ export namespace Prisma {
     name?: true
     slug?: true
     description?: true
+    parent_id?: true
     created_at?: true
     updated_at?: true
     deleted_at?: true
@@ -21802,6 +21816,7 @@ export namespace Prisma {
     name?: true
     slug?: true
     description?: true
+    parent_id?: true
     created_at?: true
     updated_at?: true
     deleted_at?: true
@@ -21885,6 +21900,7 @@ export namespace Prisma {
     name: string
     slug: string
     description: string | null
+    parent_id: string | null
     created_at: Date
     updated_at: Date
     deleted_at: Date | null
@@ -21912,9 +21928,12 @@ export namespace Prisma {
     name?: boolean
     slug?: boolean
     description?: boolean
+    parent_id?: boolean
     created_at?: boolean
     updated_at?: boolean
     deleted_at?: boolean
+    parent?: boolean | PageType$parentArgs<ExtArgs>
+    children?: boolean | PageType$childrenArgs<ExtArgs>
     pages?: boolean | PageType$pagesArgs<ExtArgs>
     _count?: boolean | PageTypeCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["pageType"]>
@@ -21924,9 +21943,11 @@ export namespace Prisma {
     name?: boolean
     slug?: boolean
     description?: boolean
+    parent_id?: boolean
     created_at?: boolean
     updated_at?: boolean
     deleted_at?: boolean
+    parent?: boolean | PageType$parentArgs<ExtArgs>
   }, ExtArgs["result"]["pageType"]>
 
   export type PageTypeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -21934,9 +21955,11 @@ export namespace Prisma {
     name?: boolean
     slug?: boolean
     description?: boolean
+    parent_id?: boolean
     created_at?: boolean
     updated_at?: boolean
     deleted_at?: boolean
+    parent?: boolean | PageType$parentArgs<ExtArgs>
   }, ExtArgs["result"]["pageType"]>
 
   export type PageTypeSelectScalar = {
@@ -21944,22 +21967,31 @@ export namespace Prisma {
     name?: boolean
     slug?: boolean
     description?: boolean
+    parent_id?: boolean
     created_at?: boolean
     updated_at?: boolean
     deleted_at?: boolean
   }
 
-  export type PageTypeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "slug" | "description" | "created_at" | "updated_at" | "deleted_at", ExtArgs["result"]["pageType"]>
+  export type PageTypeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "slug" | "description" | "parent_id" | "created_at" | "updated_at" | "deleted_at", ExtArgs["result"]["pageType"]>
   export type PageTypeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    parent?: boolean | PageType$parentArgs<ExtArgs>
+    children?: boolean | PageType$childrenArgs<ExtArgs>
     pages?: boolean | PageType$pagesArgs<ExtArgs>
     _count?: boolean | PageTypeCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type PageTypeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type PageTypeIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type PageTypeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    parent?: boolean | PageType$parentArgs<ExtArgs>
+  }
+  export type PageTypeIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    parent?: boolean | PageType$parentArgs<ExtArgs>
+  }
 
   export type $PageTypePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "PageType"
     objects: {
+      parent: Prisma.$PageTypePayload<ExtArgs> | null
+      children: Prisma.$PageTypePayload<ExtArgs>[]
       pages: Prisma.$PagePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -21967,6 +21999,7 @@ export namespace Prisma {
       name: string
       slug: string
       description: string | null
+      parent_id: string | null
       created_at: Date
       updated_at: Date
       deleted_at: Date | null
@@ -22364,6 +22397,8 @@ export namespace Prisma {
    */
   export interface Prisma__PageTypeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    parent<T extends PageType$parentArgs<ExtArgs> = {}>(args?: Subset<T, PageType$parentArgs<ExtArgs>>): Prisma__PageTypeClient<$Result.GetResult<Prisma.$PageTypePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    children<T extends PageType$childrenArgs<ExtArgs> = {}>(args?: Subset<T, PageType$childrenArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PageTypePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     pages<T extends PageType$pagesArgs<ExtArgs> = {}>(args?: Subset<T, PageType$pagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -22398,6 +22433,7 @@ export namespace Prisma {
     readonly name: FieldRef<"PageType", 'String'>
     readonly slug: FieldRef<"PageType", 'String'>
     readonly description: FieldRef<"PageType", 'String'>
+    readonly parent_id: FieldRef<"PageType", 'String'>
     readonly created_at: FieldRef<"PageType", 'DateTime'>
     readonly updated_at: FieldRef<"PageType", 'DateTime'>
     readonly deleted_at: FieldRef<"PageType", 'DateTime'>
@@ -22655,6 +22691,10 @@ export namespace Prisma {
      */
     data: PageTypeCreateManyInput | PageTypeCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageTypeIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -22725,6 +22765,10 @@ export namespace Prisma {
      * Limit how many PageTypes to update.
      */
     limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageTypeIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -22791,6 +22835,49 @@ export namespace Prisma {
      * Limit how many PageTypes to delete.
      */
     limit?: number
+  }
+
+  /**
+   * PageType.parent
+   */
+  export type PageType$parentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageType
+     */
+    select?: PageTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageType
+     */
+    omit?: PageTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageTypeInclude<ExtArgs> | null
+    where?: PageTypeWhereInput
+  }
+
+  /**
+   * PageType.children
+   */
+  export type PageType$childrenArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PageType
+     */
+    select?: PageTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PageType
+     */
+    omit?: PageTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageTypeInclude<ExtArgs> | null
+    where?: PageTypeWhereInput
+    orderBy?: PageTypeOrderByWithRelationInput | PageTypeOrderByWithRelationInput[]
+    cursor?: PageTypeWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PageTypeScalarFieldEnum | PageTypeScalarFieldEnum[]
   }
 
   /**
@@ -27801,6 +27888,7 @@ export namespace Prisma {
     name: 'name',
     slug: 'slug',
     description: 'description',
+    parent_id: 'parent_id',
     created_at: 'created_at',
     updated_at: 'updated_at',
     deleted_at: 'deleted_at'
@@ -29211,9 +29299,12 @@ export namespace Prisma {
     name?: StringFilter<"PageType"> | string
     slug?: StringFilter<"PageType"> | string
     description?: StringNullableFilter<"PageType"> | string | null
+    parent_id?: StringNullableFilter<"PageType"> | string | null
     created_at?: DateTimeFilter<"PageType"> | Date | string
     updated_at?: DateTimeFilter<"PageType"> | Date | string
     deleted_at?: DateTimeNullableFilter<"PageType"> | Date | string | null
+    parent?: XOR<PageTypeNullableScalarRelationFilter, PageTypeWhereInput> | null
+    children?: PageTypeListRelationFilter
     pages?: PageListRelationFilter
   }
 
@@ -29222,9 +29313,12 @@ export namespace Prisma {
     name?: SortOrder
     slug?: SortOrder
     description?: SortOrderInput | SortOrder
+    parent_id?: SortOrderInput | SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     deleted_at?: SortOrderInput | SortOrder
+    parent?: PageTypeOrderByWithRelationInput
+    children?: PageTypeOrderByRelationAggregateInput
     pages?: PageOrderByRelationAggregateInput
   }
 
@@ -29236,9 +29330,12 @@ export namespace Prisma {
     OR?: PageTypeWhereInput[]
     NOT?: PageTypeWhereInput | PageTypeWhereInput[]
     description?: StringNullableFilter<"PageType"> | string | null
+    parent_id?: StringNullableFilter<"PageType"> | string | null
     created_at?: DateTimeFilter<"PageType"> | Date | string
     updated_at?: DateTimeFilter<"PageType"> | Date | string
     deleted_at?: DateTimeNullableFilter<"PageType"> | Date | string | null
+    parent?: XOR<PageTypeNullableScalarRelationFilter, PageTypeWhereInput> | null
+    children?: PageTypeListRelationFilter
     pages?: PageListRelationFilter
   }, "id" | "name" | "slug">
 
@@ -29247,6 +29344,7 @@ export namespace Prisma {
     name?: SortOrder
     slug?: SortOrder
     description?: SortOrderInput | SortOrder
+    parent_id?: SortOrderInput | SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     deleted_at?: SortOrderInput | SortOrder
@@ -29263,6 +29361,7 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter<"PageType"> | string
     slug?: StringWithAggregatesFilter<"PageType"> | string
     description?: StringNullableWithAggregatesFilter<"PageType"> | string | null
+    parent_id?: StringNullableWithAggregatesFilter<"PageType"> | string | null
     created_at?: DateTimeWithAggregatesFilter<"PageType"> | Date | string
     updated_at?: DateTimeWithAggregatesFilter<"PageType"> | Date | string
     deleted_at?: DateTimeNullableWithAggregatesFilter<"PageType"> | Date | string | null
@@ -30886,6 +30985,8 @@ export namespace Prisma {
     created_at?: Date | string
     updated_at?: Date | string
     deleted_at?: Date | string | null
+    parent?: PageTypeCreateNestedOneWithoutChildrenInput
+    children?: PageTypeCreateNestedManyWithoutParentInput
     pages?: PageCreateNestedManyWithoutPage_typeInput
   }
 
@@ -30894,9 +30995,11 @@ export namespace Prisma {
     name: string
     slug: string
     description?: string | null
+    parent_id?: string | null
     created_at?: Date | string
     updated_at?: Date | string
     deleted_at?: Date | string | null
+    children?: PageTypeUncheckedCreateNestedManyWithoutParentInput
     pages?: PageUncheckedCreateNestedManyWithoutPage_typeInput
   }
 
@@ -30908,6 +31011,8 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    parent?: PageTypeUpdateOneWithoutChildrenNestedInput
+    children?: PageTypeUpdateManyWithoutParentNestedInput
     pages?: PageUpdateManyWithoutPage_typeNestedInput
   }
 
@@ -30916,9 +31021,11 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    parent_id?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    children?: PageTypeUncheckedUpdateManyWithoutParentNestedInput
     pages?: PageUncheckedUpdateManyWithoutPage_typeNestedInput
   }
 
@@ -30927,6 +31034,7 @@ export namespace Prisma {
     name: string
     slug: string
     description?: string | null
+    parent_id?: string | null
     created_at?: Date | string
     updated_at?: Date | string
     deleted_at?: Date | string | null
@@ -30947,6 +31055,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    parent_id?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -32328,11 +32437,27 @@ export namespace Prisma {
     created_at?: SortOrder
   }
 
+  export type PageTypeNullableScalarRelationFilter = {
+    is?: PageTypeWhereInput | null
+    isNot?: PageTypeWhereInput | null
+  }
+
+  export type PageTypeListRelationFilter = {
+    every?: PageTypeWhereInput
+    some?: PageTypeWhereInput
+    none?: PageTypeWhereInput
+  }
+
+  export type PageTypeOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type PageTypeCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     slug?: SortOrder
     description?: SortOrder
+    parent_id?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     deleted_at?: SortOrder
@@ -32343,6 +32468,7 @@ export namespace Prisma {
     name?: SortOrder
     slug?: SortOrder
     description?: SortOrder
+    parent_id?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     deleted_at?: SortOrder
@@ -32353,6 +32479,7 @@ export namespace Prisma {
     name?: SortOrder
     slug?: SortOrder
     description?: SortOrder
+    parent_id?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     deleted_at?: SortOrder
@@ -32361,11 +32488,6 @@ export namespace Prisma {
   export type PageNullableScalarRelationFilter = {
     is?: PageWhereInput | null
     isNot?: PageWhereInput | null
-  }
-
-  export type PageTypeNullableScalarRelationFilter = {
-    is?: PageTypeWhereInput | null
-    isNot?: PageTypeWhereInput | null
   }
 
   export type PageSeoNullableScalarRelationFilter = {
@@ -33914,6 +34036,19 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutNotificationsInput, UserUpdateWithoutNotificationsInput>, UserUncheckedUpdateWithoutNotificationsInput>
   }
 
+  export type PageTypeCreateNestedOneWithoutChildrenInput = {
+    create?: XOR<PageTypeCreateWithoutChildrenInput, PageTypeUncheckedCreateWithoutChildrenInput>
+    connectOrCreate?: PageTypeCreateOrConnectWithoutChildrenInput
+    connect?: PageTypeWhereUniqueInput
+  }
+
+  export type PageTypeCreateNestedManyWithoutParentInput = {
+    create?: XOR<PageTypeCreateWithoutParentInput, PageTypeUncheckedCreateWithoutParentInput> | PageTypeCreateWithoutParentInput[] | PageTypeUncheckedCreateWithoutParentInput[]
+    connectOrCreate?: PageTypeCreateOrConnectWithoutParentInput | PageTypeCreateOrConnectWithoutParentInput[]
+    createMany?: PageTypeCreateManyParentInputEnvelope
+    connect?: PageTypeWhereUniqueInput | PageTypeWhereUniqueInput[]
+  }
+
   export type PageCreateNestedManyWithoutPage_typeInput = {
     create?: XOR<PageCreateWithoutPage_typeInput, PageUncheckedCreateWithoutPage_typeInput> | PageCreateWithoutPage_typeInput[] | PageUncheckedCreateWithoutPage_typeInput[]
     connectOrCreate?: PageCreateOrConnectWithoutPage_typeInput | PageCreateOrConnectWithoutPage_typeInput[]
@@ -33921,11 +34056,42 @@ export namespace Prisma {
     connect?: PageWhereUniqueInput | PageWhereUniqueInput[]
   }
 
+  export type PageTypeUncheckedCreateNestedManyWithoutParentInput = {
+    create?: XOR<PageTypeCreateWithoutParentInput, PageTypeUncheckedCreateWithoutParentInput> | PageTypeCreateWithoutParentInput[] | PageTypeUncheckedCreateWithoutParentInput[]
+    connectOrCreate?: PageTypeCreateOrConnectWithoutParentInput | PageTypeCreateOrConnectWithoutParentInput[]
+    createMany?: PageTypeCreateManyParentInputEnvelope
+    connect?: PageTypeWhereUniqueInput | PageTypeWhereUniqueInput[]
+  }
+
   export type PageUncheckedCreateNestedManyWithoutPage_typeInput = {
     create?: XOR<PageCreateWithoutPage_typeInput, PageUncheckedCreateWithoutPage_typeInput> | PageCreateWithoutPage_typeInput[] | PageUncheckedCreateWithoutPage_typeInput[]
     connectOrCreate?: PageCreateOrConnectWithoutPage_typeInput | PageCreateOrConnectWithoutPage_typeInput[]
     createMany?: PageCreateManyPage_typeInputEnvelope
     connect?: PageWhereUniqueInput | PageWhereUniqueInput[]
+  }
+
+  export type PageTypeUpdateOneWithoutChildrenNestedInput = {
+    create?: XOR<PageTypeCreateWithoutChildrenInput, PageTypeUncheckedCreateWithoutChildrenInput>
+    connectOrCreate?: PageTypeCreateOrConnectWithoutChildrenInput
+    upsert?: PageTypeUpsertWithoutChildrenInput
+    disconnect?: PageTypeWhereInput | boolean
+    delete?: PageTypeWhereInput | boolean
+    connect?: PageTypeWhereUniqueInput
+    update?: XOR<XOR<PageTypeUpdateToOneWithWhereWithoutChildrenInput, PageTypeUpdateWithoutChildrenInput>, PageTypeUncheckedUpdateWithoutChildrenInput>
+  }
+
+  export type PageTypeUpdateManyWithoutParentNestedInput = {
+    create?: XOR<PageTypeCreateWithoutParentInput, PageTypeUncheckedCreateWithoutParentInput> | PageTypeCreateWithoutParentInput[] | PageTypeUncheckedCreateWithoutParentInput[]
+    connectOrCreate?: PageTypeCreateOrConnectWithoutParentInput | PageTypeCreateOrConnectWithoutParentInput[]
+    upsert?: PageTypeUpsertWithWhereUniqueWithoutParentInput | PageTypeUpsertWithWhereUniqueWithoutParentInput[]
+    createMany?: PageTypeCreateManyParentInputEnvelope
+    set?: PageTypeWhereUniqueInput | PageTypeWhereUniqueInput[]
+    disconnect?: PageTypeWhereUniqueInput | PageTypeWhereUniqueInput[]
+    delete?: PageTypeWhereUniqueInput | PageTypeWhereUniqueInput[]
+    connect?: PageTypeWhereUniqueInput | PageTypeWhereUniqueInput[]
+    update?: PageTypeUpdateWithWhereUniqueWithoutParentInput | PageTypeUpdateWithWhereUniqueWithoutParentInput[]
+    updateMany?: PageTypeUpdateManyWithWhereWithoutParentInput | PageTypeUpdateManyWithWhereWithoutParentInput[]
+    deleteMany?: PageTypeScalarWhereInput | PageTypeScalarWhereInput[]
   }
 
   export type PageUpdateManyWithoutPage_typeNestedInput = {
@@ -33940,6 +34106,20 @@ export namespace Prisma {
     update?: PageUpdateWithWhereUniqueWithoutPage_typeInput | PageUpdateWithWhereUniqueWithoutPage_typeInput[]
     updateMany?: PageUpdateManyWithWhereWithoutPage_typeInput | PageUpdateManyWithWhereWithoutPage_typeInput[]
     deleteMany?: PageScalarWhereInput | PageScalarWhereInput[]
+  }
+
+  export type PageTypeUncheckedUpdateManyWithoutParentNestedInput = {
+    create?: XOR<PageTypeCreateWithoutParentInput, PageTypeUncheckedCreateWithoutParentInput> | PageTypeCreateWithoutParentInput[] | PageTypeUncheckedCreateWithoutParentInput[]
+    connectOrCreate?: PageTypeCreateOrConnectWithoutParentInput | PageTypeCreateOrConnectWithoutParentInput[]
+    upsert?: PageTypeUpsertWithWhereUniqueWithoutParentInput | PageTypeUpsertWithWhereUniqueWithoutParentInput[]
+    createMany?: PageTypeCreateManyParentInputEnvelope
+    set?: PageTypeWhereUniqueInput | PageTypeWhereUniqueInput[]
+    disconnect?: PageTypeWhereUniqueInput | PageTypeWhereUniqueInput[]
+    delete?: PageTypeWhereUniqueInput | PageTypeWhereUniqueInput[]
+    connect?: PageTypeWhereUniqueInput | PageTypeWhereUniqueInput[]
+    update?: PageTypeUpdateWithWhereUniqueWithoutParentInput | PageTypeUpdateWithWhereUniqueWithoutParentInput[]
+    updateMany?: PageTypeUpdateManyWithWhereWithoutParentInput | PageTypeUpdateManyWithWhereWithoutParentInput[]
+    deleteMany?: PageTypeScalarWhereInput | PageTypeScalarWhereInput[]
   }
 
   export type PageUncheckedUpdateManyWithoutPage_typeNestedInput = {
@@ -37947,6 +38127,69 @@ export namespace Prisma {
     cases_created?: CaseUncheckedUpdateManyWithoutCreatedByNestedInput
   }
 
+  export type PageTypeCreateWithoutChildrenInput = {
+    id?: string
+    name: string
+    slug: string
+    description?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    parent?: PageTypeCreateNestedOneWithoutChildrenInput
+    pages?: PageCreateNestedManyWithoutPage_typeInput
+  }
+
+  export type PageTypeUncheckedCreateWithoutChildrenInput = {
+    id?: string
+    name: string
+    slug: string
+    description?: string | null
+    parent_id?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    pages?: PageUncheckedCreateNestedManyWithoutPage_typeInput
+  }
+
+  export type PageTypeCreateOrConnectWithoutChildrenInput = {
+    where: PageTypeWhereUniqueInput
+    create: XOR<PageTypeCreateWithoutChildrenInput, PageTypeUncheckedCreateWithoutChildrenInput>
+  }
+
+  export type PageTypeCreateWithoutParentInput = {
+    id?: string
+    name: string
+    slug: string
+    description?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    children?: PageTypeCreateNestedManyWithoutParentInput
+    pages?: PageCreateNestedManyWithoutPage_typeInput
+  }
+
+  export type PageTypeUncheckedCreateWithoutParentInput = {
+    id?: string
+    name: string
+    slug: string
+    description?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    children?: PageTypeUncheckedCreateNestedManyWithoutParentInput
+    pages?: PageUncheckedCreateNestedManyWithoutPage_typeInput
+  }
+
+  export type PageTypeCreateOrConnectWithoutParentInput = {
+    where: PageTypeWhereUniqueInput
+    create: XOR<PageTypeCreateWithoutParentInput, PageTypeUncheckedCreateWithoutParentInput>
+  }
+
+  export type PageTypeCreateManyParentInputEnvelope = {
+    data: PageTypeCreateManyParentInput | PageTypeCreateManyParentInput[]
+    skipDuplicates?: boolean
+  }
+
   export type PageCreateWithoutPage_typeInput = {
     id?: string
     slug: string
@@ -37995,6 +38238,71 @@ export namespace Prisma {
   export type PageCreateManyPage_typeInputEnvelope = {
     data: PageCreateManyPage_typeInput | PageCreateManyPage_typeInput[]
     skipDuplicates?: boolean
+  }
+
+  export type PageTypeUpsertWithoutChildrenInput = {
+    update: XOR<PageTypeUpdateWithoutChildrenInput, PageTypeUncheckedUpdateWithoutChildrenInput>
+    create: XOR<PageTypeCreateWithoutChildrenInput, PageTypeUncheckedCreateWithoutChildrenInput>
+    where?: PageTypeWhereInput
+  }
+
+  export type PageTypeUpdateToOneWithWhereWithoutChildrenInput = {
+    where?: PageTypeWhereInput
+    data: XOR<PageTypeUpdateWithoutChildrenInput, PageTypeUncheckedUpdateWithoutChildrenInput>
+  }
+
+  export type PageTypeUpdateWithoutChildrenInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    parent?: PageTypeUpdateOneWithoutChildrenNestedInput
+    pages?: PageUpdateManyWithoutPage_typeNestedInput
+  }
+
+  export type PageTypeUncheckedUpdateWithoutChildrenInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    parent_id?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    pages?: PageUncheckedUpdateManyWithoutPage_typeNestedInput
+  }
+
+  export type PageTypeUpsertWithWhereUniqueWithoutParentInput = {
+    where: PageTypeWhereUniqueInput
+    update: XOR<PageTypeUpdateWithoutParentInput, PageTypeUncheckedUpdateWithoutParentInput>
+    create: XOR<PageTypeCreateWithoutParentInput, PageTypeUncheckedCreateWithoutParentInput>
+  }
+
+  export type PageTypeUpdateWithWhereUniqueWithoutParentInput = {
+    where: PageTypeWhereUniqueInput
+    data: XOR<PageTypeUpdateWithoutParentInput, PageTypeUncheckedUpdateWithoutParentInput>
+  }
+
+  export type PageTypeUpdateManyWithWhereWithoutParentInput = {
+    where: PageTypeScalarWhereInput
+    data: XOR<PageTypeUpdateManyMutationInput, PageTypeUncheckedUpdateManyWithoutParentInput>
+  }
+
+  export type PageTypeScalarWhereInput = {
+    AND?: PageTypeScalarWhereInput | PageTypeScalarWhereInput[]
+    OR?: PageTypeScalarWhereInput[]
+    NOT?: PageTypeScalarWhereInput | PageTypeScalarWhereInput[]
+    id?: StringFilter<"PageType"> | string
+    name?: StringFilter<"PageType"> | string
+    slug?: StringFilter<"PageType"> | string
+    description?: StringNullableFilter<"PageType"> | string | null
+    parent_id?: StringNullableFilter<"PageType"> | string | null
+    created_at?: DateTimeFilter<"PageType"> | Date | string
+    updated_at?: DateTimeFilter<"PageType"> | Date | string
+    deleted_at?: DateTimeNullableFilter<"PageType"> | Date | string | null
   }
 
   export type PageUpsertWithWhereUniqueWithoutPage_typeInput = {
@@ -38116,6 +38424,8 @@ export namespace Prisma {
     created_at?: Date | string
     updated_at?: Date | string
     deleted_at?: Date | string | null
+    parent?: PageTypeCreateNestedOneWithoutChildrenInput
+    children?: PageTypeCreateNestedManyWithoutParentInput
   }
 
   export type PageTypeUncheckedCreateWithoutPagesInput = {
@@ -38123,9 +38433,11 @@ export namespace Prisma {
     name: string
     slug: string
     description?: string | null
+    parent_id?: string | null
     created_at?: Date | string
     updated_at?: Date | string
     deleted_at?: Date | string | null
+    children?: PageTypeUncheckedCreateNestedManyWithoutParentInput
   }
 
   export type PageTypeCreateOrConnectWithoutPagesInput = {
@@ -38355,6 +38667,8 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    parent?: PageTypeUpdateOneWithoutChildrenNestedInput
+    children?: PageTypeUpdateManyWithoutParentNestedInput
   }
 
   export type PageTypeUncheckedUpdateWithoutPagesInput = {
@@ -38362,9 +38676,11 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    parent_id?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    children?: PageTypeUncheckedUpdateManyWithoutParentNestedInput
   }
 
   export type ResourceUpsertWithoutPage_thumbnailsInput = {
@@ -40077,6 +40393,16 @@ export namespace Prisma {
     contactNo?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
+  export type PageTypeCreateManyParentInput = {
+    id?: string
+    name: string
+    slug: string
+    description?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+  }
+
   export type PageCreateManyPage_typeInput = {
     id?: string
     slug: string
@@ -40092,6 +40418,40 @@ export namespace Prisma {
     created_at?: Date | string
     updated_at?: Date | string
     deleted_at?: Date | string | null
+  }
+
+  export type PageTypeUpdateWithoutParentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    children?: PageTypeUpdateManyWithoutParentNestedInput
+    pages?: PageUpdateManyWithoutPage_typeNestedInput
+  }
+
+  export type PageTypeUncheckedUpdateWithoutParentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    children?: PageTypeUncheckedUpdateManyWithoutParentNestedInput
+    pages?: PageUncheckedUpdateManyWithoutPage_typeNestedInput
+  }
+
+  export type PageTypeUncheckedUpdateManyWithoutParentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type PageUpdateWithoutPage_typeInput = {

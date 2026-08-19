@@ -12,7 +12,7 @@ export default function HeroBanner() {
         width={1024}
         height={1024}
       />
-      <div className="container-x relative z-10 pt-32 pb-24 max-w-4xl">
+      <div className="container-x relative z-10 pt-32 pb-24">
         <span className="eyebrow">{t("eyebrow")}</span>
         <h1 className="mt-6 font-serif text-5xl md:text-6xl lg:text-7xl leading-[1.02] text-cream">
           {t.rich("title", {

@@ -13,6 +13,7 @@ route.put("/page-types/:id", [verifyAccessToken, can("pages", "update")], PageTy
 route.delete("/page-types/:id", [verifyAccessToken, can("pages", "delete")], PageTypeController.destroy);
 
 // --- Page routes ---
+route.get("/public/insights", PageController.getInsights);
 route.get("/", [verifyAccessToken, can("pages", "list")], PageController.index);
 route.post("/", [verifyAccessToken, can("pages", "create")], PageController.store);
 
