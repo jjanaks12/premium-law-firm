@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { CompositeDatePicker } from "@/components/ui/composite-date-picker";
 import { useTranslations } from "next-intl";
 import { PlusIcon, Trash2Icon } from "lucide-react";
 import {
@@ -190,18 +191,18 @@ export default function HearingsTab({
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label>{t("hearingDate")}</Label>
-                <Input
-                  type="date"
+                <CompositeDatePicker
                   value={hearingDate}
-                  onChange={(e) => setHearingDate(e.target.value)}
+                  onChange={(val) => setHearingDate(val)}
+                  showTime={true}
                 />
               </div>
               <div className="space-y-2">
                 <Label>{t("nextHearingDate")}</Label>
-                <Input
-                  type="date"
+                <CompositeDatePicker
                   value={nextHearingDate}
-                  onChange={(e) => setNextHearingDate(e.target.value)}
+                  onChange={(val) => setNextHearingDate(val)}
+                  showTime={true}
                 />
               </div>
             </div>

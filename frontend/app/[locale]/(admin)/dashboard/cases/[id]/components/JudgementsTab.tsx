@@ -11,6 +11,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useAxios } from "@/lib/services/axios.service";
+import { CompositeDatePicker } from "@/components/ui/composite-date-picker";
 import { useTranslations } from "next-intl";
 import { PlusIcon, Trash2Icon } from "lucide-react";
 import { toast } from "@/components/ui/toast";
@@ -202,19 +203,19 @@ export default function JudgementsTab({
 
               <div className="space-y-2">
                 <Label>{t("JudgementsTab.date")}</Label>
-                <Input
-                  type="date"
+                <CompositeDatePicker
                   value={date}
-                  onChange={(e) => setDate(e.target.value)}
+                  onChange={(val) => setDate(val)}
+                  showTime={false}
                 />
               </div>
 
               <div className="space-y-2">
                 <Label>{t("JudgementsTab.verifiedDate")}</Label>
-                <Input
-                  type="date"
+                <CompositeDatePicker
                   value={verifiedDate}
-                  onChange={(e) => setVerifiedDate(e.target.value)}
+                  onChange={(val) => setVerifiedDate(val)}
+                  showTime={false}
                 />
               </div>
             </div>

@@ -249,9 +249,7 @@ export default function CasesPage() {
                       </TableCell>
                       <TableCell>
                         {activeDetail?.registrationDate
-                          ? dayjs(activeDetail.registrationDate).format(
-                              "MMM DD, YYYY",
-                            )
+                          ? dayjs(activeDetail.registrationDate).format("YYYY-MM-DD")
                           : "N/A"}
                       </TableCell>
                       <TableCell className="text-right">

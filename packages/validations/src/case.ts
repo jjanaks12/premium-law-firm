@@ -8,9 +8,10 @@ export const caseValidationSchema = yup.object({
     yup.object({
       caseName: yup.string().trim().required("Case Name is required"),
       caseNumber: yup.string().trim(),
-      registrationDate: yup.date().nullable(),
-      courtName: yup.string().nullable(),
-      sectionCourtRoom: yup.string().nullable(),
+      registrationDate: yup.date().required("Registration Date is required").nullable(),
+      courtName: yup.string().required("Court Name is required").nullable(),
+      sectionCourtRoom: yup.string().required("Room No. is required").nullable(),
+      courtLevelId: yup.string().required("Court Level is required").nullable(),
     })
   ).min(1, "At least one court detail is required"),
   parties: yup.array().of(

@@ -9,7 +9,7 @@ import { requestLogger } from '@/middlewares/requestLogger';
 
 const app = express();
 
-const allowedOrigins = process.env.CLIENT_URL ? process.env.CLIENT_URL.split(',').map(url => url.trim()) : [];
+const allowedOrigins = process.env.CLIENT_URL ? process.env.CLIENT_URL.replace(/['"]/g, '').split(',').map(url => url.trim()) : [];
 
 app.use(cors({
     origin: (origin, callback) => {

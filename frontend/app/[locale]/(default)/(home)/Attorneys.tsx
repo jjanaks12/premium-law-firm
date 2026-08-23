@@ -4,25 +4,25 @@ import { useTranslations } from "next-intl";
 const attorneys = [
   {
     img: "/images/attorney-1.jpg",
-    name: "Sr. Adv. Bishnu P. Sharma",
-    title: "Managing Partner",
-    spec: "Corporate & Constitutional Law",
+    name: "वरिष्ट अधिवक्ता सीताराम के.सी",
+    title: "अधिवक्ता कुमार भट्ट",
+    spec: "अधिवक्ता सम्झना के.सी",
   },
   {
     img: "/images/attorney-2.jpg",
-    name: "Adv. Sabina Rana Magar",
+    name: "अधिवक्ता मेनुका सुवेदि",
     title: "Senior Partner",
     spec: "Civil & Commercial Litigation",
   },
   {
     img: "/images/attorney-3.jpg",
-    name: "Adv. Dipendra Shrestha",
+    name: "अधिवक्ता सुदिप कुमार साह",
     title: "Partner",
     spec: "Intellectual Property & Tech",
   },
   {
     img: "/images/attorney-4.jpg",
-    name: "Adv. Kamala Adhikari",
+    name: "अधिवक्ता सदिक्षा अधिकारी",
     title: "Partner",
     spec: "Criminal Defence & Human Rights",
   },

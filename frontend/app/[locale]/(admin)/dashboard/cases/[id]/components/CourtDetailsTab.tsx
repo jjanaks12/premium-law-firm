@@ -15,7 +15,7 @@ import dayjs from "dayjs";
 import { useAxios } from "@/lib/services/axios.service";
 import { toast } from "@/components/ui/toast";
 import { Edit2Icon, ArrowRightLeftIcon } from "lucide-react";
-import { DatePicker } from "@/components/ui/date-picker";
+import { CompositeDatePicker } from "@/components/ui/composite-date-picker";
 import {
   Select,
   SelectContent,
@@ -58,8 +58,8 @@ export default function CourtDetailsTab({
   const [judgeName, setJudgeName] = useState("");
   const [courtType, setCourtType] = useState("");
   const [courtName, setCourtName] = useState("");
-  const [registrationDate, setRegistrationDate] = useState<Date | undefined>(
-    undefined,
+  const [registrationDate, setRegistrationDate] = useState<string>(
+    ""
   );
 
   const activeDetail =
@@ -76,7 +76,7 @@ export default function CourtDetailsTab({
     setCourtType(detail.courtType || "");
     setCourtName(detail.courtName || "");
     setRegistrationDate(
-      detail.registrationDate ? new Date(detail.registrationDate) : undefined,
+      detail.registrationDate ? dayjs(detail.registrationDate).format("YYYY-MM-DD") : "",
     );
     setOpen(true);
   };
@@ -90,7 +90,7 @@ export default function CourtDetailsTab({
     setJudgeName("");
     setCourtType("");
     setCourtName("");
-    setRegistrationDate(new Date());
+    setRegistrationDate("");
     setOpen(true);
   };
 
@@ -114,9 +114,7 @@ export default function CourtDetailsTab({
               judgeName,
               courtType,
               courtName,
-              registrationDate: registrationDate
-                ? dayjs(registrationDate).format("YYYY-MM-DD")
-                : null,
+              registrationDate: registrationDate || null,
             };
           }
           return d;
@@ -132,9 +130,7 @@ export default function CourtDetailsTab({
           judgeName,
           courtType,
           courtName,
-          registrationDate: registrationDate
-            ? dayjs(registrationDate).format("YYYY-MM-DD")
-            : null,
+          registrationDate: registrationDate || null,
           isActive: true,
           parentId: activeDetail?.id || null,
         });
@@ -330,7 +326,7 @@ export default function CourtDetailsTab({
             </div>
             <div className="space-y-2 flex flex-col">
               <Label>{t("formRegDate")}</Label>
-              <DatePicker
+              <CompositeDatePicker
                 value={registrationDate}
                 onChange={setRegistrationDate}
               />

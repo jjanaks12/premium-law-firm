@@ -28,7 +28,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { DatePicker } from "@/components/ui/date-picker";
+import { CompositeDatePicker } from "@/components/ui/composite-date-picker";
 import { Checkbox } from "@/components/ui/checkbox";
 import { CaseMigrationModal } from "./CaseMigrationModal";
 
@@ -192,17 +192,7 @@ export default function CaseForm({
           ...p,
           waris: p.waris?.[0] || null,
         }))
-      : [
-          {
-            partyName: "",
-            roleId: "",
-            citizenshipNo: "",
-            permanentAddress: "",
-            temporaryAddress: "",
-            contactNo: "",
-            waris: null,
-          },
-        ],
+      : [],
   };
 
   const getParty = (partyName: string) => {
@@ -262,17 +252,16 @@ export default function CaseForm({
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="registrationDate">{t("formRegDate")}</Label>
+                <Label htmlFor="registrationDate">
+                  {t("formRegDate")} <span className="text-destructive">*</span>
+                </Label>
                 <Field name="courtDetails[0].registrationDate">
                   {({ field, form }: FieldProps) => (
-                    <DatePicker
+                    <CompositeDatePicker
                       id="registrationDate"
                       value={field.value}
                       onChange={(date) => {
-                        form.setFieldValue(
-                          field.name,
-                          date ? dayjs(date).format("YYYY-MM-DD") : "",
-                        );
+                        form.setFieldValue(field.name, date);
                       }}
                     />
                   )}
@@ -336,7 +325,9 @@ export default function CaseForm({
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="courtLevelId">{t("courtLevel")}</Label>
+                <Label htmlFor="courtLevelId">
+                  {t("courtLevel")} <span className="text-destructive">*</span>
+                </Label>
                 <Field name="courtDetails[0].courtLevelId">
                   {({ field, form }: FieldProps) => (
                     <Select
@@ -383,7 +374,9 @@ export default function CaseForm({
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="courtName">{t("courtName")}</Label>
+                <Label htmlFor="courtName">
+                  {t("courtName")} <span className="text-destructive">*</span>
+                </Label>
                 <Field name="courtDetails[0].courtName">
                   {({ field }: FieldProps) => (
                     <Input {...field} id="courtName" />
@@ -396,7 +389,9 @@ export default function CaseForm({
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="sectionCourtRoom">{t("formFaat")}</Label>
+                <Label htmlFor="sectionCourtRoom">
+                  {t("formFaat")} <span className="text-destructive">*</span>
+                </Label>
                 <Field name="courtDetails[0].sectionCourtRoom">
                   {({ field }: FieldProps) => (
                     <Input {...field} id="sectionCourtRoom" />

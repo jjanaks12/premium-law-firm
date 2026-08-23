@@ -28,6 +28,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { CompositeDatePicker } from "@/components/ui/composite-date-picker";
 import { useAxios } from "@/lib/services/axios.service";
 import { toast } from "@/components/ui/toast";
 
@@ -216,10 +217,10 @@ export default function PaymentsTab({
               </div>
               <div className="space-y-2">
                 <Label>Date</Label>
-                <Input
-                  type="date"
+                <CompositeDatePicker
                   value={paymentDate}
-                  onChange={(e) => setPaymentDate(e.target.value)}
+                  onChange={(val) => setPaymentDate(val)}
+                  showTime={false}
                 />
               </div>
             </div>

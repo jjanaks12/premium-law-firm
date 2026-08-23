@@ -6,7 +6,6 @@ import { useTranslations } from "next-intl";
 import { useAxios } from "@/lib/services/axios.service";
 import { Link } from "@/src/i18n/routing";
 import InsightCard from "../insight/Card";
-import { getFileUrl } from "@/lib/utils";
 
 export default function Insights() {
   const t = useTranslations("Insights");
@@ -54,7 +53,7 @@ export default function Insights() {
             Array.from({ length: 3 }).map((_, i) => (
               <div
                 key={i}
-                className="aspect-4/3 rounded-lg bg-muted/40 animate-pulse"
+                className="aspect-4/3 rounded-lg bg-muted animate-pulse"
               />
             ))
           ) : posts.length > 0 ? (

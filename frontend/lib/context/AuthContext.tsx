@@ -7,7 +7,12 @@ import { UserWithRole } from "@/lib/dictionary/adminNav";
 interface AuthContextType {
   user: UserWithRole | null;
   loading: boolean;
-  login: (accessToken: string, refreshToken: string, userData: any, remember: boolean) => void;
+  login: (
+    accessToken: string,
+    refreshToken: string,
+    userData: any,
+    remember: boolean,
+  ) => void;
   logout: () => Promise<void>;
   refreshUser: () => Promise<void>;
 }
@@ -29,14 +34,20 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       }
 
       const { data } = await axios.get("/auth/me");
-      if (data.success && data.data) {
+      if (data?.success && data?.data) {
         setUser(data.data);
       } else {
         setUser(null);
       }
     } catch (error: any) {
-      if (error.isNetworkError || error.code === "ERR_NETWORK" || error.message === "Network Error") {
-        console.warn("[Auth Context] Failed to fetch profile: Network Error (Backend offline)");
+      if (
+        error.isNetworkError ||
+        error.code === "ERR_NETWORK" ||
+        error.message === "Network Error"
+      ) {
+        console.warn(
+          "[Auth Context] Failed to fetch profile: Network Error (Backend offline)",
+        );
       } else {
         console.error("[Auth Context] Failed to fetch profile:", error);
       }
@@ -61,7 +72,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     accessToken: string,
     refreshToken: string,
     userData: any,
-    remember: boolean
+    remember: boolean,
   ) => {
     localStorage.setItem("accessToken", accessToken);
     localStorage.setItem("refreshToken", refreshToken);
@@ -76,8 +87,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         await axios.post("/auth/logout", { refreshToken });
       }
     } catch (error: any) {
-      if (error.isNetworkError || error.code === "ERR_NETWORK" || error.message === "Network Error") {
-        console.warn("[Auth Context] Logout API warning: Network Error (Backend offline)");
+      if (
+        error.isNetworkError ||
+        error.code === "ERR_NETWORK" ||
+        error.message === "Network Error"
+      ) {
+        console.warn(
+          "[Auth Context] Logout API warning: Network Error (Backend offline)",
+        );
       } else {
         console.error("[Auth Context] Logout API error:", error);
       }
