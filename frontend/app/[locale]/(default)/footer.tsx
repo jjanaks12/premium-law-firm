@@ -58,19 +58,26 @@ export default function Footer() {
           <ul className="mt-5 space-y-4 text-sm">
             <li className="flex gap-3">
               <MapPin className="h-4 w-4 text-gold shrink-0 mt-0.5" />
-              <span>
+              <address>
                 {t("Footer.address1")}
                 <br />
                 {t("Footer.address2")}
-              </span>
+              </address>
             </li>
             <li className="flex gap-3">
               <Phone className="h-4 w-4 text-gold shrink-0 mt-0.5" />
-              <span>+977&nbsp;1&nbsp;444&nbsp;1122</span>
+              <a
+                href="tel:+9779851034583"
+                className="hover:text-gold transition-colors"
+              >
+                +977 9851034583
+              </a>
             </li>
             <li className="flex gap-3">
               <Mail className="h-4 w-4 text-gold shrink-0 mt-0.5" />
-              <span>premiumlaw2022@gmail.com</span>
+              <a href="mailto:premiumlaw2022@gmail.com">
+                premiumlaw2022@gmail.com
+              </a>
             </li>
           </ul>
         </div>
