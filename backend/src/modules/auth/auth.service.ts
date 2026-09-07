@@ -190,7 +190,10 @@ export const resetPassword = async (tokenStr: string, newPassword: string) => {
   await prisma.$transaction([
     prisma.user.update({
       where: { id: dbToken.user_id },
-      data: { password: hashedPassword },
+      data: { 
+        password: hashedPassword,
+        ...(dbToken.user.status === 'invited' ? { status: 'active' } : {})
+      },
     }),
     prisma.passwordResetToken.delete({
       where: { token: hashedToken },
