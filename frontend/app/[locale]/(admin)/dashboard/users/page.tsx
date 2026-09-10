@@ -83,6 +83,9 @@ export default function UsersPage() {
   const [confirmDeleteOpen, setConfirmDeleteOpen] = useState(false);
   const [restoreId, setRestoreId] = useState<string | null>(null);
   const [confirmRestoreOpen, setConfirmRestoreOpen] = useState(false);
+  const [confirmStatusOpen, setConfirmStatusOpen] = useState(false);
+  const [statusUser, setStatusUser] = useState<User | undefined>(undefined);
+  const [newStatus, setNewStatus] = useState<string>("");
 
   const fetchRoles = async () => {
     try {
@@ -260,6 +263,38 @@ export default function UsersPage() {
     }
   };
 
+  const handleStatusChangeRequest = (user: User, status: string) => {
+    if (user.status === status) return;
+    setStatusUser(user);
+    setNewStatus(status);
+    setConfirmStatusOpen(true);
+  };
+
+  const handleConfirmStatus = async () => {
+    if (!statusUser) return;
+    try {
+      const { data } = await axios.post(`/users/status/${statusUser.id}`, { status: newStatus });
+      if (data.success) {
+        toast.add({
+          title: "Success",
+          description: "User status updated successfully",
+          type: "success",
+        });
+        fetchUsers();
+      }
+    } catch (err: any) {
+      toast.add({
+        title: "Error",
+        description: err.response?.data?.message || err.message || "Failed to update status",
+        type: "error",
+      });
+    } finally {
+      setConfirmStatusOpen(false);
+      setStatusUser(undefined);
+      setNewStatus("");
+    }
+  };
+
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -375,8 +410,11 @@ export default function UsersPage() {
                       {user.role?.name || "—"}
                     </TableCell>
                     <TableCell className="py-4 px-6">
-                      <span
-                        className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold select-none border ${
+                      <select
+                        value={status}
+                        onChange={(e) => handleStatusChangeRequest(user, e.target.value)}
+                        disabled={user.role?.name.toLowerCase() === "admin"}
+                        className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold select-none border cursor-pointer outline-none ${
                           status === "active"
                             ? "bg-green-500/10 border-green-500/30 text-green-600"
                             : status === "disabled"
@@ -386,8 +424,10 @@ export default function UsersPage() {
                                 : "bg-amber-500/10 border-amber-500/30 text-amber-600"
                         }`}
                       >
-                        {t(status)}
-                      </span>
+                        <option value="active" className="text-black bg-white">{t("active")}</option>
+                        <option value="disabled" className="text-black bg-white">{t("disabled")}</option>
+                        <option value="invited" className="text-black bg-white">{t("invited")}</option>
+                      </select>
                     </TableCell>
                     <TableCell className="py-4 px-6 text-right">
                       <div className="flex gap-2 justify-end items-center">
@@ -424,30 +464,6 @@ export default function UsersPage() {
                                 title="Send Password Reset Link"
                               >
                                 <KeyIcon className="h-4 w-4" />
-                              </Button>
-                            )}
-                            {user.status !== "invited" && user.role?.name.toLowerCase() !== "admin" && (
-                              <Button
-                                variant="ghost"
-                                size="icon"
-                                className={`h-8 w-8 ${
-                                  user.status === "active"
-                                    ? "text-red-500 hover:text-red-600"
-                                    : "text-green-500 hover:text-green-600"
-                                }`}
-                                onClick={() => handleToggleStatus(user)}
-                                permission="users.update"
-                                title={
-                                  user.status === "active"
-                                    ? "Disable User"
-                                    : "Enable User"
-                                }
-                              >
-                                {user.status === "active" ? (
-                                  <UserXIcon className="h-4 w-4" />
-                                ) : (
-                                  <UserCheckIcon className="h-4 w-4" />
-                                )}
                               </Button>
                             )}
                             {user.role?.name.toLowerCase() !== "admin" && (
@@ -573,8 +589,41 @@ export default function UsersPage() {
                   setConfirmRestoreOpen(false);
                 }
               }}
+              className="bg-green-600 hover:bg-green-700 text-white"
             >
-              {t("confirmRestoreBtn")}
+              {t("restoreBtn")}
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
+      <AlertDialog
+        open={confirmStatusOpen}
+        onOpenChange={setConfirmStatusOpen}
+      >
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>{t("confirmStatusTitle")}</AlertDialogTitle>
+            <AlertDialogDescription>
+              {t("confirmStatusDesc", {
+                name: `${statusUser?.first_name} ${statusUser?.last_name}`,
+                status: t(newStatus || "active"),
+              })}
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel onClick={() => {
+              setConfirmStatusOpen(false);
+              setStatusUser(undefined);
+              setNewStatus("");
+            }}>
+              {t("cancel")}
+            </AlertDialogCancel>
+            <AlertDialogAction
+              onClick={handleConfirmStatus}
+              className="bg-primary text-primary-foreground"
+            >
+              {t("confirmBtn")}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

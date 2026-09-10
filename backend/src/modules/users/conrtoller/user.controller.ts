@@ -61,6 +61,20 @@ export const index = async (request: Request, response: Response, next: NextFunc
   }
 };
 
+export const options = async (request: Request, response: Response, next: NextFunction) => {
+  try {
+    const users = await prisma.user.findMany({
+      where: { status: "active", deleted_at: null },
+      include: { role: true },
+      orderBy: { first_name: "asc" },
+      omit: { password: true, invitation_token: true }
+    });
+    response.json({ success: true, data: users });
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const invite = async (request: Request, response: Response, next: NextFunction) => {
   try {
     const validatedData = await userInviteSchema.validate(request.body, { abortEarly: false });
@@ -86,6 +100,7 @@ export const invite = async (request: Request, response: Response, next: NextFun
       } else {
         // If soft-deleted, restore and re-invite the user
         const token = crypto.randomBytes(32).toString("hex");
+        const hashedToken = crypto.createHash("sha256").update(token).digest("hex");
         const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000); // 7 days
 
         const restoredUser = await prisma.user.update({
@@ -95,14 +110,20 @@ export const invite = async (request: Request, response: Response, next: NextFun
             last_name,
             role_id,
             status: "invited",
-            invitation_token: token,
-            invitation_expires_at: expiresAt,
             deleted_at: null,
           },
         });
 
+        await prisma.passwordResetToken.create({
+          data: {
+            token: hashedToken,
+            user_id: restoredUser.id,
+            expires_at: expiresAt,
+          },
+        });
+
         // Send invitation email
-        const inviteUrl = `${CLIENT_URL}${localePath}/accept-invitation?token=${token}`;
+        const inviteUrl = `${CLIENT_URL}${localePath}/reset-password?token=${token}`;
         const inviterName = request.auth_user
           ? `${request.auth_user.first_name} ${request.auth_user.last_name}`
           : "Administrator";
@@ -130,6 +151,7 @@ export const invite = async (request: Request, response: Response, next: NextFun
 
     // Create new invited user
     const token = crypto.randomBytes(32).toString("hex");
+    const hashedToken = crypto.createHash("sha256").update(token).digest("hex");
     const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000); // 7 days
 
     const newUser = await prisma.user.create({
@@ -139,13 +161,19 @@ export const invite = async (request: Request, response: Response, next: NextFun
         last_name,
         role_id,
         status: "invited",
-        invitation_token: token,
-        invitation_expires_at: expiresAt,
+      },
+    });
+
+    await prisma.passwordResetToken.create({
+      data: {
+        token: hashedToken,
+        user_id: newUser.id,
+        expires_at: expiresAt,
       },
     });
 
     // Send invitation email
-    const inviteUrl = `${CLIENT_URL}${localePath}/accept-invitation?token=${token}`;
+    const inviteUrl = `${CLIENT_URL}${localePath}/reset-password?token=${token}`;
     const inviterName = request.auth_user
       ? `${request.auth_user.first_name} ${request.auth_user.last_name}`
       : "Administrator";
@@ -242,6 +270,44 @@ export const disable = async (request: Request, response: Response, next: NextFu
     });
 
     response.json({ success: true, message: "User disabled successfully", data: updated });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const updateStatus = async (request: Request, response: Response, next: NextFunction) => {
+  try {
+    const id = request.params.id as string;
+    const { status } = request.body;
+
+    const user = await prisma.user.findFirst({
+      where: { id, deleted_at: null },
+      include: { role: true },
+    });
+
+    if (!user) {
+      throw createHttpError.NotFound("User not found");
+    }
+
+    if (request.auth_user && request.auth_user.id === id) {
+      throw createHttpError.BadRequest("You cannot change the status of your own account");
+    }
+
+    if (user.role?.name.toLowerCase() === "admin") {
+      throw createHttpError.BadRequest("You cannot change the status of a user with the Admin role");
+    }
+
+    const validStatuses = ["active", "disabled", "invited"];
+    if (!validStatuses.includes(status)) {
+      throw createHttpError.BadRequest("Invalid status");
+    }
+
+    const updated = await prisma.user.update({
+      where: { id },
+      data: { status },
+    });
+
+    response.json({ success: true, message: "User status updated successfully", data: updated });
   } catch (error) {
     next(error);
   }

@@ -56,7 +56,7 @@ export default function PaymentsTab({
   useEffect(() => {
     if (open && users.length === 0) {
       axios
-        .get("/users?status=active")
+        .get("/users/options")
         .then((res) => {
           setUsers(res.data.data || []);
         })

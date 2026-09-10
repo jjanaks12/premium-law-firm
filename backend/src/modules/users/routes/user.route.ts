@@ -9,10 +9,12 @@ const route = Router();
 route.post("/accept-invitation", [], userController.acceptInvitation);
 
 // Authenticated user management routes
+route.get("/options", [verifyAccessToken], userController.options);
 route.get("/", [verifyAccessToken, can("users", "list")], userController.index);
 route.post("/invite", [verifyAccessToken, can("users", "create")], userController.invite);
 route.post("/disable/:id", [verifyAccessToken, can("users", "update")], userController.disable);
 route.post("/enable/:id", [verifyAccessToken, can("users", "update")], userController.enable);
+route.post("/status/:id", [verifyAccessToken, can("users", "update")], userController.updateStatus);
 route.delete("/:id", [verifyAccessToken, can("users", "delete")], userController.destroy);
 route.post("/restore/:id", [verifyAccessToken, can("users", "delete")], userController.restore);
 route.put("/:id", [verifyAccessToken, can("users", "update")], userController.update);
