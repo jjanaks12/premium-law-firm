@@ -87,7 +87,7 @@ export default function CaseForm({
 
     const fetchLawyers = async () => {
       try {
-        const { data } = await axios.get("/users?status=active");
+        const { data } = await axios.get("/users/options");
         if (data.data) {
           const lawyers = data.data.filter(
             (u: any) => u.role?.name?.toLowerCase() === "lawyer",
