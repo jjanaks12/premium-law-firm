@@ -474,6 +474,7 @@
     "lawyerRemoved": "वकिल हटाइयो",
     "caseInfo": "मुद्दाको जानकारी",
     "caseNumber": "मुद्दा नम्बर",
+    "court": "अदालत",
     "regDate": "दर्ता मिति",
     "status": "स्थिति",
     "nature": "प्रकृति",
@@ -514,6 +515,10 @@
     "delete": "मेटाउनुहोस्",
     "summaryPlaceholder": "सारांश वा आदेश...",
     "selectCourt": "अदालत चयन गर्नुहोस्",
+    "orderType": "आदेशको प्रकार",
+    "selectOrderType": "प्रकार चयन गर्नुहोस्",
+    "aadesh": "आदेश",
+    "failsala": "फैसला",
     "na": "N/A"
   },
   "CaseDetailPage": {
@@ -579,6 +584,7 @@
     "errorMsg": "मिसिल अपडेट गर्न विफल",
     "title": "मिसिल",
     "facts": "तथ्य",
+    "fileType": "फाइलको प्रकार",
     "enterFacts": "तथ्य प्रविष्ट गर्नुहोस्...",
     "details": "सम्बद्ध कानुन",
     "addDetail": "विवरण थप्नुहोस्",

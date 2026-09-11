@@ -11,6 +11,13 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
   AlertDialog,
   AlertDialogAction,
   AlertDialogCancel,
@@ -54,10 +61,13 @@ export default function HearingsTab({
   const [hearingDate, setHearingDate] = useState("");
   const [nextHearingDate, setNextHearingDate] = useState("");
   const [hearingOrder, setHearingOrder] = useState("");
+  const [hearingType, setHearingType] = useState("aadesh");
 
   const activeCourt =
     caseData.courtDetails?.find((d: any) => d.isActive) ||
     caseData.courtDetails?.[0];
+
+  const [selectedCourtId, setSelectedCourtId] = useState<string>("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -67,16 +77,18 @@ export default function HearingsTab({
         await axios.patch(`/cases/${caseData.id}/hearings/${editId}`, {
           hearingDate: hearingDate || undefined,
           nextHearingDate: nextHearingDate || undefined,
-          caseCourtDetailId: activeCourt?.id,
+          caseCourtDetailId: selectedCourtId || undefined,
           hearingOrder,
+          hearingType,
         });
         toast.add({ title: t("successAdd") || "Success" }); // Or a generic success edit message
       } else {
         await axios.post(`/cases/${caseData.id}/hearings`, {
           hearingDate: hearingDate || undefined,
           nextHearingDate: nextHearingDate || undefined,
-          caseCourtDetailId: activeCourt?.id,
+          caseCourtDetailId: selectedCourtId || undefined,
           hearingOrder,
+          hearingType,
         });
         toast.add({ title: t("successAdd") });
       }
@@ -86,6 +98,7 @@ export default function HearingsTab({
       setHearingDate("");
       setNextHearingDate("");
       setHearingOrder("");
+      setHearingType("aadesh");
       setEditId(null);
     } catch (error: any) {
       toast.add({
@@ -107,6 +120,8 @@ export default function HearingsTab({
       hearing.nextHearingDate ? hearing.nextHearingDate.substring(0, 16) : "",
     );
     setHearingOrder(hearing.hearingOrder || "");
+    setHearingType(hearing.hearingType || "aadesh");
+    setSelectedCourtId(hearing.caseCourtDetailId || activeCourt?.id || "");
     setOpen(true);
   };
 
@@ -141,6 +156,8 @@ export default function HearingsTab({
             setHearingDate("");
             setNextHearingDate("");
             setHearingOrder("");
+            setHearingType("aadesh");
+            setSelectedCourtId(activeCourt?.id || "");
             setOpen(true);
           }}
           size="sm"
@@ -214,10 +231,10 @@ export default function HearingsTab({
 
                 {h.hearingOrder && (
                   <div className="mt-auto pt-4 border-t">
-                    <p className="text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-1">{t("order")}</p>
-                    <p className="text-sm">
-                      {h.hearingOrder}
+                    <p className="text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-1">
+                      {h.hearingType === "failsala" ? "Failsala" : "Aadesh"}
                     </p>
+                    <p className="text-sm">{h.hearingOrder}</p>
                   </div>
                 )}
               </div>
@@ -230,7 +247,8 @@ export default function HearingsTab({
             </div>
             <h3 className="text-lg font-semibold mb-1">{t("noHearings")}</h3>
             <p className="text-sm text-muted-foreground mb-4 max-w-sm">
-              There are no hearings scheduled for this case yet. Add the first hearing to track the schedule.
+              There are no hearings scheduled for this case yet. Add the first
+              hearing to track the schedule.
             </p>
             <Button onClick={() => setOpen(true)} variant="secondary">
               {t("addHearing")}
@@ -240,7 +258,7 @@ export default function HearingsTab({
       </CardContent>
 
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent>
+        <DialogContent className="sm:max-w-2xl">
           <DialogHeader>
             <DialogTitle>
               {editId ? t("editHearing") || "Edit Hearing" : t("addHearing")}
@@ -267,24 +285,63 @@ export default function HearingsTab({
             </div>
             <div className="space-y-2">
               <Label>{t("court")}</Label>
-              <div className="flex h-10 w-full rounded-md border border-input bg-muted/50 px-3 py-2 text-sm text-muted-foreground">
-                {activeCourt ? (
-                  <>
-                    {activeCourt.courtName && (
-                      <span className="font-semibold mr-2">
-                        {activeCourt.courtName} -{" "}
-                      </span>
-                    )}
-                    {isKnownCourt(activeCourt.courtType)
-                      ? tCases(activeCourt.courtType)
-                      : activeCourt.courtType ||
-                        activeCourt.courtLevel?.name ||
-                        ""}
-                  </>
-                ) : (
-                  t("na")
-                )}
-              </div>
+              <Select
+                value={selectedCourtId}
+                onValueChange={(val) => setSelectedCourtId(val || "")}
+              >
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder={t("selectCourt") || "Select Court"}>
+                    {selectedCourtId &&
+                    caseData.courtDetails?.find(
+                      (c: any) => c.id === selectedCourtId,
+                    )
+                      ? (() => {
+                          const c = caseData.courtDetails.find(
+                            (cd: any) => cd.id === selectedCourtId,
+                          );
+                          return `${c.caseName || ""} ${c.caseName && c.caseNumber ? "-" : ""} ${c.caseNumber || ""} (${isKnownCourt(c.courtType) ? tCases(c.courtType) : c.courtType || c.courtLevel?.name || ""})`;
+                        })()
+                      : undefined}
+                  </SelectValue>
+                </SelectTrigger>
+                <SelectContent>
+                  {caseData.courtDetails?.map((c: any) => (
+                    <SelectItem key={c.id} value={c.id}>
+                      {c.caseName || ""} {c.caseName && c.caseNumber ? "-" : ""}{" "}
+                      {c.caseNumber || ""} (
+                      {isKnownCourt(c.courtType)
+                        ? tCases(c.courtType)
+                        : c.courtType || c.courtLevel?.name || ""}
+                      )
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="space-y-2">
+              <Label>{t("orderType") || "Order Type"}</Label>
+              <Select
+                value={hearingType}
+                onValueChange={(val) => setHearingType(val || "aadesh")}
+              >
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder={t("selectOrderType") || "Select type"}>
+                    {hearingType === "aadesh"
+                      ? t("aadesh") || "Aadesh"
+                      : hearingType === "failsala"
+                        ? t("failsala") || "Failsala"
+                        : undefined}
+                  </SelectValue>
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="aadesh">
+                    {t("aadesh") || "Aadesh"}
+                  </SelectItem>
+                  <SelectItem value="failsala">
+                    {t("failsala") || "Failsala"}
+                  </SelectItem>
+                </SelectContent>
+              </Select>
             </div>
             <div className="space-y-2">
               <Label>{t("order")}</Label>
@@ -306,6 +363,7 @@ export default function HearingsTab({
                   setHearingDate("");
                   setNextHearingDate("");
                   setHearingOrder("");
+                  setHearingType("aadesh");
                 }}
               >
                 {t("cancel")}

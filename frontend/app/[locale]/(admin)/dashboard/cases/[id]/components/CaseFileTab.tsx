@@ -9,6 +9,13 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { PlusIcon, Trash2Icon, LinkIcon } from "lucide-react";
 import { toast } from "@/components/ui/toast";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 interface CaseFileTabProps {
   caseData: any;
@@ -20,6 +27,13 @@ export default function CaseFileTab({ caseData, refresh }: CaseFileTabProps) {
   const t = useTranslations();
   const [loading, setLoading] = useState(false);
 
+  const initialFileType =
+    caseData.documents?.find(
+      (d: any) => d.documentUrl === (caseData.facts || ""),
+    )?.fileName === "Failsala"
+      ? "failsala"
+      : "aadesh";
+  const [fileType, setFileType] = useState(initialFileType);
   const [facts, setFacts] = useState(caseData.facts || "");
   const [details, setDetails] = useState<string[]>(
     Array.isArray(caseData.details) ? caseData.details : [],
@@ -72,7 +86,8 @@ export default function CaseFileTab({ caseData, refresh }: CaseFileTabProps) {
     setLoading(true);
     const formData = new FormData();
     formData.append("file", file);
-    formData.append("fileName", `Facts Document`);
+    const fileName = fileType === "failsala" ? "Failsala" : "Aadesh";
+    formData.append("fileName", fileName);
 
     try {
       const { data } = await axios.post(
@@ -99,11 +114,16 @@ export default function CaseFileTab({ caseData, refresh }: CaseFileTabProps) {
   const save = async () => {
     setLoading(true);
     try {
-      await axios.put(`/cases/${caseData.id}`, {
+      const payload: any = {
         facts,
         details,
         relatedLaw,
-      });
+      };
+      if (fileType === "failsala" && facts) {
+        payload.status = "Closed";
+      }
+
+      await axios.put(`/cases/${caseData.id}`, payload);
       toast.add({
         description: t("CaseFileTab.successMsg"),
         type: "success",
@@ -126,7 +146,23 @@ export default function CaseFileTab({ caseData, refresh }: CaseFileTabProps) {
           <CardTitle>{t("CaseFileTab.title")}</CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
-          <div className="space-y-2">
+          <div className="space-y-4">
+            <div className="flex flex-col md:flex-row md:items-center gap-4">
+              <Label>{t("CaseFileTab.fileType") || "File Type"}</Label>
+              <Select
+                value={fileType}
+                onValueChange={(a: any) => setFileType(a as any)}
+              >
+                <SelectTrigger className="w-45">
+                  <SelectValue placeholder="Select type" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="aadesh">Aadesh</SelectItem>
+                  <SelectItem value="failsala">Failsala</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
             <Label>{t("CaseFileTab.facts")}</Label>
             {facts &&
             (facts.startsWith("/uploads/") || facts.startsWith("http")) ? (

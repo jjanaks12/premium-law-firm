@@ -199,24 +199,33 @@ export const removeLawyer = async (req: Request, res: Response, next: NextFuncti
 export const addHearing = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { id } = req.params;
-    const { hearingDate, nextHearingDate, hearingOrder, caseCourtDetailId } = req.body;
+    const { hearingDate, nextHearingDate, hearingOrder, caseCourtDetailId, hearingType } = req.body;
     const hearing = await prisma.caseHearing.create({
       data: {
         caseId: id as string,
         hearingDate: hearingDate ? new Date(hearingDate) : null,
         nextHearingDate: nextHearingDate ? new Date(nextHearingDate) : null,
         hearingOrder,
-        caseCourtDetailId
+        caseCourtDetailId,
+        hearingType
       }
     });
+
+    if (hearingType === "failsala") {
+      await prisma.case.update({
+        where: { id: id as string },
+        data: { status: "Closed" }
+      });
+    }
+
     res.status(201).json({ data: hearing });
   } catch (error) { next(error); }
 };
 
 export const updateHearing = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const { subId } = req.params;
-    const { hearingDate, nextHearingDate, hearingOrder, caseCourtDetailId } = req.body;
+    const { subId, id } = req.params;
+    const { hearingDate, nextHearingDate, hearingOrder, caseCourtDetailId, hearingType } = req.body;
     
     const hearing = await prisma.caseHearing.update({
       where: { id: subId as string },
@@ -224,9 +233,21 @@ export const updateHearing = async (req: Request, res: Response, next: NextFunct
         hearingDate: hearingDate ? new Date(hearingDate) : null,
         nextHearingDate: nextHearingDate ? new Date(nextHearingDate) : null,
         hearingOrder,
-        caseCourtDetailId
+        caseCourtDetailId,
+        hearingType
       }
     });
+
+    if (hearingType === "failsala") {
+      const caseHearing = await prisma.caseHearing.findUnique({ where: { id: subId as string } });
+      if (caseHearing) {
+        await prisma.case.update({
+          where: { id: caseHearing.caseId },
+          data: { status: "Closed" }
+        });
+      }
+    }
+
     res.json({ data: hearing });
   } catch (error) { next(error); }
 };

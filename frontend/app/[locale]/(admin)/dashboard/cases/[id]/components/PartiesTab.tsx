@@ -283,7 +283,18 @@ export default function PartiesTab({
                 required
               >
                 <SelectTrigger>
-                  <SelectValue placeholder={t("role")} />
+                  <SelectValue placeholder={t("role")}>
+                    {roleId && roles.length > 0
+                      ? (() => {
+                          const r = roles.find((role) => role.id === roleId);
+                          return r
+                            ? locale === "np" && r.nepaliName
+                              ? r.nepaliName
+                              : r.name
+                            : undefined;
+                        })()
+                      : undefined}
+                  </SelectValue>
                 </SelectTrigger>
                 <SelectContent>
                   {roles.map((r) => (

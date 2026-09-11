@@ -209,6 +209,7 @@ model CaseHearing {
   nextHearingDate   DateTime?
   hearingDate       DateTime?
   hearingOrder      String?          @db.Text
+  hearingType       String?
 
   @@map("case_hearings")
 }
