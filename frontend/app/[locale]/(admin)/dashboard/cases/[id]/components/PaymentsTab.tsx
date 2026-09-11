@@ -120,81 +120,101 @@ export default function PaymentsTab({
 
   return (
     <Card>
-      <CardHeader className="flex flex-row items-center justify-between">
+      <CardHeader className="flex flex-row items-center justify-between border-b pb-4 mb-4">
         <CardTitle>{t("title")}</CardTitle>
-        <Button onClick={() => setOpen(true)} size="sm">
+        <Button onClick={() => setOpen(true)} size="sm" className="rounded-full">
           <PlusIcon className="w-4 h-4 mr-2" /> {t("addPayment")}
         </Button>
       </CardHeader>
       <CardContent>
-        <h3 className="font-medium mb-4">{t("paymentTransfers")}</h3>
         {caseData.payments && caseData.payments.length > 0 ? (
           <div className="space-y-4">
+            <h3 className="font-semibold text-muted-foreground uppercase tracking-wider text-xs mb-2">{t("paymentTransfers")}</h3>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             {caseData.payments.map((p: any) => (
               <div
                 key={p.id}
-                className="p-4 border rounded-lg flex justify-between items-start"
+                className="p-0 border rounded-2xl bg-card hover:shadow-md transition-shadow overflow-hidden flex flex-col relative group"
               >
-                <div className="grid grid-cols-2 gap-4 grow">
+                <div className="bg-green-500/10 p-4 border-b flex justify-between items-center">
                   <div>
-                    <span className="text-sm text-muted-foreground">
-                      {t("dateLabel")}:{" "}
+                    <span className="text-xs font-semibold text-green-700 uppercase tracking-wider block mb-1">
+                      {t("amountLabel")}
                     </span>
-                    <span className="font-medium">
+                    <span className="font-bold text-2xl text-green-600 tracking-tight">
+                      Rs. {p.amount}
+                    </span>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider block mb-1">
+                      {t("dateLabel")}
+                    </span>
+                    <span className="font-medium text-sm">
                       {p.paymentDate
                         ? new Date(p.paymentDate).toLocaleDateString()
                         : t("na")}
                     </span>
                   </div>
+                </div>
+
+                <div className="p-4 grid grid-cols-2 gap-4 grow">
                   <div>
-                    <span className="text-sm text-muted-foreground">
-                      {t("amountLabel")}:{" "}
+                    <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider block mb-1">
+                      {t("methodLabel")}
                     </span>
-                    <span className="font-medium font-mono text-green-600">
-                      {p.amount}
-                    </span>
+                    <span className="font-medium">{p.method || t("na")}</span>
                   </div>
                   <div>
-                    <span className="text-sm text-muted-foreground">
-                      {t("methodLabel")}:{" "}
+                    <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider block mb-1">
+                      {t("refNoLabel")}
                     </span>
-                    <span>{p.method || t("na")}</span>
+                    <span className="font-medium text-muted-foreground">{p.referenceNo || t("na")}</span>
                   </div>
-                  <div>
-                    <span className="text-sm text-muted-foreground">
-                      {t("refNoLabel")}:{" "}
+                  <div className="col-span-2">
+                    <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider block mb-1">
+                      {t("receivedBy")}
                     </span>
-                    <span>{p.referenceNo || t("na")}</span>
-                  </div>
-                  <div>
-                    <span className="text-sm text-muted-foreground">
-                      {t("receivedBy")}:{" "}
-                    </span>
-                    <span>
+                    <span className="font-medium">
                       {p.receivedByUser
                         ? `${p.receivedByUser.first_name} ${p.receivedByUser.last_name}`
                         : p.receivedBy || t("na")}
                     </span>
                   </div>
                   {p.notes && (
-                    <div className="col-span-2 mt-2">
-                      <p className="text-sm text-muted-foreground">{p.notes}</p>
+                    <div className="col-span-2 mt-2 pt-2 border-t">
+                      <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider block mb-1">{t("notesLabel")}</span>
+                      <p className="text-sm italic text-muted-foreground">{p.notes}</p>
                     </div>
                   )}
                 </div>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="text-destructive hover:bg-destructive/10 ml-4"
-                  onClick={() => handleDeleteClick(p.id)}
-                >
-                  <Trash2Icon className="w-4 h-4" />
-                </Button>
+
+                <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="h-8 w-8 text-muted-foreground hover:text-destructive hover:bg-destructive/10 rounded-full"
+                    onClick={() => handleDeleteClick(p.id)}
+                  >
+                    <Trash2Icon className="w-4 h-4" />
+                  </Button>
+                </div>
               </div>
             ))}
+            </div>
           </div>
         ) : (
-          <p className="text-muted-foreground">{t("noPayments")}</p>
+          <div className="flex flex-col items-center justify-center py-10 px-4 text-center border-2 border-dashed rounded-xl bg-muted/5">
+            <div className="bg-muted p-3 rounded-full mb-4">
+              <PlusIcon className="w-6 h-6 text-muted-foreground" />
+            </div>
+            <h3 className="text-lg font-semibold mb-1">{t("noPayments")}</h3>
+            <p className="text-sm text-muted-foreground mb-4 max-w-sm">
+              No payments have been recorded for this case. Click below to add the first payment record.
+            </p>
+            <Button onClick={() => setOpen(true)} variant="secondary" className="rounded-full">
+              {t("addPayment")}
+            </Button>
+          </div>
         )}
       </CardContent>
 

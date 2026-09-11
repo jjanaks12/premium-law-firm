@@ -150,38 +150,59 @@ export default function HearingsTab({
       </CardHeader>
       <CardContent>
         {caseData.hearings && caseData.hearings.length > 0 ? (
-          <div className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {caseData.hearings.map((h: any) => (
               <div
                 key={h.id}
-                className="p-4 border rounded-lg flex justify-between items-start"
+                className="p-5 border rounded-2xl bg-card hover:shadow-md transition-shadow flex flex-col relative group"
               >
-                <div className="grid grid-cols-2 gap-2 grow">
+                <div className="flex justify-between items-start mb-4">
                   <div>
-                    <span className="text-sm text-muted-foreground">
-                      {t("hearingDate")}:{" "}
+                    <span className="text-xs uppercase tracking-wider font-semibold text-muted-foreground block mb-1">
+                      {t("hearingDate")}
                     </span>
-                    <span className="font-medium">
+                    <span className="font-semibold text-lg text-primary flex items-center">
                       {h.hearingDate
                         ? new Date(h.hearingDate).toLocaleDateString()
                         : t("na")}
                     </span>
                   </div>
+                  <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity absolute right-4 top-4 bg-card rounded-md shadow-sm border p-1">
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="h-7 w-7 text-muted-foreground hover:text-primary rounded-md"
+                      onClick={() => handleEditClick(h)}
+                    >
+                      <PencilIcon className="w-3.5 h-3.5" />
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="h-7 w-7 text-muted-foreground hover:text-destructive hover:bg-destructive/10 rounded-md"
+                      onClick={() => handleDeleteClick(h.id)}
+                    >
+                      <Trash2Icon className="w-3.5 h-3.5" />
+                    </Button>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4 mb-4">
                   <div>
-                    <span className="text-sm text-muted-foreground">
-                      {t("nextHearingDate")}:{" "}
+                    <span className="text-xs uppercase tracking-wider font-semibold text-muted-foreground block mb-1">
+                      {t("nextHearingDate")}
                     </span>
-                    <span className="font-medium">
+                    <span className="font-medium text-sm">
                       {h.nextHearingDate
                         ? new Date(h.nextHearingDate).toLocaleDateString()
                         : t("na")}
                     </span>
                   </div>
-                  <div className="col-span-2">
-                    <span className="text-sm text-muted-foreground">
-                      {t("court")}:{" "}
+                  <div>
+                    <span className="text-xs uppercase tracking-wider font-semibold text-muted-foreground block mb-1">
+                      {t("court")}
                     </span>
-                    <span>
+                    <span className="font-medium text-sm">
                       {h.caseCourtDetail
                         ? isKnownCourt(h.caseCourtDetail.courtType)
                           ? tCases(h.caseCourtDetail.courtType)
@@ -189,38 +210,32 @@ export default function HearingsTab({
                         : t("na")}
                     </span>
                   </div>
-                  {h.hearingOrder && (
-                    <div className="col-span-2 mt-2">
-                      <p className="text-sm font-medium">{t("order")}:</p>
-                      <p className="text-sm text-muted-foreground">
-                        {h.hearingOrder}
-                      </p>
-                    </div>
-                  )}
                 </div>
-                <div className="flex ml-4 gap-2">
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="hover:bg-muted"
-                    onClick={() => handleEditClick(h)}
-                  >
-                    <PencilIcon className="w-4 h-4" />
-                  </Button>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="text-destructive hover:bg-destructive/10"
-                    onClick={() => handleDeleteClick(h.id)}
-                  >
-                    <Trash2Icon className="w-4 h-4" />
-                  </Button>
-                </div>
+
+                {h.hearingOrder && (
+                  <div className="mt-auto pt-4 border-t">
+                    <p className="text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-1">{t("order")}</p>
+                    <p className="text-sm">
+                      {h.hearingOrder}
+                    </p>
+                  </div>
+                )}
               </div>
             ))}
           </div>
         ) : (
-          <p className="text-muted-foreground">{t("noHearings")}</p>
+          <div className="flex flex-col items-center justify-center py-10 px-4 text-center border-2 border-dashed rounded-xl bg-muted/5">
+            <div className="bg-muted p-3 rounded-full mb-4">
+              <PlusIcon className="w-6 h-6 text-muted-foreground" />
+            </div>
+            <h3 className="text-lg font-semibold mb-1">{t("noHearings")}</h3>
+            <p className="text-sm text-muted-foreground mb-4 max-w-sm">
+              There are no hearings scheduled for this case yet. Add the first hearing to track the schedule.
+            </p>
+            <Button onClick={() => setOpen(true)} variant="secondary">
+              {t("addHearing")}
+            </Button>
+          </div>
         )}
       </CardContent>
 

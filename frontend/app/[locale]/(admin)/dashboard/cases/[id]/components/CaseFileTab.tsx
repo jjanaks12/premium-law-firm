@@ -63,7 +63,9 @@ export default function CaseFileTab({ caseData, refresh }: CaseFileTabProps) {
     setRelatedLaw(newLaws);
   };
 
-  const handleFactFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFactFileUpload = async (
+    e: React.ChangeEvent<HTMLInputElement>,
+  ) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
@@ -73,12 +75,19 @@ export default function CaseFileTab({ caseData, refresh }: CaseFileTabProps) {
     formData.append("fileName", `Facts Document`);
 
     try {
-      const { data } = await axios.post(`/cases/${caseData.id}/documents`, formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
+      const { data } = await axios.post(
+        `/cases/${caseData.id}/documents`,
+        formData,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        },
+      );
       if (data.data && data.data.documentUrl) {
         setFacts(data.data.documentUrl);
-        toast.add({ description: "Document uploaded successfully", type: "success" });
+        toast.add({
+          description: "Document uploaded successfully",
+          type: "success",
+        });
       }
     } catch (err) {
       toast.add({ description: "Upload failed", type: "error" });
@@ -119,13 +128,18 @@ export default function CaseFileTab({ caseData, refresh }: CaseFileTabProps) {
         <CardContent className="space-y-6">
           <div className="space-y-2">
             <Label>{t("CaseFileTab.facts")}</Label>
-            {facts && (facts.startsWith("/uploads/") || facts.startsWith("http")) ? (
-              <div className="flex items-center justify-between p-2 border rounded-md bg-muted/20">
+            {facts &&
+            (facts.startsWith("/uploads/") || facts.startsWith("http")) ? (
+              <div className="flex items-center justify-between p-4 border rounded-xl bg-card hover:shadow-sm transition-all">
                 <a
-                  href={facts.startsWith("/") ? process.env.NEXT_PUBLIC_API_URL + facts : facts}
+                  href={
+                    facts.startsWith("/")
+                      ? process.env.NEXT_PUBLIC_API_URL + facts
+                      : facts
+                  }
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-500 hover:underline flex items-center"
+                  className="text-primary font-medium hover:underline flex items-center"
                 >
                   <LinkIcon className="w-4 h-4 mr-2" />
                   View Uploaded Facts Document
@@ -133,82 +147,112 @@ export default function CaseFileTab({ caseData, refresh }: CaseFileTabProps) {
                 <Button
                   variant="ghost"
                   size="icon"
+                  className="text-destructive hover:bg-destructive/10 rounded-full"
                   onClick={() => setFacts("")}
                   disabled={loading}
                 >
-                  <Trash2Icon className="w-4 h-4 text-red-500" />
+                  <Trash2Icon className="w-4 h-4" />
                 </Button>
               </div>
             ) : facts ? (
-               <div className="flex items-center space-x-2">
-                 <div className="flex-1 p-2 border rounded-md bg-muted/20 text-sm whitespace-pre-wrap">
-                   {facts}
-                 </div>
-                 <Button
-                   variant="ghost"
-                   size="icon"
-                   onClick={() => setFacts("")}
-                   disabled={loading}
-                 >
-                   <Trash2Icon className="w-4 h-4 text-red-500" />
-                 </Button>
-               </div>
+              <div className="flex items-start space-x-2 p-4 border rounded-xl bg-card hover:shadow-sm transition-all">
+                <div className="flex-1 text-sm whitespace-pre-wrap">
+                  {facts}
+                </div>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="text-destructive hover:bg-destructive/10 rounded-full shrink-0"
+                  onClick={() => setFacts("")}
+                  disabled={loading}
+                >
+                  <Trash2Icon className="w-4 h-4" />
+                </Button>
+              </div>
             ) : (
-              <Input
-                type="file"
-                onChange={(e) => handleFactFileUpload(e)}
-              />
+              <Input type="file" onChange={(e) => handleFactFileUpload(e)} />
             )}
           </div>
 
-          <div className="space-y-2">
+          <div className="space-y-4 pt-2">
             <div className="flex items-center justify-between">
-              <Label>{t("CaseFileTab.details")}</Label>
-              <Button variant="outline" size="sm" onClick={addDetail}>
-                <PlusIcon className="w-4 h-4 mr-2" /> {t("CaseFileTab.addDetail")}
+              <Label className="text-base font-semibold">
+                {t("CaseFileTab.details")}
+              </Label>
+              <Button
+                variant="secondary"
+                size="sm"
+                onClick={addDetail}
+                className="rounded-full"
+              >
+                <PlusIcon className="w-4 h-4 mr-2" />{" "}
+                {t("CaseFileTab.addDetail")}
               </Button>
             </div>
             {details.map((detail, idx) => (
-              <div key={idx} className="flex items-center space-x-2">
-                <Textarea
-                  value={detail}
-                  onChange={(e) => updateDetail(idx, e.target.value)}
-                  placeholder={`${t("CaseFileTab.detailPlaceholder")} ${idx + 1}`}
-                  rows={2}
-                />
+              <div
+                key={idx}
+                className="flex items-start space-x-3 group relative"
+              >
+                <div className="flex-1">
+                  <Textarea
+                    value={detail}
+                    onChange={(e) => updateDetail(idx, e.target.value)}
+                    placeholder={`${t("CaseFileTab.detailPlaceholder")} ${idx + 1}`}
+                    rows={2}
+                    className="resize-none bg-card focus:bg-background transition-colors rounded-xl"
+                  />
+                </div>
                 <Button
                   variant="ghost"
                   size="icon"
                   onClick={() => removeDetail(idx)}
+                  className="shrink-0 text-muted-foreground hover:text-destructive hover:bg-destructive/10 rounded-full opacity-0 group-hover:opacity-100 transition-all"
                 >
-                  <Trash2Icon className="w-4 h-4 text-red-500" />
+                  <Trash2Icon className="w-4 h-4" />
                 </Button>
               </div>
             ))}
           </div>
 
-          <div className="space-y-2">
+          <div className="space-y-4 border-t pt-6">
             <div className="flex items-center justify-between">
-              <Label>{t("CaseFileTab.relatedLaws")}</Label>
-              <Button variant="outline" size="sm" onClick={addLaw}>
+              <Label className="text-base font-semibold">
+                {t("CaseFileTab.relatedLaws")}
+              </Label>
+              <Button
+                variant="secondary"
+                size="sm"
+                onClick={addLaw}
+                className="rounded-full"
+              >
                 <PlusIcon className="w-4 h-4 mr-2" /> {t("CaseFileTab.addLaw")}
               </Button>
             </div>
             {relatedLaw.map((law, idx) => (
-              <div key={idx} className="border p-4 rounded-md space-y-4">
+              <div
+                key={idx}
+                className="border bg-card p-5 rounded-2xl space-y-5 hover:shadow-md transition-shadow relative group"
+              >
                 <div className="flex items-center justify-between">
-                  <Input
-                    className="max-w-md"
-                    value={law.number}
-                    onChange={(e) => updateLawNumber(idx, e.target.value)}
-                    placeholder={t("CaseFileTab.decisionNumber")}
-                  />
+                  <div className="flex-1 mr-4">
+                    <Label className="text-xs uppercase text-muted-foreground mb-1 block">
+                      {t("CaseFileTab.decisionNumber")}
+                    </Label>
+                    <Input
+                      className="max-w-md bg-background"
+                      value={law.number}
+                      onChange={(e) => updateLawNumber(idx, e.target.value)}
+                      placeholder={t("CaseFileTab.decisionNumber")}
+                    />
+                  </div>
                   <Button
                     variant="ghost"
                     size="icon"
                     onClick={() => removeLaw(idx)}
+                    className="text-muted-foreground hover:text-destructive hover:bg-destructive/10 rounded-full"
                   >
-                    <Trash2Icon className="w-4 h-4 text-red-500" />
+                    <Trash2Icon className="w-4 h-4" />
                   </Button>
                 </div>
                 <div className="space-y-2">

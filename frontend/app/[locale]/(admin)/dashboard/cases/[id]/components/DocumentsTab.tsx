@@ -108,44 +108,51 @@ export default function DocumentsTab({
 
   return (
     <Card>
-      <CardHeader className="flex flex-row items-center justify-between">
+      <CardHeader className="flex flex-row items-center justify-between border-b pb-4 mb-4">
         <CardTitle>{t("title")}</CardTitle>
-        <Button onClick={() => setOpen(true)} size="sm">
+        <Button onClick={() => setOpen(true)} size="sm" className="rounded-full">
           <PlusIcon className="w-4 h-4 mr-2" /> {t("uploadDocBtn")}
         </Button>
       </CardHeader>
       <CardContent>
         {caseData.documents && caseData.documents.length > 0 ? (
-          <div className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {caseData.documents.map((d: any) => (
               <div
                 key={d.id}
-                className="p-4 border rounded-lg flex justify-between items-start"
+                className="p-4 border rounded-2xl bg-card hover:shadow-md transition-all flex justify-between items-start group"
               >
-                <div className="grow">
-                  <div className="font-medium text-lg">{d.fileName}</div>
-                  <div className="text-sm text-muted-foreground mt-1">
-                    {t("uploadedLabel")} {new Date(d.createdAt).toLocaleDateString()}
+                <div className="flex space-x-4 items-start grow">
+                  <div className="bg-primary/10 text-primary p-3 rounded-xl shrink-0 mt-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
                   </div>
-                  {d.description && (
-                    <div className="mt-2 text-sm">{d.description}</div>
-                  )}
+                  <div className="grow overflow-hidden">
+                    <div className="font-semibold text-base truncate pr-2" title={d.fileName}>{d.fileName}</div>
+                    <div className="text-xs text-muted-foreground mt-1 flex items-center">
+                      {t("uploadedLabel")} <span className="font-medium ml-1 text-foreground">{new Date(d.createdAt).toLocaleDateString()}</span>
+                    </div>
+                    {d.description && (
+                      <div className="mt-2 text-sm text-muted-foreground line-clamp-2">{d.description}</div>
+                    )}
+                  </div>
                 </div>
-                <div className="flex space-x-2 ml-4">
+                <div className="flex flex-col space-y-2 ml-2 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity">
                   <Link
                     href={process.env.NEXT_PUBLIC_API_URL + d.documentUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={cn(
-                      buttonVariants({ variant: "outline", size: "sm" }),
+                      buttonVariants({ variant: "secondary", size: "icon" }),
+                      "rounded-full h-8 w-8 text-primary hover:text-primary"
                     )}
+                    title={t("downloadBtn")}
                   >
-                    <DownloadIcon className="w-4 h-4 mr-2" /> {t("downloadBtn")}
+                    <DownloadIcon className="w-4 h-4" />
                   </Link>
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="text-destructive hover:bg-destructive/10"
+                    className="h-8 w-8 text-muted-foreground hover:text-destructive hover:bg-destructive/10 rounded-full"
                     onClick={() => handleDeleteClick(d.id)}
                   >
                     <Trash2Icon className="w-4 h-4" />
@@ -155,7 +162,18 @@ export default function DocumentsTab({
             ))}
           </div>
         ) : (
-          <p className="text-muted-foreground">{t("noDocuments")}</p>
+          <div className="flex flex-col items-center justify-center py-12 px-4 text-center border-2 border-dashed rounded-2xl bg-muted/5">
+            <div className="bg-muted p-4 rounded-full mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-muted-foreground"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+            </div>
+            <h3 className="text-lg font-semibold mb-1">{t("noDocuments")}</h3>
+            <p className="text-sm text-muted-foreground mb-5 max-w-sm">
+              Keep all case-related files in one place. Upload images, PDFs, or Word documents.
+            </p>
+            <Button onClick={() => setOpen(true)} variant="secondary" className="rounded-full">
+              {t("uploadDocBtn")}
+            </Button>
+          </div>
         )}
       </CardContent>
 
