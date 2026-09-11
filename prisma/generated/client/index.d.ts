@@ -16153,6 +16153,7 @@ export namespace Prisma {
     nextHearingDate: Date | null
     hearingDate: Date | null
     hearingOrder: string | null
+    hearingType: string | null
   }
 
   export type CaseHearingMaxAggregateOutputType = {
@@ -16162,6 +16163,7 @@ export namespace Prisma {
     nextHearingDate: Date | null
     hearingDate: Date | null
     hearingOrder: string | null
+    hearingType: string | null
   }
 
   export type CaseHearingCountAggregateOutputType = {
@@ -16171,6 +16173,7 @@ export namespace Prisma {
     nextHearingDate: number
     hearingDate: number
     hearingOrder: number
+    hearingType: number
     _all: number
   }
 
@@ -16182,6 +16185,7 @@ export namespace Prisma {
     nextHearingDate?: true
     hearingDate?: true
     hearingOrder?: true
+    hearingType?: true
   }
 
   export type CaseHearingMaxAggregateInputType = {
@@ -16191,6 +16195,7 @@ export namespace Prisma {
     nextHearingDate?: true
     hearingDate?: true
     hearingOrder?: true
+    hearingType?: true
   }
 
   export type CaseHearingCountAggregateInputType = {
@@ -16200,6 +16205,7 @@ export namespace Prisma {
     nextHearingDate?: true
     hearingDate?: true
     hearingOrder?: true
+    hearingType?: true
     _all?: true
   }
 
@@ -16282,6 +16288,7 @@ export namespace Prisma {
     nextHearingDate: Date | null
     hearingDate: Date | null
     hearingOrder: string | null
+    hearingType: string | null
     _count: CaseHearingCountAggregateOutputType | null
     _min: CaseHearingMinAggregateOutputType | null
     _max: CaseHearingMaxAggregateOutputType | null
@@ -16308,6 +16315,7 @@ export namespace Prisma {
     nextHearingDate?: boolean
     hearingDate?: boolean
     hearingOrder?: boolean
+    hearingType?: boolean
     case?: boolean | CaseDefaultArgs<ExtArgs>
     caseCourtDetail?: boolean | CaseHearing$caseCourtDetailArgs<ExtArgs>
   }, ExtArgs["result"]["caseHearing"]>
@@ -16319,6 +16327,7 @@ export namespace Prisma {
     nextHearingDate?: boolean
     hearingDate?: boolean
     hearingOrder?: boolean
+    hearingType?: boolean
     case?: boolean | CaseDefaultArgs<ExtArgs>
     caseCourtDetail?: boolean | CaseHearing$caseCourtDetailArgs<ExtArgs>
   }, ExtArgs["result"]["caseHearing"]>
@@ -16330,6 +16339,7 @@ export namespace Prisma {
     nextHearingDate?: boolean
     hearingDate?: boolean
     hearingOrder?: boolean
+    hearingType?: boolean
     case?: boolean | CaseDefaultArgs<ExtArgs>
     caseCourtDetail?: boolean | CaseHearing$caseCourtDetailArgs<ExtArgs>
   }, ExtArgs["result"]["caseHearing"]>
@@ -16341,9 +16351,10 @@ export namespace Prisma {
     nextHearingDate?: boolean
     hearingDate?: boolean
     hearingOrder?: boolean
+    hearingType?: boolean
   }
 
-  export type CaseHearingOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "caseId" | "caseCourtDetailId" | "nextHearingDate" | "hearingDate" | "hearingOrder", ExtArgs["result"]["caseHearing"]>
+  export type CaseHearingOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "caseId" | "caseCourtDetailId" | "nextHearingDate" | "hearingDate" | "hearingOrder" | "hearingType", ExtArgs["result"]["caseHearing"]>
   export type CaseHearingInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     case?: boolean | CaseDefaultArgs<ExtArgs>
     caseCourtDetail?: boolean | CaseHearing$caseCourtDetailArgs<ExtArgs>
@@ -16370,6 +16381,7 @@ export namespace Prisma {
       nextHearingDate: Date | null
       hearingDate: Date | null
       hearingOrder: string | null
+      hearingType: string | null
     }, ExtArgs["result"]["caseHearing"]>
     composites: {}
   }
@@ -16801,6 +16813,7 @@ export namespace Prisma {
     readonly nextHearingDate: FieldRef<"CaseHearing", 'DateTime'>
     readonly hearingDate: FieldRef<"CaseHearing", 'DateTime'>
     readonly hearingOrder: FieldRef<"CaseHearing", 'String'>
+    readonly hearingType: FieldRef<"CaseHearing", 'String'>
   }
     
 
@@ -27833,7 +27846,8 @@ export namespace Prisma {
     caseCourtDetailId: 'caseCourtDetailId',
     nextHearingDate: 'nextHearingDate',
     hearingDate: 'hearingDate',
-    hearingOrder: 'hearingOrder'
+    hearingOrder: 'hearingOrder',
+    hearingType: 'hearingType'
   };
 
   export type CaseHearingScalarFieldEnum = (typeof CaseHearingScalarFieldEnum)[keyof typeof CaseHearingScalarFieldEnum]
@@ -28959,6 +28973,7 @@ export namespace Prisma {
     nextHearingDate?: DateTimeNullableFilter<"CaseHearing"> | Date | string | null
     hearingDate?: DateTimeNullableFilter<"CaseHearing"> | Date | string | null
     hearingOrder?: StringNullableFilter<"CaseHearing"> | string | null
+    hearingType?: StringNullableFilter<"CaseHearing"> | string | null
     case?: XOR<CaseScalarRelationFilter, CaseWhereInput>
     caseCourtDetail?: XOR<CaseCourtDetailNullableScalarRelationFilter, CaseCourtDetailWhereInput> | null
   }
@@ -28970,6 +28985,7 @@ export namespace Prisma {
     nextHearingDate?: SortOrderInput | SortOrder
     hearingDate?: SortOrderInput | SortOrder
     hearingOrder?: SortOrderInput | SortOrder
+    hearingType?: SortOrderInput | SortOrder
     case?: CaseOrderByWithRelationInput
     caseCourtDetail?: CaseCourtDetailOrderByWithRelationInput
   }
@@ -28984,6 +29000,7 @@ export namespace Prisma {
     nextHearingDate?: DateTimeNullableFilter<"CaseHearing"> | Date | string | null
     hearingDate?: DateTimeNullableFilter<"CaseHearing"> | Date | string | null
     hearingOrder?: StringNullableFilter<"CaseHearing"> | string | null
+    hearingType?: StringNullableFilter<"CaseHearing"> | string | null
     case?: XOR<CaseScalarRelationFilter, CaseWhereInput>
     caseCourtDetail?: XOR<CaseCourtDetailNullableScalarRelationFilter, CaseCourtDetailWhereInput> | null
   }, "id">
@@ -28995,6 +29012,7 @@ export namespace Prisma {
     nextHearingDate?: SortOrderInput | SortOrder
     hearingDate?: SortOrderInput | SortOrder
     hearingOrder?: SortOrderInput | SortOrder
+    hearingType?: SortOrderInput | SortOrder
     _count?: CaseHearingCountOrderByAggregateInput
     _max?: CaseHearingMaxOrderByAggregateInput
     _min?: CaseHearingMinOrderByAggregateInput
@@ -29010,6 +29028,7 @@ export namespace Prisma {
     nextHearingDate?: DateTimeNullableWithAggregatesFilter<"CaseHearing"> | Date | string | null
     hearingDate?: DateTimeNullableWithAggregatesFilter<"CaseHearing"> | Date | string | null
     hearingOrder?: StringNullableWithAggregatesFilter<"CaseHearing"> | string | null
+    hearingType?: StringNullableWithAggregatesFilter<"CaseHearing"> | string | null
   }
 
   export type CasePaymentWhereInput = {
@@ -30631,6 +30650,7 @@ export namespace Prisma {
     nextHearingDate?: Date | string | null
     hearingDate?: Date | string | null
     hearingOrder?: string | null
+    hearingType?: string | null
     case: CaseCreateNestedOneWithoutHearingsInput
     caseCourtDetail?: CaseCourtDetailCreateNestedOneWithoutHearingsInput
   }
@@ -30642,6 +30662,7 @@ export namespace Prisma {
     nextHearingDate?: Date | string | null
     hearingDate?: Date | string | null
     hearingOrder?: string | null
+    hearingType?: string | null
   }
 
   export type CaseHearingUpdateInput = {
@@ -30649,6 +30670,7 @@ export namespace Prisma {
     nextHearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hearingOrder?: NullableStringFieldUpdateOperationsInput | string | null
+    hearingType?: NullableStringFieldUpdateOperationsInput | string | null
     case?: CaseUpdateOneRequiredWithoutHearingsNestedInput
     caseCourtDetail?: CaseCourtDetailUpdateOneWithoutHearingsNestedInput
   }
@@ -30660,6 +30682,7 @@ export namespace Prisma {
     nextHearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hearingOrder?: NullableStringFieldUpdateOperationsInput | string | null
+    hearingType?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CaseHearingCreateManyInput = {
@@ -30669,6 +30692,7 @@ export namespace Prisma {
     nextHearingDate?: Date | string | null
     hearingDate?: Date | string | null
     hearingOrder?: string | null
+    hearingType?: string | null
   }
 
   export type CaseHearingUpdateManyMutationInput = {
@@ -30676,6 +30700,7 @@ export namespace Prisma {
     nextHearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hearingOrder?: NullableStringFieldUpdateOperationsInput | string | null
+    hearingType?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CaseHearingUncheckedUpdateManyInput = {
@@ -30685,6 +30710,7 @@ export namespace Prisma {
     nextHearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hearingOrder?: NullableStringFieldUpdateOperationsInput | string | null
+    hearingType?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CasePaymentCreateInput = {
@@ -32270,6 +32296,7 @@ export namespace Prisma {
     nextHearingDate?: SortOrder
     hearingDate?: SortOrder
     hearingOrder?: SortOrder
+    hearingType?: SortOrder
   }
 
   export type CaseHearingMaxOrderByAggregateInput = {
@@ -32279,6 +32306,7 @@ export namespace Prisma {
     nextHearingDate?: SortOrder
     hearingDate?: SortOrder
     hearingOrder?: SortOrder
+    hearingType?: SortOrder
   }
 
   export type CaseHearingMinOrderByAggregateInput = {
@@ -32288,6 +32316,7 @@ export namespace Prisma {
     nextHearingDate?: SortOrder
     hearingDate?: SortOrder
     hearingOrder?: SortOrder
+    hearingType?: SortOrder
   }
 
   export type DecimalFilter<$PrismaModel = never> = {
@@ -36106,6 +36135,7 @@ export namespace Prisma {
     nextHearingDate?: Date | string | null
     hearingDate?: Date | string | null
     hearingOrder?: string | null
+    hearingType?: string | null
     caseCourtDetail?: CaseCourtDetailCreateNestedOneWithoutHearingsInput
   }
 
@@ -36115,6 +36145,7 @@ export namespace Prisma {
     nextHearingDate?: Date | string | null
     hearingDate?: Date | string | null
     hearingOrder?: string | null
+    hearingType?: string | null
   }
 
   export type CaseHearingCreateOrConnectWithoutCaseInput = {
@@ -36373,6 +36404,7 @@ export namespace Prisma {
     nextHearingDate?: DateTimeNullableFilter<"CaseHearing"> | Date | string | null
     hearingDate?: DateTimeNullableFilter<"CaseHearing"> | Date | string | null
     hearingOrder?: StringNullableFilter<"CaseHearing"> | string | null
+    hearingType?: StringNullableFilter<"CaseHearing"> | string | null
   }
 
   export type CasePaymentUpsertWithWhereUniqueWithoutCaseInput = {
@@ -36614,6 +36646,7 @@ export namespace Prisma {
     nextHearingDate?: Date | string | null
     hearingDate?: Date | string | null
     hearingOrder?: string | null
+    hearingType?: string | null
     case: CaseCreateNestedOneWithoutHearingsInput
   }
 
@@ -36623,6 +36656,7 @@ export namespace Prisma {
     nextHearingDate?: Date | string | null
     hearingDate?: Date | string | null
     hearingOrder?: string | null
+    hearingType?: string | null
   }
 
   export type CaseHearingCreateOrConnectWithoutCaseCourtDetailInput = {
@@ -39981,6 +40015,7 @@ export namespace Prisma {
     nextHearingDate?: Date | string | null
     hearingDate?: Date | string | null
     hearingOrder?: string | null
+    hearingType?: string | null
   }
 
   export type CasePaymentCreateManyCaseInput = {
@@ -40126,6 +40161,7 @@ export namespace Prisma {
     nextHearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hearingOrder?: NullableStringFieldUpdateOperationsInput | string | null
+    hearingType?: NullableStringFieldUpdateOperationsInput | string | null
     caseCourtDetail?: CaseCourtDetailUpdateOneWithoutHearingsNestedInput
   }
 
@@ -40135,6 +40171,7 @@ export namespace Prisma {
     nextHearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hearingOrder?: NullableStringFieldUpdateOperationsInput | string | null
+    hearingType?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CaseHearingUncheckedUpdateManyWithoutCaseInput = {
@@ -40143,6 +40180,7 @@ export namespace Prisma {
     nextHearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hearingOrder?: NullableStringFieldUpdateOperationsInput | string | null
+    hearingType?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CasePaymentUpdateWithoutCaseInput = {
@@ -40260,6 +40298,7 @@ export namespace Prisma {
     nextHearingDate?: Date | string | null
     hearingDate?: Date | string | null
     hearingOrder?: string | null
+    hearingType?: string | null
   }
 
   export type CaseJudgementCreateManyCaseCourtDetailInput = {
@@ -40332,6 +40371,7 @@ export namespace Prisma {
     nextHearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hearingOrder?: NullableStringFieldUpdateOperationsInput | string | null
+    hearingType?: NullableStringFieldUpdateOperationsInput | string | null
     case?: CaseUpdateOneRequiredWithoutHearingsNestedInput
   }
 
@@ -40341,6 +40381,7 @@ export namespace Prisma {
     nextHearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hearingOrder?: NullableStringFieldUpdateOperationsInput | string | null
+    hearingType?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CaseHearingUncheckedUpdateManyWithoutCaseCourtDetailInput = {
@@ -40349,6 +40390,7 @@ export namespace Prisma {
     nextHearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hearingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hearingOrder?: NullableStringFieldUpdateOperationsInput | string | null
+    hearingType?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CaseJudgementUpdateWithoutCaseCourtDetailInput = {

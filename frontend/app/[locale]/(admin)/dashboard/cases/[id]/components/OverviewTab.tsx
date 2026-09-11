@@ -31,6 +31,16 @@ import { useAxios } from "@/lib/services/axios.service";
 import { toast } from "@/components/ui/toast";
 import { useLocale, useTranslations } from "next-intl";
 
+const isKnownCourt = (type: string) =>
+  [
+    "supremeCourt",
+    "highCourt",
+    "districtCourt",
+    "specialCourt",
+    "tribunal",
+    "other",
+  ].includes(type);
+
 export default function OverviewTab({
   caseData,
   refresh,
@@ -107,33 +117,41 @@ export default function OverviewTab({
         <CardHeader>
           <CardTitle>{t("caseInfo")}</CardTitle>
         </CardHeader>
-        <CardContent className="grid grid-cols-2 gap-4">
-          <div>
-            <p className="text-sm text-muted-foreground">{t("caseNumber")}</p>
-            <p className="font-medium">{activeDetail?.caseNumber || t("na")}</p>
+        <CardContent className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="p-4 rounded-xl border bg-muted/10 hover:bg-muted/30 transition-all duration-300 hover:shadow-sm">
+            <p className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-1">{t("caseNumber")}</p>
+            <p className="font-medium text-lg">{caseData.id.split("-")[0]}</p>
           </div>
-          <div>
-            <p className="text-sm text-muted-foreground">{t("regDate")}</p>
+          <div className="p-4 rounded-xl border bg-muted/10 hover:bg-muted/30 transition-all duration-300 hover:shadow-sm">
+            <p className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-1">{t("court")}</p>
             <p className="font-medium">
-              {activeDetail?.registrationDate
-                ? new Date(activeDetail.registrationDate).toLocaleDateString()
+              {activeDetail
+                ? isKnownCourt(activeDetail.courtLevel?.type)
+                  ? locale == "np"
+                    ? activeDetail.courtLevel?.nepaliName
+                    : activeDetail.courtLevel?.englishName
+                  : activeDetail.courtLevel?.englishName || t("na")
                 : t("na")}
             </p>
           </div>
-          <div>
-            <p className="text-sm text-muted-foreground">{t("status")}</p>
-            <p className="font-medium">{caseData.status}</p>
+          <div className="p-4 rounded-xl border bg-muted/10 hover:bg-muted/30 transition-all duration-300 hover:shadow-sm">
+            <p className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-1">{t("status")}</p>
+            <p className="font-medium">
+              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-primary/10 text-primary">
+                {caseData.status}
+              </span>
+            </p>
           </div>
-          <div>
-            <p className="text-sm text-muted-foreground">{t("nature")}</p>
+          <div className="p-4 rounded-xl border bg-muted/10 hover:bg-muted/30 transition-all duration-300 hover:shadow-sm">
+            <p className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-1">{t("nature")}</p>
             <p className="font-medium">
               {locale == "np"
                 ? caseData.nature?.nepaliName
                 : caseData.nature?.englishName || t("na")}
             </p>
           </div>
-          <div>
-            <p className="text-sm text-muted-foreground">{t("faat")}</p>
+          <div className="p-4 rounded-xl border bg-muted/10 hover:bg-muted/30 transition-all duration-300 hover:shadow-sm">
+            <p className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-1">{t("faat")}</p>
             <p className="font-medium">
               {activeDetail?.sectionCourtRoom || t("na")}
             </p>
@@ -150,35 +168,51 @@ export default function OverviewTab({
         </CardHeader>
         <CardContent>
           {caseData.lawyers && caseData.lawyers.length > 0 ? (
-            <ul className="space-y-2">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {caseData.lawyers.map((l: any) => (
-                <li
+                <div
                   key={l.userId}
-                  className="flex items-center justify-between border-b pb-2 last:border-0 last:pb-0"
+                  className="flex items-center justify-between p-4 rounded-xl border bg-card hover:shadow-md hover:border-primary/30 transition-all duration-300"
                 >
-                  <div className="flex items-center space-x-2">
-                    <span className="font-medium">
-                      {l.user?.first_name} {l.user?.last_name}
-                    </span>
-                    {l.isLead && (
-                      <span className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">
-                        {t("lead")}
+                  <div className="flex items-center space-x-3">
+                    <div className="h-10 w-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-lg">
+                      {l.user?.first_name?.charAt(0) || "U"}
+                    </div>
+                    <div>
+                      <span className="font-semibold block">
+                        {l.user?.first_name} {l.user?.last_name}
                       </span>
-                    )}
+                      {l.isLead && (
+                        <span className="text-xs bg-gold/20 text-gold-soft px-2 py-0.5 rounded-full font-medium inline-block mt-1">
+                          {t("lead")}
+                        </span>
+                      )}
+                    </div>
                   </div>
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="text-destructive hover:bg-destructive/10"
+                    className="text-destructive hover:bg-destructive hover:text-destructive-foreground transition-colors rounded-full"
                     onClick={() => setDeleteId(l.userId)}
                   >
                     <Trash2Icon className="w-4 h-4" />
                   </Button>
-                </li>
+                </div>
               ))}
-            </ul>
+            </div>
           ) : (
-            <p className="text-muted-foreground">{t("noLawyers")}</p>
+            <div className="flex flex-col items-center justify-center py-10 px-4 text-center border-2 border-dashed rounded-xl bg-muted/5">
+              <div className="bg-muted p-3 rounded-full mb-4">
+                <PlusIcon className="w-6 h-6 text-muted-foreground" />
+              </div>
+              <h3 className="text-lg font-semibold mb-1">{t("noLawyers")}</h3>
+              <p className="text-sm text-muted-foreground mb-4 max-w-sm">
+                Get started by assigning a lawyer to this case. They will be able to manage details and attend hearings.
+              </p>
+              <Button onClick={() => setOpen(true)} variant="outline">
+                {t("assignLawyer")}
+              </Button>
+            </div>
           )}
         </CardContent>
       </Card>
@@ -227,7 +261,7 @@ export default function OverviewTab({
             <div className="flex justify-end pt-4">
               <Button
                 type="button"
-                variant="outline"
+                variant="destructive"
                 className="mr-2"
                 onClick={() => setOpen(false)}
               >

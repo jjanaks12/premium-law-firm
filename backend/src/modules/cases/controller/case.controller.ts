@@ -38,15 +38,7 @@ export const index = async (req: Request, res: Response, next: NextFunction) => 
       });
     }
 
-    // Apply role-based access restrictions
-    if (req.auth_user?.role?.name !== "Admin") {
-      filter.AND.push({
-        OR: [
-          { createdById: req.auth_user?.id },
-          { lawyers: { some: { userId: req.auth_user?.id } } }
-        ]
-      });
-    }
+    // Allow all users to see all cases (Role-based restriction removed)
 
     if (filter.AND.length === 0) {
       delete filter.AND;
@@ -88,7 +80,11 @@ export const show = async (req: Request, res: Response, next: NextFunction) => {
       where: { id: id as string },
       include: {
         nature: true,
-        courtDetails: true,
+        courtDetails: {
+          include: {
+            courtLevel: true,
+          }
+        },
         parties: {
           where: { parentId: null },
           include: {
@@ -182,6 +178,8 @@ export const store = async (req: Request, res: Response, next: NextFunction) => 
             sectionCourtRoom: cd.sectionCourtRoom,
             judgeName: cd.judgeName,
             courtType: cd.courtType,
+            courtName: cd.courtName,
+            courtLevelId: cd.courtLevelId,
             isActive: true,
           }))
         } : undefined,
@@ -339,6 +337,8 @@ export const update = async (req: Request, res: Response, next: NextFunction) =>
               sectionCourtRoom: cd.sectionCourtRoom,
               judgeName: cd.judgeName,
               courtType: cd.courtType,
+              courtName: cd.courtName,
+              courtLevelId: cd.courtLevelId,
               isActive: cd.isActive !== undefined ? cd.isActive : true,
             }
           });
@@ -352,6 +352,8 @@ export const update = async (req: Request, res: Response, next: NextFunction) =>
               sectionCourtRoom: cd.sectionCourtRoom,
               judgeName: cd.judgeName,
               courtType: cd.courtType,
+              courtName: cd.courtName,
+              courtLevelId: cd.courtLevelId,
               parentId: cd.parentId || null,
               isActive: cd.isActive !== undefined ? cd.isActive : true,
             }

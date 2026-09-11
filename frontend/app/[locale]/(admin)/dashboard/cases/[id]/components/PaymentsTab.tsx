@@ -31,6 +31,7 @@ import {
 import { CompositeDatePicker } from "@/components/ui/composite-date-picker";
 import { useAxios } from "@/lib/services/axios.service";
 import { toast } from "@/components/ui/toast";
+import { useTranslations } from "next-intl";
 
 export default function PaymentsTab({
   caseData,
@@ -39,6 +40,7 @@ export default function PaymentsTab({
   caseData: any;
   refresh: () => void;
 }) {
+  const t = useTranslations("PaymentsTab");
   const { axios } = useAxios();
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -78,7 +80,7 @@ export default function PaymentsTab({
           receivedByUserId !== "none" ? receivedByUserId : undefined,
         notes,
       });
-      toast.add({ title: "Payment added" });
+      toast.add({ title: t("successAdd") });
       setOpen(false);
       refresh();
       setAmount("");
@@ -90,8 +92,8 @@ export default function PaymentsTab({
       setNotes("");
     } catch (error: any) {
       toast.add({
-        title: "Error",
-        description: error.response?.data?.message || "Unknown error",
+        title: t("errorTitle"),
+        description: error.response?.data?.message || t("unknownError"),
         type: "destructive",
       });
     } finally {
@@ -107,10 +109,10 @@ export default function PaymentsTab({
     if (!deleteId) return;
     try {
       await axios.delete(`/cases/${caseData.id}/payments/${deleteId}`);
-      toast.add({ title: "Payment deleted" });
+      toast.add({ title: t("successDelete") });
       refresh();
     } catch (e) {
-      toast.add({ title: "Error", type: "destructive" });
+      toast.add({ title: t("errorTitle"), type: "destructive" });
     } finally {
       setDeleteId(null);
     }
@@ -118,94 +120,114 @@ export default function PaymentsTab({
 
   return (
     <Card>
-      <CardHeader className="flex flex-row items-center justify-between">
-        <CardTitle>Payments</CardTitle>
-        <Button onClick={() => setOpen(true)} size="sm">
-          <PlusIcon className="w-4 h-4 mr-2" /> Add Payment
+      <CardHeader className="flex flex-row items-center justify-between border-b pb-4 mb-4">
+        <CardTitle>{t("title")}</CardTitle>
+        <Button onClick={() => setOpen(true)} size="sm" className="rounded-full">
+          <PlusIcon className="w-4 h-4 mr-2" /> {t("addPayment")}
         </Button>
       </CardHeader>
       <CardContent>
-        <h3 className="font-medium mb-4">Payment Transfers</h3>
         {caseData.payments && caseData.payments.length > 0 ? (
           <div className="space-y-4">
+            <h3 className="font-semibold text-muted-foreground uppercase tracking-wider text-xs mb-2">{t("paymentTransfers")}</h3>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             {caseData.payments.map((p: any) => (
               <div
                 key={p.id}
-                className="p-4 border rounded-lg flex justify-between items-start"
+                className="p-0 border rounded-2xl bg-card hover:shadow-md transition-shadow overflow-hidden flex flex-col relative group"
               >
-                <div className="grid grid-cols-2 gap-4 grow">
+                <div className="bg-green-500/10 p-4 border-b flex justify-between items-center">
                   <div>
-                    <span className="text-sm text-muted-foreground">
-                      Date:{" "}
+                    <span className="text-xs font-semibold text-green-700 uppercase tracking-wider block mb-1">
+                      {t("amountLabel")}
                     </span>
-                    <span className="font-medium">
+                    <span className="font-bold text-2xl text-green-600 tracking-tight">
+                      Rs. {p.amount}
+                    </span>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider block mb-1">
+                      {t("dateLabel")}
+                    </span>
+                    <span className="font-medium text-sm">
                       {p.paymentDate
                         ? new Date(p.paymentDate).toLocaleDateString()
-                        : "N/A"}
+                        : t("na")}
                     </span>
                   </div>
+                </div>
+
+                <div className="p-4 grid grid-cols-2 gap-4 grow">
                   <div>
-                    <span className="text-sm text-muted-foreground">
-                      Amount:{" "}
+                    <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider block mb-1">
+                      {t("methodLabel")}
                     </span>
-                    <span className="font-medium font-mono text-green-600">
-                      {p.amount}
-                    </span>
+                    <span className="font-medium">{p.method || t("na")}</span>
                   </div>
                   <div>
-                    <span className="text-sm text-muted-foreground">
-                      Method:{" "}
+                    <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider block mb-1">
+                      {t("refNoLabel")}
                     </span>
-                    <span>{p.method || "N/A"}</span>
+                    <span className="font-medium text-muted-foreground">{p.referenceNo || t("na")}</span>
                   </div>
-                  <div>
-                    <span className="text-sm text-muted-foreground">
-                      Ref No:{" "}
+                  <div className="col-span-2">
+                    <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider block mb-1">
+                      {t("receivedBy")}
                     </span>
-                    <span>{p.referenceNo || "N/A"}</span>
-                  </div>
-                  <div>
-                    <span className="text-sm text-muted-foreground">
-                      Received By:{" "}
-                    </span>
-                    <span>
+                    <span className="font-medium">
                       {p.receivedByUser
                         ? `${p.receivedByUser.first_name} ${p.receivedByUser.last_name}`
-                        : p.receivedBy || "N/A"}
+                        : p.receivedBy || t("na")}
                     </span>
                   </div>
                   {p.notes && (
-                    <div className="col-span-2 mt-2">
-                      <p className="text-sm text-muted-foreground">{p.notes}</p>
+                    <div className="col-span-2 mt-2 pt-2 border-t">
+                      <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider block mb-1">{t("notesLabel")}</span>
+                      <p className="text-sm italic text-muted-foreground">{p.notes}</p>
                     </div>
                   )}
                 </div>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="text-destructive hover:bg-destructive/10 ml-4"
-                  onClick={() => handleDeleteClick(p.id)}
-                >
-                  <Trash2Icon className="w-4 h-4" />
-                </Button>
+
+                <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="h-8 w-8 text-muted-foreground hover:text-destructive hover:bg-destructive/10 rounded-full"
+                    onClick={() => handleDeleteClick(p.id)}
+                  >
+                    <Trash2Icon className="w-4 h-4" />
+                  </Button>
+                </div>
               </div>
             ))}
+            </div>
           </div>
         ) : (
-          <p className="text-muted-foreground">No payments recorded.</p>
+          <div className="flex flex-col items-center justify-center py-10 px-4 text-center border-2 border-dashed rounded-xl bg-muted/5">
+            <div className="bg-muted p-3 rounded-full mb-4">
+              <PlusIcon className="w-6 h-6 text-muted-foreground" />
+            </div>
+            <h3 className="text-lg font-semibold mb-1">{t("noPayments")}</h3>
+            <p className="text-sm text-muted-foreground mb-4 max-w-sm">
+              No payments have been recorded for this case. Click below to add the first payment record.
+            </p>
+            <Button onClick={() => setOpen(true)} variant="secondary" className="rounded-full">
+              {t("addPayment")}
+            </Button>
+          </div>
         )}
       </CardContent>
 
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Add Payment</DialogTitle>
+            <DialogTitle>{t("addPayment")}</DialogTitle>
           </DialogHeader>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label>
-                  Amount <span className="text-destructive">*</span>
+                  {t("amountLabel")} <span className="text-destructive">*</span>
                 </Label>
                 <Input
                   type="number"
@@ -216,7 +238,7 @@ export default function PaymentsTab({
                 />
               </div>
               <div className="space-y-2">
-                <Label>Date</Label>
+                <Label>{t("dateLabel")}</Label>
                 <CompositeDatePicker
                   value={paymentDate}
                   onChange={(val) => setPaymentDate(val)}
@@ -226,26 +248,28 @@ export default function PaymentsTab({
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label>Method</Label>
+                <Label>{t("methodLabel")}</Label>
                 <Select
                   value={method}
                   onValueChange={(val) => setMethod(val as string)}
                 >
                   <SelectTrigger>
-                    <SelectValue placeholder="e.g. Bank Transfer" />
+                    <SelectValue placeholder={t("placeholderMethod")} />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="Cash">Cash</SelectItem>
-                    <SelectItem value="Bank Transfer">Bank Transfer</SelectItem>
-                    <SelectItem value="Cheque">Cheque</SelectItem>
+                    <SelectItem value="Cash">{t("cash")}</SelectItem>
+                    <SelectItem value="Bank Transfer">
+                      {t("bankTransfer")}
+                    </SelectItem>
+                    <SelectItem value="Cheque">{t("cheque")}</SelectItem>
                     <SelectItem value="Online Payment">
-                      Online Payment
+                      {t("onlinePayment")}
                     </SelectItem>
                   </SelectContent>
                 </Select>
               </div>
               <div className="space-y-2">
-                <Label>Reference No.</Label>
+                <Label>{t("refNoLabel")}</Label>
                 <Input
                   value={referenceNo}
                   onChange={(e) => setReferenceNo(e.target.value)}
@@ -254,25 +278,29 @@ export default function PaymentsTab({
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label>Received By (Internal User)</Label>
+                <Label>{t("receivedByInternalLabel")}</Label>
                 <Select
                   value={receivedByUserId}
                   onValueChange={(val) => setReceivedByUserId(val as string)}
                 >
                   <SelectTrigger>
-                    <SelectValue placeholder="Select internal user">
+                    <SelectValue
+                      placeholder={t("receivedByInternalPlaceholder")}
+                    >
                       {receivedByUserId !== "none"
                         ? (() => {
-                            const u = users.find((x) => x.id === receivedByUserId);
+                            const u = users.find(
+                              (x) => x.id === receivedByUserId,
+                            );
                             return u
                               ? `${u.first_name} ${u.last_name}`
-                              : "Select internal user";
+                              : t("receivedByInternalPlaceholder");
                           })()
                         : undefined}
                     </SelectValue>
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="none">None (External)</SelectItem>
+                    <SelectItem value="none">{t("noneExternal")}</SelectItem>
                     {users.map((u) => (
                       <SelectItem key={u.id} value={u.id}>
                         {u.first_name} {u.last_name}
@@ -282,17 +310,17 @@ export default function PaymentsTab({
                 </Select>
               </div>
               <div className="space-y-2">
-                <Label>Or Received By (External Name)</Label>
+                <Label>{t("receivedByExternalLabel")}</Label>
                 <Input
                   value={receivedBy}
                   onChange={(e) => setReceivedBy(e.target.value)}
-                  placeholder="e.g. John Doe"
+                  placeholder={t("receivedByExternalPlaceholder")}
                   disabled={receivedByUserId !== "none"}
                 />
               </div>
             </div>
             <div className="space-y-2">
-              <Label>Notes</Label>
+              <Label>{t("notesLabel")}</Label>
               <Textarea
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
@@ -302,14 +330,14 @@ export default function PaymentsTab({
             <div className="flex justify-end pt-4">
               <Button
                 type="button"
-                variant="outline"
+                variant="destructive"
                 className="mr-2"
                 onClick={() => setOpen(false)}
               >
-                Cancel
+                {t("cancel")}
               </Button>
               <Button type="submit" disabled={loading}>
-                {loading ? "Saving..." : "Save"}
+                {loading ? t("saving") : t("save")}
               </Button>
             </div>
           </form>
@@ -322,14 +350,13 @@ export default function PaymentsTab({
       >
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+            <AlertDialogTitle>{t("confirmDeleteTitle")}</AlertDialogTitle>
             <AlertDialogDescription>
-              This action cannot be undone. This will permanently delete the
-              payment.
+              {t("confirmDeleteDesc")}
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogCancel>{t("cancel")}</AlertDialogCancel>
             <AlertDialogAction
               className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
               onClick={(e) => {
@@ -337,7 +364,7 @@ export default function PaymentsTab({
                 confirmDelete();
               }}
             >
-              Delete
+              {t("delete")}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

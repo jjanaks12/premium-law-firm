@@ -20,11 +20,11 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { useAxios } from "@/lib/services/axios.service";
 import { toast } from "@/components/ui/toast";
 import { Link } from "@/src/i18n/routing";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 
 export default function DocumentsTab({
   caseData,
@@ -34,28 +34,27 @@ export default function DocumentsTab({
   refresh: () => void;
 }) {
   const { axios } = useAxios();
+  const t = useTranslations("DocumentsTab");
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const [fileName, setFileName] = useState("");
-  const [description, setDescription] = useState("");
-  const [file, setFile] = useState<File | null>(null);
+  const [files, setFiles] = useState<File[]>([]);
   const [deleteId, setDeleteId] = useState<string | null>(null);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
-      setFile(e.target.files[0]);
+      setFiles(Array.from(e.target.files));
     }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!file) {
+    if (files.length === 0) {
       toast.add({
-        title: "Validation Error",
-        description: "Please select a file to upload.",
+        title: t("validationErrorTitle"),
+        description: t("validationErrorDesc"),
         type: "destructive",
       });
       return;
@@ -63,27 +62,26 @@ export default function DocumentsTab({
 
     setLoading(true);
     try {
-      const formData = new FormData();
-      formData.append("file", file);
-      if (fileName) formData.append("fileName", fileName);
-      if (description) formData.append("description", description);
-
-      await axios.post(`/cases/${caseData.id}/documents`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-      toast.add({ title: "Document uploaded successfully" });
+      await Promise.all(
+        files.map((f) => {
+          const formData = new FormData();
+          formData.append("file", f);
+          return axios.post(`/cases/${caseData.id}/documents`, formData, {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          });
+        }),
+      );
+      toast.add({ title: t("uploadSuccess"), type: "success" });
       setOpen(false);
       refresh();
-      setFileName("");
-      setDescription("");
-      setFile(null);
+      setFiles([]);
       if (fileInputRef.current) fileInputRef.current.value = "";
     } catch (error: any) {
       toast.add({
-        title: "Error",
-        description: error.response?.data?.message || "Unknown error",
+        title: t("errorTitle"),
+        description: error.response?.data?.message || t("unknownError"),
         type: "destructive",
       });
     } finally {
@@ -99,10 +97,10 @@ export default function DocumentsTab({
     if (!deleteId) return;
     try {
       await axios.delete(`/cases/${caseData.id}/documents/${deleteId}`);
-      toast.add({ title: "Document deleted" });
+      toast.add({ title: t("deleteSuccess") });
       refresh();
     } catch (e) {
-      toast.add({ title: "Error", type: "destructive" });
+      toast.add({ title: t("errorTitle"), type: "destructive" });
     } finally {
       setDeleteId(null);
     }
@@ -110,44 +108,51 @@ export default function DocumentsTab({
 
   return (
     <Card>
-      <CardHeader className="flex flex-row items-center justify-between">
-        <CardTitle>Related Documents</CardTitle>
-        <Button onClick={() => setOpen(true)} size="sm">
-          <PlusIcon className="w-4 h-4 mr-2" /> Upload Document
+      <CardHeader className="flex flex-row items-center justify-between border-b pb-4 mb-4">
+        <CardTitle>{t("title")}</CardTitle>
+        <Button onClick={() => setOpen(true)} size="sm" className="rounded-full">
+          <PlusIcon className="w-4 h-4 mr-2" /> {t("uploadDocBtn")}
         </Button>
       </CardHeader>
       <CardContent>
         {caseData.documents && caseData.documents.length > 0 ? (
-          <div className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {caseData.documents.map((d: any) => (
               <div
                 key={d.id}
-                className="p-4 border rounded-lg flex justify-between items-start"
+                className="p-4 border rounded-2xl bg-card hover:shadow-md transition-all flex justify-between items-start group"
               >
-                <div className="grow">
-                  <div className="font-medium text-lg">{d.fileName}</div>
-                  <div className="text-sm text-muted-foreground mt-1">
-                    Uploaded: {new Date(d.createdAt).toLocaleDateString()}
+                <div className="flex space-x-4 items-start grow">
+                  <div className="bg-primary/10 text-primary p-3 rounded-xl shrink-0 mt-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
                   </div>
-                  {d.description && (
-                    <div className="mt-2 text-sm">{d.description}</div>
-                  )}
+                  <div className="grow overflow-hidden">
+                    <div className="font-semibold text-base truncate pr-2" title={d.fileName}>{d.fileName}</div>
+                    <div className="text-xs text-muted-foreground mt-1 flex items-center">
+                      {t("uploadedLabel")} <span className="font-medium ml-1 text-foreground">{new Date(d.createdAt).toLocaleDateString()}</span>
+                    </div>
+                    {d.description && (
+                      <div className="mt-2 text-sm text-muted-foreground line-clamp-2">{d.description}</div>
+                    )}
+                  </div>
                 </div>
-                <div className="flex space-x-2 ml-4">
+                <div className="flex flex-col space-y-2 ml-2 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity">
                   <Link
                     href={process.env.NEXT_PUBLIC_API_URL + d.documentUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={cn(
-                      buttonVariants({ variant: "outline", size: "sm" }),
+                      buttonVariants({ variant: "secondary", size: "icon" }),
+                      "rounded-full h-8 w-8 text-primary hover:text-primary"
                     )}
+                    title={t("downloadBtn")}
                   >
-                    <DownloadIcon className="w-4 h-4 mr-2" /> Download
+                    <DownloadIcon className="w-4 h-4" />
                   </Link>
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="text-destructive hover:bg-destructive/10"
+                    className="h-8 w-8 text-muted-foreground hover:text-destructive hover:bg-destructive/10 rounded-full"
                     onClick={() => handleDeleteClick(d.id)}
                   >
                     <Trash2Icon className="w-4 h-4" />
@@ -157,70 +162,70 @@ export default function DocumentsTab({
             ))}
           </div>
         ) : (
-          <p className="text-muted-foreground">No documents uploaded.</p>
+          <div className="flex flex-col items-center justify-center py-12 px-4 text-center border-2 border-dashed rounded-2xl bg-muted/5">
+            <div className="bg-muted p-4 rounded-full mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-muted-foreground"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+            </div>
+            <h3 className="text-lg font-semibold mb-1">{t("noDocuments")}</h3>
+            <p className="text-sm text-muted-foreground mb-5 max-w-sm">
+              Keep all case-related files in one place. Upload images, PDFs, or Word documents.
+            </p>
+            <Button onClick={() => setOpen(true)} variant="secondary" className="rounded-full">
+              {t("uploadDocBtn")}
+            </Button>
+          </div>
         )}
       </CardContent>
 
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Upload Document</DialogTitle>
+            <DialogTitle>{t("uploadDialogTitle")}</DialogTitle>
           </DialogHeader>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
               <Label>
-                File <span className="text-destructive">*</span>
+                {t("fileLabel")} <span className="text-destructive">*</span>
               </Label>
               <Input
                 type="file"
                 ref={fileInputRef}
                 onChange={handleFileChange}
+                accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.txt"
                 required
-              />
-            </div>
-            <div className="space-y-2">
-              <Label>File Name (Optional)</Label>
-              <Input
-                value={fileName}
-                onChange={(e) => setFileName(e.target.value)}
-                placeholder="Will use original file name if empty"
-              />
-            </div>
-            <div className="space-y-2">
-              <Label>Description</Label>
-              <Textarea
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                rows={3}
+                multiple
               />
             </div>
             <div className="flex justify-end pt-4">
               <Button
                 type="button"
-                variant="outline"
+                variant="destructive"
                 className="mr-2"
                 onClick={() => setOpen(false)}
               >
-                Cancel
+                {t("cancelBtn")}
               </Button>
               <Button type="submit" disabled={loading}>
-                {loading ? "Uploading..." : "Upload"}
+                {loading ? t("uploadingStatus") : t("uploadBtn")}
               </Button>
             </div>
           </form>
         </DialogContent>
       </Dialog>
 
-      <AlertDialog open={!!deleteId} onOpenChange={(open) => !open && setDeleteId(null)}>
+      <AlertDialog
+        open={!!deleteId}
+        onOpenChange={(open) => !open && setDeleteId(null)}
+      >
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+            <AlertDialogTitle>{t("confirmDeleteTitle")}</AlertDialogTitle>
             <AlertDialogDescription>
-              This action cannot be undone. This will permanently delete the document.
+              {t("confirmDeleteDesc")}
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogCancel>{t("cancelBtn")}</AlertDialogCancel>
             <AlertDialogAction
               className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
               onClick={(e) => {
@@ -228,7 +233,7 @@ export default function DocumentsTab({
                 confirmDelete();
               }}
             >
-              Delete
+              {t("deleteBtn")}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

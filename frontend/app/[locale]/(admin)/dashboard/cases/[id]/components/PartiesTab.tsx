@@ -80,7 +80,7 @@ export default function PartiesTab({
     setPartyName(p.partyName || "");
     setRoleId(p.roleId || "");
     setContactInfo(p.contactInfo || "");
-    
+
     if (p.waris && p.waris.length > 0) {
       const w = p.waris[0];
       setHasWaris(true);
@@ -121,13 +121,15 @@ export default function PartiesTab({
         partyName,
         roleId,
         contactInfo,
-        waris: hasWaris ? {
-          partyName: warisName,
-          citizenshipNo: warisCitizenship,
-          contactNo: warisContact,
-          permanentAddress: warisPermanentAddress,
-          temporaryAddress: warisTemporaryAddress,
-        } : undefined
+        waris: hasWaris
+          ? {
+              partyName: warisName,
+              citizenshipNo: warisCitizenship,
+              contactNo: warisContact,
+              permanentAddress: warisPermanentAddress,
+              temporaryAddress: warisTemporaryAddress,
+            }
+          : undefined,
       };
 
       if (editId) {
@@ -137,7 +139,7 @@ export default function PartiesTab({
         await axios.post(`/cases/${caseData.id}/parties`, payload);
         toast.add({ title: t("successAdd") });
       }
-      
+
       setOpen(false);
       refresh();
       resetForm();
@@ -183,46 +185,75 @@ export default function PartiesTab({
       </CardHeader>
       <CardContent>
         {caseData.parties && caseData.parties.length > 0 ? (
-          <div className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {caseData.parties.map((p: any) => (
               <div
                 key={p.id}
-                className="p-4 border rounded-lg flex justify-between items-start"
+                className="p-5 border rounded-2xl bg-card hover:shadow-md transition-shadow flex items-start space-x-4 relative group"
               >
-                <div>
-                  <div className="font-medium">{p.partyName}</div>
-                  <div className="text-sm text-muted-foreground">
-                    {t("role")}: {locale === "np" && p.role?.nepaliName ? p.role?.nepaliName : p.role?.name}
+                <div className="h-12 w-12 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xl shrink-0">
+                  {p.partyName?.charAt(0) || "P"}
+                </div>
+                <div className="flex-1">
+                  <div className="flex justify-between items-start">
+                    <div className="font-semibold text-lg">{p.partyName}</div>
+                    <div className="flex space-x-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="h-8 w-8 text-muted-foreground hover:text-primary rounded-full"
+                        onClick={() => handleEditClick(p)}
+                      >
+                        <EditIcon className="w-4 h-4" />
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="h-8 w-8 text-muted-foreground hover:text-destructive hover:bg-destructive/10 rounded-full"
+                        onClick={() => handleDeleteClick(p.id)}
+                      >
+                        <Trash2Icon className="w-4 h-4" />
+                      </Button>
+                    </div>
                   </div>
+                  <div className="inline-block px-2 py-0.5 rounded-full bg-muted text-xs font-medium text-muted-foreground mb-2 mt-1">
+                    {locale === "np" && p.role?.nepaliName
+                      ? p.role?.nepaliName
+                      : p.role?.name}
+                  </div>
+                  
                   {p.contactInfo && (
-                    <div className="text-sm mt-2">{t("contact")}: {p.contactInfo}</div>
+                    <div className="text-sm text-muted-foreground mt-1 flex items-center">
+                      <span className="font-medium mr-1">{t("contact")}:</span> {p.contactInfo}
+                    </div>
                   )}
                   {p.waris && p.waris.length > 0 && (
-                    <div className="text-sm mt-2">{t("representative")}: {p.waris[0].partyName}</div>
+                    <div className="mt-3 p-3 bg-muted/20 border rounded-xl text-sm">
+                      <span className="text-xs uppercase tracking-wider font-semibold text-muted-foreground block mb-1">
+                        {t("representative")}
+                      </span>
+                      <span className="font-medium flex items-center text-primary">
+                        {p.waris[0].partyName}
+                      </span>
+                    </div>
                   )}
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={() => handleEditClick(p)}
-                  >
-                    <EditIcon className="w-4 h-4 text-muted-foreground" />
-                  </Button>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="text-destructive hover:bg-destructive/10"
-                    onClick={() => handleDeleteClick(p.id)}
-                  >
-                    <Trash2Icon className="w-4 h-4" />
-                  </Button>
                 </div>
               </div>
             ))}
           </div>
         ) : (
-          <p className="text-muted-foreground">{t("noParties")}</p>
+          <div className="flex flex-col items-center justify-center py-10 px-4 text-center border-2 border-dashed rounded-xl bg-muted/5">
+            <div className="bg-muted p-3 rounded-full mb-4">
+              <PlusIcon className="w-6 h-6 text-muted-foreground" />
+            </div>
+            <h3 className="text-lg font-semibold mb-1">{t("noParties")}</h3>
+            <p className="text-sm text-muted-foreground mb-4 max-w-sm">
+              No parties have been added yet. Include plaintiffs, defendants, and their representatives.
+            </p>
+            <Button onClick={handleOpenAdd} variant="secondary">
+              {t("addParty")}
+            </Button>
+          </div>
         )}
       </CardContent>
 
@@ -252,7 +283,18 @@ export default function PartiesTab({
                 required
               >
                 <SelectTrigger>
-                  <SelectValue placeholder={t("role")} />
+                  <SelectValue placeholder={t("role")}>
+                    {roleId && roles.length > 0
+                      ? (() => {
+                          const r = roles.find((role) => role.id === roleId);
+                          return r
+                            ? locale === "np" && r.nepaliName
+                              ? r.nepaliName
+                              : r.name
+                            : undefined;
+                        })()
+                      : undefined}
+                  </SelectValue>
                 </SelectTrigger>
                 <SelectContent>
                   {roles.map((r) => (
@@ -273,11 +315,11 @@ export default function PartiesTab({
             </div>
             <div className="space-y-4 pt-4 border-t">
               <div className="flex items-center gap-2">
-                <input 
-                  type="checkbox" 
-                  id="hasWaris" 
-                  checked={hasWaris} 
-                  onChange={(e) => setHasWaris(e.target.checked)} 
+                <input
+                  type="checkbox"
+                  id="hasWaris"
+                  checked={hasWaris}
+                  onChange={(e) => setHasWaris(e.target.checked)}
                   className="rounded border-gray-300"
                 />
                 <Label htmlFor="hasWaris">{t("hasWaris")}</Label>
@@ -288,7 +330,10 @@ export default function PartiesTab({
                   <h5 className="text-sm font-semibold">{t("warisDetails")}</h5>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label>{t("warisName")} <span className="text-destructive">*</span></Label>
+                      <Label>
+                        {t("warisName")}{" "}
+                        <span className="text-destructive">*</span>
+                      </Label>
                       <Input
                         value={warisName}
                         onChange={(e) => setWarisName(e.target.value)}
@@ -316,7 +361,9 @@ export default function PartiesTab({
                       <Label>{t("permanentAddress")}</Label>
                       <Input
                         value={warisPermanentAddress}
-                        onChange={(e) => setWarisPermanentAddress(e.target.value)}
+                        onChange={(e) =>
+                          setWarisPermanentAddress(e.target.value)
+                        }
                         placeholder={t("permanentAddress")}
                       />
                     </div>
@@ -324,7 +371,9 @@ export default function PartiesTab({
                       <Label>{t("temporaryAddress")}</Label>
                       <Input
                         value={warisTemporaryAddress}
-                        onChange={(e) => setWarisTemporaryAddress(e.target.value)}
+                        onChange={(e) =>
+                          setWarisTemporaryAddress(e.target.value)
+                        }
                         placeholder={t("temporaryAddress")}
                       />
                     </div>
@@ -335,7 +384,7 @@ export default function PartiesTab({
             <div className="flex justify-end pt-4">
               <Button
                 type="button"
-                variant="outline"
+                variant="destructive"
                 className="mr-2"
                 onClick={() => setOpen(false)}
               >
@@ -352,7 +401,10 @@ export default function PartiesTab({
         </DialogContent>
       </Dialog>
 
-      <AlertDialog open={!!deleteId} onOpenChange={(open) => !open && setDeleteId(null)}>
+      <AlertDialog
+        open={!!deleteId}
+        onOpenChange={(open) => !open && setDeleteId(null)}
+      >
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>{t("confirmDeleteTitle")}</AlertDialogTitle>

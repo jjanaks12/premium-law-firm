@@ -30,7 +30,6 @@ import {
 } from "@/components/ui/select";
 import { CompositeDatePicker } from "@/components/ui/composite-date-picker";
 import { Checkbox } from "@/components/ui/checkbox";
-import { CaseMigrationModal } from "./CaseMigrationModal";
 
 interface CaseFormProps {
   caseData?: CaseData;
@@ -130,8 +129,8 @@ export default function CaseForm({
         const { data } = await axios.patch(`/cases/${caseData.id}`, values);
         if (data.data) {
           toast.add({
-            title: "Success",
-            description: "Case updated successfully",
+            title: t("toastSuccessTitle") || "Success",
+            description: t("toastSuccessUpdate") || "Case updated successfully",
             type: "success",
           });
           onSuccess();
@@ -140,8 +139,8 @@ export default function CaseForm({
         const { data } = await axios.post("/cases", values);
         if (data.data) {
           toast.add({
-            title: "Success",
-            description: "Case created successfully",
+            title: t("toastSuccessTitle") || "Success",
+            description: t("toastSuccessAdd") || "Case created successfully",
             type: "success",
           });
           onSuccess();
@@ -149,9 +148,9 @@ export default function CaseForm({
       }
     } catch (err: any) {
       toast.add({
-        title: "Error",
+        title: t("toastErrorTitle") || "Error",
         description:
-          err.response?.data?.message || err.message || "Action failed",
+          err.response?.data?.message || err.message || t("toastActionFailed") || "Action failed",
         type: "danger",
       });
     } finally {
@@ -173,6 +172,7 @@ export default function CaseForm({
         courtLevelId: activeCourtDetail?.courtLevelId || "",
         courtName: activeCourtDetail?.courtName || "",
         sectionCourtRoom: activeCourtDetail?.sectionCourtRoom || "",
+        judgeName: activeCourtDetail?.judgeName || "",
         registrationDate: activeCourtDetail?.registrationDate
           ? dayjs(activeCourtDetail.registrationDate).format("YYYY-MM-DD")
           : "",
@@ -213,12 +213,6 @@ export default function CaseForm({
           <div className="space-y-4 border rounded-md p-4 bg-muted/20">
             <div className="flex items-center justify-between">
               <h3 className="text-lg font-medium">{t("courtDetails")}</h3>
-              {isEditing && activeCourtDetail?.id && (
-                <CaseMigrationModal
-                  parentId={activeCourtDetail.id}
-                  onSuccess={onSuccess}
-                />
-              )}
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
@@ -289,14 +283,14 @@ export default function CaseForm({
                         disabled={loadingNatures}
                         className="w-full"
                       >
-                        <SelectValue placeholder="Select a case nature">
+                        <SelectValue placeholder={t("formSelectNature")}>
                           {(() => {
-                            if (!field.value) return "Select a case nature";
+                            if (!field.value) return t("formSelectNature");
                             const n = natures.find(
                               (x) =>
                                 x.id.toString() === field.value?.toString(),
                             );
-                            if (!n) return "Select a case nature";
+                            if (!n) return t("formSelectNature");
                             return locale === "np" && n.nepaliName
                               ? n.nepaliName
                               : n.name;
@@ -403,6 +397,19 @@ export default function CaseForm({
                   className="text-sm text-destructive"
                 />
               </div>
+              <div className="space-y-2">
+                <Label htmlFor="judgeName">{t("formJudgeName")}</Label>
+                <Field name="courtDetails[0].judgeName">
+                  {({ field }: FieldProps) => (
+                    <Input {...field} id="judgeName" />
+                  )}
+                </Field>
+                <ErrorMessage
+                  name="courtDetails[0].judgeName"
+                  component="div"
+                  className="text-sm text-destructive"
+                />
+              </div>
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -421,7 +428,7 @@ export default function CaseForm({
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="status">Status</Label>
+              <Label htmlFor="status">{t("formStatus")}</Label>
               <Field name="status">
                 {({ field, form }: FieldProps) => (
                   <Select
@@ -431,12 +438,12 @@ export default function CaseForm({
                     value={field.value}
                   >
                     <SelectTrigger id="status" className="w-full">
-                      <SelectValue placeholder="Select a status" />
+                      <SelectValue placeholder={t("formSelectStatus")} />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="Draft">Draft</SelectItem>
-                      <SelectItem value="Active">Active</SelectItem>
-                      <SelectItem value="Closed">Closed</SelectItem>
+                      <SelectItem value="Draft">{t("statusDraft")}</SelectItem>
+                      <SelectItem value="Active">{t("statusActive")}</SelectItem>
+                      <SelectItem value="Closed">{t("statusClosed")}</SelectItem>
                     </SelectContent>
                   </Select>
                 )}
@@ -1030,7 +1037,7 @@ export default function CaseForm({
           <div className="space-y-4 border rounded-md p-4 bg-muted/20">
             <div className="flex items-center justify-between">
               <h3 className="text-lg font-medium">
-                Related Precedents (Najir)
+                {t("formPrecedentsTitle")}
               </h3>
             </div>
             <FieldArray name="relatedPrecedents">
@@ -1058,14 +1065,14 @@ export default function CaseForm({
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-start">
                             <div className="space-y-2">
                               <Label>
-                                Decision Number{" "}
+                                {t("formDecisionNumber")}{" "}
                                 <span className="text-destructive">*</span>
                               </Label>
                               <Field
                                 name={`relatedPrecedents.${index}.decisionNumber`}
                               >
                                 {({ field }: FieldProps) => (
-                                  <Input {...field} placeholder="e.g. 10234" />
+                                  <Input {...field} placeholder={t("placeholderDecisionNumber")} />
                                 )}
                               </Field>
                               <ErrorMessage
@@ -1076,7 +1083,7 @@ export default function CaseForm({
                             </div>
                             <div className="space-y-2">
                               <Label>
-                                Parties{" "}
+                                {t("formPrecedentParties")}{" "}
                                 <span className="text-destructive">*</span>
                               </Label>
                               <Field
@@ -1093,10 +1100,10 @@ export default function CaseForm({
                               />
                             </div>
                             <div className="space-y-2">
-                              <Label>Year</Label>
+                              <Label>{t("formPrecedentYear")}</Label>
                               <Field name={`relatedPrecedents.${index}.year`}>
                                 {({ field }: FieldProps) => (
-                                  <Input {...field} placeholder="e.g. 2080" />
+                                  <Input {...field} placeholder={t("placeholderYear")} />
                                 )}
                               </Field>
                               <ErrorMessage
@@ -1106,12 +1113,12 @@ export default function CaseForm({
                               />
                             </div>
                             <div className="space-y-2">
-                              <Label>Sequence No</Label>
+                              <Label>{t("formSequenceNo")}</Label>
                               <Field
                                 name={`relatedPrecedents.${index}.sequenceNo`}
                               >
                                 {({ field }: FieldProps) => (
-                                  <Input {...field} placeholder="e.g. 1" />
+                                  <Input {...field} placeholder={t("placeholderSequenceNo")} />
                                 )}
                               </Field>
                               <ErrorMessage
@@ -1138,7 +1145,7 @@ export default function CaseForm({
                       })
                     }
                   >
-                    <PlusIcon className="mr-2 h-4 w-4" /> Add Precedent
+                    <PlusIcon className="mr-2 h-4 w-4" /> {t("addPrecedentBtn")}
                   </Button>
                 </div>
               )}
@@ -1152,7 +1159,7 @@ export default function CaseForm({
                 <Textarea
                   {...field}
                   id="facts"
-                  placeholder="Brief description of the facts..."
+                  placeholder={t("placeholderFacts")}
                   className="min-h-25"
                 />
               )}
@@ -1167,7 +1174,7 @@ export default function CaseForm({
           <div className="bg-white flex justify-end gap-2 p-4 fixed bottom-0 left-0 right-0 border-t">
             <Button
               type="button"
-              variant="outline"
+              variant="destructive"
               onClick={onClose}
               disabled={isSubmitting}
             >

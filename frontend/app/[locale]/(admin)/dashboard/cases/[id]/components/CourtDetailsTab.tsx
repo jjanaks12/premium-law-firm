@@ -58,9 +58,7 @@ export default function CourtDetailsTab({
   const [judgeName, setJudgeName] = useState("");
   const [courtType, setCourtType] = useState("");
   const [courtName, setCourtName] = useState("");
-  const [registrationDate, setRegistrationDate] = useState<string>(
-    ""
-  );
+  const [registrationDate, setRegistrationDate] = useState<string>("");
 
   const activeDetail =
     caseData.courtDetails?.find((d: any) => d.isActive) ||
@@ -76,7 +74,9 @@ export default function CourtDetailsTab({
     setCourtType(detail.courtType || "");
     setCourtName(detail.courtName || "");
     setRegistrationDate(
-      detail.registrationDate ? dayjs(detail.registrationDate).format("YYYY-MM-DD") : "",
+      detail.registrationDate
+        ? dayjs(detail.registrationDate).format("YYYY-MM-DD")
+        : "",
     );
     setOpen(true);
   };
@@ -175,14 +175,15 @@ export default function CourtDetailsTab({
           <Card
             key={detail.id || index}
             className={
-              detail.isActive ? "border-primary shadow-sm" : "opacity-80"
+              detail.isActive ? "border-primary shadow-md relative overflow-hidden" : "opacity-80 hover:opacity-100 transition-opacity"
             }
           >
+            {detail.isActive && <div className="absolute top-0 left-0 w-1 h-full bg-primary" />}
             <CardHeader className="flex flex-row items-center justify-between pb-2">
               <CardTitle className="text-lg flex items-center">
                 {detail.caseName}
                 {detail.isActive && caseData.status !== "Closed" && (
-                  <Badge className="ml-2">{t("active")}</Badge>
+                  <Badge className="ml-3 bg-primary/20 text-primary hover:bg-primary/30 border-0">{t("active")}</Badge>
                 )}
               </CardTitle>
               {index == caseData.courtDetails.length - 1 && (
@@ -196,34 +197,34 @@ export default function CourtDetailsTab({
               )}
             </CardHeader>
             <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-2">
-                <div>
-                  <p className="text-sm font-medium text-muted-foreground">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-2">
+                <div className="bg-muted/10 p-3 rounded-lg border border-transparent hover:border-border transition-colors">
+                  <p className="text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-1">
                     {t("formNumber")}
                   </p>
-                  <p className="mt-1">{detail.caseNumber || "N/A"}</p>
+                  <p className="font-medium">{detail.caseNumber || "N/A"}</p>
                 </div>
-                <div>
-                  <p className="text-sm font-medium text-muted-foreground">
+                <div className="bg-muted/10 p-3 rounded-lg border border-transparent hover:border-border transition-colors">
+                  <p className="text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-1">
                     {t("formRegDate")}
                   </p>
-                  <p className="mt-1">
+                  <p className="font-medium">
                     {detail.registrationDate
                       ? dayjs(detail.registrationDate).format("MMM DD, YYYY")
                       : "N/A"}
                   </p>
                 </div>
-                <div>
-                  <p className="text-sm font-medium text-muted-foreground">
+                <div className="bg-muted/10 p-3 rounded-lg border border-transparent hover:border-border transition-colors">
+                  <p className="text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-1">
                     {t("formFaat")}
                   </p>
-                  <p className="mt-1">{detail.sectionCourtRoom || "N/A"}</p>
+                  <p className="font-medium">{detail.sectionCourtRoom || "N/A"}</p>
                 </div>
-                <div>
-                  <p className="text-sm font-medium text-muted-foreground">
+                <div className="bg-muted/10 p-3 rounded-lg border border-transparent hover:border-border transition-colors">
+                  <p className="text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-1">
                     {t("courtType")}
                   </p>
-                  <p className="mt-1">
+                  <p className="font-medium">
                     {detail.courtType
                       ? t(detail.courtType) !== detail.courtType
                         ? t(detail.courtType)
@@ -231,17 +232,17 @@ export default function CourtDetailsTab({
                       : t("na")}
                   </p>
                 </div>
-                <div>
-                  <p className="text-sm font-medium text-muted-foreground">
+                <div className="bg-muted/10 p-3 rounded-lg border border-transparent hover:border-border transition-colors">
+                  <p className="text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-1">
                     {t("courtName")}
                   </p>
-                  <p className="mt-1">{detail.courtName || t("na")}</p>
+                  <p className="font-medium">{detail.courtName || t("na")}</p>
                 </div>
-                <div>
-                  <p className="text-sm font-medium text-muted-foreground">
+                <div className="bg-muted/10 p-3 rounded-lg border border-transparent hover:border-border transition-colors">
+                  <p className="text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-1">
                     {t("judge")}
                   </p>
-                  <p className="mt-1">{detail.judgeName || t("na")}</p>
+                  <p className="font-medium">{detail.judgeName || t("na")}</p>
                 </div>
               </div>
             </CardContent>
@@ -334,7 +335,7 @@ export default function CourtDetailsTab({
             <div className="flex justify-end pt-4">
               <Button
                 type="button"
-                variant="outline"
+                variant="destructive"
                 className="mr-2"
                 onClick={() => setOpen(false)}
               >

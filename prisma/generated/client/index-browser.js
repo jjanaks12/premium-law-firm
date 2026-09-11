@@ -242,7 +242,8 @@ exports.Prisma.CaseHearingScalarFieldEnum = {
   caseCourtDetailId: 'caseCourtDetailId',
   nextHearingDate: 'nextHearingDate',
   hearingDate: 'hearingDate',
-  hearingOrder: 'hearingOrder'
+  hearingOrder: 'hearingOrder',
+  hearingType: 'hearingType'
 };
 
 exports.Prisma.CasePaymentScalarFieldEnum = {

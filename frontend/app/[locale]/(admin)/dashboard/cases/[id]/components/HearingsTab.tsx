@@ -3,13 +3,20 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { CompositeDatePicker } from "@/components/ui/composite-date-picker";
 import { useTranslations } from "next-intl";
-import { PlusIcon, Trash2Icon } from "lucide-react";
+import { PlusIcon, Trash2Icon, PencilIcon } from "lucide-react";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -20,7 +27,6 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useAxios } from "@/lib/services/axios.service";
@@ -50,32 +56,50 @@ export default function HearingsTab({
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [deleteId, setDeleteId] = useState<string | null>(null);
+  const [editId, setEditId] = useState<string | null>(null);
 
   const [hearingDate, setHearingDate] = useState("");
   const [nextHearingDate, setNextHearingDate] = useState("");
   const [hearingOrder, setHearingOrder] = useState("");
+  const [hearingType, setHearingType] = useState("aadesh");
 
   const activeCourt =
     caseData.courtDetails?.find((d: any) => d.isActive) ||
     caseData.courtDetails?.[0];
 
+  const [selectedCourtId, setSelectedCourtId] = useState<string>("");
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     try {
-      await axios.post(`/cases/${caseData.id}/hearings`, {
-        hearingDate: hearingDate || undefined,
-        nextHearingDate: nextHearingDate || undefined,
-        caseCourtDetailId: activeCourt?.id,
-        hearingOrder,
-      });
-      toast.add({ title: t("successAdd") });
+      if (editId) {
+        await axios.patch(`/cases/${caseData.id}/hearings/${editId}`, {
+          hearingDate: hearingDate || undefined,
+          nextHearingDate: nextHearingDate || undefined,
+          caseCourtDetailId: selectedCourtId || undefined,
+          hearingOrder,
+          hearingType,
+        });
+        toast.add({ title: t("successAdd") || "Success" }); // Or a generic success edit message
+      } else {
+        await axios.post(`/cases/${caseData.id}/hearings`, {
+          hearingDate: hearingDate || undefined,
+          nextHearingDate: nextHearingDate || undefined,
+          caseCourtDetailId: selectedCourtId || undefined,
+          hearingOrder,
+          hearingType,
+        });
+        toast.add({ title: t("successAdd") });
+      }
       setOpen(false);
       refresh();
       // Reset
       setHearingDate("");
       setNextHearingDate("");
       setHearingOrder("");
+      setHearingType("aadesh");
+      setEditId(null);
     } catch (error: any) {
       toast.add({
         title: t("errorAdd"),
@@ -85,6 +109,20 @@ export default function HearingsTab({
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleEditClick = (hearing: any) => {
+    setEditId(hearing.id);
+    setHearingDate(
+      hearing.hearingDate ? hearing.hearingDate.substring(0, 16) : "",
+    );
+    setNextHearingDate(
+      hearing.nextHearingDate ? hearing.nextHearingDate.substring(0, 16) : "",
+    );
+    setHearingOrder(hearing.hearingOrder || "");
+    setHearingType(hearing.hearingType || "aadesh");
+    setSelectedCourtId(hearing.caseCourtDetailId || activeCourt?.id || "");
+    setOpen(true);
   };
 
   const handleDeleteClick = (hearingId: string) => {
@@ -112,44 +150,76 @@ export default function HearingsTab({
     <Card>
       <CardHeader className="flex flex-row items-center justify-between">
         <CardTitle>{t("hearings")}</CardTitle>
-        <Button onClick={() => setOpen(true)} size="sm">
+        <Button
+          onClick={() => {
+            setEditId(null);
+            setHearingDate("");
+            setNextHearingDate("");
+            setHearingOrder("");
+            setHearingType("aadesh");
+            setSelectedCourtId(activeCourt?.id || "");
+            setOpen(true);
+          }}
+          size="sm"
+        >
           <PlusIcon className="w-4 h-4 mr-2" /> {t("addHearing")}
         </Button>
       </CardHeader>
       <CardContent>
         {caseData.hearings && caseData.hearings.length > 0 ? (
-          <div className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {caseData.hearings.map((h: any) => (
               <div
                 key={h.id}
-                className="p-4 border rounded-lg flex justify-between items-start"
+                className="p-5 border rounded-2xl bg-card hover:shadow-md transition-shadow flex flex-col relative group"
               >
-                <div className="grid grid-cols-2 gap-2 grow">
+                <div className="flex justify-between items-start mb-4">
                   <div>
-                    <span className="text-sm text-muted-foreground">
-                      {t("hearingDate")}:{" "}
+                    <span className="text-xs uppercase tracking-wider font-semibold text-muted-foreground block mb-1">
+                      {t("hearingDate")}
                     </span>
-                    <span className="font-medium">
+                    <span className="font-semibold text-lg text-primary flex items-center">
                       {h.hearingDate
                         ? new Date(h.hearingDate).toLocaleDateString()
                         : t("na")}
                     </span>
                   </div>
+                  <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity absolute right-4 top-4 bg-card rounded-md shadow-sm border p-1">
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="h-7 w-7 text-muted-foreground hover:text-primary rounded-md"
+                      onClick={() => handleEditClick(h)}
+                    >
+                      <PencilIcon className="w-3.5 h-3.5" />
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="h-7 w-7 text-muted-foreground hover:text-destructive hover:bg-destructive/10 rounded-md"
+                      onClick={() => handleDeleteClick(h.id)}
+                    >
+                      <Trash2Icon className="w-3.5 h-3.5" />
+                    </Button>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4 mb-4">
                   <div>
-                    <span className="text-sm text-muted-foreground">
-                      {t("nextHearingDate")}:{" "}
+                    <span className="text-xs uppercase tracking-wider font-semibold text-muted-foreground block mb-1">
+                      {t("nextHearingDate")}
                     </span>
-                    <span className="font-medium">
+                    <span className="font-medium text-sm">
                       {h.nextHearingDate
                         ? new Date(h.nextHearingDate).toLocaleDateString()
                         : t("na")}
                     </span>
                   </div>
-                  <div className="col-span-2">
-                    <span className="text-sm text-muted-foreground">
-                      {t("court")}:{" "}
+                  <div>
+                    <span className="text-xs uppercase tracking-wider font-semibold text-muted-foreground block mb-1">
+                      {t("court")}
                     </span>
-                    <span>
+                    <span className="font-medium text-sm">
                       {h.caseCourtDetail
                         ? isKnownCourt(h.caseCourtDetail.courtType)
                           ? tCases(h.caseCourtDetail.courtType)
@@ -157,35 +227,42 @@ export default function HearingsTab({
                         : t("na")}
                     </span>
                   </div>
-                  {h.hearingOrder && (
-                    <div className="col-span-2 mt-2">
-                      <p className="text-sm font-medium">{t("order")}:</p>
-                      <p className="text-sm text-muted-foreground">
-                        {h.hearingOrder}
-                      </p>
-                    </div>
-                  )}
                 </div>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="text-destructive hover:bg-destructive/10 ml-4"
-                  onClick={() => handleDeleteClick(h.id)}
-                >
-                  <Trash2Icon className="w-4 h-4" />
-                </Button>
+
+                {h.hearingOrder && (
+                  <div className="mt-auto pt-4 border-t">
+                    <p className="text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-1">
+                      {h.hearingType === "failsala" ? "Failsala" : "Aadesh"}
+                    </p>
+                    <p className="text-sm">{h.hearingOrder}</p>
+                  </div>
+                )}
               </div>
             ))}
           </div>
         ) : (
-          <p className="text-muted-foreground">{t("noHearings")}</p>
+          <div className="flex flex-col items-center justify-center py-10 px-4 text-center border-2 border-dashed rounded-xl bg-muted/5">
+            <div className="bg-muted p-3 rounded-full mb-4">
+              <PlusIcon className="w-6 h-6 text-muted-foreground" />
+            </div>
+            <h3 className="text-lg font-semibold mb-1">{t("noHearings")}</h3>
+            <p className="text-sm text-muted-foreground mb-4 max-w-sm">
+              There are no hearings scheduled for this case yet. Add the first
+              hearing to track the schedule.
+            </p>
+            <Button onClick={() => setOpen(true)} variant="secondary">
+              {t("addHearing")}
+            </Button>
+          </div>
         )}
       </CardContent>
 
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent>
+        <DialogContent className="sm:max-w-2xl">
           <DialogHeader>
-            <DialogTitle>{t("addHearing")}</DialogTitle>
+            <DialogTitle>
+              {editId ? t("editHearing") || "Edit Hearing" : t("addHearing")}
+            </DialogTitle>
           </DialogHeader>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
@@ -208,13 +285,63 @@ export default function HearingsTab({
             </div>
             <div className="space-y-2">
               <Label>{t("court")}</Label>
-              <div className="flex h-10 w-full rounded-md border border-input bg-muted/50 px-3 py-2 text-sm text-muted-foreground">
-                {activeCourt
-                  ? isKnownCourt(activeCourt.courtType)
-                    ? tCases(activeCourt.courtType)
-                    : activeCourt.courtType
-                  : t("na")}
-              </div>
+              <Select
+                value={selectedCourtId}
+                onValueChange={(val) => setSelectedCourtId(val || "")}
+              >
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder={t("selectCourt") || "Select Court"}>
+                    {selectedCourtId &&
+                    caseData.courtDetails?.find(
+                      (c: any) => c.id === selectedCourtId,
+                    )
+                      ? (() => {
+                          const c = caseData.courtDetails.find(
+                            (cd: any) => cd.id === selectedCourtId,
+                          );
+                          return `${c.caseName || ""} ${c.caseName && c.caseNumber ? "-" : ""} ${c.caseNumber || ""} (${isKnownCourt(c.courtType) ? tCases(c.courtType) : c.courtType || c.courtLevel?.name || ""})`;
+                        })()
+                      : undefined}
+                  </SelectValue>
+                </SelectTrigger>
+                <SelectContent>
+                  {caseData.courtDetails?.map((c: any) => (
+                    <SelectItem key={c.id} value={c.id}>
+                      {c.caseName || ""} {c.caseName && c.caseNumber ? "-" : ""}{" "}
+                      {c.caseNumber || ""} (
+                      {isKnownCourt(c.courtType)
+                        ? tCases(c.courtType)
+                        : c.courtType || c.courtLevel?.name || ""}
+                      )
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="space-y-2">
+              <Label>{t("orderType") || "Order Type"}</Label>
+              <Select
+                value={hearingType}
+                onValueChange={(val) => setHearingType(val || "aadesh")}
+              >
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder={t("selectOrderType") || "Select type"}>
+                    {hearingType === "aadesh"
+                      ? t("aadesh") || "Aadesh"
+                      : hearingType === "failsala"
+                        ? t("failsala") || "Failsala"
+                        : undefined}
+                  </SelectValue>
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="aadesh">
+                    {t("aadesh") || "Aadesh"}
+                  </SelectItem>
+                  <SelectItem value="failsala">
+                    {t("failsala") || "Failsala"}
+                  </SelectItem>
+                </SelectContent>
+              </Select>
             </div>
             <div className="space-y-2">
               <Label>{t("order")}</Label>
@@ -228,9 +355,16 @@ export default function HearingsTab({
             <div className="flex justify-end pt-4">
               <Button
                 type="button"
-                variant="outline"
+                variant="destructive"
                 className="mr-2"
-                onClick={() => setOpen(false)}
+                onClick={() => {
+                  setOpen(false);
+                  setEditId(null);
+                  setHearingDate("");
+                  setNextHearingDate("");
+                  setHearingOrder("");
+                  setHearingType("aadesh");
+                }}
               >
                 {t("cancel")}
               </Button>
