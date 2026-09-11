@@ -31,6 +31,7 @@ import {
 import { CompositeDatePicker } from "@/components/ui/composite-date-picker";
 import { useAxios } from "@/lib/services/axios.service";
 import { toast } from "@/components/ui/toast";
+import { useTranslations } from "next-intl";
 
 export default function PaymentsTab({
   caseData,
@@ -39,6 +40,7 @@ export default function PaymentsTab({
   caseData: any;
   refresh: () => void;
 }) {
+  const t = useTranslations("PaymentsTab");
   const { axios } = useAxios();
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -78,7 +80,7 @@ export default function PaymentsTab({
           receivedByUserId !== "none" ? receivedByUserId : undefined,
         notes,
       });
-      toast.add({ title: "Payment added" });
+      toast.add({ title: t("successAdd") });
       setOpen(false);
       refresh();
       setAmount("");
@@ -90,8 +92,8 @@ export default function PaymentsTab({
       setNotes("");
     } catch (error: any) {
       toast.add({
-        title: "Error",
-        description: error.response?.data?.message || "Unknown error",
+        title: t("errorTitle"),
+        description: error.response?.data?.message || t("unknownError"),
         type: "destructive",
       });
     } finally {
@@ -107,10 +109,10 @@ export default function PaymentsTab({
     if (!deleteId) return;
     try {
       await axios.delete(`/cases/${caseData.id}/payments/${deleteId}`);
-      toast.add({ title: "Payment deleted" });
+      toast.add({ title: t("successDelete") });
       refresh();
     } catch (e) {
-      toast.add({ title: "Error", type: "destructive" });
+      toast.add({ title: t("errorTitle"), type: "destructive" });
     } finally {
       setDeleteId(null);
     }
@@ -119,13 +121,13 @@ export default function PaymentsTab({
   return (
     <Card>
       <CardHeader className="flex flex-row items-center justify-between">
-        <CardTitle>Payments</CardTitle>
+        <CardTitle>{t("title")}</CardTitle>
         <Button onClick={() => setOpen(true)} size="sm">
-          <PlusIcon className="w-4 h-4 mr-2" /> Add Payment
+          <PlusIcon className="w-4 h-4 mr-2" /> {t("addPayment")}
         </Button>
       </CardHeader>
       <CardContent>
-        <h3 className="font-medium mb-4">Payment Transfers</h3>
+        <h3 className="font-medium mb-4">{t("paymentTransfers")}</h3>
         {caseData.payments && caseData.payments.length > 0 ? (
           <div className="space-y-4">
             {caseData.payments.map((p: any) => (
@@ -136,17 +138,17 @@ export default function PaymentsTab({
                 <div className="grid grid-cols-2 gap-4 grow">
                   <div>
                     <span className="text-sm text-muted-foreground">
-                      Date:{" "}
+                      {t("dateLabel")}:{" "}
                     </span>
                     <span className="font-medium">
                       {p.paymentDate
                         ? new Date(p.paymentDate).toLocaleDateString()
-                        : "N/A"}
+                        : t("na")}
                     </span>
                   </div>
                   <div>
                     <span className="text-sm text-muted-foreground">
-                      Amount:{" "}
+                      {t("amountLabel")}:{" "}
                     </span>
                     <span className="font-medium font-mono text-green-600">
                       {p.amount}
@@ -154,24 +156,24 @@ export default function PaymentsTab({
                   </div>
                   <div>
                     <span className="text-sm text-muted-foreground">
-                      Method:{" "}
+                      {t("methodLabel")}:{" "}
                     </span>
-                    <span>{p.method || "N/A"}</span>
+                    <span>{p.method || t("na")}</span>
                   </div>
                   <div>
                     <span className="text-sm text-muted-foreground">
-                      Ref No:{" "}
+                      {t("refNoLabel")}:{" "}
                     </span>
-                    <span>{p.referenceNo || "N/A"}</span>
+                    <span>{p.referenceNo || t("na")}</span>
                   </div>
                   <div>
                     <span className="text-sm text-muted-foreground">
-                      Received By:{" "}
+                      {t("receivedBy")}:{" "}
                     </span>
                     <span>
                       {p.receivedByUser
                         ? `${p.receivedByUser.first_name} ${p.receivedByUser.last_name}`
-                        : p.receivedBy || "N/A"}
+                        : p.receivedBy || t("na")}
                     </span>
                   </div>
                   {p.notes && (
@@ -192,20 +194,20 @@ export default function PaymentsTab({
             ))}
           </div>
         ) : (
-          <p className="text-muted-foreground">No payments recorded.</p>
+          <p className="text-muted-foreground">{t("noPayments")}</p>
         )}
       </CardContent>
 
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Add Payment</DialogTitle>
+            <DialogTitle>{t("addPayment")}</DialogTitle>
           </DialogHeader>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label>
-                  Amount <span className="text-destructive">*</span>
+                  {t("amountLabel")} <span className="text-destructive">*</span>
                 </Label>
                 <Input
                   type="number"
@@ -216,7 +218,7 @@ export default function PaymentsTab({
                 />
               </div>
               <div className="space-y-2">
-                <Label>Date</Label>
+                <Label>{t("dateLabel")}</Label>
                 <CompositeDatePicker
                   value={paymentDate}
                   onChange={(val) => setPaymentDate(val)}
@@ -226,26 +228,28 @@ export default function PaymentsTab({
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label>Method</Label>
+                <Label>{t("methodLabel")}</Label>
                 <Select
                   value={method}
                   onValueChange={(val) => setMethod(val as string)}
                 >
                   <SelectTrigger>
-                    <SelectValue placeholder="e.g. Bank Transfer" />
+                    <SelectValue placeholder={t("placeholderMethod")} />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="Cash">Cash</SelectItem>
-                    <SelectItem value="Bank Transfer">Bank Transfer</SelectItem>
-                    <SelectItem value="Cheque">Cheque</SelectItem>
+                    <SelectItem value="Cash">{t("cash")}</SelectItem>
+                    <SelectItem value="Bank Transfer">
+                      {t("bankTransfer")}
+                    </SelectItem>
+                    <SelectItem value="Cheque">{t("cheque")}</SelectItem>
                     <SelectItem value="Online Payment">
-                      Online Payment
+                      {t("onlinePayment")}
                     </SelectItem>
                   </SelectContent>
                 </Select>
               </div>
               <div className="space-y-2">
-                <Label>Reference No.</Label>
+                <Label>{t("refNoLabel")}</Label>
                 <Input
                   value={referenceNo}
                   onChange={(e) => setReferenceNo(e.target.value)}
@@ -254,25 +258,29 @@ export default function PaymentsTab({
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label>Received By (Internal User)</Label>
+                <Label>{t("receivedByInternalLabel")}</Label>
                 <Select
                   value={receivedByUserId}
                   onValueChange={(val) => setReceivedByUserId(val as string)}
                 >
                   <SelectTrigger>
-                    <SelectValue placeholder="Select internal user">
+                    <SelectValue
+                      placeholder={t("receivedByInternalPlaceholder")}
+                    >
                       {receivedByUserId !== "none"
                         ? (() => {
-                            const u = users.find((x) => x.id === receivedByUserId);
+                            const u = users.find(
+                              (x) => x.id === receivedByUserId,
+                            );
                             return u
                               ? `${u.first_name} ${u.last_name}`
-                              : "Select internal user";
+                              : t("receivedByInternalPlaceholder");
                           })()
                         : undefined}
                     </SelectValue>
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="none">None (External)</SelectItem>
+                    <SelectItem value="none">{t("noneExternal")}</SelectItem>
                     {users.map((u) => (
                       <SelectItem key={u.id} value={u.id}>
                         {u.first_name} {u.last_name}
@@ -282,17 +290,17 @@ export default function PaymentsTab({
                 </Select>
               </div>
               <div className="space-y-2">
-                <Label>Or Received By (External Name)</Label>
+                <Label>{t("receivedByExternalLabel")}</Label>
                 <Input
                   value={receivedBy}
                   onChange={(e) => setReceivedBy(e.target.value)}
-                  placeholder="e.g. John Doe"
+                  placeholder={t("receivedByExternalPlaceholder")}
                   disabled={receivedByUserId !== "none"}
                 />
               </div>
             </div>
             <div className="space-y-2">
-              <Label>Notes</Label>
+              <Label>{t("notesLabel")}</Label>
               <Textarea
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
@@ -302,14 +310,14 @@ export default function PaymentsTab({
             <div className="flex justify-end pt-4">
               <Button
                 type="button"
-                variant="outline"
+                variant="destructive"
                 className="mr-2"
                 onClick={() => setOpen(false)}
               >
-                Cancel
+                {t("cancel")}
               </Button>
               <Button type="submit" disabled={loading}>
-                {loading ? "Saving..." : "Save"}
+                {loading ? t("saving") : t("save")}
               </Button>
             </div>
           </form>
@@ -322,14 +330,13 @@ export default function PaymentsTab({
       >
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+            <AlertDialogTitle>{t("confirmDeleteTitle")}</AlertDialogTitle>
             <AlertDialogDescription>
-              This action cannot be undone. This will permanently delete the
-              payment.
+              {t("confirmDeleteDesc")}
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogCancel>{t("cancel")}</AlertDialogCancel>
             <AlertDialogAction
               className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
               onClick={(e) => {
@@ -337,7 +344,7 @@ export default function PaymentsTab({
                 confirmDelete();
               }}
             >
-              Delete
+              {t("delete")}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

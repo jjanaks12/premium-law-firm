@@ -58,9 +58,7 @@ export default function CourtDetailsTab({
   const [judgeName, setJudgeName] = useState("");
   const [courtType, setCourtType] = useState("");
   const [courtName, setCourtName] = useState("");
-  const [registrationDate, setRegistrationDate] = useState<string>(
-    ""
-  );
+  const [registrationDate, setRegistrationDate] = useState<string>("");
 
   const activeDetail =
     caseData.courtDetails?.find((d: any) => d.isActive) ||
@@ -76,7 +74,9 @@ export default function CourtDetailsTab({
     setCourtType(detail.courtType || "");
     setCourtName(detail.courtName || "");
     setRegistrationDate(
-      detail.registrationDate ? dayjs(detail.registrationDate).format("YYYY-MM-DD") : "",
+      detail.registrationDate
+        ? dayjs(detail.registrationDate).format("YYYY-MM-DD")
+        : "",
     );
     setOpen(true);
   };
@@ -334,7 +334,7 @@ export default function CourtDetailsTab({
             <div className="flex justify-end pt-4">
               <Button
                 type="button"
-                variant="outline"
+                variant="destructive"
                 className="mr-2"
                 onClick={() => setOpen(false)}
               >

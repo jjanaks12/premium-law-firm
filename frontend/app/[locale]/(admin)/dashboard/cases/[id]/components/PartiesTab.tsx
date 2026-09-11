@@ -80,7 +80,7 @@ export default function PartiesTab({
     setPartyName(p.partyName || "");
     setRoleId(p.roleId || "");
     setContactInfo(p.contactInfo || "");
-    
+
     if (p.waris && p.waris.length > 0) {
       const w = p.waris[0];
       setHasWaris(true);
@@ -121,13 +121,15 @@ export default function PartiesTab({
         partyName,
         roleId,
         contactInfo,
-        waris: hasWaris ? {
-          partyName: warisName,
-          citizenshipNo: warisCitizenship,
-          contactNo: warisContact,
-          permanentAddress: warisPermanentAddress,
-          temporaryAddress: warisTemporaryAddress,
-        } : undefined
+        waris: hasWaris
+          ? {
+              partyName: warisName,
+              citizenshipNo: warisCitizenship,
+              contactNo: warisContact,
+              permanentAddress: warisPermanentAddress,
+              temporaryAddress: warisTemporaryAddress,
+            }
+          : undefined,
       };
 
       if (editId) {
@@ -137,7 +139,7 @@ export default function PartiesTab({
         await axios.post(`/cases/${caseData.id}/parties`, payload);
         toast.add({ title: t("successAdd") });
       }
-      
+
       setOpen(false);
       refresh();
       resetForm();
@@ -192,13 +194,20 @@ export default function PartiesTab({
                 <div>
                   <div className="font-medium">{p.partyName}</div>
                   <div className="text-sm text-muted-foreground">
-                    {t("role")}: {locale === "np" && p.role?.nepaliName ? p.role?.nepaliName : p.role?.name}
+                    {t("role")}:{" "}
+                    {locale === "np" && p.role?.nepaliName
+                      ? p.role?.nepaliName
+                      : p.role?.name}
                   </div>
                   {p.contactInfo && (
-                    <div className="text-sm mt-2">{t("contact")}: {p.contactInfo}</div>
+                    <div className="text-sm mt-2">
+                      {t("contact")}: {p.contactInfo}
+                    </div>
                   )}
                   {p.waris && p.waris.length > 0 && (
-                    <div className="text-sm mt-2">{t("representative")}: {p.waris[0].partyName}</div>
+                    <div className="text-sm mt-2">
+                      {t("representative")}: {p.waris[0].partyName}
+                    </div>
                   )}
                 </div>
                 <div className="flex items-center space-x-2">
@@ -273,11 +282,11 @@ export default function PartiesTab({
             </div>
             <div className="space-y-4 pt-4 border-t">
               <div className="flex items-center gap-2">
-                <input 
-                  type="checkbox" 
-                  id="hasWaris" 
-                  checked={hasWaris} 
-                  onChange={(e) => setHasWaris(e.target.checked)} 
+                <input
+                  type="checkbox"
+                  id="hasWaris"
+                  checked={hasWaris}
+                  onChange={(e) => setHasWaris(e.target.checked)}
                   className="rounded border-gray-300"
                 />
                 <Label htmlFor="hasWaris">{t("hasWaris")}</Label>
@@ -288,7 +297,10 @@ export default function PartiesTab({
                   <h5 className="text-sm font-semibold">{t("warisDetails")}</h5>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label>{t("warisName")} <span className="text-destructive">*</span></Label>
+                      <Label>
+                        {t("warisName")}{" "}
+                        <span className="text-destructive">*</span>
+                      </Label>
                       <Input
                         value={warisName}
                         onChange={(e) => setWarisName(e.target.value)}
@@ -316,7 +328,9 @@ export default function PartiesTab({
                       <Label>{t("permanentAddress")}</Label>
                       <Input
                         value={warisPermanentAddress}
-                        onChange={(e) => setWarisPermanentAddress(e.target.value)}
+                        onChange={(e) =>
+                          setWarisPermanentAddress(e.target.value)
+                        }
                         placeholder={t("permanentAddress")}
                       />
                     </div>
@@ -324,7 +338,9 @@ export default function PartiesTab({
                       <Label>{t("temporaryAddress")}</Label>
                       <Input
                         value={warisTemporaryAddress}
-                        onChange={(e) => setWarisTemporaryAddress(e.target.value)}
+                        onChange={(e) =>
+                          setWarisTemporaryAddress(e.target.value)
+                        }
                         placeholder={t("temporaryAddress")}
                       />
                     </div>
@@ -335,7 +351,7 @@ export default function PartiesTab({
             <div className="flex justify-end pt-4">
               <Button
                 type="button"
-                variant="outline"
+                variant="destructive"
                 className="mr-2"
                 onClick={() => setOpen(false)}
               >
@@ -352,7 +368,10 @@ export default function PartiesTab({
         </DialogContent>
       </Dialog>
 
-      <AlertDialog open={!!deleteId} onOpenChange={(open) => !open && setDeleteId(null)}>
+      <AlertDialog
+        open={!!deleteId}
+        onOpenChange={(open) => !open && setDeleteId(null)}
+      >
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>{t("confirmDeleteTitle")}</AlertDialogTitle>

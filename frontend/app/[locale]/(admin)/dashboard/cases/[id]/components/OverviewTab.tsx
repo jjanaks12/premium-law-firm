@@ -227,7 +227,7 @@ export default function OverviewTab({
             <div className="flex justify-end pt-4">
               <Button
                 type="button"
-                variant="outline"
+                variant="destructive"
                 className="mr-2"
                 onClick={() => setOpen(false)}
               >

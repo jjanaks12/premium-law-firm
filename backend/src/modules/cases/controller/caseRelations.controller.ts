@@ -212,6 +212,24 @@ export const addHearing = async (req: Request, res: Response, next: NextFunction
     res.status(201).json({ data: hearing });
   } catch (error) { next(error); }
 };
+
+export const updateHearing = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { subId } = req.params;
+    const { hearingDate, nextHearingDate, hearingOrder, caseCourtDetailId } = req.body;
+    
+    const hearing = await prisma.caseHearing.update({
+      where: { id: subId as string },
+      data: {
+        hearingDate: hearingDate ? new Date(hearingDate) : null,
+        nextHearingDate: nextHearingDate ? new Date(nextHearingDate) : null,
+        hearingOrder,
+        caseCourtDetailId
+      }
+    });
+    res.json({ data: hearing });
+  } catch (error) { next(error); }
+};
 export const removeHearing = async (req: Request, res: Response, next: NextFunction) => {
   try {
     await prisma.caseHearing.delete({ where: { id: req.params.subId as string } });

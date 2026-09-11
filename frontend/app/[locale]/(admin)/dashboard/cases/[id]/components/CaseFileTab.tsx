@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
-import { PlusIcon, Trash2Icon } from "lucide-react";
+import { PlusIcon, Trash2Icon, LinkIcon } from "lucide-react";
 import { toast } from "@/components/ui/toast";
 
 interface CaseFileTabProps {
@@ -63,6 +63,30 @@ export default function CaseFileTab({ caseData, refresh }: CaseFileTabProps) {
     setRelatedLaw(newLaws);
   };
 
+  const handleFactFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setLoading(true);
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("fileName", `Facts Document`);
+
+    try {
+      const { data } = await axios.post(`/cases/${caseData.id}/documents`, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+      if (data.data && data.data.documentUrl) {
+        setFacts(data.data.documentUrl);
+        toast.add({ description: "Document uploaded successfully", type: "success" });
+      }
+    } catch (err) {
+      toast.add({ description: "Upload failed", type: "error" });
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const save = async () => {
     setLoading(true);
     try {
@@ -95,12 +119,46 @@ export default function CaseFileTab({ caseData, refresh }: CaseFileTabProps) {
         <CardContent className="space-y-6">
           <div className="space-y-2">
             <Label>{t("CaseFileTab.facts")}</Label>
-            <Textarea
-              value={facts}
-              onChange={(e) => setFacts(e.target.value)}
-              placeholder={t("CaseFileTab.enterFacts")}
-              rows={5}
-            />
+            {facts && (facts.startsWith("/uploads/") || facts.startsWith("http")) ? (
+              <div className="flex items-center justify-between p-2 border rounded-md bg-muted/20">
+                <a
+                  href={facts.startsWith("/") ? process.env.NEXT_PUBLIC_API_URL + facts : facts}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-500 hover:underline flex items-center"
+                >
+                  <LinkIcon className="w-4 h-4 mr-2" />
+                  View Uploaded Facts Document
+                </a>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => setFacts("")}
+                  disabled={loading}
+                >
+                  <Trash2Icon className="w-4 h-4 text-red-500" />
+                </Button>
+              </div>
+            ) : facts ? (
+               <div className="flex items-center space-x-2">
+                 <div className="flex-1 p-2 border rounded-md bg-muted/20 text-sm whitespace-pre-wrap">
+                   {facts}
+                 </div>
+                 <Button
+                   variant="ghost"
+                   size="icon"
+                   onClick={() => setFacts("")}
+                   disabled={loading}
+                 >
+                   <Trash2Icon className="w-4 h-4 text-red-500" />
+                 </Button>
+               </div>
+            ) : (
+              <Input
+                type="file"
+                onChange={(e) => handleFactFileUpload(e)}
+              />
+            )}
           </div>
 
           <div className="space-y-2">

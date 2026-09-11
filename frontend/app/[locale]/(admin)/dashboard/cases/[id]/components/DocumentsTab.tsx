@@ -20,11 +20,11 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { useAxios } from "@/lib/services/axios.service";
 import { toast } from "@/components/ui/toast";
 import { Link } from "@/src/i18n/routing";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 
 export default function DocumentsTab({
   caseData,
@@ -34,28 +34,27 @@ export default function DocumentsTab({
   refresh: () => void;
 }) {
   const { axios } = useAxios();
+  const t = useTranslations("DocumentsTab");
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const [fileName, setFileName] = useState("");
-  const [description, setDescription] = useState("");
-  const [file, setFile] = useState<File | null>(null);
+  const [files, setFiles] = useState<File[]>([]);
   const [deleteId, setDeleteId] = useState<string | null>(null);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
-      setFile(e.target.files[0]);
+      setFiles(Array.from(e.target.files));
     }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!file) {
+    if (files.length === 0) {
       toast.add({
-        title: "Validation Error",
-        description: "Please select a file to upload.",
+        title: t("validationErrorTitle"),
+        description: t("validationErrorDesc"),
         type: "destructive",
       });
       return;
@@ -63,27 +62,26 @@ export default function DocumentsTab({
 
     setLoading(true);
     try {
-      const formData = new FormData();
-      formData.append("file", file);
-      if (fileName) formData.append("fileName", fileName);
-      if (description) formData.append("description", description);
-
-      await axios.post(`/cases/${caseData.id}/documents`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-      toast.add({ title: "Document uploaded successfully" });
+      await Promise.all(
+        files.map((f) => {
+          const formData = new FormData();
+          formData.append("file", f);
+          return axios.post(`/cases/${caseData.id}/documents`, formData, {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          });
+        }),
+      );
+      toast.add({ title: t("uploadSuccess"), type: "success" });
       setOpen(false);
       refresh();
-      setFileName("");
-      setDescription("");
-      setFile(null);
+      setFiles([]);
       if (fileInputRef.current) fileInputRef.current.value = "";
     } catch (error: any) {
       toast.add({
-        title: "Error",
-        description: error.response?.data?.message || "Unknown error",
+        title: t("errorTitle"),
+        description: error.response?.data?.message || t("unknownError"),
         type: "destructive",
       });
     } finally {
@@ -99,10 +97,10 @@ export default function DocumentsTab({
     if (!deleteId) return;
     try {
       await axios.delete(`/cases/${caseData.id}/documents/${deleteId}`);
-      toast.add({ title: "Document deleted" });
+      toast.add({ title: t("deleteSuccess") });
       refresh();
     } catch (e) {
-      toast.add({ title: "Error", type: "destructive" });
+      toast.add({ title: t("errorTitle"), type: "destructive" });
     } finally {
       setDeleteId(null);
     }
@@ -111,9 +109,9 @@ export default function DocumentsTab({
   return (
     <Card>
       <CardHeader className="flex flex-row items-center justify-between">
-        <CardTitle>Related Documents</CardTitle>
+        <CardTitle>{t("title")}</CardTitle>
         <Button onClick={() => setOpen(true)} size="sm">
-          <PlusIcon className="w-4 h-4 mr-2" /> Upload Document
+          <PlusIcon className="w-4 h-4 mr-2" /> {t("uploadDocBtn")}
         </Button>
       </CardHeader>
       <CardContent>
@@ -127,7 +125,7 @@ export default function DocumentsTab({
                 <div className="grow">
                   <div className="font-medium text-lg">{d.fileName}</div>
                   <div className="text-sm text-muted-foreground mt-1">
-                    Uploaded: {new Date(d.createdAt).toLocaleDateString()}
+                    {t("uploadedLabel")} {new Date(d.createdAt).toLocaleDateString()}
                   </div>
                   {d.description && (
                     <div className="mt-2 text-sm">{d.description}</div>
@@ -142,7 +140,7 @@ export default function DocumentsTab({
                       buttonVariants({ variant: "outline", size: "sm" }),
                     )}
                   >
-                    <DownloadIcon className="w-4 h-4 mr-2" /> Download
+                    <DownloadIcon className="w-4 h-4 mr-2" /> {t("downloadBtn")}
                   </Link>
                   <Button
                     variant="ghost"
@@ -157,70 +155,59 @@ export default function DocumentsTab({
             ))}
           </div>
         ) : (
-          <p className="text-muted-foreground">No documents uploaded.</p>
+          <p className="text-muted-foreground">{t("noDocuments")}</p>
         )}
       </CardContent>
 
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Upload Document</DialogTitle>
+            <DialogTitle>{t("uploadDialogTitle")}</DialogTitle>
           </DialogHeader>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
               <Label>
-                File <span className="text-destructive">*</span>
+                {t("fileLabel")} <span className="text-destructive">*</span>
               </Label>
               <Input
                 type="file"
                 ref={fileInputRef}
                 onChange={handleFileChange}
+                accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.txt"
                 required
-              />
-            </div>
-            <div className="space-y-2">
-              <Label>File Name (Optional)</Label>
-              <Input
-                value={fileName}
-                onChange={(e) => setFileName(e.target.value)}
-                placeholder="Will use original file name if empty"
-              />
-            </div>
-            <div className="space-y-2">
-              <Label>Description</Label>
-              <Textarea
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                rows={3}
+                multiple
               />
             </div>
             <div className="flex justify-end pt-4">
               <Button
                 type="button"
-                variant="outline"
+                variant="destructive"
                 className="mr-2"
                 onClick={() => setOpen(false)}
               >
-                Cancel
+                {t("cancelBtn")}
               </Button>
               <Button type="submit" disabled={loading}>
-                {loading ? "Uploading..." : "Upload"}
+                {loading ? t("uploadingStatus") : t("uploadBtn")}
               </Button>
             </div>
           </form>
         </DialogContent>
       </Dialog>
 
-      <AlertDialog open={!!deleteId} onOpenChange={(open) => !open && setDeleteId(null)}>
+      <AlertDialog
+        open={!!deleteId}
+        onOpenChange={(open) => !open && setDeleteId(null)}
+      >
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+            <AlertDialogTitle>{t("confirmDeleteTitle")}</AlertDialogTitle>
             <AlertDialogDescription>
-              This action cannot be undone. This will permanently delete the document.
+              {t("confirmDeleteDesc")}
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogCancel>{t("cancelBtn")}</AlertDialogCancel>
             <AlertDialogAction
               className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
               onClick={(e) => {
@@ -228,7 +215,7 @@ export default function DocumentsTab({
                 confirmDelete();
               }}
             >
-              Delete
+              {t("deleteBtn")}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

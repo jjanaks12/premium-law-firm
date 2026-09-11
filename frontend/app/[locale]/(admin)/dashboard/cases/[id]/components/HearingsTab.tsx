@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { CompositeDatePicker } from "@/components/ui/composite-date-picker";
 import { useTranslations } from "next-intl";
-import { PlusIcon, Trash2Icon } from "lucide-react";
+import { PlusIcon, Trash2Icon, PencilIcon } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -20,7 +20,6 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useAxios } from "@/lib/services/axios.service";
@@ -50,6 +49,7 @@ export default function HearingsTab({
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [deleteId, setDeleteId] = useState<string | null>(null);
+  const [editId, setEditId] = useState<string | null>(null);
 
   const [hearingDate, setHearingDate] = useState("");
   const [nextHearingDate, setNextHearingDate] = useState("");
@@ -63,19 +63,30 @@ export default function HearingsTab({
     e.preventDefault();
     setLoading(true);
     try {
-      await axios.post(`/cases/${caseData.id}/hearings`, {
-        hearingDate: hearingDate || undefined,
-        nextHearingDate: nextHearingDate || undefined,
-        caseCourtDetailId: activeCourt?.id,
-        hearingOrder,
-      });
-      toast.add({ title: t("successAdd") });
+      if (editId) {
+        await axios.patch(`/cases/${caseData.id}/hearings/${editId}`, {
+          hearingDate: hearingDate || undefined,
+          nextHearingDate: nextHearingDate || undefined,
+          caseCourtDetailId: activeCourt?.id,
+          hearingOrder,
+        });
+        toast.add({ title: t("successAdd") || "Success" }); // Or a generic success edit message
+      } else {
+        await axios.post(`/cases/${caseData.id}/hearings`, {
+          hearingDate: hearingDate || undefined,
+          nextHearingDate: nextHearingDate || undefined,
+          caseCourtDetailId: activeCourt?.id,
+          hearingOrder,
+        });
+        toast.add({ title: t("successAdd") });
+      }
       setOpen(false);
       refresh();
       // Reset
       setHearingDate("");
       setNextHearingDate("");
       setHearingOrder("");
+      setEditId(null);
     } catch (error: any) {
       toast.add({
         title: t("errorAdd"),
@@ -85,6 +96,18 @@ export default function HearingsTab({
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleEditClick = (hearing: any) => {
+    setEditId(hearing.id);
+    setHearingDate(
+      hearing.hearingDate ? hearing.hearingDate.substring(0, 16) : "",
+    );
+    setNextHearingDate(
+      hearing.nextHearingDate ? hearing.nextHearingDate.substring(0, 16) : "",
+    );
+    setHearingOrder(hearing.hearingOrder || "");
+    setOpen(true);
   };
 
   const handleDeleteClick = (hearingId: string) => {
@@ -112,7 +135,16 @@ export default function HearingsTab({
     <Card>
       <CardHeader className="flex flex-row items-center justify-between">
         <CardTitle>{t("hearings")}</CardTitle>
-        <Button onClick={() => setOpen(true)} size="sm">
+        <Button
+          onClick={() => {
+            setEditId(null);
+            setHearingDate("");
+            setNextHearingDate("");
+            setHearingOrder("");
+            setOpen(true);
+          }}
+          size="sm"
+        >
           <PlusIcon className="w-4 h-4 mr-2" /> {t("addHearing")}
         </Button>
       </CardHeader>
@@ -166,14 +198,24 @@ export default function HearingsTab({
                     </div>
                   )}
                 </div>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="text-destructive hover:bg-destructive/10 ml-4"
-                  onClick={() => handleDeleteClick(h.id)}
-                >
-                  <Trash2Icon className="w-4 h-4" />
-                </Button>
+                <div className="flex ml-4 gap-2">
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="hover:bg-muted"
+                    onClick={() => handleEditClick(h)}
+                  >
+                    <PencilIcon className="w-4 h-4" />
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="text-destructive hover:bg-destructive/10"
+                    onClick={() => handleDeleteClick(h.id)}
+                  >
+                    <Trash2Icon className="w-4 h-4" />
+                  </Button>
+                </div>
               </div>
             ))}
           </div>
@@ -185,7 +227,9 @@ export default function HearingsTab({
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>{t("addHearing")}</DialogTitle>
+            <DialogTitle>
+              {editId ? t("editHearing") || "Edit Hearing" : t("addHearing")}
+            </DialogTitle>
           </DialogHeader>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
@@ -209,11 +253,22 @@ export default function HearingsTab({
             <div className="space-y-2">
               <Label>{t("court")}</Label>
               <div className="flex h-10 w-full rounded-md border border-input bg-muted/50 px-3 py-2 text-sm text-muted-foreground">
-                {activeCourt
-                  ? isKnownCourt(activeCourt.courtType)
-                    ? tCases(activeCourt.courtType)
-                    : activeCourt.courtType
-                  : t("na")}
+                {activeCourt ? (
+                  <>
+                    {activeCourt.courtName && (
+                      <span className="font-semibold mr-2">
+                        {activeCourt.courtName} -{" "}
+                      </span>
+                    )}
+                    {isKnownCourt(activeCourt.courtType)
+                      ? tCases(activeCourt.courtType)
+                      : activeCourt.courtType ||
+                        activeCourt.courtLevel?.name ||
+                        ""}
+                  </>
+                ) : (
+                  t("na")
+                )}
               </div>
             </div>
             <div className="space-y-2">
@@ -228,9 +283,15 @@ export default function HearingsTab({
             <div className="flex justify-end pt-4">
               <Button
                 type="button"
-                variant="outline"
+                variant="destructive"
                 className="mr-2"
-                onClick={() => setOpen(false)}
+                onClick={() => {
+                  setOpen(false);
+                  setEditId(null);
+                  setHearingDate("");
+                  setNextHearingDate("");
+                  setHearingOrder("");
+                }}
               >
                 {t("cancel")}
               </Button>
