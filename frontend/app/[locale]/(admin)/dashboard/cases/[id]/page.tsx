@@ -12,7 +12,6 @@ import CourtDetailsTab from "./components/CourtDetailsTab";
 import PartiesTab from "./components/PartiesTab";
 import HearingsTab from "./components/HearingsTab";
 import CaseFileTab from "./components/CaseFileTab";
-import JudgementsTab from "./components/JudgementsTab";
 import PaymentsTab from "./components/PaymentsTab";
 import DocumentsTab from "./components/DocumentsTab";
 import { Link } from "@/src/i18n/routing";
@@ -118,9 +117,6 @@ export default function CaseDetailPage() {
           <TabsTrigger value="caseFile">
             {t("CaseDetailPage.caseFile")}
           </TabsTrigger>
-          <TabsTrigger value="judgements">
-            {t("CaseDetailPage.judgements")}
-          </TabsTrigger>
           <TabsTrigger value="payments">
             {t("CaseDetailPage.payments")}
           </TabsTrigger>
@@ -151,9 +147,6 @@ export default function CaseDetailPage() {
           <div className={isClosed ? "pointer-events-none opacity-50" : ""}>
             <CaseFileTab caseData={caseData} refresh={fetchCase} />
           </div>
-        </TabsContent>
-        <TabsContent value="judgements">
-          <JudgementsTab caseData={caseData} refresh={fetchCase} isClosed={isClosed} />
         </TabsContent>
         <TabsContent value="payments">
           <div className={isClosed ? "pointer-events-none opacity-50" : ""}>

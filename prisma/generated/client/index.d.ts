@@ -18455,6 +18455,7 @@ export namespace Prisma {
     id: string | null
     caseId: string | null
     fileName: string | null
+    documentType: string | null
     description: string | null
     documentUrl: string | null
     createdAt: Date | null
@@ -18464,6 +18465,7 @@ export namespace Prisma {
     id: string | null
     caseId: string | null
     fileName: string | null
+    documentType: string | null
     description: string | null
     documentUrl: string | null
     createdAt: Date | null
@@ -18473,6 +18475,7 @@ export namespace Prisma {
     id: number
     caseId: number
     fileName: number
+    documentType: number
     description: number
     documentUrl: number
     createdAt: number
@@ -18484,6 +18487,7 @@ export namespace Prisma {
     id?: true
     caseId?: true
     fileName?: true
+    documentType?: true
     description?: true
     documentUrl?: true
     createdAt?: true
@@ -18493,6 +18497,7 @@ export namespace Prisma {
     id?: true
     caseId?: true
     fileName?: true
+    documentType?: true
     description?: true
     documentUrl?: true
     createdAt?: true
@@ -18502,6 +18507,7 @@ export namespace Prisma {
     id?: true
     caseId?: true
     fileName?: true
+    documentType?: true
     description?: true
     documentUrl?: true
     createdAt?: true
@@ -18584,6 +18590,7 @@ export namespace Prisma {
     id: string
     caseId: string
     fileName: string
+    documentType: string | null
     description: string | null
     documentUrl: string
     createdAt: Date
@@ -18610,6 +18617,7 @@ export namespace Prisma {
     id?: boolean
     caseId?: boolean
     fileName?: boolean
+    documentType?: boolean
     description?: boolean
     documentUrl?: boolean
     createdAt?: boolean
@@ -18620,6 +18628,7 @@ export namespace Prisma {
     id?: boolean
     caseId?: boolean
     fileName?: boolean
+    documentType?: boolean
     description?: boolean
     documentUrl?: boolean
     createdAt?: boolean
@@ -18630,6 +18639,7 @@ export namespace Prisma {
     id?: boolean
     caseId?: boolean
     fileName?: boolean
+    documentType?: boolean
     description?: boolean
     documentUrl?: boolean
     createdAt?: boolean
@@ -18640,12 +18650,13 @@ export namespace Prisma {
     id?: boolean
     caseId?: boolean
     fileName?: boolean
+    documentType?: boolean
     description?: boolean
     documentUrl?: boolean
     createdAt?: boolean
   }
 
-  export type CaseDocumentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "caseId" | "fileName" | "description" | "documentUrl" | "createdAt", ExtArgs["result"]["caseDocument"]>
+  export type CaseDocumentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "caseId" | "fileName" | "documentType" | "description" | "documentUrl" | "createdAt", ExtArgs["result"]["caseDocument"]>
   export type CaseDocumentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     case?: boolean | CaseDefaultArgs<ExtArgs>
   }
@@ -18665,6 +18676,7 @@ export namespace Prisma {
       id: string
       caseId: string
       fileName: string
+      documentType: string | null
       description: string | null
       documentUrl: string
       createdAt: Date
@@ -19095,6 +19107,7 @@ export namespace Prisma {
     readonly id: FieldRef<"CaseDocument", 'String'>
     readonly caseId: FieldRef<"CaseDocument", 'String'>
     readonly fileName: FieldRef<"CaseDocument", 'String'>
+    readonly documentType: FieldRef<"CaseDocument", 'String'>
     readonly description: FieldRef<"CaseDocument", 'String'>
     readonly documentUrl: FieldRef<"CaseDocument", 'String'>
     readonly createdAt: FieldRef<"CaseDocument", 'DateTime'>
@@ -27873,6 +27886,7 @@ export namespace Prisma {
     id: 'id',
     caseId: 'caseId',
     fileName: 'fileName',
+    documentType: 'documentType',
     description: 'description',
     documentUrl: 'documentUrl',
     createdAt: 'createdAt'
@@ -29123,6 +29137,7 @@ export namespace Prisma {
     id?: StringFilter<"CaseDocument"> | string
     caseId?: StringFilter<"CaseDocument"> | string
     fileName?: StringFilter<"CaseDocument"> | string
+    documentType?: StringNullableFilter<"CaseDocument"> | string | null
     description?: StringNullableFilter<"CaseDocument"> | string | null
     documentUrl?: StringFilter<"CaseDocument"> | string
     createdAt?: DateTimeFilter<"CaseDocument"> | Date | string
@@ -29133,6 +29148,7 @@ export namespace Prisma {
     id?: SortOrder
     caseId?: SortOrder
     fileName?: SortOrder
+    documentType?: SortOrderInput | SortOrder
     description?: SortOrderInput | SortOrder
     documentUrl?: SortOrder
     createdAt?: SortOrder
@@ -29146,6 +29162,7 @@ export namespace Prisma {
     NOT?: CaseDocumentWhereInput | CaseDocumentWhereInput[]
     caseId?: StringFilter<"CaseDocument"> | string
     fileName?: StringFilter<"CaseDocument"> | string
+    documentType?: StringNullableFilter<"CaseDocument"> | string | null
     description?: StringNullableFilter<"CaseDocument"> | string | null
     documentUrl?: StringFilter<"CaseDocument"> | string
     createdAt?: DateTimeFilter<"CaseDocument"> | Date | string
@@ -29156,6 +29173,7 @@ export namespace Prisma {
     id?: SortOrder
     caseId?: SortOrder
     fileName?: SortOrder
+    documentType?: SortOrderInput | SortOrder
     description?: SortOrderInput | SortOrder
     documentUrl?: SortOrder
     createdAt?: SortOrder
@@ -29171,6 +29189,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"CaseDocument"> | string
     caseId?: StringWithAggregatesFilter<"CaseDocument"> | string
     fileName?: StringWithAggregatesFilter<"CaseDocument"> | string
+    documentType?: StringNullableWithAggregatesFilter<"CaseDocument"> | string | null
     description?: StringNullableWithAggregatesFilter<"CaseDocument"> | string | null
     documentUrl?: StringWithAggregatesFilter<"CaseDocument"> | string
     createdAt?: DateTimeWithAggregatesFilter<"CaseDocument"> | Date | string
@@ -30805,6 +30824,7 @@ export namespace Prisma {
   export type CaseDocumentCreateInput = {
     id?: string
     fileName: string
+    documentType?: string | null
     description?: string | null
     documentUrl: string
     createdAt?: Date | string
@@ -30815,6 +30835,7 @@ export namespace Prisma {
     id?: string
     caseId: string
     fileName: string
+    documentType?: string | null
     description?: string | null
     documentUrl: string
     createdAt?: Date | string
@@ -30823,6 +30844,7 @@ export namespace Prisma {
   export type CaseDocumentUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     fileName?: StringFieldUpdateOperationsInput | string
+    documentType?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     documentUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -30833,6 +30855,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     caseId?: StringFieldUpdateOperationsInput | string
     fileName?: StringFieldUpdateOperationsInput | string
+    documentType?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     documentUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -30842,6 +30865,7 @@ export namespace Prisma {
     id?: string
     caseId: string
     fileName: string
+    documentType?: string | null
     description?: string | null
     documentUrl: string
     createdAt?: Date | string
@@ -30850,6 +30874,7 @@ export namespace Prisma {
   export type CaseDocumentUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     fileName?: StringFieldUpdateOperationsInput | string
+    documentType?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     documentUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -30859,6 +30884,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     caseId?: StringFieldUpdateOperationsInput | string
     fileName?: StringFieldUpdateOperationsInput | string
+    documentType?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     documentUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -32397,6 +32423,7 @@ export namespace Prisma {
     id?: SortOrder
     caseId?: SortOrder
     fileName?: SortOrder
+    documentType?: SortOrder
     description?: SortOrder
     documentUrl?: SortOrder
     createdAt?: SortOrder
@@ -32406,6 +32433,7 @@ export namespace Prisma {
     id?: SortOrder
     caseId?: SortOrder
     fileName?: SortOrder
+    documentType?: SortOrder
     description?: SortOrder
     documentUrl?: SortOrder
     createdAt?: SortOrder
@@ -32415,6 +32443,7 @@ export namespace Prisma {
     id?: SortOrder
     caseId?: SortOrder
     fileName?: SortOrder
+    documentType?: SortOrder
     description?: SortOrder
     documentUrl?: SortOrder
     createdAt?: SortOrder
@@ -36195,6 +36224,7 @@ export namespace Prisma {
   export type CaseDocumentCreateWithoutCaseInput = {
     id?: string
     fileName: string
+    documentType?: string | null
     description?: string | null
     documentUrl: string
     createdAt?: Date | string
@@ -36203,6 +36233,7 @@ export namespace Prisma {
   export type CaseDocumentUncheckedCreateWithoutCaseInput = {
     id?: string
     fileName: string
+    documentType?: string | null
     description?: string | null
     documentUrl: string
     createdAt?: Date | string
@@ -36446,6 +36477,7 @@ export namespace Prisma {
     id?: StringFilter<"CaseDocument"> | string
     caseId?: StringFilter<"CaseDocument"> | string
     fileName?: StringFilter<"CaseDocument"> | string
+    documentType?: StringNullableFilter<"CaseDocument"> | string | null
     description?: StringNullableFilter<"CaseDocument"> | string | null
     documentUrl?: StringFilter<"CaseDocument"> | string
     createdAt?: DateTimeFilter<"CaseDocument"> | Date | string
@@ -40033,6 +40065,7 @@ export namespace Prisma {
   export type CaseDocumentCreateManyCaseInput = {
     id?: string
     fileName: string
+    documentType?: string | null
     description?: string | null
     documentUrl: string
     createdAt?: Date | string
@@ -40222,6 +40255,7 @@ export namespace Prisma {
   export type CaseDocumentUpdateWithoutCaseInput = {
     id?: StringFieldUpdateOperationsInput | string
     fileName?: StringFieldUpdateOperationsInput | string
+    documentType?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     documentUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -40230,6 +40264,7 @@ export namespace Prisma {
   export type CaseDocumentUncheckedUpdateWithoutCaseInput = {
     id?: StringFieldUpdateOperationsInput | string
     fileName?: StringFieldUpdateOperationsInput | string
+    documentType?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     documentUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -40238,6 +40273,7 @@ export namespace Prisma {
   export type CaseDocumentUncheckedUpdateManyWithoutCaseInput = {
     id?: StringFieldUpdateOperationsInput | string
     fileName?: StringFieldUpdateOperationsInput | string
+    documentType?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     documentUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string

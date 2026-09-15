@@ -221,10 +221,11 @@ export default function PartiesTab({
                       ? p.role?.nepaliName
                       : p.role?.name}
                   </div>
-                  
+
                   {p.contactInfo && (
                     <div className="text-sm text-muted-foreground mt-1 flex items-center">
-                      <span className="font-medium mr-1">{t("contact")}:</span> {p.contactInfo}
+                      <span className="font-medium mr-1">{t("contact")}:</span>{" "}
+                      {p.contactInfo}
                     </div>
                   )}
                   {p.waris && p.waris.length > 0 && (
@@ -248,7 +249,8 @@ export default function PartiesTab({
             </div>
             <h3 className="text-lg font-semibold mb-1">{t("noParties")}</h3>
             <p className="text-sm text-muted-foreground mb-4 max-w-sm">
-              No parties have been added yet. Include plaintiffs, defendants, and their representatives.
+              No parties have been added yet. Include plaintiffs, defendants,
+              and their representatives.
             </p>
             <Button onClick={handleOpenAdd} variant="secondary">
               {t("addParty")}

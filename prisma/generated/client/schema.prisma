@@ -233,12 +233,13 @@ model CasePayment {
 }
 
 model CaseDocument {
-  id          String  @id @default(uuid())
-  caseId      String
-  case        Case    @relation(fields: [caseId], references: [id], onDelete: Cascade)
-  fileName    String
-  description String? @db.Text
-  documentUrl String
+  id           String  @id @default(uuid())
+  caseId       String
+  case         Case    @relation(fields: [caseId], references: [id], onDelete: Cascade)
+  fileName     String
+  documentType String?
+  description  String? @db.Text
+  documentUrl  String
 
   createdAt DateTime @default(now())
 

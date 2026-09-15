@@ -45,10 +45,12 @@ export default function LoginForm({ className }: { className?: string }) {
         );
         await refreshUser();
         const redirectUrl = searchParams.get("redirectUrl");
-        console.log("Redirect URL:", redirectUrl);
-        
-        const finalUrl = redirectUrl && redirectUrl.startsWith("/") ? redirectUrl : "/dashboard";
-        
+
+        const finalUrl =
+          redirectUrl && redirectUrl.startsWith("/")
+            ? redirectUrl
+            : "/dashboard";
+
         router.push(finalUrl);
         router.refresh();
       }

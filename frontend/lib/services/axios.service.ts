@@ -4,6 +4,17 @@ import { useLocale } from 'next-intl'
 import { toast } from '@/components/ui/toast'
 
 let axiosInstance: AxiosInstance
+let isRefreshing = false
+let refreshSubscribers: ((error: any, token: string | null) => void)[] = []
+
+const subscribeTokenRefresh = (cb: (error: any, token: string | null) => void) => {
+    refreshSubscribers.push(cb)
+}
+
+const onRefreshed = (error: any, token: string | null) => {
+    refreshSubscribers.forEach((cb) => cb(error, token))
+    refreshSubscribers = []
+}
 
 export const useAxios = () => {
     const router = useRouter()
@@ -24,15 +35,32 @@ export const useAxios = () => {
         async (error) => {
             const originalRequest = error.config
             const status = error.response?.status
-            const errorMessage = error.response?.data?.error?.message || error.message || 'An unexpected error occurred'
+            const errorMessage = error.response?.data?.error?.message || error.response?.data?.message || error.message || 'An unexpected error occurred'
             const isNetworkError = !error.response || error.code === 'ERR_NETWORK' || error.message === 'Network Error'
 
-            if (status === 401 && !originalRequest._retry) {
+            const isLoginRequest = originalRequest.url?.includes('/auth/login')
+
+            if (status === 401 && !originalRequest._retry && !isLoginRequest) {
                 const remember = localStorage.getItem('remember') === 'true'
                 const refreshToken = localStorage.getItem('refreshToken')
 
                 if (remember && refreshToken) {
                     originalRequest._retry = true
+
+                    if (isRefreshing) {
+                        return new Promise((resolve, reject) => {
+                            subscribeTokenRefresh((err, token) => {
+                                if (err) {
+                                    reject(err)
+                                } else {
+                                    originalRequest.headers.Authorization = `Bearer ${token}`
+                                    resolve(axiosInstance(originalRequest))
+                                }
+                            })
+                        })
+                    }
+
+                    isRefreshing = true
                     try {
                         const { data } = await axios.post(
                             `${process.env.NEXT_PUBLIC_API_URL}/auth/refresh-token`,
@@ -44,11 +72,16 @@ export const useAxios = () => {
                             localStorage.setItem('accessToken', accessToken)
                             localStorage.setItem('refreshToken', newRefreshToken)
 
+                            isRefreshing = false
+                            onRefreshed(null, accessToken)
+
                             // Retry original request
                             originalRequest.headers.Authorization = `Bearer ${accessToken}`
                             return axiosInstance(originalRequest)
                         }
                     } catch (refreshError: any) {
+                        isRefreshing = false
+                        onRefreshed(refreshError, null)
                         if (refreshError.isNetworkError || refreshError.code === 'ERR_NETWORK' || refreshError.message === 'Network Error') {
                             console.warn('[Axios Service] Token refresh failed: Network Error (Backend offline)')
                         } else {
@@ -71,16 +104,17 @@ export const useAxios = () => {
                 router.push(`/login?redirectUrl=${encodeURIComponent(currentPath)}`)
             }
 
-            const rejectedError = new Error(errorMessage) as any
             if (isNetworkError) {
                 toast.add({
                     title: "Network Error",
                     description: errorMessage,
                     type: 'error'
                 })
-                rejectedError.isNetworkError = true
+                error.isNetworkError = true
             }
-            return error
+
+            error.message = errorMessage;
+            return Promise.reject(error)
         }
     )
 
