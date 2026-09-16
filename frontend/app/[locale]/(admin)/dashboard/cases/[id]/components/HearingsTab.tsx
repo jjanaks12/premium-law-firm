@@ -221,22 +221,35 @@ export default function HearingsTab({
                     </span>
                     <span className="font-medium text-sm">
                       {h.caseCourtDetail
-                        ? isKnownCourt(h.caseCourtDetail.courtType)
-                          ? tCases(h.caseCourtDetail.courtType)
-                          : h.caseCourtDetail.courtType
+                        ? `${
+                            isKnownCourt(h.caseCourtDetail.courtType)
+                              ? tCases(h.caseCourtDetail.courtType)
+                              : h.caseCourtDetail.courtType || t("na")
+                          } ${h.caseCourtDetail.caseNumber ? `- ${h.caseCourtDetail.caseNumber}` : ""}`
                         : t("na")}
                     </span>
                   </div>
                 </div>
 
-                {h.hearingOrder && (
-                  <div className="mt-auto pt-4 border-t">
-                    <p className="text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-1">
+                <div className="mt-auto pt-4 border-t">
+                  <div className="mb-2">
+                    <span className="text-xs uppercase tracking-wider font-semibold text-muted-foreground block mb-1">
+                      Hearing Type
+                    </span>
+                    <span className="font-medium text-sm">
                       {h.hearingType === "failsala" ? "Failsala" : "Aadesh"}
-                    </p>
-                    <p className="text-sm">{h.hearingOrder}</p>
+                    </span>
                   </div>
-                )}
+                  
+                  {h.hearingOrder && (
+                    <div className="mt-2">
+                      <p className="text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-1">
+                        Order / Decision
+                      </p>
+                      <p className="text-sm text-muted-foreground">{h.hearingOrder}</p>
+                    </div>
+                  )}
+                </div>
               </div>
             ))}
           </div>
@@ -299,7 +312,7 @@ export default function HearingsTab({
                           const c = caseData.courtDetails.find(
                             (cd: any) => cd.id === selectedCourtId,
                           );
-                          return `${c.caseName || ""} ${c.caseName && c.caseNumber ? "-" : ""} ${c.caseNumber || ""} (${isKnownCourt(c.courtType) ? tCases(c.courtType) : c.courtType || c.courtLevel?.name || ""})`;
+                          return c.courtName || (isKnownCourt(c.courtType) ? tCases(c.courtType) : c.courtType) || c.courtLevel?.name || "Unknown Court";
                         })()
                       : undefined}
                   </SelectValue>
@@ -307,12 +320,7 @@ export default function HearingsTab({
                 <SelectContent>
                   {caseData.courtDetails?.map((c: any) => (
                     <SelectItem key={c.id} value={c.id}>
-                      {c.caseName || ""} {c.caseName && c.caseNumber ? "-" : ""}{" "}
-                      {c.caseNumber || ""} (
-                      {isKnownCourt(c.courtType)
-                        ? tCases(c.courtType)
-                        : c.courtType || c.courtLevel?.name || ""}
-                      )
+                      {c.courtName || (isKnownCourt(c.courtType) ? tCases(c.courtType) : c.courtType) || c.courtLevel?.name || "Unknown Court"}
                     </SelectItem>
                   ))}
                 </SelectContent>

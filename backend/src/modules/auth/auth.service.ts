@@ -41,7 +41,7 @@ export const login = async (data: LoginInput) => {
 
   const accessToken = jwt.sign({}, ACCESS_TOKEN_SECRET, {
     audience: user.id,
-    expiresIn: '1h',
+    expiresIn: '1m',
   });
 
   const refreshTokenStr = jwt.sign({}, REFRESH_TOKEN_SECRET, {
@@ -190,7 +190,7 @@ export const resetPassword = async (tokenStr: string, newPassword: string) => {
   await prisma.$transaction([
     prisma.user.update({
       where: { id: dbToken.user_id },
-      data: { 
+      data: {
         password: hashedPassword,
         ...(dbToken.user.status === 'invited' ? { status: 'active' } : {})
       },

@@ -295,7 +295,7 @@ export const removePayment = async (req: Request, res: Response, next: NextFunct
 export const addDocument = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { id } = req.params;
-    const { fileName, description } = req.body;
+    const { fileName, description, documentType } = req.body;
 
     let documentUrl = "";
     if (req.file) {
@@ -306,6 +306,7 @@ export const addDocument = async (req: Request, res: Response, next: NextFunctio
       data: {
         caseId: id as string,
         fileName: fileName || (req.file ? req.file.originalname : "Document"),
+        documentType: documentType || null,
         description,
         documentUrl
       }

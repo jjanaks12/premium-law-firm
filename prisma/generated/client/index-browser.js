@@ -263,6 +263,7 @@ exports.Prisma.CaseDocumentScalarFieldEnum = {
   id: 'id',
   caseId: 'caseId',
   fileName: 'fileName',
+  documentType: 'documentType',
   description: 'description',
   documentUrl: 'documentUrl',
   createdAt: 'createdAt'

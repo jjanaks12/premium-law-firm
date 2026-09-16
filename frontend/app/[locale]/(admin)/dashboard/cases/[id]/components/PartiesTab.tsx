@@ -47,7 +47,10 @@ export default function PartiesTab({
 
   const [partyName, setPartyName] = useState("");
   const [roleId, setRoleId] = useState("");
-  const [contactInfo, setContactInfo] = useState("");
+  const [contactNo, setContactNo] = useState("");
+  const [citizenshipNo, setCitizenshipNo] = useState("");
+  const [permanentAddress, setPermanentAddress] = useState("");
+  const [temporaryAddress, setTemporaryAddress] = useState("");
   const [hasWaris, setHasWaris] = useState(false);
   const [warisName, setWarisName] = useState("");
   const [warisCitizenship, setWarisCitizenship] = useState("");
@@ -60,7 +63,10 @@ export default function PartiesTab({
   const resetForm = () => {
     setPartyName("");
     setRoleId("");
-    setContactInfo("");
+    setContactNo("");
+    setCitizenshipNo("");
+    setPermanentAddress("");
+    setTemporaryAddress("");
     setHasWaris(false);
     setWarisName("");
     setWarisCitizenship("");
@@ -79,7 +85,10 @@ export default function PartiesTab({
     setEditId(p.id);
     setPartyName(p.partyName || "");
     setRoleId(p.roleId || "");
-    setContactInfo(p.contactInfo || "");
+    setContactNo(p.contactNo || "");
+    setCitizenshipNo(p.citizenshipNo || "");
+    setPermanentAddress(p.permanentAddress || "");
+    setTemporaryAddress(p.temporaryAddress || "");
 
     if (p.waris && p.waris.length > 0) {
       const w = p.waris[0];
@@ -120,7 +129,10 @@ export default function PartiesTab({
       const payload = {
         partyName,
         roleId,
-        contactInfo,
+        contactNo,
+        citizenshipNo,
+        permanentAddress,
+        temporaryAddress,
         waris: hasWaris
           ? {
               partyName: warisName,
@@ -221,10 +233,11 @@ export default function PartiesTab({
                       ? p.role?.nepaliName
                       : p.role?.name}
                   </div>
-                  
-                  {p.contactInfo && (
+
+                  {p.contactNo && (
                     <div className="text-sm text-muted-foreground mt-1 flex items-center">
-                      <span className="font-medium mr-1">{t("contact")}:</span> {p.contactInfo}
+                      <span className="font-medium mr-1">{t("contact")}:</span>{" "}
+                      {p.contactNo}
                     </div>
                   )}
                   {p.waris && p.waris.length > 0 && (
@@ -248,7 +261,8 @@ export default function PartiesTab({
             </div>
             <h3 className="text-lg font-semibold mb-1">{t("noParties")}</h3>
             <p className="text-sm text-muted-foreground mb-4 max-w-sm">
-              No parties have been added yet. Include plaintiffs, defendants, and their representatives.
+              No parties have been added yet. Include plaintiffs, defendants,
+              and their representatives.
             </p>
             <Button onClick={handleOpenAdd} variant="secondary">
               {t("addParty")}
@@ -263,55 +277,79 @@ export default function PartiesTab({
             <DialogTitle>{editId ? t("editParty") : t("addParty")}</DialogTitle>
           </DialogHeader>
           <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="space-y-2">
-              <Label>
-                {t("partyName")} <span className="text-destructive">*</span>
-              </Label>
-              <Input
-                value={partyName}
-                onChange={(e) => setPartyName(e.target.value)}
-                required
-              />
-            </div>
-            <div className="space-y-2">
-              <Label>
-                {t("role")} <span className="text-destructive">*</span>
-              </Label>
-              <Select
-                value={roleId}
-                onValueChange={(val) => setRoleId(val || "")}
-                required
-              >
-                <SelectTrigger>
-                  <SelectValue placeholder={t("role")}>
-                    {roleId && roles.length > 0
-                      ? (() => {
-                          const r = roles.find((role) => role.id === roleId);
-                          return r
-                            ? locale === "np" && r.nepaliName
-                              ? r.nepaliName
-                              : r.name
-                            : undefined;
-                        })()
-                      : undefined}
-                  </SelectValue>
-                </SelectTrigger>
-                <SelectContent>
-                  {roles.map((r) => (
-                    <SelectItem key={r.id} value={r.id}>
-                      {locale === "np" && r.nepaliName ? r.nepaliName : r.name}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-            <div className="space-y-2">
-              <Label>{t("contactInfo")}</Label>
-              <Input
-                value={contactInfo}
-                onChange={(e) => setContactInfo(e.target.value)}
-                placeholder="Phone, email, etc."
-              />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label>
+                  {t("partyName")} <span className="text-destructive">*</span>
+                </Label>
+                <Input
+                  value={partyName}
+                  onChange={(e) => setPartyName(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="space-y-2">
+                <Label>
+                  {t("role")} <span className="text-destructive">*</span>
+                </Label>
+                <Select
+                  value={roleId}
+                  onValueChange={(val) => setRoleId(val || "")}
+                  required
+                >
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder={t("role")}>
+                      {roleId && roles.length > 0
+                        ? (() => {
+                            const r = roles.find((role) => role.id === roleId);
+                            return r
+                              ? locale === "np" && r.nepaliName
+                                ? r.nepaliName
+                                : r.name
+                              : undefined;
+                          })()
+                        : undefined}
+                    </SelectValue>
+                  </SelectTrigger>
+                  <SelectContent>
+                    {roles.map((r) => (
+                      <SelectItem key={r.id} value={r.id}>
+                        {locale === "np" && r.nepaliName
+                          ? r.nepaliName
+                          : r.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="space-y-2">
+                <Label>{t("citizenshipNo")}</Label>
+                <Input
+                  value={citizenshipNo}
+                  onChange={(e) => setCitizenshipNo(e.target.value)}
+                />
+              </div>
+              <div className="space-y-2">
+                <Label>{t("contactNo")}</Label>
+                <Input
+                  value={contactNo}
+                  onChange={(e) => setContactNo(e.target.value)}
+                />
+              </div>
+              <div className="space-y-2">
+                <Label>{t("permanentAddress")}</Label>
+                <Input
+                  value={permanentAddress}
+                  onChange={(e) => setPermanentAddress(e.target.value)}
+                />
+              </div>
+              <div className="space-y-2">
+                <Label>{t("temporaryAddress")}</Label>
+                <Input
+                  value={temporaryAddress}
+                  onChange={(e) => setTemporaryAddress(e.target.value)}
+                />
+              </div>
             </div>
             <div className="space-y-4 pt-4 border-t">
               <div className="flex items-center gap-2">
