@@ -312,7 +312,7 @@ export default function HearingsTab({
                           const c = caseData.courtDetails.find(
                             (cd: any) => cd.id === selectedCourtId,
                           );
-                          return `${c.caseName || ""} ${c.caseName && c.caseNumber ? "-" : ""} ${c.caseNumber || ""} (${isKnownCourt(c.courtType) ? tCases(c.courtType) : c.courtType || c.courtLevel?.name || ""})`;
+                          return c.courtName || (isKnownCourt(c.courtType) ? tCases(c.courtType) : c.courtType) || c.courtLevel?.name || "Unknown Court";
                         })()
                       : undefined}
                   </SelectValue>
@@ -320,12 +320,7 @@ export default function HearingsTab({
                 <SelectContent>
                   {caseData.courtDetails?.map((c: any) => (
                     <SelectItem key={c.id} value={c.id}>
-                      {c.caseName || ""} {c.caseName && c.caseNumber ? "-" : ""}{" "}
-                      {c.caseNumber || ""} (
-                      {isKnownCourt(c.courtType)
-                        ? tCases(c.courtType)
-                        : c.courtType || c.courtLevel?.name || ""}
-                      )
+                      {c.courtName || (isKnownCourt(c.courtType) ? tCases(c.courtType) : c.courtType) || c.courtLevel?.name || "Unknown Court"}
                     </SelectItem>
                   ))}
                 </SelectContent>
