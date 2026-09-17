@@ -240,13 +240,15 @@ export default function HearingsTab({
                       {h.hearingType === "failsala" ? "Failsala" : "Aadesh"}
                     </span>
                   </div>
-                  
+
                   {h.hearingOrder && (
                     <div className="mt-2">
                       <p className="text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-1">
                         Order / Decision
                       </p>
-                      <p className="text-sm text-muted-foreground">{h.hearingOrder}</p>
+                      <p className="text-sm text-muted-foreground">
+                        {h.hearingOrder}
+                      </p>
                     </div>
                   )}
                 </div>
@@ -271,7 +273,7 @@ export default function HearingsTab({
       </CardContent>
 
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="sm:max-w-2xl">
+        <DialogContent className="md:max-w-200 sm:max-w-full">
           <DialogHeader>
             <DialogTitle>
               {editId ? t("editHearing") || "Edit Hearing" : t("addHearing")}
@@ -284,7 +286,6 @@ export default function HearingsTab({
                 <CompositeDatePicker
                   value={hearingDate}
                   onChange={(val) => setHearingDate(val)}
-                  showTime={true}
                 />
               </div>
               <div className="space-y-2">
@@ -292,7 +293,6 @@ export default function HearingsTab({
                 <CompositeDatePicker
                   value={nextHearingDate}
                   onChange={(val) => setNextHearingDate(val)}
-                  showTime={true}
                 />
               </div>
             </div>
@@ -312,7 +312,14 @@ export default function HearingsTab({
                           const c = caseData.courtDetails.find(
                             (cd: any) => cd.id === selectedCourtId,
                           );
-                          return c.courtName || (isKnownCourt(c.courtType) ? tCases(c.courtType) : c.courtType) || c.courtLevel?.name || "Unknown Court";
+                          return (
+                            c.courtName ||
+                            (isKnownCourt(c.courtType)
+                              ? tCases(c.courtType)
+                              : c.courtType) ||
+                            c.courtLevel?.name ||
+                            "Unknown Court"
+                          );
                         })()
                       : undefined}
                   </SelectValue>
@@ -320,7 +327,12 @@ export default function HearingsTab({
                 <SelectContent>
                   {caseData.courtDetails?.map((c: any) => (
                     <SelectItem key={c.id} value={c.id}>
-                      {c.courtName || (isKnownCourt(c.courtType) ? tCases(c.courtType) : c.courtType) || c.courtLevel?.name || "Unknown Court"}
+                      {c.courtName ||
+                        (isKnownCourt(c.courtType)
+                          ? tCases(c.courtType)
+                          : c.courtType) ||
+                        c.courtLevel?.name ||
+                        "Unknown Court"}
                     </SelectItem>
                   ))}
                 </SelectContent>
@@ -333,7 +345,9 @@ export default function HearingsTab({
                 onValueChange={(val) => setHearingType(val || "aadesh")}
               >
                 <SelectTrigger className="w-full">
-                  <SelectValue placeholder={t("selectOrderType") || "Select type"}>
+                  <SelectValue
+                    placeholder={t("selectOrderType") || "Select type"}
+                  >
                     {hearingType === "aadesh"
                       ? t("aadesh") || "Aadesh"
                       : hearingType === "failsala"

@@ -13,7 +13,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Loader2Icon, PlusIcon, Trash2Icon } from "lucide-react";
+import { Loader2Icon, PlusIcon, Trash2Icon, LinkIcon } from "lucide-react";
 import { useAxios } from "@/lib/services/axios.service";
 import { toast } from "@/components/ui/toast";
 import { useTranslations, useLocale } from "next-intl";
@@ -56,6 +56,38 @@ export default function CaseForm({
   const [loadingCourtLevels, setLoadingCourtLevels] = useState(true);
   const [lawyerUsers, setLawyerUsers] = useState<any[]>([]);
   const [loadingLawyers, setLoadingLawyers] = useState(true);
+  const [isUploadingFact, setIsUploadingFact] = useState(false);
+
+  const handleFactFileUpload = async (
+    e: React.ChangeEvent<HTMLInputElement>,
+    setFieldValue: (field: string, value: any) => void
+  ) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setIsUploadingFact(true);
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("name", "Facts Document");
+
+    try {
+      // Use the generic resource upload endpoint
+      const { data } = await axios.post("/resources/upload", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+      if (data.data && data.data.url) {
+        setFieldValue("facts", data.data.url);
+        toast.add({
+          description: "Document uploaded successfully",
+          type: "success",
+        });
+      }
+    } catch (err) {
+      toast.add({ description: "Upload failed", type: "error" });
+    } finally {
+      setIsUploadingFact(false);
+    }
+  };
 
   useEffect(() => {
     const fetchNatures = async () => {
@@ -1155,14 +1187,63 @@ export default function CaseForm({
           <div className="space-y-2">
             <Label htmlFor="facts">{t("formFacts")}</Label>
             <Field name="facts">
-              {({ field }: FieldProps) => (
-                <Textarea
-                  {...field}
-                  id="facts"
-                  placeholder={t("placeholderFacts")}
-                  className="min-h-25"
-                />
-              )}
+              {({ field, form: { setFieldValue } }: FieldProps) => {
+                const facts = field.value || "";
+                return (
+                  <>
+                    {facts &&
+                    (facts.startsWith("/uploads/") || facts.startsWith("http")) ? (
+                      <div className="flex items-center justify-between p-4 border rounded-xl bg-card hover:shadow-sm transition-all">
+                        <a
+                          href={
+                            facts.startsWith("/")
+                              ? process.env.NEXT_PUBLIC_API_URL + facts
+                              : facts
+                          }
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-primary font-medium hover:underline flex items-center"
+                        >
+                          <LinkIcon className="w-4 h-4 mr-2" />
+                          View Uploaded Facts Document
+                        </a>
+                        <Button
+                          type="button"
+                          variant="ghost"
+                          size="icon"
+                          className="text-destructive hover:bg-destructive/10 rounded-full"
+                          onClick={() => setFieldValue("facts", "")}
+                          disabled={isUploadingFact}
+                        >
+                          <Trash2Icon className="w-4 h-4" />
+                        </Button>
+                      </div>
+                    ) : facts ? (
+                      <div className="flex items-start space-x-2 p-4 border rounded-xl bg-card hover:shadow-sm transition-all">
+                        <div className="flex-1 text-sm whitespace-pre-wrap">
+                          {facts}
+                        </div>
+                        <Button
+                          type="button"
+                          variant="ghost"
+                          size="icon"
+                          className="text-destructive hover:bg-destructive/10 rounded-full shrink-0"
+                          onClick={() => setFieldValue("facts", "")}
+                          disabled={isUploadingFact}
+                        >
+                          <Trash2Icon className="w-4 h-4" />
+                        </Button>
+                      </div>
+                    ) : (
+                      <Input 
+                        type="file" 
+                        onChange={(e) => handleFactFileUpload(e, setFieldValue)}
+                        disabled={isUploadingFact}
+                      />
+                    )}
+                  </>
+                );
+              }}
             </Field>
             <ErrorMessage
               name="facts"

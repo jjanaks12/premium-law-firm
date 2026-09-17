@@ -119,23 +119,23 @@ export default function OverviewTab({
         </CardHeader>
         <CardContent className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div className="p-4 rounded-xl border bg-muted/10 hover:bg-muted/30 transition-all duration-300 hover:shadow-sm">
-            <p className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-1">{t("caseNumber")}</p>
-            <p className="font-medium text-lg">{caseData.id.split("-")[0]}</p>
+            <p className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-1">
+              {t("caseNumber")}
+            </p>
+            <p className="font-medium text-lg">{activeDetail.caseNumber}</p>
           </div>
           <div className="p-4 rounded-xl border bg-muted/10 hover:bg-muted/30 transition-all duration-300 hover:shadow-sm">
-            <p className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-1">{t("court")}</p>
+            <p className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-1">
+              {t("court")}
+            </p>
             <p className="font-medium">
-              {activeDetail
-                ? isKnownCourt(activeDetail.courtLevel?.type)
-                  ? locale == "np"
-                    ? activeDetail.courtLevel?.nepaliName
-                    : activeDetail.courtLevel?.englishName
-                  : activeDetail.courtLevel?.englishName || t("na")
-                : t("na")}
+              {activeDetail ? activeDetail.courtName : t("na")}
             </p>
           </div>
           <div className="p-4 rounded-xl border bg-muted/10 hover:bg-muted/30 transition-all duration-300 hover:shadow-sm">
-            <p className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-1">{t("status")}</p>
+            <p className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-1">
+              {t("status")}
+            </p>
             <p className="font-medium">
               <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-primary/10 text-primary">
                 {caseData.status}
@@ -143,7 +143,21 @@ export default function OverviewTab({
             </p>
           </div>
           <div className="p-4 rounded-xl border bg-muted/10 hover:bg-muted/30 transition-all duration-300 hover:shadow-sm">
-            <p className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-1">{t("nature")}</p>
+            <p className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-1">
+              {t("courtLevel")}
+            </p>
+            <p className="font-medium">
+              {activeDetail?.courtLevel
+                ? locale === "np" && activeDetail.courtLevel.nepaliName
+                  ? activeDetail.courtLevel.nepaliName
+                  : activeDetail.courtLevel.englishName || activeDetail.courtLevel.name || t("na")
+                : t("na")}
+            </p>
+          </div>
+          <div className="p-4 rounded-xl border bg-muted/10 hover:bg-muted/30 transition-all duration-300 hover:shadow-sm">
+            <p className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-1">
+              {t("nature")}
+            </p>
             <p className="font-medium">
               {locale == "np"
                 ? caseData.nature?.nepaliName
@@ -151,7 +165,9 @@ export default function OverviewTab({
             </p>
           </div>
           <div className="p-4 rounded-xl border bg-muted/10 hover:bg-muted/30 transition-all duration-300 hover:shadow-sm">
-            <p className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-1">{t("faat")}</p>
+            <p className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-1">
+              {t("faat")}
+            </p>
             <p className="font-medium">
               {activeDetail?.sectionCourtRoom || t("na")}
             </p>
@@ -207,7 +223,8 @@ export default function OverviewTab({
               </div>
               <h3 className="text-lg font-semibold mb-1">{t("noLawyers")}</h3>
               <p className="text-sm text-muted-foreground mb-4 max-w-sm">
-                Get started by assigning a lawyer to this case. They will be able to manage details and attend hearings.
+                Get started by assigning a lawyer to this case. They will be
+                able to manage details and attend hearings.
               </p>
               <Button onClick={() => setOpen(true)} variant="outline">
                 {t("assignLawyer")}

@@ -9,13 +9,6 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { PlusIcon, Trash2Icon, LinkIcon } from "lucide-react";
 import { toast } from "@/components/ui/toast";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 
 interface CaseFileTabProps {
   caseData: any;
@@ -147,22 +140,6 @@ export default function CaseFileTab({ caseData, refresh }: CaseFileTabProps) {
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="space-y-4">
-            <div className="flex flex-col md:flex-row md:items-center gap-4">
-              <Label>{t("CaseFileTab.fileType") || "File Type"}</Label>
-              <Select
-                value={fileType}
-                onValueChange={(a: any) => setFileType(a as any)}
-              >
-                <SelectTrigger className="w-45">
-                  <SelectValue placeholder="Select type" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="aadesh">Aadesh</SelectItem>
-                  <SelectItem value="failsala">Failsala</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-
             <Label>{t("CaseFileTab.facts")}</Label>
             {facts &&
             (facts.startsWith("/uploads/") || facts.startsWith("http")) ? (

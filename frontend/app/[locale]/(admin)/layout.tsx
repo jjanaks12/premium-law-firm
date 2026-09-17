@@ -10,6 +10,9 @@ import AdminSidebar from "./AdminSidebar";
 import { useAuth } from "@/lib/context/AuthContext";
 import { usePathname, useRouter } from "@/src/i18n/routing";
 import { canAccessPathname } from "@/lib/dictionary/adminNav";
+import Brand from "@/components/Brand";
+import { Button } from "@/components/ui/button";
+import { MenuIcon } from "lucide-react";
 
 export default function AdminLayout({
   children,
@@ -84,6 +87,15 @@ export default function AdminLayout({
     <SidebarProvider>
       <AdminSidebar />
       <SidebarInset className="flex flex-col min-h-screen bg-muted/40">
+        <header
+          id="header"
+          className="sticky top-0 z-50 h-16 bg-background/80 backdrop-blur border-b border-border flex items-center justify-between px-4"
+        >
+          <Brand theme="dark" />
+          <Button size="icon">
+            <MenuIcon className="size-6" />
+          </Button>
+        </header>
         <main className="flex-1 p-6 overflow-y-auto">{children}</main>
       </SidebarInset>
     </SidebarProvider>

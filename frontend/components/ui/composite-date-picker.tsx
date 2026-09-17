@@ -170,10 +170,7 @@ export function CompositeDatePicker({
   );
 
   return (
-    <div
-      className={cn("flex flex-wrap gap-2 items-center w-full", className)}
-      id={id}
-    >
+    <div className={cn("flex gap-2 items-center w-full", className)} id={id}>
       <div className="flex items-center text-sm font-medium text-muted-foreground mr-1 h-10 px-3 rounded-md bg-muted/50 border border-input">
         BS
       </div>
@@ -197,7 +194,9 @@ export function CompositeDatePicker({
           }}
         >
           <SelectTrigger className="w-full">
-            <SelectValue placeholder={t("month")} />
+            <SelectValue placeholder={t("month")}>
+              {localM ? tMonths(parseInt(localM).toString()) : undefined}
+            </SelectValue>
           </SelectTrigger>
           <SelectContent>
             {Array.from({ length: 12 }, (_, i) =>

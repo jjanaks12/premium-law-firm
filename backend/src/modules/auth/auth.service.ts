@@ -41,7 +41,7 @@ export const login = async (data: LoginInput) => {
 
   const accessToken = jwt.sign({}, ACCESS_TOKEN_SECRET, {
     audience: user.id,
-    expiresIn: '1m',
+    expiresIn: '1h',
   });
 
   const refreshTokenStr = jwt.sign({}, REFRESH_TOKEN_SECRET, {
