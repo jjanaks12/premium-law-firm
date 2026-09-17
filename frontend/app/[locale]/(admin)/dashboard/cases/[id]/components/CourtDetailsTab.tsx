@@ -175,15 +175,21 @@ export default function CourtDetailsTab({
           <Card
             key={detail.id || index}
             className={
-              detail.isActive ? "border-primary shadow-md relative overflow-hidden" : "opacity-80 hover:opacity-100 transition-opacity"
+              detail.isActive
+                ? "border-primary shadow-md relative overflow-hidden"
+                : "opacity-80 hover:opacity-100 transition-opacity"
             }
           >
-            {detail.isActive && <div className="absolute top-0 left-0 w-1 h-full bg-primary" />}
+            {detail.isActive && (
+              <div className="absolute top-0 left-0 w-1 h-full bg-primary" />
+            )}
             <CardHeader className="flex flex-row items-center justify-between pb-2">
               <CardTitle className="text-lg flex items-center">
                 {detail.caseName}
                 {detail.isActive && caseData.status !== "Closed" && (
-                  <Badge className="ml-3 bg-primary/20 text-primary hover:bg-primary/30 border-0">{t("active")}</Badge>
+                  <Badge className="ml-3 bg-primary/20 text-primary hover:bg-primary/30 border-0">
+                    {t("active")}
+                  </Badge>
                 )}
               </CardTitle>
               {index == caseData.courtDetails.length - 1 && (
@@ -218,17 +224,19 @@ export default function CourtDetailsTab({
                   <p className="text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-1">
                     {t("formFaat")}
                   </p>
-                  <p className="font-medium">{detail.sectionCourtRoom || "N/A"}</p>
+                  <p className="font-medium">
+                    {detail.sectionCourtRoom || "N/A"}
+                  </p>
                 </div>
                 <div className="bg-muted/10 p-3 rounded-lg border border-transparent hover:border-border transition-colors">
                   <p className="text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-1">
-                    {t("courtType")}
+                    {t("courtLevel")}
                   </p>
                   <p className="font-medium">
-                    {detail.courtType
-                      ? t(detail.courtType) !== detail.courtType
-                        ? t(detail.courtType)
-                        : detail.courtType
+                    {detail.courtLevel
+                      ? locale === "np" && detail.courtLevel.nepaliName
+                        ? detail.courtLevel.nepaliName
+                        : detail.courtLevel.englishName || detail.courtLevel.name || t("na")
                       : t("na")}
                   </p>
                 </div>
@@ -257,7 +265,7 @@ export default function CourtDetailsTab({
       )}
 
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent>
+        <DialogContent className="min-w-120">
           <DialogHeader>
             <DialogTitle>
               {isEditing ? t("editCourtDetail") : t("transferCaseToNewCourt")}
