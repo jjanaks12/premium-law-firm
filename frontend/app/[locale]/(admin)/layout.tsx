@@ -89,7 +89,7 @@ export default function AdminLayout({
       <SidebarInset className="flex flex-col min-h-screen bg-muted/40">
         <header
           id="header"
-          className="sticky top-0 z-50 h-16 bg-background/80 backdrop-blur border-b border-border flex items-center justify-between px-4"
+          className="sticky top-0 z-50 h-16 bg-background/80 backdrop-blur border-b border-border flex items-center justify-between px-4 md:hidden"
         >
           <Brand theme="dark" />
           <Button size="icon">
