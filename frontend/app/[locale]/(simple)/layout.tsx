@@ -3,6 +3,7 @@
 import React, { useEffect } from "react";
 import { useAuth } from "@/lib/context/AuthContext";
 import { useRouter } from "@/src/i18n/routing";
+import Language from "@/components/Language";
 
 export default function SimpleLayout({
   children,
@@ -27,5 +28,12 @@ export default function SimpleLayout({
     );
   }
 
-  return <main id="main">{children}</main>;
+  return (
+    <>
+      <header className="absolute top-4 right-4 z-10">
+        <Language theme="dark" />
+      </header>
+      <main id="main">{children}</main>
+    </>
+  );
 }

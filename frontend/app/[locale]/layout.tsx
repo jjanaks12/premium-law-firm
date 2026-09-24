@@ -42,7 +42,7 @@ export default async function RootLayout({
 
   return (
     <html
-      lang={locale}
+      lang={locale === "np" ? "ne" : "en"}
       className={`${geistSans.variable} ${ralewaySansSerif.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
