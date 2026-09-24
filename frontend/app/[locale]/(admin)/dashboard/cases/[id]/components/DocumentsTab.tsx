@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button, buttonVariants } from "@/components/ui/button";
-import { PlusIcon, Trash2Icon, DownloadIcon, SearchIcon, EyeIcon, ImageIcon, FileTextIcon } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { PlusIcon, Trash2Icon, DownloadIcon, SearchIcon, Loader2Icon, ImageIcon, FileTextIcon } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -21,14 +21,11 @@ import {
 import { Input } from "@/components/ui/input";
 import { useAxios } from "@/lib/services/axios.service";
 import { toast } from "@/components/ui/toast";
-import { Link } from "@/src/i18n/routing";
-import { cn } from "@/lib/utils";
+import { getFileUrl } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 import DocumentUploadForm from "./DocumentUploadForm";
 
 const isImage = (filename: string) => /\.(jpeg|jpg|gif|png|webp|svg)$/i.test(filename || "");
-const isPdf = (filename: string) => /\.pdf$/i.test(filename || "");
-const canViewInBrowser = (filename: string) => isImage(filename) || isPdf(filename);
 
 export default function DocumentsTab({
   caseData,
@@ -42,6 +39,28 @@ export default function DocumentsTab({
   const [open, setOpen] = useState(false);
   const [deleteId, setDeleteId] = useState<string | null>(null);
   const [filterType, setFilterType] = useState("");
+  const [downloadingId, setDownloadingId] = useState<string | null>(null);
+
+  const downloadDocument = async (file: { id: string; fileName: string; documentUrl: string }) => {
+    setDownloadingId(file.id);
+    try {
+      const response = await fetch(getFileUrl(file.documentUrl));
+      if (!response.ok) throw new Error("Download failed");
+      const url = URL.createObjectURL(await response.blob());
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = file.fileName || "document";
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      // Allow the browser to start saving before releasing the downloaded bytes.
+      window.setTimeout(() => URL.revokeObjectURL(url), 60000);
+    } catch {
+      toast.add({ title: t("errorTitle"), description: t("downloadFailed"), type: "error" });
+    } finally {
+      setDownloadingId(null);
+    }
+  };
 
   const handleDeleteClick = (id: string) => {
     setDeleteId(id);
@@ -94,7 +113,6 @@ export default function DocumentsTab({
         {filteredDocuments && filteredDocuments.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {filteredDocuments.map((d: any) => {
-              const viewable = canViewInBrowser(d.fileName);
               return (
                 <div
                   key={d.id}
@@ -125,19 +143,18 @@ export default function DocumentsTab({
                       )}
                     </div>
                   </div>
-                  <div className="flex flex-col space-y-2 ml-2 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity">
-                    <Link
-                      href={process.env.NEXT_PUBLIC_API_URL + d.documentUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={cn(
-                        buttonVariants({ variant: "secondary", size: "icon" }),
-                        "rounded-full h-8 w-8 text-primary hover:text-primary"
-                      )}
-                      title={viewable ? "View" : t("downloadBtn")}
+                  <div className="flex flex-col space-y-2 ml-2">
+                    <Button
+                      variant="secondary"
+                      size="icon"
+                      className="rounded-full h-8 w-8 text-primary hover:text-primary"
+                      title={t("downloadBtn")}
+                      aria-label={`${t("downloadBtn")}: ${d.fileName}`}
+                      disabled={downloadingId !== null}
+                      onClick={() => downloadDocument(d)}
                     >
-                      {viewable ? <EyeIcon className="w-4 h-4" /> : <DownloadIcon className="w-4 h-4" />}
-                    </Link>
+                      {downloadingId === d.id ? <Loader2Icon className="w-4 h-4 animate-spin" /> : <DownloadIcon className="w-4 h-4" />}
+                    </Button>
                     <Button
                       variant="ghost"
                       size="icon"

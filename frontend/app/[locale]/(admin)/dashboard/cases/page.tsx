@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import {
   BriefcaseIcon,
   PlusIcon,
-  Edit2Icon,
   Trash2Icon,
   Loader2Icon,
   EyeIcon,
@@ -94,13 +93,9 @@ export default function CasesPage() {
     return () => clearTimeout(delayDebounceFn);
   }, [search, partySearch, statusFilter]);
 
-  // Handlers for Add/Edit Form
+  // Handler for Add Form
   const handleAddClick = () => {
     router.push("/dashboard/cases/create");
-  };
-
-  const handleEditClick = (c: CaseData) => {
-    router.push(`/dashboard/cases/${c.id}/edit`);
   };
 
   // Handlers for Delete
@@ -264,14 +259,6 @@ export default function CasesPage() {
                             permission="cases.read"
                           >
                             <EyeIcon className="h-4 w-4" />
-                          </Button>
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            onClick={() => handleEditClick(c)}
-                            permission="cases.update"
-                          >
-                            <Edit2Icon className="h-4 w-4" />
                           </Button>
                           <Button
                             variant="ghost"
