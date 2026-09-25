@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useParams, useRouter, useSearchParams } from "next/navigation";
+import { useParams, useSearchParams } from "next/navigation";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, Loader2 } from "lucide-react";
+import { ChevronLeft, Loader2, Edit2Icon } from "lucide-react";
 import { useAxios } from "@/lib/services/axios.service";
 import { useTranslations } from "next-intl";
 import OverviewTab from "./components/OverviewTab";
@@ -14,7 +14,7 @@ import HearingsTab from "./components/HearingsTab";
 import CaseFileTab from "./components/CaseFileTab";
 import PaymentsTab from "./components/PaymentsTab";
 import DocumentsTab from "./components/DocumentsTab";
-import { Link } from "@/src/i18n/routing";
+import { useRouter } from "@/src/i18n/routing";
 
 export default function CaseDetailPage() {
   const params = useParams();
@@ -80,23 +80,27 @@ export default function CaseDetailPage() {
 
   return (
     <div className="flex flex-col h-full bg-background p-6 space-y-6 overflow-y-auto">
-      <div className="flex items-center space-x-4">
+      <div className="flex flex-wrap items-center gap-4">
         <Button variant="outline" size="icon" onClick={() => router.back()}>
           <ChevronLeft className="h-4 w-4" />
         </Button>
-        <div className="grow">
+        <div className="min-w-0 grow">
           <h1 className="text-2xl font-bold tracking-tight">
             {t("CaseDetailPage.caseTitle", { caseNumber: activeDetail?.caseNumber || "N/A" })}
           </h1>
           <p className="text-muted-foreground">{activeDetail?.caseName || "N/A"}</p>
         </div>
-        <div className="shrink-0 space-x-2 flex">
+        <div className="ml-auto flex shrink-0 items-center gap-2">
           {isClosed ? (
             <Button onClick={handleAppeal}>{t("JudgementsTab.appealBtn")}</Button>
           ) : null}
-          <Link href={`/dashboard/cases/${id}/edit`}>
-            <Button disabled={isClosed}>{t("CasesPage.editBtn")}</Button>
-          </Link>
+          <Button
+            disabled={isClosed}
+            onClick={() => router.push(`/dashboard/cases/${id}/edit`)}
+          >
+            <Edit2Icon className="h-4 w-4" />
+            {t("CasesPage.editBtn")}
+          </Button>
         </div>
       </div>
 

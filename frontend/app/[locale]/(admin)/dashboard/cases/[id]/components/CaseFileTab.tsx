@@ -9,6 +9,14 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { PlusIcon, Trash2Icon, LinkIcon } from "lucide-react";
 import { toast } from "@/components/ui/toast";
+import { getFileUrl } from "@/lib/utils";
+
+interface FactsDocument {
+  id: string;
+  fileName: string;
+  documentUrl: string;
+  documentType?: string | null;
+}
 
 interface CaseFileTabProps {
   caseData: any;
@@ -28,6 +36,11 @@ export default function CaseFileTab({ caseData, refresh }: CaseFileTabProps) {
       : "aadesh";
   const [fileType, setFileType] = useState(initialFileType);
   const [facts, setFacts] = useState(caseData.facts || "");
+  const [factsDocuments, setFactsDocuments] = useState<FactsDocument[]>(
+    () => (caseData.documents || []).filter(
+      (document: FactsDocument) => document.documentType === "MisilFacts",
+    ),
+  );
   const [details, setDetails] = useState<string[]>(
     Array.isArray(caseData.details) ? caseData.details : [],
   );
@@ -73,32 +86,60 @@ export default function CaseFileTab({ caseData, refresh }: CaseFileTabProps) {
   const handleFactFileUpload = async (
     e: React.ChangeEvent<HTMLInputElement>,
   ) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
+    const files = Array.from(e.target.files || []);
+    e.target.value = "";
+    if (!files.length || loading) return;
 
     setLoading(true);
-    const formData = new FormData();
-    formData.append("file", file);
-    const fileName = fileType === "failsala" ? "Failsala" : "Aadesh";
-    formData.append("fileName", fileName);
-
+    const failedFiles: string[] = [];
+    let uploadedCount = 0;
     try {
-      const { data } = await axios.post(
-        `/cases/${caseData.id}/documents`,
-        formData,
-        {
-          headers: { "Content-Type": "multipart/form-data" },
-        },
-      );
-      if (data.data && data.data.documentUrl) {
-        setFacts(data.data.documentUrl);
+      for (const file of files) {
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("fileName", file.name);
+        formData.append("documentType", "MisilFacts");
+        try {
+          const { data } = await axios.post(
+            `/cases/${caseData.id}/documents`,
+            formData,
+            { headers: { "Content-Type": "multipart/form-data" } },
+          );
+          if (!data.data?.id || !data.data?.documentUrl) {
+            throw new Error("Missing uploaded document");
+          }
+          setFactsDocuments((documents) => [...documents, data.data]);
+          uploadedCount++;
+        } catch {
+          failedFiles.push(file.name);
+        }
+      }
+      if (uploadedCount) {
         toast.add({
-          description: "Document uploaded successfully",
+          description: t("CaseFileTab.filesUploaded", { count: uploadedCount }),
           type: "success",
         });
+        refresh();
       }
-    } catch (err) {
-      toast.add({ description: "Upload failed", type: "error" });
+      if (failedFiles.length) {
+        toast.add({
+          description: t("CaseFileTab.filesFailed", { names: failedFiles.join(", ") }),
+          type: "error",
+        });
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const removeFactsDocument = async (document: FactsDocument) => {
+    setLoading(true);
+    try {
+      await axios.delete(`/cases/${caseData.id}/documents/${document.id}`);
+      setFactsDocuments((documents) => documents.filter((item) => item.id !== document.id));
+      refresh();
+    } catch {
+      toast.add({ description: t("CaseFileTab.removeFailed"), type: "error" });
     } finally {
       setLoading(false);
     }
@@ -145,17 +186,13 @@ export default function CaseFileTab({ caseData, refresh }: CaseFileTabProps) {
             (facts.startsWith("/uploads/") || facts.startsWith("http")) ? (
               <div className="flex items-center justify-between p-4 border rounded-xl bg-card hover:shadow-sm transition-all">
                 <a
-                  href={
-                    facts.startsWith("/")
-                      ? process.env.NEXT_PUBLIC_API_URL + facts
-                      : facts
-                  }
+                  href={getFileUrl(facts)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-primary font-medium hover:underline flex items-center"
                 >
                   <LinkIcon className="w-4 h-4 mr-2" />
-                  View Uploaded Facts Document
+                  {caseData.documents?.find((document: FactsDocument) => document.documentUrl === facts)?.fileName || t("CaseFileTab.viewFactsDocument")}
                 </a>
                 <Button
                   variant="ghost"
@@ -182,9 +219,27 @@ export default function CaseFileTab({ caseData, refresh }: CaseFileTabProps) {
                   <Trash2Icon className="w-4 h-4" />
                 </Button>
               </div>
-            ) : (
-              <Input type="file" onChange={(e) => handleFactFileUpload(e)} />
-            )}
+            ) : null}
+            {factsDocuments.map((document) => (
+              <div key={document.id} className="flex items-center justify-between gap-3 p-4 border rounded-xl bg-card">
+                <a href={getFileUrl(document.documentUrl)} target="_blank" rel="noopener noreferrer"
+                  className="min-w-0 text-primary font-medium hover:underline flex items-center gap-2">
+                  <LinkIcon className="w-4 h-4 shrink-0" />
+                  <span className="break-all">{document.fileName}</span>
+                </a>
+                <Button variant="ghost" size="icon" disabled={loading}
+                  className="shrink-0 text-destructive hover:bg-destructive/10 rounded-full"
+                  aria-label={t("CaseFileTab.removeFile", { name: document.fileName })}
+                  onClick={() => removeFactsDocument(document)}>
+                  <Trash2Icon className="w-4 h-4" />
+                </Button>
+              </div>
+            ))}
+            <Input type="file" multiple onChange={handleFactFileUpload} disabled={loading}
+              aria-label={t("CaseFileTab.addFiles")} aria-describedby="misil-upload-help" />
+            <p id="misil-upload-help" className="text-sm text-muted-foreground" aria-live="polite">
+              {loading ? t("CaseFileTab.saving") : t("CaseFileTab.multipleFilesHelp")}
+            </p>
           </div>
 
           <div className="space-y-4 pt-2">

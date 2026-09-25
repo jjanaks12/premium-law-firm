@@ -11,6 +11,7 @@ import { useAuth } from "@/lib/context/AuthContext";
 import { usePathname, useRouter } from "@/src/i18n/routing";
 import { canAccessPathname } from "@/lib/dictionary/adminNav";
 import Brand from "@/components/Brand";
+import Language from "@/components/Language";
 import { Button } from "@/components/ui/button";
 import { MenuIcon } from "lucide-react";
 
@@ -92,9 +93,12 @@ export default function AdminLayout({
           className="sticky top-0 z-50 h-16 bg-background/80 backdrop-blur border-b border-border flex items-center justify-between px-4"
         >
           <Brand theme="dark" />
+          <div className="flex items-center gap-2">
+          <Language theme="dark" />
           <Button size="icon">
             <MenuIcon className="size-6" />
           </Button>
+          </div>
         </header>
         <main className="flex-1 p-6 overflow-y-auto">{children}</main>
       </SidebarInset>

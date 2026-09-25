@@ -8,6 +8,7 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
+  DialogDescription,
 } from "@/components/ui/dialog";
 import {
   AlertDialog,
@@ -42,6 +43,10 @@ export default function PartiesTab({
   const locale = useLocale();
   const { axios } = useAxios();
   const [open, setOpen] = useState(false);
+  const [selectedPartyId, setSelectedPartyId] = useState<string | null>(null);
+  const selectedParty = caseData.parties?.find(
+    (party: any) => party.id === selectedPartyId,
+  );
   const [loading, setLoading] = useState(false);
   const [roles, setRoles] = useState<any[]>([]);
 
@@ -201,20 +206,28 @@ export default function PartiesTab({
             {caseData.parties.map((p: any) => (
               <div
                 key={p.id}
-                className="p-5 border rounded-2xl bg-card hover:shadow-md transition-shadow flex items-start space-x-4 relative group"
+                className="p-5 border rounded-2xl bg-card hover:shadow-md transition-shadow flex items-start gap-4 relative group"
               >
-                <div className="h-12 w-12 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xl shrink-0">
+                <button
+                  type="button"
+                  className="absolute inset-0 rounded-2xl cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                  aria-label={t("viewDetailsFor", { name: p.partyName })}
+                  aria-haspopup="dialog"
+                  onClick={() => setSelectedPartyId(p.id)}
+                />
+                <div className="pointer-events-none relative h-12 w-12 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xl shrink-0">
                   {p.partyName?.charAt(0) || "P"}
                 </div>
-                <div className="flex-1">
+                <div className="pointer-events-none relative flex-1 min-w-0">
                   <div className="flex justify-between items-start">
                     <div className="font-semibold text-lg">{p.partyName}</div>
-                    <div className="flex space-x-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="pointer-events-auto flex space-x-1 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity">
                       <Button
                         variant="ghost"
                         size="icon"
                         className="h-8 w-8 text-muted-foreground hover:text-primary rounded-full"
                         onClick={() => handleEditClick(p)}
+                        aria-label={t("editParty")}
                       >
                         <EditIcon className="w-4 h-4" />
                       </Button>
@@ -223,6 +236,7 @@ export default function PartiesTab({
                         size="icon"
                         className="h-8 w-8 text-muted-foreground hover:text-destructive hover:bg-destructive/10 rounded-full"
                         onClick={() => handleDeleteClick(p.id)}
+                        aria-label={t("confirmDeleteBtn")}
                       >
                         <Trash2Icon className="w-4 h-4" />
                       </Button>
@@ -270,6 +284,70 @@ export default function PartiesTab({
           </div>
         )}
       </CardContent>
+
+      <Dialog
+        open={!!selectedParty}
+        onOpenChange={(isOpen) => !isOpen && setSelectedPartyId(null)}
+      >
+        <DialogContent className="sm:max-w-2xl">
+          <DialogHeader>
+            <DialogTitle>{selectedParty?.partyName}</DialogTitle>
+            <DialogDescription>{t("partyDetails")}</DialogDescription>
+          </DialogHeader>
+          {selectedParty && (
+            <div className="space-y-6">
+              <dl className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {[
+                  [t("partyName"), selectedParty.partyName],
+                  [t("role"), locale === "np"
+                    ? selectedParty.role?.nepaliName || selectedParty.role?.name
+                    : selectedParty.role?.name],
+                  [t("contactNo"), selectedParty.contactNo],
+                  [t("citizenshipNo"), selectedParty.citizenshipNo],
+                  [t("permanentAddress"), selectedParty.permanentAddress],
+                  [t("temporaryAddress"), selectedParty.temporaryAddress],
+                  [t("fee"), selectedParty.fee],
+                ].map(([label, value]) => (
+                  <div key={label} className="min-w-0">
+                    <dt className="text-sm text-muted-foreground">{label}</dt>
+                    <dd className="mt-1 whitespace-pre-wrap break-words font-medium">
+                      {value === null || value === undefined || value === ""
+                        ? t("notRecorded") : String(value)}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+              <section className="border-t pt-4 space-y-4">
+                <h3 className="font-semibold">{t("warisDetails")}</h3>
+                {selectedParty.waris?.length ? selectedParty.waris.map((waris: any) => (
+                  <dl key={waris.id} className="grid grid-cols-1 sm:grid-cols-2 gap-4 rounded-xl border p-4">
+                    {[
+                      [t("warisName"), waris.partyName],
+                      [t("contactNo"), waris.contactNo],
+                      [t("citizenshipNo"), waris.citizenshipNo],
+                      [t("permanentAddress"), waris.permanentAddress],
+                      [t("temporaryAddress"), waris.temporaryAddress],
+                    ].map(([label, value]) => (
+                      <div key={label} className="min-w-0">
+                        <dt className="text-sm text-muted-foreground">{label}</dt>
+                        <dd className="mt-1 whitespace-pre-wrap break-words font-medium">
+                          {value === null || value === undefined || value === ""
+                            ? t("notRecorded") : String(value)}
+                        </dd>
+                      </div>
+                    ))}
+                  </dl>
+                )) : <p className="text-sm text-muted-foreground">{t("noWaris")}</p>}
+              </section>
+              <div className="flex justify-end">
+                <Button variant="outline" onClick={() => setSelectedPartyId(null)}>
+                  {t("closeDetails")}
+                </Button>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
 
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent>

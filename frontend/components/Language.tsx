@@ -21,7 +21,7 @@ const availableLanguages = [
     abbr: "np",
     label: "नेपाली",
   },
-];
+] as const;
 
 export default function Language({
   className,
@@ -40,13 +40,14 @@ export default function Language({
         render={
           <Button
             variant="ghost"
+            aria-label="Language / भाषा"
             className={cn(
               theme === "light" ? "text-cream" : "text-navy",
               className,
             )}
           >
             <GlobeIcon className="mr-2 h-4 w-4" />
-            {locale.toUpperCase()}
+            {locale === "en" ? "English" : "नेपाली"}
           </Button>
         }
       />
@@ -57,7 +58,11 @@ export default function Language({
             <DropdownMenuItem
               key={lang.abbr}
               className="text-sm hover:text-gold transition-colors tracking-wide cursor-pointer"
-              onClick={() => router.replace(pathname, { locale: lang.abbr })}
+              lang={lang.abbr === "np" ? "ne" : "en"}
+              onClick={() => router.replace(
+                `${pathname}${window.location.search}${window.location.hash}`,
+                { locale: lang.abbr, scroll: false },
+              )}
             >
               {lang.label}
             </DropdownMenuItem>
