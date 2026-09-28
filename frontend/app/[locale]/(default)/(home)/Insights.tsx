@@ -2,24 +2,41 @@
 
 import { useEffect, useState } from "react";
 import { ArrowRightIcon } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useAxios } from "@/lib/services/axios.service";
 import { Link } from "@/src/i18n/routing";
 import InsightCard from "../insight/Card";
 
 export default function Insights() {
   const t = useTranslations("Insights");
+  const locale = useLocale();
   const { axios } = useAxios();
-  const [posts, setPosts] = useState<any[]>([]);
+  const [posts, setPosts] = useState<Record<string, any[]>>({
+    article: [],
+    news: [],
+    "video-blog": [],
+  });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchInsights = async () => {
       try {
-        const res = await axios.get("/pages/public/insights?take=3");
-        if (res.data?.data) {
-          setPosts(res.data.data);
-        }
+        const categories = ["article", "news", "video-blog"];
+        const responses = await Promise.all(
+          categories.map((type) =>
+            axios.get("/pages/public/insights", {
+              params: { take: 3, type, locale },
+            }),
+          ),
+        );
+        setPosts(
+          Object.fromEntries(
+            categories.map((type, index) => [
+              type,
+              responses[index].data?.data ?? [],
+            ]),
+          ),
+        );
       } catch (err) {
         console.error("Failed to fetch insights:", err);
       } finally {
@@ -27,7 +44,13 @@ export default function Insights() {
       }
     };
     fetchInsights();
-  }, [axios]);
+  }, [axios, locale]);
+
+  const sections = [
+    { type: "article", title: t("articlesTitle") },
+    { type: "news", title: t("newsTitle") },
+    { type: "video-blog", title: t("videosTitle") },
+  ];
 
   return (
     <section id="insights" className="py-24 md:py-32">
@@ -44,25 +67,44 @@ export default function Insights() {
             href="/insight"
             className="text-sm tracking-[0.2em] uppercase text-navy hover:text-gold transition-colors inline-flex items-center gap-2"
           >
-            {t("allArticles")} <ArrowRightIcon className="h-4 w-4" />
+            {t("viewAll")} <ArrowRightIcon className="h-4 w-4" />
           </Link>
         </div>
 
-        <div className="mt-16 grid md:grid-cols-3 gap-10">
-          {loading ? (
-            Array.from({ length: 3 }).map((_, i) => (
-              <div
-                key={i}
-                className="aspect-4/3 rounded-lg bg-muted animate-pulse"
-              />
-            ))
-          ) : posts.length > 0 ? (
-            posts.map((p: any) => <InsightCard key={p.id} page={p} />)
-          ) : (
-            <div className="col-span-3 py-10 text-center text-muted-foreground">
-              <p>{t("noInsights") || "No insights available."}</p>
+        <div className="mt-16 space-y-20">
+          {sections.map((section) => (
+            <div key={section.type}>
+              <div className="mb-8 flex items-center justify-between border-b border-border pb-4">
+                <h3 className="font-serif text-3xl text-navy-deep">
+                  {section.title}
+                </h3>
+                <Link
+                  href="/insight"
+                  className="text-xs tracking-[0.18em] uppercase text-navy hover:text-gold transition-colors"
+                >
+                  {t("viewCategory")}
+                </Link>
+              </div>
+              <div className="grid md:grid-cols-3 gap-10">
+                {loading ? (
+                  Array.from({ length: 3 }).map((_, i) => (
+                    <div
+                      key={i}
+                      className="aspect-4/3 rounded-lg bg-muted animate-pulse"
+                    />
+                  ))
+                ) : posts[section.type].length > 0 ? (
+                  posts[section.type].map((post: any) => (
+                    <InsightCard key={post.id} page={post} />
+                  ))
+                ) : (
+                  <p className="md:col-span-3 py-6 text-muted-foreground">
+                    {t("noCategoryContent")}
+                  </p>
+                )}
+              </div>
             </div>
-          )}
+          ))}
         </div>
       </div>
     </section>

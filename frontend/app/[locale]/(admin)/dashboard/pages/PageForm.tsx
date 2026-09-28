@@ -16,6 +16,7 @@ import { getFileUrl } from "@/lib/utils";
 interface PageType {
   id: string;
   name: string;
+  slug: string;
 }
 
 interface Page {
@@ -81,6 +82,8 @@ export default function PageForm({
   const [content, setContent] = useState(initialData?.content ?? "");
   const [status, setStatus] = useState(initialData?.status ?? "draft");
   const [videoUrl, setVideoUrl] = useState(initialData?.detail?.videoUrl ?? "");
+  const isVideoBlog =
+    pageTypes.find((type) => type.id === pageTypeId)?.slug === "video-blog";
 
   // --- SEO fields ---
   const [metaTitle, setMetaTitle] = useState(
@@ -147,6 +150,15 @@ export default function PageForm({
 
   const handleSubmit = async () => {
     setLoading(true);
+    if (isVideoBlog && !videoUrl.trim()) {
+      toast.add({
+        title: t("error"),
+        description: t("videoUrlRequired"),
+        type: "error",
+      });
+      setLoading(false);
+      return;
+    }
     try {
       const pagePayload = {
         slug,
@@ -255,18 +267,20 @@ export default function PageForm({
             <p className="text-xs text-muted-foreground">{t("contentHint")}</p>
           </div>
 
-          <div className="space-y-1.5">
-            <Label>Video URL</Label>
-            <Input
-              value={videoUrl}
-              onChange={(e) => setVideoUrl(e.target.value)}
-              placeholder="https://youtube.com/..."
-              className="rounded-lg"
-            />
-            <p className="text-xs text-muted-foreground">
-              Optionally embed a video for this page (e.g., YouTube URL).
-            </p>
-          </div>
+          {isVideoBlog && (
+            <div className="space-y-1.5">
+              <Label>{t("videoUrl")}</Label>
+              <Input
+                value={videoUrl}
+                onChange={(e) => setVideoUrl(e.target.value)}
+                placeholder="https://youtube.com/..."
+                className="rounded-lg"
+              />
+              <p className="text-xs text-muted-foreground">
+                {t("videoUrlHint")}
+              </p>
+            </div>
+          )}
         </div>
 
         {/* Right Column */}
