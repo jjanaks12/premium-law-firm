@@ -256,7 +256,7 @@ export const destroy = async (req: Request, res: Response, next: NextFunction) =
 
 export const getInsights = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const { take, search, page = 1, limit = 9 } = req.query;
+    const { take, search, type, locale, page = 1, limit = 9 } = req.query;
     
     const isPaginated = !take;
     const takeNum = take ? parseInt(take as string, 10) : parseInt(limit as string, 10);
@@ -265,6 +265,14 @@ export const getInsights = async (req: Request, res: Response, next: NextFunctio
     
     const whereClause: Prisma.PageWhereInput = {
       status: "published",
+      deleted_at: null,
+      ...(locale ? { locale: locale as string } : {}),
+      ...(type ? {
+        page_type: {
+          slug: type as string,
+          deleted_at: null,
+        },
+      } : {}),
       ...(search ? {
         OR: [
           { title: { contains: search as string, mode: "insensitive" } },

@@ -133,6 +133,134 @@ async function main() {
   }
   console.log('✅ Created/verified case natures');
 
+  // 6. Create public content categories and demonstration posts.
+  // These upserts are intentionally idempotent so repeated seeds do not duplicate content.
+  const contentTypes = [
+    { name: 'Article', slug: 'article', description: 'Long-form legal articles and guidance' },
+    { name: 'News', slug: 'news', description: 'Firm and legal-sector news' },
+    { name: 'Video Blog', slug: 'video-blog', description: 'Video updates and explainers' },
+  ];
+
+  const typeIds: Record<string, string> = {};
+  for (const type of contentTypes) {
+    const savedType = await prisma.pageType.upsert({
+      where: { slug: type.slug },
+      update: { ...type, deleted_at: null },
+      create: type,
+    });
+    typeIds[type.slug] = savedType.id;
+  }
+
+  const samplePages = [
+    {
+      slug: 'preparing-for-a-legal-consultation', locale: 'en', type: 'article', image: 0,
+      title: 'Preparing for Your First Legal Consultation',
+      excerpt: 'A practical checklist to help you organise documents and questions before meeting your lawyer.',
+      content: '<h2>Prepare the essentials</h2><p>Collect agreements, letters, receipts, and any previous correspondence related to your matter.</p><h2>Write a clear timeline</h2><p>A short list of important dates helps your lawyer understand the situation quickly and identify the next steps.</p>',
+    },
+    {
+      slug: 'understanding-commercial-contracts', locale: 'en', type: 'article', image: 1,
+      title: 'Understanding Commercial Contracts',
+      excerpt: 'Key clauses every business should review before signing an agreement.',
+      content: '<h2>Read beyond the headline terms</h2><p>Payment, termination, liability, and dispute-resolution clauses often determine how useful an agreement will be when circumstances change.</p>',
+    },
+    {
+      slug: 'firm-expands-dispute-resolution-team', locale: 'en', type: 'news', image: 1,
+      title: 'Firm Expands Its Dispute Resolution Team',
+      excerpt: 'Premium Law Firm welcomes new experience to its litigation and arbitration practice.',
+      content: '<p>Our expanded dispute resolution team will support clients in complex commercial litigation, arbitration, and negotiated settlements.</p>',
+    },
+    {
+      slug: 'legal-awareness-programme-announced', locale: 'en', type: 'news', image: 2,
+      title: 'Community Legal Awareness Programme Announced',
+      excerpt: 'A new public programme will explain common legal processes in clear, practical language.',
+      content: '<p>The programme will cover document preparation, access to legal services, and common questions about court procedures.</p>',
+    },
+    {
+      slug: 'video-what-to-expect-at-a-consultation', locale: 'en', type: 'video-blog', image: 2,
+      title: 'Video: What to Expect at a Legal Consultation',
+      excerpt: 'A short demonstration video explaining how an initial consultation works.',
+      content: '<p>This sample video demonstrates the video-blog layout and playback experience.</p>',
+      detail: { videoUrl: 'https://www.youtube.com/watch?v=aqz-KE-bpKQ' },
+    },
+    {
+      slug: 'video-organising-case-documents', locale: 'en', type: 'video-blog', image: 0,
+      title: 'Video: Organising Your Case Documents',
+      excerpt: 'Simple ways to arrange records before sharing them with your legal team.',
+      content: '<p>This sample video demonstrates how video content can be published from the admin panel.</p>',
+      detail: { videoUrl: 'https://www.youtube.com/watch?v=aqz-KE-bpKQ' },
+    },
+    {
+      slug: 'kanuni-paramarshko-tayari', locale: 'np', type: 'article', image: 0,
+      title: 'कानुनी परामर्शका लागि कसरी तयारी गर्ने',
+      excerpt: 'वकिलसँगको पहिलो भेटअघि कागजात र प्रश्नहरू व्यवस्थित गर्ने सरल तरिका।',
+      content: '<h2>आवश्यक कागजात तयार गर्नुहोस्</h2><p>सम्झौता, पत्र, रसिद र विषयसँग सम्बन्धित अन्य कागजातहरू एकै ठाउँमा राख्नुहोस्।</p>',
+    },
+    {
+      slug: 'byabasayik-samjhauta-bujhaunuhos', locale: 'np', type: 'article', image: 1,
+      title: 'व्यावसायिक सम्झौता बुझ्नुहोस्',
+      excerpt: 'सम्झौतामा हस्ताक्षर गर्नुअघि व्यवसायले हेर्नुपर्ने मुख्य सर्तहरू।',
+      content: '<p>भुक्तानी, सम्झौता अन्त्य, दायित्व र विवाद समाधानसम्बन्धी सर्तहरू ध्यानपूर्वक पढ्नुहोस्।</p>',
+    },
+    {
+      slug: 'bibad-samadhan-toli-bistar', locale: 'np', type: 'news', image: 1,
+      title: 'विवाद समाधान टोली विस्तार',
+      excerpt: 'प्रिमियम ल फर्मले मुद्दा तथा मध्यस्थता सेवामा नयाँ अनुभव थपेको छ।',
+      content: '<p>विस्तारित टोलीले जटिल व्यावसायिक विवाद, मध्यस्थता र वार्तामार्फत समाधानमा सहयोग गर्नेछ।</p>',
+    },
+    {
+      slug: 'kanuni-jana-chetana-karyakram', locale: 'np', type: 'news', image: 2,
+      title: 'कानुनी जनचेतना कार्यक्रम घोषणा',
+      excerpt: 'सामान्य कानुनी प्रक्रियालाई सरल भाषामा बुझाउने नयाँ कार्यक्रम।',
+      content: '<p>कार्यक्रममा कागजात तयारी, कानुनी सेवामा पहुँच र अदालत प्रक्रियाबारेका सामान्य प्रश्न समेटिनेछन्।</p>',
+    },
+    {
+      slug: 'video-kanuni-paramarshma-ke-hunchha', locale: 'np', type: 'video-blog', image: 2,
+      title: 'भिडियो: कानुनी परामर्शमा के हुन्छ?',
+      excerpt: 'पहिलो कानुनी परामर्शको प्रक्रिया बुझाउने छोटो नमुना भिडियो।',
+      content: '<p>यो नमुना भिडियोले भिडियो ब्लगको लेआउट र प्लेब्याक देखाउँछ।</p>',
+      detail: { videoUrl: 'https://www.youtube.com/watch?v=aqz-KE-bpKQ' },
+    },
+    {
+      slug: 'video-mudda-kagajat-byawasthapan', locale: 'np', type: 'video-blog', image: 0,
+      title: 'भिडियो: मुद्दाका कागजात व्यवस्थित गर्ने तरिका',
+      excerpt: 'कानुनी टोलीलाई दिनुअघि अभिलेखहरू मिलाउने सरल उपाय।',
+      content: '<p>यो नमुना सामग्रीले एडमिनबाट भिडियो कसरी प्रकाशित हुन्छ भन्ने देखाउँछ।</p>',
+      detail: { videoUrl: 'https://www.youtube.com/watch?v=aqz-KE-bpKQ' },
+    },
+  ];
+
+  for (const page of samplePages) {
+    const detail = page.detail ?? {};
+    await prisma.page.upsert({
+      where: { slug: page.slug },
+      update: {
+        title: page.title,
+        excerpt: page.excerpt,
+        content: page.content,
+        detail,
+        locale: page.locale,
+        status: 'published',
+        page_type_id: typeIds[page.type],
+        thumbnail_id: null,
+        deleted_at: null,
+      },
+      create: {
+        slug: page.slug,
+        title: page.title,
+        excerpt: page.excerpt,
+        content: page.content,
+        detail,
+        locale: page.locale,
+        status: 'published',
+        page_type_id: typeIds[page.type],
+        thumbnail_id: null,
+        author_id: adminUser.id,
+      },
+    });
+  }
+  console.log('✅ Created/verified sample articles, news, and video blogs');
+
   console.log('🌱 Seeding completed successfully.');
 }
 

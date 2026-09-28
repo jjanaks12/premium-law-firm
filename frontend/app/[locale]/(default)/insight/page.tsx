@@ -2,19 +2,21 @@
 
 import { useEffect, useState } from "react";
 import { SearchIcon, ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useAxios } from "@/lib/services/axios.service";
 import InsightCard from "./Card";
 import { Page, PageType, Resource } from "@prisma/generated/client";
 
-type Post = Page & { thumbnail: Resource; page_type: PageType };
+type Post = Page & { thumbnail: Resource | null; page_type: PageType | null };
 
 export default function InsightPage() {
   const t = useTranslations("Insights");
+  const locale = useLocale();
   const { axios } = useAxios();
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
+  const [selectedType, setSelectedType] = useState("all");
   const [page, setPage] = useState(1);
   const [meta, setMeta] = useState({
     totalPages: 1,
@@ -28,7 +30,7 @@ export default function InsightPage() {
       fetchInsights();
     }, 300);
     return () => clearTimeout(timer);
-  }, [axios, page, search]);
+  }, [axios, locale, page, search, selectedType]);
 
   const fetchInsights = async () => {
     setLoading(true);
@@ -38,6 +40,8 @@ export default function InsightPage() {
         limit: "9",
       });
       if (search) query.append("search", search);
+      query.append("locale", locale);
+      if (selectedType !== "all") query.append("type", selectedType);
 
       const res = await axios.get(`/pages/public/insights?${query.toString()}`);
       if (res.data?.data) {
@@ -50,6 +54,13 @@ export default function InsightPage() {
       setLoading(false);
     }
   };
+
+  const categories = [
+    { value: "all", label: t("all") },
+    { value: "article", label: t("articlesTitle") },
+    { value: "news", label: t("newsTitle") },
+    { value: "video-blog", label: t("videosTitle") },
+  ];
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
@@ -80,6 +91,26 @@ export default function InsightPage() {
               className="w-full pl-10 pr-4 py-3 rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-navy/20 transition-all bg-muted/30"
             />
           </div>
+        </div>
+
+        <div className="mb-12 flex flex-wrap gap-3" aria-label={t("filterByType")}>
+          {categories.map((category) => (
+            <button
+              key={category.value}
+              type="button"
+              onClick={() => {
+                setSelectedType(category.value);
+                setPage(1);
+              }}
+              className={`rounded-full border px-5 py-2 text-sm transition-colors ${
+                selectedType === category.value
+                  ? "border-navy bg-navy text-white"
+                  : "border-border bg-white text-navy hover:border-gold hover:text-gold"
+              }`}
+            >
+              {category.label}
+            </button>
+          ))}
         </div>
 
         {loading && posts.length === 0 ? (
