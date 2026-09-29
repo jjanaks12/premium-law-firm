@@ -199,6 +199,7 @@ export default function CaseForm({
     referredThrough: caseData?.referredThrough || "",
     courtDetails: [
       {
+        id: activeCourtDetail?.id,
         caseNumber: activeCourtDetail?.caseNumber || "",
         caseName: activeCourtDetail?.caseName || "",
         courtLevelId: activeCourtDetail?.courtLevelId || "",

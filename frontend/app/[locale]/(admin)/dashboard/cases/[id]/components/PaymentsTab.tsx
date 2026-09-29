@@ -219,13 +219,13 @@ export default function PaymentsTab({
       </CardContent>
 
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent>
+        <DialogContent className="w-[calc(100%-2rem)] overflow-x-hidden sm:max-w-2xl">
           <DialogHeader>
             <DialogTitle>{t("addPayment")}</DialogTitle>
           </DialogHeader>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
+          <form onSubmit={handleSubmit} className="min-w-0 space-y-4">
+            <div className="grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-2">
+              <div className="min-w-0 space-y-2">
                 <Label>
                   {t("amountLabel")} <span className="text-destructive">*</span>
                 </Label>
@@ -237,7 +237,7 @@ export default function PaymentsTab({
                   required
                 />
               </div>
-              <div className="space-y-2">
+              <div className="min-w-0 space-y-2">
                 <Label>{t("dateLabel")}</Label>
                 <CompositeDatePicker
                   value={paymentDate}
@@ -246,14 +246,14 @@ export default function PaymentsTab({
                 />
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
+            <div className="grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-2">
+              <div className="min-w-0 space-y-2">
                 <Label>{t("methodLabel")}</Label>
                 <Select
                   value={method}
                   onValueChange={(val) => setMethod(val as string)}
                 >
-                  <SelectTrigger>
+                  <SelectTrigger className="w-full min-w-0">
                     <SelectValue placeholder={t("placeholderMethod")} />
                   </SelectTrigger>
                   <SelectContent>
@@ -268,7 +268,7 @@ export default function PaymentsTab({
                   </SelectContent>
                 </Select>
               </div>
-              <div className="space-y-2">
+              <div className="min-w-0 space-y-2">
                 <Label>{t("refNoLabel")}</Label>
                 <Input
                   value={referenceNo}
@@ -276,14 +276,14 @@ export default function PaymentsTab({
                 />
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
+            <div className="grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-2">
+              <div className="min-w-0 space-y-2">
                 <Label>{t("receivedByInternalLabel")}</Label>
                 <Select
                   value={receivedByUserId}
                   onValueChange={(val) => setReceivedByUserId(val as string)}
                 >
-                  <SelectTrigger>
+                  <SelectTrigger className="w-full min-w-0">
                     <SelectValue
                       placeholder={t("receivedByInternalPlaceholder")}
                     >
@@ -309,7 +309,7 @@ export default function PaymentsTab({
                   </SelectContent>
                 </Select>
               </div>
-              <div className="space-y-2">
+              <div className="min-w-0 space-y-2">
                 <Label>{t("receivedByExternalLabel")}</Label>
                 <Input
                   value={receivedBy}

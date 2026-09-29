@@ -150,7 +150,7 @@ export default function OverviewTab({
               {activeDetail?.courtLevel
                 ? locale === "np" && activeDetail.courtLevel.nepaliName
                   ? activeDetail.courtLevel.nepaliName
-                  : activeDetail.courtLevel.englishName || activeDetail.courtLevel.name || t("na")
+                  : activeDetail.courtLevel.name || t("na")
                 : t("na")}
             </p>
           </div>
@@ -160,8 +160,8 @@ export default function OverviewTab({
             </p>
             <p className="font-medium">
               {locale == "np"
-                ? caseData.nature?.nepaliName
-                : caseData.nature?.englishName || t("na")}
+                ? caseData.nature?.nepaliName || caseData.nature?.name || t("na")
+                : caseData.nature?.name || t("na")}
             </p>
           </div>
           <div className="p-4 rounded-xl border bg-muted/10 hover:bg-muted/30 transition-all duration-300 hover:shadow-sm">

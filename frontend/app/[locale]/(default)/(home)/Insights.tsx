@@ -11,32 +11,16 @@ export default function Insights() {
   const t = useTranslations("Insights");
   const locale = useLocale();
   const { axios } = useAxios();
-  const [posts, setPosts] = useState<Record<string, any[]>>({
-    article: [],
-    news: [],
-    "video-blog": [],
-  });
+  const [posts, setPosts] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchInsights = async () => {
       try {
-        const categories = ["article", "news", "video-blog"];
-        const responses = await Promise.all(
-          categories.map((type) =>
-            axios.get("/pages/public/insights", {
-              params: { take: 3, type, locale },
-            }),
-          ),
-        );
-        setPosts(
-          Object.fromEntries(
-            categories.map((type, index) => [
-              type,
-              responses[index].data?.data ?? [],
-            ]),
-          ),
-        );
+        const { data } = await axios.get("/pages/public/insights", {
+          params: { take: 6, locale },
+        });
+        setPosts(data?.data ?? []);
       } catch (err) {
         console.error("Failed to fetch insights:", err);
       } finally {
@@ -45,12 +29,6 @@ export default function Insights() {
     };
     fetchInsights();
   }, [axios, locale]);
-
-  const sections = [
-    { type: "article", title: t("articlesTitle") },
-    { type: "news", title: t("newsTitle") },
-    { type: "video-blog", title: t("videosTitle") },
-  ];
 
   return (
     <section id="insights" className="py-24 md:py-32">
@@ -71,40 +49,23 @@ export default function Insights() {
           </Link>
         </div>
 
-        <div className="mt-16 space-y-20">
-          {sections.map((section) => (
-            <div key={section.type}>
-              <div className="mb-8 flex items-center justify-between border-b border-border pb-4">
-                <h3 className="font-serif text-3xl text-navy-deep">
-                  {section.title}
-                </h3>
-                <Link
-                  href="/insight"
-                  className="text-xs tracking-[0.18em] uppercase text-navy hover:text-gold transition-colors"
-                >
-                  {t("viewCategory")}
-                </Link>
-              </div>
-              <div className="grid md:grid-cols-3 gap-10">
-                {loading ? (
-                  Array.from({ length: 3 }).map((_, i) => (
-                    <div
-                      key={i}
-                      className="aspect-4/3 rounded-lg bg-muted animate-pulse"
-                    />
-                  ))
-                ) : posts[section.type].length > 0 ? (
-                  posts[section.type].map((post: any) => (
-                    <InsightCard key={post.id} page={post} />
-                  ))
-                ) : (
-                  <p className="md:col-span-3 py-6 text-muted-foreground">
-                    {t("noCategoryContent")}
-                  </p>
-                )}
-              </div>
-            </div>
-          ))}
+        <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+          {loading ? (
+            Array.from({ length: 6 }).map((_, i) => (
+              <div
+                key={i}
+                className="aspect-4/3 rounded-lg bg-muted animate-pulse"
+              />
+            ))
+          ) : posts.length > 0 ? (
+            posts.map((post: any) => (
+              <InsightCard key={post.id} page={post} />
+            ))
+          ) : (
+            <p className="md:col-span-2 lg:col-span-3 py-6 text-muted-foreground">
+              {t("noInsights")}
+            </p>
+          )}
         </div>
       </div>
     </section>

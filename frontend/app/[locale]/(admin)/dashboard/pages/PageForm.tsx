@@ -10,7 +10,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Loader2Icon } from "lucide-react";
 import MediaLibraryDialog from "@/components/MediaLibraryDialog";
 import RichTextEditor from "@/components/RichTextEditor";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { getFileUrl } from "@/lib/utils";
 
 interface PageType {
@@ -62,6 +62,7 @@ export default function PageForm({
   onCancel,
 }: Props) {
   const t = useTranslations("PageForm");
+  const currentLocale = useLocale();
   const { axios } = useAxios();
   const [loading, setLoading] = useState(false);
   const [mediaOpen, setMediaOpen] = useState(false);
@@ -70,7 +71,9 @@ export default function PageForm({
   const [slug, setSlug] = useState(initialData?.slug ?? "");
   const [title, setTitle] = useState(initialData?.title ?? "");
   const [excerpt, setExcerpt] = useState(initialData?.excerpt ?? "");
-  const [locale, setLocale] = useState(initialData?.locale ?? "np");
+  const [locale, setLocale] = useState(
+    initialData?.locale ?? (currentLocale === "en" ? "en" : "np"),
+  );
   const [pageTypeId, setPageTypeId] = useState(
     initialData?.page_type?.id ?? "",
   );
@@ -164,7 +167,6 @@ export default function PageForm({
         slug,
         title,
         excerpt: excerpt || null,
-        locale,
         page_type_id: pageTypeId || null,
         parent_id: parentId || null,
         thumbnail_id: thumbnail?.id ?? null,
@@ -173,17 +175,31 @@ export default function PageForm({
         detail: videoUrl ? { videoUrl } : {},
       };
 
-      let pageId = initialData?.id;
+      let pageIds: string[] = [];
 
-      if (isEditing && pageId) {
-        await axios.put(`/pages/${pageId}`, pagePayload);
+      if (isEditing && initialData?.id) {
+        await axios.put(`/pages/${initialData.id}`, {
+          ...pagePayload,
+          locale,
+        });
+        pageIds = [initialData.id];
       } else {
-        const { data } = await axios.post("/pages", pagePayload);
-        pageId = data.data.id;
+        const targetLocales = locale === "both" ? ["en", "np"] : [locale];
+
+        for (const targetLocale of targetLocales) {
+          const { data } = await axios.post("/pages", {
+            ...pagePayload,
+            locale: targetLocale,
+            slug:
+              targetLocale === "np" && locale === "both"
+                ? `${slug}-np`
+                : slug,
+          });
+          pageIds.push(data.data.id);
+        }
       }
 
-      // Upsert SEO
-      if (pageId) {
+      for (const pageId of pageIds) {
         await axios.put(`/pages/${pageId}/seo`, {
           meta_title: metaTitle || null,
           meta_description: metaDescription || null,
@@ -194,7 +210,6 @@ export default function PageForm({
           robots: robots || null,
         });
 
-        // Upsert Schema
         if (schemaType || schemaData) {
           await axios.put(`/pages/${pageId}/schema`, {
             schema_type: schemaType || null,
@@ -298,6 +313,18 @@ export default function PageForm({
               </select>
             </div>
             <div className="space-y-1.5">
+              <Label>{t("locale")}</Label>
+              <select
+                value={locale}
+                onChange={(e) => setLocale(e.target.value)}
+                className={inputClass}
+              >
+                <option value="en">{t("english")}</option>
+                <option value="np">{t("nepali")}</option>
+                {!isEditing && <option value="both">{t("both")}</option>}
+              </select>
+            </div>
+            <div className="space-y-1.5">
               <Label>{t("pageType")}</Label>
               <select
                 value={pageTypeId}
@@ -364,12 +391,12 @@ export default function PageForm({
                     {t("noImage")}
                   </div>
                 )}
-                <div className="flex gap-2">
+                <div className="grid grid-cols-[auto_minmax(0,1fr)] gap-2">
                   <Button
                     type="button"
                     onClick={() => setThumbnail(null)}
                     variant="destructive"
-                    className="grow-0"
+                    className="h-auto grow-0"
                   >
                     {t("remove")}
                   </Button>
@@ -377,7 +404,7 @@ export default function PageForm({
                     type="button"
                     variant="outline"
                     onClick={() => setMediaOpen(true)}
-                    className="grow"
+                    className="h-auto min-h-10 w-full min-w-0 whitespace-normal px-3 py-2 text-center leading-tight"
                   >
                     {thumbnail ? t("changeImage") : t("selectMedia")}
                   </Button>

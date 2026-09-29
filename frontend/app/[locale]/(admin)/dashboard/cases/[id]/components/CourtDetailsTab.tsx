@@ -236,7 +236,7 @@ export default function CourtDetailsTab({
                     {detail.courtLevel
                       ? locale === "np" && detail.courtLevel.nepaliName
                         ? detail.courtLevel.nepaliName
-                        : detail.courtLevel.englishName || detail.courtLevel.name || t("na")
+                        : detail.courtLevel.name || t("na")
                       : t("na")}
                   </p>
                 </div>

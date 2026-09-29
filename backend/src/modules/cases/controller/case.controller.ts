@@ -48,7 +48,10 @@ export const index = async (req: Request, res: Response, next: NextFunction) => 
       where: filter,
       include: {
         nature: true,
-        courtDetails: { where: { isActive: true } },
+        courtDetails: {
+          where: { isActive: true },
+          include: { courtLevel: true },
+        },
         parties: {
           include: {
             role: true,

@@ -1,7 +1,7 @@
 import { Link } from "@/src/i18n/routing";
 import { Page, PageType, Resource } from "@prisma/generated/client";
 import { ArrowRightIcon, PlayIcon } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { getFileUrl } from "@/lib/utils";
 
 export default function InsightCard({
@@ -10,6 +10,7 @@ export default function InsightCard({
   page: Page & { thumbnail: Resource | null; page_type: PageType | null };
 }) {
   const t = useTranslations("Insights");
+  const locale = useLocale();
   const isVideo = page.page_type?.slug === "video-blog";
   const fallbackImages: Record<string, string> = {
     article: "/images/blog-1.jpg",
@@ -48,10 +49,13 @@ export default function InsightCard({
           </span>
           <span className="h-1 w-1 bg-muted-foreground/50 rounded-full" />
           <span className="text-muted-foreground">
-            {new Date(page.created_at).toLocaleDateString("en-US", {
+            {new Date(page.created_at).toLocaleDateString(
+              locale === "np" ? "ne-NP" : "en-US",
+              {
               month: "short",
               year: "numeric",
-            })}
+              },
+            )}
           </span>
         </div>
         <Link href={`/insight/${page.slug}`} className="block">

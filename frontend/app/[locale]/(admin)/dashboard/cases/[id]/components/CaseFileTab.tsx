@@ -157,13 +157,13 @@ export default function CaseFileTab({ caseData, refresh }: CaseFileTabProps) {
         payload.status = "Closed";
       }
 
-      await axios.put(`/cases/${caseData.id}`, payload);
+      await axios.patch(`/cases/${caseData.id}`, payload);
       toast.add({
         description: t("CaseFileTab.successMsg"),
         type: "success",
       });
       refresh();
-    } catch (error) {
+    } catch {
       toast.add({
         description: t("CaseFileTab.errorMsg"),
         type: "error",
