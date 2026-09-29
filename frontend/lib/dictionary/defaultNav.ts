@@ -5,8 +5,8 @@ export const useNavLink = () => {
 
     return {
         navLinks: [
-            { key: t("aboutUs"), href: "#" },
-            { key: t("practiceAreas"), href: "#" },
+            { key: t("aboutUs"), href: "/about" },
+            { key: t("practiceAreas"), href: "/practice-areas" },
             { key: t("attorneys"), href: "/team" },
             { key: t("insights"), href: "/insight" },
             { key: t("contact"), href: "/contact" },

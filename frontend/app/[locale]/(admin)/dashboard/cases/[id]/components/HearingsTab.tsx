@@ -3,7 +3,12 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { CompositeDatePicker } from "@/components/ui/composite-date-picker";
 import { useTranslations } from "next-intl";
-import { PlusIcon, Trash2Icon, PencilIcon } from "lucide-react";
+import {
+  PlusIcon,
+  Trash2Icon,
+  PencilIcon,
+  PaperclipIcon,
+} from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -28,9 +33,11 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useAxios } from "@/lib/services/axios.service";
 import { toast } from "@/components/ui/toast";
+import { getFileUrl } from "@/lib/utils";
 
 export default function HearingsTab({
   caseData,
@@ -62,6 +69,7 @@ export default function HearingsTab({
   const [nextHearingDate, setNextHearingDate] = useState("");
   const [hearingOrder, setHearingOrder] = useState("");
   const [hearingType, setHearingType] = useState("aadesh");
+  const [orderFile, setOrderFile] = useState<File | null>(null);
 
   const activeCourt =
     caseData.courtDetails?.find((d: any) => d.isActive) ||
@@ -73,25 +81,45 @@ export default function HearingsTab({
     e.preventDefault();
     setLoading(true);
     try {
+      let hearingId = editId;
       if (editId) {
-        await axios.patch(`/cases/${caseData.id}/hearings/${editId}`, {
-          hearingDate: hearingDate || undefined,
-          nextHearingDate: nextHearingDate || undefined,
-          caseCourtDetailId: selectedCourtId || undefined,
-          hearingOrder,
-          hearingType,
-        });
+        const { data } = await axios.patch(
+          `/cases/${caseData.id}/hearings/${editId}`,
+          {
+            hearingDate: hearingDate || undefined,
+            nextHearingDate: nextHearingDate || undefined,
+            caseCourtDetailId: selectedCourtId || undefined,
+            hearingOrder,
+            hearingType,
+          },
+        );
+        hearingId = data.data.id;
         toast.add({ title: t("successAdd") || "Success" }); // Or a generic success edit message
       } else {
-        await axios.post(`/cases/${caseData.id}/hearings`, {
+        const { data } = await axios.post(`/cases/${caseData.id}/hearings`, {
           hearingDate: hearingDate || undefined,
           nextHearingDate: nextHearingDate || undefined,
           caseCourtDetailId: selectedCourtId || undefined,
           hearingOrder,
           hearingType,
         });
+        hearingId = data.data.id;
         toast.add({ title: t("successAdd") });
       }
+
+      if (orderFile && hearingId) {
+        const formData = new FormData();
+        formData.append("file", orderFile);
+        formData.append("fileName", orderFile.name);
+        formData.append("documentType", `Hearing Order:${hearingId}`);
+        formData.append("description", hearingOrder);
+        await axios.post(`/cases/${caseData.id}/documents`, formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+      }
+
       setOpen(false);
       refresh();
       // Reset
@@ -99,6 +127,7 @@ export default function HearingsTab({
       setNextHearingDate("");
       setHearingOrder("");
       setHearingType("aadesh");
+      setOrderFile(null);
       setEditId(null);
     } catch (error: any) {
       toast.add({
@@ -121,6 +150,7 @@ export default function HearingsTab({
     );
     setHearingOrder(hearing.hearingOrder || "");
     setHearingType(hearing.hearingType || "aadesh");
+    setOrderFile(null);
     setSelectedCourtId(hearing.caseCourtDetailId || activeCourt?.id || "");
     setOpen(true);
   };
@@ -157,6 +187,7 @@ export default function HearingsTab({
             setNextHearingDate("");
             setHearingOrder("");
             setHearingType("aadesh");
+            setOrderFile(null);
             setSelectedCourtId(activeCourt?.id || "");
             setOpen(true);
           }}
@@ -251,6 +282,23 @@ export default function HearingsTab({
                       </p>
                     </div>
                   )}
+                  {caseData.documents
+                    ?.filter(
+                      (document: any) =>
+                        document.documentType === `Hearing Order:${h.id}`,
+                    )
+                    .map((document: any) => (
+                      <a
+                        key={document.id}
+                        href={getFileUrl(document.documentUrl)}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="mt-3 inline-flex items-center gap-2 text-sm text-primary hover:underline"
+                      >
+                        <PaperclipIcon className="size-4" />
+                        {document.fileName}
+                      </a>
+                    ))}
                 </div>
               </div>
             ))}
@@ -273,22 +321,22 @@ export default function HearingsTab({
       </CardContent>
 
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="md:max-w-200 sm:max-w-full">
+        <DialogContent className="w-[calc(100%-2rem)] overflow-x-hidden sm:max-w-2xl">
           <DialogHeader>
             <DialogTitle>
               {editId ? t("editHearing") || "Edit Hearing" : t("addHearing")}
             </DialogTitle>
           </DialogHeader>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
+          <form onSubmit={handleSubmit} className="min-w-0 space-y-4">
+            <div className="grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-2">
+              <div className="min-w-0 space-y-2">
                 <Label>{t("hearingDate")}</Label>
                 <CompositeDatePicker
                   value={hearingDate}
                   onChange={(val) => setHearingDate(val)}
                 />
               </div>
-              <div className="space-y-2">
+              <div className="min-w-0 space-y-2">
                 <Label>{t("nextHearingDate")}</Label>
                 <CompositeDatePicker
                   value={nextHearingDate}
@@ -374,6 +422,20 @@ export default function HearingsTab({
                 rows={4}
               />
             </div>
+            <div className="space-y-2">
+              <Label htmlFor="hearing-order-file">{t("orderFile")}</Label>
+              <Input
+                id="hearing-order-file"
+                type="file"
+                accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
+                onChange={(event) =>
+                  setOrderFile(event.target.files?.[0] ?? null)
+                }
+              />
+              <p className="text-xs text-muted-foreground">
+                {t("orderFileHint")}
+              </p>
+            </div>
             <div className="flex justify-end pt-4">
               <Button
                 type="button"
@@ -386,6 +448,7 @@ export default function HearingsTab({
                   setNextHearingDate("");
                   setHearingOrder("");
                   setHearingType("aadesh");
+                  setOrderFile(null);
                 }}
               >
                 {t("cancel")}

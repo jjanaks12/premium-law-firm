@@ -27,6 +27,11 @@ export interface CaseCourtDetailData {
   registrationDate: string | null;
   judgeName?: string | null;
   courtLevelId?: string | null;
+  courtLevel?: {
+    id: string;
+    name: string;
+    nepaliName?: string | null;
+  } | null;
   courtType?: string | null;
   courtName?: string | null;
   sectionCourtRoom: string | null;

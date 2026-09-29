@@ -192,7 +192,7 @@ export default function CasesPage() {
             <TableBody>
               {loading ? (
                 <TableRow>
-                  <TableCell colSpan={7} className="h-48 text-center">
+                  <TableCell colSpan={6} className="h-48 text-center">
                     <div className="flex flex-col items-center justify-center text-muted-foreground">
                       <Loader2Icon className="h-8 w-8 animate-spin mb-2" />
                       {t("loading")}
@@ -226,8 +226,8 @@ export default function CasesPage() {
                         {c.nature
                           ? locale == "en"
                             ? c.nature.name
-                            : c.nature.nepaliName
-                          : c.natureId}
+                            : c.nature.nepaliName || c.nature.name
+                          : "N/A"}
                       </TableCell>
                       <TableCell>
                         <span

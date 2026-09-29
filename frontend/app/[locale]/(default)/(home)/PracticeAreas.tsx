@@ -74,12 +74,6 @@ export default function PracticeAreas() {
             </div>
           ))}
         </div>
-
-        <div className="mt-14 flex justify-center">
-          <a href="#" className="btn-navy">
-            {t("viewAll")} <ArrowRightIcon className="h-4 w-4" />
-          </a>
-        </div>
       </div>
     </section>
   );
