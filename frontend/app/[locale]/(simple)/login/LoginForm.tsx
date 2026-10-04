@@ -21,6 +21,14 @@ import {
 } from "@/components/ui/input-group";
 import { useAuth } from "@/lib/context/AuthContext";
 
+const normalizeRedirectUrl = (redirectUrl: string | null) => {
+  if (!redirectUrl || !redirectUrl.startsWith("/") || redirectUrl.startsWith("//")) {
+    return "/dashboard";
+  }
+
+  return redirectUrl.replace(/^\/(?:en|np)(?=\/|\?|$)/, "") || "/";
+};
+
 export default function LoginForm({ className }: { className?: string }) {
   const { axios } = useAxios();
   const router = useRouter();
@@ -46,10 +54,7 @@ export default function LoginForm({ className }: { className?: string }) {
         await refreshUser();
         const redirectUrl = searchParams.get("redirectUrl");
 
-        const finalUrl =
-          redirectUrl && redirectUrl.startsWith("/")
-            ? redirectUrl
-            : "/dashboard";
+        const finalUrl = normalizeRedirectUrl(redirectUrl);
 
         router.push(finalUrl);
         router.refresh();

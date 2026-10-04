@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { isAxiosError } from "axios";
 import { useAxios } from "@/lib/services/axios.service";
 import { toast } from "@/components/ui/toast";
 import { Button } from "@/components/ui/button";
@@ -42,6 +43,16 @@ import {
 } from "@/components/ui/select";
 import dayjs from "dayjs";
 import { CaseData } from "@app/types";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
+import { formatCaseNumber } from "@/lib/format-case-number";
+
+const PAGE_SIZE = 10;
 
 export default function CasesPage() {
   const { axios } = useAxios();
@@ -51,6 +62,13 @@ export default function CasesPage() {
 
   const [cases, setCases] = useState<CaseData[]>([]);
   const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(1);
+  const [pagination, setPagination] = useState({
+    page: 1,
+    limit: PAGE_SIZE,
+    total: 0,
+    totalPages: 0,
+  });
 
   // Filter States
   const [search, setSearch] = useState("");
@@ -61,7 +79,7 @@ export default function CasesPage() {
   const [deleteId, setDeleteId] = useState<string | null>(null);
   const [confirmDeleteOpen, setConfirmDeleteOpen] = useState(false);
 
-  const fetchCases = async () => {
+  const fetchCases = useCallback(async () => {
     setLoading(true);
     try {
       const { data } = await axios.get("/cases", {
@@ -69,12 +87,20 @@ export default function CasesPage() {
           search,
           partyName: partySearch,
           status: statusFilter !== "all" ? statusFilter : undefined,
+          page,
+          limit: PAGE_SIZE,
         },
       });
       if (data.data) {
         setCases(data.data);
+        if (data.meta) {
+          setPagination(data.meta);
+          if (data.meta.page !== page) {
+            setPage(data.meta.page);
+          }
+        }
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error("Failed to fetch cases:", err);
       toast.add({
         title: "Error",
@@ -84,14 +110,14 @@ export default function CasesPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [axios, page, partySearch, search, statusFilter]);
 
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
       fetchCases();
     }, 500);
     return () => clearTimeout(delayDebounceFn);
-  }, [search, partySearch, statusFilter]);
+  }, [fetchCases]);
 
   // Handler for Add Form
   const handleAddClick = () => {
@@ -114,10 +140,12 @@ export default function CasesPage() {
         type: "success",
       });
       fetchCases();
-    } catch (err: any) {
+    } catch (err: unknown) {
       toast.add({
         title: "Error",
-        description: err.response?.data?.message || "Failed to delete case",
+        description:
+          (isAxiosError(err) && err.response?.data?.message) ||
+          "Failed to delete case",
         type: "danger",
       });
     } finally {
@@ -150,18 +178,27 @@ export default function CasesPage() {
         <Input
           placeholder={t("searchPlaceholder") + " / Darta No."}
           value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={(e) => {
+            setSearch(e.target.value);
+            setPage(1);
+          }}
           className="w-full"
         />
         <Input
           placeholder="Search by Party / Waris"
           value={partySearch}
-          onChange={(e) => setPartySearch(e.target.value)}
+          onChange={(e) => {
+            setPartySearch(e.target.value);
+            setPage(1);
+          }}
           className="w-full"
         />
         <Select
           value={statusFilter}
-          onValueChange={(val) => setStatusFilter(val ?? "all")}
+          onValueChange={(val) => {
+            setStatusFilter(val ?? "all");
+            setPage(1);
+          }}
         >
           <SelectTrigger className="w-full">
             <SelectValue placeholder="Status" />
@@ -214,12 +251,12 @@ export default function CasesPage() {
               ) : (
                 cases.map((c) => {
                   const activeDetail =
-                    c.courtDetails?.find((d: any) => d.isActive) ||
+                    c.courtDetails?.find((detail) => detail.isActive) ||
                     c.courtDetails?.[0];
                   return (
                     <TableRow key={c.id}>
                       <TableCell className="font-medium">
-                        {activeDetail?.caseNumber || "N/A"}
+                        {formatCaseNumber(activeDetail?.caseNumber, locale)}
                       </TableCell>
                       <TableCell>{activeDetail?.caseName || "N/A"}</TableCell>
                       <TableCell>
@@ -243,8 +280,10 @@ export default function CasesPage() {
                         </span>
                       </TableCell>
                       <TableCell>
-                        {activeDetail?.registrationDate
-                          ? dayjs(activeDetail.registrationDate).format("YYYY-MM-DD")
+                        {activeDetail?.registrationDateBs
+                          ? activeDetail.registrationDateBs
+                          : activeDetail?.registrationDate
+                            ? dayjs(activeDetail.registrationDate).format("YYYY-MM-DD")
                           : "N/A"}
                       </TableCell>
                       <TableCell className="text-right">
@@ -279,6 +318,56 @@ export default function CasesPage() {
           </Table>
         </div>
       </div>
+
+      {pagination.total > 0 && (
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-sm text-muted-foreground">
+            {t("showingEntries", {
+              from: (pagination.page - 1) * pagination.limit + 1,
+              to: Math.min(pagination.page * pagination.limit, pagination.total),
+              total: pagination.total,
+            })}
+          </p>
+          <Pagination className="mx-0 w-auto">
+            <PaginationContent>
+              <PaginationItem>
+                <PaginationPrevious
+                  text={t("previous")}
+                  onClick={() => setPage((current) => Math.max(1, current - 1))}
+                  className={
+                    page === 1
+                      ? "pointer-events-none opacity-50"
+                      : "cursor-pointer"
+                  }
+                />
+              </PaginationItem>
+              <PaginationItem>
+                <span className="flex h-8 items-center px-3 text-sm font-medium">
+                  {t("pageOf", {
+                    page: pagination.page,
+                    totalPages: pagination.totalPages,
+                  })}
+                </span>
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationNext
+                  text={t("next")}
+                  onClick={() =>
+                    setPage((current) =>
+                      Math.min(pagination.totalPages, current + 1),
+                    )
+                  }
+                  className={
+                    page >= pagination.totalPages
+                      ? "pointer-events-none opacity-50"
+                      : "cursor-pointer"
+                  }
+                />
+              </PaginationItem>
+            </PaginationContent>
+          </Pagination>
+        </div>
+      )}
 
       {/* Delete Confirmation Modal */}
       <AlertDialog open={confirmDeleteOpen} onOpenChange={setConfirmDeleteOpen}>

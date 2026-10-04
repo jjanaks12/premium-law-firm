@@ -8,7 +8,10 @@ export const caseValidationSchema = yup.object({
     yup.object({
       caseName: yup.string().trim().required("Case Name is required"),
       caseNumber: yup.string().trim(),
-      registrationDate: yup.date().required("Registration Date is required").nullable(),
+      registrationDate: yup.date().nullable(),
+      registrationDateBs: yup.string()
+        .matches(/^\d{4}-\d{2}-\d{2}$/, "Use BS date format YYYY-MM-DD")
+        .required("Registration Date (BS) is required"),
       courtName: yup.string().required("Court Name is required").nullable(),
       sectionCourtRoom: yup.string().required("Room No. is required").nullable(),
       judgeName: yup.string().nullable(),

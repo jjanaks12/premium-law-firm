@@ -6,7 +6,13 @@ import { v4 as uuidv4 } from "uuid";
 // Get all cases
 export const index = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const { search, natureId, status, partyName } = req.query;
+    const { search, natureId, status, partyName, page: pageQuery, limit: limitQuery } = req.query;
+    const parsedPage = Number.parseInt(String(pageQuery ?? "1"), 10);
+    const parsedLimit = Number.parseInt(String(limitQuery ?? "10"), 10);
+    const requestedPage = Number.isFinite(parsedPage) && parsedPage > 0 ? parsedPage : 1;
+    const limit = Number.isFinite(parsedLimit) && parsedLimit > 0
+      ? Math.min(parsedLimit, 100)
+      : 10;
 
     const filter: any = { AND: [] };
 
@@ -44,13 +50,22 @@ export const index = async (req: Request, res: Response, next: NextFunction) => 
       delete filter.AND;
     }
 
+    const total = await prisma.case.count({ where: filter });
+    const totalPages = Math.ceil(total / limit);
+    const page = Math.min(requestedPage, Math.max(totalPages, 1));
+
     const cases = await prisma.case.findMany({
       where: filter,
+      skip: (page - 1) * limit,
+      take: limit,
       include: {
         nature: true,
         courtDetails: {
-          where: { isActive: true },
           include: { courtLevel: true },
+          orderBy: [
+            { isActive: "desc" },
+            { createdAt: "desc" },
+          ],
         },
         parties: {
           include: {
@@ -68,7 +83,15 @@ export const index = async (req: Request, res: Response, next: NextFunction) => 
       },
     });
 
-    res.json({ data: cases });
+    res.json({
+      data: cases,
+      meta: {
+        page,
+        limit,
+        total,
+        totalPages,
+      },
+    });
   } catch (error) {
     next(error);
   }
@@ -178,6 +201,7 @@ export const store = async (req: Request, res: Response, next: NextFunction) => 
             caseName: cd.caseName,
             caseNumber: cd.caseNumber || "",
             registrationDate: cd.registrationDate ? new Date(cd.registrationDate) : null,
+            registrationDateBs: cd.registrationDateBs || null,
             sectionCourtRoom: cd.sectionCourtRoom,
             judgeName: cd.judgeName,
             courtType: cd.courtType,
@@ -337,6 +361,7 @@ export const update = async (req: Request, res: Response, next: NextFunction) =>
               caseName: cd.caseName,
               caseNumber: cd.caseNumber || "",
               registrationDate: cd.registrationDate ? new Date(cd.registrationDate) : null,
+              registrationDateBs: cd.registrationDateBs || null,
               sectionCourtRoom: cd.sectionCourtRoom,
               judgeName: cd.judgeName,
               courtType: cd.courtType,
@@ -352,6 +377,7 @@ export const update = async (req: Request, res: Response, next: NextFunction) =>
               caseName: cd.caseName,
               caseNumber: cd.caseNumber || "",
               registrationDate: cd.registrationDate ? new Date(cd.registrationDate) : null,
+              registrationDateBs: cd.registrationDateBs || null,
               sectionCourtRoom: cd.sectionCourtRoom,
               judgeName: cd.judgeName,
               courtType: cd.courtType,
@@ -425,6 +451,7 @@ export const migrateCase = async (req: Request, res: Response, next: NextFunctio
           caseName: parentDetail.caseName,
           caseNumber: parentDetail.caseNumber,
           registrationDate: parentDetail.registrationDate,
+          registrationDateBs: parentDetail.registrationDateBs,
           parentId: parent_id,
           isActive: true,
           judgeName: judge_name,

@@ -206,6 +206,7 @@ exports.Prisma.CaseCourtDetailScalarFieldEnum = {
   caseName: 'caseName',
   caseNumber: 'caseNumber',
   registrationDate: 'registrationDate',
+  registrationDateBs: 'registrationDateBs',
   judgeName: 'judgeName',
   courtLevelId: 'courtLevelId',
   courtType: 'courtType',

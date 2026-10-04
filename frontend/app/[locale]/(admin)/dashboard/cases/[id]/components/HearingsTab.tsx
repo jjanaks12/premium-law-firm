@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { CompositeDatePicker } from "@/components/ui/composite-date-picker";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import {
   PlusIcon,
   Trash2Icon,
@@ -38,6 +38,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useAxios } from "@/lib/services/axios.service";
 import { toast } from "@/components/ui/toast";
 import { getFileUrl } from "@/lib/utils";
+import { formatCaseNumber } from "@/lib/format-case-number";
 
 export default function HearingsTab({
   caseData,
@@ -48,6 +49,7 @@ export default function HearingsTab({
 }) {
   const t = useTranslations("HearingsTab");
   const tCases = useTranslations("CasesPage");
+  const locale = useLocale();
   const { axios } = useAxios();
 
   const isKnownCourt = (type: string) =>
@@ -256,7 +258,7 @@ export default function HearingsTab({
                             isKnownCourt(h.caseCourtDetail.courtType)
                               ? tCases(h.caseCourtDetail.courtType)
                               : h.caseCourtDetail.courtType || t("na")
-                          } ${h.caseCourtDetail.caseNumber ? `- ${h.caseCourtDetail.caseNumber}` : ""}`
+                          } ${h.caseCourtDetail.caseNumber ? `- ${formatCaseNumber(h.caseCourtDetail.caseNumber, locale)}` : ""}`
                         : t("na")}
                     </span>
                   </div>

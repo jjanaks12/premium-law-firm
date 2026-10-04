@@ -353,7 +353,7 @@ export const addJudgement = async (req: Request, res: Response, next: NextFuncti
 export const appealNextCourt = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { id } = req.params;
-    const { parentCourtDetailId, caseName, caseNumber, registrationDate, sectionCourtRoom, judgeName, courtType } = req.body;
+    const { parentCourtDetailId, caseName, caseNumber, registrationDate, registrationDateBs, sectionCourtRoom, judgeName, courtType } = req.body;
 
     // Set old detail to inactive
     if (parentCourtDetailId) {
@@ -371,6 +371,7 @@ export const appealNextCourt = async (req: Request, res: Response, next: NextFun
         caseName,
         caseNumber: caseNumber || "",
         registrationDate: registrationDate ? new Date(registrationDate) : null,
+        registrationDateBs: registrationDateBs || null,
         sectionCourtRoom,
         judgeName,
         courtType,
