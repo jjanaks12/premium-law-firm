@@ -1,7 +1,8 @@
-import { PrismaClient } from './generated/client';
+import { Prisma, PrismaClient } from './generated/client';
 import { Pool } from 'pg';
 import { PrismaPg } from '@prisma/adapter-pg';
 import 'dotenv/config'; // To load DATABASE_URL from .env file
+import { importedCaseSeedData, importedCaseSeedMetadata } from './case-seed-data';
 
 const connectionString = process.env.DATABASE_URL;
 
@@ -132,6 +133,87 @@ async function main() {
     });
   }
   console.log('✅ Created/verified case natures');
+
+  const savedCourtLevels = await prisma.courtLevel.findMany({
+    where: { name: { in: courtLevels.map((level) => level.name) } },
+  });
+  const savedPartyRoles = await prisma.partyRole.findMany({
+    where: { name: { in: partyRoles.map((role) => role.name) } },
+  });
+  const savedCaseNatures = await prisma.caseNature.findMany({
+    where: { name: { in: caseNatures.map((nature) => nature.name) } },
+  });
+  const courtLevelIds = new Map(savedCourtLevels.map((level) => [level.name, level.id]));
+  const partyRoleIds = new Map(savedPartyRoles.map((role) => [role.name, role.id]));
+  const caseNatureIds = new Map(savedCaseNatures.map((nature) => [nature.name, nature.id]));
+
+  for (const caseSeed of importedCaseSeedData) {
+    const natureId = caseNatureIds.get(caseSeed.nature);
+    if (!natureId) {
+      throw new Error(`Missing case nature for imported case: ${caseSeed.nature}`);
+    }
+
+    await prisma.case.upsert({
+      where: { id: caseSeed.id },
+      update: {
+        natureId,
+        facts: caseSeed.facts,
+        details: caseSeed.details as Prisma.InputJsonValue,
+        status: caseSeed.status,
+      },
+      create: {
+        id: caseSeed.id,
+        natureId,
+        facts: caseSeed.facts,
+        details: caseSeed.details as Prisma.InputJsonValue,
+        status: caseSeed.status,
+        createdById: adminUser.id,
+      },
+    });
+
+    const courtLevelId = caseSeed.courtDetail.courtLevel
+      ? courtLevelIds.get(caseSeed.courtDetail.courtLevel) ?? null
+      : null;
+    await prisma.caseCourtDetail.upsert({
+      where: { id: caseSeed.courtDetail.id },
+      update: {
+        caseName: caseSeed.courtDetail.caseName,
+        caseNumber: caseSeed.courtDetail.caseNumber,
+        registrationDate: caseSeed.courtDetail.registrationDate,
+        courtLevelId,
+        courtName: caseSeed.courtDetail.courtName,
+        isActive: caseSeed.courtDetail.isActive,
+      },
+      create: {
+        id: caseSeed.courtDetail.id,
+        caseId: caseSeed.id,
+        caseName: caseSeed.courtDetail.caseName,
+        caseNumber: caseSeed.courtDetail.caseNumber,
+        registrationDate: caseSeed.courtDetail.registrationDate,
+        courtLevelId,
+        courtName: caseSeed.courtDetail.courtName,
+        isActive: caseSeed.courtDetail.isActive,
+      },
+    });
+
+    for (const party of caseSeed.parties) {
+      const roleId = partyRoleIds.get(party.role);
+      if (!roleId) {
+        throw new Error(`Missing party role for imported case: ${party.role}`);
+      }
+      await prisma.caseParty.upsert({
+        where: { id: party.id },
+        update: { partyName: party.name, roleId },
+        create: {
+          id: party.id,
+          caseId: caseSeed.id,
+          partyName: party.name,
+          roleId,
+        },
+      });
+    }
+  }
+  console.log('✅ Created/verified imported cases:', importedCaseSeedMetadata);
 
   // 6. Create public content categories and demonstration posts.
   // These upserts are intentionally idempotent so repeated seeds do not duplicate content.
