@@ -66,6 +66,7 @@ model CaseCourtDetail {
   caseName         String
   caseNumber       String
   registrationDate DateTime?
+  registrationDateBs String?           @db.VarChar(10)
   judgeName        String?
   courtLevelId     String?
   courtLevel       CourtLevel?       @relation(fields: [courtLevelId], references: [id], onDelete: SetNull)

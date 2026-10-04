@@ -11,11 +11,9 @@ import {
 } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
-import dayjs from "dayjs";
 import { useAxios } from "@/lib/services/axios.service";
 import { toast } from "@/components/ui/toast";
 import { Edit2Icon, ArrowRightLeftIcon } from "lucide-react";
-import { CompositeDatePicker } from "@/components/ui/composite-date-picker";
 import {
   Select,
   SelectContent,
@@ -23,6 +21,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { formatCaseNumber } from "@/lib/format-case-number";
 
 export default function CourtDetailsTab({
   caseData,
@@ -58,7 +57,7 @@ export default function CourtDetailsTab({
   const [judgeName, setJudgeName] = useState("");
   const [courtType, setCourtType] = useState("");
   const [courtName, setCourtName] = useState("");
-  const [registrationDate, setRegistrationDate] = useState<string>("");
+  const [registrationDateBs, setRegistrationDateBs] = useState<string>("");
 
   const activeDetail =
     caseData.courtDetails?.find((d: any) => d.isActive) ||
@@ -73,11 +72,7 @@ export default function CourtDetailsTab({
     setJudgeName(detail.judgeName || "");
     setCourtType(detail.courtType || "");
     setCourtName(detail.courtName || "");
-    setRegistrationDate(
-      detail.registrationDate
-        ? dayjs(detail.registrationDate).format("YYYY-MM-DD")
-        : "",
-    );
+    setRegistrationDateBs(detail.registrationDateBs || "");
     setOpen(true);
   };
 
@@ -90,7 +85,7 @@ export default function CourtDetailsTab({
     setJudgeName("");
     setCourtType("");
     setCourtName("");
-    setRegistrationDate("");
+    setRegistrationDateBs("");
     setOpen(true);
   };
 
@@ -114,7 +109,7 @@ export default function CourtDetailsTab({
               judgeName,
               courtType,
               courtName,
-              registrationDate: registrationDate || null,
+              registrationDateBs: registrationDateBs || null,
             };
           }
           return d;
@@ -130,7 +125,7 @@ export default function CourtDetailsTab({
           judgeName,
           courtType,
           courtName,
-          registrationDate: registrationDate || null,
+          registrationDateBs: registrationDateBs || null,
           isActive: true,
           parentId: activeDetail?.id || null,
         });
@@ -208,15 +203,17 @@ export default function CourtDetailsTab({
                   <p className="text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-1">
                     {t("formNumber")}
                   </p>
-                  <p className="font-medium">{detail.caseNumber || "N/A"}</p>
+                  <p className="font-medium">
+                    {formatCaseNumber(detail.caseNumber, locale)}
+                  </p>
                 </div>
                 <div className="bg-muted/10 p-3 rounded-lg border border-transparent hover:border-border transition-colors">
                   <p className="text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-1">
                     {t("formRegDate")}
                   </p>
                   <p className="font-medium">
-                    {detail.registrationDate
-                      ? dayjs(detail.registrationDate).format("MMM DD, YYYY")
+                    {detail.registrationDateBs
+                      ? detail.registrationDateBs
                       : "N/A"}
                   </p>
                 </div>
@@ -334,10 +331,14 @@ export default function CourtDetailsTab({
               />
             </div>
             <div className="space-y-2 flex flex-col">
-              <Label>{t("formRegDate")}</Label>
-              <CompositeDatePicker
-                value={registrationDate}
-                onChange={setRegistrationDate}
+              <Label>{t("formRegDate")} (BS)</Label>
+              <Input
+                required
+                inputMode="numeric"
+                pattern="\d{4}-\d{2}-\d{2}"
+                placeholder="2081-01-01"
+                value={registrationDateBs}
+                onChange={(event) => setRegistrationDateBs(event.target.value)}
               />
             </div>
             <div className="flex justify-end pt-4">

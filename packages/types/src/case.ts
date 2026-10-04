@@ -25,6 +25,7 @@ export interface CaseCourtDetailData {
   caseName: string;
   caseNumber: string;
   registrationDate: string | null;
+  registrationDateBs?: string | null;
   judgeName?: string | null;
   courtLevelId?: string | null;
   courtLevel?: {

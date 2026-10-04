@@ -145,24 +145,25 @@ model Case {
 }
 
 model CaseCourtDetail {
-  id               String            @id @default(uuid())
-  caseId           String
-  case             Case              @relation(fields: [caseId], references: [id], onDelete: Cascade)
-  caseName         String
-  caseNumber       String
-  registrationDate DateTime?
-  judgeName        String?
-  courtLevelId     String?
-  courtLevel       CourtLevel?       @relation(fields: [courtLevelId], references: [id], onDelete: SetNull)
-  courtType        String?
-  courtName        String?
-  sectionCourtRoom String?
-  parentId         String?
-  parent           CaseCourtDetail?  @relation("CourtDetailHistory", fields: [parentId], references: [id], onDelete: SetNull)
-  children         CaseCourtDetail[] @relation("CourtDetailHistory")
-  isActive         Boolean           @default(true)
-  hearings         CaseHearing[]
-  judgements       CaseJudgement[]
+  id                 String            @id @default(uuid())
+  caseId             String
+  case               Case              @relation(fields: [caseId], references: [id], onDelete: Cascade)
+  caseName           String
+  caseNumber         String
+  registrationDate   DateTime?
+  registrationDateBs String?           @db.VarChar(10)
+  judgeName          String?
+  courtLevelId       String?
+  courtLevel         CourtLevel?       @relation(fields: [courtLevelId], references: [id], onDelete: SetNull)
+  courtType          String?
+  courtName          String?
+  sectionCourtRoom   String?
+  parentId           String?
+  parent             CaseCourtDetail?  @relation("CourtDetailHistory", fields: [parentId], references: [id], onDelete: SetNull)
+  children           CaseCourtDetail[] @relation("CourtDetailHistory")
+  isActive           Boolean           @default(true)
+  hearings           CaseHearing[]
+  judgements         CaseJudgement[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

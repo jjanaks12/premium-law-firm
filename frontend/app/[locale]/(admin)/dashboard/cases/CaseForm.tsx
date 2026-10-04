@@ -17,7 +17,6 @@ import { Loader2Icon, PlusIcon, Trash2Icon, LinkIcon } from "lucide-react";
 import { useAxios } from "@/lib/services/axios.service";
 import { toast } from "@/components/ui/toast";
 import { useTranslations, useLocale } from "next-intl";
-import dayjs from "dayjs";
 import { CaseData, PartyRole } from "@app/types";
 import { CaseNatureData } from "../case-natures/page";
 import { caseValidationSchema } from "@app/validations";
@@ -28,7 +27,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { CompositeDatePicker } from "@/components/ui/composite-date-picker";
 import { Checkbox } from "@/components/ui/checkbox";
 
 interface CaseFormProps {
@@ -206,9 +204,8 @@ export default function CaseForm({
         courtName: activeCourtDetail?.courtName || "",
         sectionCourtRoom: activeCourtDetail?.sectionCourtRoom || "",
         judgeName: activeCourtDetail?.judgeName || "",
-        registrationDate: activeCourtDetail?.registrationDate
-          ? dayjs(activeCourtDetail.registrationDate).format("YYYY-MM-DD")
-          : "",
+        registrationDate: activeCourtDetail?.registrationDate || null,
+        registrationDateBs: activeCourtDetail?.registrationDateBs || "",
       },
     ],
     facts: caseData?.facts || "",
@@ -279,22 +276,21 @@ export default function CaseForm({
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="registrationDate">
-                  {t("formRegDate")} <span className="text-destructive">*</span>
+                <Label htmlFor="registrationDateBs">
+                  {t("formRegDate")} (BS) <span className="text-destructive">*</span>
                 </Label>
-                <Field name="courtDetails[0].registrationDate">
-                  {({ field, form }: FieldProps) => (
-                    <CompositeDatePicker
-                      id="registrationDate"
-                      value={field.value}
-                      onChange={(date) => {
-                        form.setFieldValue(field.name, date);
-                      }}
+                <Field name="courtDetails[0].registrationDateBs">
+                  {({ field }: FieldProps) => (
+                    <Input
+                      {...field}
+                      id="registrationDateBs"
+                      inputMode="numeric"
+                      placeholder="2081-01-01"
                     />
                   )}
                 </Field>
                 <ErrorMessage
-                  name="courtDetails[0].registrationDate"
+                  name="courtDetails[0].registrationDateBs"
                   component="div"
                   className="text-sm text-destructive"
                 />

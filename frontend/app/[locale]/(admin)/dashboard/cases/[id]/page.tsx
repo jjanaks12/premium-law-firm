@@ -6,7 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, Loader2, Edit2Icon } from "lucide-react";
 import { useAxios } from "@/lib/services/axios.service";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import OverviewTab from "./components/OverviewTab";
 import CourtDetailsTab from "./components/CourtDetailsTab";
 import PartiesTab from "./components/PartiesTab";
@@ -15,6 +15,7 @@ import CaseFileTab from "./components/CaseFileTab";
 import PaymentsTab from "./components/PaymentsTab";
 import DocumentsTab from "./components/DocumentsTab";
 import { useRouter } from "@/src/i18n/routing";
+import { formatCaseNumber } from "@/lib/format-case-number";
 
 export default function CaseDetailPage() {
   const params = useParams();
@@ -22,6 +23,7 @@ export default function CaseDetailPage() {
   const id = params.id as string;
   const { axios } = useAxios();
   const t = useTranslations();
+  const locale = useLocale();
 
   const [caseData, setCaseData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
@@ -86,7 +88,9 @@ export default function CaseDetailPage() {
         </Button>
         <div className="min-w-0 grow">
           <h1 className="text-2xl font-bold tracking-tight">
-            {t("CaseDetailPage.caseTitle", { caseNumber: activeDetail?.caseNumber || "N/A" })}
+            {t("CaseDetailPage.caseTitle", {
+              caseNumber: formatCaseNumber(activeDetail?.caseNumber, locale),
+            })}
           </h1>
           <p className="text-muted-foreground">{activeDetail?.caseName || "N/A"}</p>
         </div>

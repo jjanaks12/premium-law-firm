@@ -30,6 +30,7 @@ import { Label } from "@/components/ui/label";
 import { useAxios } from "@/lib/services/axios.service";
 import { toast } from "@/components/ui/toast";
 import { useLocale, useTranslations } from "next-intl";
+import { formatCaseNumber } from "@/lib/format-case-number";
 
 const isKnownCourt = (type: string) =>
   [
@@ -122,7 +123,9 @@ export default function OverviewTab({
             <p className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-1">
               {t("caseNumber")}
             </p>
-            <p className="font-medium text-lg">{activeDetail.caseNumber}</p>
+            <p className="font-medium text-lg">
+              {formatCaseNumber(activeDetail.caseNumber, locale)}
+            </p>
           </div>
           <div className="p-4 rounded-xl border bg-muted/10 hover:bg-muted/30 transition-all duration-300 hover:shadow-sm">
             <p className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-1">

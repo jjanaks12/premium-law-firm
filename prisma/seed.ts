@@ -86,7 +86,7 @@ async function main() {
 
   // 3. Create Court Levels
   const courtLevels = [
-    { name: 'Supreme Court', nepaliName: 'सर्वोच्च अदालत' },
+    { name: 'Supreme Court', nepaliName: 'सर्वोच्च' },
     { name: 'High Court', nepaliName: 'उच्च अदालत' },
     { name: 'District Court', nepaliName: 'जिल्ला अदालत' },
     { name: 'Special Court', nepaliName: 'विशेष अदालत' },
@@ -147,6 +147,20 @@ async function main() {
   const partyRoleIds = new Map(savedPartyRoles.map((role) => [role.name, role.id]));
   const caseNatureIds = new Map(savedCaseNatures.map((nature) => [nature.name, nature.id]));
 
+  const importedCaseIds = importedCaseSeedData.map((caseSeed) => caseSeed.id);
+  const removedImportedCases = await prisma.case.deleteMany({
+    where: {
+      details: {
+        path: ['importSource'],
+        equals: importedCaseSeedMetadata.sourceFile,
+      },
+      id: { notIn: importedCaseIds },
+    },
+  });
+  if (removedImportedCases.count > 0) {
+    console.log(`✅ Removed obsolete imported cases: ${removedImportedCases.count}`);
+  }
+
   for (const caseSeed of importedCaseSeedData) {
     const natureId = caseNatureIds.get(caseSeed.nature);
     if (!natureId) {
@@ -180,6 +194,7 @@ async function main() {
         caseName: caseSeed.courtDetail.caseName,
         caseNumber: caseSeed.courtDetail.caseNumber,
         registrationDate: caseSeed.courtDetail.registrationDate,
+        registrationDateBs: caseSeed.courtDetail.registrationDateBs,
         courtLevelId,
         courtName: caseSeed.courtDetail.courtName,
         isActive: caseSeed.courtDetail.isActive,
@@ -190,9 +205,17 @@ async function main() {
         caseName: caseSeed.courtDetail.caseName,
         caseNumber: caseSeed.courtDetail.caseNumber,
         registrationDate: caseSeed.courtDetail.registrationDate,
+        registrationDateBs: caseSeed.courtDetail.registrationDateBs,
         courtLevelId,
         courtName: caseSeed.courtDetail.courtName,
         isActive: caseSeed.courtDetail.isActive,
+      },
+    });
+
+    await prisma.caseParty.deleteMany({
+      where: {
+        caseId: caseSeed.id,
+        id: { notIn: caseSeed.parties.map((party) => party.id) },
       },
     });
 

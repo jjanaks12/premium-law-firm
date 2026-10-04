@@ -12560,6 +12560,7 @@ export namespace Prisma {
     caseName: string | null
     caseNumber: string | null
     registrationDate: Date | null
+    registrationDateBs: string | null
     judgeName: string | null
     courtLevelId: string | null
     courtType: string | null
@@ -12577,6 +12578,7 @@ export namespace Prisma {
     caseName: string | null
     caseNumber: string | null
     registrationDate: Date | null
+    registrationDateBs: string | null
     judgeName: string | null
     courtLevelId: string | null
     courtType: string | null
@@ -12594,6 +12596,7 @@ export namespace Prisma {
     caseName: number
     caseNumber: number
     registrationDate: number
+    registrationDateBs: number
     judgeName: number
     courtLevelId: number
     courtType: number
@@ -12613,6 +12616,7 @@ export namespace Prisma {
     caseName?: true
     caseNumber?: true
     registrationDate?: true
+    registrationDateBs?: true
     judgeName?: true
     courtLevelId?: true
     courtType?: true
@@ -12630,6 +12634,7 @@ export namespace Prisma {
     caseName?: true
     caseNumber?: true
     registrationDate?: true
+    registrationDateBs?: true
     judgeName?: true
     courtLevelId?: true
     courtType?: true
@@ -12647,6 +12652,7 @@ export namespace Prisma {
     caseName?: true
     caseNumber?: true
     registrationDate?: true
+    registrationDateBs?: true
     judgeName?: true
     courtLevelId?: true
     courtType?: true
@@ -12737,6 +12743,7 @@ export namespace Prisma {
     caseName: string
     caseNumber: string
     registrationDate: Date | null
+    registrationDateBs: string | null
     judgeName: string | null
     courtLevelId: string | null
     courtType: string | null
@@ -12771,6 +12778,7 @@ export namespace Prisma {
     caseName?: boolean
     caseNumber?: boolean
     registrationDate?: boolean
+    registrationDateBs?: boolean
     judgeName?: boolean
     courtLevelId?: boolean
     courtType?: boolean
@@ -12795,6 +12803,7 @@ export namespace Prisma {
     caseName?: boolean
     caseNumber?: boolean
     registrationDate?: boolean
+    registrationDateBs?: boolean
     judgeName?: boolean
     courtLevelId?: boolean
     courtType?: boolean
@@ -12815,6 +12824,7 @@ export namespace Prisma {
     caseName?: boolean
     caseNumber?: boolean
     registrationDate?: boolean
+    registrationDateBs?: boolean
     judgeName?: boolean
     courtLevelId?: boolean
     courtType?: boolean
@@ -12835,6 +12845,7 @@ export namespace Prisma {
     caseName?: boolean
     caseNumber?: boolean
     registrationDate?: boolean
+    registrationDateBs?: boolean
     judgeName?: boolean
     courtLevelId?: boolean
     courtType?: boolean
@@ -12846,7 +12857,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type CaseCourtDetailOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "caseId" | "caseName" | "caseNumber" | "registrationDate" | "judgeName" | "courtLevelId" | "courtType" | "courtName" | "sectionCourtRoom" | "parentId" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["caseCourtDetail"]>
+  export type CaseCourtDetailOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "caseId" | "caseName" | "caseNumber" | "registrationDate" | "registrationDateBs" | "judgeName" | "courtLevelId" | "courtType" | "courtName" | "sectionCourtRoom" | "parentId" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["caseCourtDetail"]>
   export type CaseCourtDetailInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     case?: boolean | CaseDefaultArgs<ExtArgs>
     courtLevel?: boolean | CaseCourtDetail$courtLevelArgs<ExtArgs>
@@ -12883,6 +12894,7 @@ export namespace Prisma {
       caseName: string
       caseNumber: string
       registrationDate: Date | null
+      registrationDateBs: string | null
       judgeName: string | null
       courtLevelId: string | null
       courtType: string | null
@@ -13326,6 +13338,7 @@ export namespace Prisma {
     readonly caseName: FieldRef<"CaseCourtDetail", 'String'>
     readonly caseNumber: FieldRef<"CaseCourtDetail", 'String'>
     readonly registrationDate: FieldRef<"CaseCourtDetail", 'DateTime'>
+    readonly registrationDateBs: FieldRef<"CaseCourtDetail", 'String'>
     readonly judgeName: FieldRef<"CaseCourtDetail", 'String'>
     readonly courtLevelId: FieldRef<"CaseCourtDetail", 'String'>
     readonly courtType: FieldRef<"CaseCourtDetail", 'String'>
@@ -27814,6 +27827,7 @@ export namespace Prisma {
     caseName: 'caseName',
     caseNumber: 'caseNumber',
     registrationDate: 'registrationDate',
+    registrationDateBs: 'registrationDateBs',
     judgeName: 'judgeName',
     courtLevelId: 'courtLevelId',
     courtType: 'courtType',
@@ -28731,6 +28745,7 @@ export namespace Prisma {
     caseName?: StringFilter<"CaseCourtDetail"> | string
     caseNumber?: StringFilter<"CaseCourtDetail"> | string
     registrationDate?: DateTimeNullableFilter<"CaseCourtDetail"> | Date | string | null
+    registrationDateBs?: StringNullableFilter<"CaseCourtDetail"> | string | null
     judgeName?: StringNullableFilter<"CaseCourtDetail"> | string | null
     courtLevelId?: StringNullableFilter<"CaseCourtDetail"> | string | null
     courtType?: StringNullableFilter<"CaseCourtDetail"> | string | null
@@ -28754,6 +28769,7 @@ export namespace Prisma {
     caseName?: SortOrder
     caseNumber?: SortOrder
     registrationDate?: SortOrderInput | SortOrder
+    registrationDateBs?: SortOrderInput | SortOrder
     judgeName?: SortOrderInput | SortOrder
     courtLevelId?: SortOrderInput | SortOrder
     courtType?: SortOrderInput | SortOrder
@@ -28780,6 +28796,7 @@ export namespace Prisma {
     caseName?: StringFilter<"CaseCourtDetail"> | string
     caseNumber?: StringFilter<"CaseCourtDetail"> | string
     registrationDate?: DateTimeNullableFilter<"CaseCourtDetail"> | Date | string | null
+    registrationDateBs?: StringNullableFilter<"CaseCourtDetail"> | string | null
     judgeName?: StringNullableFilter<"CaseCourtDetail"> | string | null
     courtLevelId?: StringNullableFilter<"CaseCourtDetail"> | string | null
     courtType?: StringNullableFilter<"CaseCourtDetail"> | string | null
@@ -28803,6 +28820,7 @@ export namespace Prisma {
     caseName?: SortOrder
     caseNumber?: SortOrder
     registrationDate?: SortOrderInput | SortOrder
+    registrationDateBs?: SortOrderInput | SortOrder
     judgeName?: SortOrderInput | SortOrder
     courtLevelId?: SortOrderInput | SortOrder
     courtType?: SortOrderInput | SortOrder
@@ -28826,6 +28844,7 @@ export namespace Prisma {
     caseName?: StringWithAggregatesFilter<"CaseCourtDetail"> | string
     caseNumber?: StringWithAggregatesFilter<"CaseCourtDetail"> | string
     registrationDate?: DateTimeNullableWithAggregatesFilter<"CaseCourtDetail"> | Date | string | null
+    registrationDateBs?: StringNullableWithAggregatesFilter<"CaseCourtDetail"> | string | null
     judgeName?: StringNullableWithAggregatesFilter<"CaseCourtDetail"> | string | null
     courtLevelId?: StringNullableWithAggregatesFilter<"CaseCourtDetail"> | string | null
     courtType?: StringNullableWithAggregatesFilter<"CaseCourtDetail"> | string | null
@@ -30409,6 +30428,7 @@ export namespace Prisma {
     caseName: string
     caseNumber: string
     registrationDate?: Date | string | null
+    registrationDateBs?: string | null
     judgeName?: string | null
     courtType?: string | null
     courtName?: string | null
@@ -30430,6 +30450,7 @@ export namespace Prisma {
     caseName: string
     caseNumber: string
     registrationDate?: Date | string | null
+    registrationDateBs?: string | null
     judgeName?: string | null
     courtLevelId?: string | null
     courtType?: string | null
@@ -30449,6 +30470,7 @@ export namespace Prisma {
     caseName?: StringFieldUpdateOperationsInput | string
     caseNumber?: StringFieldUpdateOperationsInput | string
     registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registrationDateBs?: NullableStringFieldUpdateOperationsInput | string | null
     judgeName?: NullableStringFieldUpdateOperationsInput | string | null
     courtType?: NullableStringFieldUpdateOperationsInput | string | null
     courtName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -30470,6 +30492,7 @@ export namespace Prisma {
     caseName?: StringFieldUpdateOperationsInput | string
     caseNumber?: StringFieldUpdateOperationsInput | string
     registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registrationDateBs?: NullableStringFieldUpdateOperationsInput | string | null
     judgeName?: NullableStringFieldUpdateOperationsInput | string | null
     courtLevelId?: NullableStringFieldUpdateOperationsInput | string | null
     courtType?: NullableStringFieldUpdateOperationsInput | string | null
@@ -30490,6 +30513,7 @@ export namespace Prisma {
     caseName: string
     caseNumber: string
     registrationDate?: Date | string | null
+    registrationDateBs?: string | null
     judgeName?: string | null
     courtLevelId?: string | null
     courtType?: string | null
@@ -30506,6 +30530,7 @@ export namespace Prisma {
     caseName?: StringFieldUpdateOperationsInput | string
     caseNumber?: StringFieldUpdateOperationsInput | string
     registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registrationDateBs?: NullableStringFieldUpdateOperationsInput | string | null
     judgeName?: NullableStringFieldUpdateOperationsInput | string | null
     courtType?: NullableStringFieldUpdateOperationsInput | string | null
     courtName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -30521,6 +30546,7 @@ export namespace Prisma {
     caseName?: StringFieldUpdateOperationsInput | string
     caseNumber?: StringFieldUpdateOperationsInput | string
     registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registrationDateBs?: NullableStringFieldUpdateOperationsInput | string | null
     judgeName?: NullableStringFieldUpdateOperationsInput | string | null
     courtLevelId?: NullableStringFieldUpdateOperationsInput | string | null
     courtType?: NullableStringFieldUpdateOperationsInput | string | null
@@ -32182,6 +32208,7 @@ export namespace Prisma {
     caseName?: SortOrder
     caseNumber?: SortOrder
     registrationDate?: SortOrder
+    registrationDateBs?: SortOrder
     judgeName?: SortOrder
     courtLevelId?: SortOrder
     courtType?: SortOrder
@@ -32199,6 +32226,7 @@ export namespace Prisma {
     caseName?: SortOrder
     caseNumber?: SortOrder
     registrationDate?: SortOrder
+    registrationDateBs?: SortOrder
     judgeName?: SortOrder
     courtLevelId?: SortOrder
     courtType?: SortOrder
@@ -32216,6 +32244,7 @@ export namespace Prisma {
     caseName?: SortOrder
     caseNumber?: SortOrder
     registrationDate?: SortOrder
+    registrationDateBs?: SortOrder
     judgeName?: SortOrder
     courtLevelId?: SortOrder
     courtType?: SortOrder
@@ -35768,6 +35797,7 @@ export namespace Prisma {
     caseName: string
     caseNumber: string
     registrationDate?: Date | string | null
+    registrationDateBs?: string | null
     judgeName?: string | null
     courtType?: string | null
     courtName?: string | null
@@ -35788,6 +35818,7 @@ export namespace Prisma {
     caseName: string
     caseNumber: string
     registrationDate?: Date | string | null
+    registrationDateBs?: string | null
     judgeName?: string | null
     courtType?: string | null
     courtName?: string | null
@@ -35836,6 +35867,7 @@ export namespace Prisma {
     caseName?: StringFilter<"CaseCourtDetail"> | string
     caseNumber?: StringFilter<"CaseCourtDetail"> | string
     registrationDate?: DateTimeNullableFilter<"CaseCourtDetail"> | Date | string | null
+    registrationDateBs?: StringNullableFilter<"CaseCourtDetail"> | string | null
     judgeName?: StringNullableFilter<"CaseCourtDetail"> | string | null
     courtLevelId?: StringNullableFilter<"CaseCourtDetail"> | string | null
     courtType?: StringNullableFilter<"CaseCourtDetail"> | string | null
@@ -36060,6 +36092,7 @@ export namespace Prisma {
     caseName: string
     caseNumber: string
     registrationDate?: Date | string | null
+    registrationDateBs?: string | null
     judgeName?: string | null
     courtType?: string | null
     courtName?: string | null
@@ -36079,6 +36112,7 @@ export namespace Prisma {
     caseName: string
     caseNumber: string
     registrationDate?: Date | string | null
+    registrationDateBs?: string | null
     judgeName?: string | null
     courtLevelId?: string | null
     courtType?: string | null
@@ -36587,6 +36621,7 @@ export namespace Prisma {
     caseName: string
     caseNumber: string
     registrationDate?: Date | string | null
+    registrationDateBs?: string | null
     judgeName?: string | null
     courtType?: string | null
     courtName?: string | null
@@ -36607,6 +36642,7 @@ export namespace Prisma {
     caseName: string
     caseNumber: string
     registrationDate?: Date | string | null
+    registrationDateBs?: string | null
     judgeName?: string | null
     courtLevelId?: string | null
     courtType?: string | null
@@ -36630,6 +36666,7 @@ export namespace Prisma {
     caseName: string
     caseNumber: string
     registrationDate?: Date | string | null
+    registrationDateBs?: string | null
     judgeName?: string | null
     courtType?: string | null
     courtName?: string | null
@@ -36650,6 +36687,7 @@ export namespace Prisma {
     caseName: string
     caseNumber: string
     registrationDate?: Date | string | null
+    registrationDateBs?: string | null
     judgeName?: string | null
     courtLevelId?: string | null
     courtType?: string | null
@@ -36829,6 +36867,7 @@ export namespace Prisma {
     caseName?: StringFieldUpdateOperationsInput | string
     caseNumber?: StringFieldUpdateOperationsInput | string
     registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registrationDateBs?: NullableStringFieldUpdateOperationsInput | string | null
     judgeName?: NullableStringFieldUpdateOperationsInput | string | null
     courtType?: NullableStringFieldUpdateOperationsInput | string | null
     courtName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -36849,6 +36888,7 @@ export namespace Prisma {
     caseName?: StringFieldUpdateOperationsInput | string
     caseNumber?: StringFieldUpdateOperationsInput | string
     registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registrationDateBs?: NullableStringFieldUpdateOperationsInput | string | null
     judgeName?: NullableStringFieldUpdateOperationsInput | string | null
     courtLevelId?: NullableStringFieldUpdateOperationsInput | string | null
     courtType?: NullableStringFieldUpdateOperationsInput | string | null
@@ -37450,6 +37490,7 @@ export namespace Prisma {
     caseName: string
     caseNumber: string
     registrationDate?: Date | string | null
+    registrationDateBs?: string | null
     judgeName?: string | null
     courtType?: string | null
     courtName?: string | null
@@ -37470,6 +37511,7 @@ export namespace Prisma {
     caseName: string
     caseNumber: string
     registrationDate?: Date | string | null
+    registrationDateBs?: string | null
     judgeName?: string | null
     courtLevelId?: string | null
     courtType?: string | null
@@ -37561,6 +37603,7 @@ export namespace Prisma {
     caseName?: StringFieldUpdateOperationsInput | string
     caseNumber?: StringFieldUpdateOperationsInput | string
     registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registrationDateBs?: NullableStringFieldUpdateOperationsInput | string | null
     judgeName?: NullableStringFieldUpdateOperationsInput | string | null
     courtType?: NullableStringFieldUpdateOperationsInput | string | null
     courtName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -37581,6 +37624,7 @@ export namespace Prisma {
     caseName?: StringFieldUpdateOperationsInput | string
     caseNumber?: StringFieldUpdateOperationsInput | string
     registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registrationDateBs?: NullableStringFieldUpdateOperationsInput | string | null
     judgeName?: NullableStringFieldUpdateOperationsInput | string | null
     courtLevelId?: NullableStringFieldUpdateOperationsInput | string | null
     courtType?: NullableStringFieldUpdateOperationsInput | string | null
@@ -37974,6 +38018,7 @@ export namespace Prisma {
     caseName: string
     caseNumber: string
     registrationDate?: Date | string | null
+    registrationDateBs?: string | null
     judgeName?: string | null
     courtType?: string | null
     courtName?: string | null
@@ -37994,6 +38039,7 @@ export namespace Prisma {
     caseName: string
     caseNumber: string
     registrationDate?: Date | string | null
+    registrationDateBs?: string | null
     judgeName?: string | null
     courtLevelId?: string | null
     courtType?: string | null
@@ -38085,6 +38131,7 @@ export namespace Prisma {
     caseName?: StringFieldUpdateOperationsInput | string
     caseNumber?: StringFieldUpdateOperationsInput | string
     registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registrationDateBs?: NullableStringFieldUpdateOperationsInput | string | null
     judgeName?: NullableStringFieldUpdateOperationsInput | string | null
     courtType?: NullableStringFieldUpdateOperationsInput | string | null
     courtName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -38105,6 +38152,7 @@ export namespace Prisma {
     caseName?: StringFieldUpdateOperationsInput | string
     caseNumber?: StringFieldUpdateOperationsInput | string
     registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registrationDateBs?: NullableStringFieldUpdateOperationsInput | string | null
     judgeName?: NullableStringFieldUpdateOperationsInput | string | null
     courtLevelId?: NullableStringFieldUpdateOperationsInput | string | null
     courtType?: NullableStringFieldUpdateOperationsInput | string | null
@@ -39816,6 +39864,7 @@ export namespace Prisma {
     caseName: string
     caseNumber: string
     registrationDate?: Date | string | null
+    registrationDateBs?: string | null
     judgeName?: string | null
     courtType?: string | null
     courtName?: string | null
@@ -39831,6 +39880,7 @@ export namespace Prisma {
     caseName?: StringFieldUpdateOperationsInput | string
     caseNumber?: StringFieldUpdateOperationsInput | string
     registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registrationDateBs?: NullableStringFieldUpdateOperationsInput | string | null
     judgeName?: NullableStringFieldUpdateOperationsInput | string | null
     courtType?: NullableStringFieldUpdateOperationsInput | string | null
     courtName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -39851,6 +39901,7 @@ export namespace Prisma {
     caseName?: StringFieldUpdateOperationsInput | string
     caseNumber?: StringFieldUpdateOperationsInput | string
     registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registrationDateBs?: NullableStringFieldUpdateOperationsInput | string | null
     judgeName?: NullableStringFieldUpdateOperationsInput | string | null
     courtType?: NullableStringFieldUpdateOperationsInput | string | null
     courtName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -39870,6 +39921,7 @@ export namespace Prisma {
     caseName?: StringFieldUpdateOperationsInput | string
     caseNumber?: StringFieldUpdateOperationsInput | string
     registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registrationDateBs?: NullableStringFieldUpdateOperationsInput | string | null
     judgeName?: NullableStringFieldUpdateOperationsInput | string | null
     courtType?: NullableStringFieldUpdateOperationsInput | string | null
     courtName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -40013,6 +40065,7 @@ export namespace Prisma {
     caseName: string
     caseNumber: string
     registrationDate?: Date | string | null
+    registrationDateBs?: string | null
     judgeName?: string | null
     courtLevelId?: string | null
     courtType?: string | null
@@ -40087,6 +40140,7 @@ export namespace Prisma {
     caseName?: StringFieldUpdateOperationsInput | string
     caseNumber?: StringFieldUpdateOperationsInput | string
     registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registrationDateBs?: NullableStringFieldUpdateOperationsInput | string | null
     judgeName?: NullableStringFieldUpdateOperationsInput | string | null
     courtType?: NullableStringFieldUpdateOperationsInput | string | null
     courtName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -40106,6 +40160,7 @@ export namespace Prisma {
     caseName?: StringFieldUpdateOperationsInput | string
     caseNumber?: StringFieldUpdateOperationsInput | string
     registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registrationDateBs?: NullableStringFieldUpdateOperationsInput | string | null
     judgeName?: NullableStringFieldUpdateOperationsInput | string | null
     courtLevelId?: NullableStringFieldUpdateOperationsInput | string | null
     courtType?: NullableStringFieldUpdateOperationsInput | string | null
@@ -40125,6 +40180,7 @@ export namespace Prisma {
     caseName?: StringFieldUpdateOperationsInput | string
     caseNumber?: StringFieldUpdateOperationsInput | string
     registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registrationDateBs?: NullableStringFieldUpdateOperationsInput | string | null
     judgeName?: NullableStringFieldUpdateOperationsInput | string | null
     courtLevelId?: NullableStringFieldUpdateOperationsInput | string | null
     courtType?: NullableStringFieldUpdateOperationsInput | string | null
@@ -40318,6 +40374,7 @@ export namespace Prisma {
     caseName: string
     caseNumber: string
     registrationDate?: Date | string | null
+    registrationDateBs?: string | null
     judgeName?: string | null
     courtLevelId?: string | null
     courtType?: string | null
@@ -40353,6 +40410,7 @@ export namespace Prisma {
     caseName?: StringFieldUpdateOperationsInput | string
     caseNumber?: StringFieldUpdateOperationsInput | string
     registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registrationDateBs?: NullableStringFieldUpdateOperationsInput | string | null
     judgeName?: NullableStringFieldUpdateOperationsInput | string | null
     courtType?: NullableStringFieldUpdateOperationsInput | string | null
     courtName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -40373,6 +40431,7 @@ export namespace Prisma {
     caseName?: StringFieldUpdateOperationsInput | string
     caseNumber?: StringFieldUpdateOperationsInput | string
     registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registrationDateBs?: NullableStringFieldUpdateOperationsInput | string | null
     judgeName?: NullableStringFieldUpdateOperationsInput | string | null
     courtLevelId?: NullableStringFieldUpdateOperationsInput | string | null
     courtType?: NullableStringFieldUpdateOperationsInput | string | null
@@ -40392,6 +40451,7 @@ export namespace Prisma {
     caseName?: StringFieldUpdateOperationsInput | string
     caseNumber?: StringFieldUpdateOperationsInput | string
     registrationDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registrationDateBs?: NullableStringFieldUpdateOperationsInput | string | null
     judgeName?: NullableStringFieldUpdateOperationsInput | string | null
     courtLevelId?: NullableStringFieldUpdateOperationsInput | string | null
     courtType?: NullableStringFieldUpdateOperationsInput | string | null

@@ -62,6 +62,44 @@ def comparable(value: str | None) -> str:
     return re.sub(r"[^\w\u0900-\u097f]+", "", value).lower()
 
 
+def case_signature(row: dict) -> tuple[str, ...]:
+    return tuple(
+        comparable(row[field])
+        for field in (
+            "registrationDateBs",
+            "firstParty",
+            "matter",
+            "court",
+            "caseNumber",
+            "remarks",
+        )
+    )
+
+
+def merge_same_case_rows(rows: list[dict]) -> tuple[list[dict], int, int]:
+    rows_by_signature: dict[tuple[str, ...], list[dict]] = {}
+    for row in rows:
+        rows_by_signature.setdefault(case_signature(row), []).append(row)
+
+    merged: list[dict] = []
+    cases_with_multiple_opposing_parties = 0
+    for grouped_rows in rows_by_signature.values():
+        latest = dict(grouped_rows[-1])
+        latest["sourceRows"] = grouped_rows
+        opposing_by_key: dict[str, str] = {}
+        for row in grouped_rows:
+            opposing = clean(row["opposingParty"])
+            if opposing:
+                opposing_by_key.setdefault(comparable(opposing), opposing)
+        latest["opposingParties"] = list(opposing_by_key.values())
+        if len(latest["opposingParties"]) > 1:
+            cases_with_multiple_opposing_parties += 1
+        merged.append(latest)
+
+    merged.sort(key=lambda row: row["row"])
+    return merged, len(rows) - len(merged), cases_with_multiple_opposing_parties
+
+
 def deterministic_id(key: str) -> str:
     return str(uuid.uuid5(NAMESPACE, key))
 
@@ -83,14 +121,14 @@ def nature_for(matter: str | None, case_number: str | None) -> str:
 
 
 def court_level_for(court: str | None) -> str | None:
-    court = court or ""
-    if "सर्वोच्च" in court:
+    court = clean(court) or ""
+    if re.search(r"सर्वो?च्च", court):
         return "Supreme Court"
-    if "उच्च" in court:
+    if re.search(r"उच्च(?:\s*अदालत)?", court):
         return "High Court"
-    if "जिल्ला" in court or "का.जि" in court:
+    if re.search(r"जिल्ला(?:\s*अदालत)?|का\s*\.?\s*जि(?:\s*\.?\s*अ)?", court):
         return "District Court"
-    if "विशेष" in court:
+    if re.search(r"विशेष(?:\s*अदालत)?", court):
         return "Special Court"
     return None
 
@@ -148,8 +186,32 @@ def extract_rows(workbook_path: Path) -> tuple[list[dict], dict]:
 
 
 def merge_rows(rows: list[dict]) -> tuple[list[dict], dict]:
-    all_rows = [row for row in rows if row["sheet"] == "all cases"]
-    running_rows = [row for row in rows if row["sheet"] == "running cases"]
+    dates_by_number: dict[str, set[str]] = {}
+    for row in rows:
+        date = row["registrationDateBs"]
+        if not date or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", date) or not row["caseNumber"]:
+            continue
+        for number in CASE_NUMBER_SEPARATOR.split(row["caseNumber"]):
+            dates_by_number.setdefault(number, set()).add(date)
+
+    propagated_dates = 0
+    for row in rows:
+        own_date = row["registrationDateBs"]
+        if own_date and re.fullmatch(r"\d{4}-\d{2}-\d{2}", own_date):
+            row["resolvedRegistrationDateBs"] = own_date
+            continue
+        candidates: set[str] = set()
+        if row["caseNumber"]:
+            for number in CASE_NUMBER_SEPARATOR.split(row["caseNumber"]):
+                candidates.update(dates_by_number.get(number, set()))
+        row["resolvedRegistrationDateBs"] = next(iter(candidates)) if len(candidates) == 1 else None
+        if row["resolvedRegistrationDateBs"]:
+            propagated_dates += 1
+
+    all_source_rows = [row for row in rows if row["sheet"] == "all cases"]
+    running_source_rows = [row for row in rows if row["sheet"] == "running cases"]
+    all_rows, duplicate_all_rows_removed, _ = merge_same_case_rows(all_source_rows)
+    running_rows, duplicate_running_rows_removed, _ = merge_same_case_rows(running_source_rows)
 
     by_number: dict[str, list[dict]] = {}
     by_composite: dict[str, list[dict]] = {}
@@ -157,7 +219,7 @@ def merge_rows(rows: list[dict]) -> tuple[list[dict], dict]:
         if row["caseNumber"]:
             for number in CASE_NUMBER_SEPARATOR.split(row["caseNumber"]):
                 by_number.setdefault(number, []).append(row)
-        composite = "|".join(comparable(row[field]) for field in ("firstParty", "opposingParty", "matter"))
+        composite = "|".join(comparable(row[field]) for field in ("firstParty", "matter", "court"))
         if composite.replace("|", ""):
             by_composite.setdefault(composite, []).append(row)
 
@@ -168,8 +230,24 @@ def merge_rows(rows: list[dict]) -> tuple[list[dict], dict]:
         if running["caseNumber"]:
             for number in CASE_NUMBER_SEPARATOR.split(running["caseNumber"]):
                 candidates.extend(by_number.get(number, []))
+        unique_candidates = {candidate["row"]: candidate for candidate in candidates}
+        if len(unique_candidates) > 1:
+            running_composite = "|".join(
+                comparable(running[field]) for field in ("firstParty", "matter", "court")
+            )
+            matching_composite = [
+                candidate
+                for candidate in unique_candidates.values()
+                if "|".join(
+                    comparable(candidate[field])
+                    for field in ("firstParty", "matter", "court")
+                )
+                == running_composite
+            ]
+            if matching_composite:
+                candidates = matching_composite
         if not candidates:
-            composite = "|".join(comparable(running[field]) for field in ("firstParty", "opposingParty", "matter"))
+            composite = "|".join(comparable(running[field]) for field in ("firstParty", "matter", "court"))
             candidates = by_composite.get(composite, [])
         unique_candidates = {candidate["row"]: candidate for candidate in candidates}
         if len(unique_candidates) == 1:
@@ -196,8 +274,10 @@ def merge_rows(rows: list[dict]) -> tuple[list[dict], dict]:
     duplicate_case_numbers = sum(len(group) - 1 for group in by_number.values() if len(group) > 1)
     report = {
         "sourceRows": len(rows),
-        "allCaseRows": len(all_rows),
-        "runningCaseRows": len(running_rows),
+        "allCaseRows": len(all_source_rows),
+        "runningCaseRows": len(running_source_rows),
+        "deduplicatedAllCaseRows": len(all_rows),
+        "deduplicatedRunningCaseRows": len(running_rows),
         "matchedRunningRows": len(matches),
         "unmatchedRunningRows": len(running_rows) - len(matches),
         "ambiguousRunningMatches": ambiguous_matches,
@@ -205,6 +285,10 @@ def merge_rows(rows: list[dict]) -> tuple[list[dict], dict]:
         "activeCases": sum(case["status"] == "Active" for case in merged),
         "closedCases": sum(case["status"] == "Closed" for case in merged),
         "duplicateCaseNumbersInAllCases": duplicate_case_numbers,
+        "sameCaseAllRowsMerged": duplicate_all_rows_removed,
+        "sameCaseRunningRowsMerged": duplicate_running_rows_removed,
+        "casesWithMultipleOpposingParties": sum(len(case["parties"]) > 2 for case in merged),
+        "registrationDatesPropagatedByCaseNumber": propagated_dates,
         "rowsWithIssues": sum(bool(row["issues"]) for row in rows),
         "issueCounts": issue_counts(rows),
     }
@@ -216,7 +300,19 @@ def build_case(primary: dict, active_sources: list[dict], active: bool) -> dict:
     case_id = deterministic_id(f"case:{source_key}")
     first_party_role = "Petitioner" if nature_for(primary["matter"], primary["caseNumber"]) == "Writ" else "Plaintiff"
     second_party_role = "Respondent" if first_party_role == "Petitioner" else "Defendant"
-    source_rows = [primary, *active_sources]
+    source_rows = [
+        *primary["sourceRows"],
+        *(source for active_source in active_sources for source in active_source["sourceRows"]),
+    ]
+    opposing_by_key: dict[str, str] = {}
+    for row in [primary, *active_sources]:
+        for opposing in row["opposingParties"]:
+            opposing_by_key.setdefault(comparable(opposing), opposing)
+    opposing_parties = list(opposing_by_key.values()) or ["नाम उपलब्ध छैन"]
+    registration_date_bs = next(
+        (row["resolvedRegistrationDateBs"] for row in source_rows if row["resolvedRegistrationDateBs"]),
+        None,
+    )
     return {
         "id": case_id,
         "nature": nature_for(primary["matter"], primary["caseNumber"]),
@@ -239,11 +335,12 @@ def build_case(primary: dict, active_sources: list[dict], active: bool) -> dict:
         },
         "courtDetail": {
             "id": deterministic_id(f"court-detail:{source_key}"),
-            "caseName": " विरुद्ध ".join(filter(None, (primary["firstParty"], primary["opposingParty"])))
+            "caseName": " विरुद्ध ".join(filter(None, (primary["firstParty"], " / ".join(opposing_parties))))
             or primary["matter"]
             or f"Imported case {primary['row']}",
             "caseNumber": primary["caseNumber"] or "",
             "registrationDate": None,
+            "registrationDateBs": registration_date_bs,
             "courtLevel": court_level_for(primary["court"]),
             "courtName": primary["court"],
             "isActive": active,
@@ -254,11 +351,16 @@ def build_case(primary: dict, active_sources: list[dict], active: bool) -> dict:
                 "name": primary["firstParty"] or "नाम उपलब्ध छैन",
                 "role": first_party_role,
             },
-            {
-                "id": deterministic_id(f"party:opposing:{source_key}"),
-                "name": primary["opposingParty"] or "नाम उपलब्ध छैन",
+            *[
+              {
+                "id": deterministic_id(
+                    f"party:opposing:{source_key}" if index == 0 else f"party:opposing:{index}:{source_key}"
+                ),
+                "name": opposing_party,
                 "role": second_party_role,
-            },
+              }
+              for index, opposing_party in enumerate(opposing_parties)
+            ],
         ],
     }
 
@@ -276,7 +378,7 @@ def render_typescript(cases: list[dict], metadata: dict) -> str:
     meta = json.dumps(metadata, ensure_ascii=False, indent=2)
     return (
         "// Generated by scripts/build-case-seed-data.py. Do not edit by hand.\n"
-        "// Bikram Sambat dates remain in details.sourceRows because the database field is Gregorian DateTime.\n\n"
+        "// Valid Bikram Sambat dates are stored in CaseCourtDetail.registrationDateBs.\n\n"
         "export const importedCaseSeedMetadata = "
         + meta
         + " as const;\n\nexport const importedCaseSeedData = "
