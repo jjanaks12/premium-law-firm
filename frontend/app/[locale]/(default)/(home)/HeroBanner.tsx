@@ -13,7 +13,7 @@ export default function HeroBanner() {
   return (
     <section className="relative min-h-[calc(100svh-4.5rem)] overflow-hidden after:absolute after:inset-0 after:content-[''] after:bg-linear-to-r after:from-navy-deep/98 after:via-navy-deep/70 after:to-navy-deep/12 before:absolute before:inset-0 before:z-1 before:content-[''] before:bg-linear-to-t before:from-navy-deep/80 before:via-transparent before:to-navy-deep/10">
       <img
-        src={"/images/hero-law.jpg"}
+        src={"/images/hero-law-v2.png"}
         alt="The Supreme Court of Nepal at dusk"
         className="absolute inset-0 h-full w-full scale-[1.02] object-cover object-[58%_center]"
         width={1024}
