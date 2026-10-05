@@ -47,7 +47,7 @@ export default function HeroBanner() {
           </div>
         </div>
 
-        <div className="mt-10 grid overflow-hidden rounded-md border border-white/15 bg-navy-deep/78 shadow-2xl backdrop-blur-md sm:grid-cols-3 lg:absolute lg:bottom-8 lg:right-10 lg:mt-0 lg:w-[34rem] xl:right-[max(2.5rem,calc((100vw-80rem)/2))]">
+        <div className="mt-10 grid overflow-hidden rounded-l-md border border-white/15 bg-navy-deep/78 shadow-2xl backdrop-blur-md sm:grid-cols-3 lg:absolute lg:bottom-8 lg:right-0 lg:mt-0 lg:w-[34rem]">
           {stats.map((stat) => (
             <div
               key={stat.label}
