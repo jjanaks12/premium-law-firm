@@ -62,7 +62,7 @@ export default function Attorneys() {
                 <a
                   href="#"
                   aria-label={`${a.name} on LinkedIn`}
-                  className="absolute bottom-4 right-4 grid size-11 place-items-center rounded-md bg-gold text-navy-deep shadow-lg transition-transform hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+                  className="absolute bottom-4 right-4 grid size-11 translate-y-2 place-items-center rounded-md bg-gold text-navy-deep opacity-0 shadow-lg transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 focus-visible:translate-y-0 focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
                 >
                   <LinkedinIcon className="h-4 w-4" />
                 </a>
