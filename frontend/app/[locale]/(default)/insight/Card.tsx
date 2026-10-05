@@ -22,7 +22,7 @@ export default function InsightCard({
     : fallbackImages[page.page_type?.slug || ""] || "/images/blog-1.jpg";
 
   return (
-    <article key={page.id} className="group cursor-pointer">
+    <article key={page.id} className="group cursor-pointer overflow-hidden rounded-lg border border-border/80 bg-card shadow-[0_18px_50px_-42px_rgba(14,25,44,0.7)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_24px_58px_-38px_rgba(14,25,44,0.55)]">
       <Link href={`/insight/${page.slug}`} className="block">
         <figure className="relative overflow-hidden aspect-4/3 bg-muted">
           <img
@@ -42,7 +42,7 @@ export default function InsightCard({
           )}
         </figure>
       </Link>
-      <div className="pt-6">
+      <div className="p-5 sm:p-6">
         <div className="flex items-center gap-3 text-xs tracking-[0.18em] uppercase">
           <span className="text-gold">
             {page.page_type?.name || "Insights"}

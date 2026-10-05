@@ -8,7 +8,7 @@ export default function Footer() {
   const t = useTranslations();
   return (
     <footer className="bg-navy-deep text-cream/80">
-      <div className="container-x py-20 grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+      <div className="container-x grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.35fr_0.8fr_1fr_0.9fr] lg:py-20">
         <div>
           <Brand />
           <p className="mt-5 text-sm leading-relaxed text-cream/60 max-w-xs">
@@ -19,7 +19,8 @@ export default function Footer() {
               <Link
                 key={i}
                 href="#"
-                className="h-9 w-9 grid place-items-center border border-cream/15 hover:border-gold hover:text-gold transition-colors"
+                aria-label={`Social link ${i + 1}`}
+                className="grid size-10 place-items-center rounded-md border border-cream/15 hover:-translate-y-1 hover:border-gold hover:text-gold transition-all"
               >
                 <Icon className="h-4 w-4" />
               </Link>
@@ -103,10 +104,10 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-cream/10">
+      <div className="border-t border-cream/10 bg-black/10">
         <div className="container-x py-6 flex flex-col md:flex-row gap-4 md:items-center md:justify-between text-xs text-cream/50">
           <div>{t("Footer.copyright", { year: new Date().getFullYear() })}</div>
-          <div className="flex flex-wrap gap-6">
+          <div className="flex flex-wrap gap-x-6 gap-y-2">
             <Link href="#" className="hover:text-gold">
               {t("Footer.privacyPolicy")}
             </Link>

@@ -25,7 +25,7 @@ const testimonials = [
 export default function Testimonials() {
   const t = useTranslations("Testimonials");
   return (
-    <section className="py-24 md:py-32 bg-navy-deep text-cream">
+    <section className="section-space bg-navy-deep text-cream">
       <div className="container-x">
         <div className="text-center max-w-2xl mx-auto">
           <span className="eyebrow">{t("eyebrow")}</span>
@@ -35,11 +35,11 @@ export default function Testimonials() {
           <span className="gold-rule mt-6" />
         </div>
 
-        <div className="mt-16 grid md:grid-cols-3 gap-8">
+        <div className="mt-12 grid gap-5 sm:mt-16 md:grid-cols-3 lg:gap-6">
           {testimonials.map((t) => (
             <figure
               key={t.name}
-              className="border border-cream/10 p-8 hover:border-gold/50 transition-colors"
+              className="relative rounded-lg border border-cream/10 bg-white/[0.025] p-6 transition-all duration-300 before:absolute before:right-6 before:top-2 before:font-serif before:text-7xl before:leading-none before:text-gold/10 before:content-['“'] hover:-translate-y-1 hover:border-gold/40 hover:bg-white/[0.04] sm:p-8"
             >
               <div className="flex gap-1 text-gold">
                 {Array.from({ length: 5 }).map((_, i) => (
@@ -50,11 +50,11 @@ export default function Testimonials() {
                   />
                 ))}
               </div>
-              <blockquote className="mt-6 font-serif text-xl leading-snug text-cream/95">
+              <blockquote className="mt-6 font-serif text-xl leading-relaxed text-cream/90">
                 "{t.quote}"
               </blockquote>
               <figcaption className="mt-8 pt-6 border-t border-cream/10 flex items-center gap-4">
-                <div className="h-11 w-11 grid place-items-center bg-gold/15 text-gold font-serif text-lg">
+                <div className="grid size-11 place-items-center rounded-full bg-gold/15 text-gold font-serif text-lg">
                   {t.name
                     .split(" ")
                     .map((p) => p[0])
