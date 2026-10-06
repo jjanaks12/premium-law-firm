@@ -57,7 +57,7 @@
 }
 
 :root {
-  --radius: 0.25rem;
+  --radius: 0.5rem;
 
   --navy-deep: oklch(0.19 0.04 260);
   --navy: oklch(0.27 0.06 260);
@@ -107,6 +107,7 @@
   }
   html {
     @apply font-sans;
+    scroll-behavior: smooth;
   }
   body {
     background-color: var(--color-background);
@@ -114,6 +115,13 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     @apply bg-background text-foreground;
+    background-image:
+      radial-gradient(circle at 8% 8%, color-mix(in oklch, var(--color-gold) 7%, transparent), transparent 24rem),
+      radial-gradient(circle at 92% 32%, color-mix(in oklch, var(--color-navy) 4%, transparent), transparent 28rem);
+  }
+  ::selection {
+    background: color-mix(in oklch, var(--color-gold) 35%, transparent);
+    color: var(--color-navy-deep);
   }
   h1,
   h2,
@@ -131,10 +139,25 @@
   margin-inline: auto;
   padding-inline: 1.25rem;
 }
+@media (min-width: 640px) {
+  .container-x {
+    padding-inline: 2rem;
+  }
+}
 @media (min-width: 1024px) {
   .container-x {
     padding-inline: 2.5rem;
   }
+}
+
+@utility section-space {
+  padding-block: clamp(5rem, 8vw, 8rem);
+}
+
+@utility surface-card {
+  border: 1px solid color-mix(in oklch, var(--color-border) 82%, transparent);
+  background: color-mix(in oklch, var(--color-card) 94%, transparent);
+  box-shadow: 0 20px 60px -46px color-mix(in oklch, var(--color-navy-deep) 42%, transparent);
 }
 
 @utility gold-rule {
@@ -151,17 +174,22 @@
   gap: 0.5rem;
   background-color: var(--color-gold);
   color: var(--color-navy-deep);
+  min-height: 2.875rem;
   padding: 0.85rem 1.6rem;
   font-weight: 600;
   font-size: 0.875rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  transition: all 0.25s ease;
+  border-radius: var(--radius);
+  box-shadow: 0 12px 28px -18px var(--color-gold);
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
   border: 1px solid var(--color-gold);
 }
 .btn-gold:hover {
-  background-color: transparent;
-  color: var(--color-gold);
+  background-color: var(--color-gold-soft);
+  border-color: var(--color-gold-soft);
+  color: var(--color-navy-deep);
+  transform: translateY(-2px);
 }
 
 @utility btn-outline-cream {
@@ -171,17 +199,20 @@
   gap: 0.5rem;
   background-color: transparent;
   color: var(--color-cream);
+  min-height: 2.875rem;
   padding: 0.85rem 1.6rem;
   font-weight: 600;
   font-size: 0.875rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   border: 1px solid var(--color-cream);
-  transition: all 0.25s ease;
+  border-radius: var(--radius);
+  transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
 }
 .btn-outline-cream:hover {
   background-color: var(--color-cream);
   color: var(--color-navy-deep);
+  transform: translateY(-2px);
 }
 
 @utility btn-navy {
@@ -210,6 +241,32 @@
   text-transform: uppercase;
   color: var(--color-gold);
   font-weight: 600;
+}
+
+@utility section-heading {
+  position: relative;
+  text-wrap: balance;
+}
+
+@utility focus-premium {
+  outline: none;
+}
+.focus-premium:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 .dark {

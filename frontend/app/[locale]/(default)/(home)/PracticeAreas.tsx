@@ -45,21 +45,21 @@ const practiceAreas = [
 export default function PracticeAreas() {
   const t = useTranslations("PracticeAreas");
   return (
-    <section id="practice" className="py-24 md:py-32">
+    <section id="practice" className="section-space scroll-mt-20 bg-secondary/45">
       <div className="container-x">
         <div className="max-w-2xl">
           <span className="eyebrow">{t("eyebrow")}</span>
-          <h2 className="mt-4 text-4xl md:text-5xl leading-[1.1] text-navy-deep">
+          <h2 className="mt-4 text-[clamp(2.5rem,5vw,3.5rem)] leading-[1.05] text-navy-deep text-balance">
             {t("title")}
           </h2>
           <span className="gold-rule mt-6" />
         </div>
 
-        <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
+        <div className="mt-12 grid gap-4 sm:mt-16 md:grid-cols-2 lg:grid-cols-3">
           {practiceAreas.map(({ icon: Icon, title, desc }) => (
             <div
               key={title}
-              className="group bg-background p-10 hover:bg-navy-deep transition-colors duration-300"
+              className="group surface-card rounded-lg p-7 transition-all duration-300 hover:-translate-y-1 hover:border-navy/20 hover:bg-navy-deep hover:shadow-xl sm:p-9"
             >
               <Icon className="h-9 w-9 text-gold" strokeWidth={1.25} />
               <h3 className="mt-6 font-serif text-2xl text-navy-deep group-hover:text-cream transition-colors">
@@ -68,7 +68,7 @@ export default function PracticeAreas() {
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground group-hover:text-cream/70 transition-colors">
                 {desc}
               </p>
-              <div className="mt-6 flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-gold opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="mt-6 flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-gold transition-transform group-hover:translate-x-1">
                 {t("learnMore")} <ArrowRightIcon className="h-3 w-3" />
               </div>
             </div>

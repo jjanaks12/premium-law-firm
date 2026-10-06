@@ -31,12 +31,12 @@ const attorneys = [
 export default function Attorneys() {
   const t = useTranslations("Attorneys");
   return (
-    <section id="attorneys" className="py-24 md:py-32 bg-secondary">
+    <section id="attorneys" className="section-space scroll-mt-20 bg-secondary/80">
       <div className="container-x">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
           <div className="max-w-xl">
             <span className="eyebrow">{t("eyebrow")}</span>
-            <h2 className="mt-4 text-4xl md:text-5xl text-navy-deep">
+            <h2 className="mt-4 text-[clamp(2.5rem,5vw,3.5rem)] leading-[1.05] text-navy-deep text-balance">
               {t("title")}
             </h2>
             <span className="gold-rule mt-6" />
@@ -46,9 +46,9 @@ export default function Attorneys() {
           </p>
         </div>
 
-        <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="mt-12 grid gap-6 sm:mt-16 sm:grid-cols-2 lg:grid-cols-4">
           {attorneys.map((a) => (
-            <article key={a.name} className="group">
+            <article key={a.name} className="group overflow-hidden rounded-lg border border-border/80 bg-card shadow-[0_18px_50px_-40px_rgba(14,25,44,0.65)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_24px_55px_-35px_rgba(14,25,44,0.55)]">
               <div className="relative overflow-hidden aspect-4/5 bg-navy-deep">
                 <img
                   src={a.img}
@@ -56,17 +56,18 @@ export default function Attorneys() {
                   loading="lazy"
                   width={1024}
                   height={1024}
-                  className="h-full w-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                  className="h-full w-full object-cover transition-all duration-700 group-hover:scale-105"
                 />
+                <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-navy-deep/45 via-transparent to-transparent opacity-60 transition-opacity group-hover:opacity-25" />
                 <a
                   href="#"
                   aria-label={`${a.name} on LinkedIn`}
-                  className="absolute bottom-4 right-4 h-10 w-10 grid place-items-center bg-gold text-navy-deep opacity-0 group-hover:opacity-100 transition-opacity"
+                  className="absolute bottom-4 right-4 grid size-11 translate-y-2 place-items-center rounded-md bg-gold text-navy-deep opacity-0 shadow-lg transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 focus-visible:translate-y-0 focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
                 >
                   <LinkedinIcon className="h-4 w-4" />
                 </a>
               </div>
-              <div className="pt-6">
+              <div className="p-5 sm:p-6">
                 <h3 className="font-serif text-xl text-navy-deep">{a.name}</h3>
                 <div className="mt-1 text-xs tracking-[0.2em] uppercase text-gold">
                   {a.title}
