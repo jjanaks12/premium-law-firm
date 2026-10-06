@@ -1,4 +1,5 @@
 import { useTranslations } from "next-intl";
+import CountUp from "@/components/CountUp";
 
 export default function Info() {
   const t = useTranslations("Info");
@@ -38,7 +39,7 @@ export default function Info() {
           ].map((s) => (
             <div key={s.l} className="border-b border-border px-4 py-8 text-center even:border-l md:border-b-0 md:px-6 md:py-10">
               <div className="font-serif text-4xl md:text-5xl text-navy">
-                {s.n}
+                <CountUp value={s.n} />
               </div>
               <div className="mt-3 text-xs tracking-[0.2em] uppercase text-muted-foreground">
                 {s.l}
