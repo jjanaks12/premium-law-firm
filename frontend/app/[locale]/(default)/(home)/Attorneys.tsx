@@ -56,7 +56,7 @@ export default function Attorneys() {
                   loading="lazy"
                   width={1024}
                   height={1024}
-                  className="h-full w-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                  className="h-full w-full object-cover transition-all duration-700 group-hover:scale-105"
                 />
                 <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-navy-deep/45 via-transparent to-transparent opacity-60 transition-opacity group-hover:opacity-25" />
                 <a
