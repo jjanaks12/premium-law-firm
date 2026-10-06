@@ -1,5 +1,6 @@
 import { ArrowRightIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
+import CountUp from "@/components/CountUp";
 
 export default function HeroBanner() {
   const t = useTranslations("Hero");
@@ -54,7 +55,7 @@ export default function HeroBanner() {
               className="border-b border-white/10 px-5 py-5 last:border-b-0 sm:border-b-0 sm:border-r sm:last:border-r-0 lg:px-6 lg:py-6"
             >
               <div className="font-serif text-3xl text-gold lg:text-4xl">
-                {stat.value}
+                <CountUp value={stat.value} />
               </div>
               <div className="mt-2 text-[0.62rem] uppercase leading-4 tracking-[0.16em] text-cream/65">
                 {stat.label}
